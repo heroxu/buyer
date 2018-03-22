@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PasswordEditText">
+        <attr name="parting_line_color" format="color" />
+        <attr name="point_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="RedImageView">
+        <attr name="r_percent" format="float" />
+        <attr name="shape" format="integer">
+            <enum name="circular" value="1" />
+            <enum name="square" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="dashline">
+        <attr name="lineColor" format="color" />
+        <attr name="orientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

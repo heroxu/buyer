@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="statusbar_view_height">0dp</dimen>
+
+    <dimen name="toolbar_height">48dp</dimen>
+    <dimen name="toolbar_nav_menu_padding">15.5dp</dimen>
+    <dimen name="menu_item_padding">16dp</dimen>
+
+    <dimen name="text_cursor_padding_top">-2dp</dimen>
+    <dimen name="text_cursor_padding_bottom">-8dp</dimen>
+
+</resources>

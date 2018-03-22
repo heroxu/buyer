@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion project.ANDROID_BUILD_SDK_VERSION as Integer
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION as String
+
+    signingConfigs {
+        appPack {
+            storeFile file(project.KEY_STORE_FILE)
+            storePassword project.KEY_STORE_PASSWORD
+            keyAlias project.KEY_STORE_KEY_ALIAS
+            keyPassword project.KEY_STORE_KEY_PASSWORD
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.smyy.sharetour.buyer"
+        minSdkVersion project.ANDROID_BUILD_MIN_SDK_VERSION as Integer
+        targetSdkVersion project.ANDROID_BUILD_TARGET_SDK_VERSION as Integer
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        //添加这一行
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.appPack
+            debuggable false
+        }
+        debug {
+            signingConfig signingConfigs.appPack
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:support-v4:${project.ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:support-v13:${project.ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:design:${project.ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:recyclerview-v7:${project.ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:percent:${project.ANDROID_SUPPORT_VERSION}"
+    testCompile 'junit:junit:4.12'//被误删除了。。。不知道啥时候删的...
+    compile 'me.weyye.hipermission:library:1.0.7'
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    /**
+     * GreenDao
+     */
+    compile 'org.greenrobot:greendao:3.2.2'
+    compile 'net.zetetic:android-database-sqlcipher:3.5.6'
+    /**
+     * RxJava2 Retrofit 需要的依赖库
+     */
+    compile 'io.reactivex.rxjava2:rxjava:2.1.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    compile('com.squareup.retrofit2:adapter-rxjava2:2.3.0') {
+        /**
+         *  为本依赖关闭依赖传递特性
+         */
+        transitive = true
+        //编译期排除 依据组织名称排除 防止不同版本的冲突
+        exclude group: 'com.squareup.okhttp3'
+        exclude group: 'com.squareup.okio'
+        // exclude group: 'io.reactivex', module: 'rxjava'
+    }
+    compile project(path: ':UIFrameLib')
+    compile project(path: ':zxing')
+}
+
+//如果数据库结构变了就+1 更新数据库
+greendao {
+    //数据库的schema版本，也可以理解为数据库版本号
+    schemaVersion 1
+    //设置DaoMaster、DaoSession、Dao包名，也就是要放置这些类的包的全路径。
+    daoPackage 'com.smyy.sharetour.buyer.greendao'
+    //设置DaoMaster、DaoSession、Dao目录
+    targetGenDir 'src/main/java'
+}

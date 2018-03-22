@@ -1,0 +1,60 @@
+import java.text.SimpleDateFormat
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        //greendao 插件
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+    ext {
+        version_name = getVersionName()
+        version_code = getVersionCode()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+def getVersionName() {
+    def name = '1.0.0'
+    try {
+        if (project.hasProperty('version_name')) {
+            name = version_name
+        }
+    }
+    catch (Exception e) {
+    }
+    return name;
+}
+
+def getVersionCode() {
+//    def code = 223;
+//    try {
+//        def versionName = getVersionName();
+//        code = Integer.parseInt("${versionName}".replace(".", ""))
+//    } catch (Exception e) {
+//    }
+//    return code;
+    def df = new SimpleDateFormat("yyyyMMdd")
+    df.setTimeZone(TimeZone.getDefault())
+    return Integer.valueOf(df.format(new Date()))
+}

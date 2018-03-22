@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">buyer</string>
+    <!-- 异常信息 -->
+    <string name="no_network_message">当前网络连接不可用</string>
+    <string name="error_network_message">网络连接异常</string>
+    <string name="error_200_network_message">解析异常</string>
+    <string name="error_sql_message">数据库异常，请重新登录</string>
+
+    <string name="loading_msg_wait">请稍候…</string>
+
+    <string name="main_tab_1">TAB1</string>
+    <string name="main_tab_2">TAB2</string>
+    <string name="main_tab_3">TAB3</string>
+    <string name="main_tab_4">TAB4</string>
+    <string name="main_tab_5">TAB5</string>
+</resources>

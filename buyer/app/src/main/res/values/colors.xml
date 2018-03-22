@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--toolbar-->
+    <color name="colorPrimary">#049ce5</color>
+    <!-- 状态栏颜色-->
+    <color name="colorPrimaryDark">#049ce5</color>
+    <!-- 系统主色调 -->
+    <color name="colorAccent">#049ce5</color>
+
+    <color name="transparent">#00ffffff</color>
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+    <!-- 分割线颜色 -->
+    <color name="divider_line">@color/colorAccent</color>
+    <!-- 背景颜色 -->
+    <color name="window_background">@color/c_f0eff5</color>
+    <color name="item_material_press">#eeeeee</color>
+
+    <color name="dialog_press">#204ac0f0</color>
+    <color name="splash_bg">#f2f2f2</color>
+    <color name="translucent_grey">#80888888</color>
+
+    <!-- 首页底部bar的字体颜色 -->
+    <color name="tab_text_normal_color">@color/c_b2b2b2</color>
+    <color name="tab_text_normal_selected">@color/colorAccent</color>
+
+    <color name="c_ffffff_70">#b2ffffff</color>
+    <color name="c_f0eff5">#f0eff5</color>
+    <color name="c_b2b2b2">#b2b2b2</color>
+    <color name="c_e2e2e2">#e2e2e2</color>
+    <color name="c_b3b3b3">#b3b3b3</color>
+</resources>
