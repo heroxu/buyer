@@ -1,21 +1,16 @@
 package com.smyy.sharetour.buyer.fragment;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-
-import butterknife.BindView;
 
 /**
  * Created by hasee on 2018/3/15.
  */
 
 public class Fragment4 extends BaseMvpFragment {
-    @BindView(R.id.fake_status_bar)
-    View fake_status_bar;
     @Override
     protected IBasePresenter createPresenter() {
         return null;
@@ -28,8 +23,6 @@ public class Fragment4 extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
-        //处理状态栏
-        StatusBarAdapter.updateStatusHeight(getActivity(), fake_status_bar, null);
         changeTitleBarColor();
     }
 

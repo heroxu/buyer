@@ -17,7 +17,6 @@ import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -26,8 +25,6 @@ import butterknife.OnClick;
 
 public class Fragment2 extends BaseMvpFragment {
     public static final int REQUEST_CODE_SCAN = 3301;
-    @BindView(R.id.fake_status_bar)
-    View fake_status_bar;
     @Override
     protected IBasePresenter createPresenter() {
         return null;
@@ -40,8 +37,6 @@ public class Fragment2 extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
-        //处理状态栏
-        StatusBarAdapter.updateStatusHeight(getActivity(), fake_status_bar, null);
         changeTitleBarColor();
     }
 
