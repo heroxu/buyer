@@ -3,7 +3,7 @@
     <!--toolbar-->
     <color name="colorPrimary">#049ce5</color>
     <!-- 状态栏颜色-->
-    <color name="colorPrimaryDark">#049ce5</color>
+    <color name="colorPrimaryDark">@color/black</color>
     <!-- 系统主色调 -->
     <color name="colorAccent">#049ce5</color>
 

@@ -16,7 +16,7 @@ import com.smyy.sharetour.buyer.fragment.Fragment1;
 import com.smyy.sharetour.buyer.fragment.Fragment2;
 import com.smyy.sharetour.buyer.fragment.Fragment3;
 import com.smyy.sharetour.buyer.fragment.Fragment4;
-import com.smyy.sharetour.buyer.fragment.MyFragment;
+import com.smyy.sharetour.buyer.fragment.Fragment5;
 import com.smyy.sharetour.buyer.util.FragmentUtil;
 import com.smyy.sharetour.buyer.util.StatusBarUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity {
     //当前显示的fragment
     private BaseFragment mCurrentFragment;
     private View mCurrentViewSelected;
-    private Fragment1 fragment1;
+    private IndexFragment fragment1;
     private Fragment2 fragment2;
     private Fragment3 fragment3;
     private Fragment4 fragment4;
@@ -63,7 +63,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-        StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, 0, null);
         int count = mTabLayout.getChildCount();
         for (int i = 0; i < count; i++) {
             ViewGroup parent = (ViewGroup) mTabLayout.getChildAt(i);
@@ -84,7 +83,7 @@ public class MainActivity extends BaseActivity {
             isShow = checkFragmentIsAdded(fragment3, isShow);
             isShow = checkFragmentIsAdded(fragment4, isShow);
             isShow = checkFragmentIsAdded(myFragment, isShow);
-            if (mCurrentFragment instanceof Fragment1) {
+            if (mCurrentFragment instanceof IndexFragment) {
                 changeSelectedView(TAB_INDEX);
             } else if (mCurrentFragment instanceof Fragment2) {
                 changeSelectedView(TAB_SALARY);
@@ -105,7 +104,7 @@ public class MainActivity extends BaseActivity {
         switch (index) {
             case TAB_INDEX:
                 if (fragment1 == null) {
-                    fragment1 = new Fragment1();
+                    fragment1 = new IndexFragment();
                 }
                 tagFragment = fragment1;
                 break;
