@@ -25,6 +25,8 @@ public class RedImageView extends android.support.v7.widget.AppCompatImageView {
     private int shape;
     //红点画笔
     private Paint paintRedPoint;
+    //红点颜色
+    private int pointColor;
     //红点内字体画笔
     private Paint paintText;
     //红点半径
@@ -37,10 +39,17 @@ public class RedImageView extends android.support.v7.widget.AppCompatImageView {
     private int pointVisible = View.INVISIBLE;
     //圆点内显示的文字
     private String text;
+    //红点内字体颜色
+    private int textColor;
     //是否要处理红点显示文字超过99显示...
     private boolean isDealwithText = true;
     //红点圆心位置
     private float pointX, pointY;
+    //是否描边
+    private boolean withStroke;
+    private int strokeColor;
+    private float strokeWidth;
+
 
     public RedImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -52,6 +61,12 @@ public class RedImageView extends android.support.v7.widget.AppCompatImageView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RedImageView);
         r_percent = typedArray.getFloat(R.styleable.RedImageView_r_percent, 0.2f);
         shape = typedArray.getInteger(R.styleable.RedImageView_shape, SHAPE_CIRCULAR);
+        pointColor = typedArray.getColor(R.styleable.RedImageView_pointColor, Color.parseColor("#FE3824"));
+        textColor = typedArray.getColor(R.styleable.RedImageView_textColor, Color.WHITE);
+        withStroke = typedArray.getBoolean(R.styleable.RedImageView_withStroke, false);
+        strokeColor = typedArray.getColor(R.styleable.RedImageView_strokeColor, Color.TRANSPARENT);
+        strokeWidth = typedArray.getDimension(R.styleable.RedImageView_strokeWidth, 1);
+
         initPaint();
         typedArray.recycle();
     }
@@ -59,13 +74,12 @@ public class RedImageView extends android.support.v7.widget.AppCompatImageView {
     //初始化画笔
     private void initPaint() {
         paintRedPoint = new Paint();
-        paintRedPoint.setColor(Color.parseColor("#FE3824"));
-        paintRedPoint.setStrokeWidth(1);
+        paintRedPoint.setColor(pointColor);
         paintRedPoint.setStyle(Paint.Style.FILL);
         paintRedPoint.setAntiAlias(true);
         paintText = new Paint();
         paintText.setAntiAlias(true);
-        paintText.setColor(Color.parseColor("#FFFFFF"));
+        paintText.setColor(textColor);
         paintText.setStrokeWidth(1);
         paintText.setStyle(Paint.Style.FILL_AND_STROKE);
         paintText.setTextAlign(Paint.Align.CENTER);
@@ -107,10 +121,17 @@ public class RedImageView extends android.support.v7.widget.AppCompatImageView {
                 pointX = width - r;
                 pointY = r;
             }
-            //设置圆点内字体大小比圆小4个像素点
-            paintText.setTextSize(textSize_percent * r);
             // 画红点
             canvas.drawCircle(pointX, pointY, r, paintRedPoint);
+            if (withStroke) {
+                paintRedPoint.setStyle(Paint.Style.STROKE);
+                paintRedPoint.setColor(strokeColor);
+                paintRedPoint.setStrokeWidth(strokeWidth);
+                canvas.drawCircle(pointX, pointY, r, paintRedPoint);
+            }
+
+            //设置圆点内字体大小比圆小4个像素点
+            paintText.setTextSize(textSize_percent * r);
             if (text != null) {
                 //处理如果text为数字&&text超过99&&isDealwithText = true的情况显示...
                 String textStr = dealwithText(text);
