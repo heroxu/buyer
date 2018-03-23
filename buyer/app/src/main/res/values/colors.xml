@@ -29,4 +29,10 @@
     <color name="c_b2b2b2">#b2b2b2</color>
     <color name="c_e2e2e2">#e2e2e2</color>
     <color name="c_b3b3b3">#b3b3b3</color>
+
+    <!-- 默认字体颜色 -->
+    <color name="text_normal">#333333</color>
+
+    <color name="dot_red">#FB3A2F</color>
+
 </resources>

@@ -12,12 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.base.BaseFragment;
-import com.smyy.sharetour.buyer.fragment.IndexFragment;
+import com.smyy.sharetour.buyer.fragment.Fragment1;
 import com.smyy.sharetour.buyer.fragment.Fragment2;
 import com.smyy.sharetour.buyer.fragment.Fragment3;
 import com.smyy.sharetour.buyer.fragment.Fragment4;
 import com.smyy.sharetour.buyer.fragment.Fragment5;
 import com.smyy.sharetour.buyer.util.FragmentUtil;
+import com.smyy.sharetour.buyer.util.StatusBarUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 
@@ -32,7 +33,7 @@ public class MainActivity extends BaseActivity {
     private Fragment2 fragment2;
     private Fragment3 fragment3;
     private Fragment4 fragment4;
-    private Fragment5 fragment5;
+    private MyFragment myFragment;
 
     @BindView(R.id.main_content)
     FrameLayout mMainContent;
@@ -81,7 +82,7 @@ public class MainActivity extends BaseActivity {
             isShow = checkFragmentIsAdded(fragment2, isShow);
             isShow = checkFragmentIsAdded(fragment3, isShow);
             isShow = checkFragmentIsAdded(fragment4, isShow);
-            isShow = checkFragmentIsAdded(fragment5, isShow);
+            isShow = checkFragmentIsAdded(myFragment, isShow);
             if (mCurrentFragment instanceof IndexFragment) {
                 changeSelectedView(TAB_INDEX);
             } else if (mCurrentFragment instanceof Fragment2) {
@@ -90,7 +91,7 @@ public class MainActivity extends BaseActivity {
                 changeSelectedView(TAB_BANK);
             } else if (mCurrentFragment instanceof Fragment4) {
                 changeSelectedView(TAB_LIVE);
-            } else if (mCurrentFragment instanceof Fragment5) {
+            } else if (mCurrentFragment instanceof MyFragment) {
                 changeSelectedView(TAB_ME);
             }
         }
@@ -126,10 +127,10 @@ public class MainActivity extends BaseActivity {
                 tagFragment = fragment4;
                 break;
             case TAB_ME:
-                if (fragment5 == null) {
-                    fragment5 = new Fragment5();
+                if (myFragment == null) {
+                    myFragment = new MyFragment();
                 }
-                tagFragment = fragment5;
+                tagFragment = myFragment;
                 break;
         }
         changeCurrentFragment(tagFragment);
