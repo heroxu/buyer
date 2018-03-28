@@ -49,6 +49,7 @@ public class RedImageView extends android.support.v7.widget.AppCompatImageView {
     private boolean withStroke;
     private int strokeColor;
     private float strokeWidth;
+    private Paint paintStroke;
 
 
     public RedImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -77,6 +78,15 @@ public class RedImageView extends android.support.v7.widget.AppCompatImageView {
         paintRedPoint.setColor(pointColor);
         paintRedPoint.setStyle(Paint.Style.FILL);
         paintRedPoint.setAntiAlias(true);
+
+        if (withStroke) {
+            paintStroke = new Paint();
+            paintStroke.setStyle(Paint.Style.STROKE);
+            paintStroke.setColor(strokeColor);
+            paintStroke.setStrokeWidth(strokeWidth);
+            paintStroke.setAntiAlias(true);
+        }
+
         paintText = new Paint();
         paintText.setAntiAlias(true);
         paintText.setColor(textColor);
@@ -124,10 +134,7 @@ public class RedImageView extends android.support.v7.widget.AppCompatImageView {
             // 画红点
             canvas.drawCircle(pointX, pointY, r, paintRedPoint);
             if (withStroke) {
-                paintRedPoint.setStyle(Paint.Style.STROKE);
-                paintRedPoint.setColor(strokeColor);
-                paintRedPoint.setStrokeWidth(strokeWidth);
-                canvas.drawCircle(pointX, pointY, r, paintRedPoint);
+                canvas.drawCircle(pointX, pointY, r, paintStroke);
             }
 
             //设置圆点内字体大小比圆小4个像素点
