@@ -36,13 +36,13 @@ public class MainActivity extends BaseActivity {
     FrameLayout mMainContent;
     @BindView(R.id.tab_layout)
     LinearLayout mTabLayout;
-    private final int[] fLabelArray = new int[]{R.string.main_tab_1, R.string.main_tab_2, R.string.main_tab_3, R.string.main_tab_4};
-    private final int[] fIconResId = new int[]{R.drawable.main_index_selector, R.drawable.main_salary_selector, R.drawable.main_live_selector, R.drawable.main_me_selector};
+    private final int[] fLabelArray = new int[]{R.string.main_tab_1, R.string.main_tab_2, 0, R.string.main_tab_3, R.string.main_tab_4};
+    private final int[] fIconResId = new int[]{R.drawable.main_index_selector, R.drawable.main_salary_selector, 0, R.drawable.main_live_selector, R.drawable.main_me_selector};
 
     private final int TAB_INDEX = 0;
     private final int TAB_SALARY = 1;
-    private final int TAB_LIVE = 2;
-    private final int TAB_ME = 3;
+    private final int TAB_LIVE = 3;
+    private final int TAB_ME = 4;
 
 
     @Override
@@ -59,14 +59,16 @@ public class MainActivity extends BaseActivity {
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         int count = mTabLayout.getChildCount();
         for (int i = 0; i < count; i++) {
-            ViewGroup parent = (ViewGroup) mTabLayout.getChildAt(i);
-            RedImageView iconView = (RedImageView) parent.findViewById(R.id.tab_icon);
-            TextView labelView = (TextView) parent.findViewById(R.id.tab_label);
-            labelView.setText(getResources().getString(fLabelArray[i]));
+            if (i != 2) {
+                ViewGroup parent = (ViewGroup) mTabLayout.getChildAt(i);
+                RedImageView iconView = (RedImageView) parent.findViewById(R.id.tab_icon);
+                TextView labelView = (TextView) parent.findViewById(R.id.tab_label);
+                labelView.setText(getResources().getString(fLabelArray[i]));
 
-            iconView.setTag(fIconResId[i]);
-            iconView.setImageResource(fIconResId[i]);
-            parent.setTag(iconView);
+                iconView.setTag(fIconResId[i]);
+                iconView.setImageResource(fIconResId[i]);
+                parent.setTag(iconView);
+            }
         }
         if (mCurrentFragment == null) {
             obtainFragment(TAB_INDEX);
@@ -80,7 +82,7 @@ public class MainActivity extends BaseActivity {
                 changeSelectedView(TAB_INDEX);
             } else if (mCurrentFragment instanceof Fragment2) {
                 changeSelectedView(TAB_SALARY);
-            }  else if (mCurrentFragment instanceof Fragment4) {
+            } else if (mCurrentFragment instanceof Fragment4) {
                 changeSelectedView(TAB_LIVE);
             } else if (mCurrentFragment instanceof MyFragment) {
                 changeSelectedView(TAB_ME);
@@ -160,6 +162,7 @@ public class MainActivity extends BaseActivity {
         v.setSelected(true);
         mCurrentViewSelected = v;
     }
+
     /**
      * 获取正确的tabview
      **/
