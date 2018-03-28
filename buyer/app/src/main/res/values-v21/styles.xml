@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="XqcTheme" parent="@style/AppTheme">
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 解决6.0+系统的状态栏图标设置为true时，当statusbar的背景颜色为淡色时，statusbar的文字颜色会变成灰色，为false时同理。 -->
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+</resources>

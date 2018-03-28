@@ -2,11 +2,11 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
     <item 
         android:state_selected="true"
-        android:drawable="@mipmap/main_index_selected">
+        android:drawable="@mipmap/icon_bar_shouye_on">
     </item>
     <item 
         android:state_selected="false"
-        android:drawable="@mipmap/main_index_default">
+        android:drawable="@mipmap/icon_bar_shouye_off">
     </item>
 
 </selector>

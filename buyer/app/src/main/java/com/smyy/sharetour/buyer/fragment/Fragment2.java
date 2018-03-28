@@ -41,7 +41,7 @@ public class Fragment2 extends BaseMvpFragment {
     }
 
     private void changeTitleBarColor() {
-        StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.colorAccent));
+        StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.white));
     }
 
     List<Test2> mTest2s = new ArrayList<>();

@@ -36,8 +36,8 @@ public class MainActivity extends BaseActivity {
     FrameLayout mMainContent;
     @BindView(R.id.tab_layout)
     LinearLayout mTabLayout;
-    private final int[] fLabelArray = new int[]{R.string.main_tab_1, R.string.main_tab_2, 0, R.string.main_tab_3, R.string.main_tab_4};
-    private final int[] fIconResId = new int[]{R.drawable.main_index_selector, R.drawable.main_salary_selector, 0, R.drawable.main_live_selector, R.drawable.main_me_selector};
+    private final int[] fLabelArray = new int[]{R.string.main_tab_index, R.string.main_tab_found, 0, R.string.main_tab_live, R.string.main_tab_my};
+    private final int[] fIconResId = new int[]{R.drawable.main_index_selector, R.drawable.main_found_selector, 0, R.drawable.main_live_selector, R.drawable.main_my_selector};
 
     private final int TAB_INDEX = 0;
     private final int TAB_SALARY = 1;

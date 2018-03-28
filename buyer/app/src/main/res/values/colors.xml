@@ -3,7 +3,7 @@
     <!--toolbar-->
     <color name="colorPrimary">#049ce5</color>
     <!-- 状态栏颜色-->
-    <color name="colorPrimaryDark">@color/black</color>
+    <color name="colorPrimaryDark">@color/white</color>
     <!-- 系统主色调 -->
     <color name="colorAccent">#049ce5</color>
 
@@ -21,14 +21,16 @@
     <color name="translucent_grey">#80888888</color>
 
     <!-- 首页底部bar的字体颜色 -->
-    <color name="tab_text_normal_color">@color/c_b2b2b2</color>
-    <color name="tab_text_normal_selected">@color/colorAccent</color>
+    <color name="tab_text_normal_color">@color/c_d4d4d4</color>
+    <color name="tab_text_normal_selected">@color/c_484848</color>
 
     <color name="c_ffffff_70">#b2ffffff</color>
     <color name="c_f0eff5">#f0eff5</color>
     <color name="c_b2b2b2">#b2b2b2</color>
     <color name="c_e2e2e2">#e2e2e2</color>
     <color name="c_b3b3b3">#b3b3b3</color>
+    <color name="c_484848">#484848</color>
+    <color name="c_d4d4d4">#d4d4d4</color>
 
     <!-- 默认字体颜色 -->
     <color name="text_normal">#333333</color>

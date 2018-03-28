@@ -2,11 +2,11 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
     <item 
         android:state_selected="true"
-        android:drawable="@mipmap/main_salary_selected_red">
+        android:drawable="@mipmap/icon_bar_faxian_on">
     </item>
     <item 
         android:state_selected="false"
-        android:drawable="@mipmap/main_salary_default_red">
+        android:drawable="@mipmap/icon_bar_faxian_off">
     </item>
 
 </selector>

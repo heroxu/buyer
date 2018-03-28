@@ -41,6 +41,6 @@ public class MyFragment extends BaseMvpFragment {
     }
 
     private void changeTitleBarColor() {
-        StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.colorAccent));
+        StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.white));
     }
 }
