@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="41dp"
-        android:background="#ff4500"
         android:gravity="center"
         android:text="标题" />
 
@@ -21,18 +20,23 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            tl:tl_indicator_color="#333333"
-            tl:tl_indicator_corner_radius="1.5dp"
-            tl:tl_indicator_height="3dp"
-            tl:tl_indicator_width="10dp"
-            tl:tl_tab_padding="12dp"
-            tl:tl_textSelectColor="#333333"
-            tl:tl_textUnselectColor="#999999" />
+            app:tl_indicator_color="#333333"
+            app:tl_indicator_corner_radius="1.5dp"
+            app:tl_indicator_height="3dp"
+            app:tl_indicator_width="10dp"
+            app:tl_tab_padding="12dp"
+            app:tl_textSelectColor="#333333"
+            app:tl_textUnselectColor="#999999" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:background="#ff4500" />
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:rotation="270"
+            app:srcCompat="@drawable/ic_down_arrow"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
+            />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager

@@ -9,4 +9,6 @@
     <dimen name="text_cursor_padding_top">-2dp</dimen>
     <dimen name="text_cursor_padding_bottom">-8dp</dimen>
 
+    <!-- 统一的dp适配变量 -->
+    <dimen name="margin_10">10dp</dimen>
 </resources>

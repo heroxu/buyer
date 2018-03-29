@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.fragment.FoundFragment;
+import com.smyy.sharetour.buyer.fragment.HomeFragment;
 import com.smyy.sharetour.buyer.fragment.LiveFragment;
-import com.smyy.sharetour.buyer.fragment.IndexFragment;
 import com.smyy.sharetour.buyer.fragment.MyFragment;
 import com.smyy.sharetour.buyer.util.FragmentUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
@@ -27,7 +27,7 @@ public class MainActivity extends BaseActivity {
     //当前显示的fragment
     private BaseFragment mCurrentFragment;
     private View mCurrentViewSelected;
-    private IndexFragment indexFragment;
+    private HomeFragment homeFragment;
     private FoundFragment fountFragment;
     private LiveFragment liveFragment;
     private MyFragment myFragment;
@@ -58,10 +58,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         //解决当前界面被系统回收时候fragment重叠问题
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag(IndexFragment.class.getName());
-        if (fragment != null && fragment instanceof IndexFragment) {
-            indexFragment = (IndexFragment) fragment;
-            initCurrentFragment(indexFragment);
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(HomeFragment.class.getName());
+        if (fragment != null && fragment instanceof HomeFragment) {
+            homeFragment = (HomeFragment) fragment;
+            initCurrentFragment(homeFragment);
         }
         fragment = getSupportFragmentManager().findFragmentByTag(FoundFragment.class.getName());
         if (fragment != null && fragment instanceof FoundFragment) {
@@ -95,11 +95,11 @@ public class MainActivity extends BaseActivity {
             obtainFragment(TAB_INDEX);
         } else {
             boolean isShow = false;
-            isShow = checkFragmentIsAdded(indexFragment, isShow);
+            isShow = checkFragmentIsAdded(homeFragment, isShow);
             isShow = checkFragmentIsAdded(fountFragment, isShow);
             isShow = checkFragmentIsAdded(liveFragment, isShow);
             isShow = checkFragmentIsAdded(myFragment, isShow);
-            if (mCurrentFragment instanceof IndexFragment) {
+            if (mCurrentFragment instanceof HomeFragment) {
                 changeSelectedView(TAB_INDEX);
             } else if (mCurrentFragment instanceof FoundFragment) {
                 changeSelectedView(TAB_SALARY);
@@ -117,10 +117,10 @@ public class MainActivity extends BaseActivity {
         BaseFragment tagFragment = null;
         switch (index) {
             case TAB_INDEX:
-                if (indexFragment == null) {
-                    indexFragment = new IndexFragment();
+                if (homeFragment == null) {
+                    homeFragment = new HomeFragment();
                 }
-                tagFragment = indexFragment;
+                tagFragment = homeFragment;
                 break;
             case TAB_SALARY:
                 if (fountFragment == null) {

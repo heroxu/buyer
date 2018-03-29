@@ -24,7 +24,7 @@ import me.weyye.hipermission.PermissionItem;
  * Created by hasee on 2018/3/15.
  */
 
-public class IndexFragment extends BaseMvpFragment {
+public class HomeFragment extends BaseMvpFragment {
     public static final int REQUEST_CODE_SCAN = 3301;
     @BindView(R.id.tl_7)
     SlidingTabLayout tabLayout_7;
@@ -46,7 +46,7 @@ public class IndexFragment extends BaseMvpFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.layout_fragment_index;
+        return R.layout.layout_fragment_home;
     }
 
     @Override
