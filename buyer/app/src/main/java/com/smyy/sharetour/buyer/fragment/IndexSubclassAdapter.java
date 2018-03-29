@@ -19,4 +19,14 @@ public class IndexSubclassAdapter extends BaseMultiItemQuickAdapter<Test1Bean> {
     protected void convert(BaseViewHolder baseViewHolder, Test1Bean test1Bean) {
 
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
+    public int getItemCount() {
+        return super.getItemCount();
+    }
 }
