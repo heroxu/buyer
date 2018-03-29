@@ -71,8 +71,6 @@
                             xqc:strokeWidth="1dp"
                             xqc:withStroke="true" />
                     </RelativeLayout>
-
-
                 </LinearLayout>
 
             </LinearLayout>

@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tab_icon"
-        android:layout_marginTop="1dp"
         android:gravity="center"
         android:textColor="@color/main_tab_txt_selector"
         android:textSize="10sp" />
