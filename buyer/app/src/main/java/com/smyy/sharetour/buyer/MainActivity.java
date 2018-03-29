@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.fragment.Fragment2;
 import com.smyy.sharetour.buyer.fragment.Fragment4;
-import com.smyy.sharetour.buyer.fragment.IndexFragment;
+import com.smyy.sharetour.buyer.fragment.HomeFragment;
 import com.smyy.sharetour.buyer.fragment.MyFragment;
 import com.smyy.sharetour.buyer.util.FragmentUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
@@ -27,7 +27,7 @@ public class MainActivity extends BaseActivity {
     //当前显示的fragment
     private BaseFragment mCurrentFragment;
     private View mCurrentViewSelected;
-    private IndexFragment fragment1;
+    private HomeFragment mHomeFragment;
     private Fragment2 fragment2;
     private Fragment4 fragment4;
     private MyFragment myFragment;
@@ -74,11 +74,11 @@ public class MainActivity extends BaseActivity {
             obtainFragment(TAB_INDEX);
         } else {
             boolean isShow = false;
-            isShow = checkFragmentIsAdded(fragment1, isShow);
+            isShow = checkFragmentIsAdded(mHomeFragment, isShow);
             isShow = checkFragmentIsAdded(fragment2, isShow);
             isShow = checkFragmentIsAdded(fragment4, isShow);
             isShow = checkFragmentIsAdded(myFragment, isShow);
-            if (mCurrentFragment instanceof IndexFragment) {
+            if (mCurrentFragment instanceof HomeFragment) {
                 changeSelectedView(TAB_INDEX);
             } else if (mCurrentFragment instanceof Fragment2) {
                 changeSelectedView(TAB_SALARY);
@@ -96,10 +96,10 @@ public class MainActivity extends BaseActivity {
         BaseFragment tagFragment = null;
         switch (index) {
             case TAB_INDEX:
-                if (fragment1 == null) {
-                    fragment1 = new IndexFragment();
+                if (mHomeFragment == null) {
+                    mHomeFragment = new HomeFragment();
                 }
-                tagFragment = fragment1;
+                tagFragment = mHomeFragment;
                 break;
             case TAB_SALARY:
                 if (fragment2 == null) {
