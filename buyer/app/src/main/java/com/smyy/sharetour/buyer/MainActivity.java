@@ -12,13 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.base.BaseFragment;
-import com.smyy.sharetour.buyer.fragment.Fragment1;
 import com.smyy.sharetour.buyer.fragment.Fragment2;
-import com.smyy.sharetour.buyer.fragment.Fragment3;
 import com.smyy.sharetour.buyer.fragment.Fragment4;
+import com.smyy.sharetour.buyer.fragment.IndexFragment;
 import com.smyy.sharetour.buyer.fragment.MyFragment;
 import com.smyy.sharetour.buyer.util.FragmentUtil;
-import com.smyy.sharetour.buyer.util.StatusBarUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 
@@ -29,9 +27,8 @@ public class MainActivity extends BaseActivity {
     //当前显示的fragment
     private BaseFragment mCurrentFragment;
     private View mCurrentViewSelected;
-    private Fragment1 fragment1;
+    private IndexFragment fragment1;
     private Fragment2 fragment2;
-    private Fragment3 fragment3;
     private Fragment4 fragment4;
     private MyFragment myFragment;
 
@@ -39,14 +36,11 @@ public class MainActivity extends BaseActivity {
     FrameLayout mMainContent;
     @BindView(R.id.tab_layout)
     LinearLayout mTabLayout;
-    private final int[] fLabelArray = new int[]{R.string.main_tab_1, R.string.main_tab_2,
-            R.string.main_tab_3, R.string.main_tab_4, R.string.main_tab_5};
-    private final int[] fIconResId = new int[]{R.drawable.main_index_selector, R.drawable.main_salary_selector,
-            R.drawable.main_bank_selector, R.drawable.main_live_selector, R.drawable.main_me_selector};
+    private final int[] fLabelArray = new int[]{R.string.main_tab_1, R.string.main_tab_2, 0, R.string.main_tab_3, R.string.main_tab_4};
+    private final int[] fIconResId = new int[]{R.drawable.main_index_selector, R.drawable.main_salary_selector, 0, R.drawable.main_live_selector, R.drawable.main_me_selector};
 
     private final int TAB_INDEX = 0;
     private final int TAB_SALARY = 1;
-    private final int TAB_BANK = 2;
     private final int TAB_LIVE = 3;
     private final int TAB_ME = 4;
 
@@ -63,17 +57,18 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-        StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, 0, null);
         int count = mTabLayout.getChildCount();
         for (int i = 0; i < count; i++) {
-            ViewGroup parent = (ViewGroup) mTabLayout.getChildAt(i);
-            RedImageView iconView = (RedImageView) parent.findViewById(R.id.tab_icon);
-            TextView labelView = (TextView) parent.findViewById(R.id.tab_label);
-            labelView.setText(getResources().getString(fLabelArray[i]));
+            if (i != 2) {
+                ViewGroup parent = (ViewGroup) mTabLayout.getChildAt(i);
+                RedImageView iconView = (RedImageView) parent.findViewById(R.id.tab_icon);
+                TextView labelView = (TextView) parent.findViewById(R.id.tab_label);
+                labelView.setText(getResources().getString(fLabelArray[i]));
 
-            iconView.setTag(fIconResId[i]);
-            iconView.setImageResource(fIconResId[i]);
-            parent.setTag(iconView);
+                iconView.setTag(fIconResId[i]);
+                iconView.setImageResource(fIconResId[i]);
+                parent.setTag(iconView);
+            }
         }
         if (mCurrentFragment == null) {
             obtainFragment(TAB_INDEX);
@@ -81,15 +76,12 @@ public class MainActivity extends BaseActivity {
             boolean isShow = false;
             isShow = checkFragmentIsAdded(fragment1, isShow);
             isShow = checkFragmentIsAdded(fragment2, isShow);
-            isShow = checkFragmentIsAdded(fragment3, isShow);
             isShow = checkFragmentIsAdded(fragment4, isShow);
             isShow = checkFragmentIsAdded(myFragment, isShow);
-            if (mCurrentFragment instanceof Fragment1) {
+            if (mCurrentFragment instanceof IndexFragment) {
                 changeSelectedView(TAB_INDEX);
             } else if (mCurrentFragment instanceof Fragment2) {
                 changeSelectedView(TAB_SALARY);
-            } else if (mCurrentFragment instanceof Fragment3) {
-                changeSelectedView(TAB_BANK);
             } else if (mCurrentFragment instanceof Fragment4) {
                 changeSelectedView(TAB_LIVE);
             } else if (mCurrentFragment instanceof MyFragment) {
@@ -105,7 +97,7 @@ public class MainActivity extends BaseActivity {
         switch (index) {
             case TAB_INDEX:
                 if (fragment1 == null) {
-                    fragment1 = new Fragment1();
+                    fragment1 = new IndexFragment();
                 }
                 tagFragment = fragment1;
                 break;
@@ -114,12 +106,6 @@ public class MainActivity extends BaseActivity {
                     fragment2 = new Fragment2();
                 }
                 tagFragment = fragment2;
-                break;
-            case TAB_BANK:
-                if (fragment3 == null) {
-                    fragment3 = new Fragment3();
-                }
-                tagFragment = fragment3;
                 break;
             case TAB_LIVE:
                 if (fragment4 == null) {
@@ -176,6 +162,7 @@ public class MainActivity extends BaseActivity {
         v.setSelected(true);
         mCurrentViewSelected = v;
     }
+
     /**
      * 获取正确的tabview
      **/
@@ -183,7 +170,7 @@ public class MainActivity extends BaseActivity {
         return mTabLayout.getChildAt(index);
     }
 
-    @OnClick({R.id.tab_index, R.id.tab_salary, R.id.tab_bank, R.id.tab_live, R.id.tab_me})
+    @OnClick({R.id.tab_index, R.id.tab_salary, R.id.tab_live, R.id.tab_me})
     public void onClick(View v) {
         if (mCurrentViewSelected == v) {
             return;
@@ -194,9 +181,6 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.tab_salary:
                 obtainFragment(TAB_SALARY);
-                break;
-            case R.id.tab_bank:
-                obtainFragment(TAB_BANK);
                 break;
             case R.id.tab_live:
                 obtainFragment(TAB_LIVE);
