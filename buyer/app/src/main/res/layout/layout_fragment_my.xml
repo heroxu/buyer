@@ -23,7 +23,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="180dp"
                 android:background="@mipmap/bg_wode" />
 
             <ImageView
@@ -35,6 +35,16 @@
                 android:scaleType="fitCenter"
                 android:src="@mipmap/icon_nav_shezhi" />
 
+            <ImageView
+                android:id="@+id/icon_msg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/icon_havemessage01" />
+
             <TextView
                 android:id="@+id/tv_username"
                 android:layout_width="wrap_content"
@@ -44,20 +54,43 @@
                 android:text="昵称"
                 android:textColor="@color/white"
                 android:textSize="23sp" />
+
             <ImageView
                 android:id="@+id/iv_edit_username"
-                android:layout_toRightOf="@+id/tv_username"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignBottom="@+id/tv_username"
+                android:layout_toRightOf="@+id/tv_username"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/icon_xiugai" />
+
+            <TextView
+                android:id="@+id/tv_user_intro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/icon_nav_shezhi"/>
+                android:layout_alignLeft="@+id/tv_username"
+                android:layout_below="@+id/tv_username"
+                android:text="一只大榴莲，两梳大香蕉。"
+                android:textColor="#D4D4D4"
+                android:textSize="8sp" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/tv_username"
+                android:layout_alignBottom="@+id/tv_user_intro"
+                android:src="@mipmap/icon_touxiang_50x50" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_user_intro"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_rectangle_shadow"
                 android:orientation="vertical">
 
