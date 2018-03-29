@@ -2,11 +2,11 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
     <item 
         android:state_selected="true"
-        android:drawable="@mipmap/icon_live_ele">
+        android:drawable="@mipmap/icon_me_ele">
     </item>
     <item 
         android:state_selected="false"
-        android:drawable="@mipmap/icon_live_nor">
+        android:drawable="@mipmap/icon_me_nor">
     </item>
 
 </selector>

@@ -12,9 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.base.BaseFragment;
-import com.smyy.sharetour.buyer.fragment.Fragment2;
-import com.smyy.sharetour.buyer.fragment.Fragment4;
+import com.smyy.sharetour.buyer.fragment.FoundFragment;
 import com.smyy.sharetour.buyer.fragment.HomeFragment;
+import com.smyy.sharetour.buyer.fragment.LiveFragment;
 import com.smyy.sharetour.buyer.fragment.MyFragment;
 import com.smyy.sharetour.buyer.util.FragmentUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
@@ -27,17 +27,17 @@ public class MainActivity extends BaseActivity {
     //当前显示的fragment
     private BaseFragment mCurrentFragment;
     private View mCurrentViewSelected;
-    private HomeFragment mHomeFragment;
-    private Fragment2 fragment2;
-    private Fragment4 fragment4;
+    private HomeFragment homeFragment;
+    private FoundFragment fountFragment;
+    private LiveFragment liveFragment;
     private MyFragment myFragment;
 
     @BindView(R.id.main_content)
     FrameLayout mMainContent;
     @BindView(R.id.tab_layout)
     LinearLayout mTabLayout;
-    private final int[] fLabelArray = new int[]{R.string.main_tab_1, R.string.main_tab_2, 0, R.string.main_tab_3, R.string.main_tab_4};
-    private final int[] fIconResId = new int[]{R.drawable.main_index_selector, R.drawable.main_salary_selector, 0, R.drawable.main_live_selector, R.drawable.main_me_selector};
+    private final int[] fLabelArray = new int[]{R.string.main_tab_index, R.string.main_tab_found, 0, R.string.main_tab_live, R.string.main_tab_my};
+    private final int[] fIconResId = new int[]{R.drawable.main_index_selector, R.drawable.main_found_selector, 0, R.drawable.main_live_selector, R.drawable.main_my_selector};
 
     private final int TAB_INDEX = 0;
     private final int TAB_SALARY = 1;
@@ -57,6 +57,27 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        //解决当前界面被系统回收时候fragment重叠问题
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(HomeFragment.class.getName());
+        if (fragment != null && fragment instanceof HomeFragment) {
+            homeFragment = (HomeFragment) fragment;
+            initCurrentFragment(homeFragment);
+        }
+        fragment = getSupportFragmentManager().findFragmentByTag(FoundFragment.class.getName());
+        if (fragment != null && fragment instanceof FoundFragment) {
+            fountFragment = (FoundFragment) fragment;
+            initCurrentFragment(fountFragment);
+        }
+        fragment = getSupportFragmentManager().findFragmentByTag(LiveFragment.class.getName());
+        if (fragment != null && fragment instanceof LiveFragment) {
+            liveFragment = (LiveFragment) fragment;
+            initCurrentFragment(liveFragment);
+        }
+        fragment = getSupportFragmentManager().findFragmentByTag(MyFragment.class.getName());
+        if (fragment != null && fragment instanceof LiveFragment) {
+            myFragment = (MyFragment) fragment;
+            initCurrentFragment(myFragment);
+        }
         int count = mTabLayout.getChildCount();
         for (int i = 0; i < count; i++) {
             if (i != 2) {
@@ -74,15 +95,15 @@ public class MainActivity extends BaseActivity {
             obtainFragment(TAB_INDEX);
         } else {
             boolean isShow = false;
-            isShow = checkFragmentIsAdded(mHomeFragment, isShow);
-            isShow = checkFragmentIsAdded(fragment2, isShow);
-            isShow = checkFragmentIsAdded(fragment4, isShow);
+            isShow = checkFragmentIsAdded(homeFragment, isShow);
+            isShow = checkFragmentIsAdded(fountFragment, isShow);
+            isShow = checkFragmentIsAdded(liveFragment, isShow);
             isShow = checkFragmentIsAdded(myFragment, isShow);
             if (mCurrentFragment instanceof HomeFragment) {
                 changeSelectedView(TAB_INDEX);
-            } else if (mCurrentFragment instanceof Fragment2) {
+            } else if (mCurrentFragment instanceof FoundFragment) {
                 changeSelectedView(TAB_SALARY);
-            } else if (mCurrentFragment instanceof Fragment4) {
+            } else if (mCurrentFragment instanceof LiveFragment) {
                 changeSelectedView(TAB_LIVE);
             } else if (mCurrentFragment instanceof MyFragment) {
                 changeSelectedView(TAB_ME);
@@ -96,22 +117,22 @@ public class MainActivity extends BaseActivity {
         BaseFragment tagFragment = null;
         switch (index) {
             case TAB_INDEX:
-                if (mHomeFragment == null) {
-                    mHomeFragment = new HomeFragment();
+                if (homeFragment == null) {
+                    homeFragment = new HomeFragment();
                 }
-                tagFragment = mHomeFragment;
+                tagFragment = homeFragment;
                 break;
             case TAB_SALARY:
-                if (fragment2 == null) {
-                    fragment2 = new Fragment2();
+                if (fountFragment == null) {
+                    fountFragment = new FoundFragment();
                 }
-                tagFragment = fragment2;
+                tagFragment = fountFragment;
                 break;
             case TAB_LIVE:
-                if (fragment4 == null) {
-                    fragment4 = new Fragment4();
+                if (liveFragment == null) {
+                    liveFragment = new LiveFragment();
                 }
-                tagFragment = fragment4;
+                tagFragment = liveFragment;
                 break;
             case TAB_ME:
                 if (myFragment == null) {
@@ -190,6 +211,12 @@ public class MainActivity extends BaseActivity {
                 break;
             default:
                 break;
+        }
+    }
+
+    private void initCurrentFragment(BaseFragment fragment) {
+        if (fragment != null && !fragment.isHidden()) {
+            mCurrentFragment = fragment;
         }
     }
 
