@@ -34,6 +34,9 @@
 
     <!-- 默认字体颜色 -->
     <color name="text_normal">#333333</color>
+    <color name="text_dark_gray">#666666</color>
+    <color name="text_light_gray">#D4D4D4</color>
+
 
     <color name="dot_red">#FB3A2F</color>
 

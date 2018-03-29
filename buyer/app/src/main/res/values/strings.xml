@@ -12,4 +12,22 @@
     <string name="main_tab_found">发现</string>
     <string name="main_tab_live">直播</string>
     <string name="main_tab_my">我的</string>
+
+    <string name="main_tab_1">TAB1</string>
+    <string name="main_tab_2">TAB2</string>
+    <string name="main_tab_3">TAB3</string>
+    <string name="main_tab_4">TAB4</string>
+    <string name="main_tab_5">TAB5</string>
+
+    <string name="view_all_orders">查看全部订单</string>
+    <string name="orders_awaiting_payment">待付款</string>
+    <string name="orders_awaiting_shipment">待发货</string>
+    <string name="orders_awaiting_confirmation">待收货</string>
+    <string name="dispute_orders">退款/售后</string>
+    <string name="my_cart">我的购物车</string>
+    <string name="my_demands">我的需求</string>
+    <string name="my_reviews">我的评价</string>
+    <string name="my_favorites">我的收藏</string>
+    <string name="my_interests">我的关注</string>
+    <string name="help_and_feedback">帮助与反馈</string>
 </resources>
