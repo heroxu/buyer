@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="41dp"
-        android:background="#ff4500"
         android:gravity="center"
         android:text="标题" />
 
@@ -29,10 +30,12 @@
             tl:tl_textSelectColor="#333333"
             tl:tl_textUnselectColor="#999999" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:background="#ff4500" />
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginRight="10dp"
+            android:rotation="270"
+            app:srcCompat="@drawable/ic_down_arrow" />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
