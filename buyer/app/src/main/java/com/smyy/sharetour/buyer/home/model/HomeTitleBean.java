@@ -8,18 +8,17 @@ import com.smyy.sharetour.buyer.base.bean.response.SingleModelBean;
  * desc:
  */
 
-public class HomeResultBean extends SingleModelBean {
+public class HomeTitleBean extends HomeRecyclerBaseBean {
 
     public String mainTitle;
     public String subTitle;
-    public int viewType;
     public boolean hasMore;
     public boolean hasChange;
 
-    public HomeResultBean(String mainTitle, String subTitle, int viewType,boolean hasMore, boolean hasChange) {
+    public HomeTitleBean(String mainTitle, String subTitle, int type, boolean hasMore, boolean hasChange) {
         this.mainTitle = mainTitle;
         this.subTitle = subTitle;
-        this.viewType = viewType;
+        this.viewType = type;
         this.hasMore = hasMore;
         this.hasChange = hasChange;
     }

@@ -11,7 +11,10 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.home.adapter.HomeFragmentReclerViewAdapter;
-import com.smyy.sharetour.buyer.home.model.HomeResultBean;
+import com.smyy.sharetour.buyer.home.model.HomeBuyerItemBean;
+import com.smyy.sharetour.buyer.home.model.HomeBuyerRouteBean;
+import com.smyy.sharetour.buyer.home.model.HomeRecyclerBaseBean;
+import com.smyy.sharetour.buyer.home.model.HomeTitleBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,13 +58,22 @@ public class IndexSubclassFragment extends BaseMvpFragment {
     }
 
     private void loadData() {
-        List<HomeResultBean> homeResultBeans = new ArrayList<>();
-        homeResultBeans.add(new HomeResultBean("买手行程", "真实行程", HomeFragmentReclerViewAdapter.TITLE,true, false));
-        homeResultBeans.add(new HomeResultBean("最新预售", "全球抢购", HomeFragmentReclerViewAdapter.TITLE,false, false));
-        homeResultBeans.add(new HomeResultBean("火爆单品", "猜你喜欢", HomeFragmentReclerViewAdapter.TITLE,false, true));
-        homeResultBeans.add(new HomeResultBean("推荐买手", "千挑万选", HomeFragmentReclerViewAdapter.TITLE,true, false));
-        homeResultBeans.add(new HomeResultBean("精选内容", "读万卷书行万里路", HomeFragmentReclerViewAdapter.TITLE,false, false));
-        mAdapter = new HomeFragmentReclerViewAdapter(getActivity(), homeResultBeans);
+        List<HomeRecyclerBaseBean> homeRecyclerBaseBeans = new ArrayList<>();
+        homeRecyclerBaseBeans.add(new HomeTitleBean("买手行程", "真实行程", HomeFragmentReclerViewAdapter.ITEM_TITLE,true, false));
+        HomeBuyerRouteBean homeBuyerRouteBean = new HomeBuyerRouteBean();
+        List<HomeBuyerItemBean> homeBuyerItemBeans = new ArrayList<>();
+        homeBuyerRouteBean.viewType = HomeFragmentReclerViewAdapter.CHILD_BUYER_ROUTE;
+        homeBuyerItemBeans.add(new HomeBuyerItemBean("1yue29","1yue30","222"));
+        homeBuyerItemBeans.add(new HomeBuyerItemBean("1yue22","1yue33","2332"));
+        homeBuyerItemBeans.add(new HomeBuyerItemBean("1yue29","1yue30","222"));
+        homeBuyerItemBeans.add(new HomeBuyerItemBean("1yue22","1yue33","2332"));
+        homeBuyerRouteBean.routes = homeBuyerItemBeans;
+        homeRecyclerBaseBeans.add(homeBuyerRouteBean);
+        homeRecyclerBaseBeans.add(new HomeTitleBean("最新预售", "全球抢购", HomeFragmentReclerViewAdapter.ITEM_TITLE,false, false));
+        homeRecyclerBaseBeans.add(new HomeTitleBean("火爆单品", "猜你喜欢", HomeFragmentReclerViewAdapter.ITEM_TITLE,false, true));
+        homeRecyclerBaseBeans.add(new HomeTitleBean("推荐买手", "千挑万选", HomeFragmentReclerViewAdapter.ITEM_TITLE,true, false));
+        homeRecyclerBaseBeans.add(new HomeTitleBean("精选内容", "读万卷书行万里路", HomeFragmentReclerViewAdapter.ITEM_TITLE,false, false));
+        mAdapter = new HomeFragmentReclerViewAdapter(getActivity(), homeRecyclerBaseBeans);
         home_all_rv.setAdapter(mAdapter);
     }
 
