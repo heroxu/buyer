@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="28sp"
-        android:textColor="@color/title_color_333333"
+        android:textColor="@color/c_333333"
         tools:text="买手行程"
         />
     <TextView
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:layout_centerVertical="true"
-        android:textColor="@color/title_color_999999"
+        android:textColor="@color/c_999999"
         tools:text="真实出行"
         />
     <LinearLayout
