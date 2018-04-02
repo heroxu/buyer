@@ -3,11 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/tv_data2"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/c_b3b3b3"/>
+    <ImageView
+        android:id="@+id/iv_ifn_image"
+        android:layout_gravity="center"
+        android:layout_width="105dp"
+        android:layout_height="85dp" />
 </LinearLayout>

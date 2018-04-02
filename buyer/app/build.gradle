@@ -56,6 +56,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.wx.goodview:goodview:1.0.0'
+    compile 'com.youth.banner:banner:1.4.9'
     /**
      * GreenDao
      */

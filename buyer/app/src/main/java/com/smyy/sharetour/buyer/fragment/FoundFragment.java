@@ -1,30 +1,30 @@
 package com.smyy.sharetour.buyer.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import com.dtr.zxing.activity.CaptureActivity;
-import com.smyy.sharetour.buyer.MyApplication;
+import com.smyy.sharetour.buyer.FImage;
+import com.smyy.sharetour.buyer.FountBean;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.ToastUtils;
+import com.smyy.sharetour.buyer.adapter.FountAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-import com.smyy.sharetour.buyer.db.Test2;
-import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.OnClick;
+import butterknife.BindView;
 
 /**
  * Created by hasee on 2018/3/15.
  */
 
 public class FoundFragment extends BaseMvpFragment {
-    public static final int REQUEST_CODE_SCAN = 3301;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
     @Override
     protected IBasePresenter createPresenter() {
         return null;
@@ -38,50 +38,34 @@ public class FoundFragment extends BaseMvpFragment {
     @Override
     protected void initData(Bundle bundle) {
         changeTitleBarColor();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        List<FountBean> data = new ArrayList<>();
+        List<FImage> iData1 = new ArrayList<>();
+        iData1.add(new FImage(R.mipmap.img_n_01));
+        iData1.add(new FImage(R.mipmap.img_n_02));
+        iData1.add(new FImage(R.mipmap.img_n_03));
+        List<FImage> iData2 = new ArrayList<>();
+        iData2.add(new FImage(R.mipmap.img_n_01));
+        iData2.add(new FImage(R.mipmap.img_n_02));
+        List<FImage> iData3 = new ArrayList<>();
+        iData3.add(new FImage(R.mipmap.img_n_01));
+
+        data.add(new FountBean(3, null));
+        data.add(new FountBean(1, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png"));
+        data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", iData1));
+        data.add(new FountBean(1, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png"));
+        data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", iData2));
+        data.add(new FountBean(1, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", null));
+        data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", iData3));
+        data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png"));
+        FountAdapter mAdapter = new FountAdapter(getActivity(), data);
+        recyclerView.setAdapter(new FountAdapter(getActivity(), data));
+        //添加Android自带的分割线
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     }
 
     private void changeTitleBarColor() {
         StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.white));
     }
 
-    List<Test2> mTest2s = new ArrayList<>();
-
-    @OnClick({R.id.button1, R.id.button2, R.id.button3, R.id.button4})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.button1:
-                ActivityLauncher.viewTest1Activity(getActivity());
-                break;
-            case R.id.button2:
-                ActivityLauncher.viewTest2Activity(getActivity());
-                break;
-            case R.id.button3:
-                for (long i = 0; i < 10; i++) {
-                    Test2 mTest2 = new Test2();
-                    mTest2.setPhoneNum("18680445592");
-                    mTest2.setPhoto("http://blog.csdn.net/zhjianglin/article/details/78773028");
-                    mTest2s.add(mTest2);
-                }
-                MyApplication.getApplication().getDaoSession().getTest2Dao()
-                        .insertOrReplaceInTx(mTest2s);
-                break;
-            case R.id.button4:
-                startActivityForResult(new Intent(getActivity(), CaptureActivity.class),REQUEST_CODE_SCAN);
-                break;
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == REQUEST_CODE_SCAN) {
-            if (resultCode == Activity.RESULT_OK) {
-                String result = intent.getStringExtra(CaptureActivity.BUNDLE_RESULT);
-                ToastUtils.showToast(result);
-            } else if (resultCode == Activity.RESULT_CANCELED) {
-                ToastUtils.showToast("扫码取消");
-            } else {
-                ToastUtils.showToast("扫码错误");
-            }
-        }
-    }
 }
