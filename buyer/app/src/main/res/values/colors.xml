@@ -40,7 +40,17 @@
     <color name="c_c7c7c7">#c7c7c7</color>
 
     <!-- 默认字体颜色 -->
-    <color name="text_normal">#333333</color>
+    <color name="text_normal">@color/c_333333</color>
+    <color name="text_dark_gray">@color/c_666666</color>
+    <color name="text_light_gray">@color/c_d4d4d4</color>
+
+
+    <color name="c_333333">#333333</color>
+    <color name="c_666666">#666666</color>
+    <color name="c_999999">#999999</color>
+    <color name="c_ff5b1f">#FF5B1F</color>
+    <color name="c_c7c7c7">#C7C7C7</color>
+    <color name="c_f1f1f1">#f1f1f1</color>
 
     <color name="dot_red">#FB3A2F</color>
 

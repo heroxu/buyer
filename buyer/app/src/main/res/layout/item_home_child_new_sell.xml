@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="240dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+        <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/ic_home_ele"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:textColor="@color/c_ff5b1f"
+                android:text="预售"
+                />
+
+            <TextView
+                android:id="@+id/tv_new_sell_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/c_333333"
+                android:text="剩余48小时23分"
+                />
+
+            <TextView
+                android:id="@+id/tv_new_sell_reserve_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/c_c7c7c7"
+                android:text="已有203人预定"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_new_sell_product_pic"
+                android:layout_marginTop="10dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="20dp"
+                android:textSize="25sp"
+                android:src="@mipmap/new_sell"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_new_sell_product_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:lines="2"
+                    android:ellipsize="end"
+                    android:textColor="@color/c_333333"
+                    android:textSize="12sp"
+                    android:text="NIKE HUARACHE DRIFT幼童运动限量版大童鞋 "
+                    />
+                <TextView
+                    android:id="@+id/tv_new_sell_product_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:ellipsize="end"
+                    android:textColor="@color/c_ff5b1f"
+                    android:textSize="14sp"
+                    android:text="¥456.9"
+                    />
+                <TextView
+                    android:id="@+id/tv_new_sell_product_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/c_999999"
+                    android:textSize="12sp"
+                    android:text="韩国/天乐免税店"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/margin_10"
+            android:background="@color/c_f1f1f1"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_route_classify"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_new_sell_check_way"
+                android:layout_marginStart="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/c_333333"
+                android:background="@drawable/bg_rounded_rectangle_333333"
+                android:textSize="14sp"
+                android:text="查看该行程"
+                />
+
+            <TextView
+                android:id="@+id/tv_new_sell_buy_now"
+                android:layout_marginStart="50dp"
+                android:layout_width="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:background="@drawable/bg_rounded_rectangle_ffcd1f"
+                android:textColor="@color/c_333333"
+                android:text="立即预订"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

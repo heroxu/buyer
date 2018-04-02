@@ -61,7 +61,13 @@ public class HomeFragment extends BaseMvpFragment {
         /** indicator矩形圆角 */
         tabLayout_7.setViewPager(vp, mTitles);
 //        vp.setCurrentItem(4);
+        loadData();
     }
+
+    private void loadData() {
+
+    }
+
 
     private void initPermissions() {
         List<PermissionItem> permissonItems = new ArrayList<PermissionItem>();
