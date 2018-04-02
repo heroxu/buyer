@@ -11,8 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.smyy.sharetour.buyer.home.model.HomeBuyerItemBean;
-import com.smyy.sharetour.buyer.home.model.HomeBuyerRouteBean;
+import com.smyy.sharetour.buyer.home.model.HomeNewSell;
+import com.smyy.sharetour.buyer.home.model.HomeNewSellItem;
+import com.smyy.sharetour.buyer.home.model.HomeRouteItem;
+import com.smyy.sharetour.buyer.home.model.HomeRoute;
 import com.smyy.sharetour.buyer.home.model.HomeRecyclerBaseBean;
 import com.smyy.sharetour.buyer.home.model.HomeTitleBean;
 
@@ -53,7 +55,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 return new HomeChildRouteHolder(buyer_route);
             case ITEM_CHILD_NEW_SELL:
                 View grid_rv = LayoutInflater.from(mContext).inflate(R.layout.item_home_child_new_sell_rv, parent, false);
-                return new HomeChildTitleHolder(grid_rv);
+                return new HomeNewSellHolder(grid_rv);
             case ITEM_NOTES:
                 View notes = LayoutInflater.from(mContext).inflate(R.layout.item_home_child_title, parent, false);
                 return new HomeChildTitleHolder(notes);
@@ -80,20 +82,20 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             homeChildTitleHolder.tv_change.setVisibility(homeTitleBean.hasChange ? View.VISIBLE : View.GONE);
         }else if(ITEM_CHILD_ROUTE == mDatas.get(position).viewType){
             HomeChildRouteHolder homeChildRouteHolder = (HomeChildRouteHolder) holder;
-            HomeBuyerRouteBean homeBuyerRouteBean = (HomeBuyerRouteBean) mDatas.get(position);
+            HomeRoute homeRoute = (HomeRoute) mDatas.get(position);
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             homeChildRouteHolder.rv_child_route.setLayoutManager(linearLayoutManager);
-            homeChildRouteHolder.rv_child_route.setAdapter(new HomeChildRouteDetailAdapter(homeBuyerRouteBean.routes));
+            homeChildRouteHolder.rv_child_route.setAdapter(new HomeChildRouteDetailAdapter(homeRoute.routes));
         }else if(ITEM_CHILD_NEW_SELL == mDatas.get(position).viewType){
-            HomeChildRouteHolder homeChildRouteHolder = (HomeChildRouteHolder) holder;
-            HomeBuyerRouteBean homeBuyerRouteBean = (HomeBuyerRouteBean) mDatas.get(position);
-
+            HomeNewSellHolder homeNewSellHolder = (HomeNewSellHolder) holder;
+            HomeNewSell homeNewSell = (HomeNewSell) mDatas.get(position);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-            homeChildRouteHolder.rv_child_route.setLayoutManager(linearLayoutManager);
-            homeChildRouteHolder.rv_child_route.setAdapter(new HomeChildRouteDetailAdapter(homeBuyerRouteBean.routes));
+            homeNewSellHolder.rv_child_new_sell.setLayoutManager(linearLayoutManager);
+            homeNewSellHolder.rv_child_new_sell.setAdapter(new HomeNewSellAdapter(homeNewSell.newSellItems));
+
         }
     }
 
@@ -136,32 +138,23 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         }
     }
 
-    public static class HomeChildNewSellHolder extends RecyclerView.ViewHolder{
-        private RecyclerView rv_child_new_sell;
-        public HomeChildNewSellHolder(View itemView) {
-            super(itemView);
-            rv_child_new_sell = (RecyclerView) itemView.findViewById(R.id.rv_child_new_sell);
-        }
-    }
-
-
     public class HomeChildRouteDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-        private List<HomeBuyerItemBean> mRouteDatas;
+        private List<HomeRouteItem> mRouteDatas;
         private int [] drawableArr = {R.mipmap.random_icon_one,R.mipmap.random_icon_two,R.mipmap.random_icon_three,R.mipmap.random_icon_four};
-        public HomeChildRouteDetailAdapter(List<HomeBuyerItemBean> datas) {
+        public HomeChildRouteDetailAdapter(List<HomeRouteItem> datas) {
             this.mRouteDatas = datas;
         }
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new HomeChildRouteDetailHolder(LayoutInflater.from(mContext).inflate(R.layout.item_home_child_route, parent, false));
+            return new HomeRouteItemHolder(LayoutInflater.from(mContext).inflate(R.layout.item_home_child_route, parent, false));
 
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            HomeChildRouteDetailHolder viewHolder = (HomeChildRouteDetailHolder) holder;
+            HomeRouteItemHolder viewHolder = (HomeRouteItemHolder) holder;
             viewHolder.tv_buyer_go.setText(mRouteDatas.get(position).goTime);
             viewHolder.tv_buyer_back.setText(mRouteDatas.get(position).backTime);
             viewHolder.iv_buyer_route.setImageResource(drawableArr[position]);
@@ -172,7 +165,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             return mRouteDatas.isEmpty()?0: mRouteDatas.size();
         }
 
-        public  class HomeChildRouteDetailHolder extends RecyclerView.ViewHolder{
+        public  class HomeRouteItemHolder extends RecyclerView.ViewHolder{
 
             ImageView iv_buyer_route;
             TextView tv_buyer_go;
@@ -181,7 +174,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             TextView tv_route_classify_two;
             TextView tv_route_classify_three;
 
-            public HomeChildRouteDetailHolder(View itemView) {
+            public HomeRouteItemHolder(View itemView) {
                 super(itemView);
                 iv_buyer_route = (ImageView) itemView.findViewById(R.id.iv_buyer_route);
                 tv_buyer_go = (TextView)itemView.findViewById(R.id.tv_buyer_go);
@@ -195,4 +188,73 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         }
 
     }
+
+    public static class HomeNewSellHolder extends RecyclerView.ViewHolder{
+        private RecyclerView rv_child_new_sell;
+        public HomeNewSellHolder(View itemView) {
+            super(itemView);
+            rv_child_new_sell = (RecyclerView) itemView.findViewById(R.id.rv_child_new_sell);
+        }
+    }
+
+    public class HomeNewSellAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+
+        private List<HomeNewSellItem> mNewSellDatas;
+        private int [] drawableArr = {R.mipmap.random_icon_one,R.mipmap.random_icon_two,R.mipmap.random_icon_three,R.mipmap.random_icon_four};
+        public HomeNewSellAdapter(List<HomeNewSellItem> datas) {
+            this.mNewSellDatas = datas;
+        }
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new HomeNewSellItemHolder(LayoutInflater.from(mContext).inflate(R.layout.item_home_child_new_sell, parent, false));
+
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            HomeNewSellItemHolder viewHolder = (HomeNewSellItemHolder) holder;
+            HomeNewSellItem homeNewSellItem = mNewSellDatas.get(position);
+
+            viewHolder.tv_new_sell_time.setText(homeNewSellItem.sellTime);
+            viewHolder.tv_new_sell_reserve_number.setText(homeNewSellItem.reserveNumber);
+            viewHolder.iv_new_sell_product_pic.setImageResource(R.mipmap.new_sell);
+            viewHolder.tv_new_sell_product_name.setText(homeNewSellItem.productName);
+            viewHolder.tv_new_sell_product_price.setText(homeNewSellItem.productPrice);
+            viewHolder.tv_new_sell_product_address.setText(homeNewSellItem.productAddress);
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return mNewSellDatas.isEmpty()?0: mNewSellDatas.size();
+        }
+
+        public  class HomeNewSellItemHolder extends RecyclerView.ViewHolder{
+
+            TextView tv_new_sell_time;
+            TextView tv_new_sell_reserve_number;
+            ImageView iv_new_sell_product_pic;
+            TextView tv_new_sell_product_name;
+            TextView tv_new_sell_product_price;
+            TextView tv_new_sell_product_address;
+
+
+            public HomeNewSellItemHolder(View itemView) {
+                super(itemView);
+                tv_new_sell_time = (TextView) itemView.findViewById(R.id.tv_new_sell_time);
+                tv_new_sell_reserve_number = (TextView) itemView.findViewById(R.id.tv_new_sell_reserve_number);
+
+                iv_new_sell_product_pic = (ImageView) itemView.findViewById(R.id.iv_new_sell_product_pic);
+                tv_new_sell_product_name = (TextView)itemView.findViewById(R.id.tv_new_sell_product_name);
+                tv_new_sell_product_price = (TextView)itemView.findViewById(R.id.tv_new_sell_product_price);
+                tv_new_sell_product_address = (TextView)itemView.findViewById(R.id.tv_new_sell_product_address);
+
+
+            }
+        }
+
+    }
+
+
 }

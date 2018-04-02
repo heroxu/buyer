@@ -7,12 +7,12 @@ import java.io.Serializable;
  * desc:
  */
 
-public class HomeBuyerItemBean implements Serializable{
+public class HomeRouteItem implements Serializable{
     public String goTime;
     public String backTime;
     public String routeWays;
 
-    public HomeBuyerItemBean(String goTime, String backTime, String routeWays) {
+    public HomeRouteItem(String goTime, String backTime, String routeWays) {
         this.goTime = goTime;
         this.backTime = backTime;
         this.routeWays = routeWays;
