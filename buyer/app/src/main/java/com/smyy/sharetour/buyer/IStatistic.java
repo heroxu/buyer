@@ -30,6 +30,9 @@ public interface IStatistic {
      */
     void addCustomEventH5Download(String h5url, boolean isSuccessed);
 
+
+
+
     /**
      * 5.登陆 埋点
      */
