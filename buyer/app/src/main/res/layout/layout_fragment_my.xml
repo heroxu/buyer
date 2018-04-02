@@ -103,6 +103,7 @@
 
 
                     <TextView
+                        android:id="@+id/tv_view_all_orders"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableRight="@drawable/arrow_right_selector"
@@ -127,6 +128,7 @@
                         android:paddingTop="10dp">
 
                         <LinearLayout
+                            android:id="@+id/lay_awaiting_payment"
                             style="@style/DividItemHorizon"
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
@@ -143,6 +145,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/lay_awaiting_shipment"
                             style="@style/DividItemHorizon"
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
@@ -158,6 +161,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/lay_awaiting_confirmation"
                             style="@style/DividItemHorizon"
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
@@ -173,6 +177,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/lay_dispute"
                             style="@style/DividItemHorizon"
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
@@ -194,6 +199,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/tv_my_cart"
             style="@style/WideItemText"
             android:paddingTop="10dp"
             android:text="@string/my_cart" />
@@ -201,30 +207,35 @@
         <View style="@style/WideItemDivider" />
 
         <TextView
+            android:id="@+id/tv_my_demands"
             style="@style/WideItemText"
             android:text="@string/my_demands" />
 
         <View style="@style/WideItemDivider" />
 
         <TextView
+            android:id="@+id/tv_my_reviews"
             style="@style/WideItemText"
             android:text="@string/my_reviews" />
 
         <View style="@style/WideItemDivider" />
 
         <TextView
+            android:id="@+id/tv_my_favorites"
             style="@style/WideItemText"
             android:text="@string/my_favorites" />
 
         <View style="@style/WideItemDivider" />
 
         <TextView
+            android:id="@+id/tv_my_interests"
             style="@style/WideItemText"
             android:text="@string/my_interests" />
 
         <View style="@style/WideItemDivider" />
 
         <TextView
+            android:id="@+id/tv_help_and_feedback"
             style="@style/WideItemText"
             android:text="@string/help_and_feedback" />
     </LinearLayout>
