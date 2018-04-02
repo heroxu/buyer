@@ -16,7 +16,6 @@ import com.smyy.sharetour.buyer.fragment.FoundFragment;
 import com.smyy.sharetour.buyer.fragment.HomeFragment;
 import com.smyy.sharetour.buyer.fragment.LiveFragment;
 import com.smyy.sharetour.buyer.fragment.MyFragment;
-import com.smyy.sharetour.buyer.fragment.MyFragment0;
 import com.smyy.sharetour.buyer.util.FragmentUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
 import com.smyy.sharetour.uiframelib.BaseActivity;
@@ -31,7 +30,7 @@ public class MainActivity extends BaseActivity {
     private HomeFragment homeFragment;
     private FoundFragment fountFragment;
     private LiveFragment liveFragment;
-    private MyFragment0 myFragment;
+    private MyFragment myFragment;
 
     @BindView(R.id.main_content)
     FrameLayout mMainContent;
@@ -76,7 +75,7 @@ public class MainActivity extends BaseActivity {
         }
         fragment = getSupportFragmentManager().findFragmentByTag(MyFragment.class.getName());
         if (fragment != null && fragment instanceof LiveFragment) {
-            myFragment = (MyFragment0) fragment;
+            myFragment = (MyFragment) fragment;
             initCurrentFragment(myFragment);
         }
         int count = mTabLayout.getChildCount();
@@ -137,7 +136,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case TAB_ME:
                 if (myFragment == null) {
-                    myFragment = new MyFragment0();
+                    myFragment = new MyFragment();
                 }
                 tagFragment = myFragment;
                 break;
