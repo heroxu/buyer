@@ -77,14 +77,14 @@
                 tools:text="一只大榴莲，两梳大香蕉。" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_user_photo"
+                android:id="@+id/iv_user_avatar"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignBottom="@+id/tv_user_intro"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/tv_username"
                 android:layout_marginRight="30dp"
-                tools:src="@mipmap/user_photo" />
+                tools:src="@mipmap/user_avatar" />
 
 
             <android.support.v7.widget.CardView
@@ -135,7 +135,7 @@
                             <com.smyy.sharetour.buyer.view.RedImageView
                                 android:id="@+id/icon"
                                 style="@style/MyDividItemImg"
-                                android:src="@mipmap/icon_daifukuan" />
+                                android:src="@mipmap/ic_pending_payment" />
 
                             <TextView
                                 style="@style/MyDividItemText"
@@ -150,7 +150,7 @@
 
                             <com.smyy.sharetour.buyer.view.RedImageView
                                 style="@style/MyDividItemImg"
-                                android:src="@mipmap/icon_daifahuo" />
+                                android:src="@mipmap/ic_to_be_delivered" />
 
                             <TextView
                                 style="@style/MyDividItemText"
@@ -165,7 +165,7 @@
 
                             <com.smyy.sharetour.buyer.view.RedImageView
                                 style="@style/MyDividItemImg"
-                                android:src="@mipmap/icon_daishouhuo" />
+                                android:src="@mipmap/ic_to_receive_goods" />
 
                             <TextView
                                 style="@style/MyDividItemText"
@@ -180,7 +180,7 @@
 
                             <com.smyy.sharetour.buyer.view.RedImageView
                                 style="@style/MyDividItemImg"
-                                android:src="@mipmap/icon_shouhou" />
+                                android:src="@mipmap/ic_refund" />
 
                             <TextView
                                 style="@style/MyDividItemText"
