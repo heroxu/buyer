@@ -33,8 +33,8 @@
     <color name="c_d4d4d4">#d4d4d4</color>
 
     <!-- 默认字体颜色 -->
-    <color name="text_normal">#333333</color>
-    <color name="text_dark_gray">#666666</color>
+    <color name="text_normal">c_333333</color>
+    <color name="text_dark_gray">c_666666</color>
     <color name="text_light_gray">#D4D4D4</color>
 
 
