@@ -1,0 +1,28 @@
+变量命名规范：
+1 非公有、非静态域的变量以m开头
+2 静态变量以s开头
+3 其它变量以小写字母开头
+4 public static final变量（常量）以下划线连接全大写ALL_CAPS_WITH_UNDERSCORES
+
+文件规范：
+为了查找文件方便，统一规定如下命名
+1 activity布局文件以activity开头，后接下划线_XXX。如：MainActivity.java，则布局文件为activity_main.xml
+2 fragment布局文件以fragment开头，后接下划线_XXX。如：HomeFragment.java，fragment_home.xml
+3 item布局统一item开头，后接_XXX。如：XXXAdapter.java，对应布局item_xxx.xml
+4 自定义View、ViewGroup、Layout，统一用view_或者layout_开头
+
+组件中的资源命名规则：
+1、原文件里面的资源id需要加上组件名称
+
+本地缓存读写管理：
+1 每个Module都有一个Constants保存本模块的Key(Key后务必加注释)
+2 只能通过特定管理类读取特定缓存
+3 如要读取其他模块Key只能通过注册Listener读取
+
+MVP模式规则：
+1 V层需要定义接口，P层通过接口引用V
+2 P层不需要定义接口，V层可以直接引用实体类
+
+组件化架构约定：
+1 CoreComponent中不能有业务逻辑，且不依赖任何业务模块
+2 各业务模块不能互相依赖，只能通过注册service进行调用

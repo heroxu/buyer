@@ -11,8 +11,10 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.home.adapter.HomeFragmentRecyclerViewAdapter;
-import com.smyy.sharetour.buyer.home.model.HomeBuyerItemBean;
-import com.smyy.sharetour.buyer.home.model.HomeBuyerRouteBean;
+import com.smyy.sharetour.buyer.home.model.HomeNewSell;
+import com.smyy.sharetour.buyer.home.model.HomeNewSellItem;
+import com.smyy.sharetour.buyer.home.model.HomeRouteItem;
+import com.smyy.sharetour.buyer.home.model.HomeRoute;
 import com.smyy.sharetour.buyer.home.model.HomeRecyclerBaseBean;
 import com.smyy.sharetour.buyer.home.model.HomeTitleBean;
 
@@ -60,19 +62,37 @@ public class IndexSubclassFragment extends BaseMvpFragment {
     private void loadData() {
         List<HomeRecyclerBaseBean> homeRecyclerBaseBeans = new ArrayList<>();
         homeRecyclerBaseBeans.add(new HomeTitleBean("买手行程", "真实行程", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,true, false));
-        HomeBuyerRouteBean homeBuyerRouteBean = new HomeBuyerRouteBean();
-        List<HomeBuyerItemBean> homeBuyerItemBeans = new ArrayList<>();
-        homeBuyerRouteBean.viewType = HomeFragmentRecyclerViewAdapter.ITEM_CHILD_ROUTE;
-        homeBuyerItemBeans.add(new HomeBuyerItemBean("1yue29","1yue30","222"));
-        homeBuyerItemBeans.add(new HomeBuyerItemBean("1yue22","1yue33","2332"));
-        homeBuyerItemBeans.add(new HomeBuyerItemBean("1yue29","1yue30","222"));
-        homeBuyerItemBeans.add(new HomeBuyerItemBean("1yue22","1yue33","2332"));
-        homeBuyerRouteBean.routes = homeBuyerItemBeans;
-        homeRecyclerBaseBeans.add(homeBuyerRouteBean);
+
+        HomeRoute homeRoute = new HomeRoute();
+        List<HomeRouteItem> homeRouteItems = new ArrayList<>();
+        homeRoute.viewType = HomeFragmentRecyclerViewAdapter.ITEM_CHILD_ROUTE;
+        homeRouteItems.add(new HomeRouteItem("1yue29","1yue30","222"));
+        homeRouteItems.add(new HomeRouteItem("1yue22","1yue33","2332"));
+        homeRouteItems.add(new HomeRouteItem("1yue29","1yue30","222"));
+        homeRouteItems.add(new HomeRouteItem("1yue22","1yue33","2332"));
+        homeRoute.routes = homeRouteItems;
+        homeRecyclerBaseBeans.add(homeRoute);
+
+
+
         homeRecyclerBaseBeans.add(new HomeTitleBean("最新预售", "全球抢购", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,false, false));
+        HomeNewSell homeNewSell = new HomeNewSell();
+        homeNewSell.viewType = HomeFragmentRecyclerViewAdapter.ITEM_CHILD_NEW_SELL;
+        List<HomeNewSellItem> homeNewSellItems =new ArrayList<>();
+        homeNewSellItems.add(new HomeNewSellItem("24小时30分", "预定200", "----", "NIKE HUARACHE DRIFT 运动鞋", "¥456.90", "韩国/乐天免税店"));
+        homeNewSellItems.add(new HomeNewSellItem("24小时30分", "预定200", "----", "NIKE HUARACHE DRIFT 运动鞋", "¥456.90", "韩国/乐天免税店"));
+        homeNewSellItems.add(new HomeNewSellItem("24小时30分", "预定200", "----", "NIKE HUARACHE DRIFT 运动鞋", "¥456.90", "韩国/乐天免税店"));
+        homeNewSellItems.add(new HomeNewSellItem("24小时30分", "预定200", "----", "NIKE HUARACHE DRIFT 运动鞋", "¥456.90", "韩国/乐天免税店"));
+        homeNewSell.newSellItems = homeNewSellItems;
+        homeRecyclerBaseBeans.add(homeNewSell);
+
+
         homeRecyclerBaseBeans.add(new HomeTitleBean("火爆单品", "猜你喜欢", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,false, true));
         homeRecyclerBaseBeans.add(new HomeTitleBean("推荐买手", "千挑万选", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,true, false));
         homeRecyclerBaseBeans.add(new HomeTitleBean("精选内容", "读万卷书行万里路", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,false, false));
+
+
+
         mAdapter = new HomeFragmentRecyclerViewAdapter(getActivity(), homeRecyclerBaseBeans);
         home_all_rv.setAdapter(mAdapter);
     }
