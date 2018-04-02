@@ -24,11 +24,11 @@ import com.smyy.sharetour.buyer.R;
  * desc:
  */
 
-public class HomeFragmentReclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public static final int ITEM_TITLE = 0x10;
-    public static final int CHILD_BUYER_ROUTE = 0x20;
-    public static final int HOR_GRID_RV  = 0x30;
+    public static final int ITEM_CHILD_ROUTE = 0x20;
+    public static final int ITEM_CHILD_NEW_SELL = 0x30;
     public static final int ITEM_VEDIO = 0x40;
     public static final int ITEM_NOTES = 0x50;
 
@@ -36,7 +36,7 @@ public class HomeFragmentReclerViewAdapter extends RecyclerView.Adapter<Recycler
     private Context mContext;
     private List<HomeRecyclerBaseBean> mDatas;
 
-    public HomeFragmentReclerViewAdapter(Context context , List<HomeRecyclerBaseBean> datas) {
+    public HomeFragmentRecyclerViewAdapter(Context context , List<HomeRecyclerBaseBean> datas) {
         this.mContext = context;
         this.mDatas = datas;
     }
@@ -46,20 +46,20 @@ public class HomeFragmentReclerViewAdapter extends RecyclerView.Adapter<Recycler
 
         switch (viewType){
             case ITEM_TITLE:
-                View v = LayoutInflater.from(mContext).inflate(R.layout.item_home_all_title, parent, false);
-                return new HomeViewHolder(v);
-            case CHILD_BUYER_ROUTE:
-                View buyer_route = LayoutInflater.from(mContext).inflate(R.layout.recycler_child_route_layout, parent, false);
-                return new ChildRouteViewHold(buyer_route);
-            case HOR_GRID_RV:
-                View grid_rv = LayoutInflater.from(mContext).inflate(R.layout.item_home_all_title, parent, false);
-                return new HomeViewHolder(grid_rv);
+                View v = LayoutInflater.from(mContext).inflate(R.layout.item_home_child_title, parent, false);
+                return new HomeChildTitleHolder(v);
+            case ITEM_CHILD_ROUTE:
+                View buyer_route = LayoutInflater.from(mContext).inflate(R.layout.item_home_child_route_rv, parent, false);
+                return new HomeChildRouteHolder(buyer_route);
+            case ITEM_CHILD_NEW_SELL:
+                View grid_rv = LayoutInflater.from(mContext).inflate(R.layout.item_home_child_new_sell_rv, parent, false);
+                return new HomeChildTitleHolder(grid_rv);
             case ITEM_NOTES:
-                View notes = LayoutInflater.from(mContext).inflate(R.layout.item_home_all_title, parent, false);
-                return new HomeViewHolder(notes);
+                View notes = LayoutInflater.from(mContext).inflate(R.layout.item_home_child_title, parent, false);
+                return new HomeChildTitleHolder(notes);
             case ITEM_VEDIO:
-                View vedio = LayoutInflater.from(mContext).inflate(R.layout.item_home_all_title, parent, false);
-                return new HomeViewHolder(vedio);
+                View vedio = LayoutInflater.from(mContext).inflate(R.layout.item_home_child_title, parent, false);
+                return new HomeChildTitleHolder(vedio);
             default:
               return  null;
         }
@@ -72,20 +72,28 @@ public class HomeFragmentReclerViewAdapter extends RecyclerView.Adapter<Recycler
             return;
         }
         if(ITEM_TITLE == mDatas.get(position).viewType){
-            HomeViewHolder homeViewHolder = (HomeViewHolder) holder;
+            HomeChildTitleHolder homeChildTitleHolder = (HomeChildTitleHolder) holder;
             HomeTitleBean homeTitleBean = (HomeTitleBean) mDatas.get(position);
-            homeViewHolder.tv_main_title.setText(homeTitleBean.mainTitle);
-            homeViewHolder.tv_sub_title.setText(homeTitleBean.subTitle);
-            homeViewHolder.ll_more.setVisibility(homeTitleBean.hasMore ? View.VISIBLE : View.GONE);
-            homeViewHolder.tv_change.setVisibility(homeTitleBean.hasChange ? View.VISIBLE : View.GONE);
-        }else if(CHILD_BUYER_ROUTE == mDatas.get(position).viewType){
-            ChildRouteViewHold childRouteViewHold = (ChildRouteViewHold) holder;
+            homeChildTitleHolder.tv_main_title.setText(homeTitleBean.mainTitle);
+            homeChildTitleHolder.tv_sub_title.setText(homeTitleBean.subTitle);
+            homeChildTitleHolder.ll_more.setVisibility(homeTitleBean.hasMore ? View.VISIBLE : View.GONE);
+            homeChildTitleHolder.tv_change.setVisibility(homeTitleBean.hasChange ? View.VISIBLE : View.GONE);
+        }else if(ITEM_CHILD_ROUTE == mDatas.get(position).viewType){
+            HomeChildRouteHolder homeChildRouteHolder = (HomeChildRouteHolder) holder;
             HomeBuyerRouteBean homeBuyerRouteBean = (HomeBuyerRouteBean) mDatas.get(position);
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-            childRouteViewHold.rv_child_route.setLayoutManager(linearLayoutManager);
-            childRouteViewHold.rv_child_route.setAdapter(new HomeBuyerRouteAdapter(homeBuyerRouteBean.routes));
+            homeChildRouteHolder.rv_child_route.setLayoutManager(linearLayoutManager);
+            homeChildRouteHolder.rv_child_route.setAdapter(new HomeChildRouteDetailAdapter(homeBuyerRouteBean.routes));
+        }else if(ITEM_CHILD_NEW_SELL == mDatas.get(position).viewType){
+            HomeChildRouteHolder homeChildRouteHolder = (HomeChildRouteHolder) holder;
+            HomeBuyerRouteBean homeBuyerRouteBean = (HomeBuyerRouteBean) mDatas.get(position);
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+            linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            homeChildRouteHolder.rv_child_route.setLayoutManager(linearLayoutManager);
+            homeChildRouteHolder.rv_child_route.setAdapter(new HomeChildRouteDetailAdapter(homeBuyerRouteBean.routes));
         }
     }
 
@@ -104,13 +112,13 @@ public class HomeFragmentReclerViewAdapter extends RecyclerView.Adapter<Recycler
         return mDatas.get(position).viewType;
     }
 
-    public static class HomeViewHolder extends RecyclerView.ViewHolder{
+    public static class HomeChildTitleHolder extends RecyclerView.ViewHolder{
 
         TextView tv_main_title;
         TextView tv_sub_title;
         LinearLayout ll_more;
         TextView tv_change;
-        public HomeViewHolder(View itemView) {
+        public HomeChildTitleHolder(View itemView) {
             super(itemView);
             tv_main_title = (TextView)itemView.findViewById(R.id.tv_main_title);
             tv_sub_title = (TextView)itemView.findViewById(R.id.tv_sub_title);
@@ -120,33 +128,40 @@ public class HomeFragmentReclerViewAdapter extends RecyclerView.Adapter<Recycler
         }
     }
 
-    public static class ChildRouteViewHold extends RecyclerView.ViewHolder{
+    public static class HomeChildRouteHolder extends RecyclerView.ViewHolder{
         private RecyclerView rv_child_route;
-        public ChildRouteViewHold(View itemView) {
+        public HomeChildRouteHolder(View itemView) {
             super(itemView);
             rv_child_route = (RecyclerView) itemView.findViewById(R.id.rv_child_route);
         }
     }
 
+    public static class HomeChildNewSellHolder extends RecyclerView.ViewHolder{
+        private RecyclerView rv_child_new_sell;
+        public HomeChildNewSellHolder(View itemView) {
+            super(itemView);
+            rv_child_new_sell = (RecyclerView) itemView.findViewById(R.id.rv_child_new_sell);
+        }
+    }
 
 
-    public class HomeBuyerRouteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    public class HomeChildRouteDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         private List<HomeBuyerItemBean> mRouteDatas;
         private int [] drawableArr = {R.mipmap.random_icon_one,R.mipmap.random_icon_two,R.mipmap.random_icon_three,R.mipmap.random_icon_four};
-        public HomeBuyerRouteAdapter( List<HomeBuyerItemBean> datas) {
+        public HomeChildRouteDetailAdapter(List<HomeBuyerItemBean> datas) {
             this.mRouteDatas = datas;
         }
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new  BuyerRouteViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_home_child_buyer_route, parent, false));
+            return new HomeChildRouteDetailHolder(LayoutInflater.from(mContext).inflate(R.layout.item_home_child_route, parent, false));
 
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            BuyerRouteViewHolder viewHolder = (BuyerRouteViewHolder) holder;
+            HomeChildRouteDetailHolder viewHolder = (HomeChildRouteDetailHolder) holder;
             viewHolder.tv_buyer_go.setText(mRouteDatas.get(position).goTime);
             viewHolder.tv_buyer_back.setText(mRouteDatas.get(position).backTime);
             viewHolder.iv_buyer_route.setImageResource(drawableArr[position]);
@@ -157,7 +172,7 @@ public class HomeFragmentReclerViewAdapter extends RecyclerView.Adapter<Recycler
             return mRouteDatas.isEmpty()?0: mRouteDatas.size();
         }
 
-        public  class BuyerRouteViewHolder extends RecyclerView.ViewHolder{
+        public  class HomeChildRouteDetailHolder extends RecyclerView.ViewHolder{
 
             ImageView iv_buyer_route;
             TextView tv_buyer_go;
@@ -166,7 +181,7 @@ public class HomeFragmentReclerViewAdapter extends RecyclerView.Adapter<Recycler
             TextView tv_route_classify_two;
             TextView tv_route_classify_three;
 
-            public BuyerRouteViewHolder(View itemView) {
+            public HomeChildRouteDetailHolder(View itemView) {
                 super(itemView);
                 iv_buyer_route = (ImageView) itemView.findViewById(R.id.iv_buyer_route);
                 tv_buyer_go = (TextView)itemView.findViewById(R.id.tv_buyer_go);

@@ -38,9 +38,12 @@
     <color name="text_light_gray">#D4D4D4</color>
 
 
-    <color name="title_color_333333">#333333</color>
-    <color name="title_color_666666">#666666</color>
-    <color name="title_color_999999">#999999</color>
+    <color name="c_333333">#333333</color>
+    <color name="c_666666">#666666</color>
+    <color name="c_999999">#999999</color>
+    <color name="c_ff5b1f">#FF5B1F</color>
+    <color name="c_c7c7c7">#C7C7C7</color>
+    <color name="c_f1f1f1">#f1f1f1</color>
 
     <color name="dot_red">#FB3A2F</color>
 
