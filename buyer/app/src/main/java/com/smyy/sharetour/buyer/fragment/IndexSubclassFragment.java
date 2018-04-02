@@ -1,11 +1,9 @@
 package com.smyy.sharetour.buyer.fragment;
 
 import android.os.Bundle;
-
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
@@ -20,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.Unbinder;
 
 /**
  * Created by 伍振飞 on 2018/3/23 10:13
@@ -34,7 +31,6 @@ public class IndexSubclassFragment extends BaseMvpFragment {
     RecyclerView home_all_rv;
 
     private HomeFragmentRecyclerViewAdapter mAdapter;
-    Unbinder unbinder;
 
     public static IndexSubclassFragment getInstance(String title) {
         IndexSubclassFragment sf = new IndexSubclassFragment();
@@ -50,7 +46,6 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         home_all_srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 loadData();
             }
         });

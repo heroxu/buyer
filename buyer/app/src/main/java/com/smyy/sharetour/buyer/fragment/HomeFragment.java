@@ -58,8 +58,8 @@ public class HomeFragment extends BaseMvpFragment {
         }
         mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
         vp.setAdapter(mAdapter);
-        /** indicator矩形圆角 */
-        tabLayout_7.setViewPager(vp, mTitles);
+
+
 //        vp.setCurrentItem(4);
         loadData();
     }

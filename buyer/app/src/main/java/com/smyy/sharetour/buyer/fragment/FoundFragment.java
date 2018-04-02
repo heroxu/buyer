@@ -1,19 +1,17 @@
 package com.smyy.sharetour.buyer.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
-import com.smyy.sharetour.buyer.FImage;
-import com.smyy.sharetour.buyer.FountBean;
+import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.adapter.FountAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -22,8 +20,16 @@ import butterknife.BindView;
  */
 
 public class FoundFragment extends BaseMvpFragment {
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    @BindView(R.id.stl_fount)
+    SlidingTabLayout stlFount;
+    @BindView(R.id.vp_fount)
+    ViewPager vpFount;
+    private MyPagerAdapter mAdapter;
+    private final String[] mTitles = {
+            "精选", "美容美肤", "潮流时尚"
+            , "母婴健康", "文化玩乐", "美容美肤"
+    };
 
     @Override
     protected IBasePresenter createPresenter() {
@@ -38,34 +44,32 @@ public class FoundFragment extends BaseMvpFragment {
     @Override
     protected void initData(Bundle bundle) {
         changeTitleBarColor();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        List<FountBean> data = new ArrayList<>();
-        List<FImage> iData1 = new ArrayList<>();
-        iData1.add(new FImage(R.mipmap.img_n_01));
-        iData1.add(new FImage(R.mipmap.img_n_02));
-        iData1.add(new FImage(R.mipmap.img_n_03));
-        List<FImage> iData2 = new ArrayList<>();
-        iData2.add(new FImage(R.mipmap.img_n_01));
-        iData2.add(new FImage(R.mipmap.img_n_02));
-        List<FImage> iData3 = new ArrayList<>();
-        iData3.add(new FImage(R.mipmap.img_n_01));
-
-        data.add(new FountBean(3, null));
-        data.add(new FountBean(1, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png"));
-        data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", iData1));
-        data.add(new FountBean(1, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png"));
-        data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", iData2));
-        data.add(new FountBean(1, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", null));
-        data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", iData3));
-        data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png"));
-        FountAdapter mAdapter = new FountAdapter(getActivity(), data);
-        recyclerView.setAdapter(new FountAdapter(getActivity(), data));
-        //添加Android自带的分割线
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        for (String title : mTitles) {
+            mFragments.add(FountSubclassFragment.getInstance(title));
+        }
+        mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
+        vpFount.setAdapter(mAdapter);
+        stlFount.setViewPager(vpFount, mTitles);
     }
 
     private void changeTitleBarColor() {
         StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.white));
     }
 
+    private class MyPagerAdapter extends FragmentPagerAdapter {
+        public MyPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragments.size();
+        }
+
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
+        }
+    }
 }
