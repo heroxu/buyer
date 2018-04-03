@@ -1,31 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@mipmap/bg_my_top" />
+
+                <TextView
+                    android:id="@+id/tv_my_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="?actionBarSize"
+                    android:layout_marginLeft="35dp"
+                    android:textColor="@color/white"
+                    android:textSize="23sp"
+                    tools:text="昵称" />
+
+                <ImageView
+                    android:id="@+id/iv_my_edit_username"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignBottom="@+id/tv_my_username"
+                    android:layout_toRightOf="@+id/tv_my_username"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/icon_edit" />
+
+                <TextView
+                    android:id="@+id/tv_my_user_intro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/tv_my_username"
+                    android:layout_below="@+id/tv_my_username"
+                    android:textColor="@color/text_light_gray"
+                    android:textSize="8sp"
+                    tools:text="一只大榴莲，两梳大香蕉。" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_my_avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignBottom="@+id/tv_my_user_intro"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/tv_my_username"
+                    android:layout_marginRight="30dp"
+                    tools:src="@mipmap/user_avatar" />
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_my_user_intro"
+                    android:layout_margin="20dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/tv_my_view_all_orders"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/arrow_right_selector"
+                            android:paddingBottom="20dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp"
+                            android:paddingTop="20dp"
+                            android:text="@string/view_all_orders"
+                            android:textColor="@color/text_normal"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <View style="@style/WideItemDivider" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:orientation="horizontal"
+                            android:paddingBottom="25dp"
+                            android:paddingTop="10dp">
+
+                            <LinearLayout
+                                android:id="@+id/lay_my_awaiting_payment"
+                                style="@style/DividItemHorizon"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+
+                                <com.smyy.sharetour.buyer.view.RedImageView
+                                    android:id="@+id/riv_my_awaiting_payment"
+                                    style="@style/MyDividItemImg"
+                                    android:src="@mipmap/ic_pending_payment" />
+
+                                <TextView
+                                    style="@style/MyDividItemText"
+                                    android:text="@string/orders_awaiting_payment" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lay_my_awaiting_shipment"
+                                style="@style/DividItemHorizon"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+
+                                <com.smyy.sharetour.buyer.view.RedImageView
+                                    android:id="@+id/riv_my_awaiting_shipment"
+                                    style="@style/MyDividItemImg"
+                                    android:src="@mipmap/ic_to_be_delivered" />
+
+                                <TextView
+                                    style="@style/MyDividItemText"
+                                    android:text="@string/orders_awaiting_shipment" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lay_my_awaiting_confirmation"
+                                style="@style/DividItemHorizon"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+
+                                <com.smyy.sharetour.buyer.view.RedImageView
+                                    android:id="@+id/riv_my_awaiting_confirmation"
+                                    style="@style/MyDividItemImg"
+                                    android:src="@mipmap/ic_to_receive_goods" />
+
+                                <TextView
+                                    style="@style/MyDividItemText"
+                                    android:text="@string/orders_awaiting_confirmation" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lay_my_dispute"
+                                style="@style/DividItemHorizon"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+
+                                <com.smyy.sharetour.buyer.view.RedImageView
+                                    android:id="@+id/riv_my_dispute"
+                                    style="@style/MyDividItemImg"
+                                    android:src="@mipmap/ic_refund" />
+
+                                <TextView
+                                    style="@style/MyDividItemText"
+                                    android:text="@string/dispute_orders" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_my_cart"
+                style="@style/WideItemText"
+                android:paddingTop="10dp"
+                android:text="@string/my_cart" />
+
+            <View style="@style/WideItemDivider" />
+
+            <TextView
+                android:id="@+id/tv_my_demands"
+                style="@style/WideItemText"
+                android:text="@string/my_demands" />
+
+            <View style="@style/WideItemDivider" />
+
+            <TextView
+                android:id="@+id/tv_my_reviews"
+                style="@style/WideItemText"
+                android:text="@string/my_reviews" />
+
+            <View style="@style/WideItemDivider" />
+
+            <TextView
+                android:id="@+id/tv_my_favorites"
+                style="@style/WideItemText"
+                android:text="@string/my_favorites" />
+
+            <View style="@style/WideItemDivider" />
+
+            <TextView
+                android:id="@+id/tv_my_interests"
+                style="@style/WideItemText"
+                android:text="@string/my_interests" />
+
+            <View style="@style/WideItemDivider" />
+
+            <TextView
+                android:id="@+id/tv_help_and_feedback"
+                style="@style/WideItemText"
+                android:text="@string/help_and_feedback" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:contentInsetStart="0dp">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@mipmap/bg_my_top" />
 
             <ImageView
                 android:id="@+id/iv_my_setting"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="10dp"
                 android:padding="10dp"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/icon_setting" />
@@ -35,205 +249,9 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/icon_msg_white_unread" />
-
-            <TextView
-                android:id="@+id/tv_my_username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_my_setting"
-                android:layout_marginLeft="35dp"
-                android:textColor="@color/white"
-                android:textSize="23sp"
-                tools:text="昵称" />
-
-            <ImageView
-                android:id="@+id/iv_my_edit_username"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignBottom="@+id/tv_my_username"
-                android:layout_toRightOf="@+id/tv_my_username"
-                android:padding="5dp"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/icon_edit" />
-
-            <TextView
-                android:id="@+id/tv_my_user_intro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/tv_my_username"
-                android:layout_below="@+id/tv_my_username"
-                android:textColor="@color/text_light_gray"
-                android:textSize="8sp"
-                tools:text="一只大榴莲，两梳大香蕉。" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_my_avatar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignBottom="@+id/tv_my_user_intro"
-                android:layout_alignParentRight="true"
-                android:layout_alignTop="@+id/tv_my_username"
-                android:layout_marginRight="30dp"
-                tools:src="@mipmap/user_avatar" />
-
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_my_user_intro"
-                android:layout_margin="20dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:id="@+id/tv_my_view_all_orders"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/arrow_right_selector"
-                        android:paddingBottom="20dp"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:paddingTop="20dp"
-                        android:text="@string/view_all_orders"
-                        android:textColor="@color/text_normal"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <View style="@style/WideItemDivider" />
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:orientation="horizontal"
-                        android:paddingBottom="25dp"
-                        android:paddingTop="10dp">
-
-                        <LinearLayout
-                            android:id="@+id/lay_my_awaiting_payment"
-                            style="@style/DividItemHorizon"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
-
-
-                            <com.smyy.sharetour.buyer.view.RedImageView
-                                android:id="@+id/riv_my_awaiting_payment"
-                                style="@style/MyDividItemImg"
-                                android:src="@mipmap/ic_pending_payment" />
-
-                            <TextView
-                                style="@style/MyDividItemText"
-                                android:text="@string/orders_awaiting_payment" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/lay_my_awaiting_shipment"
-                            style="@style/DividItemHorizon"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
-
-
-                            <com.smyy.sharetour.buyer.view.RedImageView
-                                android:id="@+id/riv_my_awaiting_shipment"
-                                style="@style/MyDividItemImg"
-                                android:src="@mipmap/ic_to_be_delivered" />
-
-                            <TextView
-                                style="@style/MyDividItemText"
-                                android:text="@string/orders_awaiting_shipment" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/lay_my_awaiting_confirmation"
-                            style="@style/DividItemHorizon"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
-
-
-                            <com.smyy.sharetour.buyer.view.RedImageView
-                                android:id="@+id/riv_my_awaiting_confirmation"
-                                style="@style/MyDividItemImg"
-                                android:src="@mipmap/ic_to_receive_goods" />
-
-                            <TextView
-                                style="@style/MyDividItemText"
-                                android:text="@string/orders_awaiting_confirmation" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/lay_my_dispute"
-                            style="@style/DividItemHorizon"
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical">
-
-
-                            <com.smyy.sharetour.buyer.view.RedImageView
-                                android:id="@+id/riv_my_dispute"
-                                style="@style/MyDividItemImg"
-                                android:src="@mipmap/ic_refund" />
-
-                            <TextView
-                                style="@style/MyDividItemText"
-                                android:text="@string/dispute_orders" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
         </RelativeLayout>
-
-        <TextView
-            android:id="@+id/tv_my_cart"
-            style="@style/WideItemText"
-            android:paddingTop="10dp"
-            android:text="@string/my_cart" />
-
-        <View style="@style/WideItemDivider" />
-
-        <TextView
-            android:id="@+id/tv_my_demands"
-            style="@style/WideItemText"
-            android:text="@string/my_demands" />
-
-        <View style="@style/WideItemDivider" />
-
-        <TextView
-            android:id="@+id/tv_my_reviews"
-            style="@style/WideItemText"
-            android:text="@string/my_reviews" />
-
-        <View style="@style/WideItemDivider" />
-
-        <TextView
-            android:id="@+id/tv_my_favorites"
-            style="@style/WideItemText"
-            android:text="@string/my_favorites" />
-
-        <View style="@style/WideItemDivider" />
-
-        <TextView
-            android:id="@+id/tv_my_interests"
-            style="@style/WideItemText"
-            android:text="@string/my_interests" />
-
-        <View style="@style/WideItemDivider" />
-
-        <TextView
-            android:id="@+id/tv_help_and_feedback"
-            style="@style/WideItemText"
-            android:text="@string/help_and_feedback" />
-    </LinearLayout>
-</ScrollView>
+    </android.support.v7.widget.Toolbar>
+</FrameLayout>

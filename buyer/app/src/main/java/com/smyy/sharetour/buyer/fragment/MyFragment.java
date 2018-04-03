@@ -1,12 +1,15 @@
 package com.smyy.sharetour.buyer.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.gyf.barlibrary.ImmersionBar;
 import com.smyy.sharetour.buyer.Constants;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
@@ -25,6 +28,8 @@ import butterknife.OnClick;
  */
 
 public class MyFragment extends BaseMvpFragment {
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @BindView(R.id.tv_my_username)
     TextView tvUsername;
     @BindView(R.id.tv_my_user_intro)
@@ -39,6 +44,7 @@ public class MyFragment extends BaseMvpFragment {
     RedImageView rivAwaitingConfirmation;
     @BindView(R.id.riv_my_dispute)
     RedImageView rivDispute;
+
     private UserInfo mUserInfo;
 
 
@@ -54,7 +60,6 @@ public class MyFragment extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
-        changeTitleBarColor();
         initUserInfo();
     }
 
@@ -77,10 +82,6 @@ public class MyFragment extends BaseMvpFragment {
             Glide.with(getContext()).load(file).into(ivAvatar);
         }
         sp.writeBeanValue(Constants.MY_SP_USER_INFO, mUserInfo);
-    }
-
-    private void changeTitleBarColor() {
-        StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.transparent));
     }
 
     @OnClick({R.id.iv_my_setting, R.id.iv_my_msg, R.id.iv_my_edit_username, R.id.iv_my_avatar,
@@ -154,4 +155,8 @@ public class MyFragment extends BaseMvpFragment {
         }
     }
 
+    @Override
+    protected void initStatusBar() {
+        mImmersionBar.titleBar(toolbar).init();
+    }
 }

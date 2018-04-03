@@ -1,13 +1,19 @@
 package com.smyy.sharetour.buyer.base;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.gyf.barlibrary.ImmersionBar;
+
 import java.lang.reflect.Method;
 
 import butterknife.ButterKnife;
@@ -19,6 +25,8 @@ import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends UmengFragment {
 
+    protected ImmersionBar mImmersionBar;
+
     @Nullable
     @Override
     public final View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,6 +36,27 @@ public abstract class BaseFragment extends UmengFragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(getLayoutId(), container, false);
         ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mImmersionBar != null)
+            mImmersionBar.destroy();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden && mImmersionBar != null)
+            mImmersionBar.init();
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (isImmersionBarEnabled())
+            initImmersionBar();
     }
 
     @Override
@@ -95,4 +124,49 @@ public abstract class BaseFragment extends UmengFragment {
         }
     }
 
+    /**
+     * 是否在Fragment使用沉浸式
+     */
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
+
+    /**
+     * 初始化沉浸式
+     */
+    private void initImmersionBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).init();
+        initStatusBar();
+    }
+
+    /**
+     * 设置状态栏颜色
+     * 默认白底黑字
+     */
+    protected void initStatusBar() {
+        mImmersionBar.fitsSystemWindows(true).statusBarColorInt(Color.WHITE).statusBarDarkFont(true, 0.2f).init();
+    }
+
+    /**
+     * 设置状态栏颜色
+     * 关联到指定Toolbar
+     */
+    protected void setStatusBar(Toolbar toolbar) {
+        mImmersionBar.fitsSystemWindows(true).titleBar(toolbar).init();
+    }
+
+    /**
+     * 设置状态栏颜色为白底黑字
+     */
+    protected void setStatusBarWhite() {
+        mImmersionBar.fitsSystemWindows(true).statusBarColorInt(Color.WHITE).statusBarDarkFont(true, 0.2f).init();
+    }
+
+    /**
+     * 设置状态栏颜色
+     */
+    protected void setStatusBar(@ColorInt int statusBarColor) {
+        mImmersionBar.fitsSystemWindows(true).statusBarColorInt(statusBarColor).init();
+    }
 }

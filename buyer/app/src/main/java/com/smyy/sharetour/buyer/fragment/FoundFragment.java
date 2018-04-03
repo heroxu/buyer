@@ -43,17 +43,12 @@ public class FoundFragment extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
-        changeTitleBarColor();
         for (String title : mTitles) {
             mFragments.add(FountSubclassFragment.getInstance(title));
         }
         mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
         vpFount.setAdapter(mAdapter);
         stlFount.setViewPager(vpFount, mTitles);
-    }
-
-    private void changeTitleBarColor() {
-        StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.white));
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {

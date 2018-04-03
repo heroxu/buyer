@@ -51,7 +51,6 @@ public class HomeFragment extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
-        changeTitleBarColor();
         initPermissions();
         for (String title : mTitles) {
             mFragments.add(IndexSubclassFragment.getInstance(title));
@@ -93,10 +92,6 @@ public class HomeFragment extends BaseMvpFragment {
 
             }
         });
-    }
-
-    private void changeTitleBarColor() {
-        StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.white));
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
