@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="40dp"
+    android:layout_marginTop="@dimen/margin_10"
+    android:layout_marginStart="@dimen/margin_10"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+
         android:id="@+id/tv_main_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textColor="@color/c_333333"
         tools:text="买手行程"
         />
@@ -57,9 +60,10 @@
         android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
+        android:textColor="@color/c_333333"
         android:layout_marginEnd="@dimen/margin_10"
         android:background="@drawable/bg_rounded_rectangle_999999"
         android:text="换一批"
