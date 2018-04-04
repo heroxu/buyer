@@ -3,6 +3,8 @@
 
     <color name="colorAccent">#049ce5</color>
     <color name="c_b3b3b3">#b3b3b3</color>
+    <!-- 背景颜色 -->
+    <color name="window_background">#f1f1f1</color>
     <!-- 以下style目前在xqc主module的style重写的 -->
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />

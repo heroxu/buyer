@@ -28,6 +28,8 @@ public abstract class BaseActivity extends UmengActivity {
     protected ImmersionBar mImmersionBar;
     Toolbar mToolbar;
     TextView mToolbarTitle;
+    TextView mToolbarRightTv;
+    private View mToolbarDividerLine;
 
     protected FrameLayout mContentLayout;
     private LoadingDailog mLoadingDailog;
@@ -43,6 +45,10 @@ public abstract class BaseActivity extends UmengActivity {
         }
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.tv_center_title);
+        mToolbarRightTv = (TextView) findViewById(R.id.tv_right);
+        // toolbar下面的线条
+        mToolbarDividerLine = findViewById(R.id.divider_line);
+
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
@@ -112,10 +118,17 @@ public abstract class BaseActivity extends UmengActivity {
             mToolbar.setVisibility(visibility);
         }
         // toolbar下面的线条
-//        View divider_line = findViewById(R.id.divider_line);
-//        if (divider_line != null) {
-//            divider_line.setVisibility(visibility);
-//        }
+        if (mToolbarDividerLine != null) {
+            mToolbarDividerLine.setVisibility(visibility);
+        }
+    }
+
+    protected void hideToolBarDividerLine(boolean hide) {
+        int visibility = hide ? View.GONE : View.VISIBLE;
+        // toolbar下面的线条
+        if (mToolbarDividerLine != null) {
+            mToolbarDividerLine.setVisibility(visibility);
+        }
     }
 
     protected void beforeInitData() {
@@ -141,6 +154,9 @@ public abstract class BaseActivity extends UmengActivity {
 
     protected TextView getToolbarTitle() {
         return mToolbarTitle;
+    }
+    protected TextView getToolbarRightTv() {
+        return mToolbarRightTv;
     }
 
     protected Toolbar getToolbar() {
