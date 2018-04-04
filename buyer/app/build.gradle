@@ -4,11 +4,11 @@ apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion project.ANDROID_BUILD_SDK_VERSION as Integer
     buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION as String
-         aaptOptions {
-                cruncherEnabled = false
-                useNewCruncher = false
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
 
-             }
+    }
     signingConfigs {
         appPack {
             storeFile file(project.KEY_STORE_FILE)
@@ -75,6 +75,7 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxjava:2.1.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    compile 'com.jacktuotuo.customview:verificationcodeview:1.0.2'
     compile('com.squareup.retrofit2:adapter-rxjava2:2.3.0') {
         /**
          *  为本依赖关闭依赖传递特性

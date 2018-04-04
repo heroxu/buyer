@@ -37,6 +37,18 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="Animation.Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/AnimationStyle</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AnimationStyle" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/view_down_to_up_translate</item>
+        <item name="android:windowExitAnimation">@anim/view_up_to_down_translate</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
     <style name="WideItemText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

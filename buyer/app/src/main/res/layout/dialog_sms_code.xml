@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_dialog_sms_code">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@mipmap/ic_pop_ups_off" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="22dp"
+            android:layout_marginTop="26dp"
+            android:gravity="center"
+            android:text="请输入短信密码"
+            android:textColor="#39393f"
+            android:textSize="17sp" />
+
+        <com.tuo.customview.VerificationCodeView
+            android:id="@+id/icv_sms"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_below="@+id/tv_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="23dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            app:icv_et_bg_focus="@drawable/shape_icv_et_bg_focus"
+            app:icv_et_bg_normal="@drawable/shape_icv_et_bg_normal"
+            app:icv_et_divider_drawable="@drawable/shape_divider_identifying"
+            app:icv_et_number="6"
+            app:icv_et_text_color="@color/black"
+            app:icv_et_width="41dp" />
+
+        <TextView
+            android:id="@+id/tv_sms_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icv_sms"
+            android:layout_centerHorizontal="true"
+            android:text="短信验证码已发送至135 7888 6888"
+            android:textColor="@color/c_999999"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_sms_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_sms_phone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="19dp"
+            android:layout_marginTop="5dp"
+            android:text="59秒后可重新发送"
+            android:textColor="@color/c_999999"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_user" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="32dp"
+        android:text="设置密码"
+        android:textColor="@color/text_normal"
+        android:textSize="25sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="49dp"
+        android:layout_marginRight="49dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.smyy.sharetour.buyer.ClearWriteEditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="请输入新的密码"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:textColorHint="@color/c_c7c7c7"
+            android:textSize="17sp" />
+        <include
+            layout="@layout/ab_common_view_divider" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="49dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.smyy.sharetour.buyer.ClearWriteEditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="再次输入密码"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:textColorHint="@color/c_c7c7c7"
+            android:textSize="17sp" />
+        <include
+            layout="@layout/ab_common_view_divider" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginLeft="49dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="有账号？"
+            android:textColor="@color/c_535353"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="去登录"
+            android:textColor="@color/c_007aff"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="49dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginTop="15dp"
+        android:text="6-16位密码、数字或字母"
+        android:textColor="@color/c_666666"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/reg_button"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="49dp"
+        android:layout_marginRight="49dp"
+        android:background="@drawable/rs_select_btn_gray"
+        android:clickable="false"
+        android:text="确定"
+        android:textColor="#FFF"
+        android:textSize="15dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+</LinearLayout>

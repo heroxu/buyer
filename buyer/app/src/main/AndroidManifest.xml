@@ -3,7 +3,7 @@
     package="com.smyy.sharetour.buyer">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -23,7 +23,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.Test1Activity" />
-        <activity android:name=".ui.test2.Test2Activity"></activity>
+        <activity android:name=".ui.test2.Test2Activity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SelectAreaCodeActivity" />
+        <activity android:name=".SetPwdActivity" />
+        <activity android:name=".GuideLoginActivity"></activity>
     </application>
 
 </manifest>

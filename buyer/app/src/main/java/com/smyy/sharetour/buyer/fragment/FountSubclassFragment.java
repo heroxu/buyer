@@ -39,11 +39,6 @@ public class FountSubclassFragment extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
-        recyclerView.setHasFixedSize(false);
-        recyclerView.setNestedScrollingEnabled(false);//解决NestedScrollView+RecyclerView滑动冲突问题
-        ///解决RecyclerView1嵌套RecyclerView2，进入页面自动跳转到recyclerView2上面页面会自动滚动问题,貌似是RecyclerView自动获得了焦点
-        recyclerView.setFocusableInTouchMode(false);
-        recyclerView.requestFocus();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         List<FountBean> data = new ArrayList<>();
         List<FImage> iData1 = new ArrayList<>();
@@ -75,4 +70,10 @@ public class FountSubclassFragment extends BaseMvpFragment {
         return null;
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (!hidden){
+
+        }
+    }
 }

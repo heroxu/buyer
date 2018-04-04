@@ -5,6 +5,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/ttl_fount_search"
         android:layout_width="0dp"
         android:layout_height="28dp"
         android:layout_marginBottom="5dp"
@@ -32,6 +33,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/tt_fount_scan"
         android:layout_width="14dp"
         android:layout_height="14dp"
         android:layout_gravity="center"
@@ -39,6 +41,7 @@
         android:src="@mipmap/ic_scan_it" />
 
     <ImageView
+        android:id="@+id/tt_fount_message"
         android:layout_width="18dp"
         android:layout_height="14dp"
         android:layout_gravity="center"
