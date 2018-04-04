@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nsv_my_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -29,8 +30,8 @@
                     android:id="@+id/tv_my_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="?actionBarSize"
                     android:layout_marginLeft="35dp"
+                    android:layout_marginTop="?actionBarSize"
                     android:textColor="@color/white"
                     android:textSize="23sp"
                     tools:text="昵称" />
@@ -220,8 +221,14 @@
                 android:id="@+id/tv_help_and_feedback"
                 style="@style/WideItemText"
                 android:text="@string/help_and_feedback" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/window_background" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
