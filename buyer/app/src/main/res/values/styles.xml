@@ -11,7 +11,7 @@
 
     <style name="XqcToolbarTextAppearance">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/text_normal</item>
     </style>
 
     <style name="XqcTheme" parent="@style/AppTheme">
@@ -44,9 +44,19 @@
         <item name="android:paddingTop">18dp</item>
         <item name="android:paddingRight">20dp</item>
         <item name="android:paddingBottom">18dp</item>
+        <item name="android:background">@drawable/wide_item_bg_selector</item>
         <item name="android:textColor">@color/text_normal</item>
         <item name="android:textSize">15sp</item>
         <item name="android:drawableRight">@drawable/arrow_right_selector</item>
+    </style>
+
+    <style name="WideItemRightText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">40dp</item>
+        <item name="android:textColor">@color/text_light_gray</item>
     </style>
 
     <style name="WideItemDivider">

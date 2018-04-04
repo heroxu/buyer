@@ -21,6 +21,8 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.my.model.UserInfo;
+import com.smyy.sharetour.buyer.my.view.SettingsActivity;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
 
@@ -136,7 +138,7 @@ public class MyFragment extends BaseMvpFragment {
         switch (view.getId()) {
 
             case R.id.iv_my_setting:
-
+                ActivityLauncher.viewActivity(mActivity, SettingsActivity.class);
                 break;
 
             case R.id.iv_my_msg:

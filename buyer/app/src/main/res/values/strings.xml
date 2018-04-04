@@ -19,6 +19,8 @@
     <string name="main_tab_4">TAB4</string>
     <string name="main_tab_5">TAB5</string>
 
+    <string name="sign_out">退出登录</string>
+
     <string name="view_all_orders">查看全部订单</string>
     <string name="orders_awaiting_payment">待付款</string>
     <string name="orders_awaiting_shipment">待发货</string>
@@ -30,4 +32,10 @@
     <string name="my_favorites">我的收藏</string>
     <string name="my_interests">我的关注</string>
     <string name="help_and_feedback">帮助与反馈</string>
+    <string name="settings">设置</string>
+    <string name="account_settings">个人中心</string>
+    <string name="notification_settings">消息设置</string>
+    <string name="change_theme">主题换肤</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="about_us">关于我们</string>
 </resources>
