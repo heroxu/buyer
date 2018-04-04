@@ -20,4 +20,9 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, Test2Activity.class);
         context.startActivity(intent);
     }
+    
+    public static void viewActivity(Context context, Class<?> cls) {
+        Intent intent = new Intent(context, cls);
+        context.startActivity(intent);
+    }
 }
