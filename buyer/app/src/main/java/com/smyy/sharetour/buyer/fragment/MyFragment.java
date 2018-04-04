@@ -2,10 +2,16 @@ package com.smyy.sharetour.buyer.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.ColorUtils;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -30,6 +36,8 @@ import butterknife.OnClick;
 public class MyFragment extends BaseMvpFragment {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.nsv_my_main)
+    NestedScrollView nsvMain;
     @BindView(R.id.tv_my_username)
     TextView tvUsername;
     @BindView(R.id.tv_my_user_intro)
@@ -46,6 +54,7 @@ public class MyFragment extends BaseMvpFragment {
     RedImageView rivDispute;
 
     private UserInfo mUserInfo;
+    private int toolbarHeight;
 
 
     @Override
@@ -59,7 +68,43 @@ public class MyFragment extends BaseMvpFragment {
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    private void initView() {
+        ViewGroup.LayoutParams toolbarParams = toolbar.getLayoutParams();
+        toolbarHeight = toolbarParams.height;
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) tvUsername.getLayoutParams();
+        params.setMargins(params.leftMargin,
+                params.topMargin + ImmersionBar.getStatusBarHeight(mActivity),
+                params.rightMargin, params.bottomMargin);
+        tvUsername.setLayoutParams(params);
+    }
+
+    private void setListener() {
+
+        nsvMain.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            float oldAlpha = 0;
+
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                float alpha = (float) scrollY / toolbarHeight;
+                alpha = Math.min(alpha, 1);
+                if (alpha != oldAlpha) {
+                    oldAlpha = alpha;
+                    toolbar.setBackgroundColor(ColorUtils.blendARGB(Color.TRANSPARENT
+                            , ContextCompat.getColor(mActivity, R.color.black), alpha));
+                }
+            }
+        });
+    }
+
+    @Override
     protected void initData(Bundle bundle) {
+        initView();
+        setListener();
         initUserInfo();
     }
 

@@ -1,5 +1,7 @@
 package com.smyy.sharetour.buyer.base;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -24,6 +26,14 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseFragment extends UmengFragment {
+
+    protected Activity mActivity;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (Activity) context;
+    }
 
     protected ImmersionBar mImmersionBar;
 
