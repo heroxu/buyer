@@ -28,7 +28,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SelectAreaCodeActivity" />
         <activity android:name=".SetPwdActivity" />
-        <activity android:name=".GuideLoginActivity"></activity>
+        <activity android:name=".GuideLoginActivity" />
+        <activity android:name=".PwdLoginActivity"></activity>
     </application>
 
 </manifest>

@@ -8,16 +8,15 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
-public class LoginActivity extends BaseMvpActivity {
+public class PwdLoginActivity extends BaseMvpActivity {
     @BindView(R.id.tv_module_name)
     TextView tvModuleName;
     @BindView(R.id.tv_region)
@@ -30,6 +29,13 @@ public class LoginActivity extends BaseMvpActivity {
     Button btnConfirm;
     @BindView(R.id.btv_password_login)
     TextView btvPasswordLogin;
+    @BindView(R.id.ll_pwd_edit)
+    LinearLayout llPwdEdit;
+
+    @Override
+    protected IBasePresenter createPresenter() {
+        return null;
+    }
 
     @Override
     protected int getLayoutId() {
@@ -38,7 +44,7 @@ public class LoginActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-
+        hideToolBarLayout(true);
     }
 
     @Override
@@ -48,7 +54,9 @@ public class LoginActivity extends BaseMvpActivity {
 
     private void initUI() {
         hideToolBarLayout(true);
+        llPwdEdit.setVisibility(View.VISIBLE);
         btnConfirm.setText("登录");
+        btnConfirm.setClickable(false);
         editPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -71,36 +79,5 @@ public class LoginActivity extends BaseMvpActivity {
 
             }
         });
-    }
-
-    @Override
-    protected IBasePresenter createPresenter() {
-        return null;
-    }
-
-
-    @OnClick({R.id.iv_close, R.id.ll_region, R.id.ll_has_account, R.id.btn_confirm, R.id.btv_register_deal, R.id.btv_privacy_deal, R.id.btv_password_login, R.id.ll_login_wechat})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.iv_close:
-                finish();
-                break;
-            case R.id.ll_region:
-                break;
-            case R.id.ll_has_account:
-                break;
-            case R.id.btn_confirm:
-                new SmsCodeDialog(this).show();
-                break;
-            case R.id.btv_register_deal:
-                break;
-            case R.id.btv_privacy_deal:
-                break;
-            case R.id.btv_password_login:
-                ActivityLauncher.viewPwdLoginActivity(this);
-                break;
-            case R.id.ll_login_wechat:
-                break;
-        }
     }
 }

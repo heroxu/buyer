@@ -16,7 +16,7 @@ import android.widget.EditText;
  * Created by 伍振飞 on 2018/4/3 11:47
  * E-Mail Address：wuzf2012@sina.com
  */
-public class ClearWriteEditText extends EditText implements View.OnFocusChangeListener , TextWatcher {
+public class ClearWriteEditText extends EditText implements View.OnFocusChangeListener, TextWatcher {
 
     /**
      * 删除按钮的引用
@@ -56,6 +56,7 @@ public class ClearWriteEditText extends EditText implements View.OnFocusChangeLi
 
     /**
      * 设置清除图标的显示与隐藏，调用setCompoundDrawables为EditText绘制上去
+     *
      * @param visible
      */
     protected void setClearIconVisible(boolean visible) {
@@ -115,9 +116,9 @@ public class ClearWriteEditText extends EditText implements View.OnFocusChangeLi
     }
 
 
-
     /**
      * 晃动动画
+     *
      * @param counts 半秒钟晃动多少下
      * @return
      */

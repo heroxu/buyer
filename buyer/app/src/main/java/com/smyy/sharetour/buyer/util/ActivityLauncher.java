@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.smyy.sharetour.buyer.GuideLoginActivity;
 import com.smyy.sharetour.buyer.LoginActivity;
+import com.smyy.sharetour.buyer.PwdLoginActivity;
 import com.smyy.sharetour.buyer.RegisterActivity;
 import com.smyy.sharetour.buyer.SetPwdActivity;
 import com.smyy.sharetour.buyer.ui.Test1Activity;
@@ -24,20 +25,29 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, Test2Activity.class);
         context.startActivity(intent);
     }
+
     public static void viewGuideLoginActivity(Context context) {
         Intent intent = new Intent(context, GuideLoginActivity.class);
         context.startActivity(intent);
     }
+
     public static void viewLoginActivity(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
+
     public static void viewRegisterActivity(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);
         context.startActivity(intent);
     }
+
     public static void viewSetPwdActivity(Context context) {
         Intent intent = new Intent(context, SetPwdActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void viewPwdLoginActivity(Context context) {
+        Intent intent = new Intent(context, PwdLoginActivity.class);
         context.startActivity(intent);
     }
 }
