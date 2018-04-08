@@ -23,10 +23,5 @@ public class LiveFragment extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
-        changeTitleBarColor();
-    }
-
-    private void changeTitleBarColor() {
-        StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.white));
     }
 }

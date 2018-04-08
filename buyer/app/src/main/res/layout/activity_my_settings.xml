@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nsv_my_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_my_account_settings"
+                style="@style/WideItemText"
+                android:text="@string/account_settings" />
+
+            <View style="@style/WideItemDivider" />
+
+
+            <TextView
+                android:id="@+id/tv_my_notification_settings"
+                style="@style/WideItemText"
+                android:text="@string/notification_settings" />
+
+            <View style="@style/WideItemDivider" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_my_change_theme"
+                    style="@style/WideItemText"
+                    android:text="@string/change_theme" />
+
+                <TextView
+                    android:id="@+id/tv_my_current_theme"
+                    style="@style/WideItemRightText"
+                    android:text="主题2"
+                    tools:text="主题2" />
+            </RelativeLayout>
+
+            <View style="@style/WideItemDivider" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_my_clear_cache"
+                    style="@style/WideItemText"
+                    android:drawableRight="@null"
+                    android:text="@string/clear_cache" />
+
+                <TextView
+                    android:id="@+id/tv_my_cache_count"
+                    style="@style/WideItemRightText"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/text_dark_gray"
+                    android:text="120MB"
+                    tools:text="120MB" />
+            </RelativeLayout>
+
+            <View style="@style/WideItemDivider" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_my_about_us"
+                    style="@style/WideItemText"
+                    android:text="@string/about_us" />
+
+                <TextView
+                    android:id="@+id/tv_my_version_code"
+                    style="@style/WideItemRightText"
+                    android:text="v1.0.0"
+                    tools:text="v1.0.0" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</FrameLayout>

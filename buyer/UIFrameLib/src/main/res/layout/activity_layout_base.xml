@@ -13,4 +13,11 @@
 
     <include layout="@layout/toolbar" />
 
+    <View
+        android:id="@+id/divider_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/window_background" />
+
 </RelativeLayout>

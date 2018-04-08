@@ -1,7 +1,9 @@
 package com.smyy.sharetour.uiframelib;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.android.tu.loadingdialog.LoadingDailog;
+import com.gyf.barlibrary.ImmersionBar;
 
 import butterknife.ButterKnife;
 
@@ -22,8 +25,11 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends UmengActivity {
     static final String TAG = BaseActivity.class.getSimpleName();
 
+    protected ImmersionBar mImmersionBar;
     Toolbar mToolbar;
     TextView mToolbarTitle;
+    TextView mToolbarRightTv;
+    private View mToolbarDividerLine;
 
     protected FrameLayout mContentLayout;
     private LoadingDailog mLoadingDailog;
@@ -39,6 +45,10 @@ public abstract class BaseActivity extends UmengActivity {
         }
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.tv_center_title);
+        mToolbarRightTv = (TextView) findViewById(R.id.tv_right);
+        // toolbar下面的线条
+        mToolbarDividerLine = findViewById(R.id.divider_line);
+
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
@@ -48,6 +58,10 @@ public abstract class BaseActivity extends UmengActivity {
         }
         configToolBar(mToolbar, mToolbarTitle);
 
+        //初始化沉浸式
+        if (isImmersionBarEnabled()) {
+            initImmersionBar();
+        }
         beforeInitData();
         initData(savedInstanceState, getIntent());
     }
@@ -66,15 +80,18 @@ public abstract class BaseActivity extends UmengActivity {
     protected void onDestroy() {
         hideProgressDialog();
         super.onDestroy();
+        if (mImmersionBar != null) {
+            mImmersionBar.destroy();  //在BaseActivity里销毁}
+        }
     }
 
     public void showProgressDialog() {
         if (mLoadingDailog == null) {
-            LoadingDailog.Builder loadBuilder=new LoadingDailog.Builder(this)
+            LoadingDailog.Builder loadBuilder = new LoadingDailog.Builder(this)
                     .setMessage("加载中...")
                     .setCancelable(false)
                     .setCancelOutside(false);
-            mLoadingDailog=loadBuilder.create();
+            mLoadingDailog = loadBuilder.create();
         }
         try {
             mLoadingDailog.show();
@@ -101,10 +118,17 @@ public abstract class BaseActivity extends UmengActivity {
             mToolbar.setVisibility(visibility);
         }
         // toolbar下面的线条
-//        View divider_line = findViewById(R.id.divider_line);
-//        if (divider_line != null) {
-//            divider_line.setVisibility(visibility);
-//        }
+        if (mToolbarDividerLine != null) {
+            mToolbarDividerLine.setVisibility(visibility);
+        }
+    }
+
+    protected void hideToolBarDividerLine(boolean hide) {
+        int visibility = hide ? View.GONE : View.VISIBLE;
+        // toolbar下面的线条
+        if (mToolbarDividerLine != null) {
+            mToolbarDividerLine.setVisibility(visibility);
+        }
     }
 
     protected void beforeInitData() {
@@ -131,9 +155,55 @@ public abstract class BaseActivity extends UmengActivity {
     protected TextView getToolbarTitle() {
         return mToolbarTitle;
     }
+    protected TextView getToolbarRightTv() {
+        return mToolbarRightTv;
+    }
 
     protected Toolbar getToolbar() {
         return mToolbar;
     }
 
+    /**
+     * 是否可以使用沉浸式
+     */
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
+
+    private void initImmersionBar() {
+        //在BaseActivity里初始化
+        mImmersionBar = ImmersionBar.with(this);
+        initStatusBar();
+    }
+
+
+    /**
+     * 设置状态栏颜色
+     * 默认白底黑字
+     */
+    protected void initStatusBar() {
+        setStatusBarWhite();
+    }
+
+    /**
+     * 设置状态栏颜色
+     * 关联到指定Toolbar
+     */
+    protected void setStatusBar(Toolbar toolbar) {
+        mImmersionBar.titleBar(toolbar).init();
+    }
+
+    /**
+     * 设置状态栏颜色为白底黑字
+     */
+    protected void setStatusBarWhite() {
+        mImmersionBar.fitsSystemWindows(true).statusBarColorInt(Color.WHITE).statusBarDarkFont(true, 0.2f).init();
+    }
+
+    /**
+     * 设置状态栏颜色
+     */
+    protected void setStatusBar(@ColorInt int statusBarColor) {
+        mImmersionBar.fitsSystemWindows(true).statusBarColorInt(statusBarColor).init();
+    }
 }

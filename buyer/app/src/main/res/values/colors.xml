@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--toolbar-->
-    <color name="colorPrimary">#049ce5</color>
+    <color name="colorPrimary">@color/white</color>
     <!-- 状态栏颜色-->
     <color name="colorPrimaryDark">@color/white</color>
     <!-- 系统主色调 -->

@@ -2,6 +2,8 @@ package com.smyy.sharetour.buyer.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.google.gson.Gson;
 
 import java.util.Map;
 
@@ -89,6 +91,22 @@ public class SharePreferenceUtil {
         return settings.getLong(key, -1L);
     }
 
+
+    public <T> T getBeanValue(String key, Class<T> classOfT) {
+        T bean = null;
+        try {
+            String beanStr = getStringValue(key);
+            if (!TextUtils.isEmpty(beanStr)) {
+                Gson gson = new Gson();
+                bean = gson.fromJson(beanStr, classOfT);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return bean;
+    }
+
     public boolean writeBooleanValue(String key, boolean value) {
         return settings.edit().putBoolean(key, value).commit();
     }
@@ -107,6 +125,12 @@ public class SharePreferenceUtil {
 
     public boolean writeIntValue(String key, int value) {
         return settings.edit().putInt(key, value).commit();
+    }
+
+    public <T> boolean writeBeanValue(String key, T bean) {
+        Gson gson = new Gson();
+        String beanStr = gson.toJson(bean);
+        return writeStringValue(key, beanStr);
     }
 
     @SuppressWarnings("rawtypes")

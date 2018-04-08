@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+        <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/ic_home_ele"/>
+
+            <TextView
+                android:id="@+id/tv_home_recommend_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:textColor="@color/c_333333"
+                android:text="美国"
+                />
+
+        </LinearLayout>
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_home_recommend_avatar"
+            android:layout_marginTop="10dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="25sp"
+            android:src="@mipmap/user_avatar"
+            />
+
+        <TextView
+            android:id="@+id/tv_home_recommend_avatar_name"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/c_333333"
+            android:text="推荐一号买手"
+            />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="30dp">
+            <TextView
+                android:id="@+id/tv_recommend_classify_one"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="@color/c_666666"
+                android:textSize="10sp"
+                android:text="护肤美容"
+                />
+
+            <TextView
+                android:id="@+id/tv_recommend_classify_two"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="@color/c_666666"
+                android:text="母婴用品"
+                />
+
+            <TextView
+                android:id="@+id/tv_recommend_classify_three"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="@color/c_666666"
+                android:text="数码产品"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginBottom="15dp"
+            android:id="@+id/tv_home_recommend_communicate"
+            android:layout_width="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:background="@drawable/bg_rounded_rectangle_ffcd1f"
+            android:textColor="@color/c_333333"
+            android:text="立即沟通"
+            />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

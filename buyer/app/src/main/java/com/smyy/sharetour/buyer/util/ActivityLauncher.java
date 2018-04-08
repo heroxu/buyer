@@ -3,11 +3,6 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
-import com.smyy.sharetour.buyer.GuideLoginActivity;
-import com.smyy.sharetour.buyer.LoginActivity;
-import com.smyy.sharetour.buyer.PwdLoginActivity;
-import com.smyy.sharetour.buyer.RegisterActivity;
-import com.smyy.sharetour.buyer.SetPwdActivity;
 import com.smyy.sharetour.buyer.ui.Test1Activity;
 import com.smyy.sharetour.buyer.ui.test2.Test2Activity;
 
@@ -23,6 +18,11 @@ public class ActivityLauncher {
 
     public static void viewTest2Activity(Context context) {
         Intent intent = new Intent(context, Test2Activity.class);
+        context.startActivity(intent);
+    }
+
+    public static void viewActivity(Context context, Class<?> cls) {
+        Intent intent = new Intent(context, cls);
         context.startActivity(intent);
     }
 
