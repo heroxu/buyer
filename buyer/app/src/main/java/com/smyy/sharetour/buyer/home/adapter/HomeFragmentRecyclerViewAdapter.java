@@ -25,6 +25,7 @@ import com.smyy.sharetour.buyer.home.model.HomeRecyclerBaseBean;
 import com.smyy.sharetour.buyer.home.model.HomeRoute;
 import com.smyy.sharetour.buyer.home.model.HomeRouteItem;
 import com.smyy.sharetour.buyer.home.model.HomeTitleBean;
+import com.smyy.sharetour.buyer.view.lisenter.PagingScrollHelper;
 
 import java.util.List;
 
@@ -101,9 +102,21 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             HomeChildRouteHolder homeChildRouteHolder = (HomeChildRouteHolder) holder;
             HomeRoute homeRoute = (HomeRoute) mDatas.get(position);
 
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
-            linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-            homeChildRouteHolder.rv_child_route.setLayoutManager(linearLayoutManager);
+            PagingScrollHelper scrollHelper = new PagingScrollHelper();
+            LinearLayoutManager hLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+            scrollHelper.setUpRecycleView(homeChildRouteHolder.rv_child_route);
+            scrollHelper.setOnPageChangeListener(new PagingScrollHelper.onPageChangeListener() {
+                @Override
+                public void onPageChange(int index) {
+
+                }
+            });
+            homeChildRouteHolder.rv_child_route.setHorizontalScrollBarEnabled(true);
+            homeChildRouteHolder.rv_child_route.setLayoutManager(hLinearLayoutManager);
+
+//            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+//            linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+//            homeChildRouteHolder.rv_child_route.setLayoutManager(linearLayoutManager);
             homeChildRouteHolder.rv_child_route.setAdapter(new HomeChildRouteDetailAdapter(homeRoute.routes));
         }else if(ITEM_CHILD_NEW_SELL == mDatas.get(position).viewType){
             HomeNewSellHolder homeNewSellHolder = (HomeNewSellHolder) holder;
