@@ -18,7 +18,7 @@
         android:layout_height="40dp"
         android:lines="2"
         android:ellipsize="end"
-        android:textColor="@color/c_333333"
+        android:textColor="@color/txt_main"
         android:textSize="12sp"
         android:text="NIKE HUARACHE DRIFT幼童运动限量版大童鞋 "
         />
@@ -34,7 +34,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:textColor="@color/c_ff5b1f"
+                android:textColor="@color/txt_price"
                 android:textSize="14sp"
                 android:text="¥456.9"
                 />
@@ -45,7 +45,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:textColor="@color/c_999999"
+                android:textColor="@color/txt_gray"
                 android:textSize="14sp"
                 android:text="¥456.9"
                 />
@@ -71,7 +71,7 @@
             android:layout_height="24dp"
             android:gravity="center_vertical"
             android:ellipsize="end"
-            android:textColor="@color/c_999999"
+            android:textColor="@color/txt_gray"
             android:textSize="14sp"
             android:text="刘德华"
             />

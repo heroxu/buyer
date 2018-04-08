@@ -4,7 +4,7 @@
         android:left="@dimen/menu_item_padding"
         android:right="@dimen/menu_item_padding">
         <shape android:shape="rectangle">
-            <solid android:color="@color/divider_line" />
+            <solid android:color="@color/line_divider" />
             <size android:height="1px" />
         </shape>
     </item>

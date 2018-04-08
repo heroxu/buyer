@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/tv_my_username"
                     android:layout_below="@+id/tv_my_username"
-                    android:textColor="@color/text_light_gray"
+                    android:textColor="@color/txt_gray_light"
                     android:textSize="8sp"
                     tools:text="一只大榴莲，两梳大香蕉。" />
 
@@ -92,7 +92,7 @@
                             android:paddingRight="25dp"
                             android:paddingTop="20dp"
                             android:text="@string/view_all_orders"
-                            android:textColor="@color/text_normal"
+                            android:textColor="@color/txt_main"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 

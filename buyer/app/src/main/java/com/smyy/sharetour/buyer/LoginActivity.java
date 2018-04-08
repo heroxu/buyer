@@ -60,11 +60,9 @@ public class LoginActivity extends BaseMvpActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() > 5) {
-                    btnConfirm.setClickable(true);
-                    btnConfirm.setBackgroundDrawable(getResources().getDrawable(R.drawable.rs_select_btn_yellow));
+                    btnConfirm.setEnabled(true);
                 } else {
-                    btnConfirm.setClickable(false);
-                    btnConfirm.setBackgroundDrawable(getResources().getDrawable(R.drawable.rs_select_btn_gray));
+                    btnConfirm.setEnabled(false);
                 }
             }
 

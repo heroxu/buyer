@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="@color/c_333333"
+                    android:textColor="@color/txt_main"
                     android:text="1月20  出发"
                     />
 
@@ -65,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:textColor="@color/c_333333"
+                    android:textColor="@color/txt_main"
                     android:text="1月28  返程"
                     />
             </LinearLayout>
@@ -174,7 +174,7 @@
             android:layout_height="24dp"
             android:gravity="center_vertical"
             android:ellipsize="end"
-            android:textColor="@color/c_999999"
+            android:textColor="@color/txt_gray"
             android:textSize="14sp"
             android:text="刘德华"
             />
@@ -216,7 +216,7 @@
             android:layout_marginRight="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/c_ff5b1f"
+            android:textColor="@color/txt_price"
             android:textSize="14sp"
             android:text="立即沟通"
             />
@@ -227,5 +227,5 @@
         android:layout_marginTop="@dimen/margin_10"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/c_999999"/>
+        android:background="@color/txt_gray"/>
 </LinearLayout>

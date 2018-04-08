@@ -28,7 +28,7 @@
             android:layout_marginRight="8dp"
             android:layout_toRightOf="@+id/iv_ifv_photo"
             android:text="宇宙大帅爆"
-            android:textColor="@color/c_333333"
+            android:textColor="@color/txt_main"
             android:textSize="13sp" />
 
         <TextView
@@ -39,7 +39,7 @@
             android:background="@drawable/shape_fount_buy"
             android:padding="3dp"
             android:text="买手"
-            android:textColor="@color/c_ff5b1f"
+            android:textColor="@color/txt_price"
             android:textSize="11sp" />
 
         <TextView
@@ -48,7 +48,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="20秒前"
-            android:textColor="@color/c_999999"
+            android:textColor="@color/txt_gray"
             android:textSize="11sp" />
     </RelativeLayout>
 
@@ -78,7 +78,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="宇宙大帅爆"
-            android:textColor="@color/c_333333"
+            android:textColor="@color/txt_main"
             android:textSize="13sp" />
     </LinearLayout>
 
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="251"
-                android:textColor="@color/c_666666"
+                android:textColor="@color/txt_gray_dark"
                 android:textSize="13dp" />
         </LinearLayout>
 
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="251"
-                android:textColor="@color/c_666666"
+                android:textColor="@color/txt_gray_dark"
                 android:textSize="13dp" />
         </LinearLayout>
     </LinearLayout>

@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="13dp"
             android:text="搜索精彩内容"
-            android:textColor="@color/c_c7c7c7"
+            android:textColor="@color/txt_gray_light"
             android:textSize="13sp" />
     </LinearLayout>
 

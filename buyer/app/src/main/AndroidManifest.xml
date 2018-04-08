@@ -23,6 +23,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".my.view.SettingsActivity" />
+        <activity android:name=".my.view.AccountSettingsActivity" />
+        <activity android:name=".my.view.EditNicknameActivity" />
+        <activity android:name=".my.view.EditUserIntroActivity" />
+        <activity android:name=".my.view.MessageSettingsActivity" />
+        <activity android:name=".my.view.SettingsActivity" />
         <activity android:name=".ui.Test1Activity" />
         <activity android:name=".ui.test2.Test2Activity" />
         <activity android:name=".LoginActivity" />

@@ -6,58 +6,77 @@
     <color name="colorPrimaryDark">@color/white</color>
     <!-- 系统主色调 -->
     <color name="colorAccent">#049ce5</color>
+    <!-- 背景颜色 -->
+    <color name="window_background">#F1F1F1</color>
 
+    <!--通用颜色-->
     <color name="transparent">#00ffffff</color>
     <color name="white">@android:color/white</color>
     <color name="black">@android:color/black</color>
-    <!-- 分割线颜色 -->
-    <color name="divider_line">@color/colorAccent</color>
-    <!-- 背景颜色 -->
-    <color name="window_background">@color/c_f1f1f1</color>
-    <color name="item_material_press">#eeeeee</color>
 
-    <color name="dialog_press">#204ac0f0</color>
-    <color name="splash_bg">#f2f2f2</color>
-    <color name="translucent_grey">#80888888</color>
+
+    <!--APP颜色-->
+
+    <!--消息红点-->
+    <color name="dot_red">#FB3A2F</color>
+    <!--分割线颜色-->
+    <color name="line_divider">@color/window_background</color>
 
     <!-- 首页底部bar的字体颜色 -->
-    <color name="tab_text_normal_color">@color/c_d4d4d4</color>
-    <color name="tab_text_normal_selected">@color/c_484848</color>
+    <color name="tab_txt_normal">#D4D4D4</color>
+    <color name="tab_txt_selected">#484848</color>
 
-    <color name="c_ffffff_70">#b2ffffff</color>
-    <color name="c_f0eff5">#f0eff5</color>
-    <color name="c_b2b2b2">#b2b2b2</color>
-    <color name="c_e2e2e2">#e2e2e2</color>
-    <color name="c_b3b3b3">#b3b3b3</color>
-    <color name="c_484848">#484848</color>
-    <color name="c_d4d4d4">#d4d4d4</color>
-    <color name="c_ffcd1f">#ffcd1f</color>
-    <color name="c_f5f5f5">#f5f5f5</color>
+    <!--字体颜色-->
+    <!--标题字体、主要字体、次要字体-->
+    <color name="txt_main">#333333</color>
+    <!--次要字体、二级入口（深灰）-->
+    <color name="txt_gray_dark">#666666</color>
+    <!--辅助字体、小字体（灰色）-->
+    <color name="txt_gray">#999999</color>
+    <!--辅助字体、小字体（浅灰）-->
+    <color name="txt_gray_light">#C7C7C7</color>
+    <!--黑色背景上的字（透明灰色）-->
+    <color name="txt_gray_transparent">#DADBDA</color>
+    <!--提示性文字-->
+    <color name="txt_hint">#007AFF</color>
+    <!--价格显示&提示性文字-->
+    <color name="txt_price">#FF5B1F</color>
 
-    <!-- 默认字体颜色 -->
-    <color name="text_normal">@color/c_333333</color>
-    <color name="text_dark_gray">@color/c_666666</color>
-    <color name="text_light_gray">@color/c_d4d4d4</color>
+    <!--密码输入框-->
+    <color name="pwd_stroke_normal">#D8D8D8</color>
+    <color name="pwd_stroke_focus">#A6D8EB</color>
 
 
-    <color name="c_333333">#333333</color>
-    <color name="c_666666">#666666</color>
-    <color name="c_999999">#999999</color>
-    <color name="c_ff5b1f">#FF5B1F</color>
-    <color name="c_c7c7c7">#C7C7C7</color>
-    <color name="c_f1f1f1">#f1f1f1</color>
-    <color name="c_ffffff">#ffffff</color>
-    <color name="c_d8d8d8">#d8d8d8</color>
-    <color name="c_f0f2f5">#f0f2f5</color>
-    <color name="c_007aff">#007aff</color>
-    <color name="c_535353">#535353</color>
-    <color name="c_979797">#979797</color>
-    <color name="c_efefef">#efefef</color>
-    <color name="c_cccccc">#cccccc</color>
-    <color name="c_878787">#878787</color>
-    <color name="c_a6d8eb">#A6D8EB</color>
-    <color name="c_dadbda">#DADBDA</color>
+    <!--通用按钮-->
+    <!--原始状态-->
+    <!--背景色-->
+    <color name="btn_bg_normal">#FFCD1F</color>
+    <!--字体颜色-->
+    <color name="btn_txt_normal">@color/txt_main</color>
+    <!--点击状态-->
+    <color name="btn_bg_pressed">#ECBD1C</color>
+    <color name="btn_txt_pressed">@color/txt_main</color>
+    <!--禁用状态-->
+    <color name="btn_bg_unable">#D8D8D8</color>
+    <color name="btn_txt_unable">#FFFFFF</color>
 
-    <color name="dot_red">#FB3A2F</color>
+    <!--标签型按钮-->
+    <!--原始状态-->
+    <!--背景色-->
+    <color name="btn_tag_bg_normal">#FFFFFF</color>
+    <!--描边色-->
+    <color name="btn_tag_stroke_normal">#EBEBEB</color>
+    <!--字体颜色-->
+    <color name="btn_tag_txt_normal">#EBEBEB</color>
+    <!--选中状态-->
+    <color name="btn_tag_bg_selected">#ECBD1C</color>
+    <color name="btn_tag_txt_selected">#ECBD1C</color>
+    <!--禁用状态-->
+    <color name="btn_tag_bg_unable">#EBEBEB</color>
+    <color name="btn_tag_txt_unable">#EBEBEB</color>
+
+    <!--标签-->
+    <color name="tag_bg">#F5F5F5</color>
+    <color name="tag_txt">#999999</color>
 
 </resources>

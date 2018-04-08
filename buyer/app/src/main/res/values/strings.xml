@@ -34,8 +34,13 @@
     <string name="help_and_feedback">帮助与反馈</string>
     <string name="settings">设置</string>
     <string name="account_settings">个人中心</string>
-    <string name="notification_settings">消息设置</string>
+    <string name="message_settings">消息设置</string>
     <string name="change_theme">主题换肤</string>
     <string name="clear_cache">清除缓存</string>
     <string name="about_us">关于我们</string>
+    <string name="avatar">头像</string>
+    <string name="nickname">昵称</string>
+    <string name="user_intro">个性签名</string>
+    <string name="my_shipping_address">我的收货地址</string>
+    <string name="security_center">安全中心</string>
 </resources>
