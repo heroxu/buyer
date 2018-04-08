@@ -57,7 +57,7 @@ public class HomeFragment extends BaseMvpFragment {
         }
         mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
         vp.setAdapter(mAdapter);
-
+        tabLayout_7.setViewPager(vp,mTitles);
 
 //        vp.setCurrentItem(4);
         loadData();
