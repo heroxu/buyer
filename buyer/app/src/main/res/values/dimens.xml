@@ -6,9 +6,29 @@
     <dimen name="toolbar_nav_menu_padding">15.5dp</dimen>
     <dimen name="menu_item_padding">16dp</dimen>
 
-    <dimen name="text_cursor_padding_top">-2dp</dimen>
-    <dimen name="text_cursor_padding_bottom">-8dp</dimen>
+    <dimen name="txt_cursor_padding_top">-2dp</dimen>
+    <dimen name="txt_cursor_padding_bottom">-8dp</dimen>
 
     <!-- 统一的dp适配变量 -->
     <dimen name="margin_10">10dp</dimen>
+
+    <!--大标题字体：登录注册标题-->
+    <dimen name="txt_size_25">25sp</dimen>
+    <!--标题字体：大标题-->
+    <dimen name="txt_size_21">21sp</dimen>
+    <!--主要字体：标题-->
+    <dimen name="txt_size_19">19sp</dimen>
+    <!--主要字体：TAB标题/文章标题/商品详情标题-->
+    <dimen name="txt_size_17">17sp</dimen>
+    <!--次要字体：用户名/商品标题/正文内容-->
+    <dimen name="txt_size_15">15sp</dimen>
+    <!--辅助字体：用户名/商品标题/描述-->
+    <dimen name="txt_size_13">13sp</dimen>
+    <!--辅助字体：描述/副标题-->
+    <dimen name="txt_size_11">11sp</dimen>
+    <!--底部TAB字体-->
+    <dimen name="txt_size_10">10sp</dimen>
+    <!--小字体：点缀/描述-->
+    <dimen name="txt_size_9">9sp</dimen>
+
 </resources>
