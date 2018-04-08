@@ -58,6 +58,13 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         this.mDatas = datas;
     }
 
+    public void setData(List<HomeRecyclerBaseBean> datas) {
+        if(mDatas!=null){
+            mDatas.clear();
+            mDatas = datas;
+        }
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
