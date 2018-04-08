@@ -204,6 +204,6 @@ public class MyFragment extends BaseMvpFragment {
 
     @Override
     protected void initStatusBar() {
-        mImmersionBar.titleBar(toolbar).init();
+        setStatusBar(Color.BLACK);
     }
 }
