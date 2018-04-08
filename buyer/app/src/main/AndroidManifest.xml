@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".my.view.SettingsActivity"/>
+        <activity android:name=".my.view.SettingsActivity" />
         <activity android:name=".ui.Test1Activity" />
         <activity android:name=".ui.test2.Test2Activity" />
         <activity android:name=".LoginActivity" />
@@ -30,7 +30,8 @@
         <activity android:name=".SelectAreaCodeActivity" />
         <activity android:name=".SetPwdActivity" />
         <activity android:name=".GuideLoginActivity" />
-        <activity android:name=".PwdLoginActivity"></activity>
+        <activity android:name=".PwdLoginActivity" />
+        <activity android:name=".VerifyPhoneActivity"></activity>
     </application>
 
 </manifest>

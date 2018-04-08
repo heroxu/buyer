@@ -16,7 +16,7 @@ import io.reactivex.functions.Consumer;
  */
 public class SmsCodeDialog extends AnimationDialog implements View.OnClickListener {
     private VerificationCodeView mSmsCode;
-    private SmsCodeCallback mPayCallback;
+    private SmsCodeCallback mSmsCodeCallback;
     private View iv_close;
     RxCountDown mRxCountDown;
     TextView mTvCodeTime;
@@ -45,6 +45,7 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
                     MyApplication.getApplication().mThreadHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
+                            mSmsCodeCallback.SmsCodeResult(mSmsCode.getInputContent());
                             dismiss();
                         }
                     }, 100);
@@ -59,7 +60,7 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
         /**
          * 倒计时
          */
-        mRxCountDown = new RxCountDown.Builder().setMaxTime(10).setSubscriber(new Consumer<Long>() {
+        mRxCountDown = new RxCountDown.Builder().setMaxTime(Consts.DEFAULT_COUNTDOWN_TIME).setSubscriber(new Consumer<Long>() {
             @Override
             public void accept(Long countDown) throws Exception {
                 if (countDown > 0) {
@@ -88,8 +89,8 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
         switch (v.getId()) {
             case R.id.iv_close:
                 cancel();
-                if (mPayCallback != null) {
-                    mPayCallback.SmsCodeCancel();
+                if (mSmsCodeCallback != null) {
+                    mSmsCodeCallback.SmsCodeCancel();
                 }
                 break;
             case R.id.tv_sms_count_down:
@@ -105,18 +106,22 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
         super.dismiss();
     }
 
+    @Override
+    public void show() {
+        mSmsCode.clearInputContent();
+        super.show();
+    }
+
     public void setClickCallbackListener(SmsCodeCallback listener) {
-        mPayCallback = listener;
+        mSmsCodeCallback = listener;
     }
 
     /**
      * 输入支付密码之后的结果回调
      */
     public interface SmsCodeCallback {
-        //支付结果
         void SmsCodeResult(String smsCode);
-
-        //取消支付
+        
         void SmsCodeCancel();
     }
 }

@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.widget.Toast;
 
 public class ToastUtils {
@@ -46,7 +47,7 @@ public class ToastUtils {
         try {
             mToast.setText(text);
             mToast.setDuration(duration == Duration.SHORT ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG);
-//        mToast.setGravity(Gravity.CENTER, 0, 0);
+            mToast.setGravity(Gravity.CENTER, 0, 0);
             mToast.show();
         } catch (Exception e) {
             e.printStackTrace();

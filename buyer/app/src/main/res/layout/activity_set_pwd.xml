@@ -8,6 +8,7 @@
     <include layout="@layout/title_user" />
 
     <TextView
+        android:id="@+id/tv_module_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -26,6 +27,7 @@
         android:orientation="vertical">
 
         <com.smyy.sharetour.buyer.ClearWriteEditText
+            android:id="@+id/cwet_pwd"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@null"
@@ -50,6 +52,7 @@
         android:orientation="vertical">
 
         <com.smyy.sharetour.buyer.ClearWriteEditText
+            android:id="@+id/cwet_again_pwd"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@null"

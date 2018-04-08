@@ -8,6 +8,7 @@ import com.smyy.sharetour.buyer.LoginActivity;
 import com.smyy.sharetour.buyer.PwdLoginActivity;
 import com.smyy.sharetour.buyer.RegisterActivity;
 import com.smyy.sharetour.buyer.SetPwdActivity;
+import com.smyy.sharetour.buyer.VerifyPhoneActivity;
 import com.smyy.sharetour.buyer.ui.Test1Activity;
 import com.smyy.sharetour.buyer.ui.test2.Test2Activity;
 
@@ -65,6 +66,14 @@ public class ActivityLauncher {
      */
     public static void viewPwdLoginActivity(Context context) {
         Intent intent = new Intent(context, PwdLoginActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到验证手机号找回密码
+     */
+    public static void viewVerifyPhoneActivity(Context context) {
+        Intent intent = new Intent(context, VerifyPhoneActivity.class);
         context.startActivity(intent);
     }
 }

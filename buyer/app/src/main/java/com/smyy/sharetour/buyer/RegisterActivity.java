@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,6 +37,7 @@ public class RegisterActivity extends BaseMvpActivity {
     LinearLayout llRegisterDeal;
     @BindView(R.id.ll_has_account)
     LinearLayout llHasAccount;
+    SmsCodeDialog mSmsCodeDialog;
 
     @Override
     protected int getLayoutId() {
@@ -57,7 +59,8 @@ public class RegisterActivity extends BaseMvpActivity {
         hideToolBarLayout(true);
         btvPasswordLogin.setVisibility(View.GONE);
         llHasAccount.setVisibility(View.VISIBLE);
-        llRegisterDeal.setVerticalGravity(View.VISIBLE);
+        llRegisterDeal.setVisibility(View.VISIBLE);
+        btnConfirm.setClickable(false);
         editPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -97,8 +100,11 @@ public class RegisterActivity extends BaseMvpActivity {
             case R.id.ll_region:
                 break;
             case R.id.ll_has_account:
+                ActivityLauncher.viewLoginActivity(this);
+                finish();
                 break;
             case R.id.btn_confirm:
+                showmCodeDialog();
                 break;
             case R.id.btv_register_deal:
                 break;
@@ -109,5 +115,34 @@ public class RegisterActivity extends BaseMvpActivity {
             case R.id.ll_login_wechat:
                 break;
         }
+    }
+
+    /**
+     * 弹出验证码对话框
+     */
+    private void showmCodeDialog() {
+        if (mSmsCodeDialog == null) {
+            mSmsCodeDialog = new SmsCodeDialog(this);
+        }
+        if (mSmsCodeDialog.isShowing()) {
+            return;
+        }
+        mSmsCodeDialog.setClickCallbackListener(new SmsCodeDialog.SmsCodeCallback() {
+            @Override
+            public void SmsCodeResult(String smsCode) {
+                if (Consts.DEFAULT_SMS_CODE.equals(smsCode)) {
+                    ActivityLauncher.viewSetPwdActivity(RegisterActivity.this);
+                    finish();
+                } else {
+                    ToastUtils.showToast(RegisterActivity.this, "验证码错误");
+                }
+            }
+
+            @Override
+            public void SmsCodeCancel() {
+
+            }
+        });
+        mSmsCodeDialog.show();
     }
 }
