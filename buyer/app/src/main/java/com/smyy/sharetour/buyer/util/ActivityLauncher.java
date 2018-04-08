@@ -59,6 +59,7 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, SetPwdActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到密码登录
      */
