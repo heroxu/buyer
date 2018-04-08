@@ -52,7 +52,7 @@
                     android:id="@+id/tv_my_nickname"
                     style="@style/WideItemRightText"
                     android:text="张三"
-                    android:textColor="@color/text_dark_gray"
+                    android:textColor="@color/txt_gray_dark"
                     tools:text="张三" />
             </RelativeLayout>
 

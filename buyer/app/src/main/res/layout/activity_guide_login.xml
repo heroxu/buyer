@@ -51,7 +51,7 @@
             android:layout_marginRight="39dp"
             android:background="@drawable/shape_glogin_register"
             android:text="注册"
-            android:textColor="@color/c_333333"
+            android:textColor="@color/txt_main"
             android:textSize="15dp" />
 
         <Button
@@ -60,7 +60,7 @@
             android:layout_height="44dp"
             android:background="@drawable/shape_glogin_login"
             android:text="登录"
-            android:textColor="@color/c_333333"
+            android:textColor="@color/txt_main"
             android:textSize="15dp" />
     </LinearLayout>
 
@@ -84,7 +84,7 @@
             android:layout_marginBottom="21dp"
             android:layout_marginTop="9dp"
             android:text="微信快捷登录"
-            android:textColor="@color/c_dadbda"
+            android:textColor="@color/txt_gray_transparent"
             android:textSize="13sp" />
     </LinearLayout>
 

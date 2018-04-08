@@ -28,7 +28,7 @@
             android:layout_marginRight="8dp"
             android:layout_toRightOf="@+id/iv_ifv_photo"
             android:text="一只大榴莲"
-            android:textColor="@color/c_333333"
+            android:textColor="@color/txt_main"
             android:textSize="13sp" />
 
         <TextView
@@ -39,7 +39,7 @@
             android:background="@drawable/shape_fount_buy"
             android:padding="3dp"
             android:text="买手"
-            android:textColor="@color/c_ff5b1f"
+            android:textColor="@color/txt_price"
             android:textSize="11sp" />
 
         <TextView
@@ -48,7 +48,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="50分钟前"
-            android:textColor="@color/c_999999"
+            android:textColor="@color/txt_gray"
             android:textSize="11sp" />
     </RelativeLayout>
 
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/shape_fount_note_type"
-            android:textColor="@color/c_333333"
+            android:textColor="@color/txt_main"
             android:gravity="center_vertical"
             android:padding="3dp"
             android:text="笔记"
@@ -81,7 +81,7 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:text="很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲"
-            android:textColor="@color/c_333333"
+            android:textColor="@color/txt_main"
             android:textSize="13sp" />
     </LinearLayout>
 
@@ -103,7 +103,7 @@
         android:lineSpacingMultiplier="1.5"
         android:maxLines="2"
         android:text="Nike Air Huarache 在前两年席卷国内街头，超高的性价比和百搭的外形成为它的特点，在推出全新的拉链设计版,Nike Air Huarache 在前两年席卷国内街头，超高的性价比和百搭的外形成为它的特点，在推出全新的拉链设计版"
-        android:textColor="@color/c_666666" />
+        android:textColor="@color/txt_gray_dark" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="251"
-                android:textColor="@color/c_666666"
+                android:textColor="@color/txt_gray_dark"
                 android:textSize="13dp" />
         </LinearLayout>
 
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="251"
-                android:textColor="@color/c_666666"
+                android:textColor="@color/txt_gray_dark"
                 android:textSize="13dp" />
         </LinearLayout>
     </LinearLayout>

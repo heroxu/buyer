@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:textSize="14sp"
-                android:textColor="@color/c_ff5b1f"
+                android:textColor="@color/txt_price"
                 android:text="预售"
                 />
 
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:textSize="14sp"
-                android:textColor="@color/c_333333"
+                android:textColor="@color/txt_main"
                 android:text="剩余48小时23分"
                 />
 
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:textSize="12sp"
-                android:textColor="@color/c_c7c7c7"
+                android:textColor="@color/txt_gray_light"
                 android:text="已有203人预定"
                 />
         </LinearLayout>
@@ -85,7 +85,7 @@
                     android:layout_height="40dp"
                     android:lines="2"
                     android:ellipsize="end"
-                    android:textColor="@color/c_333333"
+                    android:textColor="@color/txt_main"
                     android:textSize="12sp"
                     android:text="NIKE HUARACHE DRIFT幼童运动限量版大童鞋 "
                     />
@@ -94,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:ellipsize="end"
-                    android:textColor="@color/c_ff5b1f"
+                    android:textColor="@color/txt_price"
                     android:textSize="14sp"
                     android:text="¥456.9"
                     />
@@ -104,7 +104,7 @@
                     android:layout_height="30dp"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
-                    android:textColor="@color/c_999999"
+                    android:textColor="@color/txt_gray"
                     android:textSize="12sp"
                     android:text="韩国/天乐免税店"
                     />
@@ -117,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="@dimen/margin_10"
-            android:background="@color/c_f1f1f1"
+            android:background="@color/line_divider"
             />
 
         <LinearLayout
@@ -131,7 +131,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/c_333333"
+                android:textColor="@color/txt_main"
                 android:background="@drawable/bg_rounded_rectangle_333333"
                 android:textSize="14sp"
                 android:text="查看该行程"
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:background="@drawable/bg_rounded_rectangle_ffcd1f"
-                android:textColor="@color/c_333333"
+                android:textColor="@color/txt_main"
                 android:text="立即预订"
                 />
 

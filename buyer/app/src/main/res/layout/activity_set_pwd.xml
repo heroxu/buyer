@@ -13,7 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="32dp"
         android:text="设置密码"
-        android:textColor="@color/text_normal"
+        android:textColor="@color/txt_main"
         android:textSize="25sp" />
 
     <LinearLayout
@@ -34,7 +34,7 @@
             android:hint="请输入新的密码"
             android:inputType="phone"
             android:maxLines="1"
-            android:textColorHint="@color/c_c7c7c7"
+            android:textColorHint="@color/txt_gray_light"
             android:textSize="17sp" />
         <include
             layout="@layout/ab_common_view_divider" />
@@ -58,7 +58,7 @@
             android:hint="再次输入密码"
             android:inputType="phone"
             android:maxLines="1"
-            android:textColorHint="@color/c_c7c7c7"
+            android:textColorHint="@color/txt_gray_light"
             android:textSize="17sp" />
         <include
             layout="@layout/ab_common_view_divider" />
@@ -80,14 +80,14 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="有账号？"
-            android:textColor="@color/c_535353"
+            android:textColor="@color/txt_gray_dark"
             android:textSize="13sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="去登录"
-            android:textColor="@color/c_007aff"
+            android:textColor="@color/txt_hint"
             android:textSize="13sp" />
     </LinearLayout>
 
@@ -99,7 +99,7 @@
         android:layout_marginRight="49dp"
         android:layout_marginTop="15dp"
         android:text="6-16位密码、数字或字母"
-        android:textColor="@color/c_666666"
+        android:textColor="@color/txt_gray_dark"
         android:textSize="13sp" />
 
     <Button
@@ -109,10 +109,10 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="49dp"
         android:layout_marginRight="49dp"
-        android:background="@drawable/rs_select_btn_gray"
+        android:background="@drawable/btn_bg_selector"
         android:clickable="false"
         android:text="确定"
-        android:textColor="#FFF"
+        android:textColor="@color/btn_txt_selector"
         android:textSize="15dp" />
 
     <View
