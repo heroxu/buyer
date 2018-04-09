@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.RecyclerView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
@@ -30,6 +32,10 @@ public class HomeFragment extends BaseMvpFragment {
     SlidingTabLayout tabLayout_7;
     @BindView(R.id.vp)
     ViewPager vp;
+    @BindView(R.id.home_rv_edit_title)
+    RecyclerView home_rv_edit_title;
+    @BindView(R.id.home_iv_title_arrow)
+    AppCompatImageView home_iv_title_arrow;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
             "全部", "日本", "法国"
@@ -62,6 +68,7 @@ public class HomeFragment extends BaseMvpFragment {
 //        vp.setCurrentItem(4);
         loadData();
     }
+
 
     private void loadData() {
 
