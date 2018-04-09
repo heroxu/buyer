@@ -5,7 +5,7 @@ import com.smyy.sharetour.buyer.util.LogUtil;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.util.NetworkUtils;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.ToastUtils;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import io.reactivex.subscribers.DisposableSubscriber;
 

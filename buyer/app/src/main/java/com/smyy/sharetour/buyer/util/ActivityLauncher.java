@@ -3,12 +3,13 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
-import com.smyy.sharetour.buyer.GuideLoginActivity;
-import com.smyy.sharetour.buyer.LoginActivity;
-import com.smyy.sharetour.buyer.PwdLoginActivity;
-import com.smyy.sharetour.buyer.RegisterActivity;
-import com.smyy.sharetour.buyer.SetPwdActivity;
-import com.smyy.sharetour.buyer.VerifyPhoneActivity;
+import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
+import com.smyy.sharetour.buyer.ui.LoginActivity;
+import com.smyy.sharetour.buyer.ui.PwdLoginActivity;
+import com.smyy.sharetour.buyer.ui.RegisterActivity;
+import com.smyy.sharetour.buyer.ui.SelectAreaCodeActivity;
+import com.smyy.sharetour.buyer.ui.SetPwdActivity;
+import com.smyy.sharetour.buyer.ui.VerifyPhoneActivity;
 import com.smyy.sharetour.buyer.ui.Test1Activity;
 import com.smyy.sharetour.buyer.ui.test2.Test2Activity;
 
@@ -74,6 +75,13 @@ public class ActivityLauncher {
      */
     public static void viewVerifyPhoneActivity(Context context) {
         Intent intent = new Intent(context, VerifyPhoneActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到选择区号
+     */
+    public static void viewSelectAreaCodeActivity(Context context) {
+        Intent intent = new Intent(context, SelectAreaCodeActivity.class);
         context.startActivity(intent);
     }
 }

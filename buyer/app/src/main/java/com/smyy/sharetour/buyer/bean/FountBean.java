@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.bean;
 
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;

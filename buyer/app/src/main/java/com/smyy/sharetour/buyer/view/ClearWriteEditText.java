@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -11,6 +11,8 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
+
+import com.smyy.sharetour.buyer.R;
 
 /**
  * Created by 伍振飞 on 2018/4/3 11:47

@@ -5,8 +5,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.smyy.sharetour.buyer.FImage;
-import com.smyy.sharetour.buyer.FountBean;
+import com.smyy.sharetour.buyer.bean.FImage;
+import com.smyy.sharetour.buyer.bean.FountBean;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.adapter.FountAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;

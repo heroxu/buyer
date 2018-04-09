@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.smyy.sharetour.buyer.FountBean;
+import com.smyy.sharetour.buyer.bean.FountBean;
 import com.smyy.sharetour.buyer.R;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;

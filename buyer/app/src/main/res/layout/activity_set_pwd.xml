@@ -26,7 +26,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <com.smyy.sharetour.buyer.ClearWriteEditText
+        <com.smyy.sharetour.buyer.view.ClearWriteEditText
             android:id="@+id/cwet_pwd"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -51,7 +51,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <com.smyy.sharetour.buyer.ClearWriteEditText
+        <com.smyy.sharetour.buyer.view.ClearWriteEditText
             android:id="@+id/cwet_again_pwd"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -113,7 +113,7 @@
         android:layout_marginLeft="49dp"
         android:layout_marginRight="49dp"
         android:background="@drawable/btn_bg_selector"
-        android:clickable="false"
+        android:enabled="false"
         android:text="确定"
         android:textColor="@color/btn_txt_selector"
         android:textSize="15dp" />

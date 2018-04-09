@@ -9,7 +9,6 @@ import android.os.Build.VERSION_CODES;
 import android.provider.Settings;
 
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.ToastUtils;
 
 /**
  * Created by justin on 17/9/11.

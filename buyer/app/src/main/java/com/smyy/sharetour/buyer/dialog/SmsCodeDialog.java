@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.dialog;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,6 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.Consts;
+import com.smyy.sharetour.buyer.MyApplication;
+import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.view.RxCountDown;
 import com.tuo.customview.VerificationCodeView;
 
 import io.reactivex.functions.Consumer;

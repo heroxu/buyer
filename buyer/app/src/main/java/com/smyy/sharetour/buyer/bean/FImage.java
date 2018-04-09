@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.bean;
 
 /**
  * Created by 伍振飞 on 2018/3/30 11:41

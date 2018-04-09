@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.view;
 
 import java.util.concurrent.TimeUnit;
 

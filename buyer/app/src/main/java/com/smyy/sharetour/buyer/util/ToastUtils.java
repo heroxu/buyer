@@ -1,8 +1,10 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.util;
 
 import android.content.Context;
 import android.view.Gravity;
 import android.widget.Toast;
+
+import com.smyy.sharetour.buyer.MyApplication;
 
 public class ToastUtils {
     public enum Duration {SHORT, LONG}

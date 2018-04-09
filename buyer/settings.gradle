@@ -1,1 +1,1 @@
-include ':app', ':zxing', ':UIFrameLib'
+include ':app', ':zxing', ':UIFrameLib', ':wave'

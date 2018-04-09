@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.fragment.FoundFragment;
 import com.smyy.sharetour.buyer.fragment.HomeFragment;

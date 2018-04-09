@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +11,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.view.ClearWriteEditText;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -73,17 +76,16 @@ public class PwdLoginActivity extends BaseMvpActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 if (s.length() > 5) {
                     isPhoneEdit = true;
                 } else {
                     isPhoneEdit = false;
                 }
                 isConfirmClick();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
             }
         });
         editPassword.addTextChangedListener(new TextWatcher() {
@@ -94,6 +96,10 @@ public class PwdLoginActivity extends BaseMvpActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 if (s.length() > 5) {
                     isPwdEdit = true;
                 } else {
@@ -101,22 +107,15 @@ public class PwdLoginActivity extends BaseMvpActivity {
                 }
                 isConfirmClick();
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
         });
     }
 
     //判断登录按钮是否可以被点击
     private void isConfirmClick() {
         if (isPhoneEdit && isPwdEdit) {
-            btnConfirm.setClickable(true);
-            btnConfirm.setBackgroundDrawable(getResources().getDrawable(R.drawable.rs_select_btn_yellow));
+            btnConfirm.setEnabled(true);
         } else {
-            btnConfirm.setClickable(false);
-            btnConfirm.setBackgroundDrawable(getResources().getDrawable(R.drawable.rs_select_btn_gray));
+            btnConfirm.setEnabled(false);
         }
     }
 

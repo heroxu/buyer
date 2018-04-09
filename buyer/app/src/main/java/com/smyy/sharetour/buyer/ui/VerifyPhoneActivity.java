@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,16 +8,22 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.Consts;
+import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.dialog.SmsCodeDialog;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.view.ClearWriteEditText;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseMvpActivity {
+public class VerifyPhoneActivity extends BaseMvpActivity {
     @BindView(R.id.tv_module_name)
     TextView tvModuleName;
     @BindView(R.id.tv_region)
@@ -30,7 +36,10 @@ public class LoginActivity extends BaseMvpActivity {
     Button btnConfirm;
     @BindView(R.id.btv_password_login)
     TextView btvPasswordLogin;
+    @BindView(R.id.ll_login_wechat)
+    LinearLayout llLoginWechat;
     SmsCodeDialog mSmsCodeDialog;
+
 
     @Override
     protected int getLayoutId() {
@@ -49,8 +58,10 @@ public class LoginActivity extends BaseMvpActivity {
 
     private void initUI() {
         hideToolBarLayout(true);
-        btnConfirm.setText("登录");
-        btnConfirm.setClickable(false);
+        tvModuleName.setText("验证手机号");
+        btnConfirm.setText("发送验证码");
+        btvPasswordLogin.setVisibility(View.GONE);
+        llLoginWechat.setVisibility(View.GONE);
         editPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -59,27 +70,20 @@ public class LoginActivity extends BaseMvpActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 if (s.length() > 5) {
                     btnConfirm.setEnabled(true);
                 } else {
                     btnConfirm.setEnabled(false);
                 }
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
         });
     }
 
-    @Override
-    protected IBasePresenter createPresenter() {
-        return null;
-    }
-
-
-    @OnClick({R.id.iv_close, R.id.ll_region, R.id.ll_has_account, R.id.btn_confirm, R.id.btv_register_deal, R.id.btv_privacy_deal, R.id.btv_password_login, R.id.ll_login_wechat})
+    @OnClick({R.id.iv_close, R.id.ll_region, R.id.ll_has_account, R.id.btn_confirm, R.id.btv_register_deal, R.id.btv_privacy_deal, R.id.ll_login_wechat})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_close:
@@ -95,10 +99,6 @@ public class LoginActivity extends BaseMvpActivity {
             case R.id.btv_register_deal:
                 break;
             case R.id.btv_privacy_deal:
-                break;
-            case R.id.btv_password_login:
-                ActivityLauncher.viewPwdLoginActivity(this);
-                finish();
                 break;
             case R.id.ll_login_wechat:
                 break;
@@ -119,10 +119,10 @@ public class LoginActivity extends BaseMvpActivity {
             @Override
             public void SmsCodeResult(String smsCode) {
                 if (Consts.DEFAULT_SMS_CODE.equals(smsCode)) {
-                    ToastUtils.showToast(LoginActivity.this, "登录成功");
+                    ActivityLauncher.viewSetPwdActivity(VerifyPhoneActivity.this);
                     finish();
                 } else {
-                    ToastUtils.showToast(LoginActivity.this, "验证码错误");
+                    ToastUtils.showToast(VerifyPhoneActivity.this, "验证码错误");
                 }
             }
 
@@ -132,5 +132,10 @@ public class LoginActivity extends BaseMvpActivity {
             }
         });
         mSmsCodeDialog.show();
+    }
+
+    @Override
+    protected IBasePresenter createPresenter() {
+        return null;
     }
 }

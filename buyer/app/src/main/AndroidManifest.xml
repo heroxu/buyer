@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/XqcTheme.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,16 +27,15 @@
         <activity android:name=".my.view.EditNicknameActivity" />
         <activity android:name=".my.view.EditUserIntroActivity" />
         <activity android:name=".my.view.MessageSettingsActivity" />
-        <activity android:name=".my.view.SettingsActivity" />
         <activity android:name=".ui.Test1Activity" />
         <activity android:name=".ui.test2.Test2Activity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".SelectAreaCodeActivity" />
-        <activity android:name=".SetPwdActivity" />
-        <activity android:name=".GuideLoginActivity" />
-        <activity android:name=".PwdLoginActivity" />
-        <activity android:name=".VerifyPhoneActivity"></activity>
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.RegisterActivity" />
+        <activity android:name=".ui.SelectAreaCodeActivity" />
+        <activity android:name=".ui.SetPwdActivity" />
+        <activity android:name=".ui.GuideLoginActivity" />
+        <activity android:name=".ui.PwdLoginActivity" />
+        <activity android:name=".ui.VerifyPhoneActivity"></activity>
     </application>
 
 </manifest>

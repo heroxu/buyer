@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.ToastUtils;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.adapter.Test2Adapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.util.LogUtil;
