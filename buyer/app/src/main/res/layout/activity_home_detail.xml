@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+   <ImageView
+       android:id="@+id/iv_home_detail_show"
+       android:layout_centerHorizontal="true"
+       android:layout_width="360dp"
+       android:layout_height="240dp"
+       android:src="@mipmap/random_icon_five" />
+    <TextView
+        android:layout_below="@+id/iv_home_detail_show"
+        android:id="@+id/tv_home_detail_desc"
+        android:layout_margin="@dimen/margin_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="5dp"
+        android:textColor="@color/txt_main"
+        android:text="这是关于商品详情的介绍这是关于商品详情的介绍这是关于商品详情的介绍这是关于商品详情的介绍这是关于商品详情的介绍这是关于商品详情的介绍这是关于商品详情的介绍"/>
+
+
+</RelativeLayout>
