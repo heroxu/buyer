@@ -78,10 +78,10 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         HomeRoute homeRoute = new HomeRoute();
         List<HomeRouteItem> homeRouteItems = new ArrayList<>();
         homeRoute.viewType = HomeFragmentRecyclerViewAdapter.ITEM_CHILD_ROUTE;
-        homeRouteItems.add(new HomeRouteItem("1月29 出发","1月31 返程","222"));
-        homeRouteItems.add(new HomeRouteItem("1月29 出发","1月31 返程","2332"));
-        homeRouteItems.add(new HomeRouteItem("1月29 出发","1月31 返程","222"));
-        homeRouteItems.add(new HomeRouteItem("1月29 出发","1月31 返程","2332"));
+        homeRouteItems.add(new HomeRouteItem("1yue29","1yue30","222"));
+        homeRouteItems.add(new HomeRouteItem("1yue22","1yue33","2332"));
+        homeRouteItems.add(new HomeRouteItem("1yue29","1yue30","222"));
+        homeRouteItems.add(new HomeRouteItem("1yue22","1yue33","2332"));
         homeRoute.routes = homeRouteItems;
         homeRecyclerBaseBeans.add(homeRoute);
 

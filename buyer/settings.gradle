@@ -1,5 +1,1 @@
-
-include ':app', ':zxing', ':UIFrameLib', ':wave'
-
-include ':app', ':zxing', ':UIFrameLib', ':searchmodule'
-
+include ':app', ':zxing', ':UIFrameLib'
