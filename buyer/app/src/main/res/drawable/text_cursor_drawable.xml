@@ -3,7 +3,7 @@
     android:shape="rectangle">
     <size android:width="1dp" />
     <padding
-        android:bottom="@dimen/text_cursor_padding_bottom"
-        android:top="@dimen/text_cursor_padding_top" />
+        android:bottom="@dimen/txt_cursor_padding_bottom"
+        android:top="@dimen/txt_cursor_padding_top" />
     <solid android:color="@color/colorAccent" />
 </shape>

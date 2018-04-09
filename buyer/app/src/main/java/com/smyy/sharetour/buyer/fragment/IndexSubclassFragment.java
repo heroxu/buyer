@@ -56,6 +56,7 @@ public class IndexSubclassFragment extends BaseMvpFragment {
             @Override
             public void onRefresh() {
                 loadData();
+                home_all_srl.setRefreshing(false);
             }
         });
 
@@ -133,9 +134,13 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         homeNote.homeNoteItems = homeNoteItems;
         homeRecyclerBaseBeans.add(homeNote);
 
-
-        mAdapter = new HomeFragmentRecyclerViewAdapter(getActivity(), homeRecyclerBaseBeans);
-        home_all_rv.setAdapter(mAdapter);
+        if(mAdapter==null){
+            mAdapter = new HomeFragmentRecyclerViewAdapter(getActivity(), homeRecyclerBaseBeans);
+            home_all_rv.setAdapter(mAdapter);
+        }else {
+            mAdapter.setData(homeRecyclerBaseBeans);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
