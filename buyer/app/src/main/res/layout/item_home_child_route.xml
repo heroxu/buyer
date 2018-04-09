@@ -33,38 +33,45 @@
                 android:gravity="center_vertical"
                 android:layout_height="50dp">
                 <ImageView
-                    android:background="#80000000"
+                    android:background="#000000"
+                    android:alpha="0.5"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@mipmap/ic_home_ele"/>
+                    android:src="@mipmap/ic_home_certified"/>
 
                 <TextView
-                    android:background="#80000000"
+                    android:background="#000000"
+                    android:alpha="0.5"
                     android:id="@+id/check_route"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
+                    android:textColor="@color/white"
                     android:text="已验证的行程"
                     />
 
                 <TextView
                     android:background="@color/white"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:padding="5dp"
                     android:id="@+id/tv_buyer_go"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="@color/txt_main"
                     android:text="1月20  出发"
                     />
 
                 <TextView
                     android:background="@color/white"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:padding="5dp"
                     android:id="@+id/tv_buyer_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="@color/txt_main"
                     android:text="1月28  返程"
                     />
@@ -80,7 +87,7 @@
                 android:layout_marginStart="20dp"
                 android:textSize="25sp"
                 android:text="日本 - 韩国 - 马来西亚"
-                android:textColor="@color/dot_red"
+                android:textColor="@color/white"
                 />
 
             <TextView

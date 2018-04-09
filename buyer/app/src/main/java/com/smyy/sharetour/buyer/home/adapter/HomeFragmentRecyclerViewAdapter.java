@@ -25,6 +25,7 @@ import com.smyy.sharetour.buyer.home.model.HomeRecyclerBaseBean;
 import com.smyy.sharetour.buyer.home.model.HomeRoute;
 import com.smyy.sharetour.buyer.home.model.HomeRouteItem;
 import com.smyy.sharetour.buyer.home.model.HomeTitleBean;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.lisenter.PagingScrollHelper;
 
 import java.util.List;
@@ -207,6 +208,12 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             HomeRouteItemHolder viewHolder = (HomeRouteItemHolder) holder;
+            viewHolder.iv_buyer_route.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ActivityLauncher.viewHomeDetail(mContext);
+                }
+            });
             viewHolder.tv_buyer_go.setText(mRouteDatas.get(position).goTime);
             viewHolder.tv_buyer_back.setText(mRouteDatas.get(position).backTime);
             viewHolder.iv_buyer_route.setImageResource(drawableArr[position]);

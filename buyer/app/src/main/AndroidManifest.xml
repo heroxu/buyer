@@ -29,6 +29,7 @@
         <activity android:name=".my.view.MessageSettingsActivity" />
         <activity android:name=".ui.Test1Activity" />
         <activity android:name=".ui.test2.Test2Activity" />
+<<<<<<< HEAD
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.SelectAreaCodeActivity" />
@@ -36,6 +37,15 @@
         <activity android:name=".ui.GuideLoginActivity" />
         <activity android:name=".ui.PwdLoginActivity" />
         <activity android:name=".ui.VerifyPhoneActivity"></activity>
+=======
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SelectAreaCodeActivity" />
+        <activity android:name=".SetPwdActivity" />
+        <activity android:name=".GuideLoginActivity" />
+        <activity android:name=".PwdLoginActivity"></activity>
+        <activity android:name=".home.detail.HomeDetailActivity" />
+>>>>>>> fix home ui
     </application>
 
 </manifest>
