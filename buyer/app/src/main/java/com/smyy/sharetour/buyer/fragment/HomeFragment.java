@@ -68,7 +68,7 @@ public class HomeFragment extends BaseMvpFragment {
         }
         mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
         vp.setAdapter(mAdapter);
-        tabLayout_7.setViewPager(vp,mTitles);
+        tabLayout_7.setViewPager(vp, mTitles);
 
 //        vp.setCurrentItem(4);
         loadData();
@@ -99,6 +99,7 @@ public class HomeFragment extends BaseMvpFragment {
     private void initPermissions() {
         List<PermissionItem> permissonItems = new ArrayList<PermissionItem>();
         permissonItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_camera));
+        permissonItems.add(new PermissionItem(Manifest.permission.READ_EXTERNAL_STORAGE, "读取外部存储", R.drawable.permission_ic_storage));
         HiPermission.create(getActivity()).permissions(permissonItems).checkMutiPermission(new PermissionCallback() {
             @Override
             public void onClose() {

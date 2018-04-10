@@ -3,6 +3,7 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.NoteDetailsActivity;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
 import com.smyy.sharetour.buyer.ui.LoginActivity;
@@ -83,6 +84,13 @@ public class ActivityLauncher {
      */
     public static void viewSelectAreaCodeActivity(Context context) {
         Intent intent = new Intent(context, SelectAreaCodeActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到笔记详情
+     */
+    public static void viewNoteDetailsActivity(Context context) {
+        Intent intent = new Intent(context, NoteDetailsActivity.class);
         context.startActivity(intent);
     }
 

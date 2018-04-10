@@ -40,6 +40,7 @@ android {
             debuggable true
         }
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -91,6 +92,8 @@ dependencies {
     compile project(path: ':zxing')
     compile project(':wave')
     compile project(':saerchlibrary')
+
+    compile project(path: ':ImageSelector')
 }
 
 //如果数据库结构变了就+1 更新数据库

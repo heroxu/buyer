@@ -6,6 +6,7 @@
     <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -36,9 +37,10 @@
         <activity android:name=".ui.SetPwdActivity" />
         <activity android:name=".ui.GuideLoginActivity" />
         <activity android:name=".ui.PwdLoginActivity" />
-        <activity android:name=".ui.VerifyPhoneActivity"></activity>
+        <activity android:name=".ui.VerifyPhoneActivity" />
         <activity android:name=".home.detail.HomeDetailActivity" />
-
+        <activity android:name=".NoteDetailsActivity" />
+        <activity android:name=".VideoDetailsActivity"></activity>
     </application>
 
 </manifest>

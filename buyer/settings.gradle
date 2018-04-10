@@ -1,4 +1,4 @@
 
-include ':app', ':zxing', ':UIFrameLib', ':wave', ':saerchlibrary'
+include ':app', ':zxing', ':UIFrameLib', ':wave', ':ImageSelector', ':saerchlibrary'
 
 
