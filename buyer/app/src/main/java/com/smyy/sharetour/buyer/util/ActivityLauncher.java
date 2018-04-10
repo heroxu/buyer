@@ -3,14 +3,15 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
 import com.smyy.sharetour.buyer.ui.LoginActivity;
 import com.smyy.sharetour.buyer.ui.PwdLoginActivity;
 import com.smyy.sharetour.buyer.ui.RegisterActivity;
 import com.smyy.sharetour.buyer.ui.SelectAreaCodeActivity;
 import com.smyy.sharetour.buyer.ui.SetPwdActivity;
-import com.smyy.sharetour.buyer.ui.VerifyPhoneActivity;
 import com.smyy.sharetour.buyer.ui.Test1Activity;
+import com.smyy.sharetour.buyer.ui.VerifyPhoneActivity;
 import com.smyy.sharetour.buyer.ui.test2.Test2Activity;
 
 /**
