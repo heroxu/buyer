@@ -34,7 +34,7 @@
 
 
             <LinearLayout
-                android:id="@+id/tv_my_change_theme"
+                android:id="@+id/lay_my_change_theme"
                 style="@style/WideItem">
 
                 <TextView
@@ -44,15 +44,16 @@
                 <TextView
                     android:id="@+id/tv_my_current_theme"
                     style="@style/WideItemMiddleRightText"
-                    android:text="主题2"
                     tools:text="主题2" />
+
+                <ImageView style="@style/WideItemRightArrow" />
             </LinearLayout>
 
             <View style="@style/WideItemDivider" />
 
 
             <LinearLayout
-                android:id="@+id/tv_my_clear_cache"
+                android:id="@+id/lay_my_clear_cache"
                 style="@style/WideItem">
 
                 <TextView
@@ -62,28 +63,29 @@
                 <TextView
                     android:id="@+id/tv_my_cache_size"
                     style="@style/WideItemMiddleRightText"
-                    android:text="120MB"
+                    android:textColor="@color/txt_gray_dark"
                     tools:text="120MB" />
             </LinearLayout>
 
             <View style="@style/WideItemDivider" />
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/lay_my_about_us"
+                style="@style/WideItem">
 
                 <TextView
-                    android:id="@+id/tv_my_about_us"
-                    style="@style/WideItem.Text.WithArrow"
+                    style="@style/WideItemLeftText"
                     android:text="@string/about_us" />
 
                 <TextView
                     android:id="@+id/tv_my_version_code"
                     style="@style/WideItemMiddleRightText"
-                    android:text="v1.0.0"
                     tools:text="v1.0.0" />
-            </RelativeLayout>
+
+                <ImageView style="@style/WideItemRightArrow" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

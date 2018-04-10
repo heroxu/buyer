@@ -48,8 +48,8 @@ public class SettingsActivity extends BaseMvpActivity<SettingsPresenter> impleme
         return new SettingsPresenter(this);
     }
 
-    @OnClick({R.id.tv_my_account_settings, R.id.tv_my_message_settings, R.id.tv_my_change_theme,
-            R.id.tv_my_clear_cache, R.id.tv_my_about_us})
+    @OnClick({R.id.tv_my_account_settings, R.id.tv_my_message_settings, R.id.lay_my_change_theme,
+            R.id.lay_my_clear_cache, R.id.lay_my_about_us})
     public void onClick(View view) {
         switch (view.getId()) {
 
@@ -61,15 +61,15 @@ public class SettingsActivity extends BaseMvpActivity<SettingsPresenter> impleme
                 ActivityLauncher.viewActivity(this, MessageSettingsActivity.class);
                 break;
 
-            case R.id.tv_my_change_theme:
+            case R.id.lay_my_change_theme:
 
                 break;
 
-            case R.id.tv_my_clear_cache:
+            case R.id.lay_my_clear_cache:
 
                 break;
 
-            case R.id.tv_my_about_us:
+            case R.id.lay_my_about_us:
 
                 break;
 
