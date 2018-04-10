@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/UIFrameLib/UIFrameLib.iml" filepath="$PROJECT_DIR$/UIFrameLib/UIFrameLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buyer.iml" filepath="$PROJECT_DIR$/buyer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/saerchlibrary/saerchlibrary.iml" filepath="$PROJECT_DIR$/saerchlibrary/saerchlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/searchmodule/searchmodule.iml" filepath="$PROJECT_DIR$/searchmodule/searchmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/wave/wave.iml" filepath="$PROJECT_DIR$/wave/wave.iml" />
       <module fileurl="file://$PROJECT_DIR$/zxing/zxing.iml" filepath="$PROJECT_DIR$/zxing/zxing.iml" />

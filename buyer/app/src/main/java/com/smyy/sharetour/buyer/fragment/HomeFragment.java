@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer.fragment;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
@@ -36,6 +38,8 @@ public class HomeFragment extends BaseMvpFragment {
     RecyclerView home_rv_edit_title;
     @BindView(R.id.home_iv_title_arrow)
     AppCompatImageView home_iv_title_arrow;
+
+    private boolean mArrowIsUp = true;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
             "全部", "日本", "法国"
@@ -57,6 +61,7 @@ public class HomeFragment extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
+        initListener();
         initPermissions();
         for (String title : mTitles) {
             mFragments.add(IndexSubclassFragment.getInstance(title));
@@ -67,6 +72,22 @@ public class HomeFragment extends BaseMvpFragment {
 
 //        vp.setCurrentItem(4);
         loadData();
+    }
+
+    private void initListener() {
+
+        home_iv_title_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ObjectAnimator
+                        .ofFloat(home_iv_title_arrow, "rotation", mArrowIsUp?0:180, mArrowIsUp?180:360)//
+                        .setDuration(300)//
+                        .start();
+                mArrowIsUp=!mArrowIsUp;
+
+            }
+        });
     }
 
 

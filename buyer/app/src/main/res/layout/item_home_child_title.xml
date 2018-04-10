@@ -48,9 +48,8 @@
             android:id="@+id/layout_iv_more"
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:rotation="180"
             android:layout_marginStart="3dp"
-            app:srcCompat="@drawable/ic_down_arrow"
+            app:srcCompat="@mipmap/ic_home_arrow_more"
             android:layout_gravity="center_vertical"
             />
     </LinearLayout>

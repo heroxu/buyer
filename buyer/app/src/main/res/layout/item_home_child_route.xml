@@ -156,8 +156,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="5dp"
                 android:layout_below="@+id/ll_route_classify"
-                android:rotation="180"
-                app:srcCompat="@drawable/ic_down_arrow" />
+                app:srcCompat="@mipmap/ic_home_arrow_more" />
         </RelativeLayout>
     </FrameLayout>
     <RelativeLayout
