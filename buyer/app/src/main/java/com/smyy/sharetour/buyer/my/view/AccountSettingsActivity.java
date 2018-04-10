@@ -55,12 +55,20 @@ public class AccountSettingsActivity extends BaseMvpActivity {
     }
 
     private void initUserInfo() {
-        UserInfo mUserInfo = MyApplication.getApplication().getUserInfo();
+        UserInfo userInfo = MyApplication.getApplication().getUserInfo();
 
-        tvNickname.setText(mUserInfo.getUsername());
-        tvUserIntro.setText(mUserInfo.getUserIntro());
+        String username = userInfo.getUsername();
+        if (!TextUtils.isEmpty(username)) {
+            tvNickname.setText(username);
+        }
+        String userIntro = userInfo.getUserIntro();
+        if (!TextUtils.isEmpty(userIntro)) {
+            tvUserIntro.setText(userIntro);
+        } else {
+            tvUserIntro.setText(R.string.please_introduce_yourself);
+        }
 
-        String filePath = mUserInfo.getAvatar();
+        String filePath = userInfo.getAvatar();
         if (TextUtils.isEmpty(filePath)) {
             Glide.with(this).load(R.mipmap.user_avatar).into(ivAvatar);
         } else {
