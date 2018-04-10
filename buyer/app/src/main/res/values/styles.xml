@@ -67,6 +67,10 @@
         <item name="android:textSize">@dimen/txt_size_15</item>
     </style>
 
+    <style name="WideItem.EditText" parent="WideItem.Text">
+        <item name="android:background">@color/white</item>
+    </style>
+
     <style name="WideItem.Text.WithArrow">
         <item name="android:drawableRight">@drawable/arrow_right_selector</item>
     </style>

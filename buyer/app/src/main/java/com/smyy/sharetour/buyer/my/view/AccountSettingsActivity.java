@@ -77,12 +77,12 @@ public class AccountSettingsActivity extends BaseMvpActivity {
         }
     }
 
-    @OnClick({R.id.tv_my_avatar_item, R.id.tv_my_nickname_item, R.id.tv_my_user_intro_item,
+    @OnClick({R.id.lay_my_avatar_item, R.id.tv_my_nickname_item, R.id.tv_my_user_intro_item,
             R.id.tv_my_shipping_address, R.id.tv_my_security_center})
     public void onClick(View view) {
         switch (view.getId()) {
 
-            case R.id.tv_my_avatar_item:
+            case R.id.lay_my_avatar_item:
 
                 break;
 

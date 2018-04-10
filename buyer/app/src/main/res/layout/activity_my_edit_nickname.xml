@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/et_my_nickname"
-        style="@style/WideItem.Text"
+        style="@style/WideItem.EditText"
         android:hint="@string/please_input_nickname" />
 
     <Button
