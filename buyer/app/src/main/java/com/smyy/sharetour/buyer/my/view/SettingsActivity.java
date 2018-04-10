@@ -12,9 +12,17 @@ import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.my.contract.ISettingsContract;
 import com.smyy.sharetour.buyer.my.presenter.SettingsPresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.CacheUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class SettingsActivity extends BaseMvpActivity<SettingsPresenter> implements ISettingsContract.View {
     @BindView(R.id.tv_my_current_theme)
@@ -39,6 +47,7 @@ public class SettingsActivity extends BaseMvpActivity<SettingsPresenter> impleme
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        getCacheSize();
 
     }
 
@@ -66,6 +75,7 @@ public class SettingsActivity extends BaseMvpActivity<SettingsPresenter> impleme
                 break;
 
             case R.id.lay_my_clear_cache:
+                cleanCache();
 
                 break;
 
@@ -76,5 +86,73 @@ public class SettingsActivity extends BaseMvpActivity<SettingsPresenter> impleme
             default:
                 break;
         }
+    }
+
+    private void getCacheSize() {
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+                String cacheSize = CacheUtils.getInternalCache(getApplication());
+                e.onNext(cacheSize);
+                e.onComplete();
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        showProgressDialog();
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        tvCacheSize.setText(s);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        hideProgressDialog();
+                    }
+                });
+    }
+
+    private void cleanCache() {
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
+                boolean result = CacheUtils.cleanInternalCache(getApplication());
+                e.onNext(result);
+                e.onComplete();
+
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        showProgressDialog();
+                    }
+
+                    @Override
+                    public void onNext(Boolean o) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        hideProgressDialog();
+                        getCacheSize();
+                    }
+                });
     }
 }
