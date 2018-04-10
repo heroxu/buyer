@@ -8,18 +8,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.view.HomeTitlesOpenOrCloseView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.Unbinder;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;
@@ -34,10 +35,12 @@ public class HomeFragment extends BaseMvpFragment {
     SlidingTabLayout tabLayout_7;
     @BindView(R.id.vp)
     ViewPager vp;
-    @BindView(R.id.home_rv_edit_title)
-    RecyclerView home_rv_edit_title;
     @BindView(R.id.home_iv_title_arrow)
     AppCompatImageView home_iv_title_arrow;
+    @BindView(R.id.hv_home_title)
+    HomeTitlesOpenOrCloseView hv_home_title;
+
+    Unbinder unbinder;
 
     private boolean mArrowIsUp = true;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -76,18 +79,35 @@ public class HomeFragment extends BaseMvpFragment {
 
     private void initListener() {
 
+
+        hv_home_title.setiStatusChange(new HomeTitlesOpenOrCloseView.IStatusChange() {
+            @Override
+            public void selectPosition(int position) {
+                if(position<0){
+                    ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation",  180,360).setDuration(250).start();
+                    mArrowIsUp = true;
+                }else {
+                    vp.setCurrentItem(position);
+                }
+            }
+        },mTitles);
+
         home_iv_title_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                ObjectAnimator
-                        .ofFloat(home_iv_title_arrow, "rotation", mArrowIsUp?0:180, mArrowIsUp?180:360)//
-                        .setDuration(300)//
-                        .start();
+                if(hv_home_title.isAnimating()){
+                    return;
+                }
+                ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation", mArrowIsUp ? 0 : 180, mArrowIsUp ? 180 : 360).setDuration(250).start();
+                if(mArrowIsUp){
+                   hv_home_title.animateOpen();
+                }else {
+                    hv_home_title.animateClose();
+                }
                 mArrowIsUp=!mArrowIsUp;
-
             }
         });
+
     }
 
 
@@ -121,6 +141,13 @@ public class HomeFragment extends BaseMvpFragment {
 
             }
         });
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
