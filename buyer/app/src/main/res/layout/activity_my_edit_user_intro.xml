@@ -10,11 +10,11 @@
 
     <EditText
         android:id="@+id/et_my_user_intro"
-        style="@style/WideItem.Text"
+        style="@style/WideItem.EditText"
         android:hint="@string/please_input_user_intro" />
 
     <Button
-        style="@style/CommonButton"
         android:id="@+id/btn_confirm"
+        style="@style/CommonButton"
         android:text="@string/save" />
 </LinearLayout>

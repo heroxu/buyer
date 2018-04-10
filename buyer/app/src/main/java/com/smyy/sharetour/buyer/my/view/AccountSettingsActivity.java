@@ -55,12 +55,20 @@ public class AccountSettingsActivity extends BaseMvpActivity {
     }
 
     private void initUserInfo() {
-        UserInfo mUserInfo = MyApplication.getApplication().getUserInfo();
+        UserInfo userInfo = MyApplication.getApplication().getUserInfo();
 
-        tvNickname.setText(mUserInfo.getUsername());
-        tvUserIntro.setText(mUserInfo.getUserIntro());
+        String username = userInfo.getUsername();
+        if (!TextUtils.isEmpty(username)) {
+            tvNickname.setText(username);
+        }
+        String userIntro = userInfo.getUserIntro();
+        if (!TextUtils.isEmpty(userIntro)) {
+            tvUserIntro.setText(userIntro);
+        } else {
+            tvUserIntro.setText(R.string.please_introduce_yourself);
+        }
 
-        String filePath = mUserInfo.getAvatar();
+        String filePath = userInfo.getAvatar();
         if (TextUtils.isEmpty(filePath)) {
             Glide.with(this).load(R.mipmap.user_avatar).into(ivAvatar);
         } else {
@@ -69,12 +77,12 @@ public class AccountSettingsActivity extends BaseMvpActivity {
         }
     }
 
-    @OnClick({R.id.tv_my_avatar_item, R.id.tv_my_nickname_item, R.id.tv_my_user_intro_item,
+    @OnClick({R.id.lay_my_avatar_item, R.id.tv_my_nickname_item, R.id.tv_my_user_intro_item,
             R.id.tv_my_shipping_address, R.id.tv_my_security_center})
     public void onClick(View view) {
         switch (view.getId()) {
 
-            case R.id.tv_my_avatar_item:
+            case R.id.lay_my_avatar_item:
 
                 break;
 

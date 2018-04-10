@@ -14,6 +14,7 @@
 
     <!--大标题字体：登录注册标题-->
     <dimen name="txt_size_25">25sp</dimen>
+    <dimen name="txt_size_23">23sp</dimen>
     <!--标题字体：大标题-->
     <dimen name="txt_size_21">21sp</dimen>
     <!--主要字体：标题-->

@@ -13,37 +13,31 @@
         android:orientation="vertical">
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <RelativeLayout style="@style/WideItem">
 
             <TextView
-                android:id="@+id/tv_my_change_theme"
-                style="@style/WideItem.Text"
+                android:id="@+id/lay_my_change_theme"
+                style="@style/WideItemLeftText"
                 android:text="@string/instant_message" />
 
-            <ImageView
+            <CheckBox
                 android:id="@+id/iv_my_toggle_im"
-                style="@style/WideItemMiddleRightText"
-                android:layout_marginRight="20dp" />
+                style="@style/CommonToggleButton" />
         </RelativeLayout>
 
         <View style="@style/WideItemDivider" />
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <RelativeLayout style="@style/WideItem">
 
             <TextView
-                android:id="@+id/tv_my_clear_cache"
-                style="@style/WideItem.Text"
+                android:id="@+id/lay_my_clear_cache"
+                style="@style/WideItemLeftText"
                 android:text="@string/system_message" />
 
-            <ImageView
+            <CheckBox
                 android:id="@+id/iv_my_toggle_sysm"
-                style="@style/WideItemMiddleRightText"
-                android:layout_marginRight="20dp" />
+                style="@style/CommonToggleButton" />
         </RelativeLayout>
 
     </LinearLayout>
