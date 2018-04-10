@@ -2,13 +2,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="直播界面"
-        android:textSize="50dp" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_tab_live"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_19"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:id="@+id/iv_my_msg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_news" />
+    </RelativeLayout>
+    <com.youth.banner.Banner
+        android:id="@+id/live_fount_banner"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:indicator_drawable_selected="@drawable/selected_radius"
+        app:indicator_drawable_unselected="@drawable/unselected_radius"
+        app:indicator_margin="2dp" />
+    <LinearLayout
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:orientation="horizontal">
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/live_stl_fount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:tl_indicator_color="#333333"
+            app:tl_indicator_corner_radius="1.5dp"
+            app:tl_indicator_height="3dp"
+            app:tl_indicator_width="10dp"
+            app:tl_tab_padding="12dp"
+            app:tl_textSelectColor="#333333"
+            app:tl_textUnselectColor="#999999" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:rotation="270"
+            app:srcCompat="@drawable/ic_down_arrow"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
+            />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/live_vp_fount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
