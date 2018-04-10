@@ -31,9 +31,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
-                    android:layout_marginTop="?attr/actionBarSize"
+                    android:layout_marginTop="60dp"
                     android:textColor="@color/white"
-                    android:textSize="23sp"
+                    android:textSize="@dimen/txt_size_23"
                     tools:text="昵称" />
 
                 <ImageView
@@ -52,8 +52,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/tv_my_username"
                     android:layout_below="@+id/tv_my_username"
-                    android:textColor="@color/txt_gray_light"
-                    android:textSize="8sp"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_toLeftOf="@+id/iv_my_avatar"
+                    android:textColor="@color/txt_gray_transparent"
+                    android:textSize="@dimen/txt_size_11"
                     tools:text="一只大榴莲，两梳大香蕉。" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -232,7 +234,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="48dp"
         app:contentInsetStart="0dp">
 
 
