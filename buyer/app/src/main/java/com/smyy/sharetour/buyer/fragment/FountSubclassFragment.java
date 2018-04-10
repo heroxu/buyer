@@ -74,8 +74,8 @@ public class FountSubclassFragment extends BaseMvpFragment {
         mFountAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-//                ActivityLauncher.viewNoteDetailsActivity(getActivity());
-                ImageSelectorActivity.start(getActivity(), 9, ImageSelectorActivity.MODE_MULTIPLE, true, true, true, 0);
+                ActivityLauncher.viewNoteDetailsActivity(getActivity());
+//                ImageSelectorActivity.start(getActivity(), 9, ImageSelectorActivity.MODE_MULTIPLE, true, true, true, 0);
             }
         });
     }
