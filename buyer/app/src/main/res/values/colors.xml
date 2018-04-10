@@ -7,7 +7,7 @@
     <!-- 系统主色调 -->
     <color name="colorAccent">#049ce5</color>
     <!-- 背景颜色 -->
-    <color name="window_background">#F1F1F1</color>
+    <color name="window_background">#F5F5F5</color>
 
     <!--通用颜色-->
     <color name="transparent">#00ffffff</color>
@@ -20,7 +20,7 @@
     <!--消息红点-->
     <color name="dot_red">#FB3A2F</color>
     <!--分割线颜色-->
-    <color name="line_divider">@color/window_background</color>
+    <color name="line_divider">#F1F1F1</color>
 
     <!-- 首页底部bar的字体颜色 -->
     <color name="tab_txt_normal">#D4D4D4</color>

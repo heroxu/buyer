@@ -19,7 +19,7 @@
 
             <TextView
                 android:id="@+id/tv_my_account_settings"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:text="@string/account_settings" />
 
             <View style="@style/WideItemDivider" />
@@ -27,49 +27,44 @@
 
             <TextView
                 android:id="@+id/tv_my_message_settings"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:text="@string/message_settings" />
 
             <View style="@style/WideItemDivider" />
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/tv_my_change_theme"
+                style="@style/WideItem">
 
                 <TextView
-                    android:id="@+id/tv_my_change_theme"
-                    style="@style/WideItemText"
+                    style="@style/WideItemLeftText"
                     android:text="@string/change_theme" />
 
                 <TextView
                     android:id="@+id/tv_my_current_theme"
-                    style="@style/WideItemRightText"
+                    style="@style/WideItemMiddleRightText"
                     android:text="主题2"
                     tools:text="主题2" />
-            </RelativeLayout>
+            </LinearLayout>
 
             <View style="@style/WideItemDivider" />
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/tv_my_clear_cache"
+                style="@style/WideItem">
 
                 <TextView
-                    android:id="@+id/tv_my_clear_cache"
-                    style="@style/WideItemText"
-                    android:drawableRight="@null"
+                    style="@style/WideItemLeftText"
                     android:text="@string/clear_cache" />
 
                 <TextView
                     android:id="@+id/tv_my_cache_size"
-                    style="@style/WideItemRightText"
-                    android:layout_marginRight="20dp"
-                    android:textColor="@color/txt_gray_dark"
+                    style="@style/WideItemMiddleRightText"
                     android:text="120MB"
                     tools:text="120MB" />
-            </RelativeLayout>
+            </LinearLayout>
 
             <View style="@style/WideItemDivider" />
 
@@ -80,12 +75,12 @@
 
                 <TextView
                     android:id="@+id/tv_my_about_us"
-                    style="@style/WideItemText"
+                    style="@style/WideItem.Text.WithArrow"
                     android:text="@string/about_us" />
 
                 <TextView
                     android:id="@+id/tv_my_version_code"
-                    style="@style/WideItemRightText"
+                    style="@style/WideItemMiddleRightText"
                     android:text="v1.0.0"
                     tools:text="v1.0.0" />
             </RelativeLayout>

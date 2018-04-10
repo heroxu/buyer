@@ -7,6 +7,7 @@
     <string name="error_sql_message">数据库异常，请重新登录</string>
 
     <string name="loading_msg_wait">请稍候…</string>
+    <string name="save">保存</string>
 
     <string name="main_tab_index">首页</string>
     <string name="main_tab_found">发现</string>
@@ -40,7 +41,12 @@
     <string name="about_us">关于我们</string>
     <string name="avatar">头像</string>
     <string name="nickname">昵称</string>
+    <string name="please_input_nickname">请输入昵称</string>
     <string name="user_intro">个性签名</string>
+    <string name="please_introduce_yourself">简单介绍下自己</string>
+    <string name="please_input_user_intro">请输入个性签名</string>
     <string name="my_shipping_address">我的收货地址</string>
     <string name="security_center">安全中心</string>
+    <string name="instant_message">即时消息</string>
+    <string name="system_message">系统消息</string>
 </resources>

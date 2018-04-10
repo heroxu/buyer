@@ -183,7 +183,7 @@
 
             <TextView
                 android:id="@+id/tv_my_cart"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:paddingTop="10dp"
                 android:text="@string/my_cart" />
 
@@ -191,35 +191,35 @@
 
             <TextView
                 android:id="@+id/tv_my_demands"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:text="@string/my_demands" />
 
             <View style="@style/WideItemDivider" />
 
             <TextView
                 android:id="@+id/tv_my_reviews"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:text="@string/my_reviews" />
 
             <View style="@style/WideItemDivider" />
 
             <TextView
                 android:id="@+id/tv_my_favorites"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:text="@string/my_favorites" />
 
             <View style="@style/WideItemDivider" />
 
             <TextView
                 android:id="@+id/tv_my_interests"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:text="@string/my_interests" />
 
             <View style="@style/WideItemDivider" />
 
             <TextView
                 android:id="@+id/tv_help_and_feedback"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:text="@string/help_and_feedback" />
 
             <View

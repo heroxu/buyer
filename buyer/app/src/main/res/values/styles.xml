@@ -10,7 +10,7 @@
     </style>
 
     <style name="XqcToolbarTextAppearance">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/txt_size_19</item>
         <item name="android:textColor">@color/txt_main</item>
     </style>
 
@@ -49,7 +49,7 @@
         <item name="android:windowIsTranslucent">false</item>
     </style>
 
-    <style name="WideItemText">
+    <style name="WideItem">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingLeft">30dp</item>
@@ -57,19 +57,41 @@
         <item name="android:paddingRight">20dp</item>
         <item name="android:paddingBottom">18dp</item>
         <item name="android:background">@drawable/wide_item_bg_selector</item>
-        <item name="android:textColor">@color/txt_main</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:drawableRight">@drawable/arrow_right_selector</item>
         <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="WideItemRightText">
+    <style name="WideItem.Text">
+        <item name="android:textColor">@color/txt_main</item>
+        <item name="android:textSize">@dimen/txt_size_15</item>
+    </style>
+
+    <style name="WideItem.Text.WithArrow">
+        <item name="android:drawableRight">@drawable/arrow_right_selector</item>
+    </style>
+
+    <style name="WideItemLeftText" parent="CommonText">
+    </style>
+
+    <style name="WideItemMiddleRightText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textColor">@color/txt_gray</item>
+        <item name="android:textSize">@dimen/txt_size_13</item>
+        <item name="android:maxEms">8</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="WideItemRightArrow">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:layout_marginRight">40dp</item>
-        <item name="android:textColor">@color/txt_gray_light</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:src">@drawable/arrow_right_selector</item>
     </style>
 
     <style name="WideItemDivider">
@@ -92,7 +114,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textColor">@color/txt_gray_dark</item>
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">@dimen/txt_size_11</item>
     </style>
 
     <style name="MyDividItemImg">
@@ -104,6 +126,25 @@
         <item name="withStroke">true</item>
         <item name="strokeColor">@color/white</item>
         <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="CommonButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/btn_txt_selector</item>
+        <item name="android:background">@drawable/btn_bg_selector</item>
+        <item name="android:textSize">@dimen/txt_size_15</item>
+        <item name="android:layout_marginLeft">48dp</item>
+        <item name="android:layout_marginRight">48dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+    </style>
+
+    <style name="CommonText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/btn_txt_selector</item>
+        <item name="android:textSize">@dimen/txt_size_15</item>
     </style>
 </resources>
 

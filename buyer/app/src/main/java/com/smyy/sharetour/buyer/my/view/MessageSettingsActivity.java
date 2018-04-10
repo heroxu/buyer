@@ -16,25 +16,28 @@ public class MessageSettingsActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_my_settings;
+        return R.layout.activity_my_message_settings;
     }
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        title.setText(getString(R.string.settings));
+        title.setText(getString(R.string.message_settings));
     }
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-
     }
 
 
-    @OnClick({R.id.tv_my_account_settings})
+    @OnClick({R.id.iv_my_toggle_im, R.id.iv_my_toggle_sysm})
     public void onClick(View view) {
         switch (view.getId()) {
 
-            case R.id.tv_my_account_settings:
+            case R.id.iv_my_toggle_im:
+
+                break;
+
+            case R.id.iv_my_toggle_sysm:
 
                 break;
 

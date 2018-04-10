@@ -22,15 +22,16 @@
 
                 <TextView
                     android:id="@+id/tv_my_avatar_item"
-                    style="@style/WideItemText"
+                    style="@style/WideItem.Text.WithArrow"
                     android:text="@string/avatar" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_my_avatar"
-                    style="@style/WideItemRightText"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginRight="@dimen/dp_40"
                     android:layout_marginTop="10dp"
                     android:src="@mipmap/avatar_yuzhuo"
                     tools:src="@mipmap/avatar_yuzhuo" />
@@ -39,40 +40,43 @@
             <View style="@style/WideItemDivider" />
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/tv_my_nickname_item"
+                style="@style/WideItem">
 
                 <TextView
-                    android:id="@+id/tv_my_nickname_item"
-                    style="@style/WideItemText"
+                    style="@style/WideItemLeftText"
                     android:text="@string/nickname" />
 
                 <TextView
                     android:id="@+id/tv_my_nickname"
-                    style="@style/WideItemRightText"
-                    android:text="张三"
+                    style="@style/WideItemMiddleRightText"
                     android:textColor="@color/txt_gray_dark"
                     tools:text="张三" />
-            </RelativeLayout>
+
+                <ImageView style="@style/WideItemRightArrow" />
+            </LinearLayout>
 
             <View style="@style/WideItemDivider" />
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/tv_my_user_intro_item"
+                style="@style/WideItem">
 
                 <TextView
-                    android:id="@+id/tv_my_user_intro_item"
-                    style="@style/WideItemText"
+                    style="@style/CommonText"
+                    android:layout_width="wrap_content"
                     android:text="@string/user_intro" />
 
                 <TextView
                     android:id="@+id/tv_my_user_intro"
-                    style="@style/WideItemRightText"
-                    android:text="简单介绍下自己" />
-            </RelativeLayout>
+                    style="@style/WideItemMiddleRightText"
+                    android:text="@string/please_introduce_yourself"
+                    tools:text="一二三四五六七八九十十一十二十三十四十五十六十七" />
+
+                <ImageView style="@style/WideItemRightArrow" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -81,14 +85,14 @@
 
             <TextView
                 android:id="@+id/tv_my_shipping_address"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:text="@string/my_shipping_address" />
 
             <View style="@style/WideItemDivider" />
 
             <TextView
                 android:id="@+id/tv_my_security_center"
-                style="@style/WideItemText"
+                style="@style/WideItem.Text.WithArrow"
                 android:text="@string/security_center" />
 
         </LinearLayout>

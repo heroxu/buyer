@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_my_change_theme"
+                style="@style/WideItem.Text"
+                android:text="@string/instant_message" />
+
+            <ImageView
+                android:id="@+id/iv_my_toggle_im"
+                style="@style/WideItemMiddleRightText"
+                android:layout_marginRight="20dp" />
+        </RelativeLayout>
+
+        <View style="@style/WideItemDivider" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_my_clear_cache"
+                style="@style/WideItem.Text"
+                android:text="@string/system_message" />
+
+            <ImageView
+                android:id="@+id/iv_my_toggle_sysm"
+                style="@style/WideItemMiddleRightText"
+                android:layout_marginRight="20dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</FrameLayout>
