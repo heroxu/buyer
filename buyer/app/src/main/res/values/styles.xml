@@ -56,7 +56,7 @@
         <item name="android:paddingTop">18dp</item>
         <item name="android:paddingRight">20dp</item>
         <item name="android:paddingBottom">18dp</item>
-        <item name="android:background">@drawable/wide_item_bg_selector</item>
+        <item name="android:background">@drawable/item_wide_bg_selector</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>

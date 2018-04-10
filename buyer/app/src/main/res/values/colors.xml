@@ -46,6 +46,10 @@
     <color name="pwd_stroke_normal">#D8D8D8</color>
     <color name="pwd_stroke_focus">#A6D8EB</color>
 
+    <!--宽条目点击背景色-->
+    <color name="item_wide_bg_normal">@color/white</color>
+    <color name="item_wide_bg_pressed">#C7C7C7</color>
+
 
     <!--通用按钮-->
     <!--原始状态-->
