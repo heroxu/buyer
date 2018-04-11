@@ -55,18 +55,13 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         home_all_srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                loadData();
+                if(mAdapter!=null){
+//                    mAdapter.setData();
+                    mAdapter.notifyDataSetChanged();
+                }
                 home_all_srl.setRefreshing(false);
             }
         });
-
-//        home_all_srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//
-////                loadData();
-//            }
-//        });
 
         home_all_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
@@ -134,13 +129,13 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         homeNote.homeNoteItems = homeNoteItems;
         homeRecyclerBaseBeans.add(homeNote);
 
-        if(mAdapter==null){
+//        if(mAdapter==null){
             mAdapter = new HomeFragmentRecyclerViewAdapter(getActivity(), homeRecyclerBaseBeans);
             home_all_rv.setAdapter(mAdapter);
-        }else {
-            mAdapter.setData(homeRecyclerBaseBeans);
-            mAdapter.notifyDataSetChanged();
-        }
+//        }else {
+//            mAdapter.setData(homeRecyclerBaseBeans);
+//            mAdapter.notifyDataSetChanged();
+//        }
     }
 
     @Override
