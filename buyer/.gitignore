@@ -40,10 +40,6 @@ captures/
 .classpath
 .project
 
-# Keystore files
-*.jks
-keystore.properties
-
 ### OSX template
 *.DS_Store
 .AppleDouble
