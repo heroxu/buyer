@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatImageView;
+import android.util.Log;
 import android.view.View;
 
 import com.flyco.tablayout.SlidingTabLayout;
@@ -30,6 +31,9 @@ import me.weyye.hipermission.PermissionItem;
  */
 
 public class HomeFragment extends BaseMvpFragment {
+
+    public static final String TAG = "HomeFragment";
+
     public static final int REQUEST_CODE_SCAN = 3301;
     @BindView(R.id.tl_7)
     SlidingTabLayout tabLayout_7;
@@ -83,12 +87,12 @@ public class HomeFragment extends BaseMvpFragment {
         hv_home_title.setIStatusChange(new HomeTitlesOpenOrCloseView.IStatusChange() {
             @Override
             public void selectPosition(int position) {
-                if(position<0){
-                    ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation",  180,360).setDuration(250).start();
-                    mArrowIsUp = true;
-                }else {
+                Log.e(TAG, "selectPosition: "+"position = "+position, null);
+                if(position>=0){
                     vp.setCurrentItem(position);
                 }
+                ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation",  180,360).setDuration(250).start();
+                mArrowIsUp = true;
             }
         },mTitles);
 

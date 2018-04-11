@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import java.util.List;
 public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnClickListener{
 
 
+    private static final String TAG = "HomeTitlesView";
     private RecyclerView.LayoutManager mLayoutManager;
     private Context mContext;
     private RecyclerView rv;
@@ -116,12 +118,16 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
 
     public void animateClose() {
         int origHeight = this.getHeight();
+        Log.e(TAG, "animateClose: "+"isAnimating = "+isAnimating, null);
+
         ValueAnimator animator = createDropAnimator(this, origHeight, 0);
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 HomeTitlesOpenOrCloseView.this.setVisibility(View.GONE);
                 isAnimating = false;
+                Log.e(TAG, "onAnimationEnd: "+"isAnimating = "+isAnimating, null);
+
             }
         });
         animator.start();
@@ -179,6 +185,7 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
                 @Override
                 public void onClick(View view) {
                     mIStatusChange.selectPosition(position);
+                    Log.e(TAG, "item onClick: "+"position = "+position, null);
                     HomeTitlesOpenOrCloseView.this.animateClose();
                 }
             });
