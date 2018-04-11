@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.flyco.tablayout.SlidingTabLayout;
@@ -80,7 +79,7 @@ public class HomeFragment extends BaseMvpFragment {
 
     private void initListener() {
 
-        hv_home_title.setRvLayoutManager(new LinearLayoutManager(getContext()));
+//        hv_home_title.setRvLayoutManager(new LinearLayoutManager(getContext()));
         hv_home_title.setIStatusChange(new HomeTitlesOpenOrCloseView.IStatusChange() {
             @Override
             public void selectPosition(int position) {
