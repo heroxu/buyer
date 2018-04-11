@@ -25,20 +25,34 @@ import java.util.List;
  */
 public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnClickListener{
 
+
+    private RecyclerView.LayoutManager mLayoutManager;
     private Context mContext;
     private RecyclerView rv;
     private View bg;
     boolean isAnimating = false;//是否正在执行动画
     private float mDensity;
     private int mFoldedViewMeasureHeight;
-    private IStatusChange iStatusChange;
+    private IStatusChange mIStatusChange;
     private  String[] mTitles;
     private List<String> mTitleList = new ArrayList<>();
 
-    public void setiStatusChange(IStatusChange iStatusChange,String[] titles) {
-        this.iStatusChange = iStatusChange;
+    /**
+     * 设置监听回调
+     * @param iStatusChange
+     * @param titles
+     */
+    public void setIStatusChange(IStatusChange iStatusChange, String[] titles) {
+        this.mIStatusChange = iStatusChange;
         mTitles = titles;
         initData();
+    }
+
+    /**
+     * 设置Rv的朝向和展示方式
+     */
+    public void setRvLayoutManager(RecyclerView.LayoutManager layoutManager){
+        this.mLayoutManager = layoutManager;
     }
 
     public boolean isAnimating() {
@@ -46,8 +60,8 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
     }
 
     private void initData() {
-        rv.setLayoutManager(new GridLayoutManager(mContext,4));
-
+        //默认的4行GridView
+        rv.setLayoutManager(mLayoutManager != null? mLayoutManager:new GridLayoutManager(mContext,4));
         mTitleList.addAll(Arrays.asList(mTitles));
         rv.setAdapter(new HomeSelectTitleAdapter(mTitleList));
     }
@@ -84,7 +98,9 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
 
     }
 
-
+    /**
+     * 展开
+     */
     public void animateOpen() {
         this.setVisibility(View.VISIBLE);
         ValueAnimator animator = createDropAnimator(this, 0, mFoldedViewMeasureHeight);
@@ -131,10 +147,10 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
         switch (view.getId()){
             case R.id.pop_bg:
                 this.animateClose();
-                iStatusChange.selectPosition(-1);
+                mIStatusChange.selectPosition(-1);
             default:
                 this.animateClose();
-                iStatusChange.selectPosition(-1);
+                mIStatusChange.selectPosition(-1);
                 break;
         }
     }
@@ -162,7 +178,7 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
             viewHolder.tv_title.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    iStatusChange.selectPosition(position);
+                    mIStatusChange.selectPosition(position);
                     HomeTitlesOpenOrCloseView.this.animateClose();
                 }
             });
