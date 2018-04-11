@@ -86,4 +86,6 @@
     <!--评论背景色-->
     <color name="comments_bg">#FCFCFC</color>
 
+    <!--日期时间选择器-->
+    <color name="timepicker_line">#e8e8e8</color>
 </resources>

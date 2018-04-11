@@ -17,6 +17,7 @@ import com.smyy.sharetour.buyer.fragment.FoundFragment;
 import com.smyy.sharetour.buyer.fragment.HomeFragment;
 import com.smyy.sharetour.buyer.fragment.LiveFragment;
 import com.smyy.sharetour.buyer.fragment.MyFragment;
+import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
 import com.smyy.sharetour.buyer.util.FragmentUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
 import com.smyy.sharetour.uiframelib.BaseActivity;
@@ -192,7 +193,7 @@ public class MainActivity extends BaseActivity {
         return mTabLayout.getChildAt(index);
     }
 
-    @OnClick({R.id.tab_index, R.id.tab_salary, R.id.tab_live, R.id.tab_me})
+    @OnClick({R.id.tab_index, R.id.tab_salary, R.id.tab_live, R.id.tab_me, R.id.tab_publish})
     public void onClick(View v) {
         if (mCurrentViewSelected == v) {
             return;
@@ -209,6 +210,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.tab_me:
                 obtainFragment(TAB_ME);
+                break;
+            case R.id.tab_publish:
+                startActivity(new Intent(MainActivity.this, PublishRequireActivity.class));
                 break;
             default:
                 break;

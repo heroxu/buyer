@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">buyer</string>
+    <string name="ok">确认</string>
+    <string name="cancel">取消</string>
     <!-- 异常信息 -->
     <string name="no_network_message">当前网络连接不可用</string>
     <string name="error_network_message">网络连接异常</string>
@@ -49,4 +51,20 @@
     <string name="security_center">安全中心</string>
     <string name="instant_message">即时消息</string>
     <string name="system_message">系统消息</string>
+
+    <!--发布相关-->
+    <string name="publish_ok">确定发布</string>
+    <string name="publish_require">发布需求</string>
+    <string name="require_disc">描述一下您的需求，例如颜色、尺寸等</string>
+    <string name="require_budget">需求预算</string>
+    <string name="require_finish_time">期望完成时间</string>
+    <string name="select_finish_time">请选择完成时间</string>
+    <string name="require_type">类型</string>
+    <string name="select_type">请选择商品类型</string>
+    <string name="add_address">添加收货地址</string>
+    <string name="require_warn">商品价格超过一万时建议选择鉴定寄送</string>
+    <string name="identify_send">鉴定寄送</string>
+    <string name="publishing">发布中</string>
+    <string name="publish_success">发布成功</string>
+    <string name="share_title">快分享给小伙伴吧</string>
 </resources>
