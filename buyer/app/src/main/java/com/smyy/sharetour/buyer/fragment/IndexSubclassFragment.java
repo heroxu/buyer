@@ -55,28 +55,40 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         home_all_srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                loadData();
+                if(mAdapter!=null){
+//                    mAdapter.setData();
+                    mAdapter.notifyDataSetChanged();
+                }
                 home_all_srl.setRefreshing(false);
             }
         });
 
-//        home_all_srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//
-////                loadData();
-//            }
-//        });
-
         home_all_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
+    private List<HomeRecyclerBaseBean> homeRecyclerBaseBeans;
+
+    private HomeRoute homeRoute;
+    private List<HomeRouteItem> homeRouteItems;
+
+    private HomeNewSell homeNewSell;
+    private List<HomeNewSellItem> homeNewSellItems;
+
+    private HomeHotProduct homeHotProduct;
+    private List<HomeHotProductItem> homeHotProductItems;
+
+    private HomeRecommend homeRecommend;
+    private List<HomeRecommendItem> homeRecommendItems;
+
+    private HomeNote homeNote;
+    private List<HomeNoteItem> homeNoteItems;
+
     private void loadData() {
-        List<HomeRecyclerBaseBean> homeRecyclerBaseBeans = new ArrayList<>();
+        homeRecyclerBaseBeans = new ArrayList<>();
         homeRecyclerBaseBeans.add(new HomeTitleBean("买手行程", "真实行程", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,true, false));
 
-        HomeRoute homeRoute = new HomeRoute();
-        List<HomeRouteItem> homeRouteItems = new ArrayList<>();
+        homeRoute = new HomeRoute();
+        homeRouteItems = new ArrayList<>();
         homeRoute.viewType = HomeFragmentRecyclerViewAdapter.ITEM_CHILD_ROUTE;
         homeRouteItems.add(new HomeRouteItem("1月29 出发","1月31 返程","222"));
         homeRouteItems.add(new HomeRouteItem("1月29 出发","1月31 返程","2332"));
@@ -88,9 +100,9 @@ public class IndexSubclassFragment extends BaseMvpFragment {
 
 
         homeRecyclerBaseBeans.add(new HomeTitleBean("最新预售", "全球抢购", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,false, false));
-        HomeNewSell homeNewSell = new HomeNewSell();
+        homeNewSell = new HomeNewSell();
         homeNewSell.viewType = HomeFragmentRecyclerViewAdapter.ITEM_CHILD_NEW_SELL;
-        List<HomeNewSellItem> homeNewSellItems =new ArrayList<>();
+        homeNewSellItems =new ArrayList<>();
         homeNewSellItems.add(new HomeNewSellItem("24小时30分", "预定200", "----", "NIKE HUARACHE DRIFT 运动鞋", "¥456.90", "韩国/乐天免税店"));
         homeNewSellItems.add(new HomeNewSellItem("24小时30分", "预定200", "----", "NIKE HUARACHE DRIFT 运动鞋", "¥456.90", "韩国/乐天免税店"));
         homeNewSellItems.add(new HomeNewSellItem("24小时30分", "预定200", "----", "NIKE HUARACHE DRIFT 运动鞋", "¥456.90", "韩国/乐天免税店"));
@@ -100,8 +112,8 @@ public class IndexSubclassFragment extends BaseMvpFragment {
 
 
         homeRecyclerBaseBeans.add(new HomeTitleBean("火爆单品", "猜你喜欢", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,false, true));
-        HomeHotProduct homeHotProduct = new HomeHotProduct();
-        List<HomeHotProductItem> homeHotProductItems = new ArrayList<>();
+        homeHotProduct = new HomeHotProduct();
+        homeHotProductItems = new ArrayList<>();
         homeHotProduct.viewType = HomeFragmentRecyclerViewAdapter.ITEM_CHILD_HOT_PRODUCT;
         homeHotProductItems.add(new HomeHotProductItem("--", "CHOCOOLATA 字母印花羽绒服", "$188.88", "$200.00", "--", "Xmyy_xxr"));
         homeHotProductItems.add(new HomeHotProductItem("--", "CHOCOOLATA 字母印花羽绒服", "$188.88", "$200.00", "--", "Xmyy_xxr"));
@@ -111,9 +123,9 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         homeRecyclerBaseBeans.add(homeHotProduct);
 
         homeRecyclerBaseBeans.add(new HomeTitleBean("推荐买手", "千挑万选", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,true, false));
-        HomeRecommend homeRecommend = new HomeRecommend();
+        homeRecommend = new HomeRecommend();
         homeRecommend.viewType = HomeFragmentRecyclerViewAdapter.ITEM_CHILD_RECOMMEND;
-        List<HomeRecommendItem> homeRecommendItems = new ArrayList<>();
+        homeRecommendItems = new ArrayList<>();
         homeRecommendItems.add(new HomeRecommendItem("美国", "推荐买手1", "推荐买手1", "电子游戏", "母婴用品", "化妆护肤"));
         homeRecommendItems.add(new HomeRecommendItem("美国", "推荐买手1", "推荐买手1", "电子游戏", "母婴用品", "化妆护肤"));
         homeRecommendItems.add(new HomeRecommendItem("美国", "推荐买手1", "推荐买手1", "电子游戏", "母婴用品", "化妆护肤"));
@@ -122,9 +134,9 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         homeRecyclerBaseBeans.add(homeRecommend);
 
         homeRecyclerBaseBeans.add(new HomeTitleBean("精选内容", "读万卷书行万里路", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,false, false));
-        HomeNote homeNote = new HomeNote();
+        homeNote = new HomeNote();
         homeNote.viewType = HomeFragmentRecyclerViewAdapter.ITEM_NOTES;
-        List<HomeNoteItem> homeNoteItems = new ArrayList<>();
+        homeNoteItems = new ArrayList<>();
         homeNoteItems.add(new HomeNoteItem("我的马尔代夫游记", HomeFragmentRecyclerViewAdapter.NOTE_TYPE_VEDIO,
                 "第一篇汇集全世界仅有的六大永久火山熔岩湖的中心地带第一篇汇集全世界仅有的六大永久火山熔岩湖的中心地带", "", "", "刘德华", "233", "666"));
         homeNoteItems.add(new HomeNoteItem("我的马尔代夫游记", HomeFragmentRecyclerViewAdapter.NOTE_TYPE_SINGLE,
@@ -134,13 +146,9 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         homeNote.homeNoteItems = homeNoteItems;
         homeRecyclerBaseBeans.add(homeNote);
 
-        if(mAdapter==null){
-            mAdapter = new HomeFragmentRecyclerViewAdapter(getActivity(), homeRecyclerBaseBeans);
-            home_all_rv.setAdapter(mAdapter);
-        }else {
-            mAdapter.setData(homeRecyclerBaseBeans);
-            mAdapter.notifyDataSetChanged();
-        }
+        mAdapter = new HomeFragmentRecyclerViewAdapter(getActivity(), homeRecyclerBaseBeans);
+        home_all_rv.setAdapter(mAdapter);
+
     }
 
     @Override

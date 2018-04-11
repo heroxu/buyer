@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer.home.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -328,6 +329,9 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             hotProductItemHolder.tv_hot_product_name.setText(hotProductItem.hotProductName);
             hotProductItemHolder.tv_hot_product_price.setText(hotProductItem.hotProductPriceNow);
             hotProductItemHolder.tv_hot_product_price_before.setText(hotProductItem.hotProductPriceBefore);
+
+            hotProductItemHolder.tv_hot_product_price_before.getPaint().setAntiAlias(true);//抗锯齿
+            hotProductItemHolder.tv_hot_product_price_before.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG); //中划线
 //            hotProductItemHolder.iv_hot_product_seller_avatar.setImageResource();
             hotProductItemHolder.tv_hot_product_seller_name.setText(hotProductItem.hotProductSellerName);
         }
