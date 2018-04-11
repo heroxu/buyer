@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -38,6 +39,8 @@ public class NoteDetailsActivity extends BaseMvpActivity {
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
         title.setText("笔记详情");
+        ImageView mImageView = (ImageView) toolbar.findViewById(R.id.iv_right);
+        mImageView.setVisibility(View.VISIBLE);
     }
 
     @Override
