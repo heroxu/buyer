@@ -22,6 +22,6 @@ public class Test2Adapter extends BaseQuickAdapter<Test2JsonData.Result> {
     @Override
     protected void convert(BaseViewHolder baseViewHolder, Test2JsonData.Result result) {
         baseViewHolder.setText(R.id.tv_test2_title,result.getContent());
-        Glide.with(mContext).load(result.getUrl()).crossFade().into((ImageView) baseViewHolder.getView(R.id.iv_test2_content));
+        Glide.with(mContext).load(result.getUrl()).crossFade().into((ImageView) baseViewHolder.getView(R.id.iv_comments_first_photo));
     }
 }

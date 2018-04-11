@@ -83,4 +83,7 @@
     <color name="tag_bg">#F5F5F5</color>
     <color name="tag_txt">#999999</color>
 
+    <!--评论背景色-->
+    <color name="comments_bg">#FCFCFC</color>
+
 </resources>

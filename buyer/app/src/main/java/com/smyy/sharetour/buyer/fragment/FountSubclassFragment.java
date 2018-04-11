@@ -16,6 +16,7 @@ import com.smyy.sharetour.buyer.adapter.FountAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.yongchun.library.view.ImageSelectorActivity;
 
 import java.util.ArrayList;
@@ -91,20 +92,4 @@ public class FountSubclassFragment extends BaseMvpFragment {
 
         }
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (resultCode == RESULT_OK && requestCode == ImageSelectorActivity.REQUEST_IMAGE) {
-//            ArrayList<String> images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
-//            try {
-//                String img = encodeBase64File(images.get(0));
-//                showProgressDialog(null);
-//                mPresenter.uploadImage(img);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//            super.onActivityResult(requestCode, resultCode, data);
-//        }
-//    }
 }

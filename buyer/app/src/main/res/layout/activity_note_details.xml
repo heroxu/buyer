@@ -1,157 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/iv_dea_photo"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignTop="@+id/tv_my_username"
-                    android:layout_marginRight="10dp"
-                    tools:src="@mipmap/user_avatar" />
-
-                <TextView
-                    android:id="@+id/iv_dea_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/iv_dea_photo"
-                    android:text="小桂子的桂子"
-                    android:textColor="@color/txt_main"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/iv_dea_name"
-                    android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@+id/iv_dea_photo"
-                    android:text="常去：美国、英国、澳大利亚"
-                    android:textColor="@color/txt_gray" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/iv_dea_name"
-                    android:background="@drawable/shape_fount_buy"
-                    android:padding="3dp"
-                    android:text="买手"
-                    android:textColor="@color/txt_price"
-                    android:textSize="11sp" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/line_divider" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="25dp"
-                android:text="NIKE HUARACHE DRIFT (PSE) 幼童运 动限量版大童鞋"
-                android:textColor="@color/txt_main"
-                android:textSize="19sp" />
-
-            <View
-                android:layout_width="20dp"
-                android:layout_height="4dp"
-                android:layout_marginBottom="25dp"
-                android:background="@drawable/shape_fount_note_type" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="260dp"
-                android:background="@color/txt_gray" />
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:layout_marginTop="33dp">
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="11-20"
-                    android:textColor="@color/txt_gray_light"
-                    android:textSize="13sp" />
+                    android:paddingBottom="25dp"
+                    android:paddingTop="25dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_dea_photo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignTop="@+id/tv_my_username"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/user_avatar" />
+
+                    <TextView
+                        android:id="@+id/iv_dea_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/iv_dea_photo"
+                        android:text="小桂子的桂子"
+                        android:textColor="@color/txt_main"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_dea_name"
+                        android:layout_marginTop="8dp"
+                        android:layout_toRightOf="@+id/iv_dea_photo"
+                        android:text="常去：美国、英国、澳大利亚"
+                        android:textColor="@color/txt_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_dea_name"
+                        android:background="@drawable/shape_fount_buy"
+                        android:padding="3dp"
+                        android:text="买手"
+                        android:textColor="@color/txt_price"
+                        android:textSize="11sp" />
+                </RelativeLayout>
 
                 <View
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_divider" />
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="25dp"
+                    android:text="NIKE HUARACHE DRIFT (PSE) 幼童运 动限量版大童鞋"
+                    android:textColor="@color/txt_main"
+                    android:textSize="19sp" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="4dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/shape_fount_note_type" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:src="@mipmap/img_note_pic_01" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="30dp"
+                    android:lineSpacingMultiplier="1.5"
+                    android:text="Nike Air Huarache 在前两年席卷国内街头，超高 的性价比和百搭的外形成为它的特点，在推出全新 的"
+                    android:textColor="@color/txt_main"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_divider" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="23dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:src="@mipmap/ic_comment" />
+                    android:layout_marginBottom="32dp"
+                    android:layout_marginTop="33dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="251"
-                        android:textColor="@color/txt_gray_dark"
-                        android:textSize="13dp" />
-                </LinearLayout>
+                        android:text="11-20"
+                        android:textColor="@color/txt_gray_light"
+                        android:textSize="13sp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
 
-                    <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:src="@mipmap/ic_like" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="251"
-                        android:textColor="@color/txt_gray_dark"
-                        android:textSize="13dp" />
+                        android:layout_marginRight="23dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="13dp"
-                        android:layout_marginLeft="26dp"
-                        android:background="#ff4500" />
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@mipmap/ic_comment" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="251"
+                            android:textColor="@color/txt_gray_dark"
+                            android:textSize="13dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@mipmap/ic_like" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="251"
+                            android:textColor="@color/txt_gray_dark"
+                            android:textSize="13dp" />
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="13dp"
+                            android:layout_marginLeft="26dp"
+                            android:src="@mipmap/ic_share_it" />
+                    </LinearLayout>
                 </LinearLayout>
+
+
             </LinearLayout>
 
             <View
@@ -159,18 +184,22 @@
                 android:layout_height="10dp"
                 android:background="@color/tag_bg" />
 
-            <TextView
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_note_comments"
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
-                android:background="@color/txt_gray" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ilyoh_jybe" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
         android:background="@color/white">
 
         <LinearLayout
@@ -182,7 +211,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="12dp"
-                android:background="#ff4500" />
+                android:src="@mipmap/ic_like_nor" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -202,7 +231,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="12dp"
-                android:background="#ff4500" />
+                android:src="@mipmap/ic_comment_comment" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -222,7 +251,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="12dp"
-                android:background="#ff4500" />
+                android:src="@mipmap/ic_comment_collection" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -233,4 +262,4 @@
                 android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

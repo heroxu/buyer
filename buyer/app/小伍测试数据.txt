@@ -1,0 +1,123 @@
+{
+	"mainList": [{
+		"imageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+		"name": "老王",
+		"praise": 88,
+		"content": "看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？",
+		"time": "12-03",
+		"csList": [{
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "老赵",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}, {
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		},{
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		},{
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		},{
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}]
+	}, {
+		"imageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+		"name": "老王",
+		"praise": 88,
+		"content": "看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？",
+		"time": "12-03",
+		"csList": []
+	}, {
+		"imageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+		"name": "老王",
+		"praise": 88,
+		"content": "看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？",
+		"time": "12-03",
+		"csList": [{
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "老赵",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}, {
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}]
+	}, {
+		"imageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+		"name": "老王",
+		"praise": 88,
+		"content": "看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？",
+		"time": "12-03",
+		"csList": [{
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "老赵",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}, {
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}]
+	}, {
+		"imageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+		"name": "老王",
+		"praise": 88,
+		"content": "看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？",
+		"time": "12-03",
+		"csList": [{
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "老赵",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}, {
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}]
+	}, {
+		"imageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+		"name": "老王",
+		"praise": 88,
+		"content": "看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？看起来不错，不知道实际用了会怎样？",
+		"time": "12-03",
+		"csList": [{
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "老赵",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}, {
+			"TImageUrl": "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png",
+			"TName": "老王",
+			"TPassiveName": "",
+			"TContent": "应该是蛮好的，我自己试过了呢～应该是蛮好的，我自己试过了呢～",
+			"TPraise": 88
+		}]
+	}]
+}
