@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
@@ -75,9 +74,11 @@ public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> imp
 
     @Override
     public void showUserInfo(UserInfoBean userInfo) {
-        String username = userInfo.getUsername();
-        if (!TextUtils.isEmpty(username)) {
-            tvLinkedPhone.setText(username);
+        String phone = userInfo.getPhone();
+        if (TextUtils.isEmpty(phone)) {
+            tvLinkedPhone.setText(R.string.phone_not_linked_yet);
+        } else {
+            tvLinkedPhone.setText(phone);
         }
     }
 

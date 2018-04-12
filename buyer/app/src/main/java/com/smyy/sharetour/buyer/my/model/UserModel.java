@@ -9,8 +9,8 @@ import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 public class UserModel implements IUserContract.Model {
     @Override
     public UserInfoBean getUserInfo() {
-        UserInfoBean userInfo = new UserInfoBean("悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
-                0, 0, 0, 0);
+        UserInfoBean userInfo = new UserInfoBean("", "悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
+                1, 2, 8, 0);
         saveUserInfo(userInfo);
         return userInfo;
     }

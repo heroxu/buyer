@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.my.SettingsActivity;
@@ -206,6 +205,34 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
         } else {
             File file = new File(filePath);
             Glide.with(getContext()).load(file).into(ivAvatar);
+        }
+
+        int awaitingPaymentCount = userInfo.getAwaitingPaymentOrderCount();
+        if (awaitingPaymentCount > 0) {
+            rivAwaitingPayment.setText(awaitingPaymentCount + "");
+        } else {
+            rivAwaitingPayment.setRedPointVisible(View.INVISIBLE);
+        }
+
+        int awaitingShipmentCount = userInfo.getAwaitingShipmentOrderCount();
+        if (awaitingShipmentCount > 0) {
+            rivAwaitingShipment.setText(awaitingShipmentCount + "");
+        } else {
+            rivAwaitingShipment.setRedPointVisible(View.INVISIBLE);
+        }
+
+        int awaitingConfirmationCount = userInfo.getAwaitingConfirmationOrderCount();
+        if (awaitingConfirmationCount > 0) {
+            rivAwaitingConfirmation.setText(awaitingConfirmationCount + "");
+        } else {
+            rivAwaitingConfirmation.setRedPointVisible(View.INVISIBLE);
+        }
+
+        int disputeCount = userInfo.getDisputeOrderCount();
+        if (disputeCount > 0) {
+            rivDispute.setText(disputeCount + "");
+        } else {
+            rivDispute.setRedPointVisible(View.INVISIBLE);
         }
     }
 

@@ -82,7 +82,7 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
                 break;
 
             case R.id.tv_my_security_center:
-
+                ActivityLauncher.viewActivity(this, SecurityCenterActivity.class);
                 break;
 
             default:
