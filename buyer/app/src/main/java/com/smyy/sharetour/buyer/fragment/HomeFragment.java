@@ -10,11 +10,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.HomeTitlesOpenOrCloseView;
 
 import java.util.ArrayList;
@@ -43,6 +45,9 @@ public class HomeFragment extends BaseMvpFragment {
     AppCompatImageView home_iv_title_arrow;
     @BindView(R.id.hv_home_title)
     HomeTitlesOpenOrCloseView hv_home_title;
+
+    @BindView(R.id.ll_home_search)
+    LinearLayout ll_home_search;
 
     Unbinder unbinder;
 
@@ -109,6 +114,12 @@ public class HomeFragment extends BaseMvpFragment {
                     hv_home_title.animateClose();
                 }
                 mArrowIsUp=!mArrowIsUp;
+            }
+        });
+        ll_home_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityLauncher.viewHomeSearch(getContext());
             }
         });
 

@@ -40,7 +40,9 @@
         <activity android:name=".ui.VerifyPhoneActivity" />
         <activity android:name=".home.detail.HomeDetailActivity" />
         <activity android:name=".NoteDetailsActivity" />
-        <activity android:name=".VideoDetailsActivity"></activity>
+        <activity android:name=".VideoDetailsActivity" />
+        <activity
+            android:name=".home.search.HomeSearchActivity"/>
     </application>
 
 </manifest>

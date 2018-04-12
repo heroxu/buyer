@@ -8,9 +8,11 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
+import com.smyy.sharetour.buyer.db.HomeSearch;
 import com.smyy.sharetour.buyer.db.Test;
 import com.smyy.sharetour.buyer.db.Test2;
 
+import com.smyy.sharetour.buyer.greendao.HomeSearchDao;
 import com.smyy.sharetour.buyer.greendao.TestDao;
 import com.smyy.sharetour.buyer.greendao.Test2Dao;
 
@@ -23,9 +25,11 @@ import com.smyy.sharetour.buyer.greendao.Test2Dao;
  */
 public class DaoSession extends AbstractDaoSession {
 
+    private final DaoConfig homeSearchDaoConfig;
     private final DaoConfig testDaoConfig;
     private final DaoConfig test2DaoConfig;
 
+    private final HomeSearchDao homeSearchDao;
     private final TestDao testDao;
     private final Test2Dao test2Dao;
 
@@ -33,22 +37,32 @@ public class DaoSession extends AbstractDaoSession {
             daoConfigMap) {
         super(db);
 
+        homeSearchDaoConfig = daoConfigMap.get(HomeSearchDao.class).clone();
+        homeSearchDaoConfig.initIdentityScope(type);
+
         testDaoConfig = daoConfigMap.get(TestDao.class).clone();
         testDaoConfig.initIdentityScope(type);
 
         test2DaoConfig = daoConfigMap.get(Test2Dao.class).clone();
         test2DaoConfig.initIdentityScope(type);
 
+        homeSearchDao = new HomeSearchDao(homeSearchDaoConfig, this);
         testDao = new TestDao(testDaoConfig, this);
         test2Dao = new Test2Dao(test2DaoConfig, this);
 
+        registerDao(HomeSearch.class, homeSearchDao);
         registerDao(Test.class, testDao);
         registerDao(Test2.class, test2Dao);
     }
     
     public void clear() {
+        homeSearchDaoConfig.clearIdentityScope();
         testDaoConfig.clearIdentityScope();
         test2DaoConfig.clearIdentityScope();
+    }
+
+    public HomeSearchDao getHomeSearchDao() {
+        return homeSearchDao;
     }
 
     public TestDao getTestDao() {

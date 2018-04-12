@@ -54,4 +54,5 @@
     <string name="phone_not_linked_yet">当前未绑定手机</string>
     <string name="reset_login_password">重置登录密码</string>
     <string name="pay_password">支付密码</string>
+
 </resources>
