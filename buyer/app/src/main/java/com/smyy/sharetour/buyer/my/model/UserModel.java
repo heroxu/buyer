@@ -24,7 +24,7 @@ public class UserModel implements IUserContract.Model {
             userInfo = new SharePreferenceUtil(application, SPConfig.USER_CACHE)
                     .getBeanValue(SPConfig.USER_INFO, UserInfoBean.class);
             if (userInfo == null) {
-                getUserInfo();
+                userInfo = getUserInfo();
             }
         }
         return userInfo;
