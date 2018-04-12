@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my.view;
+package com.smyy.sharetour.buyer.my;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -41,7 +41,7 @@
 
 
             <LinearLayout
-                android:id="@+id/tv_my_nickname_item"
+                android:id="@+id/lay_my_nickname"
                 style="@style/WideItem">
 
                 <TextView
@@ -61,11 +61,11 @@
 
 
             <LinearLayout
-                android:id="@+id/tv_my_user_intro_item"
+                android:id="@+id/lay_my_user_intro"
                 style="@style/WideItem">
 
                 <TextView
-                    style="@style/CommonText"
+                    style="@style/WideItemLeftText"
                     android:layout_width="wrap_content"
                     android:text="@string/user_intro" />
 

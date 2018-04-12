@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my.view;
+package com.smyy.sharetour.buyer.my;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,44 +14,41 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
-import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-import com.smyy.sharetour.buyer.my.model.UserInfo;
+import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
+import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.my.model.UserModel;
+import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class EditUserIntroActivity extends BaseMvpActivity {
-    @BindView(R.id.et_my_user_intro)
-    EditText etUserIntro;
+public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> implements IUserContract.View {
+    @BindView(R.id.et_my_nickname)
+    EditText etNickname;
     @BindView(R.id.btn_confirm)
     Button btnConfirm;
 
-    private UserInfo mUserInfo;
-
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_my_edit_user_intro;
+        return R.layout.activity_my_edit_nickname;
     }
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        title.setText(getString(R.string.user_intro));
+        title.setText(getString(R.string.nickname));
     }
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-        mUserInfo = MyApplication.getApplication().getUserInfo();
-        String userIntro = mUserInfo.getUserIntro();
-        if (!TextUtils.isEmpty(userIntro)) {
-            etUserIntro.setText(userIntro.trim());
-        }
+        mPresenter.getUserInfoCache(MyApplication.getApplication());
 
         setListener();
     }
 
     private void setListener() {
-        etUserIntro.addTextChangedListener(new TextWatcher() {
+        etNickname.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -79,9 +76,7 @@ public class EditUserIntroActivity extends BaseMvpActivity {
         switch (view.getId()) {
 
             case R.id.btn_confirm:
-                mUserInfo.setUserIntro(etUserIntro.getText().toString().trim());
-                MyApplication.getApplication().setUserInfo(mUserInfo);
-                finish();
+                mPresenter.setUserName(MyApplication.getApplication(), etNickname.getText().toString().trim());
                 break;
 
             default:
@@ -90,7 +85,20 @@ public class EditUserIntroActivity extends BaseMvpActivity {
     }
 
     @Override
-    protected IBasePresenter createPresenter() {
-        return null;
+    protected UserPresenter createPresenter() {
+        return new UserPresenter(this, new UserModel());
+    }
+
+    @Override
+    public void showUserInfo(UserInfoBean userInfo) {
+        String username = userInfo.getUsername();
+        if (!TextUtils.isEmpty(username)) {
+            etNickname.setText(username.trim());
+        }
+    }
+
+    @Override
+    public void showDialog(String s) {
+        ToastUtils.showToast(s);
     }
 }

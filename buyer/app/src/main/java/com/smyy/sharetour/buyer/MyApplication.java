@@ -8,10 +8,8 @@ import com.smyy.sharetour.buyer.base.BaseApplication;
 import com.smyy.sharetour.buyer.db.MySQLiteOpenHelper;
 import com.smyy.sharetour.buyer.greendao.DaoMaster;
 import com.smyy.sharetour.buyer.greendao.DaoSession;
-import com.smyy.sharetour.buyer.my.model.UserInfo;
 import com.smyy.sharetour.buyer.network.rx.RxUtils;
 import com.smyy.sharetour.buyer.util.PackageUtils;
-import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -22,7 +20,6 @@ public class MyApplication extends BaseApplication {
     private int mScreenWidth;
     private int mScreenHeight;
     private String mDpi;
-    private UserInfo mUserInfo;
     public static IStatistic mXqcStatistic;
     private static MyApplication mApplication;
     /**
@@ -109,24 +106,4 @@ public class MyApplication extends BaseApplication {
         }
         return daoSession;
     }
-
-    public UserInfo getUserInfo() {
-        if (mUserInfo == null) {
-            mUserInfo = new SharePreferenceUtil(mApplication, Constants.MY_SP)
-                    .getBeanValue(Constants.MY_SP_USER_INFO, UserInfo.class);
-
-            if (mUserInfo == null) {//RTRT 测试代码
-                mUserInfo = new UserInfo("悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
-                        0, 0, 0, 0);
-            }
-        }
-        return mUserInfo;
-    }
-
-    public void setUserInfo(UserInfo userInfo) {
-        this.mUserInfo = userInfo;
-        new SharePreferenceUtil(mApplication, Constants.MY_SP)
-                .writeBeanValue(Constants.MY_SP_USER_INFO, mUserInfo);
-    }
-
 }

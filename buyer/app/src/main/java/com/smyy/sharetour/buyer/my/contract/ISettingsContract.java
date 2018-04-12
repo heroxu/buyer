@@ -1,17 +1,28 @@
 package com.smyy.sharetour.buyer.my.contract;
 
-import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-import com.smyy.sharetour.buyer.base.mvp.IBaseView;
+import android.app.Application;
+import android.content.Context;
+
+import com.smyy.sharetour.buyer.my.base.MyBasePresenter;
+import com.smyy.sharetour.buyer.my.base.MyIBaseView;
+import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
 
 public interface ISettingsContract {
-    interface View extends IBaseView {
-
+    interface View extends MyIBaseView {
+        void showCacheSize(String cacheSize);
     }
 
-    interface Presenter extends IBasePresenter {
+    abstract class Presenter extends MyBasePresenter<ISettingsContract.View, ISettingsContract.Model> {
+        public Presenter(ISettingsContract.View view, ISettingsContract.Model model) {
+            super(view, model);
+        }
 
+        public abstract void getCacheSize(Application application);
+        public abstract void clearCache(Application application);
     }
-    interface Model{
 
+    interface Model {
+        String getCacheSize(Application application) throws Exception;
+        boolean clearCache(Application application);
     }
 }

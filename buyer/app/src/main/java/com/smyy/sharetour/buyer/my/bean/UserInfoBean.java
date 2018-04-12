@@ -1,9 +1,9 @@
-package com.smyy.sharetour.buyer.my.model;
+package com.smyy.sharetour.buyer.my.bean;
 
 import java.io.Serializable;
 
 
-public class UserInfo implements Serializable {
+public class UserInfoBean implements Serializable {
     private String username;
     private String userIntro;
     private String avatar;
@@ -12,7 +12,7 @@ public class UserInfo implements Serializable {
     private int awaitingConfirmationOrderCount;
     private int disputeOrderCount;
 
-    public UserInfo(String username, String userIntro, String avatar, int awaitingPaymentOrderCount, int awaitingShipmentOrderCount, int awaitingConfirmationOrderCount, int disputeOrderCount) {
+    public UserInfoBean(String username, String userIntro, String avatar, int awaitingPaymentOrderCount, int awaitingShipmentOrderCount, int awaitingConfirmationOrderCount, int disputeOrderCount) {
         this.username = username;
         this.userIntro = userIntro;
         this.avatar = avatar;
@@ -80,7 +80,7 @@ public class UserInfo implements Serializable {
 
     @Override
     public String toString() {
-        return "UserInfo{" +
+        return "UserInfoBean{" +
                 "username='" + username + '\'' +
                 ", userIntro='" + userIntro + '\'' +
                 ", avatar='" + avatar + '\'' +

@@ -17,7 +17,7 @@ public class CacheUtils {
      *
      * @param context
      */
-    public static boolean cleanInternalCache(Context context) {
+    public static boolean clearInternalCache(Context context) {
         return deleteDir(context.getCacheDir());
     }
 
@@ -26,7 +26,7 @@ public class CacheUtils {
      *
      * @param context
      */
-    public static boolean cleanDatabases(Context context) {
+    public static boolean clearDatabases(Context context) {
         return deleteDir(new File("/data/data/" + context.getPackageName() + "/databases"));
     }
 
@@ -35,7 +35,7 @@ public class CacheUtils {
      *
      * @param context
      */
-    public static boolean cleanSharedPreference(Context context) {
+    public static boolean clearSharedPreference(Context context) {
         return deleteDir(new File("/data/data/" + context.getPackageName() + "/shared_prefs"));
     }
 
@@ -45,7 +45,7 @@ public class CacheUtils {
      * @param context
      * @param dbName
      */
-    public static boolean cleanDatabaseByName(Context context, String dbName) {
+    public static boolean clearDatabaseByName(Context context, String dbName) {
         return context.deleteDatabase(dbName);
     }
 
@@ -54,7 +54,7 @@ public class CacheUtils {
      *
      * @param context
      */
-    public static boolean cleanFiles(Context context) {
+    public static boolean clearFiles(Context context) {
         return deleteDir(context.getFilesDir());
     }
 
@@ -63,7 +63,7 @@ public class CacheUtils {
      *
      * @param context
      */
-    public static boolean cleanExternalCache(Context context) {
+    public static boolean clearExternalCache(Context context) {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             return deleteDir(context.getExternalCacheDir());
         }
@@ -75,7 +75,7 @@ public class CacheUtils {
      *
      * @param filePath
      */
-    public static boolean cleanCustomCache(String filePath) {
+    public static boolean clearCustomCache(String filePath) {
         return deleteDir(new File(filePath));
     }
 
@@ -85,17 +85,17 @@ public class CacheUtils {
      * @param context
      * @param filepath
      */
-    public static void cleanApplicationData(Context context, String... filepath) {
-        cleanInternalCache(context);
-        cleanExternalCache(context);
-        cleanDatabases(context);
-        cleanSharedPreference(context);
-        cleanFiles(context);
+    public static void clearApplicationData(Context context, String... filepath) {
+        clearInternalCache(context);
+        clearExternalCache(context);
+        clearDatabases(context);
+        clearSharedPreference(context);
+        clearFiles(context);
         if (filepath == null) {
             return;
         }
         for (String filePath : filepath) {
-            cleanCustomCache(filePath);
+            clearCustomCache(filePath);
         }
     }
 
@@ -117,7 +117,6 @@ public class CacheUtils {
         if (dir == null) {
             return true;
         } else {
-
             return dir.delete();
         }
     }
