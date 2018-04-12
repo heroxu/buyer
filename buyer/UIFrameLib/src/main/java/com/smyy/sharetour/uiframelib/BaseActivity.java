@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends UmengActivity {
     static final String TAG = BaseActivity.class.getSimpleName();
-
+    static final String BUNDLE = "bundle";
     protected ImmersionBar mImmersionBar;
     Toolbar mToolbar;
     TextView mToolbarTitle;
@@ -223,5 +223,49 @@ public abstract class BaseActivity extends UmengActivity {
                     getWindow().getDecorView().getWindowToken(),
                     0);
         }
+    }
+
+
+    /**
+     * 通过Class跳转界面
+     **/
+    public void startActivity(Class<?> cls) {
+        startActivity(cls, null);
+    }
+
+    /**
+     * 通过Class跳转界面
+     **/
+    public void startActivityForResult(Class<?> cls, int requestCode) {
+        startActivityForResult(cls, null, requestCode);
+    }
+
+    /**
+     * 含有Bundle通过Class跳转界面
+     **/
+    public void startActivityForResult(Class<?> cls, Bundle bundle,
+                                       int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtra(BUNDLE, bundle);
+        }
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 含有Bundle通过Class跳转界面
+     **/
+    public void startActivity(Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtra(BUNDLE, bundle);
+        }
+        startActivity(intent);
+    }
+
+    public Bundle getBundle() {
+        return getIntent().getBundleExtra(BUNDLE);
     }
 }
