@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
@@ -115,10 +114,5 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
             File file = new File(filePath);
             Glide.with(getContext()).load(file).into(ivAvatar);
         }
-    }
-
-    @Override
-    public void showDialog(String s) {
-
     }
 }

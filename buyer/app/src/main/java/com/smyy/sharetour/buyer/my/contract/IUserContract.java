@@ -7,8 +7,6 @@ import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
 public interface IUserContract {
     interface View extends MyIBaseView {
         void showUserInfo(UserInfoBean userInfo);
-
-        void showDialog(String s);
     }
 
     abstract class Presenter extends MyBasePresenter<View, Model> {

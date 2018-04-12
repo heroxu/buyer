@@ -3,6 +3,7 @@ package com.smyy.sharetour.buyer.my.base;
 import android.os.Bundle;
 
 import com.smyy.sharetour.buyer.base.BaseFragment;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 
 
 /**
@@ -27,6 +28,14 @@ public abstract class MyBaseMvpFragment<T extends MyBasePresenter> extends BaseF
             mPresenter.unBind();
         }
         super.onDestroy();
+    }
+
+    public void showToast(String s) {
+        ToastUtils.showToast(s);
+    }
+
+    public void showToast(int strRes) {
+        ToastUtils.showToast(strRes);
     }
 
 }

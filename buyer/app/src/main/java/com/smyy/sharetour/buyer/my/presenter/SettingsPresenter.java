@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.my.contract.ISettingsContract;
 import com.smyy.sharetour.buyer.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.util.CacheUtils;
@@ -86,6 +87,7 @@ public class SettingsPresenter extends ISettingsContract.Presenter {
                     @Override
                     public void onNext(Boolean result) {
                         if (result) {
+                            mView.showToast(R.string.have_been_cleared);
                             getCacheSize(application);
                         }
                     }

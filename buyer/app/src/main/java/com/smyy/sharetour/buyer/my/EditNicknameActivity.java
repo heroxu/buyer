@@ -12,14 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.my.model.UserModel;
 import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
-import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -95,10 +93,5 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
         if (!TextUtils.isEmpty(username)) {
             etNickname.setText(username.trim());
         }
-    }
-
-    @Override
-    public void showDialog(String s) {
-        ToastUtils.showToast(s);
     }
 }

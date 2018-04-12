@@ -10,4 +10,8 @@ public interface MyIBaseView {
     void hideProgressDialog();
 
     void finish();
+
+    void showToast(String s);
+
+    void showToast(int stringRes);
 }

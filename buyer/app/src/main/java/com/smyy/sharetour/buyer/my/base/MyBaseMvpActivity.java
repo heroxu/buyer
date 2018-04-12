@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer.my.base;
 
 
+import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 
 
@@ -22,5 +23,13 @@ public abstract class MyBaseMvpActivity<T extends MyBasePresenter> extends BaseA
             mPresenter.unBind();
         }
         super.onDestroy();
+    }
+
+    public void showToast(String s) {
+        ToastUtils.showToast(s);
+    }
+
+    public void showToast(int strRes) {
+        ToastUtils.showToast(strRes);
     }
 }

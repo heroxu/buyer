@@ -23,6 +23,7 @@ import com.smyy.sharetour.buyer.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.my.model.UserModel;
 import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.RedImageView;
 
 import java.io.File;
@@ -234,11 +235,6 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
         } else {
             rivDispute.setRedPointVisible(View.INVISIBLE);
         }
-    }
-
-    @Override
-    public void showDialog(String s) {
-
     }
 
     @Override

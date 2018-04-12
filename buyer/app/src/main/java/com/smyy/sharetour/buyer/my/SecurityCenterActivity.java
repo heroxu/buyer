@@ -81,9 +81,4 @@ public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> imp
             tvLinkedPhone.setText(phone);
         }
     }
-
-    @Override
-    public void showDialog(String s) {
-
-    }
 }

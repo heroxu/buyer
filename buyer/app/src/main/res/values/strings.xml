@@ -38,6 +38,7 @@
     <string name="message_settings">消息设置</string>
     <string name="change_theme">主题换肤</string>
     <string name="clear_cache">清除缓存</string>
+    <string name="have_been_cleared">已清理完成</string>
     <string name="about_us">关于我们</string>
     <string name="avatar">头像</string>
     <string name="nickname">昵称</string>

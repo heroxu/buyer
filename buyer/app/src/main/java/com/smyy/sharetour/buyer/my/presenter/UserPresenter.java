@@ -123,7 +123,7 @@ public class UserPresenter extends IUserContract.Presenter {
                             if (result) {
                                 mView.finish();
                             } else {
-                                mView.showDialog("修改失败");
+                                mView.showToast("修改失败");
                             }
                         }
                     }
@@ -170,7 +170,7 @@ public class UserPresenter extends IUserContract.Presenter {
                             if (result) {
                                 mView.finish();
                             } else {
-                                mView.showDialog("修改失败");
+                                mView.showToast("修改失败");
                             }
                         }
                     }

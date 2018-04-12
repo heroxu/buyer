@@ -10,24 +10,13 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
-import com.smyy.sharetour.buyer.my.base.MyBasePresenter;
 import com.smyy.sharetour.buyer.my.contract.ISettingsContract;
 import com.smyy.sharetour.buyer.my.model.SettingsModel;
 import com.smyy.sharetour.buyer.my.presenter.SettingsPresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
-import com.smyy.sharetour.buyer.util.CacheUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-
-import static java.util.ResourceBundle.clearCache;
 
 public class SettingsActivity extends MyBaseMvpActivity<SettingsPresenter> implements ISettingsContract.View {
     @BindView(R.id.tv_my_current_theme)
