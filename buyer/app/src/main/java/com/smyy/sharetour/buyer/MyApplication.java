@@ -8,6 +8,7 @@ import com.smyy.sharetour.buyer.base.BaseApplication;
 import com.smyy.sharetour.buyer.db.MySQLiteOpenHelper;
 import com.smyy.sharetour.buyer.greendao.DaoMaster;
 import com.smyy.sharetour.buyer.greendao.DaoSession;
+import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.network.rx.RxUtils;
 import com.smyy.sharetour.buyer.util.PackageUtils;
 
@@ -20,6 +21,7 @@ public class MyApplication extends BaseApplication {
     private int mScreenWidth;
     private int mScreenHeight;
     private String mDpi;
+    private UserInfoBean mUserInfo;
     public static IStatistic mXqcStatistic;
     private static MyApplication mApplication;
     /**
@@ -105,5 +107,13 @@ public class MyApplication extends BaseApplication {
             }
         }
         return daoSession;
+    }
+
+    public UserInfoBean getUserInfo() {
+        return mUserInfo;
+    }
+
+    public void setUserInfo(UserInfoBean mUserInfo) {
+        this.mUserInfo = mUserInfo;
     }
 }

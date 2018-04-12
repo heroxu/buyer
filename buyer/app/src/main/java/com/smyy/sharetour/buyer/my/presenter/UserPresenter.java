@@ -1,7 +1,5 @@
 package com.smyy.sharetour.buyer.my.presenter;
 
-import android.content.Context;
-
 import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.my.contract.IUserContract;
 
@@ -19,13 +17,12 @@ public class UserPresenter extends IUserContract.Presenter {
     }
 
     @Override
-    public void getUserInfo(final Context application) {
+    public void getUserInfo() {
         Observable.create(new ObservableOnSubscribe<UserInfoBean>() {
             @Override
             public void subscribe(ObservableEmitter<UserInfoBean> e) throws Exception {
                 if (mModel != null) {
                     UserInfoBean userInfo = mModel.getUserInfo();
-                    mModel.saveUserInfo(application, userInfo);
                     e.onNext(userInfo);
                     e.onComplete();
                 }
@@ -62,18 +59,14 @@ public class UserPresenter extends IUserContract.Presenter {
     }
 
     @Override
-    public void getUserInfoCache(final Context application) {
+    public void getUserInfoCache() {
         Observable.create(new ObservableOnSubscribe<UserInfoBean>() {
             @Override
             public void subscribe(ObservableEmitter<UserInfoBean> e) throws Exception {
                 if (mModel != null) {
-                    UserInfoBean userInfo = mModel.getUserInfoCache(application);
-                    if (userInfo == null) {
-                        getUserInfo(application);
-                    } else {
-                        e.onNext(userInfo);
-                        e.onComplete();
-                    }
+                    UserInfoBean userInfo = mModel.getUserInfoCache();
+                    e.onNext(userInfo);
+                    e.onComplete();
                 }
 
             }
@@ -103,12 +96,12 @@ public class UserPresenter extends IUserContract.Presenter {
     }
 
     @Override
-    public void setUserName(final Context application, final String userName) {
+    public void setUserName(final String userName) {
         Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
                 if (mModel != null) {
-                    boolean result = mModel.setUserName(application, userName);
+                    boolean result = mModel.setUserName(userName);
                     e.onNext(result);
                     e.onComplete();
                 }
@@ -150,12 +143,12 @@ public class UserPresenter extends IUserContract.Presenter {
     }
 
     @Override
-    public void setUserIntro(final Context application, final String userIntro) {
+    public void setUserIntro(final String userIntro) {
         Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
                 if (mModel != null) {
-                    boolean result = mModel.setUserIntro(application, userIntro);
+                    boolean result = mModel.setUserIntro(userIntro);
                     e.onNext(result);
                     e.onComplete();
                 }

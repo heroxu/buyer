@@ -1,47 +1,62 @@
 package com.smyy.sharetour.buyer.my.model;
 
-import android.content.Context;
-
+import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.SPConfig;
 import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 
-/**
- * Created by simt180321 on 2018/4/11.
- */
-
 public class UserModel implements IUserContract.Model {
     @Override
     public UserInfoBean getUserInfo() {
-        return new UserInfoBean("悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
+        UserInfoBean userInfo = new UserInfoBean("悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
                 0, 0, 0, 0);
+        saveUserInfo(userInfo);
+        return userInfo;
     }
 
     @Override
-    public UserInfoBean getUserInfoCache(Context application) {
-        return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
-                .getBeanValue(SPConfig.USER_INFO, UserInfoBean.class);
+    public UserInfoBean getUserInfoCache() {
+        MyApplication application = MyApplication.getApplication();
+        if (application == null) return null;
+        UserInfoBean userInfo = application.getUserInfo();
+        if (userInfo == null) {
+            userInfo = new SharePreferenceUtil(application, SPConfig.USER_CACHE)
+                    .getBeanValue(SPConfig.USER_INFO, UserInfoBean.class);
+            if (userInfo == null) {
+                getUserInfo();
+            }
+        }
+        return userInfo;
     }
 
     @Override
-    public boolean saveUserInfo(Context application, UserInfoBean userInfo) {
+    public boolean saveUserInfo(UserInfoBean userInfo) {
+        MyApplication application = MyApplication.getApplication();
+        if (application == null) return false;
+        application.setUserInfo(userInfo);
         return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
                 .writeBeanValue(SPConfig.USER_INFO, userInfo);
     }
 
     @Override
-    public boolean setUserName(Context application, String userName) {
-        UserInfoBean userInfo = getUserInfoCache(application);
+    public boolean setUserName(String userName) {
+        MyApplication application = MyApplication.getApplication();
+        if (application == null) return false;
+        UserInfoBean userInfo = getUserInfoCache();
         userInfo.setUsername(userName);
+        application.setUserInfo(userInfo);
         return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
                 .writeBeanValue(SPConfig.USER_INFO, userInfo);
     }
 
     @Override
-    public boolean setUserIntro(Context application, String userIntro) {
-        UserInfoBean userInfo = getUserInfoCache(application);
+    public boolean setUserIntro(String userIntro) {
+        MyApplication application = MyApplication.getApplication();
+        if (application == null) return false;
+        UserInfoBean userInfo = getUserInfoCache();
         userInfo.setUserIntro(userIntro);
+        application.setUserInfo(userInfo);
         return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
                 .writeBeanValue(SPConfig.USER_INFO, userInfo);
     }
