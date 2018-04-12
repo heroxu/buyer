@@ -46,7 +46,7 @@ public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> imp
     }
 
     private void initUserInfo() {
-        mPresenter.getUserInfoCache(MyApplication.getApplication());
+        mPresenter.getUserInfoCache();
     }
 
     @OnClick({R.id.lay_my_linked_phone, R.id.tv_my_reset_login_password, R.id.tv_my_pay_password})

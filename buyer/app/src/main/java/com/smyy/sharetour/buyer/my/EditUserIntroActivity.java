@@ -44,7 +44,7 @@ public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> impl
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-        mPresenter.getUserInfoCache(MyApplication.getApplication());
+        mPresenter.getUserInfoCache();
 
         setListener();
     }
@@ -78,7 +78,7 @@ public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> impl
         switch (view.getId()) {
 
             case R.id.btn_confirm:
-                mPresenter.setUserIntro(MyApplication.getApplication(), etUserIntro.getText().toString().trim());
+                mPresenter.setUserIntro(etUserIntro.getText().toString().trim());
                 break;
 
             default:

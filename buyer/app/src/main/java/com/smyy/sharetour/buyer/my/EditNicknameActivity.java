@@ -42,7 +42,7 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-        mPresenter.getUserInfoCache(MyApplication.getApplication());
+        mPresenter.getUserInfoCache();
 
         setListener();
     }
@@ -76,7 +76,7 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
         switch (view.getId()) {
 
             case R.id.btn_confirm:
-                mPresenter.setUserName(MyApplication.getApplication(), etNickname.getText().toString().trim());
+                mPresenter.setUserName(etNickname.getText().toString().trim());
                 break;
 
             default:

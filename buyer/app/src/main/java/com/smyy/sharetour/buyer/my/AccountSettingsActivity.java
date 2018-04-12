@@ -57,7 +57,7 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
     }
 
     private void initUserInfo() {
-        mPresenter.getUserInfoCache(MyApplication.getApplication());
+        mPresenter.getUserInfoCache();
     }
 
     @OnClick({R.id.lay_my_avatar_item, R.id.lay_my_nickname, R.id.lay_my_user_intro,

@@ -104,7 +104,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
     }
 
     private void initUserInfo() {
-        mPresenter.getUserInfoCache(MyApplication.getApplication());
+        mPresenter.getUserInfoCache();
     }
 
     @OnClick({R.id.iv_my_setting, R.id.iv_my_msg, R.id.iv_my_edit_username, R.id.iv_my_avatar,
