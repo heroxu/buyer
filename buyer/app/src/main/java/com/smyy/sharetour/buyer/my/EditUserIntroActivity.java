@@ -93,11 +93,9 @@ public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> impl
 
     @Override
     public void showUserInfo(UserInfoBean userInfo) {
-        if (userInfo != null) {
-            String userIntro = userInfo.getUserIntro();
-            if (!TextUtils.isEmpty(userIntro)) {
-                etUserIntro.setText(userIntro.trim());
-            }
+        String userIntro = userInfo.getUserIntro();
+        if (!TextUtils.isEmpty(userIntro)) {
+            etUserIntro.setText(userIntro.trim());
         }
     }
 

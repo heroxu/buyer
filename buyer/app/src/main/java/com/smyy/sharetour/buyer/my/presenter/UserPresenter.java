@@ -68,8 +68,12 @@ public class UserPresenter extends IUserContract.Presenter {
             public void subscribe(ObservableEmitter<UserInfoBean> e) throws Exception {
                 if (mModel != null) {
                     UserInfoBean userInfo = mModel.getUserInfoCache(application);
-                    e.onNext(userInfo);
-                    e.onComplete();
+                    if (userInfo == null) {
+                        getUserInfo(application);
+                    } else {
+                        e.onNext(userInfo);
+                        e.onComplete();
+                    }
                 }
 
             }
@@ -83,11 +87,7 @@ public class UserPresenter extends IUserContract.Presenter {
                     @Override
                     public void onNext(UserInfoBean userInfo) {
                         if (mView != null) {
-                            if (userInfo == null) {
-                                getUserInfo(application);
-                            } else {
-                                mView.showUserInfo(userInfo);
-                            }
+                            mView.showUserInfo(userInfo);
                         }
                     }
 

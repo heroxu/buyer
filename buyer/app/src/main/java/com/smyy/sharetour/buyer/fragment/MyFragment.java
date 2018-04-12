@@ -16,13 +16,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.my.AccountSettingsActivity;
+import com.smyy.sharetour.buyer.my.SettingsActivity;
 import com.smyy.sharetour.buyer.my.base.MyBaseMvpFragment;
 import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.my.model.UserModel;
 import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
-import com.smyy.sharetour.buyer.my.AccountSettingsActivity;
-import com.smyy.sharetour.buyer.my.SettingsActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.RedImageView;
 
@@ -190,8 +190,15 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
 
     @Override
     public void showUserInfo(UserInfoBean userInfo) {
-        tvUsername.setText(userInfo.getUsername());
-        tvUserIntro.setText(userInfo.getUserIntro());
+        String username = userInfo.getUsername();
+        if (!TextUtils.isEmpty(username)) {
+            tvUsername.setText(username);
+        }
+
+        String userIntro = userInfo.getUserIntro();
+        if (!TextUtils.isEmpty(userIntro)) {
+            tvUserIntro.setText(userIntro);
+        }
 
         String filePath = userInfo.getAvatar();
         if (TextUtils.isEmpty(filePath)) {

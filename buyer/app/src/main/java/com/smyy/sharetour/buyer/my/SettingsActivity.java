@@ -53,6 +53,7 @@ public class SettingsActivity extends MyBaseMvpActivity<SettingsPresenter> imple
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         mPresenter.getCacheSize(MyApplication.getApplication());
+        tvVersionCode.setText(MyApplication.getApplication().getAppVersionName());
     }
 
     @OnClick({R.id.tv_my_account_settings, R.id.tv_my_message_settings, R.id.lay_my_change_theme,
