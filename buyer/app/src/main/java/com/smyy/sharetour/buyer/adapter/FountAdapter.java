@@ -23,7 +23,7 @@ import java.util.List;
  * Created by 伍振飞 on 2018/3/15 17:43
  * E-Mail Address：wuzf2012@sina.com
  */
-public class FountAdapter extends BaseMultiItemQuickAdapter<FountBean> {
+public class FountAdapter extends BaseMultiItemQuickAdapter<FountBean,BaseViewHolder> {
     public FountAdapter(Context context, List data) {
         super(data);
         addItemType(FountBean.VIDEO_TYPE, R.layout.item_fount_video);

@@ -38,8 +38,9 @@
         <activity android:name=".ui.PwdLoginActivity" />
         <activity android:name=".ui.VerifyPhoneActivity" />
         <activity android:name=".home.detail.HomeDetailActivity" />
-        <activity android:name=".NoteDetailsActivity" />
-        <activity android:name=".VideoDetailsActivity"></activity>
+        <activity android:name=".ui.NoteDetailsActivity" />
+        <activity android:name=".ui.VideoDetailsActivity" />
+        <activity android:name=".ui.MoreReplyActivity"></activity>
     </application>
 
 </manifest>

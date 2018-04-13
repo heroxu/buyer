@@ -9,7 +9,7 @@ import java.util.List;
  * Created by 伍振飞 on 2018/3/15 17:44
  * E-Mail Address：wuzf2012@sina.com
  */
-public class FountBean extends MultiItemEntity {
+public class FountBean implements MultiItemEntity {
     public static final int VIDEO_TYPE = 1;//视频
     public static final int NOTES_TYPE = 2;//笔记
     public static final int BANNER_TYPE = 3; //轮播

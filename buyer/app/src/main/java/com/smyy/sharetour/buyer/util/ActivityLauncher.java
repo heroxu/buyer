@@ -3,7 +3,10 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
-import com.smyy.sharetour.buyer.NoteDetailsActivity;
+import com.smyy.sharetour.buyer.ui.MoreReplyActivity;
+import com.smyy.sharetour.buyer.ui.NoteDetailsActivity;
+import com.smyy.sharetour.buyer.ui.VideoDetailsActivity;
+import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
 import com.smyy.sharetour.buyer.ui.LoginActivity;
@@ -91,6 +94,21 @@ public class ActivityLauncher {
      */
     public static void viewNoteDetailsActivity(Context context) {
         Intent intent = new Intent(context, NoteDetailsActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到视频详情
+     */
+    public static void viewVideoDetailsActivity(Context context) {
+        Intent intent = new Intent(context, VideoDetailsActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到更多回复
+     */
+    public static void viewMoreReplyActivityty(Context context, CommentsBean.MainList data) {
+        Intent intent = new Intent(context, MoreReplyActivity.class);
+        intent.putExtra(MoreReplyActivity.BUNDLE_REPLY_DATA,data);
         context.startActivity(intent);
     }
 

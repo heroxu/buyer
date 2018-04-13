@@ -10,7 +10,7 @@ import java.util.List;
  * Created by 伍振飞 on 2018/3/23 15:22
  * E-Mail Address：wuzf2012@sina.com
  */
-public class IndexSubclassAdapter extends BaseMultiItemQuickAdapter<Test1Bean> {
+public class IndexSubclassAdapter extends BaseMultiItemQuickAdapter<Test1Bean,BaseViewHolder> {
     public IndexSubclassAdapter(List<Test1Bean> data) {
         super(data);
     }

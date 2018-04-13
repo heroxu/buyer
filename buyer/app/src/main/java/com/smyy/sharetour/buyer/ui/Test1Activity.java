@@ -45,7 +45,6 @@ public class Test1Activity extends BaseMvpActivity {
         data.add(new Test1Bean("夏木悠悠","广州市天河区","http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png"));
         data.add(new Test1Bean("夏木悠悠","广州市天河区","http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png"));
         recyclerView.setAdapter(new Test1Adapter(data));
-
     }
 
     @Override

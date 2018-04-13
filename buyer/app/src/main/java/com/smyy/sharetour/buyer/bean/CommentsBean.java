@@ -13,10 +13,10 @@ import java.util.List;
  * Created by 伍振飞 on 2018/3/15 17:44
  * E-Mail Address：wuzf2012@sina.com
  */
-public class CommentsBean extends MultiItemEntity {
-    public static int SINGLE_CHAT = 0;
-    public static int MORE_CHAT = 1;
-    public static int MORE_REPLY = 2;
+public class CommentsBean implements MultiItemEntity {
+    public static final int SINGLE_CHAT = 0;
+    public static final int MORE_CHAT = 1;
+    public static final int MORE_REPLY = 2;
     private List<MainList> mainList;
 
     public List<MainList> getMainList() {
@@ -27,7 +27,12 @@ public class CommentsBean extends MultiItemEntity {
         this.mainList = mainList;
     }
 
-    public class MainList {
+    @Override
+    public int getItemType() {
+        return 0;
+    }
+
+    public class MainList implements MultiItemEntity {
         private String imageUrl;
 
         private String name;
@@ -102,9 +107,13 @@ public class CommentsBean extends MultiItemEntity {
             }
         }
 
+        @Override
+        public int getItemType() {
+            return 0;
+        }
     }
 
-    public class CsList extends MultiItemEntity {
+    public class CsList implements MultiItemEntity {
 
         private String TImageUrl;
 

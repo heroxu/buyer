@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">buyer</string>
+    <string name="app_name">蜜罐</string>
     <!-- 异常信息 -->
     <string name="no_network_message">当前网络连接不可用</string>
     <string name="error_network_message">网络连接异常</string>
