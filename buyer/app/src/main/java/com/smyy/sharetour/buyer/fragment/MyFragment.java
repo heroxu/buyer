@@ -14,14 +14,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
-import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-import com.smyy.sharetour.buyer.my.model.UserInfo;
-import com.smyy.sharetour.buyer.my.view.AccountSettingsActivity;
-import com.smyy.sharetour.buyer.my.view.SettingsActivity;
+import com.smyy.sharetour.buyer.my.AccountSettingsActivity;
+import com.smyy.sharetour.buyer.my.SettingsActivity;
+import com.smyy.sharetour.buyer.my.base.MyBaseMvpFragment;
+import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.my.model.UserModel;
+import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.RedImageView;
 
 import java.io.File;
@@ -33,7 +35,7 @@ import butterknife.OnClick;
  * Created by hasee on 2018/3/15.
  */
 
-public class MyFragment extends BaseMvpFragment {
+public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUserContract.View {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.nsv_my_main)
@@ -53,14 +55,7 @@ public class MyFragment extends BaseMvpFragment {
     @BindView(R.id.riv_my_dispute)
     RedImageView rivDispute;
 
-    private UserInfo mUserInfo;
     private int toolbarHeight;
-
-
-    @Override
-    protected IBasePresenter createPresenter() {
-        return null;
-    }
 
     @Override
     protected int getLayoutId() {
@@ -109,18 +104,7 @@ public class MyFragment extends BaseMvpFragment {
     }
 
     private void initUserInfo() {
-        mUserInfo = MyApplication.getApplication().getUserInfo();
-
-        tvUsername.setText(mUserInfo.getUsername());
-        tvUserIntro.setText(mUserInfo.getUserIntro());
-
-        String filePath = mUserInfo.getAvatar();
-        if (TextUtils.isEmpty(filePath)) {
-            Glide.with(this).load(R.mipmap.user_avatar).into(ivAvatar);
-        } else {
-            File file = new File(filePath);
-            Glide.with(getContext()).load(file).into(ivAvatar);
-        }
+        mPresenter.getUserInfoCache();
     }
 
     @OnClick({R.id.iv_my_setting, R.id.iv_my_msg, R.id.iv_my_edit_username, R.id.iv_my_avatar,
@@ -197,5 +181,64 @@ public class MyFragment extends BaseMvpFragment {
     @Override
     protected void initStatusBar() {
         setStatusBar(Color.BLACK);
+    }
+
+    @Override
+    protected UserPresenter createPresenter() {
+        return new UserPresenter(this, new UserModel());
+    }
+
+    @Override
+    public void showUserInfo(UserInfoBean userInfo) {
+        String username = userInfo.getUsername();
+        if (!TextUtils.isEmpty(username)) {
+            tvUsername.setText(username);
+        }
+
+        String userIntro = userInfo.getUserIntro();
+        if (!TextUtils.isEmpty(userIntro)) {
+            tvUserIntro.setText(userIntro);
+        }
+
+        String filePath = userInfo.getAvatar();
+        if (TextUtils.isEmpty(filePath)) {
+            Glide.with(this).load(R.mipmap.user_avatar).into(ivAvatar);
+        } else {
+            File file = new File(filePath);
+            Glide.with(getContext()).load(file).into(ivAvatar);
+        }
+
+        int awaitingPaymentCount = userInfo.getAwaitingPaymentOrderCount();
+        if (awaitingPaymentCount > 0) {
+            rivAwaitingPayment.setText(awaitingPaymentCount + "");
+        } else {
+            rivAwaitingPayment.setRedPointVisible(View.INVISIBLE);
+        }
+
+        int awaitingShipmentCount = userInfo.getAwaitingShipmentOrderCount();
+        if (awaitingShipmentCount > 0) {
+            rivAwaitingShipment.setText(awaitingShipmentCount + "");
+        } else {
+            rivAwaitingShipment.setRedPointVisible(View.INVISIBLE);
+        }
+
+        int awaitingConfirmationCount = userInfo.getAwaitingConfirmationOrderCount();
+        if (awaitingConfirmationCount > 0) {
+            rivAwaitingConfirmation.setText(awaitingConfirmationCount + "");
+        } else {
+            rivAwaitingConfirmation.setRedPointVisible(View.INVISIBLE);
+        }
+
+        int disputeCount = userInfo.getDisputeOrderCount();
+        if (disputeCount > 0) {
+            rivDispute.setText(disputeCount + "");
+        } else {
+            rivDispute.setRedPointVisible(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void finish() {
+
     }
 }

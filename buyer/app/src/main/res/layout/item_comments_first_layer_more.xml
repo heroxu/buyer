@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_comments_first_photo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/user_avatar" />
+
+        <TextView
+            android:id="@+id/tv_comments_first_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/iv_comments_first_photo"
+            android:gravity="center"
+            android:text="遥遥-deer"
+            android:textColor="@color/txt_main"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_comments_first_name"
+            android:layout_marginLeft="42dp">
+
+            <TextView
+                android:id="@+id/tv_comments_first_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="10dp"
+                android:text="看起来不错，不知道实际用了会怎样？"
+                android:textColor="@color/txt_main"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_comments_second_reply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_comments_first_content"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11-20"
+                    android:textColor="@color/txt_gray_light"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13sp"
+                    android:layout_toLeftOf="@+id/ll_comments_second_praise"
+                    android:text="回复"
+                    android:textColor="@color/txt_main"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:id="@+id/ll_comments_second_praise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@mipmap/ic_like_nor" />
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12"
+                        android:textColor="@color/txt_main"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_above="@+id/rv_comments_second"
+                android:background="@color/line_divider" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_comments_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_comments_second_reply"
+                android:layout_marginBottom="20dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rv_comments_second"
+                android:background="@color/line_divider" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

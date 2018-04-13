@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BaseRecyclerViewAdapterHelper/library.iml" filepath="$PROJECT_DIR$/BaseRecyclerViewAdapterHelper/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/ImageSelector/ImageSelector.iml" filepath="$PROJECT_DIR$/ImageSelector/ImageSelector.iml" />
       <module fileurl="file://$PROJECT_DIR$/UIFrameLib/UIFrameLib.iml" filepath="$PROJECT_DIR$/UIFrameLib/UIFrameLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

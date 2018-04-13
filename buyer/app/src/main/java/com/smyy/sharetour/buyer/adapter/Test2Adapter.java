@@ -14,7 +14,7 @@ import java.util.List;
  * Created by 伍振飞 on 2018/3/15 17:43
  * E-Mail Address：wuzf2012@sina.com
  */
-public class Test2Adapter extends BaseQuickAdapter<Test2JsonData.Result> {
+public class Test2Adapter extends BaseQuickAdapter<Test2JsonData.Result,BaseViewHolder> {
     public Test2Adapter(List<Test2JsonData.Result> datas) {
         super(R.layout.item_test2, datas);
     }

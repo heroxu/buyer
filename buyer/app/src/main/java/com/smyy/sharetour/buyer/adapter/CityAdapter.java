@@ -13,7 +13,7 @@ import java.util.List;
  * Created by 伍振飞 on 2018/4/9 13:54
  * E-Mail Address：wuzf2012@sina.com
  */
-public class CityAdapter extends BaseMultiItemQuickAdapter<CityBean> {
+public class CityAdapter extends BaseMultiItemQuickAdapter<CityBean,BaseViewHolder> {
     public CityAdapter(Context context, List data) {
         super(data);
         addItemType(0, R.layout.item_city);

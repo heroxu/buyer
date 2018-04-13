@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_share"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/clickItemBackground"
+        android:gravity="center"
+        android:text="分享"
+        android:textColor="@color/txt_main"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_divider" />
+
+    <TextView
+        android:id="@+id/tv_editor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/clickItemBackground"
+        android:gravity="center"
+        android:text="编辑"
+        android:textColor="@color/txt_main"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_divider" />
+    <TextView
+        android:id="@+id/tv_delete"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/clickItemBackground"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@color/dot_red"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/line_divider" />
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/clickItemBackground"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="@color/txt_main"
+        android:textSize="17sp" />
+
+</LinearLayout>

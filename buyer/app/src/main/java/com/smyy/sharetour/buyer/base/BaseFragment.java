@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.tu.loadingdialog.LoadingDailog;
 import com.gyf.barlibrary.ImmersionBar;
 
 import java.lang.reflect.Method;
@@ -28,6 +29,7 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends UmengFragment {
 
     protected Activity mActivity;
+    private LoadingDailog mLoadingDailog;
 
     @Override
     public void onAttach(Context context) {
@@ -178,5 +180,26 @@ public abstract class BaseFragment extends UmengFragment {
      */
     protected void setStatusBar(@ColorInt int statusBarColor) {
         mImmersionBar.fitsSystemWindows(true).statusBarColorInt(statusBarColor).init();
+    }
+
+    public void showProgressDialog() {
+        if (mLoadingDailog == null) {
+            LoadingDailog.Builder loadBuilder = new LoadingDailog.Builder(mActivity)
+                    .setMessage("加载中...")
+                    .setCancelable(false)
+                    .setCancelOutside(false);
+            mLoadingDailog = loadBuilder.create();
+        }
+        try {
+            mLoadingDailog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void hideProgressDialog() {
+        if (mLoadingDailog != null && mLoadingDailog.isShowing()) {
+            mLoadingDailog.dismiss();
+        }
     }
 }

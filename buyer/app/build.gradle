@@ -61,7 +61,6 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.wx.goodview:goodview:1.0.0'
     compile 'com.youth.banner:banner:1.4.9'
@@ -92,8 +91,8 @@ dependencies {
     compile project(path: ':zxing')
     compile project(':wave')
     compile project(':saerchlibrary')
-
     compile project(path: ':ImageSelector')
+    implementation project(':BaseRecyclerViewAdapterHelper')
 }
 
 //如果数据库结构变了就+1 更新数据库

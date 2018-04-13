@@ -83,9 +83,11 @@
     <color name="tag_bg">#F5F5F5</color>
     <color name="tag_txt">#999999</color>
 
+
     <!--评论背景色-->
     <color name="comments_bg">#FCFCFC</color>
 
+    <color name="bg_search">#fff5f5f5</color>
     <!--日期时间选择器-->
     <color name="timepicker_line">#e8e8e8</color>
 </resources>

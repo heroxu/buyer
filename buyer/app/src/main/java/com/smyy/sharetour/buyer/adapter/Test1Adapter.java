@@ -14,7 +14,7 @@ import java.util.List;
  * Created by 伍振飞 on 2018/3/15 17:43
  * E-Mail Address：wuzf2012@sina.com
  */
-public class Test1Adapter extends BaseQuickAdapter<Test1Bean> {
+public class Test1Adapter extends BaseQuickAdapter<Test1Bean,BaseViewHolder> {
     public Test1Adapter(List<Test1Bean> datas) {
         super(R.layout.item_test1, datas);
     }

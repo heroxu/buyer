@@ -14,7 +14,7 @@ import java.util.List;
  * Created by 伍振飞 on 2018/3/15 17:43
  * E-Mail Address：wuzf2012@sina.com
  */
-public class FountImageAdapter extends BaseQuickAdapter<FImage> {
+public class FountImageAdapter extends BaseQuickAdapter<FImage,BaseViewHolder> {
     public FountImageAdapter(List<FImage> datas) {
         super(R.layout.item_fount_notes_images, datas);
     }
