@@ -33,7 +33,7 @@
     <dimen name="txt_size_9">9sp</dimen>
 
 
-    <dimen name="space_size">5dp</dimen>
+    <dimen name="space_size">1dp</dimen>
 
     <!--日期时间选择器-->
     <dimen name="picker_default_text_size">15sp</dimen>
@@ -43,5 +43,7 @@
     <dimen name="picker_line_width">1dp</dimen>
     <dimen name="picker_line_mar">15dp</dimen>
     <dimen name="picker_height">230dp</dimen>
+
+    <dimen name="key_board_height">280dp</dimen>
 
 </resources>

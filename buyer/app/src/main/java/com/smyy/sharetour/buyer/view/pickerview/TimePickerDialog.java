@@ -36,7 +36,7 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
     private TimeWheel mTimeWheel;
     private long mCurrentMillSeconds;
 
-    private static TimePickerDialog newIntance(PickerConfig pickerConfig) {
+    private static TimePickerDialog newInstance(PickerConfig pickerConfig) {
         TimePickerDialog timePickerDialog = new TimePickerDialog();
         timePickerDialog.initialize(pickerConfig);
         return timePickerDialog;
@@ -248,7 +248,7 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
         }
 
         public TimePickerDialog build() {
-            return newIntance(mPickerConfig);
+            return newInstance(mPickerConfig);
         }
 
     }

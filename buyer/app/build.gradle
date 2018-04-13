@@ -93,6 +93,7 @@ dependencies {
     compile project(':saerchlibrary')
     compile project(path: ':ImageSelector')
     implementation project(':BaseRecyclerViewAdapterHelper')
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
 }
 
 //如果数据库结构变了就+1 更新数据库

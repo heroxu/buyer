@@ -20,7 +20,7 @@ public class GridAdapter extends BaseAdapter {
 
     public GridAdapter(List<String> listUrls, Context context) {
         this.listUrls = listUrls;
-        if(listUrls.size() == 7){
+        if(listUrls.size() == 10){
             listUrls.remove(listUrls.size()-1);
         }
         inflater = LayoutInflater.from(context);

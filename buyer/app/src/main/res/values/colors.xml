@@ -90,4 +90,8 @@
     <color name="bg_search">#fff5f5f5</color>
     <!--日期时间选择器-->
     <color name="timepicker_line">#e8e8e8</color>
+
+    <!--自定义价格输入键盘-->
+    <color name="key_ok_color">#1280FA</color>
+    <color name="key_ok_color_pressed">#0174f2</color>
 </resources>

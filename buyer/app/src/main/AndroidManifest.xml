@@ -41,9 +41,10 @@
         <activity android:name=".home.detail.HomeDetailActivity" />
         <activity android:name=".ui.NoteDetailsActivity" />
         <activity android:name=".ui.VideoDetailsActivity" />
-        <activity android:name=".ui.MoreReplyActivity"></activity>
-        <activity
-            android:name=".home.search.HomeSearchActivity"/>
+        <activity android:name=".ui.MoreReplyActivity"/>
+        <activity android:name=".home.search.HomeSearchActivity" />
+        <activity android:name=".publish.SimpleSelectActivity" />
+        <activity android:name=".publish.PublishRequireActivity" />
     </application>
 
 </manifest>

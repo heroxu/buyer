@@ -221,4 +221,10 @@ public class ImagePreviewActivity extends AppCompatActivity {
         setResult(RESULT_OK,intent);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        onDoneClick(false);
+        super.onBackPressed();
+    }
 }
