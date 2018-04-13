@@ -18,6 +18,7 @@ import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.util.StringUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -29,6 +30,7 @@ public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> impl
     Button btnConfirm;
 
     private UserInfoBean mUserInfo;
+    private String mUserIntro;
 
     @Override
     protected int getLayoutId() {
@@ -61,7 +63,8 @@ public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> impl
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!TextUtils.isEmpty(s) && !TextUtils.isEmpty(s.toString().trim())) {
+                mUserIntro = StringUtil.trim(etUserIntro);
+                if (!TextUtils.isEmpty(mUserIntro) && StringUtil.checkUserIntro(mUserIntro)) {
                     btnConfirm.setEnabled(true);
                 } else {
                     btnConfirm.setEnabled(false);
@@ -76,7 +79,7 @@ public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> impl
         switch (view.getId()) {
 
             case R.id.btn_confirm:
-                mPresenter.setUserIntro(etUserIntro.getText().toString().trim());
+                mPresenter.setUserIntro(mUserIntro);
                 break;
 
             default:

@@ -11,6 +11,7 @@
     <EditText
         android:id="@+id/et_my_user_intro"
         style="@style/WideItem.EditText"
+        android:maxLength="100"
         android:hint="@string/please_input_user_intro" />
 
     <Button

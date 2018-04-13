@@ -23,7 +23,7 @@ public class StringUtil {
         return "";
     }
 
-    public static boolean checkNickName(String name) {
+    public static boolean checkNickname(String name) {
         if (!isEmpty(name) && name.length() <= 12) {
             return true;
         }

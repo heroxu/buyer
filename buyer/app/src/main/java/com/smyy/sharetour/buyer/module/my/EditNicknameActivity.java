@@ -18,6 +18,7 @@ import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.util.StringUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -27,6 +28,7 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
     EditText etNickname;
     @BindView(R.id.btn_confirm)
     Button btnConfirm;
+    private String mNickname;
 
     @Override
     protected int getLayoutId() {
@@ -59,7 +61,8 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!TextUtils.isEmpty(s) && !TextUtils.isEmpty(s.toString().trim())) {
+                mNickname = StringUtil.trim(etNickname);
+                if (!TextUtils.isEmpty(mNickname) && StringUtil.checkNickname(mNickname)) {
                     btnConfirm.setEnabled(true);
                 } else {
                     btnConfirm.setEnabled(false);
@@ -74,7 +77,7 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
         switch (view.getId()) {
 
             case R.id.btn_confirm:
-                mPresenter.setUserName(etNickname.getText().toString().trim());
+                mPresenter.setUserName(mNickname);
                 break;
 
             default:
