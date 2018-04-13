@@ -187,9 +187,8 @@
                     style="@style/WideItemMiddleRightText"
                     />
 
-                <CheckBox style="@style/WideItemRightArrow"
+                <CheckBox style="@style/CommonToggleButton"
                     android:id="@+id/identify_send"
-                    android:button="@drawable/toggle_bg_selector"
                     />
             </LinearLayout>
 

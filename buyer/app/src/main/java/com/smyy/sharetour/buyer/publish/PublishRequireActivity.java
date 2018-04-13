@@ -23,6 +23,7 @@ import com.smyy.sharetour.buyer.view.keyboard.MyKeyBoardDialog;
 import com.smyy.sharetour.buyer.view.pickerview.TimePickerDialog;
 import com.smyy.sharetour.buyer.view.pickerview.data.Type;
 import com.smyy.sharetour.buyer.view.pickerview.listener.OnDateSetListener;
+import com.yongchun.library.view.ImagePreviewActivity;
 import com.yongchun.library.view.ImageSelectorActivity;
 
 import java.text.SimpleDateFormat;
@@ -157,12 +158,19 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
                     ImageSelectorActivity.start(PublishRequireActivity.this, 10-imagePaths.size(),
                             ImageSelectorActivity.MODE_MULTIPLE, true,true,false, 0);
                 }else{
+                    List<String> temps = new ArrayList<>();
+                    temps.addAll(imagePaths);
+                    if(imagePaths.contains("paizhao"))
+                    {
+                        temps.remove(imagePaths.size()-1);
+                    }
+                    ImagePreviewActivity.startPreview(PublishRequireActivity.this, temps, position);
                 }
             }
         });
 
         imagePaths.add("paizhao");
-        gridAdapter = new GridAdapter(imagePaths, getApplicationContext());
+        gridAdapter = new GridAdapter(imagePaths, getApplicationContext(),null);
         gridView.setAdapter(gridAdapter);
 
         mDialogYearMonthDay = new TimePickerDialog.Builder()
@@ -211,7 +219,18 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
         }
         paths.add("paizhao");
         imagePaths.addAll(paths);
-        gridAdapter  = new GridAdapter(imagePaths, getApplicationContext());
+        gridAdapter  = new GridAdapter(imagePaths, getApplicationContext(),new GridAdapter.ItemDelClickListener() {
+            @Override
+            public void itemDelClickListener(View v, int position) {
+                if(imagePaths.size()==9&&!imagePaths.contains("paizhao")){
+                    imagePaths.remove(position);
+                    imagePaths.add("paizhao");
+                } else {
+                    imagePaths.remove(position);
+                }
+                gridAdapter.notifyDataSetChanged();
+            }
+        });
         gridView.setAdapter(gridAdapter);
         if(isValidate()) publish.setEnabled(true);
     }

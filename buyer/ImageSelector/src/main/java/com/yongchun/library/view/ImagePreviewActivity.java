@@ -33,6 +33,7 @@ public class ImagePreviewActivity extends AppCompatActivity {
     public static final String EXTRA_PREVIEW_SELECT_LIST = "previewSelectList";
     public static final String EXTRA_MAX_SELECT_NUM = "maxSelectNum";
     public static final String EXTRA_POSITION = "position";
+    public static final String EXTRA_ONLY_PREVIEW = "onlyPreview";
 
     public static final String OUTPUT_LIST = "outputList";
     public static final String OUTPUT_ISDONE = "isDone";
@@ -60,6 +61,21 @@ public class ImagePreviewActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_PREVIEW_SELECT_LIST, (ArrayList) selectImages);
         intent.putExtra(EXTRA_POSITION, position);
         intent.putExtra(EXTRA_MAX_SELECT_NUM, maxSelectNum);
+        intent.putExtra(EXTRA_ONLY_PREVIEW, false);
+        context.startActivityForResult(intent, REQUEST_PREVIEW);
+    }
+
+    public static void startPreview(Activity context, List<String> images, int position) {
+        List<LocalMedia> tempImages = new ArrayList<>();
+        for(String tmp:images){
+            tempImages.add(new LocalMedia(tmp));
+        }
+        Intent intent = new Intent(context, ImagePreviewActivity.class);
+        intent.putExtra(EXTRA_PREVIEW_LIST, (ArrayList) tempImages);
+        intent.putExtra(EXTRA_PREVIEW_SELECT_LIST, (ArrayList) tempImages);
+        intent.putExtra(EXTRA_POSITION, position);
+        intent.putExtra(EXTRA_MAX_SELECT_NUM, 0);
+        intent.putExtra(EXTRA_ONLY_PREVIEW, true);
         context.startActivityForResult(intent, REQUEST_PREVIEW);
     }
 
@@ -91,6 +107,12 @@ public class ImagePreviewActivity extends AppCompatActivity {
         onSelectNumChange();
 
         checkboxSelect = (CheckBox) findViewById(R.id.checkbox_select);
+
+        if(getIntent().getBooleanExtra(EXTRA_ONLY_PREVIEW, false)){
+            doneText.setVisibility(View.GONE);
+            checkboxSelect.setVisibility(View.GONE);
+        }
+
         onImageSwitch(position);
 
 

@@ -18,13 +18,14 @@ public class GridAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private Context mContext;
 
-    public GridAdapter(List<String> listUrls, Context context) {
+    public GridAdapter(List<String> listUrls, Context context, ItemDelClickListener itemDelClickListener) {
         this.listUrls = listUrls;
         if(listUrls.size() == 10){
             listUrls.remove(listUrls.size()-1);
         }
         inflater = LayoutInflater.from(context);
         mContext = context;
+        this.itemDelClickListener = itemDelClickListener;
     }
 
     public int getCount(){
@@ -41,20 +42,29 @@ public class GridAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.publish_grid_item, parent,false);
             holder.image = (ImageView) convertView.findViewById(R.id.imageView);
+            holder.del = (ImageView) convertView.findViewById(R.id.del_pic);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder)convertView.getTag();
         }
-
+        holder.del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (itemDelClickListener != null){
+                    itemDelClickListener.itemDelClickListener(v, position);
+                }
+            }
+        });
         final String path=listUrls.get(position);
         if (path.equals("paizhao")){
             holder.image.setImageResource(R.mipmap.ic_add_to);
+            holder.del.setVisibility(View.GONE);
         }else {
             Glide.with(mContext)
                     .load(path)
@@ -68,5 +78,13 @@ public class GridAdapter extends BaseAdapter {
     }
     class ViewHolder {
         ImageView image;
+        ImageView del;
+    }
+
+    private ItemDelClickListener itemDelClickListener;
+
+    public interface ItemDelClickListener {
+
+        void itemDelClickListener(View v, int position);
     }
 }
