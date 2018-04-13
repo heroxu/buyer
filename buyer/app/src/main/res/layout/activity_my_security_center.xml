@@ -26,7 +26,7 @@
 
                 <TextView
                     android:id="@+id/tv_my_linked_phone"
-                    style="@style/WideItemMiddleRightText"
+                    style="@style/WideItemMiddleRight.Text.Ellipsize"
                     android:text="@string/phone_not_linked_yet" />
 
                 <ImageView style="@style/WideItemRightArrow" />

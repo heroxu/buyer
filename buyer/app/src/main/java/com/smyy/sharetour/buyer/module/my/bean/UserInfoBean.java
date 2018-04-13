@@ -1,10 +1,10 @@
-package com.smyy.sharetour.buyer.my.bean;
+package com.smyy.sharetour.buyer.module.my.bean;
 
 import java.io.Serializable;
 
 
 public class UserInfoBean implements Serializable {
-    private String phone;
+    private String linkedPhoneNum;
     private String username;
     private String userIntro;
     private String avatar;
@@ -14,7 +14,7 @@ public class UserInfoBean implements Serializable {
     private int disputeOrderCount;
 
     public UserInfoBean(String phone, String username, String userIntro, String avatar, int awaitingPaymentOrderCount, int awaitingShipmentOrderCount, int awaitingConfirmationOrderCount, int disputeOrderCount) {
-        this.phone = phone;
+        this.linkedPhoneNum = phone;
         this.username = username;
         this.userIntro = userIntro;
         this.avatar = avatar;
@@ -48,12 +48,12 @@ public class UserInfoBean implements Serializable {
         this.avatar = avatar;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getLinkedPhoneNum() {
+        return linkedPhoneNum;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setLinkedPhoneNum(String linkedPhoneNum) {
+        this.linkedPhoneNum = linkedPhoneNum;
     }
 
     public int getAwaitingPaymentOrderCount() {
@@ -94,7 +94,7 @@ public class UserInfoBean implements Serializable {
                 "username='" + username + '\'' +
                 ", userIntro='" + userIntro + '\'' +
                 ", avatar='" + avatar + '\'' +
-                ", phone='" + phone + '\'' +
+                ", linkedPhoneNum='" + linkedPhoneNum + '\'' +
                 ", awaitingPaymentOrderCount=" + awaitingPaymentOrderCount +
                 ", awaitingShipmentOrderCount=" + awaitingShipmentOrderCount +
                 ", awaitingConfirmationOrderCount=" + awaitingConfirmationOrderCount +

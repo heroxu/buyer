@@ -93,10 +93,10 @@ public abstract class BaseActivity extends UmengActivity {
         }
     }
 
-    public void showProgressDialog() {
+    public void showProgressDialog(String msg) {
         if (mLoadingDailog == null) {
             LoadingDailog.Builder loadBuilder = new LoadingDailog.Builder(this)
-                    .setMessage("加载中...")
+                    .setMessage(msg)
                     .setCancelable(false)
                     .setCancelOutside(false);
             mLoadingDailog = loadBuilder.create();
@@ -106,6 +106,15 @@ public abstract class BaseActivity extends UmengActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void showSuccessDialog(String msg) {//todo
+
+
+    }
+
+    public void showProgressDialog() {
+        showProgressDialog("加载中...");
     }
 
     public void hideProgressDialog() {

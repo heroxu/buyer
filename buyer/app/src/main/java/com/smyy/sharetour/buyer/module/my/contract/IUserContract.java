@@ -1,8 +1,8 @@
-package com.smyy.sharetour.buyer.my.contract;
+package com.smyy.sharetour.buyer.module.my.contract;
 
-import com.smyy.sharetour.buyer.my.base.MyBasePresenter;
-import com.smyy.sharetour.buyer.my.base.MyIBaseView;
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
+import com.smyy.sharetour.buyer.module.my.base.MyIBaseView;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 
 public interface IUserContract {
     interface View extends MyIBaseView {
@@ -17,12 +17,12 @@ public interface IUserContract {
         /**
          * 从网络获取用户信息
          */
-        public abstract void getUserInfo();
+        public abstract void getUserInfoFromNet();
 
         /**
          * 从缓存获取用户信息
          */
-        public abstract void getUserInfoCache();
+        public abstract void getUserInfo();
 
         public abstract void setUserName(String userName);
 
@@ -33,12 +33,12 @@ public interface IUserContract {
         /**
          * 从网络获取用户信息
          */
-        UserInfoBean getUserInfo();
+        UserInfoBean getUserInfoFromNet();
 
         /**
          * 从缓存获取用户信息
          */
-        UserInfoBean getUserInfoCache();
+        UserInfoBean getUserInfo();
 
         /**
          * 将用户信息缓存到本地
@@ -48,5 +48,7 @@ public interface IUserContract {
         boolean setUserName(String userName);
 
         boolean setUserIntro(String userIntro);
+
+        boolean setLinkedPhone(String linkedPhoneNum);
     }
 }

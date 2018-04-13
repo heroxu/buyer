@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my.base;
+package com.smyy.sharetour.buyer.module.my.base;
 
 /**
  * Created by justin on 17/9/9.
@@ -6,6 +6,7 @@ package com.smyy.sharetour.buyer.my.base;
 
 public interface MyIBaseView {
     void showProgressDialog();
+    void showProgressDialog(String msg);
 
     void hideProgressDialog();
 

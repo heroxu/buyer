@@ -50,7 +50,7 @@
 
                 <TextView
                     android:id="@+id/tv_my_nickname"
-                    style="@style/WideItemMiddleRightText"
+                    style="@style/WideItemMiddleRight.Text.Ellipsize"
                     android:textColor="@color/txt_gray_dark"
                     tools:text="张三" />
 
@@ -71,7 +71,7 @@
 
                 <TextView
                     android:id="@+id/tv_my_user_intro"
-                    style="@style/WideItemMiddleRightText"
+                    style="@style/WideItemMiddleRight.Text.Ellipsize"
                     android:text="@string/please_introduce_yourself"
                     tools:text="一二三四五六七八九十十一十二十三十四十五十六十七" />
 

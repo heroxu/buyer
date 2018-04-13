@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my;
+package com.smyy.sharetour.buyer.module.my;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,18 +9,23 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
-import com.smyy.sharetour.buyer.my.contract.IUserContract;
-import com.smyy.sharetour.buyer.my.model.UserModel;
-import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.module.my.model.UserModel;
+import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.util.StringUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> implements IUserContract.View {
+
+    private static final int REQ_LINK_PHONE = 1;
+
     @BindView(R.id.tv_my_linked_phone)
     TextView tvLinkedPhone;
+    private String mLinkedPhoneNum;
 
     @Override
     protected int getLayoutId() {
@@ -34,18 +39,7 @@ public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> imp
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        initUserInfo();
-    }
-
-    private void initUserInfo() {
-        mPresenter.getUserInfoCache();
+        mPresenter.getUserInfo();
     }
 
     @OnClick({R.id.lay_my_linked_phone, R.id.tv_my_reset_login_password, R.id.tv_my_pay_password})
@@ -53,7 +47,11 @@ public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> imp
         switch (view.getId()) {
 
             case R.id.lay_my_linked_phone:
-
+                if (TextUtils.isEmpty(mLinkedPhoneNum)) {
+                    startActivityForResult(LinkPhoneActivity.class, REQ_LINK_PHONE);
+                } else {
+                    //TODO
+                }
                 break;
 
             case R.id.tv_my_reset_login_password:
@@ -68,17 +66,32 @@ public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> imp
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQ_LINK_PHONE:
+                    mPresenter.getUserInfo();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    @Override
     protected UserPresenter createPresenter() {
         return new UserPresenter(this, new UserModel());
     }
 
     @Override
     public void showUserInfo(UserInfoBean userInfo) {
-        String phone = userInfo.getPhone();
-        if (TextUtils.isEmpty(phone)) {
+        mLinkedPhoneNum = userInfo.getLinkedPhoneNum();
+        if (TextUtils.isEmpty(mLinkedPhoneNum)) {
             tvLinkedPhone.setText(R.string.phone_not_linked_yet);
         } else {
-            tvLinkedPhone.setText(phone);
+            tvLinkedPhone.setText(StringUtil.getPhoneNum(mLinkedPhoneNum));
         }
     }
 }

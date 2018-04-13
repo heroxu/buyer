@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my;
+package com.smyy.sharetour.buyer.module.my;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,40 +13,42 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
-import com.smyy.sharetour.buyer.my.contract.IUserContract;
-import com.smyy.sharetour.buyer.my.model.UserModel;
-import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.module.my.model.UserModel;
+import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> implements IUserContract.View {
-    @BindView(R.id.et_my_nickname)
-    EditText etNickname;
+public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> implements IUserContract.View {
+    @BindView(R.id.et_my_user_intro)
+    EditText etUserIntro;
     @BindView(R.id.btn_confirm)
     Button btnConfirm;
 
+    private UserInfoBean mUserInfo;
+
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_my_edit_nickname;
+        return R.layout.activity_my_edit_user_intro;
     }
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        title.setText(getString(R.string.nickname));
+        title.setText(getString(R.string.user_intro));
     }
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-        mPresenter.getUserInfoCache();
+        mPresenter.getUserInfo();
 
         setListener();
     }
 
     private void setListener() {
-        etNickname.addTextChangedListener(new TextWatcher() {
+        etUserIntro.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -74,7 +76,7 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
         switch (view.getId()) {
 
             case R.id.btn_confirm:
-                mPresenter.setUserName(etNickname.getText().toString().trim());
+                mPresenter.setUserIntro(etUserIntro.getText().toString().trim());
                 break;
 
             default:
@@ -89,9 +91,9 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
 
     @Override
     public void showUserInfo(UserInfoBean userInfo) {
-        String username = userInfo.getUsername();
-        if (!TextUtils.isEmpty(username)) {
-            etNickname.setText(username.trim());
+        String userIntro = userInfo.getUserIntro();
+        if (!TextUtils.isEmpty(userIntro)) {
+            etUserIntro.setText(userIntro.trim());
         }
     }
 }

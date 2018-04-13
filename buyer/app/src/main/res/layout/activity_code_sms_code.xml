@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background"
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/WideItem">
+
+        <TextView
+            style="@style/WideItemLeftText"
+            android:text="验证码：" />
+
+        <EditText
+            android:id="@+id/et_code_input_code"
+            style="@style/WideItemMiddleRight.EditText"
+            android:hint="请输入验证码"
+            android:maxLength="6" />
+
+        <TextView
+            android:id="@+id/tv_code_get_code"
+            style="@style/WideItemRightArrow"
+            android:text="获取验证码"
+            android:textColor="@color/tv_code_sms_txt_selector" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:text="为了确保账号安全，我们将向您发送短信验证码"
+        android:textColor="@color/txt_gray"
+        android:textSize="@dimen/txt_size_13" />
+
+    <Button
+        android:id="@+id/btn_confirm"
+        style="@style/CommonButton"
+        android:text="@string/confirm" />
+</LinearLayout>

@@ -8,6 +8,8 @@
 
     <string name="loading_msg_wait">请稍候…</string>
     <string name="save">保存</string>
+    <string name="confirm">确定</string>
+    <string name="next">下一步</string>
 
     <string name="main_tab_index">首页</string>
     <string name="main_tab_found">发现</string>

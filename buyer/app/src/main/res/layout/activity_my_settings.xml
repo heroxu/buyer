@@ -43,7 +43,7 @@
 
                 <TextView
                     android:id="@+id/tv_my_current_theme"
-                    style="@style/WideItemMiddleRightText"
+                    style="@style/WideItemMiddleRight.Text.Ellipsize"
                     tools:text="主题2" />
 
                 <ImageView style="@style/WideItemRightArrow" />
@@ -62,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/tv_my_cache_size"
-                    style="@style/WideItemMiddleRightText"
+                    style="@style/WideItemMiddleRight.Text.Ellipsize"
                     android:textColor="@color/txt_gray_dark"
                     tools:text="120MB" />
             </LinearLayout>
@@ -80,7 +80,7 @@
 
                 <TextView
                     android:id="@+id/tv_my_version_code"
-                    style="@style/WideItemMiddleRightText"
+                    style="@style/WideItemMiddleRight.Text.Ellipsize"
                     tools:text="v1.0.0" />
 
                 <ImageView style="@style/WideItemRightArrow" />

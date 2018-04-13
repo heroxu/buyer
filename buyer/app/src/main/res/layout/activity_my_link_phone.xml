@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background"
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/WideItem">
+
+        <TextView
+            android:id="@+id/tv_my_international_code"
+            style="@style/WideItemLeftText"
+            android:drawablePadding="5dp"
+            android:drawableRight="@mipmap/ic_phone_drop_down"
+            android:textSize="@dimen/txt_size_17"
+            tools:text="+86" />
+
+        <EditText
+            android:id="@+id/et_my_phone_number"
+            style="@style/WideItemMiddleRight.EditText"
+            android:hint="请输入手机号码" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        style="@style/CommonButton"
+        android:text="@string/next" />
+</LinearLayout>
