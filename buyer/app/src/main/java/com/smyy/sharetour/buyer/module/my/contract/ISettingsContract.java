@@ -1,11 +1,9 @@
-package com.smyy.sharetour.buyer.my.contract;
+package com.smyy.sharetour.buyer.module.my.contract;
 
 import android.app.Application;
-import android.content.Context;
 
-import com.smyy.sharetour.buyer.my.base.MyBasePresenter;
-import com.smyy.sharetour.buyer.my.base.MyIBaseView;
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
+import com.smyy.sharetour.buyer.module.my.base.MyIBaseView;
 
 public interface ISettingsContract {
     interface View extends MyIBaseView {

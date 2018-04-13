@@ -1,14 +1,14 @@
-package com.smyy.sharetour.buyer.my.model;
+package com.smyy.sharetour.buyer.module.my.model;
 
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.SPConfig;
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
-import com.smyy.sharetour.buyer.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 
 public class UserModel implements IUserContract.Model {
     @Override
-    public UserInfoBean getUserInfo() {
+    public UserInfoBean getUserInfoFromNet() {
         UserInfoBean userInfo = new UserInfoBean("", "悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
                 1, 2, 8, 0);
         saveUserInfo(userInfo);
@@ -16,7 +16,7 @@ public class UserModel implements IUserContract.Model {
     }
 
     @Override
-    public UserInfoBean getUserInfoCache() {
+    public UserInfoBean getUserInfo() {
         MyApplication application = MyApplication.getApplication();
         if (application == null) return null;
         UserInfoBean userInfo = application.getUserInfo();
@@ -24,7 +24,7 @@ public class UserModel implements IUserContract.Model {
             userInfo = new SharePreferenceUtil(application, SPConfig.USER_CACHE)
                     .getBeanValue(SPConfig.USER_INFO, UserInfoBean.class);
             if (userInfo == null) {
-                userInfo = getUserInfo();
+                userInfo = getUserInfoFromNet();
             }
         }
         return userInfo;
@@ -43,7 +43,7 @@ public class UserModel implements IUserContract.Model {
     public boolean setUserName(String userName) {
         MyApplication application = MyApplication.getApplication();
         if (application == null) return false;
-        UserInfoBean userInfo = getUserInfoCache();
+        UserInfoBean userInfo = getUserInfo();
         userInfo.setUsername(userName);
         application.setUserInfo(userInfo);
         return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
@@ -54,8 +54,19 @@ public class UserModel implements IUserContract.Model {
     public boolean setUserIntro(String userIntro) {
         MyApplication application = MyApplication.getApplication();
         if (application == null) return false;
-        UserInfoBean userInfo = getUserInfoCache();
+        UserInfoBean userInfo = getUserInfo();
         userInfo.setUserIntro(userIntro);
+        application.setUserInfo(userInfo);
+        return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
+                .writeBeanValue(SPConfig.USER_INFO, userInfo);
+    }
+
+    @Override
+    public boolean setLinkedPhone(String linkedPhoneNum) {
+        MyApplication application = MyApplication.getApplication();
+        if (application == null) return false;
+        UserInfoBean userInfo = getUserInfo();
+        userInfo.setLinkedPhoneNum(linkedPhoneNum);
         application.setUserInfo(userInfo);
         return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
                 .writeBeanValue(SPConfig.USER_INFO, userInfo);

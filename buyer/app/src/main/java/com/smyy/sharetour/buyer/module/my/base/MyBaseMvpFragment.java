@@ -1,24 +1,29 @@
-package com.smyy.sharetour.buyer.my.base;
+package com.smyy.sharetour.buyer.module.my.base;
 
+import android.os.Bundle;
 
+import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.util.ToastUtils;
-import com.smyy.sharetour.uiframelib.BaseActivity;
 
 
-public abstract class MyBaseMvpActivity<T extends MyBasePresenter> extends BaseActivity {
+/**
+ * Created by justin on 17/9/9.
+ */
+
+public abstract class MyBaseMvpFragment<T extends MyBasePresenter> extends BaseFragment {
 
     protected T mPresenter;
 
     @Override
-    protected void beforeInitData() {
-        super.beforeInitData();
+    public void onActivityCreated(Bundle savedInstanceState) {
         mPresenter = createPresenter();
+        super.onActivityCreated(savedInstanceState);
     }
 
     protected abstract T createPresenter();
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         if (mPresenter != null) {
             mPresenter.unBind();
         }
@@ -32,4 +37,5 @@ public abstract class MyBaseMvpActivity<T extends MyBasePresenter> extends BaseA
     public void showToast(int strRes) {
         ToastUtils.showToast(strRes);
     }
+
 }

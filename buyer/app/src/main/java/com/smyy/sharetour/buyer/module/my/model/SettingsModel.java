@@ -1,8 +1,8 @@
-package com.smyy.sharetour.buyer.my.model;
+package com.smyy.sharetour.buyer.module.my.model;
 
 import android.app.Application;
 
-import com.smyy.sharetour.buyer.my.contract.ISettingsContract;
+import com.smyy.sharetour.buyer.module.my.contract.ISettingsContract;
 import com.smyy.sharetour.buyer.util.CacheUtils;
 
 public class SettingsModel implements ISettingsContract.Model {

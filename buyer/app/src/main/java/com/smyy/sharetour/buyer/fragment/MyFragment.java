@@ -15,25 +15,20 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.my.AccountSettingsActivity;
-import com.smyy.sharetour.buyer.my.SettingsActivity;
-import com.smyy.sharetour.buyer.my.base.MyBaseMvpFragment;
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
-import com.smyy.sharetour.buyer.my.contract.IUserContract;
-import com.smyy.sharetour.buyer.my.model.UserModel;
-import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
+import com.smyy.sharetour.buyer.module.my.SettingsActivity;
+import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpFragment;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.module.my.model.UserModel;
+import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
-import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.RedImageView;
 
 import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-/**
- * Created by hasee on 2018/3/15.
- */
 
 public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUserContract.View {
     @BindView(R.id.toolbar)
@@ -104,7 +99,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
     }
 
     private void initUserInfo() {
-        mPresenter.getUserInfoCache();
+        mPresenter.getUserInfo();
     }
 
     @OnClick({R.id.iv_my_setting, R.id.iv_my_msg, R.id.iv_my_edit_username, R.id.iv_my_avatar,

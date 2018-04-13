@@ -1,7 +1,7 @@
-package com.smyy.sharetour.buyer.my.presenter;
+package com.smyy.sharetour.buyer.module.my.presenter;
 
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
-import com.smyy.sharetour.buyer.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -17,12 +17,12 @@ public class UserPresenter extends IUserContract.Presenter {
     }
 
     @Override
-    public void getUserInfo() {
+    public void getUserInfoFromNet() {
         Observable.create(new ObservableOnSubscribe<UserInfoBean>() {
             @Override
             public void subscribe(ObservableEmitter<UserInfoBean> e) throws Exception {
                 if (mModel != null) {
-                    UserInfoBean userInfo = mModel.getUserInfo();
+                    UserInfoBean userInfo = mModel.getUserInfoFromNet();
                     e.onNext(userInfo);
                     e.onComplete();
                 }
@@ -59,12 +59,12 @@ public class UserPresenter extends IUserContract.Presenter {
     }
 
     @Override
-    public void getUserInfoCache() {
+    public void getUserInfo() {
         Observable.create(new ObservableOnSubscribe<UserInfoBean>() {
             @Override
             public void subscribe(ObservableEmitter<UserInfoBean> e) throws Exception {
                 if (mModel != null) {
-                    UserInfoBean userInfo = mModel.getUserInfoCache();
+                    UserInfoBean userInfo = mModel.getUserInfo();
                     e.onNext(userInfo);
                     e.onComplete();
                 }

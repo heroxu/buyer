@@ -64,11 +64,12 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
+    <!--该控件本身作为一个WideItem-->
     <style name="WideItem.Text">
         <item name="android:textColor">@color/txt_main</item>
         <item name="android:textSize">@dimen/txt_size_15</item>
     </style>
-    <!--该控件本身作为一个WideItem-->
+
     <style name="WideItem.EditText" parent="WideItem.Text">
         <item name="android:background">@color/white</item>
     </style>
@@ -83,17 +84,30 @@
     </style>
 
     <!--位于WideItem内部的中间或右边-->
-    <style name="WideItemMiddleRightText">
+    <style name="WideItemMiddleRight">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:gravity">right</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+    <style name="WideItemMiddleRight.Text">
         <item name="android:textColor">@color/txt_gray</item>
         <item name="android:textSize">@dimen/txt_size_13</item>
+        <item name="android:textColorHint">@color/txt_gray_light</item>
+    </style>
+
+    <style name="WideItemMiddleRight.Text.Ellipsize">
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="WideItemMiddleRight.EditText" parent="WideItemMiddleRight.Text">
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:padding">0dp</item>
     </style>
 
     <style name="WideItemRightArrow">
@@ -148,6 +162,7 @@
         <item name="android:layout_marginRight">48dp</item>
         <item name="android:layout_marginTop">30dp</item>
         <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:enabled">false</item>
     </style>
 
     <style name="CommonToggleButton">

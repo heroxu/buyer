@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my;
+package com.smyy.sharetour.buyer.module.my;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
-import com.smyy.sharetour.buyer.my.contract.IUserContract;
-import com.smyy.sharetour.buyer.my.model.UserModel;
-import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.module.my.model.UserModel;
+import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import java.io.File;
@@ -56,7 +56,7 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
     }
 
     private void initUserInfo() {
-        mPresenter.getUserInfoCache();
+        mPresenter.getUserInfo();
     }
 
     @OnClick({R.id.lay_my_avatar_item, R.id.lay_my_nickname, R.id.lay_my_user_intro,

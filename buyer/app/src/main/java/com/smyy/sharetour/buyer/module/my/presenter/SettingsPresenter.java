@@ -1,13 +1,10 @@
-package com.smyy.sharetour.buyer.my.presenter;
+package com.smyy.sharetour.buyer.module.my.presenter;
 
 import android.app.Application;
-import android.content.Context;
 import android.text.TextUtils;
 
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.my.contract.ISettingsContract;
-import com.smyy.sharetour.buyer.my.contract.IUserContract;
-import com.smyy.sharetour.buyer.util.CacheUtils;
+import com.smyy.sharetour.buyer.module.my.contract.ISettingsContract;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;

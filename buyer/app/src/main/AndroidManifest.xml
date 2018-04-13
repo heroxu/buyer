@@ -23,12 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".my.SettingsActivity" />
-        <activity android:name=".my.AccountSettingsActivity" />
-        <activity android:name=".my.EditNicknameActivity" />
-        <activity android:name=".my.EditUserIntroActivity" />
-        <activity android:name=".my.MessageSettingsActivity" />
-        <activity android:name=".my.SecurityCenterActivity" />
+        <activity android:name=".module.my.SettingsActivity" />
+        <activity android:name=".module.my.AccountSettingsActivity" />
+        <activity android:name=".module.my.EditNicknameActivity" />
+        <activity android:name=".module.my.EditUserIntroActivity" />
+        <activity android:name=".module.my.MessageSettingsActivity" />
+        <activity android:name=".module.my.SecurityCenterActivity" />
+        <activity android:name=".module.my.LinkPhoneActivity" />
+        <activity android:name=".module.common.code.SmsCodeActivity" />
         <activity android:name=".ui.Test1Activity" />
         <activity android:name=".ui.test2.Test2Activity" />
         <activity android:name=".ui.LoginActivity" />

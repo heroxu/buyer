@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my;
+package com.smyy.sharetour.buyer.module.my;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
-import com.smyy.sharetour.buyer.my.contract.ISettingsContract;
-import com.smyy.sharetour.buyer.my.model.SettingsModel;
-import com.smyy.sharetour.buyer.my.presenter.SettingsPresenter;
+import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
+import com.smyy.sharetour.buyer.module.my.contract.ISettingsContract;
+import com.smyy.sharetour.buyer.module.my.model.SettingsModel;
+import com.smyy.sharetour.buyer.module.my.presenter.SettingsPresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import butterknife.BindView;

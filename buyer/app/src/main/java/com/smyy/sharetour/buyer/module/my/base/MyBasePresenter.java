@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my.base;
+package com.smyy.sharetour.buyer.module.my.base;
 
 import java.lang.ref.WeakReference;
 

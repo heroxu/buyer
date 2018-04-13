@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends UmengActivity {
     static final String TAG = BaseActivity.class.getSimpleName();
-
+    static final String BUNDLE = "bundle";
     protected ImmersionBar mImmersionBar;
     Toolbar mToolbar;
     TextView mToolbarTitle;
@@ -93,10 +93,10 @@ public abstract class BaseActivity extends UmengActivity {
         }
     }
 
-    public void showProgressDialog() {
+    public void showProgressDialog(String msg) {
         if (mLoadingDailog == null) {
             LoadingDailog.Builder loadBuilder = new LoadingDailog.Builder(this)
-                    .setMessage("加载中...")
+                    .setMessage(msg)
                     .setCancelable(false)
                     .setCancelOutside(false);
             mLoadingDailog = loadBuilder.create();
@@ -106,6 +106,15 @@ public abstract class BaseActivity extends UmengActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void showSuccessDialog(String msg) {//todo
+
+
+    }
+
+    public void showProgressDialog() {
+        showProgressDialog("加载中...");
     }
 
     public void hideProgressDialog() {
@@ -223,5 +232,49 @@ public abstract class BaseActivity extends UmengActivity {
                     getWindow().getDecorView().getWindowToken(),
                     0);
         }
+    }
+
+
+    /**
+     * 通过Class跳转界面
+     **/
+    public void startActivity(Class<?> cls) {
+        startActivity(cls, null);
+    }
+
+    /**
+     * 通过Class跳转界面
+     **/
+    public void startActivityForResult(Class<?> cls, int requestCode) {
+        startActivityForResult(cls, null, requestCode);
+    }
+
+    /**
+     * 含有Bundle通过Class跳转界面
+     **/
+    public void startActivityForResult(Class<?> cls, Bundle bundle,
+                                       int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtra(BUNDLE, bundle);
+        }
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 含有Bundle通过Class跳转界面
+     **/
+    public void startActivity(Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtra(BUNDLE, bundle);
+        }
+        startActivity(intent);
+    }
+
+    public Bundle getBundle() {
+        return getIntent().getBundleExtra(BUNDLE);
     }
 }

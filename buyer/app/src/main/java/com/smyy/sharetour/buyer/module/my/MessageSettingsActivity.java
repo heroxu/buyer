@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my;
+package com.smyy.sharetour.buyer.module.my;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.SPConfig;
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 

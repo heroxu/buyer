@@ -8,7 +8,7 @@ import com.smyy.sharetour.buyer.base.BaseApplication;
 import com.smyy.sharetour.buyer.db.MySQLiteOpenHelper;
 import com.smyy.sharetour.buyer.greendao.DaoMaster;
 import com.smyy.sharetour.buyer.greendao.DaoSession;
-import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.network.rx.RxUtils;
 import com.smyy.sharetour.buyer.util.PackageUtils;
 
