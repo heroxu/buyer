@@ -8,6 +8,7 @@ import com.smyy.sharetour.buyer.ui.NoteDetailsActivity;
 import com.smyy.sharetour.buyer.ui.VideoDetailsActivity;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
+import com.smyy.sharetour.buyer.home.search.HomeSearchActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
 import com.smyy.sharetour.buyer.ui.LoginActivity;
 import com.smyy.sharetour.buyer.ui.PwdLoginActivity;
@@ -114,6 +115,11 @@ public class ActivityLauncher {
 
     public static void viewHomeDetail(Context context) {
         Intent intent = new Intent(context, HomeDetailActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void viewHomeSearch(Context context) {
+        Intent intent = new Intent(context, HomeSearchActivity.class);
         context.startActivity(intent);
     }
 

@@ -38,6 +38,7 @@
     <string name="message_settings">消息设置</string>
     <string name="change_theme">主题换肤</string>
     <string name="clear_cache">清除缓存</string>
+    <string name="have_been_cleared">已清理完成</string>
     <string name="about_us">关于我们</string>
     <string name="avatar">头像</string>
     <string name="nickname">昵称</string>
@@ -49,4 +50,9 @@
     <string name="security_center">安全中心</string>
     <string name="instant_message">即时消息</string>
     <string name="system_message">系统消息</string>
+    <string name="link_phone">绑定手机</string>
+    <string name="phone_not_linked_yet">当前未绑定手机</string>
+    <string name="reset_login_password">重置登录密码</string>
+    <string name="pay_password">支付密码</string>
+
 </resources>

@@ -62,7 +62,7 @@ public class RedImageView extends android.support.v7.widget.AppCompatImageView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RedImageView);
         r_percent = typedArray.getFloat(R.styleable.RedImageView_r_percent, 0.2f);
         shape = typedArray.getInteger(R.styleable.RedImageView_shape, SHAPE_CIRCULAR);
-        pointColor = typedArray.getColor(R.styleable.RedImageView_pointColor, Color.parseColor("#FE3824"));
+        pointColor = typedArray.getColor(R.styleable.RedImageView_pointColor, getResources().getColor(R.color.dot_red));
         textColor = typedArray.getColor(R.styleable.RedImageView_textColor, Color.WHITE);
         withStroke = typedArray.getBoolean(R.styleable.RedImageView_withStroke, false);
         strokeColor = typedArray.getColor(R.styleable.RedImageView_strokeColor, Color.TRANSPARENT);

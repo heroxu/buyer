@@ -23,11 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".my.view.SettingsActivity" />
-        <activity android:name=".my.view.AccountSettingsActivity" />
-        <activity android:name=".my.view.EditNicknameActivity" />
-        <activity android:name=".my.view.EditUserIntroActivity" />
-        <activity android:name=".my.view.MessageSettingsActivity" />
+        <activity android:name=".my.SettingsActivity" />
+        <activity android:name=".my.AccountSettingsActivity" />
+        <activity android:name=".my.EditNicknameActivity" />
+        <activity android:name=".my.EditUserIntroActivity" />
+        <activity android:name=".my.MessageSettingsActivity" />
+        <activity android:name=".my.SecurityCenterActivity" />
         <activity android:name=".ui.Test1Activity" />
         <activity android:name=".ui.test2.Test2Activity" />
         <activity android:name=".ui.LoginActivity" />
@@ -41,6 +42,8 @@
         <activity android:name=".ui.NoteDetailsActivity" />
         <activity android:name=".ui.VideoDetailsActivity" />
         <activity android:name=".ui.MoreReplyActivity"></activity>
+        <activity
+            android:name=".home.search.HomeSearchActivity"/>
     </application>
 
 </manifest>

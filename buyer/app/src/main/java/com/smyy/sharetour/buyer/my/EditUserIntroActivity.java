@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.my.view;
+package com.smyy.sharetour.buyer.my;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,22 +12,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
-import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-import com.smyy.sharetour.buyer.my.model.UserInfo;
+import com.smyy.sharetour.buyer.my.base.MyBaseMvpActivity;
+import com.smyy.sharetour.buyer.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.my.model.UserModel;
+import com.smyy.sharetour.buyer.my.presenter.UserPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class EditUserIntroActivity extends BaseMvpActivity {
+public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> implements IUserContract.View {
     @BindView(R.id.et_my_user_intro)
     EditText etUserIntro;
     @BindView(R.id.btn_confirm)
     Button btnConfirm;
 
-    private UserInfo mUserInfo;
+    private UserInfoBean mUserInfo;
 
     @Override
     protected int getLayoutId() {
@@ -41,11 +42,7 @@ public class EditUserIntroActivity extends BaseMvpActivity {
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-        mUserInfo = MyApplication.getApplication().getUserInfo();
-        String userIntro = mUserInfo.getUserIntro();
-        if (!TextUtils.isEmpty(userIntro)) {
-            etUserIntro.setText(userIntro.trim());
-        }
+        mPresenter.getUserInfoCache();
 
         setListener();
     }
@@ -79,9 +76,7 @@ public class EditUserIntroActivity extends BaseMvpActivity {
         switch (view.getId()) {
 
             case R.id.btn_confirm:
-                mUserInfo.setUserIntro(etUserIntro.getText().toString().trim());
-                MyApplication.getApplication().setUserInfo(mUserInfo);
-                finish();
+                mPresenter.setUserIntro(etUserIntro.getText().toString().trim());
                 break;
 
             default:
@@ -90,7 +85,15 @@ public class EditUserIntroActivity extends BaseMvpActivity {
     }
 
     @Override
-    protected IBasePresenter createPresenter() {
-        return null;
+    protected UserPresenter createPresenter() {
+        return new UserPresenter(this, new UserModel());
+    }
+
+    @Override
+    public void showUserInfo(UserInfoBean userInfo) {
+        String userIntro = userInfo.getUserIntro();
+        if (!TextUtils.isEmpty(userIntro)) {
+            etUserIntro.setText(userIntro.trim());
+        }
     }
 }
