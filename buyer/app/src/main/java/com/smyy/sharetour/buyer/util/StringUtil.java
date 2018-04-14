@@ -160,10 +160,10 @@ public class StringUtil {
             if (length >= 11) {
                 return phoneNum.substring(0, 3) + " **** "
                         + phoneNum.substring(length - 4, length);
-            } else if (length > 4) {
+            } else if (length >= 5) {
                 return phoneNum.substring(0, 1) + " **** "
                         + phoneNum.substring(length - 1, length);
-            } else if (length > 1) {
+            } else if (length >= 2) {
                 return phoneNum.substring(0, 1) + " ****";
             } else {
                 return "****";

@@ -30,6 +30,7 @@
         <activity android:name=".module.my.MessageSettingsActivity" />
         <activity android:name=".module.my.SecurityCenterActivity" />
         <activity android:name=".module.my.LinkPhoneActivity" />
+        <activity android:name=".module.my.LinkedPhoneActivity" />
         <activity android:name=".module.common.code.SmsCodeActivity" />
         <activity android:name=".ui.Test1Activity" />
         <activity android:name=".ui.test2.Test2Activity" />

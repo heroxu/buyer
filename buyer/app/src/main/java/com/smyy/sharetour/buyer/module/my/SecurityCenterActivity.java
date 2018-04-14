@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.module.common.code.SmsCodeActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
@@ -50,7 +51,9 @@ public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> imp
                 if (TextUtils.isEmpty(mLinkedPhoneNum)) {
                     startActivityForResult(LinkPhoneActivity.class, REQ_LINK_PHONE);
                 } else {
-                    //TODO
+                    Bundle bundle = new Bundle();
+                    bundle.putString(LinkedPhoneActivity.LINKED_PHONE_NUM, mLinkedPhoneNum);
+                    startActivityForResult(LinkedPhoneActivity.class, bundle, REQ_LINK_PHONE);
                 }
                 break;
 

@@ -17,9 +17,9 @@
         <EditText
             android:id="@+id/et_code_input_code"
             style="@style/WideItemMiddleRight.EditText"
-            android:inputType="number"
             android:digits="@string/digits_sms_code"
             android:hint="请输入验证码"
+            android:inputType="number"
             android:maxLength="6" />
 
         <TextView
@@ -30,14 +30,11 @@
     </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/HintText.Gray"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
-        android:text="为了确保账号安全，我们将向您发送短信验证码"
-        android:textColor="@color/txt_gray"
-        android:textSize="@dimen/txt_size_13" />
+        android:text="为了确保账号安全，我们将向您发送短信验证码" />
 
     <Button
         android:id="@+id/btn_confirm"

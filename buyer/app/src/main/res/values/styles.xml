@@ -126,6 +126,19 @@
         <item name="android:background">@color/line_divider</item>
     </style>
 
+    <!--提示性文本-->
+    <style name="HintText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txt_size_13</item>
+        <item name="android:textColor">@color/txt_hint</item>
+    </style>
+
+    <style name="HintText.Gray">
+        <item name="android:textColor">@color/txt_gray</item>
+    </style>
+
+
     <!-- 水平平分 -->
     <style name="DividItemHorizon">
         <item name="android:layout_width">0dp</item>
