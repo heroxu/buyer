@@ -78,4 +78,9 @@
     <string name="publish_success">发布成功</string>
     <string name="share_title">快分享给小伙伴吧</string>
     <string name="money_unit">￥</string>
+
+    <!--限定能输入的具体字符串-->
+    <string name="digits_phone_num">0123456789</string>
+    <string name="digits_sms_code">0123456789</string>
+
 </resources>

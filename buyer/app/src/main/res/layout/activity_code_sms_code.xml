@@ -13,9 +13,12 @@
             style="@style/WideItemLeftText"
             android:text="验证码：" />
 
+
         <EditText
             android:id="@+id/et_code_input_code"
             style="@style/WideItemMiddleRight.EditText"
+            android:inputType="number"
+            android:digits="@string/digits_sms_code"
             android:hint="请输入验证码"
             android:maxLength="6" />
 
