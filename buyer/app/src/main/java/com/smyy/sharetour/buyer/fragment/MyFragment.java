@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
+import com.smyy.sharetour.buyer.module.my.SecurityCenterActivity;
 import com.smyy.sharetour.buyer.module.my.SettingsActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpFragment;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
@@ -109,7 +110,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
         switch (view.getId()) {
 
             case R.id.iv_my_setting:
-                ActivityLauncher.viewActivity(mActivity, SettingsActivity.class);
+                startActivity(SettingsActivity.class);
                 break;
 
             case R.id.iv_my_msg:
@@ -117,11 +118,11 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.iv_my_edit_username:
-                ActivityLauncher.viewActivity(mActivity, AccountSettingsActivity.class);
+                startActivity(AccountSettingsActivity.class);
                 break;
 
             case R.id.iv_my_avatar:
-                ActivityLauncher.viewActivity(mActivity, AccountSettingsActivity.class);
+                startActivity(AccountSettingsActivity.class);
                 break;
 
             case R.id.tv_my_view_all_orders:

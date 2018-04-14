@@ -69,11 +69,11 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
                 break;
 
             case R.id.lay_my_nickname:
-                ActivityLauncher.viewActivity(this, EditNicknameActivity.class);
+                startActivity(EditNicknameActivity.class);
                 break;
 
             case R.id.lay_my_user_intro:
-                ActivityLauncher.viewActivity(this, EditUserIntroActivity.class);
+                startActivity(EditUserIntroActivity.class);
                 break;
 
             case R.id.tv_my_shipping_address:
@@ -81,7 +81,7 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
                 break;
 
             case R.id.tv_my_security_center:
-                ActivityLauncher.viewActivity(this, SecurityCenterActivity.class);
+                startActivity(SecurityCenterActivity.class);
                 break;
 
             default:

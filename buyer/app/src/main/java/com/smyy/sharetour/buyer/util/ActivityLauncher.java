@@ -34,10 +34,6 @@ public class ActivityLauncher {
         context.startActivity(intent);
     }
 
-    public static void viewActivity(Context context, Class<?> cls) {
-        Intent intent = new Intent(context, cls);
-        context.startActivity(intent);
-    }
     /**
      * 跳转到登录引导
      */

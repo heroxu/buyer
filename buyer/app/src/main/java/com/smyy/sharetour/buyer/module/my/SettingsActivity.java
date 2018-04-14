@@ -51,11 +51,11 @@ public class SettingsActivity extends MyBaseMvpActivity<SettingsPresenter> imple
         switch (view.getId()) {
 
             case R.id.tv_my_account_settings:
-                ActivityLauncher.viewActivity(this, AccountSettingsActivity.class);
+                startActivity(AccountSettingsActivity.class);
                 break;
 
             case R.id.tv_my_message_settings:
-                ActivityLauncher.viewActivity(this, MessageSettingsActivity.class);
+                startActivity(MessageSettingsActivity.class);
                 break;
 
             case R.id.lay_my_change_theme:

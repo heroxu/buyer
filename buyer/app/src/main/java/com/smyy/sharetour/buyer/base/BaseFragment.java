@@ -2,6 +2,7 @@ package com.smyy.sharetour.buyer.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -89,12 +90,13 @@ public abstract class BaseFragment extends UmengFragment {
     }
 
     protected abstract int getLayoutId();
+
     protected abstract void initData(Bundle bundle);
 
     /**
      * 利用反射让隐藏在Overflow中的MenuItem显示Icon图标
-     * @param menu
-     * onMenuOpened方法中调用
+     *
+     * @param menu onMenuOpened方法中调用
      */
     public static void setOverflowIconVisible(Menu menu) {
         if (menu != null && menu.getClass().getSimpleName().equals("MenuBuilder")) {
@@ -108,7 +110,9 @@ public abstract class BaseFragment extends UmengFragment {
         }
     }
 
-    /** fragment 页面被回收后，恢复页面工具类 **/
+    /**
+     * fragment 页面被回收后，恢复页面工具类
+     **/
     public static class FragmentRestoredUtil {
         private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
 
@@ -209,5 +213,44 @@ public abstract class BaseFragment extends UmengFragment {
         if (mLoadingDailog != null && mLoadingDailog.isShowing()) {
             mLoadingDailog.dismiss();
         }
+    }
+
+    /**
+     * 通过Class跳转界面
+     **/
+    public void startActivity(Class<?> cls) {
+        startActivity(cls, null);
+    }
+
+    /**
+     * 通过Class跳转界面
+     **/
+    public void startActivityForResult(Class<?> cls, int requestCode) {
+        startActivityForResult(cls, null, requestCode);
+    }
+
+    /**
+     * 含有Bundle通过Class跳转界面
+     **/
+    public void startActivityForResult(Class<?> cls, Bundle bundle,
+                                       int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 含有Bundle通过Class跳转界面
+     **/
+    public void startActivity(Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
     }
 }
