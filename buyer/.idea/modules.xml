@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BaseRecyclerViewAdapterHelper/library.iml" filepath="$PROJECT_DIR$/BaseRecyclerViewAdapterHelper/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ImageSelector/ImageSelector.iml" filepath="$PROJECT_DIR$/ImageSelector/ImageSelector.iml" />
-      <module fileurl="file://$PROJECT_DIR$/UIFrameLib/UIFrameLib.iml" filepath="$PROJECT_DIR$/UIFrameLib/UIFrameLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/BaseRecyclerViewAdapterHelper/BaseRecyclerViewAdapterHelper.iml" filepath="$PROJECT_DIR$/libraries/BaseRecyclerViewAdapterHelper/BaseRecyclerViewAdapterHelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/ImageSelector/ImageSelector.iml" filepath="$PROJECT_DIR$/libraries/ImageSelector/ImageSelector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/UIFrameLib/UIFrameLib.iml" filepath="$PROJECT_DIR$/libraries/UIFrameLib/UIFrameLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buyer.iml" filepath="$PROJECT_DIR$/buyer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/saerchlibrary/saerchlibrary.iml" filepath="$PROJECT_DIR$/saerchlibrary/saerchlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
+      <module fileurl="file://E:\Android\buyer\BaseRecyclerViewAdapterHelper\library.iml" filepath="E:\Android\buyer\BaseRecyclerViewAdapterHelper\library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/saerchlibrary/saerchlibrary.iml" filepath="$PROJECT_DIR$/libraries/saerchlibrary/saerchlibrary.iml" />
       <module fileurl="file://E:\Android\buyer\searchmodule\searchmodule.iml" filepath="E:\Android\buyer\searchmodule\searchmodule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wave/wave.iml" filepath="$PROJECT_DIR$/wave/wave.iml" />
-      <module fileurl="file://$PROJECT_DIR$/zxing/zxing.iml" filepath="$PROJECT_DIR$/zxing/zxing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/wave/wave.iml" filepath="$PROJECT_DIR$/libraries/wave/wave.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/zxing/zxing.iml" filepath="$PROJECT_DIR$/libraries/zxing/zxing.iml" />
     </modules>
   </component>
 </project>

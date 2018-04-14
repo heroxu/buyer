@@ -87,13 +87,13 @@ dependencies {
         exclude group: 'com.squareup.okio'
         // exclude group: 'io.reactivex', module: 'rxjava'
     }
-    compile project(path: ':UIFrameLib')
-    compile project(path: ':zxing')
-    compile project(':wave')
-    compile project(':saerchlibrary')
-    compile project(path: ':ImageSelector')
-    implementation project(':BaseRecyclerViewAdapterHelper')
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    implementation project(':libraries:BaseRecyclerViewAdapterHelper')
+    implementation project(':libraries:ImageSelector')
+    implementation project(':libraries:saerchlibrary')
+    implementation project(':libraries:UIFrameLib')
+    implementation project(':libraries:wave')
+    implementation project(':libraries:zxing')
 }
 
 //如果数据库结构变了就+1 更新数据库

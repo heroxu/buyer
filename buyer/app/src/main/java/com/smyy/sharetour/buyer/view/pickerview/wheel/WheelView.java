@@ -75,9 +75,9 @@ public class WheelView extends View {
     private WheelScroller scroller;
     private boolean isScrollingPerformed;
     private int scrollingOffset;
-    // Items layout
+    // Items layout_magic_text
     private LinearLayout itemsLayout;
-    // The number of first item in layout
+    // The number of first item in layout_magic_text
     private int firstItem;
     // View adapter
     private WheelViewAdapter viewAdapter;
@@ -238,7 +238,7 @@ public class WheelView extends View {
 
     /**
      * Sets the desired count of visible items.
-     * Actual amount of visible items depends on wheel layout parameters.
+     * Actual amount of visible items depends on wheel layout_magic_text parameters.
      * To apply changes and rebuild view call measure().
      *
      * @param count the desired count for visible items
@@ -494,10 +494,10 @@ public class WheelView extends View {
     }
 
     /**
-     * Calculates desired height for layout
+     * Calculates desired height for layout_magic_text
      *
-     * @param layout the source layout
-     * @return the desired layout height
+     * @param layout the source layout_magic_text
+     * @return the desired layout_magic_text height
      */
     private int getDesiredHeight(LinearLayout layout) {
         if (layout != null && layout.getChildAt(0) != null) {
@@ -530,8 +530,8 @@ public class WheelView extends View {
     /**
      * Calculates control width and creates text layouts
      *
-     * @param widthSize the input layout width
-     * @param mode      the layout mode
+     * @param widthSize the input layout_magic_text width
+     * @param mode      the layout_magic_text mode
      * @return the calculated control width
      */
     private int calculateLayoutWidth(int widthSize, int mode) {
@@ -595,8 +595,8 @@ public class WheelView extends View {
     /**
      * Sets layouts width and height
      *
-     * @param width  the layout width
-     * @param height the layout height
+     * @param width  the layout_magic_text width
+     * @param height the layout_magic_text height
      */
     private void layout(int width, int height) {
         int itemsWidth = width - 2 * PADDING;
@@ -873,7 +873,7 @@ public class WheelView extends View {
     }
 
     /**
-     * Adds view for item to items layout
+     * Adds view for item to items layout_magic_text
      *
      * @param index the item index
      * @param first the flag indicates if view should be first

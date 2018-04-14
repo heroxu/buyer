@@ -1,4 +1,4 @@
 
-include ':app', ':zxing', ':UIFrameLib', ':wave', ':ImageSelector', ':saerchlibrary', ':BaseRecyclerViewAdapterHelper'
+include ':app', ':libraries:zxing', ':libraries:UIFrameLib', ':libraries:wave', ':libraries:ImageSelector', ':libraries:saerchlibrary', ':libraries:BaseRecyclerViewAdapterHelper'
 
 

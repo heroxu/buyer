@@ -50,8 +50,7 @@ public class MoreReplyActivity extends BaseMvpActivity {
         Gson gson = new Gson();
         CommentsBean bean = gson.fromJson(Consts.noteDetailsData, CommentsBean.class);
         mReplyInfo = bean.getMainList().get(0);
-        rvMoreReply.setHasFixedSize(false);
-        rvMoreReply.setNestedScrollingEnabled(false);//解决NestedScrollView+RecyclerView滑动冲突问题
+//        rvMoreReply.setNestedScrollingEnabled(false);//解决NestedScrollView+RecyclerView滑动冲突问题
         rvMoreReply.setLayoutManager(new LinearLayoutManager(this));
         List<CommentsBean.MainList> list = new ArrayList<>();
         list.add(mReplyInfo);

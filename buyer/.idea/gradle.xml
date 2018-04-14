@@ -9,13 +9,14 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/BaseRecyclerViewAdapterHelper" />
-            <option value="$PROJECT_DIR$/ImageSelector" />
-            <option value="$PROJECT_DIR$/UIFrameLib" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/saerchlibrary" />
-            <option value="$PROJECT_DIR$/wave" />
-            <option value="$PROJECT_DIR$/zxing" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/BaseRecyclerViewAdapterHelper" />
+            <option value="$PROJECT_DIR$/libraries/ImageSelector" />
+            <option value="$PROJECT_DIR$/libraries/UIFrameLib" />
+            <option value="$PROJECT_DIR$/libraries/saerchlibrary" />
+            <option value="$PROJECT_DIR$/libraries/wave" />
+            <option value="$PROJECT_DIR$/libraries/zxing" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

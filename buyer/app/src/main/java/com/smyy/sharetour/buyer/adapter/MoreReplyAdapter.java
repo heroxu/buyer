@@ -35,6 +35,7 @@ public class MoreReplyAdapter extends BaseQuickAdapter<CommentsBean.MainList,Bas
         CircleImageView imageView = baseViewHolder.getView(R.id.iv_comments_first_photo);
         Glide.with(mContext).load(mainList.getImageUrl()).into(imageView);
         ((RecyclerView) baseViewHolder.getView(R.id.rv_comments_second)).setLayoutManager(new LinearLayoutManager(mContext));
+        ((RecyclerView) baseViewHolder.getView(R.id.rv_comments_second)).setFocusable(false);
         CommentsSecondAdapter mCommentsSecondAdapter = new CommentsSecondAdapter(mainList.getCsList());
         ((RecyclerView) baseViewHolder.getView(R.id.rv_comments_second)).setAdapter(mCommentsSecondAdapter);
         mCommentsSecondAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {

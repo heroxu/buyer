@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.smyy.sharetour.buyer.LetterComparator;
+import com.smyy.sharetour.buyer.util.LetterComparator;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.adapter.CityAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
