@@ -9,6 +9,7 @@ import com.smyy.sharetour.buyer.ui.VideoDetailsActivity;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.search.HomeSearchActivity;
+import com.smyy.sharetour.buyer.home.search.SearchDetailActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
 import com.smyy.sharetour.buyer.ui.LoginActivity;
 import com.smyy.sharetour.buyer.ui.PwdLoginActivity;
@@ -119,4 +120,8 @@ public class ActivityLauncher {
         context.startActivity(intent);
     }
 
+    public static void viewSearchDetail(Context context) {
+        Intent intent = new Intent(context, SearchDetailActivity.class);
+        context.startActivity(intent);
+    }
 }
