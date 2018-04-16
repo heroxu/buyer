@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.dtr.zxing.activity.CaptureActivity;
 import com.smyy.sharetour.buyer.adapter.FountImageAdapter;
 import com.smyy.sharetour.buyer.bean.FImage;
 import com.smyy.sharetour.buyer.bean.FountBean;
@@ -74,24 +75,10 @@ public class FountSubclassFragment extends BaseMvpFragment {
         recyclerView.setAdapter(mFountAdapter);
         //添加Android自带的分割线
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-//        mFountAdapter.setOnRecyclerViewItemChildClickListener(new BaseQuickAdapter.OnRecyclerViewItemChildClickListener() {
-//            @Override
-//            public void onItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-//                FountBean bean = (FountBean) baseQuickAdapter.getItem(i);
-//                switch (bean.getItemType()){
-//                    case FountBean.VIDEO_TYPE:
-//                        ActivityLauncher.viewVideoDetailsActivity(getActivity());
-//                        break;
-//                    case FountBean.NOTES_TYPE:
-//                        ActivityLauncher.viewNoteDetailsActivity(getActivity());
-//                        break;
-//                }
-//            }
-//        });
         mFountAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                switch (view.getId()){
+                switch (view.getId()) {
                     case R.id.ll_if_notes:
                         ActivityLauncher.viewNoteDetailsActivity(getActivity());
                         break;
@@ -114,4 +101,5 @@ public class FountSubclassFragment extends BaseMvpFragment {
 
         }
     }
+
 }

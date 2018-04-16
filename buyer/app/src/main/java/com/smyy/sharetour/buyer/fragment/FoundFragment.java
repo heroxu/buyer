@@ -1,5 +1,7 @@
 package com.smyy.sharetour.buyer.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,11 +11,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.dtr.zxing.activity.CaptureActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import java.util.ArrayList;
 
@@ -25,6 +29,7 @@ import butterknife.OnClick;
  */
 
 public class FoundFragment extends BaseMvpFragment {
+    public static final int REQUEST_CODE_SCAN = 3301;
     @BindView(R.id.ttl_fount_search)
     LinearLayout ttlFountSearch;
     @BindView(R.id.tt_fount_scan)
@@ -74,6 +79,7 @@ public class FoundFragment extends BaseMvpFragment {
             case R.id.ttl_fount_search:
                 break;
             case R.id.tt_fount_scan:
+                startActivityForResult(new Intent(getActivity(), CaptureActivity.class),REQUEST_CODE_SCAN);
                 break;
             case R.id.tt_fount_message:
                 ActivityLauncher.viewGuideLoginActivity(getActivity());
@@ -95,6 +101,20 @@ public class FoundFragment extends BaseMvpFragment {
         @Override
         public Fragment getItem(int position) {
             return mFragments.get(position);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == REQUEST_CODE_SCAN) {
+            if (resultCode == Activity.RESULT_OK) {
+                String result = intent.getStringExtra(CaptureActivity.BUNDLE_RESULT);
+                ToastUtils.showToast(result);
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                ToastUtils.showToast("扫码取消");
+            } else {
+                ToastUtils.showToast("扫码错误");
+            }
         }
     }
 }
