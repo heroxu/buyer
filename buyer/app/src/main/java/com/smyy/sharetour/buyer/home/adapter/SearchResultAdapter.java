@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.db.HomeSearch;
+import com.smyy.sharetour.buyer.db.operate.HomeSearchDaoOpe;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import java.util.List;
@@ -16,12 +17,12 @@ import java.util.List;
 /**
  * create by xuxiarong on 2018/4/12
  */
-public class SearchHistoryAdapter extends RecyclerView.Adapter {
+public class SearchResultAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
-    private List<HomeSearch> mDatas;
+    private List<String> mDatas;
 
-    public SearchHistoryAdapter(Context context, List<HomeSearch> datas) {
+    public SearchResultAdapter(Context context, List<String> datas) {
         this.mContext = context;
         this.mDatas = datas;
     }
@@ -34,11 +35,15 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         SearchHistoryViewHolder viewHolder = (SearchHistoryViewHolder) holder;
-        viewHolder.tv_home_history_content.setText(mDatas.get(position).getSearchContent());
+        viewHolder.tv_home_history_content.setText(mDatas.get(position));
         viewHolder.tv_home_history_content.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                HomeSearch homeSearch = new HomeSearch();
+                homeSearch.setSearchContent(mDatas.get(position));
+                HomeSearchDaoOpe.insertData(mContext,homeSearch);
                 ActivityLauncher.viewSearchDetail(mContext);
+
             }
         });
     }
@@ -48,7 +53,7 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter {
         return mDatas.isEmpty()?0:mDatas.size();
     }
 
-    public void setData(List<HomeSearch> datas){
+    public void setData(List<String> datas){
         this.mDatas = datas;
         notifyDataSetChanged();
     }

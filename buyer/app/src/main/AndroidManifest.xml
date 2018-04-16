@@ -41,13 +41,16 @@
         <activity android:name=".ui.GuideLoginActivity" />
         <activity android:name=".ui.PwdLoginActivity" />
         <activity android:name=".ui.VerifyPhoneActivity" />
-        <activity android:name=".home.detail.HomeDetailActivity" />
         <activity android:name=".ui.NoteDetailsActivity" />
         <activity android:name=".ui.VideoDetailsActivity" />
         <activity android:name=".ui.MoreReplyActivity"/>
-        <activity android:name=".home.search.HomeSearchActivity" />
         <activity android:name=".publish.SimpleSelectActivity" />
         <activity android:name=".publish.PublishRequireActivity" />
+        <activity android:name=".NoteDetailsActivity" />
+        <activity android:name=".VideoDetailsActivity" />
+        <activity android:name=".home.detail.HomeDetailActivity" />
+        <activity android:name=".home.search.HomeSearchActivity"/>
+        <activity android:name=".home.search.SearchDetailActivity"/>
     </application>
 
 </manifest>

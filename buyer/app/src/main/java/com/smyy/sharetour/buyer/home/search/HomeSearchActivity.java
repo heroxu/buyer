@@ -3,6 +3,7 @@ package com.smyy.sharetour.buyer.home.search;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -15,7 +16,10 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.db.HomeSearch;
+import com.smyy.sharetour.buyer.db.operate.HomeSearchDaoOpe;
 import com.smyy.sharetour.buyer.home.adapter.SearchHistoryAdapter;
+import com.smyy.sharetour.buyer.home.adapter.SearchResultAdapter;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import java.util.ArrayList;
@@ -24,7 +28,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeSearchActivity extends BaseMvpActivity {
+public class HomeSearchActivity extends BaseMvpActivity implements View.OnClickListener{
 
 
     @BindView(R.id.iv_home_search_back)
@@ -45,7 +49,11 @@ public class HomeSearchActivity extends BaseMvpActivity {
     LinearLayout llSearchHistory;
 
     private SearchHistoryAdapter mSearchHistoryAdapter;
+    private SearchResultAdapter mSearchResultAdapter;
+
     private List<String> mSearchDatas = new ArrayList<>();
+    private List<HomeSearch> mHistoryDatas = new ArrayList<>();
+    private List<String> mHotDatas = new ArrayList<>();
     @Override
     protected int getLayoutId() {
         return R.layout.activity_home_search;
@@ -59,14 +67,30 @@ public class HomeSearchActivity extends BaseMvpActivity {
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         initListener();
-        if(mSearchHistoryAdapter == null){
-            mSearchHistoryAdapter = new SearchHistoryAdapter(this,mSearchDatas);
+        if(mSearchResultAdapter == null){
+            mSearchResultAdapter = new SearchResultAdapter(this,mSearchDatas);
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        rvSearchHistory.setLayoutManager(linearLayoutManager);
-//        rvSearchHot.setLayoutManager(linearLayoutManager);
         rvSearchResult.setLayoutManager(linearLayoutManager);
-        rvSearchResult.setAdapter(mSearchHistoryAdapter);
+        rvSearchResult.setAdapter(mSearchResultAdapter);
+
+        rvSearchHot.setLayoutManager(new GridLayoutManager(this,3));
+        mHotDatas.add("化妆品");
+        mHotDatas.add("电动车");
+        mHotDatas.add("NIKE 运动鞋");
+        mHotDatas.add("香奈儿");
+        mHotDatas.add("化妆品");
+        mHotDatas.add("电动车");
+        mHotDatas.add("NIKE 运动鞋");
+        mHotDatas.add("香奈儿");
+        rvSearchHot.setAdapter(new SearchResultAdapter(this,mHotDatas));
+
+        rvSearchHistory.setLayoutManager(new GridLayoutManager(this,3));
+        mHistoryDatas = HomeSearchDaoOpe.queryAll(this);
+        if(mSearchHistoryAdapter == null){
+            mSearchHistoryAdapter = new SearchHistoryAdapter(this, mHistoryDatas);
+        }
+        rvSearchHistory.setAdapter(mSearchHistoryAdapter);
     }
 
     private void initListener() {
@@ -92,7 +116,7 @@ public class HomeSearchActivity extends BaseMvpActivity {
                     for (int i = 0; i < 10; i++) {
                         mSearchDatas.add(newText+i);
                     }
-                    mSearchHistoryAdapter.setData(mSearchDatas);
+                    mSearchResultAdapter.setData(mSearchDatas);
                 }else {
                     llSearchHistory.setVisibility(View.VISIBLE);
                     rvSearchResult.setVisibility(View.GONE);
@@ -100,6 +124,8 @@ public class HomeSearchActivity extends BaseMvpActivity {
                 return false;
             }
         });
+        ivHomeSearchBack.setOnClickListener(this);
+        ivSearchClear.setOnClickListener(this);
     }
 
     @Override
@@ -116,5 +142,17 @@ public class HomeSearchActivity extends BaseMvpActivity {
     }
 
 
-
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.iv_home_search_back:
+                finish();
+                break;
+            case R.id.iv_search_clear:
+                HomeSearchDaoOpe.deleteAllData(HomeSearchActivity.this);
+                mHistoryDatas.clear();
+                mSearchHistoryAdapter.notifyDataSetChanged();
+                break;
+        }
+    }
 }
