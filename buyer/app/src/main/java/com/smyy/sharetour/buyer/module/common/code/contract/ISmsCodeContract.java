@@ -12,6 +12,8 @@ public interface ISmsCodeContract {
         void stopCountDown();
 
         void verifySmsCodeSuccess();
+
+        void verifySmsCodeFail();
     }
 
     abstract class Presenter extends MyBasePresenter<ISmsCodeContract.View, ISmsCodeContract.Model> {

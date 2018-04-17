@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/libraries/UIFrameLib/UIFrameLib.iml" filepath="$PROJECT_DIR$/libraries/UIFrameLib/UIFrameLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buyer.iml" filepath="$PROJECT_DIR$/buyer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/dialoglib/dialoglib.iml" filepath="$PROJECT_DIR$/libraries/dialoglib/dialoglib.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
       <module fileurl="file://E:/Android/buyer/BaseRecyclerViewAdapterHelper/library.iml" filepath="E:/Android/buyer/BaseRecyclerViewAdapterHelper/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/saerchlibrary/saerchlibrary.iml" filepath="$PROJECT_DIR$/libraries/saerchlibrary/saerchlibrary.iml" />

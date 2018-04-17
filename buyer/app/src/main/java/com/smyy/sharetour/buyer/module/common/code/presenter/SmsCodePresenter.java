@@ -91,8 +91,7 @@ public class SmsCodePresenter extends ISmsCodeContract.Presenter {
                             if (result) {
                                 mView.verifySmsCodeSuccess();
                             } else {
-                                mView.showToast("绑定失败");
-                                mView.hideProgressDialog();
+                                mView.verifySmsCodeFail();
                             }
                         }
                     }

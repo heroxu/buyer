@@ -160,8 +160,15 @@ public class SmsCodeActivity extends MyBaseMvpActivity<SmsCodePresenter> impleme
 
     @Override
     public void verifySmsCodeSuccess() {
+        hideProgressDialog();
         ToastUtils.showToast("绑定成功");
         setResult(RESULT_OK);
         finish();
+    }
+
+    @Override
+    public void verifySmsCodeFail() {
+        hideProgressDialog();
+        ToastUtils.showToast("绑定失败");
     }
 }
