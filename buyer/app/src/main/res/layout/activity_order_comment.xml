@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:smile_rating="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/publish_frame">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:id="@+id/disc_context"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@android:color/transparent"
+                android:hint="@string/comment_disc"
+                android:textColorHint="@color/txt_gray_light"
+                android:gravity="top"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="@dimen/txt_size_15"
+                android:layout_marginTop="20dp"
+                android:maxLength="40"
+                />
+            <com.smyy.sharetour.buyer.view.NoScrollGridView
+                android:id="@+id/gridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="@dimen/space_size"
+                android:numColumns="4"
+                android:listSelector="@android:color/transparent"
+                android:verticalSpacing="@dimen/space_size"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"/>
+
+            <View style="@style/WideItemDivider"
+                android:layout_height="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                />
+
+
+           <LinearLayout
+               style="@style/WideItem"
+               android:paddingBottom="@dimen/dp_10"
+               android:paddingLeft="20dp"
+               android:id="@+id/good_quality">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/good_quality"
+                   android:textSize="@dimen/txt_size_15"
+                   android:layout_marginRight="30dp"
+                   />
+                <com.smyy.sharetour.buyer.view.RatingBar
+                    android:id="@+id/good_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    smile_rating:clickable="true"
+                    smile_rating:image_height="30dp"
+                    smile_rating:image_padding="3dp"
+                    smile_rating:image_width="30dp"
+                    smile_rating:star="5"
+                    smile_rating:star_count="5"
+                    smile_rating:star_img="@mipmap/star"
+                    smile_rating:unstar_img="@mipmap/unstar"
+                    />
+           </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/seller_service"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingLeft="20dp"
+                style="@style/WideItem">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seller_service"
+                    android:textSize="@dimen/txt_size_15"
+                    android:layout_marginRight="30dp"
+                    />
+                <com.smyy.sharetour.buyer.view.RatingBar
+                    android:id="@+id/seller_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    smile_rating:clickable="true"
+                    smile_rating:image_height="30dp"
+                    smile_rating:image_padding="3dp"
+                    smile_rating:image_width="30dp"
+                    smile_rating:star="5"
+                    smile_rating:star_count="5"
+                    smile_rating:star_img="@mipmap/star"
+                    smile_rating:unstar_img="@mipmap/unstar"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</RelativeLayout>

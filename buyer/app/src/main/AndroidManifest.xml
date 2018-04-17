@@ -46,11 +46,10 @@
         <activity android:name=".ui.MoreReplyActivity"/>
         <activity android:name=".publish.SimpleSelectActivity" />
         <activity android:name=".publish.PublishRequireActivity" />
-        <activity android:name=".NoteDetailsActivity" />
-        <activity android:name=".VideoDetailsActivity" />
         <activity android:name=".home.detail.HomeDetailActivity" />
         <activity android:name=".home.search.activity.HomeSearchActivity"/>
         <activity android:name=".home.search.activity.SearchDetailActivity"/>
+        <activity android:name=".module.order.OrderCommentActivity"/>
     </application>
 
 </manifest>

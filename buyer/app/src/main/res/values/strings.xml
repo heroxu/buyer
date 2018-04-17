@@ -78,12 +78,18 @@
     <string name="publish_success">发布成功</string>
     <string name="share_title">快分享给小伙伴吧</string>
     <string name="money_unit">￥</string>
+    <string name="pay_method">付款方式</string>
+    <string name="pay_price">支付金额</string>
+    <string name="pay_confirm">确认支付</string>
 
     <!--限定能输入的具体字符串-->
     <string name="digits_phone_num">0123456789</string>
     <string name="digits_sms_code">0123456789</string>
 
-    <string name="pay_method">付款方式</string>
-    <string name="pay_price">支付金额</string>
-    <string name="pay_confirm">确认支付</string>
+    <!--订单相关-->
+    <string name="publish_comment">发布评论</string>
+    <string name="good_quality">商品质量</string>
+    <string name="seller_service">买手服务</string>
+    <string name="comment_disc">说说该商品的优点和美中不足的地方吧～</string>
+    <string name="publish">发表</string>
 </resources>

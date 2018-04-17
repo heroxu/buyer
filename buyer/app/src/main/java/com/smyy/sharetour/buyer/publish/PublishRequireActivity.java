@@ -90,7 +90,7 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_publish;
+        return R.layout.activity_publish_require;
     }
 
     @Override
