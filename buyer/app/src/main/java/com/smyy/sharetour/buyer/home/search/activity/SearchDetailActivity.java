@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.home.search;
+package com.smyy.sharetour.buyer.home.search.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +17,8 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.home.search.fragment.SearchBuyerFragment;
+import com.smyy.sharetour.buyer.home.search.fragment.SearchProductFragment;
 
 import java.util.ArrayList;
 

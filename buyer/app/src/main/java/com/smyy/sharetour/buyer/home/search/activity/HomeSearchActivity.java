@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.home.search;
+package com.smyy.sharetour.buyer.home.search.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

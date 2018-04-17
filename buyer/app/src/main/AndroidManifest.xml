@@ -49,8 +49,8 @@
         <activity android:name=".NoteDetailsActivity" />
         <activity android:name=".VideoDetailsActivity" />
         <activity android:name=".home.detail.HomeDetailActivity" />
-        <activity android:name=".home.search.HomeSearchActivity"/>
-        <activity android:name=".home.search.SearchDetailActivity"/>
+        <activity android:name=".home.search.activity.HomeSearchActivity"/>
+        <activity android:name=".home.search.activity.SearchDetailActivity"/>
     </application>
 
 </manifest>
