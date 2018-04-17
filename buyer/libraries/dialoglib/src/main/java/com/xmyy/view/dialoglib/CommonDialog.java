@@ -11,36 +11,20 @@ import android.view.View;
 
 import com.xmyy.view.dialoglib.base.BaseDialogFragment;
 import com.xmyy.view.dialoglib.base.BindViewHolder;
-import com.xmyy.view.dialoglib.base.TController;
+import com.xmyy.view.dialoglib.base.CommonController;
 import com.xmyy.view.dialoglib.listener.OnBindViewListener;
 import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 /**
- * 1.0.0版本: 弹窗实现基本功能
- *       OnBindViewListener
- * 1.1.0版本: 添加点击事件封装回调方法
- *      addOnClickListener()
- *      setOnViewClickListener()
- * 1.2.0版本:
- *      分离出列表弹窗TListDialog
- *      解决弹窗按Home键时出现的bug
- * 1.3.0版本:
- *      处理setCancelable()方法,禁止弹窗点击取消
- *      弹窗内容直接传入View: setDialogView()
- * 1.3.1版本:
- *      添加弹窗隐藏时回调监听方法:setOnDismissListener()
- *
- * @author Timmy
- * @time 2018/1/4 16:28
- * @GitHub https://github.com/Timmy-zzh/TDialog
+ * 参考： https://github.com/Timmy-zzh/TDialog
  **/
-public class TDialog extends BaseDialogFragment {
+public class CommonDialog extends BaseDialogFragment {
 
-    private static final String KEY_TCONTROLLER = "TController";
-    protected TController tController;
+    private static final String KEY_TCONTROLLER = "CommonController";
+    protected CommonController commonController;
 
-    public TDialog() {
-        tController = new TController();
+    public CommonDialog() {
+        commonController = new CommonController();
     }
 
     /**
@@ -50,7 +34,7 @@ public class TDialog extends BaseDialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
-            tController = (TController) savedInstanceState.getSerializable(KEY_TCONTROLLER);
+            commonController = (CommonController) savedInstanceState.getSerializable(KEY_TCONTROLLER);
         }
     }
 
@@ -59,7 +43,7 @@ public class TDialog extends BaseDialogFragment {
      */
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putParcelable(KEY_TCONTROLLER, tController);
+        outState.putParcelable(KEY_TCONTROLLER, commonController);
         super.onSaveInstanceState(outState);
     }
 
@@ -69,7 +53,7 @@ public class TDialog extends BaseDialogFragment {
     @Override
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);
-        DialogInterface.OnDismissListener onDismissListener = tController.getOnDismissListener();
+        DialogInterface.OnDismissListener onDismissListener = commonController.getOnDismissListener();
         if (onDismissListener != null) {
             onDismissListener.onDismiss(dialog);
         }
@@ -80,76 +64,76 @@ public class TDialog extends BaseDialogFragment {
      */
     @Override
     protected int getLayoutRes() {
-        return tController.getLayoutRes();
+        return commonController.getLayoutRes();
     }
 
     @Override
     protected View getDialogView() {
-        return tController.getDialogView();
+        return commonController.getDialogView();
     }
 
     @Override
     protected void bindView(View view) {
         //控件点击事件处理
         BindViewHolder viewHolder = new BindViewHolder(view, this);
-        if (tController.isCancelable() && tController.getIds() != null && tController.getIds().length > 0) {
-            for (int id : tController.getIds()) {
+        if (commonController.isCancelable() && commonController.getIds() != null && commonController.getIds().length > 0) {
+            for (int id : commonController.getIds()) {
                 viewHolder.addOnClickListener(id);
             }
         }
         //回调方法获取到布局,进行处理
-        if (tController.getOnBindViewListener() != null) {
-            tController.getOnBindViewListener().bindView(viewHolder);
+        if (commonController.getOnBindViewListener() != null) {
+            commonController.getOnBindViewListener().bindView(viewHolder);
         }
     }
 
 
     @Override
     public int getGravity() {
-        return tController.getGravity();
+        return commonController.getGravity();
     }
 
     @Override
     public float getDimAmount() {
-        return tController.getDimAmount();
+        return commonController.getDimAmount();
     }
 
     @Override
     public int getDialogHeight() {
-        return tController.getHeight();
+        return commonController.getHeight();
     }
 
     @Override
     public int getDialogWidth() {
-        return tController.getWidth();
+        return commonController.getWidth();
     }
 
     @Override
     public String getFragmentTag() {
-        return tController.getTag();
+        return commonController.getTag();
     }
 
     public OnViewClickListener getOnViewClickListener() {
-        return tController.getOnViewClickListener();
+        return commonController.getOnViewClickListener();
     }
 
     @Override
     public boolean isCancelable() {
-        return tController.isCancelable();
+        return commonController.isCancelable();
     }
 
     @Override
     protected boolean isCancelableOutside() {
-        return tController.isCancelableOutside();
+        return commonController.isCancelableOutside();
     }
 
-    public TDialog show() {
+    public CommonDialog show() {
         //如果宽高都没有设置,则默认给弹窗提供宽度为800
-        if (tController.getWidth() <= 0 && tController.getHeight() <= 0) {
-            tController.setWidth(600);
+        if (commonController.getWidth() <= 0 && commonController.getHeight() <= 0) {
+            commonController.setWidth(600);
         }
         Log.d(TAG, "show");
-        show(tController.getFragmentManager());
+        show(commonController.getFragmentManager());
         return this;
     }
 
@@ -159,10 +143,10 @@ public class TDialog extends BaseDialogFragment {
      */
     public static class Builder {
 
-        TController.TParams params;
+        CommonController.TParams params;
 
         public Builder(FragmentManager fragmentManager) {
-            params = new TController.TParams();
+            params = new CommonController.TParams();
             params.mFragmentManager = fragmentManager;
         }
 
@@ -249,11 +233,11 @@ public class TDialog extends BaseDialogFragment {
             return this;
         }
 
-        public TDialog create() {
-            TDialog dialog = new TDialog();
+        public CommonDialog create() {
+            CommonDialog dialog = new CommonDialog();
             Log.d(TAG, "create");
             //将数据从Buidler的DjParams中传递到DjDialog中
-            params.apply(dialog.tController);
+            params.apply(dialog.commonController);
             return dialog;
         }
     }

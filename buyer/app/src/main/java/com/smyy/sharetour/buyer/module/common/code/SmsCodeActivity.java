@@ -2,6 +2,8 @@ package com.smyy.sharetour.buyer.module.common.code;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -18,11 +20,6 @@ import com.smyy.sharetour.buyer.module.common.code.contract.ISmsCodeContract;
 import com.smyy.sharetour.buyer.module.common.code.model.SmsCodeModel;
 import com.smyy.sharetour.buyer.module.common.code.presenter.SmsCodePresenter;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
-import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
-import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
-import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
-import com.smyy.sharetour.buyer.module.my.model.UserModel;
-import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.util.StringUtil;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.RxCountDown;
@@ -53,6 +50,13 @@ public class SmsCodeActivity extends MyBaseMvpActivity<SmsCodePresenter> impleme
     String mPhoneNum;
     private String mSmsCode;
     private RxCountDown mRxCountDown;
+
+    static Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
 
     @Override
     protected int getLayoutId() {
@@ -160,15 +164,25 @@ public class SmsCodeActivity extends MyBaseMvpActivity<SmsCodePresenter> impleme
 
     @Override
     public void verifySmsCodeSuccess() {
-        hideProgressDialog();
-        ToastUtils.showToast("绑定成功");
-        setResult(RESULT_OK);
-        finish();
+        showResultDialog(true, "绑定成功");
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hideProgressDialog();
+                setResult(RESULT_OK);
+                finish();
+            }
+        }, 500);
     }
 
     @Override
     public void verifySmsCodeFail() {
-        hideProgressDialog();
-        ToastUtils.showToast("绑定失败");
+        showResultDialog(false, "绑定失败");
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hideProgressDialog();
+            }
+        }, 500);
     }
 }

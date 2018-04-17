@@ -16,11 +16,8 @@ import java.io.Serializable;
 
 /**
  * 数据保存封装的容器类
- * @author Timmy
- * @time 2018/1/24 14:40
- * @GitHub https://github.com/Timmy-zzh/TDialog
  **/
-public class TController<A extends TBaseAdapter> implements Parcelable, Serializable {
+public class CommonController<A extends CommonBaseAdapter> implements Parcelable, Serializable {
 
     private FragmentManager fragmentManager;
     private int layoutRes;
@@ -34,17 +31,17 @@ public class TController<A extends TBaseAdapter> implements Parcelable, Serializ
     private OnViewClickListener onViewClickListener;
     private OnBindViewListener onBindViewListener;
     private A adapter;
-    private TBaseAdapter.OnAdapterItemClickListener adapterItemClickListener;
+    private CommonBaseAdapter.OnAdapterItemClickListener adapterItemClickListener;
     private int orientation;
     private boolean cancelable;//弹窗是否可以取消
     private View dialogView;
     private DialogInterface.OnDismissListener onDismissListener;
 
     //////////////////////////////////////////Parcelable持久化//////////////////////////////////////////////////////
-    public TController() {
+    public CommonController() {
     }
 
-    protected TController(Parcel in) {
+    protected CommonController(Parcel in) {
         layoutRes = in.readInt();
         height = in.readInt();
         width = in.readInt();
@@ -57,15 +54,15 @@ public class TController<A extends TBaseAdapter> implements Parcelable, Serializ
         cancelable = in.readByte() != 0;
     }
 
-    public static final Creator<TController> CREATOR = new Creator<TController>() {
+    public static final Creator<CommonController> CREATOR = new Creator<CommonController>() {
         @Override
-        public TController createFromParcel(Parcel in) {
-            return new TController(in);
+        public CommonController createFromParcel(Parcel in) {
+            return new CommonController(in);
         }
 
         @Override
-        public TController[] newArray(int size) {
-            return new TController[size];
+        public CommonController[] newArray(int size) {
+            return new CommonController[size];
         }
     };
 
@@ -169,80 +166,80 @@ public class TController<A extends TBaseAdapter> implements Parcelable, Serializ
         this.adapter = adapter;
     }
 
-    public TBaseAdapter.OnAdapterItemClickListener getAdapterItemClickListener() {
+    public CommonBaseAdapter.OnAdapterItemClickListener getAdapterItemClickListener() {
         return adapterItemClickListener;
     }
 
-    public void setAdapterItemClickListener(TBaseAdapter.OnAdapterItemClickListener adapterItemClickListener) {
+    public void setAdapterItemClickListener(CommonBaseAdapter.OnAdapterItemClickListener adapterItemClickListener) {
         this.adapterItemClickListener = adapterItemClickListener;
     }
 
     /**************************************************************************
      */
-    public static class TParams<A extends TBaseAdapter> {
+    public static class TParams<A extends CommonBaseAdapter> {
         public FragmentManager mFragmentManager;
         public int mLayoutRes;
         public int mWidth;
         public int mHeight;
         public float mDimAmount = 0.2f;
         public int mGravity = Gravity.CENTER;
-        public String mTag = "TDialog";
+        public String mTag = "CommonDialog";
         public int[] ids;
         public boolean mIsCancelableOutside = true;
         public OnViewClickListener mOnViewClickListener;
         public OnBindViewListener bindViewListener;
         //列表
         public A adapter;
-        public TBaseAdapter.OnAdapterItemClickListener adapterItemClickListener;
+        public CommonBaseAdapter.OnAdapterItemClickListener adapterItemClickListener;
         public int listLayoutRes;
         public int orientation = LinearLayoutManager.VERTICAL;//默认RecyclerView的列表方向为垂直方向
         public boolean mCancelable = true;//弹窗是否可以取消
         public View mDialogView;//直接使用传入进来的View,而不需要通过解析Xml
         public DialogInterface.OnDismissListener mOnDismissListener;
 
-        public void apply(TController tController) {
-            tController.fragmentManager = mFragmentManager;
+        public void apply(CommonController commonController) {
+            commonController.fragmentManager = mFragmentManager;
             if (mLayoutRes > 0) {
-                tController.layoutRes = mLayoutRes;
+                commonController.layoutRes = mLayoutRes;
             }
             if (mDialogView != null) {
-                tController.dialogView = mDialogView;
+                commonController.dialogView = mDialogView;
             }
             if (mWidth > 0) {
-                tController.width = mWidth;
+                commonController.width = mWidth;
             }
             if (mHeight > 0) {
-                tController.height = mHeight;
+                commonController.height = mHeight;
             }
-            tController.dimAmount = mDimAmount;
-            tController.gravity = mGravity;
-            tController.tag = mTag;
+            commonController.dimAmount = mDimAmount;
+            commonController.gravity = mGravity;
+            commonController.tag = mTag;
             if (ids != null) {
-                tController.ids = ids;
+                commonController.ids = ids;
             }
-            tController.isCancelableOutside = mIsCancelableOutside;
-            tController.onViewClickListener = mOnViewClickListener;
-            tController.onBindViewListener = bindViewListener;
-            tController.onDismissListener = mOnDismissListener;
+            commonController.isCancelableOutside = mIsCancelableOutside;
+            commonController.onViewClickListener = mOnViewClickListener;
+            commonController.onBindViewListener = bindViewListener;
+            commonController.onDismissListener = mOnDismissListener;
 
             if (adapter != null) {
-                tController.setAdapter(adapter);
+                commonController.setAdapter(adapter);
                 if (listLayoutRes <= 0) {//使用默认的布局
-                    tController.setLayoutRes(R.layout.dialog_recycler);
+                    commonController.setLayoutRes(R.layout.dialog_recycler);
                 } else {
-                    tController.setLayoutRes(listLayoutRes);
+                    commonController.setLayoutRes(listLayoutRes);
                 }
-                tController.orientation = orientation;
+                commonController.orientation = orientation;
             } else {
-                if (tController.getLayoutRes() <= 0 && tController.getDialogView() == null) {
+                if (commonController.getLayoutRes() <= 0 && commonController.getDialogView() == null) {
                     throw new IllegalArgumentException("请先调用setLayoutRes()方法设置弹窗所需的xml布局!");
                 }
             }
             if (adapterItemClickListener != null) {
-                tController.setAdapterItemClickListener(adapterItemClickListener);
+                commonController.setAdapterItemClickListener(adapterItemClickListener);
             }
             //弹窗是否可以取消
-            tController.cancelable = mCancelable;
+            commonController.cancelable = mCancelable;
         }
     }
 }

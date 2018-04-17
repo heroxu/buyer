@@ -53,7 +53,7 @@ import android.view.WindowManager;
  **/
 public abstract class BaseDialogFragment extends DialogFragment {
 
-    public static final String TAG = "TDialog";
+    public static final String TAG = "CommonDialog";
     private static final float DEFAULT_DIMAMOUNT = 0.2F;
 
     protected abstract int getLayoutRes();

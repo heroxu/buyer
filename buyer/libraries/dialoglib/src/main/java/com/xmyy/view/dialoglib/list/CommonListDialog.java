@@ -10,41 +10,38 @@ import android.util.Log;
 import android.view.View;
 
 import com.xmyy.view.dialoglib.R;
-import com.xmyy.view.dialoglib.TDialog;
-import com.xmyy.view.dialoglib.base.TBaseAdapter;
-import com.xmyy.view.dialoglib.base.TController;
+import com.xmyy.view.dialoglib.CommonDialog;
+import com.xmyy.view.dialoglib.base.CommonBaseAdapter;
+import com.xmyy.view.dialoglib.base.CommonController;
 import com.xmyy.view.dialoglib.listener.OnBindViewListener;
 import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 /**
- * 列表弹窗  与TDialog实现分开处理
- *
- * @author Timmy
- * @time 2018/1/11 14:38
+ * 列表弹窗  与CommonDialog实现分开处理
  **/
-public class TListDialog extends TDialog {
+public class CommonListDialog extends CommonDialog {
 
 
     @Override
     protected void bindView(View view) {
         super.bindView(view);
-        if (tController.getAdapter() != null) {//有设置列表
+        if (commonController.getAdapter() != null) {//有设置列表
             //列表
             RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
             if (recyclerView == null) {
                 throw new IllegalArgumentException("自定义列表xml布局,请设置RecyclerView的控件id为recycler_view");
             }
-            tController.getAdapter().setTDialog(this);
+            commonController.getAdapter().setTDialog(this);
 
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext(),tController.getOrientation(),false);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext(), commonController.getOrientation(),false);
             recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setAdapter(tController.getAdapter());
-            tController.getAdapter().notifyDataSetChanged();
-            if (tController.getAdapterItemClickListener() != null) {
-                tController.getAdapter().setOnAdapterItemClickListener(tController.getAdapterItemClickListener());
+            recyclerView.setAdapter(commonController.getAdapter());
+            commonController.getAdapter().notifyDataSetChanged();
+            if (commonController.getAdapterItemClickListener() != null) {
+                commonController.getAdapter().setOnAdapterItemClickListener(commonController.getAdapterItemClickListener());
             }
         }else{
-            Log.d("TDialog","列表弹窗需要先调用setAdapter()方法!");
+            Log.d("CommonDialog","列表弹窗需要先调用setAdapter()方法!");
         }
     }
 
@@ -54,21 +51,21 @@ public class TListDialog extends TDialog {
      */
     public static class Builder {
 
-        TController.TParams params;
+        CommonController.TParams params;
 
         public Builder(FragmentManager fragmentManager) {
-            params = new TController.TParams();
+            params = new CommonController.TParams();
             params.mFragmentManager = fragmentManager;
         }
 
         //各种setXXX()方法设置数据
-        public TListDialog.Builder setLayoutRes(@LayoutRes int layoutRes) {
+        public CommonListDialog.Builder setLayoutRes(@LayoutRes int layoutRes) {
             params.mLayoutRes = layoutRes;
             return this;
         }
 
         //设置自定义列表布局和方向
-        public TListDialog.Builder setListLayoutRes(@LayoutRes int layoutRes,int orientation) {
+        public CommonListDialog.Builder setListLayoutRes(@LayoutRes int layoutRes, int orientation) {
             params.listLayoutRes = layoutRes;
             params.orientation = orientation;
             return this;
@@ -77,12 +74,12 @@ public class TListDialog extends TDialog {
         /**
          * 设置弹窗宽度是屏幕宽度的比例 0 -1
          */
-        public TListDialog.Builder setScreenWidthAspect(Activity activity, float widthAspect) {
+        public CommonListDialog.Builder setScreenWidthAspect(Activity activity, float widthAspect) {
             params.mWidth = (int) (getWindowWidth(activity) * widthAspect);
             return this;
         }
 
-        public TListDialog.Builder setWidth(int widthPx) {
+        public CommonListDialog.Builder setWidth(int widthPx) {
             params.mWidth = widthPx;
             return this;
         }
@@ -90,71 +87,71 @@ public class TListDialog extends TDialog {
         /**
          * 设置屏幕高度比例 0 -1
          */
-        public TListDialog.Builder setScreenHeightAspect(Activity activity, float heightAspect) {
+        public CommonListDialog.Builder setScreenHeightAspect(Activity activity, float heightAspect) {
             params.mHeight = (int) (getWindowHeight(activity) * heightAspect);
             return this;
         }
 
-        public TListDialog.Builder setHeight(int heightPx) {
+        public CommonListDialog.Builder setHeight(int heightPx) {
             params.mHeight = heightPx;
             return this;
         }
 
-        public TListDialog.Builder setGravity(int gravity) {
+        public CommonListDialog.Builder setGravity(int gravity) {
             params.mGravity = gravity;
             return this;
         }
 
-        public TListDialog.Builder setCancelOutside(boolean cancel) {
+        public CommonListDialog.Builder setCancelOutside(boolean cancel) {
             params.mIsCancelableOutside = cancel;
             return this;
         }
 
-        public TListDialog.Builder setDimAmount(float dim) {
+        public CommonListDialog.Builder setDimAmount(float dim) {
             params.mDimAmount = dim;
             return this;
         }
 
-        public TListDialog.Builder setTag(String tag) {
+        public CommonListDialog.Builder setTag(String tag) {
             params.mTag = tag;
             return this;
         }
 
-        public TListDialog.Builder setOnBindViewListener(OnBindViewListener listener) {
+        public CommonListDialog.Builder setOnBindViewListener(OnBindViewListener listener) {
             params.bindViewListener = listener;
             return this;
         }
 
-        public TListDialog.Builder addOnClickListener(int... ids) {
+        public CommonListDialog.Builder addOnClickListener(int... ids) {
             params.ids = ids;
             return this;
         }
 
-        public TListDialog.Builder setOnViewClickListener(OnViewClickListener listener) {
+        public CommonListDialog.Builder setOnViewClickListener(OnViewClickListener listener) {
             params.mOnViewClickListener = listener;
             return this;
         }
 
         //列表数据,需要传入数据和Adapter,和item点击数据
-        public <A extends TBaseAdapter> TListDialog.Builder setAdapter(A adapter) {
+        public <A extends CommonBaseAdapter> CommonListDialog.Builder setAdapter(A adapter) {
             params.adapter = adapter;
             return this;
         }
 
-        public TListDialog.Builder setOnAdapterItemClickListener(TBaseAdapter.OnAdapterItemClickListener listener) {
+        public CommonListDialog.Builder setOnAdapterItemClickListener(CommonBaseAdapter.OnAdapterItemClickListener listener) {
             params.adapterItemClickListener = listener;
             return this;
         }
 
-        public TListDialog.Builder setOnDismissListener(DialogInterface.OnDismissListener dismissListener) {
+        public CommonListDialog.Builder setOnDismissListener(DialogInterface.OnDismissListener dismissListener) {
             params.mOnDismissListener = dismissListener;
             return this;
         }
 
-        public TListDialog create() {
-            TListDialog dialog = new TListDialog();
+        public CommonListDialog create() {
+            CommonListDialog dialog = new CommonListDialog();
             //将数据从Buidler的DjParams中传递到DjDialog中
-            params.apply(dialog.tController);
+            params.apply(dialog.commonController);
             return dialog;
         }
     }

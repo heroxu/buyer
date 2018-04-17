@@ -23,20 +23,17 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.xmyy.view.dialoglib.TDialog;
+import com.xmyy.view.dialoglib.CommonDialog;
 
 /**
  * 借鉴RecyclerView.Adapter的ViewHolder写法
  * 将Dialog的根布局传入,主要处理点击方法
- *
- * @author Timmy
- * @time 2017/12/28 16:18
  **/
 public class BindViewHolder extends RecyclerView.ViewHolder  {
 
     public View bindView;
     private SparseArray<View> views;
-    private TDialog dialog;
+    private CommonDialog dialog;
 
     public BindViewHolder(final View view) {
         super(view);
@@ -44,7 +41,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
         this.views = new SparseArray<>();
     }
 
-    public BindViewHolder(View view, TDialog dialog) {
+    public BindViewHolder(View view, CommonDialog dialog) {
         super(view);
         this.bindView = view;
         this.dialog = dialog;

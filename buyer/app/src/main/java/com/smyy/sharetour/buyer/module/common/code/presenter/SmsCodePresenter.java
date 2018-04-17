@@ -1,5 +1,7 @@
 package com.smyy.sharetour.buyer.module.common.code.presenter;
 
+import android.os.SystemClock;
+
 import com.smyy.sharetour.buyer.module.common.code.contract.ISmsCodeContract;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 
@@ -23,6 +25,7 @@ public class SmsCodePresenter extends ISmsCodeContract.Presenter {
             @Override
             public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
                 if (mModel != null) {
+                    SystemClock.sleep(1000);
                     e.onNext(mModel.getSmsCode(internationalCode, phoneNum));
                     e.onComplete();
                 }
@@ -70,6 +73,7 @@ public class SmsCodePresenter extends ISmsCodeContract.Presenter {
             @Override
             public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
                 if (mModel != null) {
+                    SystemClock.sleep(1000);
                     e.onNext(mModel.verifySmsCode(smsCode));
                     e.onComplete();
                 }

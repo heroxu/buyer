@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -14,8 +15,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.android.tu.loadingdialog.LoadingDailog;
 import com.gyf.barlibrary.ImmersionBar;
+import com.xmyy.view.dialoglib.LoadingDialog;
 
 import butterknife.ButterKnife;
 
@@ -34,7 +35,7 @@ public abstract class BaseActivity extends UmengActivity {
     private View mToolbarDividerLine;
 
     protected FrameLayout mContentLayout;
-    private LoadingDailog mLoadingDailog;
+    private LoadingDialog mLoadingDailog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -93,33 +94,38 @@ public abstract class BaseActivity extends UmengActivity {
         }
     }
 
-    public void showProgressDialog(String msg) {
-        if (mLoadingDailog == null) {
-            LoadingDailog.Builder loadBuilder = new LoadingDailog.Builder(this)
-                    .setMessage(msg)
-                    .setCancelable(false)
-                    .setCancelOutside(false);
-            mLoadingDailog = loadBuilder.create();
-        }
-        try {
-            mLoadingDailog.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void showProgressDialog(int status, String msg) {
+        if (!isFinishing()) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            if (getSupportFragmentManager().findFragmentByTag("mLoadingDailog") != null) {
+                transaction.remove(getSupportFragmentManager().findFragmentByTag("mLoadingDailog"));
+            }
+            mLoadingDailog = new LoadingDialog().setStatus(status, msg);
+            mLoadingDailog.show(this.getSupportFragmentManager(), "mLoadingDailog");
         }
     }
 
-    public void showSuccessDialog(String msg) {//todo
-
-
+    public void showProgressDialog(String msg) {
+        showProgressDialog(LoadingDialog.LOADING, msg);
     }
 
     public void showProgressDialog() {
         showProgressDialog("加载中...");
     }
 
+    public void showResultDialog(boolean result, String msg) {
+        if (mLoadingDailog != null && mLoadingDailog.isVisible()) {
+            mLoadingDailog.switchStatus(result ? LoadingDialog.SUCCESS : LoadingDialog.FAIL, msg);
+        } else {
+            showProgressDialog(result ? LoadingDialog.SUCCESS : LoadingDialog.FAIL, msg);
+        }
+
+    }
+
     public void hideProgressDialog() {
-        if (mLoadingDailog != null && mLoadingDailog.isShowing()) {
-            mLoadingDailog.dismiss();
+        if (!isFinishing() && null != mLoadingDailog && mLoadingDailog.isAdded() && mLoadingDailog.isResumed()) {
+            mLoadingDailog.dismissAllowingStateLoss();
+            mLoadingDailog = null;
         }
     }
 

@@ -6,26 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.xmyy.view.dialoglib.TDialog;
+import com.xmyy.view.dialoglib.CommonDialog;
 
 import java.util.List;
 
-/**
- *
- * @author Timmy
- * @time 2018/1/24 14:39
- * @GitHub https://github.com/Timmy-zzh/TDialog
- **/
-public abstract class TBaseAdapter<T> extends RecyclerView.Adapter<BindViewHolder> {
+
+public abstract class CommonBaseAdapter<T> extends RecyclerView.Adapter<BindViewHolder> {
 
     private final int layoutRes;
     private List<T> datas;
     private OnAdapterItemClickListener adapterItemClickListener;
-    private TDialog dialog;
+    private CommonDialog dialog;
 
     protected abstract void onBind(BindViewHolder holder, int position, T t);
 
-    public TBaseAdapter(@LayoutRes int layoutRes, List<T> datas) {
+    public CommonBaseAdapter(@LayoutRes int layoutRes, List<T> datas) {
         this.layoutRes = layoutRes;
         this.datas = datas;
     }
@@ -51,12 +46,12 @@ public abstract class TBaseAdapter<T> extends RecyclerView.Adapter<BindViewHolde
         return datas.size();
     }
 
-    public void setTDialog(TDialog tDialog) {
-        this.dialog = tDialog;
+    public void setTDialog(CommonDialog commonDialog) {
+        this.dialog = commonDialog;
     }
 
     public interface OnAdapterItemClickListener<T> {
-        void onItemClick(BindViewHolder holder, int position, T t, TDialog tDialog);
+        void onItemClick(BindViewHolder holder, int position, T t, CommonDialog commonDialog);
     }
 
     public void setOnAdapterItemClickListener(OnAdapterItemClickListener listener) {

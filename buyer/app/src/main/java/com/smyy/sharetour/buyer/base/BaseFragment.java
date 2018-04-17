@@ -15,8 +15,9 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.tu.loadingdialog.LoadingDailog;
 import com.gyf.barlibrary.ImmersionBar;
+import com.smyy.sharetour.uiframelib.BaseActivity;
+import com.xmyy.view.dialoglib.LoadingDialog;
 
 import java.lang.reflect.Method;
 
@@ -30,7 +31,7 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends UmengFragment {
 
     protected Activity mActivity;
-    private LoadingDailog mLoadingDailog;
+    private LoadingDialog mLoadingDailog;
 
     @Override
     public void onAttach(Context context) {
@@ -186,32 +187,33 @@ public abstract class BaseFragment extends UmengFragment {
         mImmersionBar.fitsSystemWindows(true).statusBarColorInt(statusBarColor).init();
     }
 
+
+    public void showProgressDialog(int status, String msg) {
+        if (mActivity instanceof BaseActivity) {
+            BaseActivity activity = (BaseActivity) mActivity;
+            activity.showProgressDialog(status, msg);
+        }
+    }
+
     public void showProgressDialog(String msg) {
-        if (mLoadingDailog == null) {
-            LoadingDailog.Builder loadBuilder = new LoadingDailog.Builder(mActivity)
-                    .setMessage(msg)
-                    .setCancelable(false)
-                    .setCancelOutside(false);
-            mLoadingDailog = loadBuilder.create();
-        }
-        try {
-            mLoadingDailog.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        showProgressDialog(LoadingDialog.LOADING, msg);
     }
 
     public void showProgressDialog() {
         showProgressDialog("加载中...");
     }
 
-    public void showSuccessDialog(String msg) {//todo
-
+    public void showResultDialog(boolean result, String msg) {
+        if (mActivity instanceof BaseActivity) {
+            BaseActivity activity = (BaseActivity) mActivity;
+            activity.showResultDialog(result, msg);
+        }
     }
 
     public void hideProgressDialog() {
-        if (mLoadingDailog != null && mLoadingDailog.isShowing()) {
-            mLoadingDailog.dismiss();
+        if (mActivity instanceof BaseActivity) {
+            BaseActivity activity = (BaseActivity) mActivity;
+            activity.hideProgressDialog();
         }
     }
 
