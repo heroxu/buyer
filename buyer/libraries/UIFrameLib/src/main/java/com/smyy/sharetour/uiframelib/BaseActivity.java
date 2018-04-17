@@ -101,6 +101,7 @@ public abstract class BaseActivity extends UmengActivity {
                 transaction.remove(getSupportFragmentManager().findFragmentByTag("mLoadingDailog"));
             }
             mLoadingDailog = new LoadingDialog().setStatus(status, msg);
+            mLoadingDailog.setCancelable(false);
             mLoadingDailog.show(this.getSupportFragmentManager(), "mLoadingDailog");
         }
     }
