@@ -47,7 +47,7 @@ public class MyKeyBoardView extends KeyboardView {
             for (Key key : keys) {
                 // 数字键盘的处理
                 if (key.codes[0] == -4) {
-                    drawKeyBackground(R.drawable.bg_keyboardview_yes, canvas, key);
+                    drawKeyBackground(R.color.btn_bg_normal, canvas, key);
                     drawText(canvas, key);
                 }
             }
@@ -74,7 +74,7 @@ public class MyKeyBoardView extends KeyboardView {
 
         paint.setAntiAlias(true);
 
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.BLACK);
         if (key.label != null) {
             String label = key.label.toString();
 
@@ -92,7 +92,7 @@ public class MyKeyBoardView extends KeyboardView {
                     e.printStackTrace();
                 }
                 paint.setTextSize(labelTextSize);
-                paint.setTypeface(Typeface.DEFAULT_BOLD);
+                //paint.setTypeface(Typeface.DEFAULT_BOLD);
             } else {
                 int keyTextSize = 0;
                 try {

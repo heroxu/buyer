@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_rectangle_top_corner"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="@string/pay_method"
+            android:textSize="@dimen/txt_size_17"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/pay_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/ic_pop_ups_off" />
+
+        <TextView
+            android:id="@+id/pay_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="73dp"
+            android:text="@string/pay_price"
+            android:textSize="@dimen/txt_size_15" />
+
+    </RelativeLayout>
+
+    <View style="@style/WideItemDivider"/>
+
+    <RadioGroup
+        android:id="@+id/pay_group"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/pay_zhifubao"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="微信"
+            android:drawableLeft="@mipmap/ic_camera"
+            android:drawableRight="@drawable/btn_radio_selector"
+            android:button="@null"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:drawablePadding="5dp"
+            android:checked="true"
+            />
+
+        <RadioButton
+            android:id="@+id/pay_weixin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="支付宝"
+            android:drawableLeft="@mipmap/ic_camera"
+            android:drawableRight="@drawable/btn_radio_selector"
+            android:button="@null"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:drawablePadding="5dp"
+            />
+
+        <RadioButton
+            android:id="@+id/pay_bank"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="银行卡支付"
+            android:drawableLeft="@mipmap/ic_camera"
+            android:drawableRight="@drawable/btn_radio_selector"
+            android:button="@null"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:drawablePadding="5dp"
+            />
+
+    </RadioGroup>
+    <Button
+        android:id="@+id/pay_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/CommonButton"
+        android:text="@string/pay_confirm"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:enabled="true"
+        />
+</LinearLayout>

@@ -77,7 +77,7 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
 
     View initView() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View view = inflater.inflate(R.layout.timepicker_layout, null);
+        View view = inflater.inflate(R.layout.layout_timepicker, null);
         TextView cancel = (TextView) view.findViewById(R.id.tv_cancel);
         cancel.setOnClickListener(this);
         TextView sure = (TextView) view.findViewById(R.id.tv_sure);

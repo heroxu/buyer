@@ -16,16 +16,17 @@
     <LinearLayout
         android:id="@+id/ll_price"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_height="@dimen/key_board_input_height"
         android:background="#fff"
         android:orientation="horizontal"
-        android:weightSum="10">
+        android:gravity="center_vertical"
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:text="@string/require_budget"/>
         <TextView
             android:layout_width="wrap_content"

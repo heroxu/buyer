@@ -2,10 +2,12 @@ package com.smyy.sharetour.buyer.view.keyboard;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.smyy.sharetour.buyer.R;
 
@@ -45,11 +48,26 @@ public class MyKeyBoardDialog extends DialogFragment {
     @Override
     public void onResume() {
         super.onResume();
-        int height = getResources().getDimensionPixelSize(R.dimen.key_board_height);
+        int height = (int) (getScreenProperty()[1]*0.36)+
+                getResources().getDimensionPixelSize(R.dimen.key_board_input_height);
 
         Window window = getDialog().getWindow();
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, height);//Here!
         window.setGravity(Gravity.BOTTOM);
+    }
+
+    public int[] getScreenProperty() {
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;         // 屏幕宽度（像素）
+        int height = dm.heightPixels;       // 屏幕高度（像素）
+        /*float density = dm.density;         // 屏幕密度（0.75 / 1.0 / 1.5）
+        int densityDpi = dm.densityDpi;     // 屏幕密度dpi（120 / 160 / 240）
+        // 屏幕宽度算法:屏幕宽度（像素）/屏幕密度
+        int screenWidth = (int) (width / density);  // 屏幕宽度(dp)
+        int screenHeight = (int) (height / density);// 屏幕高度(dp)*/
+        return new int[]{width, height};
     }
 
     @NonNull
@@ -65,7 +83,11 @@ public class MyKeyBoardDialog extends DialogFragment {
 
     View initView() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View view = inflater.inflate(R.layout.keyboard_layout, null);
+        View view = inflater.inflate(R.layout.layout_keyboard, null);
+        LinearLayout input_layout = (LinearLayout) view.findViewById(R.id.ll_price);
+        int height = (int) (getScreenProperty()[1]*0.08);
+        input_layout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                height));
         price = (EditText) view.findViewById(R.id.tv_price);
         if(!initialPrice.equals("0")){
             price.setText(initialPrice);

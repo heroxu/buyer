@@ -1,6 +1,5 @@
 package com.smyy.sharetour.buyer.view.keyboard;
 
-import android.app.Activity;
 import android.content.Context;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
@@ -21,7 +20,6 @@ import java.util.Random;
 
 /**
  * 自定义键盘
- * Created by xuejinwei on 16/3/5.
  */
 public class KeyboardUtil {
     private View mView;

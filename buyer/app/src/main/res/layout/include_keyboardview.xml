@@ -8,6 +8,7 @@
     android:paddingTop="0dp"
     android:focusableInTouchMode="true"
     android:keyBackground="@drawable/bg_keyboardview"
+    android:labelTextSize="18sp"
     android:keyPreviewOffset="0dp"
     android:keyTextColor="#000"
     android:shadowColor="#fff"

@@ -1,9 +1,12 @@
 package com.smyy.sharetour.buyer.publish;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -36,6 +39,9 @@ import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function6;
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
+import me.weyye.hipermission.PermissionItem;
 
 /**
  * @author Liliping
@@ -48,7 +54,7 @@ import io.reactivex.functions.Function6;
  */
 public class PublishRequireActivity extends BaseMvpActivity implements OnDateSetListener {
 
-    private static final String TAG = PublishRequireActivity.class.getName();
+    private static final int REQUEST_CODE_CAMERA = 101;
     @BindView(R.id.disc_context)
     EditText disc_context;
     @BindView(R.id.gridView)
@@ -155,8 +161,14 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String imgs = (String) parent.getItemAtPosition(position);
                 if ("paizhao".equals(imgs) ){
-                    ImageSelectorActivity.start(PublishRequireActivity.this, 10-imagePaths.size(),
-                            ImageSelectorActivity.MODE_MULTIPLE, true,true,false, 0);
+                   if( ContextCompat.checkSelfPermission(PublishRequireActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                            || ContextCompat.checkSelfPermission(PublishRequireActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                           //未获得权限
+                       initPermissions();
+                   }else{
+                       //授予权限
+                       getPicture();
+                   }
                 }else{
                     List<String> temps = new ArrayList<>();
                     temps.addAll(imagePaths);
@@ -242,12 +254,10 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
 
 
 
-    @OnClick({R.id.disc_context, R.id.require_budget, R.id.require_finish_time, R.id.require_type, R.id.address, R.id.publish, R.id.buy_place})
+    @OnClick({R.id.require_budget, R.id.require_finish_time, R.id.require_type, R.id.address, R.id.publish, R.id.buy_place})
     public void onViewClicked(View view) {
         Intent intent;
         switch (view.getId()) {
-            case R.id.disc_context:
-                break;
             case R.id.require_budget:
                 MyKeyBoardDialog dialog = new MyKeyBoardDialog();
                 dialog.setPriceCallback(new MyKeyBoardDialog.OnPriceSetCallback() {
@@ -282,6 +292,9 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
                 startActivityForResult(intent, REQUEST_GET_ADDRESS);
                 break;
             case R.id.publish:
+                PaymentDialog paymentDialog = new PaymentDialog();
+                paymentDialog.setPrice(requireBudget.getText().toString().substring(1));
+                paymentDialog.show(getSupportFragmentManager(),null);
                 break;
         }
     }
@@ -308,5 +321,38 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
         boolean isPlaceValid = !TextUtils.isEmpty(buyPlace.getText());
         boolean isAddressValid = !TextUtils.isEmpty(address.getText());
         return isDiscValid&&isImageValid&&isBudgetValid&&isTimeValid&&isTypeValid&&isPlaceValid&&isAddressValid;
+    }
+
+    private void getPicture()
+    {
+        ImageSelectorActivity.start(PublishRequireActivity.this, 10-imagePaths.size(),
+                ImageSelectorActivity.MODE_MULTIPLE, true,true,false, 0);
+    }
+
+    private void initPermissions() {
+        List<PermissionItem> permissonItems = new ArrayList<PermissionItem>();
+        permissonItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_camera));
+        permissonItems.add(new PermissionItem(Manifest.permission.READ_EXTERNAL_STORAGE, "读取外部存储", R.drawable.permission_ic_storage));
+        HiPermission.create(PublishRequireActivity.this).permissions(permissonItems).checkMutiPermission(new PermissionCallback() {
+            @Override
+            public void onClose() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onDeny(String permission, int position) {
+
+            }
+
+            @Override
+            public void onGuarantee(String permission, int position) {
+
+            }
+        });
     }
 }

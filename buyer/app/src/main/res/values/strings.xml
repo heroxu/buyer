@@ -83,4 +83,7 @@
     <string name="digits_phone_num">0123456789</string>
     <string name="digits_sms_code">0123456789</string>
 
+    <string name="pay_method">付款方式</string>
+    <string name="pay_price">支付金额</string>
+    <string name="pay_confirm">确认支付</string>
 </resources>

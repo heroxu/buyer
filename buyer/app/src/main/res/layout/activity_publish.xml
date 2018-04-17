@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:horizontalSpacing="@dimen/space_size"
                 android:numColumns="4"
-
+                android:listSelector="@android:color/transparent"
                 android:verticalSpacing="@dimen/space_size"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"

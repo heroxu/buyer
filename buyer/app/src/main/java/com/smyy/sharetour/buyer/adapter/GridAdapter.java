@@ -46,7 +46,7 @@ public class GridAdapter extends BaseAdapter {
         ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.publish_grid_item, parent,false);
+            convertView = inflater.inflate(R.layout.item_publish_grid, parent,false);
             holder.image = (ImageView) convertView.findViewById(R.id.imageView);
             holder.del = (ImageView) convertView.findViewById(R.id.del_pic);
             convertView.setTag(holder);
