@@ -41,6 +41,7 @@
     <color name="txt_hint">#007AFF</color>
     <!--价格显示&提示性文字-->
     <color name="txt_price">#FF5B1F</color>
+    <color name="txt_red">@color/dot_red</color>
 
     <!--密码输入框-->
     <color name="pwd_stroke_normal">#D8D8D8</color>

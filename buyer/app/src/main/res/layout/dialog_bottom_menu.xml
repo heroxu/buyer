@@ -92,7 +92,7 @@
             android:minHeight="50dp"
             android:padding="13dp"
             android:text="btn3"
-            android:textColor="@color/dot_red"
+            android:textColor="@color/txt_red"
             android:textSize="@dimen/txt_size_17" />
     </LinearLayout>
 

@@ -170,6 +170,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                                 ToastUtils.showToast("举报");
                             }
                         });
+
                 break;
 
             case R.id.lay_my_awaiting_shipment:
@@ -223,18 +224,32 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.tv_my_demands:
+                DialogUtils.showOneBtnMsgBox(getActivity(), "是否清空失效商品", new OnViewClickListener() {
+                    @Override
+                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                        ToastUtils.showToast("清空");
+                    }
+                });
 
                 break;
 
             case R.id.tv_my_reviews:
+                DialogUtils.showTwoBtnMsgBox(getActivity(), "lalalala", new OnViewClickListener() {
+                    @Override
+                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                        ToastUtils.showToast("obhsiodgh");
+                    }
+                });
 
                 break;
 
             case R.id.tv_my_favorites:
+                DialogUtils.showTwoBtnMsgBox(getActivity(), "jhriuwgh", null);
 
                 break;
 
             case R.id.tv_my_interests:
+                DialogUtils.showOneBtnMsgBox(getActivity(), "jhriuwgh", null);
 
                 break;
 

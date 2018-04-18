@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/txt_gray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_message_box"
+        android:minHeight="140dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_dialog_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_17" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_divider" />
+
+        <LinearLayout
+            android:id="@+id/lay_dialog_two_btn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:id="@+id/tv_dialog_cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/txt_gray"
+                android:textSize="@dimen/txt_size_15" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/line_divider" />
+
+            <TextView
+                android:id="@+id/tv_dialog_confirm"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/txt_red"
+                android:textSize="@dimen/txt_size_15" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_dialog_one_btn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/txt_gray"
+            android:textSize="@dimen/txt_size_15"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>
