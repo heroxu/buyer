@@ -15,19 +15,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.module.my.SettingsActivity;
+import com.smyy.sharetour.buyer.module.my.ShippingAddressActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpFragment;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
-import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.RedImageView;
-import com.xmyy.view.dialoglib.CommonDialog;
-import com.xmyy.view.dialoglib.base.BindViewHolder;
-import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 import java.io.File;
 
@@ -129,127 +125,42 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.tv_my_view_all_orders:
-                DialogUtils.showBottomMenu(getActivity()
-                        , "分享"
-                        , new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                ToastUtils.showToast("分享");
-                            }
-                        }
-                        , "编辑"
-                        , new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                ToastUtils.showToast("编辑");
-                            }
-                        }
-                        , "删除"
-                        , new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                ToastUtils.showToast("删除");
-                            }
-                        });
+                startActivity(ShippingAddressActivity.class);
                 break;
 
             case R.id.lay_my_awaiting_payment:
-                DialogUtils.showBottomMsgMenu(getActivity()
-                        , "遥遥-deer：看起来不错，不知道实际用了会怎样？"
-                        , "回复"
-                        , new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                ToastUtils.showToast("回复");
-                            }
-                        }
-                        , "举报"
-                        , new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                ToastUtils.showToast("举报");
-                            }
-                        });
 
                 break;
 
             case R.id.lay_my_awaiting_shipment:
-                DialogUtils.showBottomMsgMenu(getActivity()
-                        , "遥遥-deer：看起来不错，不知道实际用了会怎样？"
-                        , "举报"
-                        , new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                ToastUtils.showToast("举报");
-                            }
-                        });
 
                 break;
 
             case R.id.lay_my_awaiting_confirmation:
-                DialogUtils.showBottomMsgMenu(getActivity()
-                        , "遥遥-deer：看起来不错，不知道实际用了会怎样？");
 
                 break;
 
             case R.id.lay_my_dispute:
-                DialogUtils.showBottomMenu(getActivity()
-                        , "编辑"
-                        , new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                ToastUtils.showToast("编辑");
-                            }
-                        }
-                        , "删除"
-                        , new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                ToastUtils.showToast("删除");
-                            }
-                        });
 
                 break;
 
             case R.id.tv_my_cart:
-                DialogUtils.showBottomMenu(getActivity()
-                        , "删除"
-                        , new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                ToastUtils.showToast("删除");
-                            }
-                        });
 
                 break;
 
             case R.id.tv_my_demands:
-                DialogUtils.showOneBtnMsgBox(getActivity(), "是否清空失效商品", new OnViewClickListener() {
-                    @Override
-                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                        ToastUtils.showToast("清空");
-                    }
-                });
 
                 break;
 
             case R.id.tv_my_reviews:
-                DialogUtils.showTwoBtnMsgBox(getActivity(), "lalalala", new OnViewClickListener() {
-                    @Override
-                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                        ToastUtils.showToast("obhsiodgh");
-                    }
-                });
 
                 break;
 
             case R.id.tv_my_favorites:
-                DialogUtils.showTwoBtnMsgBox(getActivity(), "jhriuwgh", null);
 
                 break;
 
             case R.id.tv_my_interests:
-                DialogUtils.showOneBtnMsgBox(getActivity(), "jhriuwgh", null);
 
                 break;
 

@@ -3,8 +3,11 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.google.gson.Gson;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -105,6 +108,29 @@ public class SharePreferenceUtil {
         }
 
         return bean;
+    }
+
+    public <T> List<T> getListValue(String key) {
+        List<T> datas = null;
+        try {
+            String beanStr = getStringValue(key);
+            if (!TextUtils.isEmpty(beanStr)) {
+                //json转换为list
+                Gson gson = new Gson();
+                datas = gson.fromJson(beanStr, new TypeToken<List<T>>() {
+                }.getType());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return datas;
+    }
+
+    public <T> boolean writeListValue(String key, List<T> datas) {
+        Gson gson = new Gson();
+        String beanStr = gson.toJson(datas);
+        return writeStringValue(key, beanStr);
     }
 
     public boolean writeBooleanValue(String key, boolean value) {

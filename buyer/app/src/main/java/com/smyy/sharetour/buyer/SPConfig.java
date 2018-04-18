@@ -17,4 +17,10 @@ public class SPConfig {
      * 是否打开系统消息通知
      */
     public static final String TOGGLE_SYSM = "toggle_sysm";
+
+    /**
+     * 虚拟数据，后台上线后删除
+     */
+    public static final String FAKE_DATA = "fake_data";
+    public static final String FAKE_ADDRESS = "fake_address";
 }
