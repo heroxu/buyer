@@ -3,8 +3,10 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
 import com.smyy.sharetour.buyer.ui.MoreReplyActivity;
 import com.smyy.sharetour.buyer.ui.NoteDetailsActivity;
+import com.smyy.sharetour.buyer.ui.PersonalTagActivity;
 import com.smyy.sharetour.buyer.ui.VideoDetailsActivity;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
@@ -122,6 +124,22 @@ public class ActivityLauncher {
 
     public static void viewSearchDetail(Context context) {
         Intent intent = new Intent(context, SearchDetailActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到个人标签选择页面
+     */
+    public static void viewPersonalTagActivity(Context context) {
+        Intent intent = new Intent(context, PersonalTagActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到发布需求页面
+     */
+    public static void viewPublishRequireActivity(Context context) {
+        Intent intent = new Intent(context, PublishRequireActivity.class);
         context.startActivity(intent);
     }
 }

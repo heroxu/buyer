@@ -17,7 +17,7 @@ import com.smyy.sharetour.buyer.fragment.FoundFragment;
 import com.smyy.sharetour.buyer.fragment.HomeFragment;
 import com.smyy.sharetour.buyer.fragment.LiveFragment;
 import com.smyy.sharetour.buyer.fragment.MyFragment;
-import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.util.FragmentUtil;
 import com.smyy.sharetour.buyer.view.RedImageView;
 import com.smyy.sharetour.uiframelib.BaseActivity;
@@ -212,7 +212,7 @@ public class MainActivity extends BaseActivity {
                 obtainFragment(TAB_ME);
                 break;
             case R.id.tab_publish:
-                startActivity(new Intent(MainActivity.this, PublishRequireActivity.class));
+                ActivityLauncher.viewPublishRequireActivity(MainActivity.this);
                 break;
             default:
                 break;

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/personal_bg"
+        android:layout_width="match_parent"
+        android:layout_height="227dp"
+        android:background="@color/black"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_off"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/tag_close"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/personal_bg"
+        android:layout_marginTop="35dp"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/txt_size_19"
+        android:text="@string/select_interest_tag"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/personal_bg"
+        android:layout_marginTop="65dp"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/txt_size_13"
+        android:text="@string/select_interest_hint"
+        android:id="@+id/textView" />
+
+    <com.smyy.sharetour.buyer.view.flow_tag.TagCloudLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:id="@+id/tag_container"
+        android:layout_below="@id/personal_bg"
+        app:tagSpacing="15dp"
+        app:lineSpacing="20dp"
+        android:paddingLeft="20dp"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tag_confirm"
+        android:textSize="@dimen/txt_size_23"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp"
+        android:text="@string/select_ok"
+        android:textColor="@color/black"/>
+
+</RelativeLayout>

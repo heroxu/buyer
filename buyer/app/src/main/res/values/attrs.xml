@@ -33,6 +33,7 @@
         <attr name="showLines" format="integer"/>
     </declare-styleable>
 
+    <!-- 笑脸评分条 -->
     <declare-styleable name="smile_rating">
         <!--填充图片-->
         <attr name="star_img" format="reference" />
@@ -50,5 +51,14 @@
         <attr name="star" format="integer" />
         <!--是否可以点击-->
         <attr name="clickable" format="boolean" />
+    </declare-styleable>
+
+    <!-- 标签流 -->
+    <declare-styleable name="TagCloudLayout">
+        <attr name="lineSpacing" format="dimension" />
+        <attr name="tagSpacing" format="dimension" />
+        <!-- 是否是固定布局 -->
+        <attr name="isFixed" format="boolean" />
+        <attr name="columnSize" format="integer" />
     </declare-styleable>
 </resources>

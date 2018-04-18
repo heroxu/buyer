@@ -92,4 +92,10 @@
     <string name="seller_service">买手服务</string>
     <string name="comment_disc">说说该商品的优点和美中不足的地方吧～</string>
     <string name="publish">发表</string>
+
+    <!--标签相关-->
+    <string name="select_interest_tag">选择您感兴趣的商品类型</string>
+    <string name="select_interest_hint">以便于我们为您提供合适您的行程、单品以及内容</string>
+    <string name="immediate_enjoy">立即体验</string>
+    <string name="select_ok">选好了</string>
 </resources>
