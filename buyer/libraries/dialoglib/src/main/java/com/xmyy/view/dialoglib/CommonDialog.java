@@ -83,7 +83,7 @@ public class CommonDialog extends BaseDialogFragment {
         }
         //回调方法获取到布局,进行处理
         if (commonController.getOnBindViewListener() != null) {
-            commonController.getOnBindViewListener().bindView(viewHolder);
+            commonController.getOnBindViewListener().bindView(viewHolder,this);
         }
     }
 
@@ -128,11 +128,6 @@ public class CommonDialog extends BaseDialogFragment {
     }
 
     public CommonDialog show() {
-        //如果宽高都没有设置,则默认给弹窗提供宽度为800
-        if (commonController.getWidth() <= 0 && commonController.getHeight() <= 0) {
-            commonController.setWidth(600);
-        }
-        Log.d(TAG, "show");
         show(commonController.getFragmentManager());
         return this;
     }

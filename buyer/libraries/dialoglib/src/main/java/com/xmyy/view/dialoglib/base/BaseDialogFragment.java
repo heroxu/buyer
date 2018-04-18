@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StyleRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.view.Gravity;
@@ -15,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.xmyy.view.dialoglib.R;
 
 /**
  * DialogFragment的基类
@@ -55,6 +58,8 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
     public static final String TAG = "CommonDialog";
     private static final float DEFAULT_DIMAMOUNT = 0.2F;
+    @StyleRes
+    private int animStyle;
 
     protected abstract int getLayoutRes();
 
@@ -115,6 +120,12 @@ public abstract class BaseDialogFragment extends DialogFragment {
             layoutParams.dimAmount = getDimAmount();
             //位置
             layoutParams.gravity = getGravity();
+            if (layoutParams.gravity==Gravity.BOTTOM) {
+                if (animStyle == 0) {
+                    animStyle = R.style.BottomDialogAnim;
+                }
+            }
+            window.setWindowAnimations(animStyle);
             window.setAttributes(layoutParams);
         }
     }
@@ -149,6 +160,8 @@ public abstract class BaseDialogFragment extends DialogFragment {
     protected boolean isCancelableOutside() {
         return true;
     }
+
+
 
     /**
      * 获得屏幕宽/高

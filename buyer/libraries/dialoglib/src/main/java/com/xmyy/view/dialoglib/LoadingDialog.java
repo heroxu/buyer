@@ -49,7 +49,7 @@ public class LoadingDialog extends BaseDialogFragment {
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.my_dialog_loading;
+        return R.layout.dialog_loading;
     }
 
     @Override

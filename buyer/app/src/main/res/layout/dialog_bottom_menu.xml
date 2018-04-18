@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/lay_dialog_btm_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_dialog_btm_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/clickItemBackground"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:padding="13dp"
+            android:text="btn1"
+            android:textColor="@color/txt_gray"
+            android:textSize="@dimen/txt_size_13" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_divider" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_dialog_btm1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_dialog_btm1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/clickItemBackground"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:padding="13dp"
+            android:text="btn1"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_17" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_dialog_btm2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_divider" />
+
+        <TextView
+            android:id="@+id/tv_dialog_btm2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/clickItemBackground"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:padding="13dp"
+            android:text="btn2"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_17" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_dialog_btm3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_divider" />
+
+        <TextView
+            android:id="@+id/tv_dialog_btm3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/clickItemBackground"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:padding="13dp"
+            android:text="btn3"
+            android:textColor="@color/dot_red"
+            android:textSize="@dimen/txt_size_17" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/line_divider" />
+
+    <TextView
+        android:id="@+id/tv_dialog_btm_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/clickItemBackground"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:padding="13dp"
+        android:text="取消"
+        android:textColor="@color/txt_main"
+        android:textSize="@dimen/txt_size_17" />
+
+</LinearLayout>

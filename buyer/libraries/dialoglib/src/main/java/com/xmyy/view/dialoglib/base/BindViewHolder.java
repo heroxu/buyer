@@ -24,12 +24,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.xmyy.view.dialoglib.CommonDialog;
+import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 /**
  * 借鉴RecyclerView.Adapter的ViewHolder写法
  * 将Dialog的根布局传入,主要处理点击方法
  **/
-public class BindViewHolder extends RecyclerView.ViewHolder  {
+public class BindViewHolder extends RecyclerView.ViewHolder {
 
     public View bindView;
     private SparseArray<View> views;
@@ -67,8 +68,24 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
                 @Override
                 public void onClick(View v) {
                     if (dialog.getOnViewClickListener() != null) {
-                        dialog.getOnViewClickListener().onViewClick(BindViewHolder.this,view, dialog);
+                        dialog.getOnViewClickListener().onViewClick(BindViewHolder.this, view, dialog);
                     }
+                }
+            });
+        }
+        return this;
+    }
+
+    public BindViewHolder setOnViewClickListener(@IdRes final int viewId, final OnViewClickListener listener) {
+        final View view = getView(viewId);
+        if (view != null && listener != null) {
+            if (!view.isClickable()) {
+                view.setClickable(true);
+            }
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onViewClick(BindViewHolder.this, view, dialog);
                 }
             });
         }
@@ -112,6 +129,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
         view.setBackgroundColor(color);
         return this;
     }
+
     /**
      * Will set background of a view.
      *
