@@ -23,9 +23,9 @@ public class ShippingAddressModel implements IShippingAddressContract.Model {
 
         if (datas == null) {
             datas = new ArrayList<>();
-            datas.add(new ShippingAddressBean(true, "张晓安", "18612345678", "广东省广州市天河区冼村街道 珠江新城华夏路8号合景国际金融广场 32层"));
-            datas.add(new ShippingAddressBean(false, "张晓安", "18612345678", "广东省广州市天河区冼村街道 合景国际金融大厦32楼"));
-            datas.add(new ShippingAddressBean(false, "张晓安", "18612345678", "广东省广州市天河区冼村街道 合景国际金融大厦32楼"));
+            datas.add(new ShippingAddressBean(0, true, "张晓安", "18612345678", "广东省广州市天河区冼村街道 珠江新城华夏路8号合景国际金融广场 32层"));
+            datas.add(new ShippingAddressBean(1, false, "张晓安", "18612345678", "广东省广州市天河区冼村街道 合景国际金融大厦32楼"));
+            datas.add(new ShippingAddressBean(2, false, "张晓安", "18612345678", "广东省广州市天河区冼村街道 合景国际金融大厦32楼"));
         }
         return datas;
     }

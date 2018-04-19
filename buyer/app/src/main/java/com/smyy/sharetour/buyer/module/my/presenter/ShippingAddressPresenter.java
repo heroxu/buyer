@@ -29,7 +29,7 @@ public class ShippingAddressPresenter extends IShippingAddressContract.Presenter
             @Override
             public void subscribe(ObservableEmitter<List<ShippingAddressBean>> e) throws Exception {
                 if (mModel != null) {
-                    SystemClock.sleep(1000);
+//                    SystemClock.sleep(1000);
                     List<ShippingAddressBean> datas = mModel.getShippingAddressList();
                     e.onNext(datas);
                     e.onComplete();

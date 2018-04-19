@@ -4,16 +4,26 @@ import java.io.Serializable;
 
 
 public class ShippingAddressBean implements Serializable {
+    private int id;
     private boolean isDefault;
     private String name;
     private String phone;
     private String address;
 
-    public ShippingAddressBean(boolean isDefault, String name, String phone, String address) {
+    public ShippingAddressBean(int id, boolean isDefault, String name, String phone, String address) {
+        this.id = id;
         this.isDefault = isDefault;
         this.name = name;
         this.phone = phone;
         this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isDefault() {
@@ -51,7 +61,8 @@ public class ShippingAddressBean implements Serializable {
     @Override
     public String toString() {
         return "ShippingAddressBean{" +
-                "isDefault=" + isDefault +
+                "id=" + id +
+                ", isDefault=" + isDefault +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +

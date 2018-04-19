@@ -16,7 +16,7 @@
         android:hint="@string/please_input_nickname" />
 
     <Button
-        style="@style/CommonButton"
+        style="@style/CommonButton.Rectangle"
         android:id="@+id/btn_confirm"
         android:text="@string/save" />
 </LinearLayout>

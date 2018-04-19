@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
@@ -32,7 +33,7 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final ShippingAddressBean data = mDatas.get(position);
         if (data != null) {
-            holder.cbDefault.setVisibility(data.isDefault() ? View.VISIBLE : View.GONE);
+            holder.rbDefault.setVisibility(data.isDefault() ? View.VISIBLE : View.GONE);
             holder.tvName.setText(data.getName());
             holder.tvPhone.setText(data.getPhone());
             holder.tvAddress.setText(data.getAddress());
@@ -70,14 +71,14 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private CheckBox cbDefault;
+        private RadioButton rbDefault;
         private TextView tvName;
         private TextView tvPhone;
         private TextView tvAddress;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            cbDefault = (CheckBox) itemView.findViewById(R.id.cb_my_shipping_default);
+            rbDefault = (RadioButton) itemView.findViewById(R.id.rb_my_shipping_default);
             tvName = (TextView) itemView.findViewById(R.id.tv_my_shipping_name);
             tvPhone = (TextView) itemView.findViewById(R.id.tv_my_shipping_phone);
             tvAddress = (TextView) itemView.findViewById(R.id.tv_my_shipping_address);

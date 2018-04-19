@@ -95,7 +95,7 @@
         android:id="@+id/pay_confirm"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        style="@style/CommonButton"
+        style="@style/CommonButton.Rectangle"
         android:text="@string/pay_confirm"
         android:textColor="@color/white"
         android:layout_marginLeft="20dp"

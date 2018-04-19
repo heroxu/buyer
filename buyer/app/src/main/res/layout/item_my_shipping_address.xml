@@ -15,8 +15,8 @@
         android:paddingRight="20dp"
         android:paddingTop="25dp">
 
-        <CheckBox
-            android:id="@+id/cb_my_shipping_default"
+        <RadioButton
+            android:id="@+id/rb_my_shipping_default"
             style="@style/CommonCheckBox"
             android:layout_marginRight="15dp"
             android:checked="true"

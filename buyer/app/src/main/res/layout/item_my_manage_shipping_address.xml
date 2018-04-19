@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/window_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:paddingLeft="20dp"
+        android:paddingTop="25dp">
+
+        <TextView
+            android:id="@+id/tv_my_shipping_name"
+            style="@style/CommonText"
+            android:textSize="@dimen/txt_size_17"
+            tools:text="张晓安" />
+
+        <TextView
+            android:id="@+id/tv_my_shipping_phone"
+            style="@style/CommonText"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/tv_my_shipping_name"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_17"
+            tools:text="18612345678" />
+
+        <TextView
+            android:id="@+id/tv_my_shipping_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_my_shipping_phone"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_13"
+            tools:text="广东省广州市天河区冼村街道 珠江新城华夏路8号合景国际金融广场 32层" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tv_my_shipping_address"
+            android:layout_marginTop="20dp"
+            android:background="@color/line_divider" />
+
+        <RadioButton
+            android:id="@+id/rb_my_shipping_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line"
+            android:background="@null"
+            android:button="@null"
+            android:drawableLeft="@drawable/btn_radio_selector"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:text="默认地址"
+            android:textColor="@color/txt_gray"
+            android:textSize="@dimen/txt_size_13" />
+
+        <TextView
+            android:id="@+id/tv_my_shipping_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/rb_my_shipping_default"
+            android:layout_alignTop="@id/rb_my_shipping_default"
+            android:layout_marginRight="25dp"
+            android:layout_toLeftOf="@+id/tv_my_shipping_delete"
+            android:gravity="center_vertical"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="编辑" />
+
+        <TextView
+            android:id="@+id/tv_my_shipping_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/rb_my_shipping_default"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/rb_my_shipping_default"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="删除" />
+    </RelativeLayout>
+</LinearLayout>

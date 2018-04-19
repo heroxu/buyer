@@ -32,7 +32,7 @@ public class ShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPr
     RecyclerView mRecyclerView;
 
     private ShippingAddressAdapter mAdapter;
-    List<ShippingAddressBean> mDatas;
+    private List<ShippingAddressBean> mDatas;
 
     @Override
     protected int getLayoutId() {
@@ -49,7 +49,7 @@ public class ShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPr
         toolbarRightTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(ManageShippingAddressActivity.class);
             }
         });
     }
