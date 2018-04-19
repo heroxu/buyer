@@ -63,6 +63,8 @@ public class ManageShippingAddressActivity extends MyBaseMvpActivity<ShippingAdd
                 switch (view.getId()) {
                     case R.id.rb_my_shipping_default:
                         if (!data.isDefault()) {
+                            mPresenter.setDefault(position);
+
                             List<ShippingAddressBean> list = mAdapter.getList();
                             for (int i = 0; i < list.size(); i++) {
                                 list.get(i).setDefault(false);
@@ -76,7 +78,9 @@ public class ManageShippingAddressActivity extends MyBaseMvpActivity<ShippingAdd
                         ToastUtils.showToast("edit");
                         break;
                     case R.id.tv_my_shipping_delete:
-                        ToastUtils.showToast("delete");
+                        mPresenter.deleteShippingAddress(position);
+
+                        mAdapter.remove(position);
                         break;
                     default:
                         break;
@@ -100,5 +104,10 @@ public class ManageShippingAddressActivity extends MyBaseMvpActivity<ShippingAdd
     @Override
     public void showShippingAddress(List<ShippingAddressBean> datas) {
         mAdapter.setData(datas);
+    }
+
+    @Override
+    public void shippingAddressUndated() {
+        setResult(RESULT_OK);
     }
 }

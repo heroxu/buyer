@@ -36,8 +36,6 @@ public class ManageShippingAddressAdapter extends RecyclerView.Adapter<ManageShi
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final ShippingAddressBean data = mDatas.get(position);
         if (data != null) {
-            Log.e("rtrt", data.toString());
-            Log.e("rtrt", position + " = position");
             holder.rbDefault.setChecked(data.isDefault());
             if (data.isDefault()) {
                 mLastCheckedPos = position;
@@ -46,27 +44,6 @@ public class ManageShippingAddressAdapter extends RecyclerView.Adapter<ManageShi
             holder.tvPhone.setText(data.getPhone());
             holder.tvAddress.setText(data.getAddress());
 
-//            holder.rbDefault.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//                @Override
-//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                    Log.e("rtrt onCheckedChanged", mDatas.toString());
-//                    Log.e("rtrt onCheckedChanged", position + " = position");
-//                    Log.e("rtrt onCheckedChanged", mLastCheckedPos + " = mLastCheckedPos");
-//                    Log.e("rtrt onCheckedChanged", isChecked + " = isChecked");
-//                    if (isChecked && mLastCheckedPos != position) {
-//                        if (mLastCheckedPos >= 0 && mLastCheckedPos < mDatas.size()) {
-//                            mDatas.get(mLastCheckedPos).setDefault(false);
-//                            notifyItemChanged(mLastCheckedPos);
-//                        }
-//                        mLastCheckedPos = position;
-//                        data.setDefault(true);
-//                        if (onDefaultChangedListener != null) {
-//                            onDefaultChangedListener.onDefaultChanged(holder.rbDefault, position, data);
-//                        }
-//                    }
-//                    Log.e("rtrt onCheckedChanged", mDatas.toString());
-//                }
-//            });
             holder.rbDefault.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -147,6 +124,12 @@ public class ManageShippingAddressAdapter extends RecyclerView.Adapter<ManageShi
     public void setData(List<ShippingAddressBean> datas) {
         this.mDatas = datas;
         notifyDataSetChanged();
+    }
+
+    public void remove(int position) {
+        mDatas.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, getItemCount() - position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

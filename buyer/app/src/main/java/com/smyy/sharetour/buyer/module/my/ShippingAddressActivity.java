@@ -28,6 +28,8 @@ public class ShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPr
     public static final String SHIPPING_ADDRESS = "shipping_address";
     private String mPurpose;
 
+    public static final int REQ_MANAGE = 1;
+
     @BindView(R.id.rv_my_shipping_address)
     RecyclerView mRecyclerView;
 
@@ -49,7 +51,7 @@ public class ShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPr
         toolbarRightTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(ManageShippingAddressActivity.class);
+                startActivityForResult(ManageShippingAddressActivity.class, REQ_MANAGE);
             }
         });
     }
@@ -95,5 +97,24 @@ public class ShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPr
     public void showShippingAddress(List<ShippingAddressBean> datas) {
         this.mDatas = datas;
         mAdapter.setData(datas);
+    }
+
+    @Override
+    public void shippingAddressUndated() {
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQ_MANAGE:
+                    mPresenter.getShippingAddressList();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

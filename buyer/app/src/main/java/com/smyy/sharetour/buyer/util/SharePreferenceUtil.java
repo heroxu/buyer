@@ -5,8 +5,11 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -110,21 +113,24 @@ public class SharePreferenceUtil {
         return bean;
     }
 
-    public <T> List<T> getListValue(String key) {
-        List<T> datas = null;
+    public <T> List<T> getListValue(String key, Class<T> cls) {
+        List<T> list = null;
         try {
             String beanStr = getStringValue(key);
             if (!TextUtils.isEmpty(beanStr)) {
+                list = new ArrayList<T>();
                 //json转换为list
                 Gson gson = new Gson();
-                datas = gson.fromJson(beanStr, new TypeToken<List<T>>() {
-                }.getType());
+                JsonArray arry = new JsonParser().parse(beanStr).getAsJsonArray();
+                for (JsonElement jsonElement : arry) {
+                    list.add(gson.fromJson(jsonElement, cls));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return datas;
+        return list;
     }
 
     public <T> boolean writeListValue(String key, List<T> datas) {

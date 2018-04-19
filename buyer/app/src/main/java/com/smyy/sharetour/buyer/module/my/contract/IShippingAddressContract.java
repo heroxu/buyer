@@ -10,6 +10,8 @@ import java.util.List;
 public interface IShippingAddressContract {
     interface View extends MyIBaseView {
         void showShippingAddress(List<ShippingAddressBean> datas);
+
+        void shippingAddressUndated();
     }
 
     abstract class Presenter extends MyBasePresenter<View, Model> {
@@ -22,5 +24,8 @@ public interface IShippingAddressContract {
 
     interface Model {
         List<ShippingAddressBean> getShippingAddressList();
+
+        boolean deleteShippingAddress(int position);
+        boolean setDefault(int position);
     }
 }

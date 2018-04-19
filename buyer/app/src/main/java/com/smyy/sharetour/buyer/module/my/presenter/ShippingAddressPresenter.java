@@ -66,4 +66,78 @@ public class ShippingAddressPresenter extends IShippingAddressContract.Presenter
                     }
                 });
     }
+
+    public void deleteShippingAddress(final int position) {
+
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
+                if (mModel != null) {
+                    boolean result = mModel.deleteShippingAddress(position);
+                    e.onNext(result);
+                    e.onComplete();
+                }
+
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(Boolean result) {
+                        if (mView != null) {
+                            //
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
+    public void setDefault(final int position) {
+
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
+                if (mModel != null) {
+                    boolean result = mModel.setDefault(position);
+                    e.onNext(result);
+                    e.onComplete();
+                }
+
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(Boolean result) {
+                        if (mView != null&&result) {
+                            mView.shippingAddressUndated();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
 }
