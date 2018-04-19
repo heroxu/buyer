@@ -129,7 +129,7 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE | WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         Bundle bundle = getBundle();
         if (bundle != null) {
             mPurpose = bundle.getString(PURPOSE, ADD_ADDRESS);
