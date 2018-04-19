@@ -3,7 +3,9 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.BuyHomePageActivity;
 import com.smyy.sharetour.buyer.MyApplication;
+import com.smyy.sharetour.buyer.RecommendBuyActivity;
 import com.smyy.sharetour.buyer.SPConfig;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
@@ -124,6 +126,20 @@ public class ActivityLauncher {
      */
     public static void viewMyCollectionActivity(Context context) {
         Intent intent = new Intent(context, MyCollectionActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到推荐买手
+     */
+    public static void viewRecommendBuyActivity(Context context) {
+        Intent intent = new Intent(context,RecommendBuyActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到买手主页
+     */
+    public static void viewBuyHomePageActivity(Context context) {
+        Intent intent = new Intent(context,BuyHomePageActivity.class);
         context.startActivity(intent);
     }
 

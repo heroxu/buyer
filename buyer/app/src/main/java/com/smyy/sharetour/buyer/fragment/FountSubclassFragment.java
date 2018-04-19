@@ -51,6 +51,7 @@ public class FountSubclassFragment extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
+        LogUtil.e("WZF",mTitle);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         List<FountBean> data = new ArrayList<>();
         List<FImage> iData1 = new ArrayList<>();

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,12 +13,15 @@ import android.widget.LinearLayout;
 import com.dtr.zxing.activity.CaptureActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.view.SingleFragmentPageAdapter;
+import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,7 +38,7 @@ public class FoundFragment extends BaseMvpFragment {
     ImageView ttFountScan;
     @BindView(R.id.tt_fount_message)
     ImageView ttFountMessage;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    private List<BaseFragment> mFragments = new ArrayList<>();
     @BindView(R.id.stl_fount)
     SlidingTabLayout stlFount;
     @BindView(R.id.vp_fount)
@@ -87,9 +89,9 @@ public class FoundFragment extends BaseMvpFragment {
         }
     }
 
-    private class MyPagerAdapter extends FragmentPagerAdapter {
+    private class MyPagerAdapter extends SingleFragmentPageAdapter {
         public MyPagerAdapter(FragmentManager fm) {
-            super(fm);
+            super(fm,mFragments);
         }
 
         @Override

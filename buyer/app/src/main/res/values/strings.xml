@@ -92,4 +92,5 @@
     <string name="select_interest_hint">以便于我们为您提供合适您的行程、单品以及内容</string>
     <string name="immediate_enjoy">立即体验</string>
     <string name="select_ok">选好了</string>
+    <string name="title_activity_recommend_buy">RecommendBuyActivity</string>
 </resources>

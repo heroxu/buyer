@@ -45,15 +45,19 @@
         <activity android:name=".ui.VerifyPhoneActivity" />
         <activity android:name=".ui.NoteDetailsActivity" />
         <activity android:name=".ui.VideoDetailsActivity" />
-        <activity android:name=".ui.MoreReplyActivity"/>
+        <activity android:name=".ui.MoreReplyActivity" />
         <activity android:name=".publish.SimpleSelectActivity" />
         <activity android:name=".publish.PublishRequireActivity" />
         <activity android:name=".home.detail.HomeDetailActivity" />
-        <activity android:name=".home.search.activity.HomeSearchActivity"/>
-        <activity android:name=".home.search.activity.SearchDetailActivity"/>
-        <activity android:name=".module.order.OrderCommentActivity"/>
-        <activity android:name=".ui.PersonalTagActivity"/>
-        <activity android:name=".ui.MyCollectionActivity"></activity>
+        <activity android:name=".home.search.activity.HomeSearchActivity" />
+        <activity android:name=".home.search.activity.SearchDetailActivity" />
+        <activity android:name=".module.order.OrderCommentActivity" />
+        <activity android:name=".ui.PersonalTagActivity" />
+        <activity android:name=".ui.MyCollectionActivity" />
+        <activity
+            android:name=".RecommendBuyActivity"
+            android:label="@string/title_activity_recommend_buy" />
+        <activity android:name=".BuyHomePageActivity"></activity>
     </application>
 
 </manifest>

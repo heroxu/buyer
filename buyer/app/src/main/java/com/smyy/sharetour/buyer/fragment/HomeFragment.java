@@ -87,7 +87,6 @@ public class HomeFragment extends BaseMvpFragment {
     }
 
     private void initListener() {
-
 //        hv_home_title.setRvLayoutManager(new LinearLayoutManager(getContext()));
         hv_home_title.setIStatusChange(new HomeTitlesOpenOrCloseView.IStatusChange() {
             @Override

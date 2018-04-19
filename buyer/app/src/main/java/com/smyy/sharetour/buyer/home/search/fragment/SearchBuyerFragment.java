@@ -22,8 +22,6 @@ import butterknife.Unbinder;
  * create by xuxiarong on 2018/4/13
  */
 public class SearchBuyerFragment extends BaseMvpFragment {
-
-
     @BindView(R.id.ll_search_buyer)
     LinearLayout llSearchBuyer;
     @BindView(R.id.ll_search_sort_smart)
@@ -60,7 +58,6 @@ public class SearchBuyerFragment extends BaseMvpFragment {
         searchBuyers.add(new SearchBuyer("小桂子的贵", "美国 纽约"));
         searchBuyers.add(new SearchBuyer("小桂子的贵", "加拿大 渥太华"));
         searchBuyers.add(new SearchBuyer("小桂子的贵", "日本 东京"));
-
     }
 
     @Override

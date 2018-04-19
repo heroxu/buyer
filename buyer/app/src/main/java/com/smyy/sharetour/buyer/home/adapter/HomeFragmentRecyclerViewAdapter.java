@@ -106,6 +106,12 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             homeChildTitleHolder.tv_main_title.setText(homeTitleBean.mainTitle);
             homeChildTitleHolder.tv_sub_title.setText(homeTitleBean.subTitle);
             homeChildTitleHolder.ll_more.setVisibility(homeTitleBean.hasMore ? View.VISIBLE : View.GONE);
+            homeChildTitleHolder.ll_more.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivityLauncher.viewRecommendBuyActivity(mContext);
+                }
+            });
             homeChildTitleHolder.tv_change.setVisibility(homeTitleBean.hasChange ? View.VISIBLE : View.GONE);
         }else if(ITEM_CHILD_ROUTE == mDatas.get(position).viewType){
             HomeChildRouteHolder homeChildRouteHolder = (HomeChildRouteHolder) holder;

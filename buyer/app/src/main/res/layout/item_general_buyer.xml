@@ -13,8 +13,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_search_buyer_avatar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@mipmap/user_avatar" />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -28,8 +28,8 @@
                 android:layout_marginStart="10dp"
                 android:ellipsize="end"
                 android:text="刘德华"
-                android:textColor="@color/txt_gray"
-                android:textSize="14sp" />
+                android:textColor="@color/txt_main"
+                android:textSize="15sp" />
             <LinearLayout
                 android:layout_marginStart="@dimen/margin_10"
                 android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:textColor="@color/txt_gray"
-                    android:textSize="12sp"
+                    android:textSize="13sp"
                     android:text="美国 纽约"
                     />
             </LinearLayout>
@@ -62,7 +62,7 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="11sp"
                 android:background="@drawable/bg_rounded_rectangle_ffcd1f"
                 android:textColor="@color/txt_main"
                 android:text="立即沟通"
@@ -76,22 +76,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="105dp"
             android:layout_weight="1"
-            android:layout_height="100dp"
-            android:src="@mipmap/home_new_sell"
+            android:layout_height="105dp"
+            android:src="@mipmap/img_n_02"
             android:layout_margin="5dp"/>
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="105dp"
             android:layout_weight="1"
-            android:layout_height="100dp"
-            android:src="@mipmap/home_new_sell"
+            android:layout_height="105dp"
+            android:src="@mipmap/img_n_02"
             android:layout_margin="5dp"/>
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="105dp"
             android:layout_weight="1"
-            android:layout_height="100dp"
-            android:src="@mipmap/home_new_sell"
+            android:layout_height="105dp"
+            android:src="@mipmap/img_n_02"
             android:layout_margin="5dp"/>
     </LinearLayout>
     <View
