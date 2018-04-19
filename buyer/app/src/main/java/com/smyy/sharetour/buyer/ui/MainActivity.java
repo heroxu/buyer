@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.fragment.FoundFragment;
@@ -41,10 +42,11 @@ public class MainActivity extends BaseActivity {
     private final int[] fLabelArray = new int[]{R.string.main_tab_index, R.string.main_tab_found, 0, R.string.main_tab_live, R.string.main_tab_my};
     private final int[] fIconResId = new int[]{R.drawable.main_index_selector, R.drawable.main_found_selector, 0, R.drawable.main_live_selector, R.drawable.main_my_selector};
 
-    private final int TAB_INDEX = 0;
-    private final int TAB_SALARY = 1;
-    private final int TAB_LIVE = 3;
-    private final int TAB_ME = 4;
+    public static final String KEY_TAB = "key_tab";
+    public static final int TAB_INDEX = 0;
+    public static final int TAB_SALARY = 1;
+    public static final int TAB_LIVE = 3;
+    public static final int TAB_ME = 4;
 
 
     @Override
@@ -115,6 +117,13 @@ public class MainActivity extends BaseActivity {
 //        changeIncomeReadStatus(XXX);
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        int tabIndex = intent.getIntExtra(KEY_TAB, 0);
+        obtainFragment(tabIndex);
+    }
+
     private void obtainFragment(int index) {
         BaseFragment tagFragment = null;
         switch (index) {
@@ -137,6 +146,10 @@ public class MainActivity extends BaseActivity {
                 tagFragment = liveFragment;
                 break;
             case TAB_ME:
+                if (!MyApplication.getApplication().isLogin()) {
+                    ActivityLauncher.viewLoginActivity(this);
+                    return;
+                }
                 if (myFragment == null) {
                     myFragment = new MyFragment();
                 }
@@ -209,6 +222,7 @@ public class MainActivity extends BaseActivity {
                 obtainFragment(TAB_LIVE);
                 break;
             case R.id.tab_me:
+
                 obtainFragment(TAB_ME);
                 break;
             case R.id.tab_publish:

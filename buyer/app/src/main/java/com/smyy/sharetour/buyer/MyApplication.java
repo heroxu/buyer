@@ -1,9 +1,9 @@
 package com.smyy.sharetour.buyer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 import com.smyy.sharetour.buyer.base.BaseApplication;
 import com.smyy.sharetour.buyer.db.MySQLiteOpenHelper;
@@ -12,6 +12,7 @@ import com.smyy.sharetour.buyer.greendao.DaoMaster;
 import com.smyy.sharetour.buyer.greendao.DaoSession;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.network.rx.RxUtils;
+import com.smyy.sharetour.buyer.ui.MainActivity;
 import com.smyy.sharetour.buyer.util.PackageUtils;
 import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 import com.tencent.imsdk.TIMLogLevel;
@@ -30,6 +31,7 @@ public class MyApplication extends BaseApplication {
     private int mScreenHeight;
     private String mDpi;
     private UserInfoBean mUserInfo;
+    private boolean mIsLogin = false;
     public static IStatistic mXqcStatistic;
     private static MyApplication mApplication;
     /**
@@ -131,12 +133,23 @@ public class MyApplication extends BaseApplication {
         this.mUserInfo = mUserInfo;
     }
 
-    public void saveUserInfo(UserInfoBean mUserInfo) {
-        if (mUserInfo != null) {
-            EventBus.getDefault().post(new LoginEvent(true));
-        } else {
-            EventBus.getDefault().post(new LoginEvent(false));
-        }
-        new SharePreferenceUtil(mApplication, SPConfig.NAME_USER_CACHE).writeBeanValue(SPConfig.KEY_USER_INFO, mUserInfo);
+    public boolean isLogin() {
+        return mIsLogin;
+    }
+
+    public void setLogin(boolean isLogin) {
+        this.mIsLogin = isLogin;
+    }
+
+    public void logout() {
+        mIsLogin = false;
+        mUserInfo = null;
+        new SharePreferenceUtil(mApplication, SPConfig.NAME_USER_CACHE).clear();
+        new SharePreferenceUtil(mApplication, SPConfig.NAME_APP_SETTINGS).clear();
+        new SharePreferenceUtil(mApplication, SPConfig.NAME_FAKE_DATA).clear();
+
+        Intent intent = new Intent(mApplication, MainActivity.class);
+        intent.putExtra(MainActivity.KEY_TAB, MainActivity.TAB_INDEX);
+        startActivity(intent);
     }
 }

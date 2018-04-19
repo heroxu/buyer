@@ -15,6 +15,9 @@ import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.module.my.model.UserModel;
+import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
@@ -135,8 +138,43 @@ public class PwdLoginActivity extends BaseMvpActivity {
                 String phoneNum = editPhone.getText().toString().trim();
                 String pwd = editPassword.getText().toString().trim();
                 if (Consts.DEFAULT_LOGIN_PWD.equals(pwd) && Consts.isPhoneNum(phoneNum)) {
-                    MyApplication.getApplication().saveUserInfo(new UserInfoBean(phoneNum, "悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
-                            1, 2, 8, 0));
+                    MyApplication.getApplication().setLogin(true);
+                    new UserPresenter(new IUserContract.View() {
+                        @Override
+                        public void showUserInfo(UserInfoBean userInfo) {
+
+                        }
+
+                        @Override
+                        public void showProgressDialog() {
+
+                        }
+
+                        @Override
+                        public void showProgressDialog(String msg) {
+
+                        }
+
+                        @Override
+                        public void hideProgressDialog() {
+
+                        }
+
+                        @Override
+                        public void finish() {
+
+                        }
+
+                        @Override
+                        public void showToast(String s) {
+
+                        }
+
+                        @Override
+                        public void showToast(int stringRes) {
+
+                        }
+                    }, new UserModel()).getUserInfo();
                     ToastUtils.showToast(PwdLoginActivity.this, "登录成功");
                     finish();
                 } else {

@@ -45,7 +45,7 @@ public class SettingsActivity extends MyBaseMvpActivity<SettingsPresenter> imple
         toolbarRightTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyApplication.getApplication().saveUserInfo(null);
+                MyApplication.getApplication().logout();
             }
         });
     }

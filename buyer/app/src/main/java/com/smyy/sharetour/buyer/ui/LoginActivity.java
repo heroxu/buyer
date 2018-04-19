@@ -132,8 +132,43 @@ public class LoginActivity extends BaseMvpActivity implements IUserContract.View
             public void SmsCodeResult(String smsCode) {
                 String phoneNum = editPhone.getText().toString().trim();
                 if (Consts.DEFAULT_SMS_CODE.equals(smsCode) && Consts.isPhoneNum(phoneNum)) {
-                    MyApplication.getApplication().saveUserInfo(new UserInfoBean(phoneNum, "悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
-                            1, 2, 8, 0));
+                    MyApplication.getApplication().setLogin(true);
+                    new UserPresenter(new IUserContract.View() {
+                        @Override
+                        public void showUserInfo(UserInfoBean userInfo) {
+
+                        }
+
+                        @Override
+                        public void showProgressDialog() {
+
+                        }
+
+                        @Override
+                        public void showProgressDialog(String msg) {
+
+                        }
+
+                        @Override
+                        public void hideProgressDialog() {
+
+                        }
+
+                        @Override
+                        public void finish() {
+
+                        }
+
+                        @Override
+                        public void showToast(String s) {
+
+                        }
+
+                        @Override
+                        public void showToast(int stringRes) {
+
+                        }
+                    }, new UserModel()).getUserInfo();
                     ToastUtils.showToast(LoginActivity.this, "登录成功");
                     finish();
                 } else {

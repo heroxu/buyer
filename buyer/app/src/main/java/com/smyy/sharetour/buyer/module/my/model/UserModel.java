@@ -24,8 +24,7 @@ public class UserModel implements IUserContract.Model {
             userInfo = new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
                     .getBeanValue(SPConfig.KEY_USER_INFO, UserInfoBean.class);
             if (userInfo == null) {
-                //TODO 个人感觉这里应该模拟登录拿到数据
-//                userInfo = getUserInfoFromNet();
+                userInfo = getUserInfoFromNet();
             }
         }
         return userInfo;
