@@ -33,8 +33,8 @@
         <activity android:name=".module.my.SecurityCenterActivity" />
         <activity android:name=".module.my.LinkPhoneActivity" />
         <activity android:name=".module.my.LinkedPhoneActivity" />
-        <activity android:name=".module.my.ShippingAddressActivity" />
-        <activity android:name=".module.my.ManageShippingAddressActivity" />
+        <activity android:name=".module.my.ShippingAddressListActivity" />
+        <activity android:name=".module.my.ShippingAddressManageActivity" />
         <activity android:name=".module.my.ShippingAddressEditActivity" />
         <activity android:name=".module.common.code.SmsCodeActivity" />
         <activity android:name=".ui.Test1Activity" />

@@ -25,7 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class ManageShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPresenter> implements IShippingAddressContract.View {
+public class ShippingAddressManageActivity extends MyBaseMvpActivity<ShippingAddressPresenter> implements IShippingAddressContract.View {
     @BindView(R.id.rv_my_shipping_address)
     RecyclerView mRecyclerView;
     @BindView(R.id.btn_my_add_address)
