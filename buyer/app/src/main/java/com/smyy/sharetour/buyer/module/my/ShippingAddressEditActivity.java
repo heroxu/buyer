@@ -56,6 +56,11 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
 
     public static final String ADDRESS_ID = "address_id";
     private int mId;
+    private String mShippingName;
+    private String mShippingPhone;
+    private String mShippingDetail;
+    private String mShippingDistrict;
+    private String mShippingStreet;
 
     @Override
     protected int getLayoutId() {
@@ -71,23 +76,55 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
         toolbarRightTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShippingAddressBean shippingAddressBean =
-                        new ShippingAddressBean(mId, cbDefault.isChecked(),
-                                StringUtil.trim(etName), StringUtil.trim(etPhone),
-                                StringUtil.trim(tvDistrict), StringUtil.trim(tvStreet),
-                                StringUtil.trim(etDetail));
-                switch (mPurpose) {
-                    case EDIT_ADDRESS:
-                        mPresenter.updateShippingAddress(mId, shippingAddressBean);
-                        break;
-                    case ADD_ADDRESS:
-                        mPresenter.addShippingAddress(shippingAddressBean);
-                        break;
-                    default:
-                        break;
+                if (checkInput()) {
+                    ShippingAddressBean shippingAddressBean =
+                            new ShippingAddressBean(mId, cbDefault.isChecked(),
+                                    mShippingName, mShippingPhone,
+                                    mShippingDistrict, mShippingStreet,
+                                    mShippingDetail);
+                    switch (mPurpose) {
+                        case EDIT_ADDRESS:
+                            mPresenter.updateShippingAddress(mId, shippingAddressBean);
+                            break;
+                        case ADD_ADDRESS:
+                            mPresenter.addShippingAddress(shippingAddressBean);
+                            break;
+                        default:
+                            break;
+                    }
+
                 }
             }
         });
+    }
+
+    private boolean checkInput() {
+        mShippingName = StringUtil.trim(etName);
+        if (StringUtil.isEmpty(mShippingName)) {
+            ToastUtils.showToast("姓名不能为空");
+            return false;
+        }
+        mShippingPhone = StringUtil.trim(etPhone);
+        if (StringUtil.isEmpty(mShippingPhone)) {
+            ToastUtils.showToast("电话不能为空");
+            return false;
+        }
+        mShippingDistrict = StringUtil.trim(tvDistrict);
+        if (StringUtil.isEmpty(mShippingDistrict)) {
+            ToastUtils.showToast("地区不能为空");
+            return false;
+        }
+        mShippingStreet = StringUtil.trim(tvStreet);
+        if (StringUtil.isEmpty(mShippingStreet)) {
+            ToastUtils.showToast("街道不能为空");
+            return false;
+        }
+        mShippingDetail = StringUtil.trim(etDetail);
+        if (StringUtil.isEmpty(mShippingDetail) || mShippingDetail.length() < 5) {
+            ToastUtils.showToast("详细地址不少于5个字");
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -109,32 +146,16 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
 
     }
 
-    @OnClick({R.id.et_my_shipping_phone, R.id.tv_my_shipping_district,
-            R.id.tv_my_shipping_street, R.id.et_my_shipping_address_detail, R.id.cb_my_shipping_default})
+    @OnClick({R.id.lay_my_shipping_district, R.id.lay_my_shipping_street})
     public void onClick(View view) {
         switch (view.getId()) {
 
-            case R.id.et_my_shipping_name:
+            case R.id.lay_my_shipping_district:
 
                 break;
 
-            case R.id.et_my_shipping_phone:
+            case R.id.lay_my_shipping_street:
 
-                break;
-
-            case R.id.tv_my_shipping_district:
-
-                break;
-
-            case R.id.tv_my_shipping_street:
-
-                break;
-
-            case R.id.et_my_shipping_address_detail:
-
-                break;
-
-            case R.id.cb_my_shipping_default:
                 break;
 
             default:

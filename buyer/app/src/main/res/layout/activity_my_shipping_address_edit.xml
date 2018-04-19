@@ -60,10 +60,23 @@
                 android:layout_marginLeft="20dp"
                 android:background="@color/line_divider" />
 
-            <TextView
-                android:id="@+id/tv_my_shipping_district"
-                style="@style/WideItem.Text.WithArrow"
-                android:text="所在地区" />
+            <LinearLayout
+                android:id="@+id/lay_my_shipping_district"
+                style="@style/WideItem">
+
+                <TextView
+                    style="@style/WideItemLeftText"
+                    android:layout_width="100dp"
+                    android:text="所在地区" />
+
+                <TextView
+                    android:id="@+id/tv_my_shipping_district"
+                    style="@style/WideItemMiddleRight.Text"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_15" />
+
+                <ImageView style="@style/WideItemRightArrow" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -71,10 +84,23 @@
                 android:layout_marginLeft="20dp"
                 android:background="@color/line_divider" />
 
-            <TextView
-                android:id="@+id/tv_my_shipping_street"
-                style="@style/WideItem.Text.WithArrow"
-                android:text="街道" />
+            <LinearLayout
+                android:id="@+id/lay_my_shipping_street"
+                style="@style/WideItem">
+
+                <TextView
+                    style="@style/WideItemLeftText"
+                    android:layout_width="100dp"
+                    android:text="街道" />
+
+                <TextView
+                    android:id="@+id/tv_my_shipping_street"
+                    style="@style/WideItemMiddleRight.Text"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_15" />
+
+                <ImageView style="@style/WideItemRightArrow" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
