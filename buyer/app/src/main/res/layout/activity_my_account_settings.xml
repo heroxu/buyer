@@ -18,12 +18,13 @@
 
             <RelativeLayout
                 android:id="@+id/lay_my_avatar_item"
-                android:background="@drawable/item_wide_bg_selector"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="?attr/clickItemBackground">
 
                 <TextView
                     style="@style/WideItem.Text.WithArrow"
+                    android:background="@null"
                     android:text="@string/avatar" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
