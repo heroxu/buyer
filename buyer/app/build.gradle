@@ -40,6 +40,7 @@ android {
             debuggable true
         }
     }
+
     buildToolsVersion '27.0.3'
 }
 
@@ -95,6 +96,8 @@ dependencies {
     implementation project(':libraries:UIFrameLib')
     implementation project(':libraries:wave')
     implementation project(':libraries:zxing')
+    implementation project(':libraries:ui')
+    implementation project(':libraries:sdk')
 }
 
 //如果数据库结构变了就+1 更新数据库

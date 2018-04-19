@@ -12,6 +12,8 @@
       <module fileurl="file://E:\Android\buyer\BaseRecyclerViewAdapterHelper\library.iml" filepath="E:\Android\buyer\BaseRecyclerViewAdapterHelper\library.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/saerchlibrary/saerchlibrary.iml" filepath="$PROJECT_DIR$/libraries/saerchlibrary/saerchlibrary.iml" />
       <module fileurl="file://E:\Android\buyer\searchmodule\searchmodule.iml" filepath="E:\Android\buyer\searchmodule\searchmodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/sdk/sdk.iml" filepath="$PROJECT_DIR$/libraries/sdk/sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/ui/ui.iml" filepath="$PROJECT_DIR$/libraries/ui/ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/wave/wave.iml" filepath="$PROJECT_DIR$/libraries/wave/wave.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/zxing/zxing.iml" filepath="$PROJECT_DIR$/libraries/zxing/zxing.iml" />
     </modules>

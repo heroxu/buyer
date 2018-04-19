@@ -1,5 +1,5 @@
 
-include ':app', ':libraries:zxing', ':libraries:UIFrameLib', ':libraries:wave', ':libraries:ImageSelector', ':libraries:saerchlibrary', ':libraries:BaseRecyclerViewAdapterHelper', ':dialoglib'
+include ':app', ':libraries:zxing', ':libraries:UIFrameLib', ':libraries:wave', ':libraries:ImageSelector', ':libraries:saerchlibrary', ':libraries:BaseRecyclerViewAdapterHelper', ':dialoglib', ':libraries:sdk', ':libraries:ui'
 
 
 project(':dialoglib').projectDir = new File('libraries/dialoglib')

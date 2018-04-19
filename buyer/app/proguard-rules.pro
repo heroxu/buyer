@@ -85,3 +85,42 @@ public static java.lang.String TABLENAME;
 -keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
     <init>(java.lang.Throwable);
 }
+
+#------------------腾讯云通信----------------------------------
+
+-keepclass com.tencent.**{*;}
+
+-dontwarncom.tencent.**
+
+-keepclass tencent.**{*;}
+
+-dontwarntencent.**
+
+-keepclass qalsdk.**{*;}
+
+-dontwarnqalsdk.**
+
+#------------------小米推送----------------------------------
+
+-keepclass com.sinosoft.nanniwan.im.imutil.MiPushMessageReceiver {*;}
+
+-dontwarncom.xiaomi.push.**
+
+#------------------华为推送----------------------------------
+
+-keepclass com.huawei.android.**{*;}
+
+-dontwarncom.huawei.android.**
+
+-keepclass com.baidu.mapapi.**{*;}
+
+-dontwarncom.baidu.mapapi.**
+
+#------------------java.nio------------------------
+
+-dontwarnorg.codehaus.**
+
+-dontwarnjava.nio.**
+
+-dontwarnjava.lang.invoke.**
+

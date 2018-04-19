@@ -58,6 +58,12 @@
             android:name=".RecommendBuyActivity"
             android:label="@string/title_activity_recommend_buy" />
         <activity android:name=".BuyHomePageActivity"></activity>
+
+        <activity
+            android:name=".tim.ChatActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

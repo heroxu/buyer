@@ -33,7 +33,6 @@ proguard/
 captures/
 
 # Intellij
-*.iml
 .idea/
 
 # Eclipse project files

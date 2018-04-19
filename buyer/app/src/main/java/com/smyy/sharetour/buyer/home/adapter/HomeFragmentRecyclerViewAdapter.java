@@ -26,8 +26,10 @@ import com.smyy.sharetour.buyer.home.model.HomeRecyclerBaseBean;
 import com.smyy.sharetour.buyer.home.model.HomeRoute;
 import com.smyy.sharetour.buyer.home.model.HomeRouteItem;
 import com.smyy.sharetour.buyer.home.model.HomeTitleBean;
+import com.smyy.sharetour.buyer.tim.ChatActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.lisenter.PagingScrollHelper;
+import com.tencent.imsdk.TIMConversationType;
 
 import java.util.List;
 
@@ -215,15 +217,25 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             HomeRouteItemHolder viewHolder = (HomeRouteItemHolder) holder;
+            final HomeRouteItem homeRouteItem = mRouteDatas.get(position);
             viewHolder.iv_buyer_route.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     ActivityLauncher.viewHomeDetail(mContext);
+//                            ChatActivity.navToChat(mContext,"86-18680445592", TIMConversationType.C2C);
+
                 }
             });
-            viewHolder.tv_buyer_go.setText(mRouteDatas.get(position).goTime);
-            viewHolder.tv_buyer_back.setText(mRouteDatas.get(position).backTime);
+            viewHolder.tv_buyer_go.setText(homeRouteItem.goTime);
+            viewHolder.tv_buyer_back.setText(homeRouteItem.backTime);
             viewHolder.iv_buyer_route.setImageResource(drawableArr[position]);
+            viewHolder.tv_route_communicate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ChatActivity.navToChat(mContext,homeRouteItem.routeWays, TIMConversationType.C2C);
+
+                }
+            });
         }
 
         @Override
@@ -238,6 +250,8 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             TextView tv_route_classify_one;
             TextView tv_route_classify_two;
             TextView tv_route_classify_three;
+            LinearLayout ll_route_live;
+            TextView tv_route_communicate;
             public HomeRouteItemHolder(View itemView) {
                 super(itemView);
                 iv_buyer_route = (ImageView) itemView.findViewById(R.id.iv_buyer_route);
@@ -246,6 +260,8 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 tv_route_classify_one = (TextView)itemView.findViewById(R.id.tv_route_classify_one);
                 tv_route_classify_two = (TextView)itemView.findViewById(R.id.tv_route_classify_two);
                 tv_route_classify_three = (TextView)itemView.findViewById(R.id.tv_route_classify_three);
+                ll_route_live = (LinearLayout) itemView.findViewById(R.id.ll_route_live);
+                tv_route_communicate = (TextView) itemView.findViewById(R.id.tv_route_communicate);
             }
         }
     }
@@ -389,14 +405,20 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            HomeRecommendItemHolder hotProductItemHolder = (HomeRecommendItemHolder) holder;
-            HomeRecommendItem homeRecommendItem = mRecommendItems.get(position);
+            final HomeRecommendItemHolder hotProductItemHolder = (HomeRecommendItemHolder) holder;
+            final HomeRecommendItem homeRecommendItem = mRecommendItems.get(position);
             hotProductItemHolder.tv_home_recommend_location.setText(homeRecommendItem.location);
             hotProductItemHolder.tv_home_recommend_avatar_name.setText(homeRecommendItem.avatarName);
             hotProductItemHolder.tv_recommend_classify_one.setText(homeRecommendItem.classifyOne);
             hotProductItemHolder.tv_recommend_classify_two.setText(homeRecommendItem.classifyTwo);
             hotProductItemHolder.tv_recommend_classify_three.setText(homeRecommendItem.classifyThree);
+            hotProductItemHolder.tv_home_recommend_communicate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ChatActivity.navToChat(mContext,homeRecommendItem.avatarName, TIMConversationType.C2C);
 
+                }
+            });
 //            hotProductItemHolder.iv_hot_product_seller_avatar.setImageResource();
 //            hotProductItemHolder.tv_hot_product_seller_name.setText(homeRecommendItem.hotProductSellerName);
         }

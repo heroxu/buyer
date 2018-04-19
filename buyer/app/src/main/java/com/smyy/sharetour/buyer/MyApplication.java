@@ -3,6 +3,7 @@ package com.smyy.sharetour.buyer;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import com.smyy.sharetour.buyer.base.BaseApplication;
 import com.smyy.sharetour.buyer.db.MySQLiteOpenHelper;
@@ -13,6 +14,10 @@ import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.network.rx.RxUtils;
 import com.smyy.sharetour.buyer.util.PackageUtils;
 import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
+import com.tencent.imsdk.TIMLogLevel;
+import com.tencent.imsdk.TIMManager;
+import com.tencent.imsdk.TIMSdkConfig;
+import com.tencent.qcloud.sdk.Constant;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.greendao.database.Database;
@@ -48,6 +53,12 @@ public class MyApplication extends BaseApplication {
         if (isUIProcess) {
             initBaseParams();
             initGreenDao();
+            TIMSdkConfig config = new TIMSdkConfig(Constant.SDK_APPID);
+            config.enableLogPrint(true)
+                    .setLogLevel(TIMLogLevel.values()[0]);
+            //初始化imsdk
+            TIMManager.getInstance().init(this.getApplicationContext(), config);
+            //禁止服务器自动代替上报已读
         }
     }
 
