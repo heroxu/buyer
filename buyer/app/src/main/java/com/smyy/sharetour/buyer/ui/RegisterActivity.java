@@ -65,7 +65,6 @@ public class RegisterActivity extends BaseMvpActivity {
         btvPasswordLogin.setVisibility(View.GONE);
         llHasAccount.setVisibility(View.VISIBLE);
         llRegisterDeal.setVisibility(View.VISIBLE);
-        btnConfirm.setClickable(false);
         editPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -79,7 +78,7 @@ public class RegisterActivity extends BaseMvpActivity {
             @Override
 
             public void afterTextChanged(Editable s) {
-                if (s.length() > 5) {
+                if (s.length() > Consts.MIN_PHONE_LENGTH) {
                     btnConfirm.setEnabled(true);
                 } else {
                     btnConfirm.setEnabled(false);

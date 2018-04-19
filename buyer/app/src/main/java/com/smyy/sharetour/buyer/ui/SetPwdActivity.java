@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
@@ -39,7 +40,7 @@ public class SetPwdActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        tvModuleName.setText("重置密码");
+        tvModuleName.setText("设置密码");
     }
 
     @Override
@@ -61,7 +62,7 @@ public class SetPwdActivity extends BaseMvpActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 5) {
+                if (s.length() > Consts.MIN_PHONE_LENGTH) {
                     isPwdFinish = true;
                 } else {
                     isPwdFinish = false;
@@ -82,7 +83,7 @@ public class SetPwdActivity extends BaseMvpActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 5) {
+                if (s.length() > Consts.MIN_PHONE_LENGTH) {
                     isAgainPwdFinish = true;
                 } else {
                     isAgainPwdFinish = false;
