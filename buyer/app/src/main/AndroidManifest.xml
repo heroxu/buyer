@@ -58,9 +58,9 @@
         <activity android:name=".ui.PersonalTagActivity" />
         <activity android:name=".ui.MyCollectionActivity" />
         <activity
-            android:name=".RecommendBuyActivity"
+            android:name=".ui.buyCommodity.RecommendBuyActivity"
             android:label="@string/title_activity_recommend_buy" />
-        <activity android:name=".BuyHomePageActivity"></activity>
+        <activity android:name=".ui.buyCommodity.BuyHomePageActivity"></activity>
 
         <activity
             android:name=".tim.ChatActivity"

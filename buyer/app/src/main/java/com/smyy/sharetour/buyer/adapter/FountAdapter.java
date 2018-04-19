@@ -24,7 +24,7 @@ import java.util.List;
  * E-Mail Address：wuzf2012@sina.com
  */
 public class FountAdapter extends BaseMultiItemQuickAdapter<FountBean,BaseViewHolder> {
-    public FountAdapter(Context context, List data) {
+    public FountAdapter(List data) {
         super(data);
         addItemType(FountBean.VIDEO_TYPE, R.layout.item_general_video);
         addItemType(FountBean.NOTES_TYPE, R.layout.item_general_notes);

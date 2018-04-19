@@ -138,6 +138,11 @@ public class MyApplication extends BaseApplication {
     }
 
     public void setLogin(boolean isLogin) {
+        if (isLogin){
+            EventBus.getDefault().post(new LoginEvent(true));
+        }else{
+            EventBus.getDefault().post(new LoginEvent(false));
+        }
         this.mIsLogin = isLogin;
     }
 

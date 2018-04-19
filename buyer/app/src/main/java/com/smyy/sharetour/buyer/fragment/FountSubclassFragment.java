@@ -73,7 +73,7 @@ public class FountSubclassFragment extends BaseMvpFragment {
         data.add(new FountBean(1, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", null));
         data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png", iData3));
         data.add(new FountBean(2, "http://cdn.haidii.com/v/1519779911/app/swg_xhzd/swg_xhzd_r_1.png"));
-        mFountAdapter = new FountAdapter(getActivity(), data);
+        mFountAdapter = new FountAdapter(data);
         recyclerView.setAdapter(mFountAdapter);
         //添加Android自带的分割线
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));

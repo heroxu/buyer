@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.ui.buyCommodity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,16 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.adapter.RecommendBuyAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.home.model.SearchBuyer;
-import com.smyy.sharetour.buyer.home.search.adapter.SearchBuyerAdapter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class RecommendBuyActivity extends BaseMvpActivity {
 

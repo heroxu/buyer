@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".home.search.activity.HomeSearchActivity">
-
     <RelativeLayout
         android:layout_marginTop="@dimen/margin_10"
         android:layout_width="match_parent"

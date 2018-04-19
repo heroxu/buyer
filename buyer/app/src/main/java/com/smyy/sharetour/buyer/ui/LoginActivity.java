@@ -1,6 +1,5 @@
 package com.smyy.sharetour.buyer.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,13 +13,11 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.SPConfig;
 import com.smyy.sharetour.buyer.dialog.SmsCodeDialog;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
-import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
@@ -44,7 +41,6 @@ public class LoginActivity extends BaseMvpActivity implements IUserContract.View
     @BindView(R.id.btv_password_login)
     TextView btvPasswordLogin;
     SmsCodeDialog mSmsCodeDialog;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;

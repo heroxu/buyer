@@ -1,9 +1,10 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.adapter;
 
 import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.bean.Test1Bean;
 import com.smyy.sharetour.buyer.home.model.SearchBuyer;
 

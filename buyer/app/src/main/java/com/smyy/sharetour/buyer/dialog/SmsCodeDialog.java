@@ -46,11 +46,11 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
             @Override
             public void inputComplete() {
                 if (mSmsCode.getInputContent().length() == 6) {
+                    dismiss();
                     MyApplication.getApplication().mThreadHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             mSmsCodeCallback.SmsCodeResult(mSmsCode.getInputContent());
-                            dismiss();
                         }
                     }, 100);
                 }
@@ -115,6 +115,7 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
         mSmsCode.clearInputContent();
         super.show();
     }
+
 
     public void setClickCallbackListener(SmsCodeCallback listener) {
         mSmsCodeCallback = listener;

@@ -3,11 +3,9 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
-import com.smyy.sharetour.buyer.BuyHomePageActivity;
+import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
 import com.smyy.sharetour.buyer.MyApplication;
-import com.smyy.sharetour.buyer.RecommendBuyActivity;
-import com.smyy.sharetour.buyer.SPConfig;
-import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.ui.buyCommodity.RecommendBuyActivity;
 import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
 import com.smyy.sharetour.buyer.ui.MyCollectionActivity;
 import com.smyy.sharetour.buyer.ui.MoreReplyActivity;
@@ -175,7 +173,7 @@ public class ActivityLauncher {
     }
 
     private static boolean isLogin(Context context){
-        if (new SharePreferenceUtil(MyApplication.getApplication(), SPConfig.NAME_USER_CACHE).getBeanValue(SPConfig.NAME_USER_CACHE,UserInfoBean.class)!=null){
+        if (MyApplication.getApplication().isLogin()){
             return true;
         }
         viewGuideLoginActivity(context);

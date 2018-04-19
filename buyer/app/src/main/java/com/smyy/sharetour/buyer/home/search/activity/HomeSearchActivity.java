@@ -29,8 +29,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeSearchActivity extends BaseMvpActivity implements View.OnClickListener{
-
-
     @BindView(R.id.iv_home_search_back)
     ImageView ivHomeSearchBack;
     @BindView(R.id.tv_home_search_cancel)

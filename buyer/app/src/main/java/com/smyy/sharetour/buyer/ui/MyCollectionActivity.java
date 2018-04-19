@@ -27,8 +27,7 @@ public class MyCollectionActivity extends BaseMvpActivity{
     CommonTabLayout ctlCollection;
     private FragmentNavigator mFragmentNavigator;
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private String[] mTitles = {"商品", "视频", "笔记"
-    };
+    private String[] mTitles = {"商品", "视频", "笔记"};
 
     @Override
     protected int getLayoutId() {
