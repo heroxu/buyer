@@ -193,7 +193,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin_10"
             android:gravity="center_vertical"
-            android:layout_toLeftOf="@+id/tv_notes_other_comment_number"
+            android:layout_toLeftOf="@+id/tv_route_communicate"
             android:orientation="horizontal">
 
             <com.smyy.sharetour.buyer.view.OnLineLinearLayout
