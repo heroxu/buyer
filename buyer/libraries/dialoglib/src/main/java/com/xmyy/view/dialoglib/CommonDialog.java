@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.StyleRes;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
@@ -68,6 +69,11 @@ public class CommonDialog extends BaseDialogFragment {
     }
 
     @Override
+    protected int getAnimRes() {
+        return commonController.getAnimRes();
+    }
+
+    @Override
     protected View getDialogView() {
         return commonController.getDialogView();
     }
@@ -83,7 +89,7 @@ public class CommonDialog extends BaseDialogFragment {
         }
         //回调方法获取到布局,进行处理
         if (commonController.getOnBindViewListener() != null) {
-            commonController.getOnBindViewListener().bindView(viewHolder,this);
+            commonController.getOnBindViewListener().bindView(viewHolder, this);
         }
     }
 
@@ -148,6 +154,11 @@ public class CommonDialog extends BaseDialogFragment {
         //各种setXXX()方法设置数据
         public Builder setLayoutRes(@LayoutRes int layoutRes) {
             params.mLayoutRes = layoutRes;
+            return this;
+        }
+
+        public Builder setAnimRes(@StyleRes int animResId) {
+            params.mAnimRes = animResId;
             return this;
         }
 

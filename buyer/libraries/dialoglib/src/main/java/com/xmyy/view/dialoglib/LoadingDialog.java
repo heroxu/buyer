@@ -61,6 +61,11 @@ public class LoadingDialog extends BaseDialogFragment {
     }
 
     @Override
+    protected int getAnimRes() {
+        return 0;
+    }
+
+    @Override
     protected View getDialogView() {
         return null;
     }

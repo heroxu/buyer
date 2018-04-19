@@ -21,6 +21,7 @@ public class CommonController<A extends CommonBaseAdapter> implements Parcelable
 
     private FragmentManager fragmentManager;
     private int layoutRes;
+    private int animRes;
     private int height;
     private int width;
     private float dimAmount;
@@ -43,6 +44,7 @@ public class CommonController<A extends CommonBaseAdapter> implements Parcelable
 
     protected CommonController(Parcel in) {
         layoutRes = in.readInt();
+        animRes = in.readInt();
         height = in.readInt();
         width = in.readInt();
         dimAmount = in.readFloat();
@@ -75,6 +77,7 @@ public class CommonController<A extends CommonBaseAdapter> implements Parcelable
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(layoutRes);
+        dest.writeInt(animRes);
         dest.writeInt(height);
         dest.writeInt(width);
         dest.writeFloat(dimAmount);
@@ -99,6 +102,14 @@ public class CommonController<A extends CommonBaseAdapter> implements Parcelable
 
     public void setLayoutRes(int layoutRes) {
         this.layoutRes = layoutRes;
+    }
+
+    public int getAnimRes() {
+        return animRes;
+    }
+
+    public void getAnimRes(int animRes) {
+        this.animRes = animRes;
     }
 
     public int getHeight() {
@@ -179,6 +190,7 @@ public class CommonController<A extends CommonBaseAdapter> implements Parcelable
     public static class TParams<A extends CommonBaseAdapter> {
         public FragmentManager mFragmentManager;
         public int mLayoutRes;
+        public int mAnimRes;
         public int mWidth;
         public int mHeight;
         public float mDimAmount = 0.2f;
@@ -201,6 +213,9 @@ public class CommonController<A extends CommonBaseAdapter> implements Parcelable
             commonController.fragmentManager = mFragmentManager;
             if (mLayoutRes > 0) {
                 commonController.layoutRes = mLayoutRes;
+            }
+            if (mAnimRes > 0) {
+                commonController.animRes = mAnimRes;
             }
             if (mDialogView != null) {
                 commonController.dialogView = mDialogView;

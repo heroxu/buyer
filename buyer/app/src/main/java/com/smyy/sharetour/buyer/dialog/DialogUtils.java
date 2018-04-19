@@ -43,6 +43,7 @@ public class DialogUtils {
                 .setCancelText(cancelText)
                 .setCancelClickListener(cancelClickListener)
                 .build()
+                .setAnimRes(R.style.BottomDialogAnim)
                 .setCancelableOutside(false)
                 .setCancelable(true);
     }

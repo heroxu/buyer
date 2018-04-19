@@ -65,6 +65,8 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
     protected abstract void bindView(View view);
 
+    protected abstract int getAnimRes();
+
     protected abstract View getDialogView();
 
     @NonNull
@@ -120,12 +122,9 @@ public abstract class BaseDialogFragment extends DialogFragment {
             layoutParams.dimAmount = getDimAmount();
             //位置
             layoutParams.gravity = getGravity();
-            if (layoutParams.gravity==Gravity.BOTTOM) {
-                if (animStyle == 0) {
-                    animStyle = R.style.BottomDialogAnim;
-                }
+            if (getAnimRes() > 0) {
+                window.setWindowAnimations(getAnimRes());
             }
-            window.setWindowAnimations(animStyle);
             window.setAttributes(layoutParams);
         }
     }
