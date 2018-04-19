@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_if_video"
+    android:id="@+id/ll_if_notes"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/rl_general_notes_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp">
@@ -28,7 +28,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_toRightOf="@+id/iv_ifv_photo"
-            android:text="宇宙大帅爆"
+            android:text="一只大榴莲"
             android:textColor="@color/txt_main"
             android:textSize="13sp" />
 
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="20秒前"
+            android:text="50分钟前"
             android:textColor="@color/txt_gray"
             android:textSize="11sp" />
     </RelativeLayout>
@@ -59,13 +59,14 @@
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/shape_fount_note_type"
+            android:textColor="@color/txt_main"
             android:gravity="center_vertical"
             android:padding="3dp"
             android:text="笔记"
@@ -77,25 +78,33 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
+            android:ellipsize="end"
             android:gravity="center_vertical"
-            android:text="宇宙大帅爆"
+            android:maxLines="1"
+            android:text="很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲,很多大榴莲"
             android:textColor="@color/txt_main"
             android:textSize="13sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="335dp"
-        android:layout_height="190dp"
-        android:layout_gravity="center"
-        android:background="@mipmap/bg_video"
-        android:gravity="center">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_if_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
 
-        <ImageView
-            android:layout_width="62dp"
-            android:layout_height="62dp"
-            android:src="@mipmap/ic_playing" />
-
-    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lineSpacingMultiplier="1.5"
+        android:maxLines="2"
+        android:text="Nike Air Huarache 在前两年席卷国内街头，超高的性价比和百搭的外形成为它的特点，在推出全新的拉链设计版,Nike Air Huarache 在前两年席卷国内街头，超高的性价比和百搭的外形成为它的特点，在推出全新的拉链设计版"
+        android:textColor="@color/txt_gray_dark" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -65,6 +65,7 @@ dependencies {
     compile 'com.wx.goodview:goodview:1.0.0'
     compile 'com.youth.banner:banner:1.4.9'
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.github.Aspsine:FragmentNavigator:1.0.2'
     /**
      * GreenDao
      */

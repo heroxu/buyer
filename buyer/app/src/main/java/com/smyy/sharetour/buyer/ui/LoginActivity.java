@@ -1,5 +1,6 @@
 package com.smyy.sharetour.buyer.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,8 +12,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.Consts;
+import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.SPConfig;
 import com.smyy.sharetour.buyer.dialog.SmsCodeDialog;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
+import com.smyy.sharetour.buyer.module.my.model.UserModel;
+import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
@@ -22,7 +30,7 @@ import com.smyy.sharetour.buyer.view.ClearWriteEditText;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseMvpActivity {
+public class LoginActivity extends BaseMvpActivity implements IUserContract.View {
     @BindView(R.id.tv_module_name)
     TextView tvModuleName;
     @BindView(R.id.tv_region)
@@ -67,7 +75,7 @@ public class LoginActivity extends BaseMvpActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 5) {
+                if (s.length() > Consts.MIN_PHONE_LENGTH) {
                     btnConfirm.setEnabled(true);
                 } else {
                     btnConfirm.setEnabled(false);
@@ -122,11 +130,14 @@ public class LoginActivity extends BaseMvpActivity {
         mSmsCodeDialog.setClickCallbackListener(new SmsCodeDialog.SmsCodeCallback() {
             @Override
             public void SmsCodeResult(String smsCode) {
-                if (Consts.DEFAULT_SMS_CODE.equals(smsCode)) {
+                String phoneNum = editPhone.getText().toString().trim();
+                if (Consts.DEFAULT_SMS_CODE.equals(smsCode) && Consts.isPhoneNum(phoneNum)) {
+                    MyApplication.getApplication().saveUserInfo(new UserInfoBean(phoneNum, "悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
+                            1, 2, 8, 0));
                     ToastUtils.showToast(LoginActivity.this, "登录成功");
                     finish();
                 } else {
-                    ToastUtils.showToast(LoginActivity.this, "验证码错误");
+                    ToastUtils.showToast(LoginActivity.this, "登录失败，请检查手机和验证码是否正确");
                 }
             }
 
@@ -136,5 +147,20 @@ public class LoginActivity extends BaseMvpActivity {
             }
         });
         mSmsCodeDialog.show();
+    }
+
+    @Override
+    public void showToast(String s) {
+
+    }
+
+    @Override
+    public void showToast(int stringRes) {
+
+    }
+
+    @Override
+    public void showUserInfo(UserInfoBean userInfo) {
+
     }
 }

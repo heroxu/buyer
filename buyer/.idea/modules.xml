@@ -9,9 +9,9 @@
       <module fileurl="file://$PROJECT_DIR$/buyer.iml" filepath="$PROJECT_DIR$/buyer.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/dialoglib/dialoglib.iml" filepath="$PROJECT_DIR$/libraries/dialoglib/dialoglib.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
-      <module fileurl="file://E:/Android/buyer/BaseRecyclerViewAdapterHelper/library.iml" filepath="E:/Android/buyer/BaseRecyclerViewAdapterHelper/library.iml" />
+      <module fileurl="file://E:\Android\buyer\BaseRecyclerViewAdapterHelper\library.iml" filepath="E:\Android\buyer\BaseRecyclerViewAdapterHelper\library.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/saerchlibrary/saerchlibrary.iml" filepath="$PROJECT_DIR$/libraries/saerchlibrary/saerchlibrary.iml" />
-      <module fileurl="file://E:/Android/buyer/searchmodule/searchmodule.iml" filepath="E:/Android/buyer/searchmodule/searchmodule.iml" />
+      <module fileurl="file://E:\Android\buyer\searchmodule\searchmodule.iml" filepath="E:\Android\buyer\searchmodule\searchmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/wave/wave.iml" filepath="$PROJECT_DIR$/libraries/wave/wave.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/zxing/zxing.iml" filepath="$PROJECT_DIR$/libraries/zxing/zxing.iml" />
     </modules>

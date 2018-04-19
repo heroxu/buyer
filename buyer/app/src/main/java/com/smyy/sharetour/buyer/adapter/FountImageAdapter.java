@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class FountImageAdapter extends BaseQuickAdapter<FImage,BaseViewHolder> {
     public FountImageAdapter(List<FImage> datas) {
-        super(R.layout.item_fount_notes_images, datas);
+        super(R.layout.item_general_notes_images, datas);
     }
 
     @Override

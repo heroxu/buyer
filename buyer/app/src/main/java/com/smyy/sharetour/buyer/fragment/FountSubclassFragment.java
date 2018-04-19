@@ -19,6 +19,7 @@ import com.smyy.sharetour.buyer.adapter.FountAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.LogUtil;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.yongchun.library.view.ImageSelectorActivity;
 

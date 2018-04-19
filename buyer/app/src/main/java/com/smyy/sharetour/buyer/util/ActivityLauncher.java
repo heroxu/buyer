@@ -3,7 +3,11 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.MyApplication;
+import com.smyy.sharetour.buyer.SPConfig;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
+import com.smyy.sharetour.buyer.ui.MyCollectionActivity;
 import com.smyy.sharetour.buyer.ui.MoreReplyActivity;
 import com.smyy.sharetour.buyer.ui.NoteDetailsActivity;
 import com.smyy.sharetour.buyer.ui.PersonalTagActivity;
@@ -93,15 +97,19 @@ public class ActivityLauncher {
      * 跳转到笔记详情
      */
     public static void viewNoteDetailsActivity(Context context) {
-        Intent intent = new Intent(context, NoteDetailsActivity.class);
-        context.startActivity(intent);
+        if (isLogin(context)){
+            Intent intent = new Intent(context, NoteDetailsActivity.class);
+            context.startActivity(intent);
+        }
     }
     /**
      * 跳转到视频详情
      */
     public static void viewVideoDetailsActivity(Context context) {
-        Intent intent = new Intent(context, VideoDetailsActivity.class);
-        context.startActivity(intent);
+        if (isLogin(context)){
+            Intent intent = new Intent(context, VideoDetailsActivity.class);
+            context.startActivity(intent);
+        }
     }
     /**
      * 跳转到更多回复
@@ -109,6 +117,13 @@ public class ActivityLauncher {
     public static void viewMoreReplyActivityty(Context context, CommentsBean.MainList data) {
         Intent intent = new Intent(context, MoreReplyActivity.class);
         intent.putExtra(MoreReplyActivity.BUNDLE_REPLY_DATA,data);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到收藏列表
+     */
+    public static void viewMyCollectionActivity(Context context) {
+        Intent intent = new Intent(context, MyCollectionActivity.class);
         context.startActivity(intent);
     }
 
@@ -142,4 +157,13 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, PublishRequireActivity.class);
         context.startActivity(intent);
     }
+
+    private static boolean isLogin(Context context){
+        if (new SharePreferenceUtil(MyApplication.getApplication(), SPConfig.USER_CACHE).getBeanValue(SPConfig.USER_CACHE,UserInfoBean.class)!=null){
+            return true;
+        }
+        viewGuideLoginActivity(context);
+        return false;
+    }
 }
+

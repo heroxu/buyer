@@ -29,7 +29,7 @@ public class SearchBuyerAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new SearchBuyerViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_search_buyer, parent, false));
+        return new SearchBuyerViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_general_buyer, parent, false));
     }
 
     @Override

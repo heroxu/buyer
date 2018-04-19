@@ -18,12 +18,6 @@
     <string name="main_tab_live">直播</string>
     <string name="main_tab_my">我的</string>
 
-    <string name="main_tab_1">TAB1</string>
-    <string name="main_tab_2">TAB2</string>
-    <string name="main_tab_3">TAB3</string>
-    <string name="main_tab_4">TAB4</string>
-    <string name="main_tab_5">TAB5</string>
-
     <string name="sign_out">退出登录</string>
 
     <string name="view_all_orders">查看全部订单</string>

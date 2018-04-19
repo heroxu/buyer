@@ -28,7 +28,7 @@ public class SearchProductAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new SearchProductViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_search_product, parent, false));
+        return new SearchProductViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_general_product, parent, false));
     }
 
     @Override

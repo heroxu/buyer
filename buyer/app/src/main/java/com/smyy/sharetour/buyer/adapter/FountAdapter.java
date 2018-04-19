@@ -26,8 +26,8 @@ import java.util.List;
 public class FountAdapter extends BaseMultiItemQuickAdapter<FountBean,BaseViewHolder> {
     public FountAdapter(Context context, List data) {
         super(data);
-        addItemType(FountBean.VIDEO_TYPE, R.layout.item_fount_video);
-        addItemType(FountBean.NOTES_TYPE, R.layout.item_fount_notes);
+        addItemType(FountBean.VIDEO_TYPE, R.layout.item_general_video);
+        addItemType(FountBean.NOTES_TYPE, R.layout.item_general_notes);
         addItemType(FountBean.BANNER_TYPE, R.layout.item_fount_banner);
     }
 

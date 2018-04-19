@@ -11,6 +11,7 @@ import com.smyy.sharetour.buyer.greendao.DaoSession;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.network.rx.RxUtils;
 import com.smyy.sharetour.buyer.util.PackageUtils;
+import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -115,5 +116,10 @@ public class MyApplication extends BaseApplication {
 
     public void setUserInfo(UserInfoBean mUserInfo) {
         this.mUserInfo = mUserInfo;
+    }
+
+    public void saveUserInfo(UserInfoBean mUserInfo) {
+        new SharePreferenceUtil(mApplication, SPConfig.USER_CACHE)
+                .writeBeanValue(SPConfig.USER_INFO,mUserInfo);
     }
 }

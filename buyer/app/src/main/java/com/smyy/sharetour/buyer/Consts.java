@@ -1,10 +1,34 @@
 package com.smyy.sharetour.buyer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 伍振飞 on 2018/4/8 14:28
  * E-Mail Address：wuzf2012@sina.com
  */
 public class Consts {
+    /**
+     * 判断是否平台账号
+     */
+    public static boolean isPhoneNum(String num) {
+        boolean isPhoneNum = false;
+        for (int i = 0; i < mTitles.length; i++) {
+            if (mTitles[i].equals(num)) {
+                isPhoneNum = true;
+            }
+        }
+        return isPhoneNum;
+    }
+
+    /**
+     * 默认账号
+     */
+    private static String[] mTitles = {"18680445592", "15607003736"};
+    /**
+     * 默认密码
+     */
+    public static String DEFAULT_LOGIN_PWD = "123456";
     /**
      * 默认验证码
      */
@@ -13,6 +37,18 @@ public class Consts {
      * 默认倒计时时间
      */
     public static int DEFAULT_COUNTDOWN_TIME = 60;
+    /**
+     * 默认密码最小长度
+     */
+    public static int MIN_PHONE_LENGTH = 6;
+    /**
+     * 默认密码最小长度
+     */
+    public static int MIN_PWD_LENGTH = 6;
+    /**
+     * 默认验证码最小长度
+     */
+    public static int MIN_SMS_LENGTH = 6;
 
     public static String noteDetailsData = "{\n" +
             "\t\"mainList\": [{\n" +
