@@ -159,7 +159,7 @@ public class ActivityLauncher {
     }
 
     private static boolean isLogin(Context context){
-        if (new SharePreferenceUtil(MyApplication.getApplication(), SPConfig.USER_CACHE).getBeanValue(SPConfig.USER_CACHE,UserInfoBean.class)!=null){
+        if (new SharePreferenceUtil(MyApplication.getApplication(), SPConfig.NAME_USER_CACHE).getBeanValue(SPConfig.NAME_USER_CACHE,UserInfoBean.class)!=null){
             return true;
         }
         viewGuideLoginActivity(context);

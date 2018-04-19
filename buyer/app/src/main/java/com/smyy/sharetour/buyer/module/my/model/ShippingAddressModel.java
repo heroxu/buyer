@@ -3,9 +3,7 @@ package com.smyy.sharetour.buyer.module.my.model;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.SPConfig;
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
-import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IShippingAddressContract;
-import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 
 import java.util.ArrayList;
@@ -18,8 +16,8 @@ public class ShippingAddressModel implements IShippingAddressContract.Model {
         MyApplication application = MyApplication.getApplication();
         if (application == null) return null;
 
-        List<ShippingAddressBean> datas = new SharePreferenceUtil(application, SPConfig.FAKE_DATA)
-                .getListValue(SPConfig.FAKE_ADDRESS);
+        List<ShippingAddressBean> datas = new SharePreferenceUtil(application, SPConfig.NAME_FAKE_DATA)
+                .getListValue(SPConfig.KEY_FAKE_ADDRESS);
 
         if (datas == null) {
             datas = new ArrayList<>();

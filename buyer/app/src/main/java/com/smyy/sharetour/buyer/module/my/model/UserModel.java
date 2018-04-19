@@ -21,8 +21,8 @@ public class UserModel implements IUserContract.Model {
         if (application == null) return null;
         UserInfoBean userInfo = application.getUserInfo();
         if (userInfo == null) {
-            userInfo = new SharePreferenceUtil(application, SPConfig.USER_CACHE)
-                    .getBeanValue(SPConfig.USER_INFO, UserInfoBean.class);
+            userInfo = new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
+                    .getBeanValue(SPConfig.KEY_USER_INFO, UserInfoBean.class);
             if (userInfo == null) {
                 //TODO 个人感觉这里应该模拟登录拿到数据
 //                userInfo = getUserInfoFromNet();
@@ -36,8 +36,8 @@ public class UserModel implements IUserContract.Model {
         MyApplication application = MyApplication.getApplication();
         if (application == null) return false;
         application.setUserInfo(userInfo);
-        return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
-                .writeBeanValue(SPConfig.USER_INFO, userInfo);
+        return new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
+                .writeBeanValue(SPConfig.KEY_USER_INFO, userInfo);
     }
 
     @Override
@@ -47,8 +47,8 @@ public class UserModel implements IUserContract.Model {
         UserInfoBean userInfo = getUserInfo();
         userInfo.setUsername(userName);
         application.setUserInfo(userInfo);
-        return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
-                .writeBeanValue(SPConfig.USER_INFO, userInfo);
+        return new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
+                .writeBeanValue(SPConfig.KEY_USER_INFO, userInfo);
     }
 
     @Override
@@ -58,8 +58,8 @@ public class UserModel implements IUserContract.Model {
         UserInfoBean userInfo = getUserInfo();
         userInfo.setUserIntro(userIntro);
         application.setUserInfo(userInfo);
-        return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
-                .writeBeanValue(SPConfig.USER_INFO, userInfo);
+        return new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
+                .writeBeanValue(SPConfig.KEY_USER_INFO, userInfo);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class UserModel implements IUserContract.Model {
         UserInfoBean userInfo = getUserInfo();
         userInfo.setLinkedPhoneNum(linkedPhoneNum);
         application.setUserInfo(userInfo);
-        return new SharePreferenceUtil(application, SPConfig.USER_CACHE)
-                .writeBeanValue(SPConfig.USER_INFO, userInfo);
+        return new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
+                .writeBeanValue(SPConfig.KEY_USER_INFO, userInfo);
     }
 }

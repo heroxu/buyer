@@ -36,11 +36,11 @@ public class MessageSettingsActivity extends BaseActivity {
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
 
-        toggleIm.setChecked(new SharePreferenceUtil(MyApplication.getContext(), SPConfig.APP_SETTINGS)
-                .getBooleanValue(SPConfig.TOGGLE_IM, true));
+        toggleIm.setChecked(new SharePreferenceUtil(MyApplication.getContext(), SPConfig.NAME_APP_SETTINGS)
+                .getBooleanValue(SPConfig.KEY_TOGGLE_IM, true));
 
-        toggleSysm.setChecked(new SharePreferenceUtil(MyApplication.getContext(), SPConfig.APP_SETTINGS)
-                .getBooleanValue(SPConfig.TOGGLE_SYSM, true));
+        toggleSysm.setChecked(new SharePreferenceUtil(MyApplication.getContext(), SPConfig.NAME_APP_SETTINGS)
+                .getBooleanValue(SPConfig.KEY_TOGGLE_SYSM, true));
     }
 
 
@@ -49,13 +49,13 @@ public class MessageSettingsActivity extends BaseActivity {
         switch (view.getId()) {
 
             case R.id.iv_my_toggle_im:
-                new SharePreferenceUtil(MyApplication.getContext(), SPConfig.APP_SETTINGS)
-                        .writeBooleanValue(SPConfig.TOGGLE_IM, toggleIm.isChecked());
+                new SharePreferenceUtil(MyApplication.getContext(), SPConfig.NAME_APP_SETTINGS)
+                        .writeBooleanValue(SPConfig.KEY_TOGGLE_IM, toggleIm.isChecked());
                 break;
 
             case R.id.iv_my_toggle_sysm:
-                new SharePreferenceUtil(MyApplication.getContext(), SPConfig.APP_SETTINGS)
-                        .writeBooleanValue(SPConfig.TOGGLE_SYSM, toggleSysm.isChecked());
+                new SharePreferenceUtil(MyApplication.getContext(), SPConfig.NAME_APP_SETTINGS)
+                        .writeBooleanValue(SPConfig.KEY_TOGGLE_SYSM, toggleSysm.isChecked());
                 break;
 
             default:

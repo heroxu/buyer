@@ -126,6 +126,6 @@ public class MyApplication extends BaseApplication {
         } else {
             EventBus.getDefault().post(new LoginEvent(false));
         }
-        new SharePreferenceUtil(mApplication, SPConfig.USER_CACHE).writeBeanValue(SPConfig.USER_INFO, mUserInfo);
+        new SharePreferenceUtil(mApplication, SPConfig.NAME_USER_CACHE).writeBeanValue(SPConfig.KEY_USER_INFO, mUserInfo);
     }
 }
