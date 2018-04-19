@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
@@ -91,6 +92,7 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         Bundle bundle = getBundle();
         if (bundle != null) {
             mPurpose = bundle.getString(PURPOSE, ADD_ADDRESS);
