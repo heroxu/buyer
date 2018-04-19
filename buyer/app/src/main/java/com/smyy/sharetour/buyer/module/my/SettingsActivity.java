@@ -9,11 +9,16 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.event.LoginEvent;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.contract.ISettingsContract;
 import com.smyy.sharetour.buyer.module.my.model.SettingsModel;
 import com.smyy.sharetour.buyer.module.my.presenter.SettingsPresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -37,10 +42,17 @@ public class SettingsActivity extends MyBaseMvpActivity<SettingsPresenter> imple
         TextView toolbarRightTv = getToolbarRightTv();
         toolbarRightTv.setText(getString(R.string.sign_out));
         toolbarRightTv.setVisibility(View.VISIBLE);
+        toolbarRightTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyApplication.getApplication().saveUserInfo(null);
+            }
+        });
     }
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        EventBus.getDefault().register(this);
         mPresenter.getCacheSize(MyApplication.getApplication());
         tvVersionCode.setText(MyApplication.getApplication().getAppVersionName());
     }
@@ -84,5 +96,13 @@ public class SettingsActivity extends MyBaseMvpActivity<SettingsPresenter> imple
     @Override
     public void showCacheSize(String cacheSize) {
         tvCacheSize.setText(cacheSize);
+    }
+
+    @Subscribe
+    public void onEventMainThread(LoginEvent event) {
+        if (!event.isLogin()) {
+            ToastUtils.showToast(SettingsActivity.this, "退出登录成功");
+            finish();
+        }
     }
 }

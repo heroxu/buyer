@@ -10,11 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.event.LoginEvent;
 import com.smyy.sharetour.buyer.view.CustomVideoView;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -35,6 +39,7 @@ public class GuideLoginActivity extends BaseMvpActivity {
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        EventBus.getDefault().register(this);
         hideToolBarLayout(true);
         initVideoView();
     }
@@ -89,8 +94,16 @@ public class GuideLoginActivity extends BaseMvpActivity {
         gloginVideoview.stopPlayback();
         super.onStop();
     }
+
     @Override
     protected void initStatusBar() {
         setStatusBar(Color.BLACK);
+    }
+
+    @Subscribe
+    public void onEventMainThread(LoginEvent event) {
+        if (event.isLogin()) {
+            finish();
+        }
     }
 }

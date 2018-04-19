@@ -6,6 +6,7 @@ import android.util.DisplayMetrics;
 
 import com.smyy.sharetour.buyer.base.BaseApplication;
 import com.smyy.sharetour.buyer.db.MySQLiteOpenHelper;
+import com.smyy.sharetour.buyer.event.LoginEvent;
 import com.smyy.sharetour.buyer.greendao.DaoMaster;
 import com.smyy.sharetour.buyer.greendao.DaoSession;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
@@ -13,6 +14,7 @@ import com.smyy.sharetour.buyer.network.rx.RxUtils;
 import com.smyy.sharetour.buyer.util.PackageUtils;
 import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.greendao.database.Database;
 
 public class MyApplication extends BaseApplication {
@@ -119,7 +121,11 @@ public class MyApplication extends BaseApplication {
     }
 
     public void saveUserInfo(UserInfoBean mUserInfo) {
-        new SharePreferenceUtil(mApplication, SPConfig.USER_CACHE)
-                .writeBeanValue(SPConfig.USER_INFO,mUserInfo);
+        if (mUserInfo != null) {
+            EventBus.getDefault().post(new LoginEvent(true));
+        } else {
+            EventBus.getDefault().post(new LoginEvent(false));
+        }
+        new SharePreferenceUtil(mApplication, SPConfig.USER_CACHE).writeBeanValue(SPConfig.USER_INFO, mUserInfo);
     }
 }

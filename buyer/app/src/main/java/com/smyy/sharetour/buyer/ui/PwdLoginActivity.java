@@ -11,7 +11,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.Consts;
+import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
@@ -66,7 +69,6 @@ public class PwdLoginActivity extends BaseMvpActivity {
         hideToolBarLayout(true);
         llPwdEdit.setVisibility(View.VISIBLE);
         btnConfirm.setText("登录");
-        btnConfirm.setClickable(false);
         btvPasswordLogin.setText("忘记密码");
         editPhone.addTextChangedListener(new TextWatcher() {
             @Override
@@ -80,7 +82,7 @@ public class PwdLoginActivity extends BaseMvpActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 5) {
+                if (s.length() > Consts.MIN_PHONE_LENGTH) {
                     isPhoneEdit = true;
                 } else {
                     isPhoneEdit = false;
@@ -100,7 +102,7 @@ public class PwdLoginActivity extends BaseMvpActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 5) {
+                if (s.length() > Consts.MIN_PWD_LENGTH) {
                     isPwdEdit = true;
                 } else {
                     isPwdEdit = false;
@@ -130,7 +132,16 @@ public class PwdLoginActivity extends BaseMvpActivity {
             case R.id.ll_has_account:
                 break;
             case R.id.btn_confirm:
-                ToastUtils.showToast(PwdLoginActivity.this, "登录成功");
+                String phoneNum = editPhone.getText().toString().trim();
+                String pwd = editPassword.getText().toString().trim();
+                if (Consts.DEFAULT_LOGIN_PWD.equals(pwd) && Consts.isPhoneNum(phoneNum)) {
+                    MyApplication.getApplication().saveUserInfo(new UserInfoBean(phoneNum, "悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
+                            1, 2, 8, 0));
+                    ToastUtils.showToast(PwdLoginActivity.this, "登录成功");
+                    finish();
+                } else {
+                    ToastUtils.showToast(PwdLoginActivity.this, "登录失败，请检查手机和验证码是否正确");
+                }
                 finish();
                 break;
             case R.id.btv_register_deal:

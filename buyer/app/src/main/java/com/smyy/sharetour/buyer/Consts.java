@@ -38,17 +38,17 @@ public class Consts {
      */
     public static int DEFAULT_COUNTDOWN_TIME = 60;
     /**
-     * 默认密码最小长度
+     * 默认手机最小长度
      */
-    public static int MIN_PHONE_LENGTH = 6;
+    public static int MIN_PHONE_LENGTH = 10;
     /**
      * 默认密码最小长度
      */
-    public static int MIN_PWD_LENGTH = 6;
+    public static int MIN_PWD_LENGTH = 5;
     /**
      * 默认验证码最小长度
      */
-    public static int MIN_SMS_LENGTH = 6;
+    public static int MIN_SMS_LENGTH = 5;
 
     public static String noteDetailsData = "{\n" +
             "\t\"mainList\": [{\n" +
