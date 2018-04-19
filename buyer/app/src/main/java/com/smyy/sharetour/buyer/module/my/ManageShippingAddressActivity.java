@@ -23,6 +23,7 @@ import com.smyy.sharetour.buyer.util.ToastUtils;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class ManageShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPresenter> implements IShippingAddressContract.View {
     @BindView(R.id.rv_my_shipping_address)
@@ -31,6 +32,8 @@ public class ManageShippingAddressActivity extends MyBaseMvpActivity<ShippingAdd
     Button btnAddAddress;
 
     private ManageShippingAddressAdapter mAdapter;
+
+    public static final int REQ_EDIT = 1;
 
     @Override
     protected int getLayoutId() {
@@ -75,7 +78,10 @@ public class ManageShippingAddressActivity extends MyBaseMvpActivity<ShippingAdd
 
                         break;
                     case R.id.tv_my_shipping_edit:
-                        ToastUtils.showToast("edit");
+                        Bundle bundle = new Bundle();
+                        bundle.putString(ShippingAddressEditActivity.PURPOSE, ShippingAddressEditActivity.EDIT_ADDRESS);
+                        bundle.putInt(ShippingAddressEditActivity.ADDRESS_ID, position);
+                        startActivityForResult(ShippingAddressEditActivity.class, bundle, REQ_EDIT);
                         break;
                     case R.id.tv_my_shipping_delete:
                         mPresenter.deleteShippingAddress(position);
@@ -102,12 +108,52 @@ public class ManageShippingAddressActivity extends MyBaseMvpActivity<ShippingAdd
     }
 
     @Override
-    public void showShippingAddress(List<ShippingAddressBean> datas) {
+    public void showShippingAddressList(List<ShippingAddressBean> datas) {
         mAdapter.setData(datas);
     }
 
     @Override
-    public void shippingAddressUndated() {
+    public void shippingAddressUpdated() {
         setResult(RESULT_OK);
+    }
+
+    @Override
+    public void showShippingAddress(ShippingAddressBean data) {
+
+    }
+
+    @Override
+    public void shippingAddressUpdateFail() {
+
+    }
+
+    @OnClick({R.id.btn_my_add_address})
+    public void onClick(View view) {
+        switch (view.getId()) {
+
+            case R.id.btn_my_add_address:
+                Bundle bundle = new Bundle();
+                bundle.putString(ShippingAddressEditActivity.PURPOSE, ShippingAddressEditActivity.ADD_ADDRESS);
+                startActivityForResult(ShippingAddressEditActivity.class, bundle, REQ_EDIT);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQ_EDIT:
+                    mPresenter.getShippingAddressList();
+                    setResult(RESULT_OK);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

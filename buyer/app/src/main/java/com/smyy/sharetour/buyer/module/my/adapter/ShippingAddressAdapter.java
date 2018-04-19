@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
+import com.smyy.sharetour.buyer.util.StringUtil;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
             holder.rbDefault.setVisibility(data.isDefault() ? View.VISIBLE : View.GONE);
             holder.tvName.setText(data.getName());
             holder.tvPhone.setText(data.getPhone());
-            holder.tvAddress.setText(data.getAddress());
+            holder.tvAddress.setText(StringUtil.connect(data.getDistrict(), data.getStreet(), data.getDetailAddress()));
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -8,14 +8,18 @@ public class ShippingAddressBean implements Serializable {
     private boolean isDefault;
     private String name;
     private String phone;
-    private String address;
+    private String district;
+    private String street;
+    private String detailAddress;
 
-    public ShippingAddressBean(int id, boolean isDefault, String name, String phone, String address) {
+    public ShippingAddressBean(int id, boolean isDefault, String name, String phone, String district, String street, String detailAddress) {
         this.id = id;
         this.isDefault = isDefault;
         this.name = name;
         this.phone = phone;
-        this.address = address;
+        this.district = district;
+        this.street = street;
+        this.detailAddress = detailAddress;
     }
 
     public int getId() {
@@ -50,12 +54,28 @@ public class ShippingAddressBean implements Serializable {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getDetailAddress() {
+        return detailAddress;
+    }
+
+    public void setDetailAddress(String detailAddress) {
+        this.detailAddress = detailAddress;
     }
 
     @Override
@@ -65,7 +85,9 @@ public class ShippingAddressBean implements Serializable {
                 ", isDefault=" + isDefault +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
+                ", district='" + district + '\'' +
+                ", street='" + street + '\'' +
+                ", detailAddress='" + detailAddress + '\'' +
                 '}';
     }
 }

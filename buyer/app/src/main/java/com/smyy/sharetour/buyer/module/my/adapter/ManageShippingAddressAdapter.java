@@ -2,17 +2,15 @@ package com.smyy.sharetour.buyer.module.my.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckedTextView;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
+import com.smyy.sharetour.buyer.util.StringUtil;
 
 import java.util.List;
 
@@ -42,7 +40,7 @@ public class ManageShippingAddressAdapter extends RecyclerView.Adapter<ManageShi
             }
             holder.tvName.setText(data.getName());
             holder.tvPhone.setText(data.getPhone());
-            holder.tvAddress.setText(data.getAddress());
+            holder.tvAddress.setText(StringUtil.connect(data.getDistrict(), data.getStreet(), data.getDetailAddress()));
 
             holder.rbDefault.setOnClickListener(new View.OnClickListener() {
                 @Override

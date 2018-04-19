@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer.util;
 
 import android.text.TextUtils;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.regex.Matcher;
@@ -21,6 +22,26 @@ public class StringUtil {
         }
 
         return "";
+    }
+
+    public static String trim(EditText editText) {
+        if (null != editText) {
+            return editText.getText().toString().trim();
+        }
+
+        return "";
+    }
+
+
+    public static String connect(String... str) {
+        String[] strs = str;
+        StringBuilder sb = new StringBuilder();
+        for (String string :
+                strs) {
+            sb.append(string == null ? "" : string);
+        }
+
+        return sb.toString();
     }
 
     public static boolean checkNickname(String name) {

@@ -35,6 +35,7 @@
         <activity android:name=".module.my.LinkedPhoneActivity" />
         <activity android:name=".module.my.ShippingAddressActivity" />
         <activity android:name=".module.my.ManageShippingAddressActivity" />
+        <activity android:name=".module.my.ShippingAddressEditActivity" />
         <activity android:name=".module.common.code.SmsCodeActivity" />
         <activity android:name=".ui.Test1Activity" />
         <activity android:name=".ui.test2.Test2Activity" />

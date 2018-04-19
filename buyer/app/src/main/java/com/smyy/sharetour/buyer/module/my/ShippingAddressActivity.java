@@ -94,13 +94,23 @@ public class ShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPr
     }
 
     @Override
-    public void showShippingAddress(List<ShippingAddressBean> datas) {
+    public void showShippingAddressList(List<ShippingAddressBean> datas) {
         this.mDatas = datas;
         mAdapter.setData(datas);
     }
 
     @Override
-    public void shippingAddressUndated() {
+    public void shippingAddressUpdated() {
+
+    }
+
+    @Override
+    public void showShippingAddress(ShippingAddressBean data) {
+
+    }
+
+    @Override
+    public void shippingAddressUpdateFail() {
 
     }
 

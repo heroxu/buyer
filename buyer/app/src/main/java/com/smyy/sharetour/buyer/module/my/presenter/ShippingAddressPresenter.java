@@ -1,11 +1,7 @@
 package com.smyy.sharetour.buyer.module.my.presenter;
 
-import android.os.SystemClock;
-
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
-import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IShippingAddressContract;
-import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 
 import java.util.List;
 
@@ -49,7 +45,7 @@ public class ShippingAddressPresenter extends IShippingAddressContract.Presenter
                     @Override
                     public void onNext(List<ShippingAddressBean> datas) {
                         if (mView != null) {
-                            mView.showShippingAddress(datas);
+                            mView.showShippingAddressList(datas);
                         }
                     }
 
@@ -67,13 +63,59 @@ public class ShippingAddressPresenter extends IShippingAddressContract.Presenter
                 });
     }
 
-    public void deleteShippingAddress(final int position) {
+    @Override
+    public void getShippingAddress(final int id) {
+
+        Observable.create(new ObservableOnSubscribe<ShippingAddressBean>() {
+            @Override
+            public void subscribe(ObservableEmitter<ShippingAddressBean> e) throws Exception {
+                if (mModel != null) {
+//                    SystemClock.sleep(1000);
+                    ShippingAddressBean data = mModel.getShippingAddress(id);
+                    e.onNext(data);
+                    e.onComplete();
+                }
+
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ShippingAddressBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        if (mView != null) {
+                            mView.showProgressDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onNext(ShippingAddressBean data) {
+                        if (mView != null) {
+                            mView.showShippingAddress(data);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        if (mView != null) {
+                            mView.hideProgressDialog();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void deleteShippingAddress(final int id) {
 
         Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
                 if (mModel != null) {
-                    boolean result = mModel.deleteShippingAddress(position);
+                    boolean result = mModel.deleteShippingAddress(id);
                     e.onNext(result);
                     e.onComplete();
                 }
@@ -104,13 +146,14 @@ public class ShippingAddressPresenter extends IShippingAddressContract.Presenter
                 });
     }
 
-    public void setDefault(final int position) {
+    @Override
+    public void setDefault(final int id) {
 
         Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
                 if (mModel != null) {
-                    boolean result = mModel.setDefault(position);
+                    boolean result = mModel.setDefault(id);
                     e.onNext(result);
                     e.onComplete();
                 }
@@ -125,8 +168,98 @@ public class ShippingAddressPresenter extends IShippingAddressContract.Presenter
 
                     @Override
                     public void onNext(Boolean result) {
-                        if (mView != null&&result) {
-                            mView.shippingAddressUndated();
+                        if (mView != null && result) {
+                            mView.shippingAddressUpdated();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
+    @Override
+    public void updateShippingAddress(final int id, final ShippingAddressBean shippingAddressBean) {
+
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
+                if (mModel != null) {
+                    boolean result = mModel.updateShippingAddress(id, shippingAddressBean);
+                    e.onNext(result);
+                    e.onComplete();
+                }
+
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        if (mView != null) {
+                            mView.showProgressDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onNext(Boolean result) {
+                        if (mView != null) {
+                            if (result) {
+                                mView.shippingAddressUpdated();
+                            } else {
+                                mView.shippingAddressUpdateFail();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
+    @Override
+    public void addShippingAddress(final ShippingAddressBean shippingAddressBean) {
+
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
+                if (mModel != null) {
+                    boolean result = mModel.addShippingAddress(shippingAddressBean);
+                    e.onNext(result);
+                    e.onComplete();
+                }
+
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        if (mView != null) {
+                            mView.showProgressDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onNext(Boolean result) {
+                        if (mView != null) {
+                            if (result) {
+                                mView.shippingAddressUpdated();
+                            } else {
+                                mView.shippingAddressUpdateFail();
+                            }
                         }
                     }
 

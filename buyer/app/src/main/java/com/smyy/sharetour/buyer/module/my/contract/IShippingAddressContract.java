@@ -9,9 +9,13 @@ import java.util.List;
 
 public interface IShippingAddressContract {
     interface View extends MyIBaseView {
-        void showShippingAddress(List<ShippingAddressBean> datas);
+        void showShippingAddressList(List<ShippingAddressBean> datas);
 
-        void shippingAddressUndated();
+        void shippingAddressUpdated();
+
+        void showShippingAddress(ShippingAddressBean data);
+
+        void shippingAddressUpdateFail();
     }
 
     abstract class Presenter extends MyBasePresenter<View, Model> {
@@ -20,6 +24,16 @@ public interface IShippingAddressContract {
         }
 
         public abstract void getShippingAddressList();
+
+        public abstract void getShippingAddress(int id);
+
+        public abstract void deleteShippingAddress(int id);
+
+        public abstract void setDefault(int id);
+
+        public abstract void updateShippingAddress(int id, ShippingAddressBean shippingAddressBean);
+
+        public abstract void addShippingAddress(ShippingAddressBean shippingAddressBean);
     }
 
     interface Model {
@@ -27,5 +41,11 @@ public interface IShippingAddressContract {
 
         boolean deleteShippingAddress(int position);
         boolean setDefault(int position);
+
+        ShippingAddressBean getShippingAddress(int id);
+
+        boolean updateShippingAddress(int id, ShippingAddressBean shippingAddressBean);
+
+        boolean addShippingAddress(ShippingAddressBean shippingAddressBean);
     }
 }
