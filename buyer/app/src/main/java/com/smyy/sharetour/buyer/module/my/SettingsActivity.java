@@ -13,6 +13,7 @@ import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.contract.ISettingsContract;
 import com.smyy.sharetour.buyer.module.my.model.SettingsModel;
 import com.smyy.sharetour.buyer.module.my.presenter.SettingsPresenter;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -64,7 +65,7 @@ public class SettingsActivity extends MyBaseMvpActivity<SettingsPresenter> imple
                 break;
 
             case R.id.lay_my_change_theme:
-
+                ActivityLauncher.viewSkinListActivity(SettingsActivity.this);
                 break;
 
             case R.id.lay_my_clear_cache:

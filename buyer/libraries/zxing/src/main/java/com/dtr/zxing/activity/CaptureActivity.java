@@ -113,7 +113,13 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
         inactivityTimer = new InactivityTimer(this);
         beepManager = new BeepManager(this);
-
+        ImageView imageClose = (ImageView) findViewById(R.id.iv_close);
+        imageClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT,
                 0.9f);
         animation.setDuration(4500);

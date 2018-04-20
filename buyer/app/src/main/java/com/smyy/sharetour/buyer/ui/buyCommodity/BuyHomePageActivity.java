@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class BuyHomePageActivity extends BaseMvpActivity {
     @BindView(R.id.stl_buy_home_page)
@@ -32,6 +34,7 @@ public class BuyHomePageActivity extends BaseMvpActivity {
             "商品列表", "买手动态", "直播录像"
     };
     private MyPagerAdapter mAdapter;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_buy_home_page;
@@ -58,9 +61,14 @@ public class BuyHomePageActivity extends BaseMvpActivity {
         return null;
     }
 
+    @OnClick(R.id.ic_close)
+    public void onViewClicked() {
+        finish();
+    }
+
     private class MyPagerAdapter extends SingleFragmentPageAdapter {
         public MyPagerAdapter(FragmentManager fm) {
-            super(fm,mFragments);
+            super(fm, mFragments);
         }
 
         @Override
@@ -73,11 +81,6 @@ public class BuyHomePageActivity extends BaseMvpActivity {
         public Fragment getItem(int position) {
             return mFragments.get(position);
         }
-    }
-
-    @Override
-    protected void initStatusBar() {
-        setStatusBar(Color.BLACK);
     }
 
 }

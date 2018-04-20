@@ -49,8 +49,6 @@ public class HomeFragment extends BaseMvpFragment {
     @BindView(R.id.ll_home_search)
     LinearLayout ll_home_search;
 
-    Unbinder unbinder;
-
     private boolean mArrowIsUp = true;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
@@ -155,13 +153,6 @@ public class HomeFragment extends BaseMvpFragment {
 
             }
         });
-    }
-
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
