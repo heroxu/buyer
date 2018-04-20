@@ -7,8 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -21,10 +23,12 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;
+import com.smyy.sharetour.buyer.view.keyboard.KeyboardUtil;
 import com.xmyy.view.dialoglib.CommonDialog;
 import com.xmyy.view.dialoglib.base.BindViewHolder;
 import com.xmyy.view.dialoglib.listener.OnBindViewListener;
 import com.xmyy.view.dialoglib.listener.OnViewClickListener;
+import com.yongchun.library.utils.ScreenUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -338,19 +342,51 @@ public class RequireDetailsActivity extends BaseMvpActivity {
     private void showRewardInputDialog() {
         CommonDialog.Builder builder = new CommonDialog.Builder(getSupportFragmentManager())
                 .setLayoutRes(R.layout.layout_input_reward)
-                .setGravity(Gravity.CENTER)
+                .setWidth(ScreenUtils.getScreenWidth(RequireDetailsActivity.this))
+                .setGravity(Gravity.BOTTOM)
                 .addOnClickListener(R.id.reward_input_ok, R.id.input_reward_close)
+                .setOnBindViewListener(new OnBindViewListener() {
+                    @Override
+                    public void bindView(final BindViewHolder viewHolder, final CommonDialog dialog) {
+                        final KeyboardUtil keyboardUtil = new KeyboardUtil(viewHolder.getView(R.id.input_price_ll));
+                        EditText input = viewHolder.getView(R.id.reward_input);
+                        input.setOnTouchListener(new View.OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View v, MotionEvent event) {
+                                keyboardUtil.showKeyboard();
+                                return false;
+                            }
+                        });
+                        keyboardUtil.attachTo(input);
+                        keyboardUtil.setOnOkClick(new KeyboardUtil.OnOkClick() {
+                            @Override
+                            public void onOkClick() {
+                                EditText input = viewHolder.getView(R.id.reward_input);
+                                if(!TextUtils.isEmpty(input.getText())) {
+                                    int in = Integer.parseInt(input.getText().toString().trim());
+                                    if (in > 0 && in <= 2000) {
+                                        reward = in;
+                                        dialog.dismiss();
+                                        showRewardDialog();
+                                    }
+                                }
+                            }
+                        });
+                    }
+                })
                 .setOnViewClickListener(new OnViewClickListener() {
                     @Override
                     public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
                         switch (view.getId()) {
                             case R.id.reward_input_ok:
                                 EditText input = viewHolder.getView(R.id.reward_input);
-                                int in = Integer.parseInt(input.getText().toString().trim());
-                                if (in > 0 && in <= 2000) {
-                                    reward = in;
-                                    commonDialog.dismiss();
-                                    showRewardDialog();
+                                if(!TextUtils.isEmpty(input.getText())) {
+                                    int in = Integer.parseInt(input.getText().toString().trim());
+                                    if (in > 0 && in <= 2000) {
+                                        reward = in;
+                                        commonDialog.dismiss();
+                                        showRewardDialog();
+                                    }
                                 }
                                 break;
 
@@ -368,6 +404,7 @@ public class RequireDetailsActivity extends BaseMvpActivity {
     private void showPaymentDialog() {
         CommonDialog.Builder builder = new CommonDialog.Builder(getSupportFragmentManager())
                 .setLayoutRes(R.layout.layout_payment)
+                .setWidth(ScreenUtils.getScreenWidth(RequireDetailsActivity.this))
                 .setGravity(Gravity.BOTTOM)
                 .setOnBindViewListener(new OnBindViewListener() {
                     @Override
