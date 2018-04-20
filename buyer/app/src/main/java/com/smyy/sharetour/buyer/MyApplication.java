@@ -31,7 +31,7 @@ public class MyApplication extends BaseApplication {
     private int mScreenHeight;
     private String mDpi;
     private UserInfoBean mUserInfo;
-    private boolean mIsLogin = false;
+    private boolean mIsLogin = true;//RTRT
     public static IStatistic mXqcStatistic;
     private static MyApplication mApplication;
     /**

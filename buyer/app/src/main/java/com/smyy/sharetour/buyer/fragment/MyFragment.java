@@ -127,7 +127,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.tv_my_view_all_orders:
-                startActivity(ShippingAddressEditActivity.class);
+
                 break;
 
             case R.id.lay_my_awaiting_payment:
