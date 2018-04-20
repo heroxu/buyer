@@ -126,7 +126,7 @@
                 android:textSize="@dimen/txt_size_13"
                 android:textColor="@color/txt_main"
                 android:drawableRight="@mipmap/arrow_right_normal"
-                android:drawablePadding="0dp"
+                android:drawablePadding="5dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:id="@+id/reward_other"

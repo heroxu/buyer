@@ -61,6 +61,12 @@ public class RequireListActivity extends BaseMvpActivity {
         adapter.setItemClickListener(new OnRecyclerViewOnClickListener() {
             @Override
             public void OnItemClick(View v, int position) {
+                Intent intent = new Intent(RequireListActivity.this, RequireDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(RequireDetailsActivity.REQUIRE_KEY, requires.get(position));
+                bundle.putBoolean(RequireDetailsActivity.REQUIRE_SUCCESS_KEY, false);
+                intent.putExtra("bundle", bundle);
+                startActivity(intent);
             }
         });
         requireList.setAdapter(adapter);

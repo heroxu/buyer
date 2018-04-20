@@ -175,10 +175,10 @@ public class Consts {
     public static final int REQUIRE_STATE_WAIT_SELLER = 0;
     public static final int REQUIRE_STATE_WAIT_POINT = 1;
     public static final int REQUIRE_STATE_WAIT_SEND_GOOD = 2;
-    public static final int REQUIRE_STATE_RECEIVE_GOOD = 3;
+    public static final int REQUIRE_STATE_WAIT_RECEIVE_GOOD = 3;
     public static final int REQUIRE_STATE_REQUIRE_DONE = 4;
-    public static final int REQUIRE_STATE_REQUIRE_CANCEL = 5;
-    public static final int REQUIRE_STATE_REQUIRE_INVALID = 6;
+    public static final int REQUIRE_STATE_CANCEL = 5;
+    public static final int REQUIRE_STATE_INVALID = 6;
 
     public static final String [] REQUIRE_STATE_STRINGS = {"待接单","待指定","备货中","已发货","已完成","已取消","已失效"};
 
