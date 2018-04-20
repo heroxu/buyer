@@ -23,7 +23,7 @@ import com.smyy.sharetour.buyer.adapter.GridAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;
-import com.smyy.sharetour.buyer.module.my.ShippingAddressActivity;
+import com.smyy.sharetour.buyer.module.my.ShippingAddressListActivity;
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
 import com.smyy.sharetour.buyer.util.StringUtil;
 import com.smyy.sharetour.buyer.view.keyboard.MyKeyBoardDialog;
@@ -222,7 +222,7 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
                     buyPlace.setText(placeArray[data.getIntExtra("index", 0)]);
                     break;
                 case REQUEST_GET_ADDRESS:
-                    ShippingAddressBean addressBean = (ShippingAddressBean) data.getSerializableExtra(ShippingAddressActivity.SHIPPING_ADDRESS);
+                    ShippingAddressBean addressBean = (ShippingAddressBean) data.getSerializableExtra(ShippingAddressListActivity.SHIPPING_ADDRESS);
                     address.setText(StringUtil.connect(addressBean.getDistrict(), addressBean.getStreet(), addressBean.getDetailAddress()));
                     break;
             }
@@ -293,10 +293,10 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
                 startActivityForResult(intent, REQUEST_GET_PLACE);
                 break;
             case R.id.address:
-                intent = new Intent(PublishRequireActivity.this, ShippingAddressActivity.class);
+                intent = new Intent(PublishRequireActivity.this, ShippingAddressListActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString(ShippingAddressActivity.PURPOSE, ShippingAddressActivity.SELECT_ADDRESS);
-                intent.putExtra(BUNDLE, bundle);
+                bundle.putString(ShippingAddressListActivity.PURPOSE, ShippingAddressListActivity.SELECT_ADDRESS);
+                intent.putExtra("bundle", bundle);
                 startActivityForResult(intent, REQUEST_GET_ADDRESS);
                 break;
             case R.id.publish:
@@ -311,7 +311,7 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
                         Bundle bundle = new Bundle();
                         bundle.putSerializable(RequireDetailsActivity.REQUIRE_KEY, requireBean);
                         bundle.putBoolean(RequireDetailsActivity.REQUIRE_SUCCESS_KEY, true);
-                        intent.putExtra(BUNDLE, bundle);
+                        intent.putExtra("bundle", bundle);
                         startActivity(intent);
                         finish();
                     }
