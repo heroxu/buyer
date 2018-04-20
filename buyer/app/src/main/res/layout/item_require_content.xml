@@ -37,5 +37,31 @@
         android:scaleType="center"
         android:src="@mipmap/img_note_pic_01" />
 
+    <RelativeLayout
+        android:layout_marginTop="23dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/require_item_head"
+            android:src="@mipmap/user_avatar"
+            android:layout_marginRight="5dp"/>
+        <TextView
+            android:id="@+id/require_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_13"
+            android:text="我是小桂子"
+            android:layout_toRightOf="@id/require_item_head"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="30分钟前  发布于广州"
+            android:textColor="@color/txt_gray"/>
+    </RelativeLayout>
 
 </LinearLayout>

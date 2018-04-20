@@ -18,8 +18,6 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.module.my.QuestionActivity;
 import com.smyy.sharetour.buyer.module.my.SettingsActivity;
-import com.smyy.sharetour.buyer.module.my.ShippingAddressEditActivity;
-import com.smyy.sharetour.buyer.module.my.ShippingAddressListActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpFragment;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
@@ -152,6 +150,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.tv_my_demands:
+                ActivityLauncher.viewMyRequireActivity(getActivity());
 
                 break;
 

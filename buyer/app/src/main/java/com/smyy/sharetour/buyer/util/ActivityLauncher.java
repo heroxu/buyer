@@ -3,27 +3,28 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
-import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
 import com.smyy.sharetour.buyer.MyApplication;
-import com.smyy.sharetour.buyer.ui.buyCommodity.RecommendBuyActivity;
-import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
-import com.smyy.sharetour.buyer.ui.MyCollectionActivity;
-import com.smyy.sharetour.buyer.ui.MoreReplyActivity;
-import com.smyy.sharetour.buyer.ui.NoteDetailsActivity;
-import com.smyy.sharetour.buyer.ui.PersonalTagActivity;
-import com.smyy.sharetour.buyer.ui.VideoDetailsActivity;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.search.activity.HomeSearchActivity;
 import com.smyy.sharetour.buyer.home.search.activity.SearchDetailActivity;
+import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
+import com.smyy.sharetour.buyer.publish.RequireListActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
 import com.smyy.sharetour.buyer.ui.LoginActivity;
+import com.smyy.sharetour.buyer.ui.MoreReplyActivity;
+import com.smyy.sharetour.buyer.ui.MyCollectionActivity;
+import com.smyy.sharetour.buyer.ui.NoteDetailsActivity;
+import com.smyy.sharetour.buyer.ui.PersonalTagActivity;
 import com.smyy.sharetour.buyer.ui.PwdLoginActivity;
 import com.smyy.sharetour.buyer.ui.RegisterActivity;
 import com.smyy.sharetour.buyer.ui.SelectAreaCodeActivity;
 import com.smyy.sharetour.buyer.ui.SetPwdActivity;
 import com.smyy.sharetour.buyer.ui.Test1Activity;
 import com.smyy.sharetour.buyer.ui.VerifyPhoneActivity;
+import com.smyy.sharetour.buyer.ui.VideoDetailsActivity;
+import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
+import com.smyy.sharetour.buyer.ui.buyCommodity.RecommendBuyActivity;
 import com.smyy.sharetour.buyer.ui.test2.Test2Activity;
 
 /**
@@ -178,6 +179,14 @@ public class ActivityLauncher {
         }
         viewGuideLoginActivity(context);
         return false;
+    }
+
+    /**
+     * 跳转到需求列表页面
+     */
+    public static void viewMyRequireActivity(Context context) {
+        Intent intent = new Intent(context, RequireListActivity.class);
+        context.startActivity(intent);
     }
 }
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
+
+    <View style="@style/WideItemDivider"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/require_list"
+        android:scrollbars="vertical"
+        android:scrollbarFadeDuration="1"
+        android:fadeScrollbars="true"
+        android:layout_above="@+id/add_require"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="+添加新需求"
+        android:textSize="@dimen/txt_size_15"
+        android:textColor="@color/txt_main"
+        android:gravity="center"
+        android:background="@color/btn_bg_normal"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/add_require"
+        />
+
+</RelativeLayout>
