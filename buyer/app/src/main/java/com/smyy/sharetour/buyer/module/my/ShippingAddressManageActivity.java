@@ -93,13 +93,6 @@ public class ShippingAddressManageActivity extends MyBaseMvpActivity<ShippingAdd
                 }
             }
         });
-
-        mAdapter.setOnDefaultChangedListener(new ManageShippingAddressAdapter.OnDefaultChangedListener() {
-            @Override
-            public void onDefaultChanged(View view, int position, ShippingAddressBean data) {
-                List datas = mAdapter.getList();
-            }
-        });
     }
 
     @Override

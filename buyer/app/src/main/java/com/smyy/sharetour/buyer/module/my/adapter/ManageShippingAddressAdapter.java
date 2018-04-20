@@ -104,16 +104,6 @@ public class ManageShippingAddressAdapter extends RecyclerView.Adapter<ManageShi
         this.onItemViewClickListener = listener;
     }
 
-    private OnDefaultChangedListener onDefaultChangedListener;
-
-    public interface OnDefaultChangedListener {
-        void onDefaultChanged(View view, int position, ShippingAddressBean data);
-    }
-
-    public void setOnDefaultChangedListener(OnDefaultChangedListener listener) {
-        this.onDefaultChangedListener = listener;
-    }
-
     @Override
     public int getItemCount() {
         return mDatas == null ? 0 : mDatas.size();
