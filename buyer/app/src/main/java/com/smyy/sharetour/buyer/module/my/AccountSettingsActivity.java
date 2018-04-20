@@ -1,8 +1,11 @@
 package com.smyy.sharetour.buyer.module.my;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,12 +19,19 @@ import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.module.order.OrderCommentActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.yongchun.library.view.ImageSelectorActivity;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
+import me.weyye.hipermission.PermissionItem;
 
 import static com.smyy.sharetour.buyer.base.BaseApplication.getContext;
 
@@ -66,6 +76,14 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
 
             case R.id.lay_my_avatar_item:
 
+                if (ContextCompat.checkSelfPermission(AccountSettingsActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                        || ContextCompat.checkSelfPermission(AccountSettingsActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    //未获得权限
+                    initPermissions();
+                } else {
+                    //授予权限
+                    getPicture();
+                }
                 break;
 
             case R.id.lay_my_nickname:
@@ -114,5 +132,38 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
             File file = new File(filePath);
             Glide.with(getContext()).load(file).into(ivAvatar);
         }
+    }
+
+
+    private void getPicture() {
+        ImageSelectorActivity.start(AccountSettingsActivity.this, 1,
+                ImageSelectorActivity.MODE_SINGLE, true, true, true, 0);
+    }
+
+    private void initPermissions() {
+        List<PermissionItem> permissonItems = new ArrayList<PermissionItem>();
+        permissonItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_camera));
+        permissonItems.add(new PermissionItem(Manifest.permission.READ_EXTERNAL_STORAGE, "读取外部存储", R.drawable.permission_ic_storage));
+        HiPermission.create(AccountSettingsActivity.this).permissions(permissonItems).checkMutiPermission(new PermissionCallback() {
+            @Override
+            public void onClose() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onDeny(String permission, int position) {
+
+            }
+
+            @Override
+            public void onGuarantee(String permission, int position) {
+
+            }
+        });
     }
 }
