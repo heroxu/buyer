@@ -97,7 +97,7 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
                 break;
 
             case R.id.tv_my_shipping_address:
-
+                startActivity(ShippingAddressListActivity.class);
                 break;
 
             case R.id.tv_my_security_center:

@@ -19,6 +19,9 @@ import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.bean.DistrictJsonBean;
@@ -70,9 +73,10 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
     private boolean isLoaded = false;
 
 
-    private ArrayList<DistrictJsonBean> options1Items = new ArrayList<>();
-    private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
-    private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
+    private ArrayList<DistrictJsonBean> provinceItems = new ArrayList<>();
+    private ArrayList<ArrayList<String>> cityItems = new ArrayList<>();
+    private ArrayList<ArrayList<ArrayList<String>>> districtItems = new ArrayList<>();
+    private ArrayList<String> streetItems = new ArrayList<>();
     private Thread thread;
     private static final int MSG_LOAD_DATA = 0x0001;
     private static final int MSG_LOAD_SUCCESS = 0x0002;
@@ -172,7 +176,7 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
             case R.id.lay_my_shipping_district:
 
                 if (isLoaded) {
-                    showPickerView();
+                    showDistrictPickerView();
                 } else {
                     Toast.makeText(ShippingAddressEditActivity.this, "Please waiting until the data is parsed", Toast.LENGTH_SHORT).show();
                 }
@@ -180,6 +184,11 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
 
             case R.id.lay_my_shipping_street:
 
+                if (isLoaded) {
+                    showStreetPickerView();
+                } else {
+                    Toast.makeText(ShippingAddressEditActivity.this, "Please waiting until the data is parsed", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             default:
@@ -220,17 +229,16 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
     }
 
 
-    private void showPickerView() {// 弹出选择器
+    private void showDistrictPickerView() {// 弹出选择器
 
         OptionsPickerView pvOptions = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 //返回的分别是三个级别的选中位置
-                String tx = options1Items.get(options1).getPickerViewText() +
-                        options2Items.get(options1).get(options2) +
-                        options3Items.get(options1).get(options2).get(options3);
-
-                Toast.makeText(ShippingAddressEditActivity.this, tx, Toast.LENGTH_SHORT).show();
+                String tx = provinceItems.get(options1).getPickerViewText() +
+                        cityItems.get(options1).get(options2) +
+                        districtItems.get(options1).get(options2).get(options3);
+                tvDistrict.setText(tx);
             }
         })
                 .setOutSideCancelable(false)
@@ -245,10 +253,34 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
                 .setTitleBgColor(Color.WHITE)
                 .setBgColor(getResources().getColor(R.color.window_background))
                 .build();
+        pvOptions.setPicker(provinceItems, cityItems, districtItems);//三级选择器
+        pvOptions.show();
+    }
 
-        /*pvOptions.setPicker(options1Items);//一级选择器
-        pvOptions.setPicker(options1Items, options2Items);//二级选择器*/
-        pvOptions.setPicker(options1Items, options2Items, options3Items);//三级选择器
+
+    private void showStreetPickerView() {// 弹出选择器
+
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                //返回的分别是三个级别的选中位置
+                String tx = streetItems.get(options1);
+                tvStreet.setText(tx);
+            }
+        })
+                .setOutSideCancelable(false)
+                .setCancelColor(getResources().getColor(R.color.txt_gray_dark))
+                .setSubmitColor(getResources().getColor(R.color.txt_price))
+                .setSubCalSize(15)
+                .setTitleText("")
+                .setTitleSize(15)
+                .setDividerColor(Color.parseColor("#676767"))
+                .setTextColorCenter(getResources().getColor(R.color.txt_main)) //设置选中项文字颜色
+                .setContentTextSize(15)
+                .setTitleBgColor(Color.WHITE)
+                .setBgColor(getResources().getColor(R.color.window_background))
+                .build();
+        pvOptions.setPicker(streetItems);
         pvOptions.show();
     }
 
@@ -259,9 +291,9 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
          * 关键逻辑在于循环体
          *
          * */
-        String JsonData = new GetJsonDataUtil().getJson(this, "districts.json");//获取assets目录下的json文件数据
+        String DistrictJsonData = new GetJsonDataUtil().getJson(this, "districts.json");//获取assets目录下的json文件数据
 
-        ArrayList<DistrictJsonBean> districtJsonBean = parseData(JsonData);//用Gson 转成实体
+        ArrayList<DistrictJsonBean> districtJsonBean = parseDistrictData(DistrictJsonData);//用Gson 转成实体
 
         /**
          * 添加省份数据
@@ -269,7 +301,7 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
          * 注意：如果是添加的JavaBean实体，则实体类需要实现 IPickerViewData 接口，
          * PickerView会通过getPickerViewText方法获取字符串显示出来。
          */
-        options1Items = districtJsonBean;
+        provinceItems = districtJsonBean;
 
         for (int i = 0; i < districtJsonBean.size(); i++) {//遍历省份
             ArrayList<String> CityList = new ArrayList<>();//该省的城市列表（第二级）
@@ -293,20 +325,26 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
             /**
              * 添加城市数据
              */
-            options2Items.add(CityList);
+            cityItems.add(CityList);
 
             /**
              * 添加地区数据
              */
-            options3Items.add(Province_AreaList);
+            districtItems.add(Province_AreaList);
         }
+
+
+        //RTRT将来从后台获取
+        String StreetJsonData = new GetJsonDataUtil().getJson(this, "streets.json");//获取assets目录下的json文件数据
+        streetItems = parseStreetData(StreetJsonData);//用Gson 转成实体
+        //RTRT将来从后台获取
 
         mHandler.sendEmptyMessage(MSG_LOAD_SUCCESS);
 
     }
 
 
-    public ArrayList<DistrictJsonBean> parseData(String result) {//Gson 解析
+    public ArrayList<DistrictJsonBean> parseDistrictData(String result) {//Gson 解析
         ArrayList<DistrictJsonBean> detail = new ArrayList<>();
         try {
             JSONArray data = new JSONArray(result);
@@ -314,6 +352,22 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
             for (int i = 0; i < data.length(); i++) {
                 DistrictJsonBean entity = gson.fromJson(data.optJSONObject(i).toString(), DistrictJsonBean.class);
                 detail.add(entity);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mHandler.sendEmptyMessage(MSG_LOAD_FAILED);
+        }
+        return detail;
+    }
+
+
+    public ArrayList<String> parseStreetData(String result) {//Gson 解析
+        ArrayList<String> detail = new ArrayList<>();
+        try {
+            Gson gson = new Gson();
+            JsonArray arry = new JsonParser().parse(result).getAsJsonArray();
+            for (JsonElement jsonElement : arry) {
+                detail.add(gson.fromJson(jsonElement, String.class));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -338,8 +392,6 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
             switch (msg.what) {
                 case MSG_LOAD_DATA:
                     if (thread == null) {//如果已创建就不再重新创建子线程了
-
-                        Toast.makeText(ShippingAddressEditActivity.this, "Begin Parse Data", Toast.LENGTH_SHORT).show();
                         thread = new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -352,12 +404,10 @@ public class ShippingAddressEditActivity extends MyBaseMvpActivity<ShippingAddre
                     break;
 
                 case MSG_LOAD_SUCCESS:
-                    Toast.makeText(ShippingAddressEditActivity.this, "Parse Succeed", Toast.LENGTH_SHORT).show();
                     isLoaded = true;
                     break;
 
                 case MSG_LOAD_FAILED:
-                    Toast.makeText(ShippingAddressEditActivity.this, "Parse Failed", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
