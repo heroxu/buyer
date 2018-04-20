@@ -19,6 +19,7 @@ import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.util.StringUtil;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -78,7 +79,6 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
 
             case R.id.btn_confirm:
                 mPresenter.setUserName(mNickname);
-                setResult(RESULT_OK);
                 break;
 
             default:
@@ -97,5 +97,16 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
         if (!TextUtils.isEmpty(username)) {
             etNickname.setText(username.trim());
         }
+    }
+
+    @Override
+    public void editUserInfoSuccess() {
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    @Override
+    public void editUserInfoFail() {
+        ToastUtils.showToast("修改失败");
     }
 }

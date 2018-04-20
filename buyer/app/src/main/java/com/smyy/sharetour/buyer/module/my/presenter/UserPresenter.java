@@ -121,9 +121,9 @@ public class UserPresenter extends IUserContract.Presenter {
                     public void onNext(Boolean result) {
                         if (mView != null) {
                             if (result) {
-                                mView.finish();
+                                mView.editUserInfoSuccess();
                             } else {
-                                mView.showToast("修改失败");
+                                mView.editUserInfoFail();
                             }
                         }
                     }
@@ -168,9 +168,9 @@ public class UserPresenter extends IUserContract.Presenter {
                     public void onNext(Boolean result) {
                         if (mView != null) {
                             if (result) {
-                                mView.finish();
+                                mView.editUserInfoSuccess();
                             } else {
-                                mView.showToast("修改失败");
+                                mView.editUserInfoFail();
                             }
                         }
                     }
@@ -215,8 +215,10 @@ public class UserPresenter extends IUserContract.Presenter {
                     @Override
                     public void onNext(Boolean result) {
                         if (mView != null) {
-                            if (!result) {
-                                mView.showToast("修改失败");
+                            if (result) {
+                                mView.editUserInfoSuccess();
+                            } else {
+                                mView.editUserInfoFail();
                             }
                         }
                     }

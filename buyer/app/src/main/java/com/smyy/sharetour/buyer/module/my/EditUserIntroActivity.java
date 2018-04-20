@@ -19,6 +19,7 @@ import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.util.StringUtil;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -80,7 +81,6 @@ public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> impl
 
             case R.id.btn_confirm:
                 mPresenter.setUserIntro(mUserIntro);
-                setResult(RESULT_OK);
                 break;
 
             default:
@@ -99,5 +99,17 @@ public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> impl
         if (!TextUtils.isEmpty(userIntro)) {
             etUserIntro.setText(userIntro.trim());
         }
+    }
+
+
+    @Override
+    public void editUserInfoSuccess() {
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    @Override
+    public void editUserInfoFail() {
+        ToastUtils.showToast("修改失败");
     }
 }

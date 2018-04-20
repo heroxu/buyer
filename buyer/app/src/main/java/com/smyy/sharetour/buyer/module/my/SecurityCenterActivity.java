@@ -97,4 +97,14 @@ public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> imp
             tvLinkedPhone.setText(StringUtil.getPhoneNum(mLinkedPhoneNum));
         }
     }
+
+    @Override
+    public void editUserInfoSuccess() {
+
+    }
+
+    @Override
+    public void editUserInfoFail() {
+
+    }
 }

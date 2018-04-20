@@ -27,7 +27,7 @@ import com.smyy.sharetour.buyer.view.ClearWriteEditText;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseMvpActivity implements IUserContract.View {
+public class LoginActivity extends BaseMvpActivity {
     @BindView(R.id.tv_module_name)
     TextView tvModuleName;
     @BindView(R.id.tv_region)
@@ -136,6 +136,16 @@ public class LoginActivity extends BaseMvpActivity implements IUserContract.View
                         }
 
                         @Override
+                        public void editUserInfoSuccess() {
+
+                        }
+
+                        @Override
+                        public void editUserInfoFail() {
+
+                        }
+
+                        @Override
                         public void showProgressDialog() {
 
                         }
@@ -178,20 +188,5 @@ public class LoginActivity extends BaseMvpActivity implements IUserContract.View
             }
         });
         mSmsCodeDialog.show();
-    }
-
-    @Override
-    public void showToast(String s) {
-
-    }
-
-    @Override
-    public void showToast(int stringRes) {
-
-    }
-
-    @Override
-    public void showUserInfo(UserInfoBean userInfo) {
-
     }
 }

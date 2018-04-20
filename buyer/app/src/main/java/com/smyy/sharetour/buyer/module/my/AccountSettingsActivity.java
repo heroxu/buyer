@@ -136,6 +136,16 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
         }
     }
 
+    @Override
+    public void editUserInfoSuccess() {
+
+    }
+
+    @Override
+    public void editUserInfoFail() {
+
+    }
+
 
     private void getPicture() {
         ImageSelectorActivity.start(AccountSettingsActivity.this, 1,

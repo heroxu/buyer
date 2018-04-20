@@ -146,6 +146,16 @@ public class PwdLoginActivity extends BaseMvpActivity {
                         }
 
                         @Override
+                        public void editUserInfoSuccess() {
+
+                        }
+
+                        @Override
+                        public void editUserInfoFail() {
+
+                        }
+
+                        @Override
                         public void showProgressDialog() {
 
                         }
