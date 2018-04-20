@@ -79,6 +79,7 @@ public class FoundFragment extends BaseMvpFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ttl_fount_search:
+                ActivityLauncher.viewReportActivity(getActivity());
                 break;
             case R.id.tt_fount_scan:
                 startActivityForResult(new Intent(getActivity(), CaptureActivity.class),REQUEST_CODE_SCAN);
