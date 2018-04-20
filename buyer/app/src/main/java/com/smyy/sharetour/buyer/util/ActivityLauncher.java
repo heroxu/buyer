@@ -3,6 +3,9 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.SkinListActivity;
+import com.smyy.sharetour.buyer.SkinPeelerActivity;
+import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
@@ -170,6 +173,22 @@ public class ActivityLauncher {
      */
     public static void viewPublishRequireActivity(Context context) {
         Intent intent = new Intent(context, PublishRequireActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到皮肤列表
+     */
+    public static void viewSkinListActivity(Context context) {
+        Intent intent = new Intent(context, SkinListActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到皮肤界面
+     */
+    public static void viewSkinPeelerActivity(Context context) {
+        Intent intent = new Intent(context, SkinPeelerActivity.class);
         context.startActivity(intent);
     }
 
