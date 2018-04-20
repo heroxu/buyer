@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_rectangle_top_corner"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="@string/reward"
+            android:textSize="@dimen/txt_size_17"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/select_reward_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/ic_details_off_pag" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="73dp"
+            android:text="添加辛苦费可以提高接单率哦"
+            android:textColor="@color/txt_gray"
+            android:textSize="@dimen/txt_size_15" />
+
+    </RelativeLayout>
+
+    <View style="@style/WideItemDivider"/>
+
+    <LinearLayout
+        android:layout_marginTop="23dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:text="50元"
+            android:textSize="@dimen/txt_size_13"
+            android:textColor="@color/txt_main"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:id="@+id/reward_50"
+            android:background="@drawable/btn_reward_bg_selector"
+            />
+        <TextView
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:text="100元"
+            android:textSize="@dimen/txt_size_13"
+            android:textColor="@color/txt_main"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:id="@+id/reward_100"
+            android:background="@drawable/btn_reward_bg_selector"
+            />
+        <TextView
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:text="200元"
+            android:textSize="@dimen/txt_size_13"
+            android:textColor="@color/txt_main"
+            android:gravity="center"
+            android:id="@+id/reward_200"
+            android:background="@drawable/btn_reward_bg_selector"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:text="500元"
+            android:textSize="@dimen/txt_size_13"
+            android:textColor="@color/txt_main"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:id="@+id/reward_500"
+            android:background="@drawable/btn_reward_bg_selector"
+            />
+        <TextView
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:text="1000元"
+            android:textSize="@dimen/txt_size_13"
+            android:textColor="@color/txt_main"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:id="@+id/reward_1000"
+            android:background="@drawable/btn_reward_bg_selector"
+            />
+        <FrameLayout
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_reward_bg_selector"
+            android:id="@+id/reward_other_fl">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="其他"
+                android:textSize="@dimen/txt_size_13"
+                android:textColor="@color/txt_main"
+                android:drawableRight="@mipmap/arrow_right_normal"
+                android:drawablePadding="0dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/reward_other"
+                />
+        </FrameLayout>
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/pay_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/CommonButton"
+        android:text="@string/confirm"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:enabled="true"
+        />
+</LinearLayout>

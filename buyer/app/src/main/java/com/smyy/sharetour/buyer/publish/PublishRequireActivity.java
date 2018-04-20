@@ -22,6 +22,10 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.adapter.GridAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.bean.RequireBean;
+import com.smyy.sharetour.buyer.module.my.ShippingAddressActivity;
+import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
+import com.smyy.sharetour.buyer.util.StringUtil;
 import com.smyy.sharetour.buyer.view.keyboard.MyKeyBoardDialog;
 import com.smyy.sharetour.buyer.view.pickerview.TimePickerDialog;
 import com.smyy.sharetour.buyer.view.pickerview.data.Type;
@@ -54,7 +58,6 @@ import me.weyye.hipermission.PermissionItem;
  */
 public class PublishRequireActivity extends BaseMvpActivity implements OnDateSetListener {
 
-    private static final int REQUEST_CODE_CAMERA = 101;
     @BindView(R.id.disc_context)
     EditText disc_context;
     @BindView(R.id.gridView)
@@ -88,6 +91,8 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
             "美国", "澳大利亚", "墨西哥"
             , "阿根廷", "南非", "俄罗斯", "英国"};
 
+    private RequireBean requireBean;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_publish_require;
@@ -100,6 +105,7 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        requireBean = new RequireBean();
         initUI();
         initUIObservable();
     }
@@ -216,7 +222,8 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
                     buyPlace.setText(placeArray[data.getIntExtra("index", 0)]);
                     break;
                 case REQUEST_GET_ADDRESS:
-                    address.setText(placeArray[data.getIntExtra("index", 0)]);
+                    ShippingAddressBean addressBean = (ShippingAddressBean) data.getSerializableExtra(ShippingAddressActivity.SHIPPING_ADDRESS);
+                    address.setText(StringUtil.connect(addressBean.getDistrict(), addressBean.getStreet(), addressBean.getDetailAddress()));
                     break;
             }
         }
@@ -286,17 +293,49 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
                 startActivityForResult(intent, REQUEST_GET_PLACE);
                 break;
             case R.id.address:
-                intent = new Intent(PublishRequireActivity.this, SimpleSelectActivity.class);
-                intent.putExtra("data", placeArray);
-                intent.putExtra("title","收货地址");
+                intent = new Intent(PublishRequireActivity.this, ShippingAddressActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString(ShippingAddressActivity.PURPOSE, ShippingAddressActivity.SELECT_ADDRESS);
+                intent.putExtra(BUNDLE, bundle);
                 startActivityForResult(intent, REQUEST_GET_ADDRESS);
                 break;
             case R.id.publish:
-                PaymentDialog paymentDialog = new PaymentDialog();
+                setRequireBean();
+                final PaymentDialog paymentDialog = new PaymentDialog();
                 paymentDialog.setPrice(requireBudget.getText().toString().substring(1));
+                paymentDialog.setPayCallback(new PaymentDialog.OnPayCallback() {
+                    @Override
+                    public void onSuccess() {
+                        paymentDialog.dismiss();
+                        Intent intent = new Intent(PublishRequireActivity.this, RequireDetailsActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable(RequireDetailsActivity.REQUIRE_KEY, requireBean);
+                        bundle.putBoolean(RequireDetailsActivity.REQUIRE_SUCCESS_KEY, true);
+                        intent.putExtra(BUNDLE, bundle);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onFail() {
+
+                    }
+                });
                 paymentDialog.show(getSupportFragmentManager(),null);
                 break;
         }
+    }
+
+    private void setRequireBean()
+    {
+        requireBean.setRequire_disc(disc_context.getText().toString());
+        requireBean.setRequire_budget(requireBudget.getText().toString().substring(1));
+        requireBean.setRequire_time(requireFinishTime.getText().toString());
+        requireBean.setRequire_type(requireType.getText().toString());
+        requireBean.setRequire_buy_place(buyPlace.getText().toString());
+        requireBean.setRequire_receive_address(address.getText().toString());
+        requireBean.setIs_verify(identifySend.isChecked());
+        requireBean.setImg_paths(imagePaths);
     }
 
     public String getDateToString(long time) {

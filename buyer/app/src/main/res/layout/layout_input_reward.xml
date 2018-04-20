@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_rectangle_top_corner"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="@string/reward"
+            android:textSize="@dimen/txt_size_17"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/input_reward_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/ic_details_off_pag" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="73dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="金额"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_15" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="0~2000"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/txt_main"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:id="@+id/reward_input"
+                android:inputType="number"
+                android:background="@null"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_15" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View style="@style/WideItemDivider"/>
+
+
+    <Button
+        android:id="@+id/reward_input_ok"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/CommonButton"
+        android:text="@string/ok"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:enabled="true"
+        />
+</LinearLayout>

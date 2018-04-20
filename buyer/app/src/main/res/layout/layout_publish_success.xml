@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:background="@drawable/bg_dialog_message_box">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:src="@mipmap/ic_release"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/publish_success"
+            android:layout_marginTop="20dp"
+            android:textSize="@dimen/txt_size_17"
+            android:layout_gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="60dp"
+            android:gravity="center_vertical">
+            <View style="@style/WideItemDivider"
+                android:layout_weight="1"
+                android:layout_width="0dp"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_size_13"
+                android:text="@string/share_friend"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:gravity="center"/>
+            <View style="@style/WideItemDivider"
+                android:layout_weight="1"
+                android:layout_width="0dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_size_13"
+                android:text="@string/qqfriend"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:drawableTop="@mipmap/ic_wechat"
+                android:drawablePadding="5dp"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_size_13"
+                android:text="@string/wechat_friend"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:drawableTop="@mipmap/ic_wechat"
+                android:drawablePadding="5dp"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_size_13"
+                android:text="@string/wechat_found"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:drawableTop="@mipmap/ic_wechat"
+                android:drawablePadding="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/close_publish_success_dialog"
+        android:layout_marginTop="20dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/ic_off"/>
+</LinearLayout>

@@ -3,56 +3,39 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_rectangle_top_corner"
+    android:background="@color/window_background"
     >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp">
+        android:layout_height="55dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:background="@color/window_background">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:text="@string/pay_method"
-            android:textSize="@dimen/txt_size_17"
-            android:textStyle="bold" />
+            android:text="@string/require_cancel_reason"
+            android:textColor="@color/txt_gray"
+            android:textSize="@dimen/txt_size_15"
+            android:layout_marginLeft="20dp"/>
 
-        <ImageView
-            android:id="@+id/pay_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="25dp"
-            android:src="@mipmap/ic_details_off_pag" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/pay_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="73dp"
-            android:text="@string/pay_price"
-            android:textSize="@dimen/txt_size_15" />
-
-    </RelativeLayout>
-
-    <View style="@style/WideItemDivider"/>
 
     <RadioGroup
         android:id="@+id/pay_group"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
         <RadioButton
             android:id="@+id/pay_zhifubao"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@string/wechat"
-            android:drawableLeft="@mipmap/ic_wechat"
+            android:text="@string/require_cancel_reason1"
             android:drawableRight="@drawable/btn_radio_selector"
             android:button="@null"
             android:paddingLeft="30dp"
@@ -61,13 +44,13 @@
             android:checked="true"
             android:background="@color/transparent"
             />
+        <View style="@style/WideItemDivider"/>
 
         <RadioButton
             android:id="@+id/pay_weixin"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@string/alipay"
-            android:drawableLeft="@mipmap/ic_alipay"
+            android:text="@string/require_cancel_reason2"
             android:drawableRight="@drawable/btn_radio_selector"
             android:button="@null"
             android:paddingLeft="30dp"
@@ -76,12 +59,12 @@
             android:background="@color/transparent"
             />
 
+        <View style="@style/WideItemDivider"/>
         <RadioButton
             android:id="@+id/pay_bank"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@string/bank_pay"
-            android:drawableLeft="@mipmap/ic_bank"
+            android:text="@string/require_cancel_reason3"
             android:drawableRight="@drawable/btn_radio_selector"
             android:button="@null"
             android:paddingLeft="30dp"
@@ -91,12 +74,13 @@
             />
 
     </RadioGroup>
+
     <Button
         android:id="@+id/pay_confirm"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        style="@style/CommonButton.Rectangle"
-        android:text="@string/pay_confirm"
+        style="@style/CommonButton"
+        android:text="@string/submit"
         android:textColor="@color/black"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"

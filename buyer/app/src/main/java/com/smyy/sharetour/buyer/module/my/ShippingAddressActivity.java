@@ -83,6 +83,7 @@ public class ShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPr
                     Intent intent = new Intent();
                     intent.putExtra(SHIPPING_ADDRESS, data);
                     setResult(RESULT_OK, intent);
+                    finish();
                 }
             }
         });

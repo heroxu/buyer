@@ -37,6 +37,12 @@ public class PaymentDialog extends DialogFragment {
     private String initialPrice;
     private int mChecked_id = R.id.pay_weixin;
 
+    public void setPayCallback(OnPayCallback callback) {
+        this.callback = callback;
+    }
+
+    private OnPayCallback callback;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -119,6 +125,7 @@ public class PaymentDialog extends DialogFragment {
             case R.id.pay_bank:
                 break;
         }
+        callback.onSuccess();
     }
 
 
@@ -129,6 +136,11 @@ public class PaymentDialog extends DialogFragment {
 
     public void setPrice(String str){
         initialPrice = str;
+    }
+
+    public interface OnPayCallback{
+        void onSuccess();
+        void onFail();
     }
 
 }
