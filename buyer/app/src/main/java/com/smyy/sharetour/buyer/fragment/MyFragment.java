@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
+import com.smyy.sharetour.buyer.module.my.QuestionActivity;
 import com.smyy.sharetour.buyer.module.my.SettingsActivity;
 import com.smyy.sharetour.buyer.module.my.ShippingAddressEditActivity;
 import com.smyy.sharetour.buyer.module.my.ShippingAddressListActivity;
@@ -167,7 +168,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.tv_help_and_feedback:
-
+                startActivity(QuestionActivity.class);
                 break;
 
             default:
