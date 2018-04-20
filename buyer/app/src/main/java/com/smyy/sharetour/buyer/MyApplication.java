@@ -155,6 +155,7 @@ public class MyApplication extends BaseApplication {
 
         Intent intent = new Intent(mApplication, MainActivity.class);
         intent.putExtra(MainActivity.KEY_TAB, MainActivity.TAB_INDEX);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
 }
