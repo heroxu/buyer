@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,7 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +47,9 @@
                 <EditText
                     android:id="@+id/et_my_shipping_phone"
                     style="@style/WideItemMiddleRight.EditText"
+                    android:digits="@string/digits_phone_num"
                     android:hint="收货人电话"
+                    android:inputType="phone"
                     android:textColor="@color/txt_main"
                     android:textSize="@dimen/txt_size_15" />
             </LinearLayout>
@@ -58,10 +60,23 @@
                 android:layout_marginLeft="20dp"
                 android:background="@color/line_divider" />
 
-            <TextView
-                android:id="@+id/tv_my_shipping_district"
-                style="@style/WideItem.Text.WithArrow"
-                android:text="所在地区" />
+            <LinearLayout
+                android:id="@+id/lay_my_shipping_district"
+                style="@style/WideItem">
+
+                <TextView
+                    style="@style/WideItemLeftText"
+                    android:layout_width="100dp"
+                    android:text="所在地区" />
+
+                <TextView
+                    android:id="@+id/tv_my_shipping_district"
+                    style="@style/WideItemMiddleRight.Text"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_15" />
+
+                <ImageView style="@style/WideItemRightArrow" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -69,10 +84,23 @@
                 android:layout_marginLeft="20dp"
                 android:background="@color/line_divider" />
 
-            <TextView
-                android:id="@+id/tv_my_shipping_street"
-                style="@style/WideItem.Text.WithArrow"
-                android:text="街道" />
+            <LinearLayout
+                android:id="@+id/lay_my_shipping_street"
+                style="@style/WideItem">
+
+                <TextView
+                    style="@style/WideItemLeftText"
+                    android:layout_width="100dp"
+                    android:text="街道" />
+
+                <TextView
+                    android:id="@+id/tv_my_shipping_street"
+                    style="@style/WideItemMiddleRight.Text"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_15" />
+
+                <ImageView style="@style/WideItemRightArrow" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -102,4 +130,4 @@
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-</FrameLayout>
+</LinearLayout>

@@ -22,7 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class ShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPresenter> implements IShippingAddressContract.View {
+public class ShippingAddressListActivity extends MyBaseMvpActivity<ShippingAddressPresenter> implements IShippingAddressContract.View {
     public static final String PURPOSE = "purpose";
     public static final String SELECT_ADDRESS = "select_address";
     public static final String SHIPPING_ADDRESS = "shipping_address";
@@ -51,7 +51,7 @@ public class ShippingAddressActivity extends MyBaseMvpActivity<ShippingAddressPr
         toolbarRightTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(ManageShippingAddressActivity.class, REQ_MANAGE);
+                startActivityForResult(ShippingAddressManageActivity.class, REQ_MANAGE);
             }
         });
     }

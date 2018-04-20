@@ -105,7 +105,7 @@
     </style>
 
     <style name="WideItemMiddleRight.EditText" parent="WideItemMiddleRight.Text">
-        <item name="android:background">@color/white</item>
+        <item name="android:background">@null</item>
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:padding">0dp</item>
     </style>

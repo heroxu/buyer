@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.module.my.SettingsActivity;
-import com.smyy.sharetour.buyer.module.my.ShippingAddressActivity;
+import com.smyy.sharetour.buyer.module.my.ShippingAddressListActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpFragment;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
@@ -126,7 +126,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.tv_my_view_all_orders:
-                startActivity(ShippingAddressActivity.class);
+                startActivity(ShippingAddressListActivity.class);
                 break;
 
             case R.id.lay_my_awaiting_payment:
