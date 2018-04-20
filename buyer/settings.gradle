@@ -1,5 +1,7 @@
 
-include ':app', ':libraries:zxing', ':libraries:UIFrameLib', ':libraries:wave', ':libraries:ImageSelector', ':libraries:saerchlibrary', ':libraries:BaseRecyclerViewAdapterHelper', ':dialoglib', ':libraries:sdk', ':libraries:ui'
+include ':app', ':libraries:zxing', ':libraries:UIFrameLib', ':libraries:wave', ':libraries:ImageSelector', ':libraries:saerchlibrary', ':libraries:BaseRecyclerViewAdapterHelper', ':dialoglib', ':libraries:sdk', ':libraries:ui', ':pickerview', ':wheelview'
 
 
 project(':dialoglib').projectDir = new File('libraries/dialoglib')
+project(':pickerview').projectDir = new File('libraries/pickerview')
+project(':wheelview').projectDir = new File('libraries/wheelview')

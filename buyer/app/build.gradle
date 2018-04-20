@@ -99,6 +99,7 @@ dependencies {
     implementation project(':libraries:zxing')
     implementation project(':libraries:ui')
     implementation project(':libraries:sdk')
+    implementation project(':pickerview')
 }
 
 //如果数据库结构变了就+1 更新数据库

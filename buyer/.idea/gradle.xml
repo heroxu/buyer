@@ -15,10 +15,12 @@
             <option value="$PROJECT_DIR$/libraries/ImageSelector" />
             <option value="$PROJECT_DIR$/libraries/UIFrameLib" />
             <option value="$PROJECT_DIR$/libraries/dialoglib" />
+            <option value="$PROJECT_DIR$/libraries/pickerview" />
             <option value="$PROJECT_DIR$/libraries/saerchlibrary" />
             <option value="$PROJECT_DIR$/libraries/sdk" />
             <option value="$PROJECT_DIR$/libraries/ui" />
             <option value="$PROJECT_DIR$/libraries/wave" />
+            <option value="$PROJECT_DIR$/libraries/wheelview" />
             <option value="$PROJECT_DIR$/libraries/zxing" />
           </set>
         </option>
