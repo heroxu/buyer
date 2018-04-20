@@ -23,6 +23,7 @@ import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.module.order.OrderListActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.RedImageView;
 
@@ -126,7 +127,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.tv_my_view_all_orders:
-
+                startActivity(OrderListActivity.class);
                 break;
 
             case R.id.lay_my_awaiting_payment:
