@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.smyy.sharetour.buyer.Constants;
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
@@ -27,7 +27,7 @@ public class LinkedPhoneActivity extends MyBaseMvpActivity {
     TextView tvServiceTel;
 
     String mLinkedPhoneNum;
-    String mServiceTel = Constants.SERVICE_TEL;
+    String mServiceTel = Consts.SERVICE_TEL;
 
     @Override
     protected int getLayoutId() {

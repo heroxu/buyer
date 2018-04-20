@@ -118,9 +118,17 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         if(resultCode==RESULT_OK) {
             requireState.setText("已取消");
             startActivity(new Intent(RequireDetailsActivity.this, RequireCancelSuccessActivity.class));
+            setInvalidRequireButton();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    private void setInvalidRequireButton() {
+        reward_text.setText("删除需求");
+        reward_text.setVisibility(View.VISIBLE);
+        undoRequire.setText("编辑重发");
+    }
+
 
     @Override
     protected void onDestroy() {

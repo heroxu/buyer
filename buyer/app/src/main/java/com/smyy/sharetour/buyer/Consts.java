@@ -1,8 +1,5 @@
 package com.smyy.sharetour.buyer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by 伍振飞 on 2018/4/8 14:28
  * E-Mail Address：wuzf2012@sina.com
@@ -24,7 +21,7 @@ public class Consts {
     /**
      * 默认账号
      */
-    private static String[] mTitles = {"18680445592", "15607003736"};
+    private static String[] mTitles = {"18680445592", "15607003736", "12345678901"};
     /**
      * 默认密码
      */
@@ -173,4 +170,17 @@ public class Consts {
             "\t\t}]\n" +
             "\t}]\n" +
             "}";
+
+    //需求的状态
+    public static final int REQUIRE_STATE_WAIT_SELLER = 0;
+    public static final int REQUIRE_STATE_WAIT_SEND_GOOD = 1;
+    public static final int REQUIRE_STATE_RECEIVE_GOOD = 2;
+    public static final int REQUIRE_STATE_REQUIRE_DONE = 3;
+    public static final int REQUIRE_STATE_REQUIRE_CANCEL = 4;
+    public static final int REQUIRE_STATE_REQUIRE_INVALID = 5;
+
+    /**
+     * 客服电话
+     */
+    public static final String SERVICE_TEL = "020-1234567";
 }

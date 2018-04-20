@@ -14,7 +14,7 @@ public class RequireBean implements Serializable {
     private boolean is_verify;
     private List<String> img_paths;
     private String reward;
-    private RequireStateBean state;
+    private int state;
 
     public String getReward() {
         return reward;
@@ -24,11 +24,11 @@ public class RequireBean implements Serializable {
         this.reward = reward;
     }
 
-    public RequireStateBean getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(RequireStateBean state) {
+    public void setState(int state) {
         this.state = state;
     }
 
