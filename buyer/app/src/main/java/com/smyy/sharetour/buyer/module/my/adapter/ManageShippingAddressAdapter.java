@@ -19,7 +19,6 @@ public class ManageShippingAddressAdapter extends RecyclerView.Adapter<ManageShi
 
     private Context mContext;
     private List<ShippingAddressBean> mDatas;
-    private int mLastCheckedPos;
 
     public ManageShippingAddressAdapter(Context context) {
         this.mContext = context;
@@ -35,9 +34,6 @@ public class ManageShippingAddressAdapter extends RecyclerView.Adapter<ManageShi
         final ShippingAddressBean data = mDatas.get(position);
         if (data != null) {
             holder.rbDefault.setChecked(data.isDefault());
-            if (data.isDefault()) {
-                mLastCheckedPos = position;
-            }
             holder.tvName.setText(data.getName());
             holder.tvPhone.setText(data.getPhone());
             holder.tvAddress.setText(StringUtil.connect(data.getDistrict(), data.getStreet(), data.getDetailAddress()));
