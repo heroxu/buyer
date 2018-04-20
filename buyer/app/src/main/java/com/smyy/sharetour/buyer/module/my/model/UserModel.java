@@ -71,4 +71,15 @@ public class UserModel implements IUserContract.Model {
         return new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
                 .writeBeanValue(SPConfig.KEY_USER_INFO, userInfo);
     }
+
+    @Override
+    public boolean setUserAvatar(String avatar) {
+        MyApplication application = MyApplication.getApplication();
+        if (application == null) return false;
+        UserInfoBean userInfo = getUserInfo();
+        userInfo.setAvatar(avatar);
+        application.setUserInfo(userInfo);
+        return new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
+                .writeBeanValue(SPConfig.KEY_USER_INFO, userInfo);
+    }
 }

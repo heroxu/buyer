@@ -80,6 +80,7 @@ public class EditUserIntroActivity extends MyBaseMvpActivity<UserPresenter> impl
 
             case R.id.btn_confirm:
                 mPresenter.setUserIntro(mUserIntro);
+                setResult(RESULT_OK);
                 break;
 
             default:

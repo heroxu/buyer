@@ -78,6 +78,7 @@ public class EditNicknameActivity extends MyBaseMvpActivity<UserPresenter> imple
 
             case R.id.btn_confirm:
                 mPresenter.setUserName(mNickname);
+                setResult(RESULT_OK);
                 break;
 
             default:

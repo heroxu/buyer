@@ -189,4 +189,49 @@ public class UserPresenter extends IUserContract.Presenter {
                 });
 
     }
+
+    @Override
+    public void setAvatar(final String avatar) {
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
+                if (mModel != null) {
+                    boolean result = mModel.setUserAvatar(avatar);
+                    e.onNext(result);
+                    e.onComplete();
+                }
+
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        if (mView != null) {
+                            mView.showProgressDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onNext(Boolean result) {
+                        if (mView != null) {
+                            if (!result) {
+                                mView.showToast("修改失败");
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        if (mView != null) {
+                            mView.hideProgressDialog();
+                        }
+                    }
+                });
+    }
 }

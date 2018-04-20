@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
@@ -43,6 +44,8 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
     @BindView(R.id.tv_my_user_intro)
     TextView tvUserIntro;
 
+    public static final int REQ_EDIT_USER_INFO = 1;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_my_account_settings;
@@ -55,14 +58,13 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-
+        initUserInfo();
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-        initUserInfo();
     }
 
     private void initUserInfo() {
@@ -87,11 +89,11 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
                 break;
 
             case R.id.lay_my_nickname:
-                startActivity(EditNicknameActivity.class);
+                startActivityForResult(EditNicknameActivity.class, REQ_EDIT_USER_INFO);
                 break;
 
             case R.id.lay_my_user_intro:
-                startActivity(EditUserIntroActivity.class);
+                startActivityForResult(EditUserIntroActivity.class, REQ_EDIT_USER_INFO);
                 break;
 
             case R.id.tv_my_shipping_address:
@@ -109,7 +111,7 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
 
     @Override
     protected UserPresenter createPresenter() {
-        return new UserPresenter(this,new UserModel());
+        return new UserPresenter(this, new UserModel());
     }
 
     @Override
@@ -165,5 +167,25 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                // 选择照片
+                case ImageSelectorActivity.REQUEST_IMAGE:
+                    ArrayList<String> images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
+                    String avatarPath = images.get(0);
+                    mPresenter.setAvatar(avatarPath);
+                    Glide.with(this).load(avatarPath)
+                            .crossFade().into(ivAvatar);
+                    break;
+                case REQ_EDIT_USER_INFO:
+                    initUserInfo();
+                    break;
+            }
+        }
     }
 }

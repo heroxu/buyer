@@ -10,6 +10,8 @@ public interface IUserContract {
     }
 
     abstract class Presenter extends MyBasePresenter<View, Model> {
+        private String avatar;
+
         public Presenter(View view, Model model) {
             super(view, model);
         }
@@ -27,6 +29,8 @@ public interface IUserContract {
         public abstract void setUserName(String userName);
 
         public abstract void setUserIntro(String userIntro);
+
+        public abstract void setAvatar(String avatar);
     }
 
     interface Model {
@@ -50,5 +54,7 @@ public interface IUserContract {
         boolean setUserIntro(String userIntro);
 
         boolean setLinkedPhone(String linkedPhoneNum);
+
+        boolean setUserAvatar(String avatar);
     }
 }
