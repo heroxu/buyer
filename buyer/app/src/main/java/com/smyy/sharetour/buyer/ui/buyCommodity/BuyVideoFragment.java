@@ -36,7 +36,7 @@ public class BuyVideoFragment extends BaseMvpFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_buy_commodity;
+        return R.layout.fragment_buy_video;
     }
 
     @Override

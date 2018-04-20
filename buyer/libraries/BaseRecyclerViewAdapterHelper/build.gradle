@@ -20,6 +20,7 @@ android {
     }
 
 
+    buildToolsVersion '27.0.3'
 }
 
 // 打包源码jar

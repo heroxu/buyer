@@ -11,8 +11,10 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.view.SingleFragmentPageAdapter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -36,7 +38,7 @@ public class LiveFragment extends BaseMvpFragment {
     SlidingTabLayout liveSTLFount;
     @BindView(R.id.live_fount_banner)
     Banner liveBanner;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    private List<BaseFragment> mFragments = new ArrayList<>();
     private MyViewPagerAdapter mAdapter;
     private final String[] mTitles = {
             "全部", "日本", "韩国"
@@ -56,7 +58,7 @@ public class LiveFragment extends BaseMvpFragment {
         changeTitleBarColor();
         setBanner();
         for (String title : mTitles) {
-            mFragments.add(FountSubclassFragment.getInstance(title));
+            mFragments.add(LiveSubclassFragment.getInstance(title));
         }
         mAdapter = new MyViewPagerAdapter(getActivity().getSupportFragmentManager());
         liveVPFount.setAdapter(mAdapter);
@@ -65,9 +67,9 @@ public class LiveFragment extends BaseMvpFragment {
     private void changeTitleBarColor() {
         StatusBarAdapter.changeStatusBarColor(getActivity(), getResources().getColor(R.color.white));
     }
-    private class MyViewPagerAdapter extends FragmentPagerAdapter {
+    private class MyViewPagerAdapter extends SingleFragmentPageAdapter {
         public MyViewPagerAdapter(FragmentManager fm) {
-            super(fm);
+            super(fm,mFragments);
         }
 
         @Override
