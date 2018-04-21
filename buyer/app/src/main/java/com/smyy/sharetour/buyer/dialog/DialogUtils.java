@@ -2,7 +2,6 @@ package com.smyy.sharetour.buyer.dialog;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 
@@ -16,11 +15,12 @@ import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 public class DialogUtils {
     public static CommonDialog.Builder createMessageBoxDialogBuilder(
             @NonNull FragmentActivity activity, int type,
+            String titleText,
             String messageText,
             String confirmText, OnViewClickListener confirmClickListener,
             String cancelText, OnViewClickListener cancelClickListener) {
         return new MessageBoxBuilder(activity, type)
-                .setText(messageText, confirmText, cancelText)
+                .setText(titleText, messageText, confirmText, cancelText)
                 .setClickListener(confirmClickListener, cancelClickListener)
                 .build()
                 .setCancelableOutside(false)
@@ -59,30 +59,31 @@ public class DialogUtils {
      * @param cancelClickListener  传入null则默认dialog.dismiss
      */
     public static void showTwoBtnMsgBox(
-            @NonNull FragmentActivity activity, String messageText,
+            @NonNull FragmentActivity activity, String titleText, String messageText,
             String confirmText, OnViewClickListener confirmClickListener,
             String cancelText, OnViewClickListener cancelClickListener) {
         createMessageBoxDialogBuilder(
                 activity, MessageBoxBuilder.TYPE_TWO_BTN,
+                titleText,
                 messageText,
                 confirmText, confirmClickListener,
                 cancelText, cancelClickListener).create().show();
     }
 
     public static void showTwoBtnMsgBox(
-            @NonNull FragmentActivity activity, String messageText,
+            @NonNull FragmentActivity activity, String titleText, String messageText,
             String confirmText, OnViewClickListener confirmClickListener) {
         showTwoBtnMsgBox(
-                activity, messageText,
+                activity, titleText, messageText,
                 confirmText, confirmClickListener,
                 null, null);
     }
 
     public static void showTwoBtnMsgBox(
             @NonNull FragmentActivity activity
-            , String messageText, OnViewClickListener confirmClickListener) {
+            , String titleText, String messageText, OnViewClickListener confirmClickListener) {
         showTwoBtnMsgBox(
-                activity, messageText,
+                activity, titleText, messageText,
                 null, confirmClickListener,
                 null, null);
     }
@@ -96,20 +97,20 @@ public class DialogUtils {
      * @param confirmClickListener 传入null则默认dialog.dismiss
      */
     public static void showOneBtnMsgBox(
-            @NonNull FragmentActivity activity, String messageText,
+            @NonNull FragmentActivity activity, String titleText, String messageText,
             String confirmText, OnViewClickListener confirmClickListener) {
         createMessageBoxDialogBuilder(
                 activity, MessageBoxBuilder.TYPE_ONE_BTN,
-                messageText,
+                titleText, messageText,
                 confirmText, confirmClickListener,
                 null, null).create().show();
     }
 
     public static void showOneBtnMsgBox(
-            @NonNull FragmentActivity activity, String messageText,
+            @NonNull FragmentActivity activity, String titleText, String messageText,
             OnViewClickListener confirmClickListener) {
         showOneBtnMsgBox(
-                activity, messageText,
+                activity, titleText, messageText,
                 null, confirmClickListener);
     }
 
@@ -382,6 +383,7 @@ public class DialogUtils {
 
     private static class MessageBoxBuilder {
         private String mMsgTx;
+        private String mTitleTx;
         private String mConfirmTx = "确定";
         private String mCancelTx = "取消";
         private OnViewClickListener mConfirmClickListener;
@@ -400,8 +402,9 @@ public class DialogUtils {
             this.mType = type;
         }
 
-        public MessageBoxBuilder setText(String msgText, String confirmText, String cancelText) {
+        public MessageBoxBuilder setText(String titleText, String msgText, String confirmText, String cancelText) {
             this.mMsgTx = msgText;
+            this.mTitleTx = titleText;
             this.mConfirmTx = confirmText;
             this.mCancelTx = cancelText;
             return this;
@@ -423,6 +426,11 @@ public class DialogUtils {
                         @Override
                         public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
                             viewHolder.setText(R.id.tv_dialog_msg, mMsgTx);
+                            if(mTitleTx!=null) {
+                                viewHolder.setText(R.id.tv_dialog_title, mTitleTx);
+                            } else {
+                                viewHolder.getView(R.id.tv_dialog_title).setVisibility(View.GONE);
+                            }
 
                             if (mConfirmTx == null) {
                                 mConfirmTx = "确定";

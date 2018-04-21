@@ -190,5 +190,6 @@
     <string name="summary_voice">[语音]</string>
     <string name="summary_video">[小视频]</string>
     <string name="summary_file">[文件]</string>
+    <string name="delete">删除</string>
 
 </resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/window_background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="已有 11 位买手抢单，请指定一位"
+        android:textSize="@dimen/txt_size_13"
+        android:background="@color/white"
+        android:id="@+id/seller_info"
+        android:gravity="center_vertical"
+        android:paddingLeft="25dp"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/require_seller_list"
+        android:scrollbars="vertical"
+        android:scrollbarFadeDuration="1"
+        android:fadeScrollbars="true"
+        />
+
+
+</LinearLayout>

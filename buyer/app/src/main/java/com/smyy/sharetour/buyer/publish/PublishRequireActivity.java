@@ -18,6 +18,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.jakewharton.rxbinding2.widget.RxTextView;
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.adapter.GridAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
@@ -336,6 +337,7 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
         requireBean.setRequire_receive_address(address.getText().toString());
         requireBean.setIs_verify(identifySend.isChecked());
         requireBean.setImg_paths(imagePaths);
+        requireBean.setState(Consts.REQUIRE_STATE_WAIT_SELLER);
     }
 
     public String getDateToString(long time) {

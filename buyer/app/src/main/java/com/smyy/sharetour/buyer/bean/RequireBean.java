@@ -5,6 +5,7 @@ import java.util.List;
 
 public class RequireBean implements Serializable {
 
+    private int require_id;
     private String require_disc;
     private String require_budget;
     private String require_time;
@@ -15,6 +16,14 @@ public class RequireBean implements Serializable {
     private List<String> img_paths;
     private String reward;
     private int state;
+
+    public int getRequireId() {
+        return require_id;
+    }
+
+    public void setRequireId(int require_id) {
+        this.require_id = require_id;
+    }
 
     public String getReward() {
         return reward;

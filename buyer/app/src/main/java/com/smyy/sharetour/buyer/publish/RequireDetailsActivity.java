@@ -139,6 +139,12 @@ public class RequireDetailsActivity extends BaseMvpActivity {
 
         if(requireBean.getState()== Consts.REQUIRE_STATE_WAIT_POINT) {
             waitPointLl.setVisibility(View.VISIBLE);
+            waitPointLl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(RequireDetailsActivity.this, RequireSellerListActivity.class));
+                }
+            });
             spanText = new SpannableString("已有");
             spanText1 = new SpannableString("7");
             SpannableString spanText2 = new SpannableString("位买手抢单，请去指定");
@@ -169,7 +175,11 @@ public class RequireDetailsActivity extends BaseMvpActivity {
                     break;
             }
 
+        } else if(requireBean.getState()== Consts.REQUIRE_STATE_CANCEL||requireBean.getState()== Consts.REQUIRE_STATE_INVALID){
+            setInvalidRequireButton();
         }
+
+        requireState.setText(Consts.REQUIRE_STATE_STRINGS[requireBean.getState()]);
 
         if (isShowSuccessDialog) {
             showPublishSuccessDialog();
