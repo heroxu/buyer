@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.home.search.fragment.SearchBuyerFragment;
 import com.smyy.sharetour.buyer.home.search.fragment.SearchProductFragment;
@@ -23,9 +24,9 @@ import butterknife.BindView;
 
 public class OrderListActivity extends MyBaseMvpActivity {
     @BindView(R.id.stl_order_list)
-    SlidingTabLayout stlSearchDetail;
+    SlidingTabLayout stlOrderList;
     @BindView(R.id.vp_order_list)
-    ViewPager vpSearchDetail;
+    ViewPager vpOrderList;
 
     private final String[] mTitles = {"全部", "待付款", "待发货", "待收货", "待评价"};
     private FragmentAdapter mAdapter;
@@ -45,15 +46,15 @@ public class OrderListActivity extends MyBaseMvpActivity {
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
 
-        mFragments.add(SearchProductFragment.getInstance(mTitles[0]));
-        mFragments.add(SearchBuyerFragment.getInstance(mTitles[1]));
-        mFragments.add(SearchBuyerFragment.getInstance(mTitles[1]));
-        mFragments.add(SearchBuyerFragment.getInstance(mTitles[1]));
-        mFragments.add(SearchBuyerFragment.getInstance(mTitles[1]));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_ALL));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_AWAIT_PAY));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_AWAIT_SHIPPING));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_AWAIT_CONFIRM));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_AWAIT_REVIEW));
 
         mAdapter = new FragmentAdapter(this.getSupportFragmentManager());
-        vpSearchDetail.setAdapter(mAdapter);
-        stlSearchDetail.setViewPager(vpSearchDetail, mTitles);
+        vpOrderList.setAdapter(mAdapter);
+        stlOrderList.setViewPager(vpOrderList, mTitles);
     }
 
     @Override

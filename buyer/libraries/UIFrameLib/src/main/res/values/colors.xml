@@ -83,6 +83,7 @@
     <!--标签-->
     <color name="tag_bg">#F5F5F5</color>
     <color name="tag_txt">#999999</color>
+    <color name="tag_stroke_gray">#C7C7C7</color>
 
 
     <!--评论背景色-->

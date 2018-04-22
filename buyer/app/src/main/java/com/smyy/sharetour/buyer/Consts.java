@@ -180,7 +180,17 @@ public class Consts {
     public static final int REQUIRE_STATE_CANCEL = 5;
     public static final int REQUIRE_STATE_INVALID = 6;
 
-    public static final String [] REQUIRE_STATE_STRINGS = {"待接单","待指定","备货中","已发货","已完成","已取消","已失效"};
+    public static final String[] REQUIRE_STATE_STRINGS = {"待接单", "待指定", "备货中", "已发货", "已完成", "已取消", "已失效"};
+
+    //订单状态
+    public static final int ORDER_STATE_ALL = 0;
+    public static final int ORDER_STATE_AWAIT_PAY = 1;
+    public static final int ORDER_STATE_AWAIT_SHIPPING = 2;//买家已付款 待发货
+    public static final int ORDER_STATE_AWAIT_CONFIRM = 3;//买手已发货 待收货
+    public static final int ORDER_STATE_AWAIT_REVIEW = 4;//交易成功 待评价
+    public static final int ORDER_STATE_OTHER = 5;
+
+    public static final String[] ORDER_STATE_STRINGS = {"", "等待买家付款", "买家已付款", "买手已发货", "交易成功", "交易关闭"};
 
     /**
      * 客服电话
