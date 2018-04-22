@@ -3,15 +3,15 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.ReportActivity;
 import com.smyy.sharetour.buyer.SkinListActivity;
 import com.smyy.sharetour.buyer.SkinPeelerActivity;
-import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
-import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.search.activity.HomeSearchActivity;
 import com.smyy.sharetour.buyer.home.search.activity.SearchDetailActivity;
+import com.smyy.sharetour.buyer.module.my.CommentListActivity;
 import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
 import com.smyy.sharetour.buyer.publish.RequireListActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
@@ -213,6 +213,14 @@ public class ActivityLauncher {
      */
     public static void viewMyRequireActivity(Context context) {
         Intent intent = new Intent(context, RequireListActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到评价列表页面
+     */
+    public static void viewMyCommentActivity(Context context) {
+        Intent intent = new Intent(context, CommentListActivity.class);
         context.startActivity(intent);
     }
 }

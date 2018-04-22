@@ -76,6 +76,7 @@
         <activity android:name=".ReportActivity"/>
         <activity android:name=".publish.RequireOutListActivity"/>
         <activity android:name=".publish.RequireSellerListActivity"/>
+        <activity android:name=".module.my.CommentListActivity"/>
     </application>
 
 </manifest>

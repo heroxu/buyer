@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -18,7 +19,11 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.adapter.GridAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.RatingBar;
+import com.xmyy.view.dialoglib.CommonDialog;
+import com.xmyy.view.dialoglib.base.BindViewHolder;
+import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 import com.yongchun.library.view.ImagePreviewActivity;
 import com.yongchun.library.view.ImageSelectorActivity;
 
@@ -122,6 +127,20 @@ public class OrderCommentActivity extends BaseMvpActivity {
                     int good_score = goodRating.getStar();
                     int seller_score = sellerRating.getStar();
                 }
+                CommonDialog.Builder builder = new CommonDialog.Builder(getSupportFragmentManager())
+                        .setLayoutRes(R.layout.layout_comment_success)
+                        .setGravity(Gravity.CENTER)
+                        .addOnClickListener(R.id.view_orders)
+                        .setOnViewClickListener(new OnViewClickListener() {
+                            @Override
+                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                commonDialog.dismiss();
+                                finish();
+                                ActivityLauncher.viewMyCommentActivity(OrderCommentActivity.this);
+                            }
+                        });
+
+                builder.create().show();
 
             }
         });

@@ -151,11 +151,10 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
 
             case R.id.tv_my_demands:
                 ActivityLauncher.viewMyRequireActivity(getActivity());
-
                 break;
 
             case R.id.tv_my_reviews:
-
+                ActivityLauncher.viewMyCommentActivity(getActivity());
                 break;
 
             case R.id.tv_my_favorites:
