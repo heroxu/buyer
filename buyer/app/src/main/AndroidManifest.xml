@@ -79,6 +79,7 @@
         <activity android:name=".require.RequireSellerListActivity"/>
         <activity android:name=".module.my.CommentListActivity"/>
         <activity android:name=".BackPacker.BackPackerHomeActivity" />
+        <activity android:name=".SmallBackpackActivity" />
     </application>
 
 </manifest>

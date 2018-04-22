@@ -8,6 +8,7 @@ import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.ReportActivity;
 import com.smyy.sharetour.buyer.SkinListActivity;
 import com.smyy.sharetour.buyer.SkinPeelerActivity;
+import com.smyy.sharetour.buyer.SmallBackpackActivity;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.search.activity.HomeSearchActivity;
@@ -223,6 +224,13 @@ public class ActivityLauncher {
      */
     public static void viewMyCommentActivity(Context context) {
         Intent intent = new Intent(context, CommentListActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到小背包
+     */
+    public static void viewSmallBackpackActivity(Context context) {
+        Intent intent = new Intent(context, SmallBackpackActivity.class);
         context.startActivity(intent);
     }
 
