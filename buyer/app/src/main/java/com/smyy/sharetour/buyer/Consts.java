@@ -182,15 +182,25 @@ public class Consts {
 
     public static final String[] REQUIRE_STATE_STRINGS = {"待接单", "待指定", "备货中", "已发货", "已完成", "已取消", "已失效"};
 
-    //订单状态
-    public static final int ORDER_STATE_ALL = 0;
-    public static final int ORDER_STATE_AWAIT_PAY = 1;
-    public static final int ORDER_STATE_AWAIT_SHIPPING = 2;//买家已付款 待发货
-    public static final int ORDER_STATE_AWAIT_CONFIRM = 3;//买手已发货 待收货
-    public static final int ORDER_STATE_AWAIT_REVIEW = 4;//交易成功 待评价
-    public static final int ORDER_STATE_OTHER = 5;
+    //订单类型
+    public static final String ORDER_TYPE = "order_type";
+    public static final int ORDER_TYPE_ALL = 0;
+    public static final int ORDER_TYPE_AWAIT_PAY = 1;
+    public static final int ORDER_TYPE_AWAIT_SHIPPING = 2;//待发货
+    public static final int ORDER_TYPE_AWAIT_CONFIRM = 3;//待收货
+    public static final int ORDER_TYPE_AWAIT_REVIEW = 4;//待评价
 
-    public static final String[] ORDER_STATE_STRINGS = {"", "等待买家付款", "买家已付款", "买手已发货", "交易成功", "交易关闭"};
+    public static final String[] ORDER_TYPE_STRINGS = {"全部", "待付款", "待发货", "待收货", "待评价"};
+
+    //订单状态
+    public static final int ORDER_STATUS_AWAIT_PAY = 1;
+    public static final int ORDER_STATUS_AWAIT_SHIPPING = 2;//买家已付款 待发货
+    public static final int ORDER_STATUS_AWAIT_CONFIRM = 3;//买手已发货 待收货
+    public static final int ORDER_STATUS_AWAIT_REVIEW = 4;//交易成功 待评价
+    public static final int ORDER_STATUS_OTHER = 5;
+
+    public static final String[] ORDER_STATUS_STRINGS = {"", "等待买家付款", "买家已付款", "买手已发货", "交易成功", "交易关闭"};
+
 
     /**
      * 客服电话

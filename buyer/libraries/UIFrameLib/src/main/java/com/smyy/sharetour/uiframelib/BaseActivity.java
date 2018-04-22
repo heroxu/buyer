@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends UmengActivity {
     static final String TAG = BaseActivity.class.getSimpleName();
-    static final String BUNDLE = "bundle";
+    public static final String BUNDLE = "bundle";
     protected ImmersionBar mImmersionBar;
     Toolbar mToolbar;
     TextView mToolbarTitle;

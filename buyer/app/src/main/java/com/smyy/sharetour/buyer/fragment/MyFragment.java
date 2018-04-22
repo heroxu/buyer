@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.module.my.QuestionActivity;
@@ -108,6 +109,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
             R.id.tv_my_view_all_orders, R.id.lay_my_awaiting_payment, R.id.lay_my_awaiting_shipment, R.id.lay_my_awaiting_confirmation, R.id.lay_my_dispute,
             R.id.tv_my_cart, R.id.tv_my_demands, R.id.tv_my_reviews, R.id.tv_my_favorites, R.id.tv_my_interests, R.id.tv_help_and_feedback})
     public void onClick(View view) {
+        Bundle bundle = new Bundle();
         switch (view.getId()) {
 
             case R.id.iv_my_setting:
@@ -131,15 +133,18 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.lay_my_awaiting_payment:
-
+                bundle.putInt(Consts.ORDER_TYPE, Consts.ORDER_TYPE_AWAIT_PAY);
+                startActivity(OrderListActivity.class, bundle);
                 break;
 
             case R.id.lay_my_awaiting_shipment:
-
+                bundle.putInt(Consts.ORDER_TYPE, Consts.ORDER_TYPE_AWAIT_SHIPPING);
+                startActivity(OrderListActivity.class, bundle);
                 break;
 
             case R.id.lay_my_awaiting_confirmation:
-
+                bundle.putInt(Consts.ORDER_TYPE, Consts.ORDER_TYPE_AWAIT_CONFIRM);
+                startActivity(OrderListActivity.class, bundle);
                 break;
 
             case R.id.lay_my_dispute:

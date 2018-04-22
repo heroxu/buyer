@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
-import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
+import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
 import com.smyy.sharetour.buyer.util.StringUtil;
 
 import java.util.List;
@@ -20,13 +19,13 @@ import java.util.List;
 public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<OrderBean.GoodsInfo> mDatas;
+    private List<OrderGoodsInfo> mDatas;
 
     public OrderGoodsListAdapter(Context context) {
         this.mContext = context;
     }
 
-    public OrderGoodsListAdapter(Context context, List<OrderBean.GoodsInfo> goodsList) {
+    public OrderGoodsListAdapter(Context context, List<OrderGoodsInfo> goodsList) {
         this.mContext = context;
         this.mDatas = goodsList;
     }
@@ -38,12 +37,28 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final OrderBean.GoodsInfo data = mDatas.get(position);
+        final OrderGoodsInfo data = mDatas.get(position);
         if (data != null) {
             holder.ivPic.setImageResource(R.mipmap.fake_goods_pic);
 //            Glide.with(mContext).load(data.getGoodsPic()).into(holder.ivPic);//TODO RTRT
             holder.tvName.setText(data.getGoodsName());
-            holder.tvSpec.setText(StringUtil.connect("规格：", data.getGoodsSpec()));
+
+            String goodsSpec = data.getGoodsSpec();
+            if (StringUtil.isEmpty(goodsSpec)) {
+                holder.tvSpec.setVisibility(View.GONE);
+            } else {
+                holder.tvSpec.setVisibility(View.VISIBLE);
+                holder.tvSpec.setText("规格：" + goodsSpec);
+            }
+
+            String receiveDeadline = data.getReceiveDeadline();
+            if (StringUtil.isEmpty(receiveDeadline)) {
+                holder.tvDeadline.setVisibility(View.GONE);
+            } else {
+                holder.tvDeadline.setVisibility(View.VISIBLE);
+                holder.tvDeadline.setText(receiveDeadline + " 前收到");
+            }
+
             holder.tvPrice.setText(StringUtil.connect("价格：", data.getGoodsPrice()));
             holder.tvCount.setText("× ️" + data.getGoodsCount());
 
@@ -82,7 +97,7 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
         }
     }
 
-    public List<OrderBean.GoodsInfo> getList() {
+    public List<OrderGoodsInfo> getList() {
         return mDatas;
     }
 
@@ -101,7 +116,7 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
     private OnItemViewClickListener onItemViewClickListener;
 
     public interface OnItemViewClickListener {
-        void onItemViewClick(View view, int position, OrderBean.GoodsInfo data);
+        void onItemViewClick(View view, int position, OrderGoodsInfo data);
     }
 
     public void setOnItemViewClickListener(OnItemViewClickListener listener) {
@@ -113,7 +128,7 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
         return mDatas == null ? 0 : mDatas.size();
     }
 
-    public void setData(List<OrderBean.GoodsInfo> datas) {
+    public void setData(List<OrderGoodsInfo> datas) {
         this.mDatas = datas;
         notifyDataSetChanged();
     }
@@ -128,6 +143,7 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
         private ImageView ivPic;
         private TextView tvName;
         private TextView tvSpec;
+        private TextView tvDeadline;
         private TextView tvPrice;
         private TextView tvCount;
 
@@ -136,6 +152,7 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
             ivPic = (ImageView) itemView.findViewById(R.id.iv_order_goods_pic);
             tvName = (TextView) itemView.findViewById(R.id.iv_order_goods_name);
             tvSpec = (TextView) itemView.findViewById(R.id.iv_order_goods_spec);
+            tvDeadline = (TextView) itemView.findViewById(R.id.iv_order_receive_deadline);
             tvPrice = (TextView) itemView.findViewById(R.id.iv_order_goods_price);
             tvCount = (TextView) itemView.findViewById(R.id.iv_order_goods_count);
         }

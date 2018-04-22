@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.home.search.fragment.SearchBuyerFragment;
-import com.smyy.sharetour.buyer.home.search.fragment.SearchProductFragment;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 
@@ -28,7 +26,7 @@ public class OrderListActivity extends MyBaseMvpActivity {
     @BindView(R.id.vp_order_list)
     ViewPager vpOrderList;
 
-    private final String[] mTitles = {"全部", "待付款", "待发货", "待收货", "待评价"};
+    private final String[] mTitles = Consts.ORDER_TYPE_STRINGS;
     private FragmentAdapter mAdapter;
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -47,15 +45,24 @@ public class OrderListActivity extends MyBaseMvpActivity {
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
 
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_ALL));
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_AWAIT_PAY));
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_AWAIT_SHIPPING));
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_AWAIT_CONFIRM));
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_STATE_AWAIT_REVIEW));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_ALL));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_AWAIT_PAY));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_AWAIT_SHIPPING));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_AWAIT_CONFIRM));
+        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_AWAIT_REVIEW));
 
         mAdapter = new FragmentAdapter(this.getSupportFragmentManager());
         vpOrderList.setAdapter(mAdapter);
         stlOrderList.setViewPager(vpOrderList, mTitles);
+
+        Bundle bundle = getBundle();
+        if (bundle != null) {
+            int orderType = bundle.getInt(Consts.ORDER_TYPE);
+            if (orderType >= 0 && orderType < mTitles.length) {
+                stlOrderList.setCurrentTab(orderType);
+//                vpOrderList.setCurrentItem(orderType);
+            }
+        }
     }
 
     @Override

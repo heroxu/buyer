@@ -10,7 +10,7 @@ public class UserModel implements IUserContract.Model {
     @Override
     public UserInfoBean getUserInfoFromNet() {
         UserInfoBean userInfo = new UserInfoBean("", "悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
-                1, 2, 8, 0);
+                1, 2, 3, 0);
         saveUserInfo(userInfo);
         return userInfo;
     }

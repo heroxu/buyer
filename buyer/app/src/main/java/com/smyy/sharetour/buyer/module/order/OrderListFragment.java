@@ -2,7 +2,6 @@ package com.smyy.sharetour.buyer.module.order;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.PluralsRes;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,6 +12,7 @@ import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderListAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
+import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,15 +25,14 @@ public class OrderListFragment extends BaseMvpFragment {
     private OrderListAdapter mAdapter;
     private List<OrderBean> mDatas;
     private int mOrderType;
-    private static final String ORDER_TYPE = "order_type";
-    private ArrayList<OrderBean.GoodsInfo> fakdeGoodsList1;
-    private ArrayList<OrderBean.GoodsInfo> fakeGoodsList2;
+    private ArrayList<OrderGoodsInfo> fakdeGoodsList1;
+    private ArrayList<OrderGoodsInfo> fakeGoodsList2;
 
 
     public static OrderListFragment getInstance(int orderType) {
         OrderListFragment fragment = new OrderListFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(ORDER_TYPE, orderType);
+        bundle.putInt(Consts.ORDER_TYPE, orderType);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -43,7 +42,7 @@ public class OrderListFragment extends BaseMvpFragment {
         super.onCreate(savedInstanceState);
         Bundle arguments = getArguments();
         if (arguments != null) {
-            mOrderType = arguments.getInt(ORDER_TYPE);
+            mOrderType = arguments.getInt(Consts.ORDER_TYPE);
         }
     }
 
@@ -125,48 +124,70 @@ public class OrderListFragment extends BaseMvpFragment {
     }
 
     public List<OrderBean> getFakeData() {
-        OrderBean.GoodsInfo goodsInfo1 = new OrderBean.GoodsInfo("1",
+        OrderGoodsInfo goodsInfo1 = new OrderGoodsInfo("1",
                 "NIKE HUARACHE DRIFT (PSE) LALALALALA",
                 "黑白/36.5",
+                "",
                 "￥9,918.00",
                 1, "");
-        OrderBean.GoodsInfo goodsInfo2 = new OrderBean.GoodsInfo("2",
+        OrderGoodsInfo goodsInfo2 = new OrderGoodsInfo("2",
                 "NIKE HUARACHE DRIFT (PSE) LALALALALA",
                 "黑白/34",
+                "",
                 "￥8,918.00",
+                1, "");
+        OrderGoodsInfo goodsInfoDL = new OrderGoodsInfo("2",
+                "NIKE HUARACHE DRIFT (PSE) LALALALALA",
+                "",
+                "2018-05-01",
+                "￥9,918.00",
                 1, "");
         fakdeGoodsList1 = new ArrayList<>();
         fakdeGoodsList1.add(goodsInfo1);
         fakeGoodsList2 = new ArrayList<>();
         fakeGoodsList2.add(goodsInfo1);
         fakeGoodsList2.add(goodsInfo2);
+        List<OrderGoodsInfo> fakdeGoodsListDL = new ArrayList<>();
+        fakdeGoodsListDL.add(goodsInfoDL);
 
 
         List<OrderBean> fakeData = new ArrayList<>();
         switch (mOrderType) {
-            case Consts.ORDER_STATE_ALL:
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATE_AWAIT_PAY));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATE_AWAIT_CONFIRM));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATE_AWAIT_REVIEW));
-                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATE_OTHER));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATE_AWAIT_SHIPPING));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATE_AWAIT_PAY));
-                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATE_AWAIT_SHIPPING));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATE_OTHER));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATE_AWAIT_CONFIRM));
+            case Consts.ORDER_TYPE_ALL:
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_REVIEW));
+                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_OTHER));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
+                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_OTHER));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
                 break;
 
-            case Consts.ORDER_STATE_AWAIT_PAY:
-            case Consts.ORDER_STATE_AWAIT_SHIPPING:
-            case Consts.ORDER_STATE_AWAIT_CONFIRM:
-            case Consts.ORDER_STATE_AWAIT_REVIEW:
-            case Consts.ORDER_STATE_OTHER:
-                fakeData.add(getFakeOrderBean1(mOrderType));
-                fakeData.add(getFakeOrderBean1(mOrderType));
-                fakeData.add(getFakeOrderBean2(mOrderType));
-                fakeData.add(getFakeOrderBean1(mOrderType));
-                fakeData.add(getFakeOrderBean2(mOrderType));
-                fakeData.add(getFakeOrderBean1(mOrderType));
+            case Consts.ORDER_TYPE_AWAIT_PAY:
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
+                break;
+            case Consts.ORDER_TYPE_AWAIT_SHIPPING:
+                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                break;
+            case Consts.ORDER_TYPE_AWAIT_CONFIRM:
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                break;
+            case Consts.ORDER_TYPE_AWAIT_REVIEW:
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_REVIEW));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_REVIEW));
+                fakeData.add(new OrderBean("1",
+                        Consts.ORDER_STATUS_AWAIT_REVIEW,
+                        "",
+                        "我是小桂子的桂子",
+                        "",
+                        "",
+                        1,
+                        "￥9,948.00",
+                        "￥30.00",
+                        fakdeGoodsListDL));
                 break;
 
             default:

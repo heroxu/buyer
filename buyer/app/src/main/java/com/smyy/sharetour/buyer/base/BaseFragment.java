@@ -217,6 +217,7 @@ public abstract class BaseFragment extends UmengFragment {
         }
     }
 
+
     /**
      * 通过Class跳转界面
      **/
@@ -237,9 +238,9 @@ public abstract class BaseFragment extends UmengFragment {
     public void startActivityForResult(Class<?> cls, Bundle bundle,
                                        int requestCode) {
         Intent intent = new Intent();
-        intent.setClass(getActivity(), cls);
+        intent.setClass(mActivity, cls);
         if (bundle != null) {
-            intent.putExtras(bundle);
+            intent.putExtra(BaseActivity.BUNDLE, bundle);
         }
         startActivityForResult(intent, requestCode);
     }
@@ -249,10 +250,14 @@ public abstract class BaseFragment extends UmengFragment {
      **/
     public void startActivity(Class<?> cls, Bundle bundle) {
         Intent intent = new Intent();
-        intent.setClass(getActivity(), cls);
+        intent.setClass(mActivity, cls);
         if (bundle != null) {
-            intent.putExtras(bundle);
+            intent.putExtra(BaseActivity.BUNDLE, bundle);
         }
         startActivity(intent);
+    }
+
+    public Bundle getBundle() {
+        return mActivity.getIntent().getBundleExtra(BaseActivity.BUNDLE);
     }
 }

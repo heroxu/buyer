@@ -15,89 +15,10 @@ public class OrderBean implements Serializable {
     private int goodsCountTotal;
     private String priceTotal;
     private String shippingFee;//运费
-    private List<GoodsInfo> goodsList;
+    private List<OrderGoodsInfo> goodsList;
 
 
-    public static class GoodsInfo implements Serializable {
-        private String goodsId;
-        private String goodsName;
-        private String goodsSpec;
-        private String goodsPrice;
-        private int goodsCount;
-        private String goodsPic;
-
-        public GoodsInfo(String goodsId, String goodsName, String goodsSpec, String goodsPrice, int goodsCount, String goodsPic) {
-            this.goodsId = goodsId;
-            this.goodsName = goodsName;
-            this.goodsSpec = goodsSpec;
-            this.goodsPrice = goodsPrice;
-            this.goodsCount = goodsCount;
-            this.goodsPic = goodsPic;
-        }
-
-        @Override
-        public String toString() {
-            return "GoodsInfo{" +
-                    "goodsId='" + goodsId + '\'' +
-                    ", goodsName='" + goodsName + '\'' +
-                    ", goodsSpec='" + goodsSpec + '\'' +
-                    ", goodsPrice='" + goodsPrice + '\'' +
-                    ", goodsCount='" + goodsCount + '\'' +
-                    ", goodsPic='" + goodsPic + '\'' +
-                    '}';
-        }
-
-        public String getGoodsId() {
-            return goodsId;
-        }
-
-        public void setGoodsId(String goodsId) {
-            this.goodsId = goodsId;
-        }
-
-        public String getGoodsName() {
-            return goodsName;
-        }
-
-        public void setGoodsName(String goodsName) {
-            this.goodsName = goodsName;
-        }
-
-        public String getGoodsSpec() {
-            return goodsSpec;
-        }
-
-        public void setGoodsSpec(String goodsSpec) {
-            this.goodsSpec = goodsSpec;
-        }
-
-        public String getGoodsPrice() {
-            return goodsPrice;
-        }
-
-        public void setGoodsPrice(String goodsPrice) {
-            this.goodsPrice = goodsPrice;
-        }
-
-        public int getGoodsCount() {
-            return goodsCount;
-        }
-
-        public void setGoodsCount(int goodsCount) {
-            this.goodsCount = goodsCount;
-        }
-
-        public String getGoodsPic() {
-            return goodsPic;
-        }
-
-        public void setGoodsPic(String goodsPic) {
-            this.goodsPic = goodsPic;
-        }
-    }
-
-
-    public OrderBean(String orderId, int orderStatus, String sellerId, String sellerName, String sellerAvatar, String buyerId, int goodsCountTotal, String priceTotal, String shippingFee, List<GoodsInfo> goodsList) {
+    public OrderBean(String orderId, int orderStatus, String sellerId, String sellerName, String sellerAvatar, String buyerId, int goodsCountTotal, String priceTotal, String shippingFee, List<OrderGoodsInfo> goodsList) {
         this.orderId = orderId;
         this.orderStatus = orderStatus;
         this.sellerId = sellerId;
@@ -182,11 +103,11 @@ public class OrderBean implements Serializable {
         this.shippingFee = shippingFee;
     }
 
-    public List<GoodsInfo> getGoodsList() {
+    public List<OrderGoodsInfo> getGoodsList() {
         return goodsList;
     }
 
-    public void setGoodsList(List<GoodsInfo> goodsList) {
+    public void setGoodsList(List<OrderGoodsInfo> goodsList) {
         this.goodsList = goodsList;
     }
 

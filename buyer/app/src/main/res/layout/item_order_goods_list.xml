@@ -31,28 +31,52 @@
             android:textSize="@dimen/txt_size_15"
             tools:text="NIKE HUARACHE DRIFT (PSEhgoiheoriohirheiuhieri" />
 
-        <TextView
-            android:id="@+id/iv_order_goods_spec"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/iv_order_goods_name"
             android:layout_below="@+id/iv_order_goods_name"
-            android:layout_marginTop="20dp"
             android:layout_toLeftOf="@+id/iv_order_goods_count"
-            android:textColor="@color/txt_gray_dark"
-            android:textSize="@dimen/txt_size_13"
-            tools:text="规格：黑白/36.5" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/iv_order_goods_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/iv_order_goods_name"
-            android:layout_below="@+id/iv_order_goods_spec"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/txt_gray_dark"
-            android:textSize="@dimen/txt_size_13"
-            tools:text="价格：￥98778" />
+            <TextView
+                android:id="@+id/iv_order_goods_spec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/iv_order_goods_name"
+                android:layout_below="@+id/iv_order_goods_name"
+                android:layout_marginTop="20dp"
+                android:layout_toLeftOf="@+id/iv_order_goods_count"
+                android:textColor="@color/txt_gray_dark"
+                android:textSize="@dimen/txt_size_13"
+                android:visibility="gone"
+                tools:text="规格：黑白/36.5" />
+
+            <TextView
+                android:id="@+id/iv_order_goods_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/iv_order_goods_name"
+                android:layout_below="@+id/iv_order_goods_spec"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/txt_gray_dark"
+                android:textSize="@dimen/txt_size_13"
+                tools:text="价格：￥98778" />
+
+            <TextView
+                android:id="@+id/iv_order_receive_deadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/iv_order_goods_name"
+                android:layout_below="@+id/iv_order_goods_spec"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@mipmap/ic_home_new_sell"
+                android:drawablePadding="8dp"
+                android:textColor="@color/txt_price"
+                android:textSize="@dimen/txt_size_13"
+                android:visibility="gone"
+                tools:text="2018-03-08 前收到" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/iv_order_goods_count"

@@ -3,7 +3,6 @@ package com.smyy.sharetour.buyer.module.order.adapter;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
-import com.smyy.sharetour.buyer.util.NumberUtils;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
 
@@ -62,14 +59,14 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             holder.tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
 
             int orderStatus = data.getOrderStatus();
-            if (orderStatus >= 0 && orderStatus < Consts.ORDER_STATE_STRINGS.length) {
-                holder.tvStatus.setText(Consts.ORDER_STATE_STRINGS[orderStatus]);
+            if (orderStatus >= 0 && orderStatus < Consts.ORDER_STATUS_STRINGS.length) {
+                holder.tvStatus.setText(Consts.ORDER_STATUS_STRINGS[orderStatus]);
             } else {
                 holder.tvStatus.setText("");
             }
             switch (orderStatus) {
 
-                case Consts.ORDER_STATE_AWAIT_PAY:
+                case Consts.ORDER_STATUS_AWAIT_PAY:
                     holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.txt_price));
                     holder.tvVerifyVideo.setVisibility(View.GONE);
                     holder.tvContactSeller.setVisibility(View.VISIBLE);
@@ -83,7 +80,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                     holder.tvReview.setVisibility(View.GONE);
                     break;
 
-                case Consts.ORDER_STATE_AWAIT_SHIPPING:
+                case Consts.ORDER_STATUS_AWAIT_SHIPPING:
                     holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.txt_gray));
                     holder.tvVerifyVideo.setVisibility(View.GONE);
                     holder.tvContactSeller.setVisibility(View.VISIBLE);
@@ -97,7 +94,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                     holder.tvReview.setVisibility(View.GONE);
                     break;
 
-                case Consts.ORDER_STATE_AWAIT_CONFIRM:
+                case Consts.ORDER_STATUS_AWAIT_CONFIRM:
                     holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.txt_gray));
                     holder.tvVerifyVideo.setVisibility(View.GONE);
                     holder.tvContactSeller.setVisibility(View.VISIBLE);
@@ -111,7 +108,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                     holder.tvReview.setVisibility(View.GONE);
                     break;
 
-                case Consts.ORDER_STATE_AWAIT_REVIEW:
+                case Consts.ORDER_STATUS_AWAIT_REVIEW:
                     holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.txt_gray));
                     holder.tvVerifyVideo.setVisibility(View.GONE);
                     holder.tvContactSeller.setVisibility(View.GONE);
@@ -125,7 +122,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                     holder.tvReview.setVisibility(View.VISIBLE);
                     break;
 
-                case Consts.ORDER_STATE_OTHER:
+                case Consts.ORDER_STATUS_OTHER:
                     holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.txt_gray));
                     holder.tvVerifyVideo.setVisibility(View.GONE);
                     holder.tvContactSeller.setVisibility(View.GONE);
