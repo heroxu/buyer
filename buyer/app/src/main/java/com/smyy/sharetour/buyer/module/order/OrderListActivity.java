@@ -41,6 +41,7 @@ public class OrderListActivity extends MyBaseMvpActivity {
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
         title.setText("我的订单");
+        hideToolBarDividerLine(true);
     }
 
     @Override
