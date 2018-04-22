@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.xmyy.view.dialoglib.CommonDialog;
@@ -17,6 +18,22 @@ public class DialogUtils {
             @NonNull FragmentActivity activity, int type,
             String titleText,
             String messageText,
+            int confirmColor,
+            String confirmText, OnViewClickListener confirmClickListener,
+            String cancelText, OnViewClickListener cancelClickListener) {
+        return new MessageBoxBuilder(activity, type)
+                .setText(titleText, messageText, confirmText, cancelText)
+                .setConfirmButtonColor(confirmColor)
+                .setClickListener(confirmClickListener, cancelClickListener)
+                .build()
+                .setCancelableOutside(false)
+                .setCancelable(true);
+    }
+
+    public static CommonDialog.Builder createMessageBoxDialogBuilder(
+            @NonNull FragmentActivity activity, int type,
+            String titleText,
+            String messageText,
             String confirmText, OnViewClickListener confirmClickListener,
             String cancelText, OnViewClickListener cancelClickListener) {
         return new MessageBoxBuilder(activity, type)
@@ -26,7 +43,6 @@ public class DialogUtils {
                 .setCancelableOutside(false)
                 .setCancelable(true);
     }
-
 
     public static CommonDialog.Builder createBottomMenuDialogBuilder(
             @NonNull FragmentActivity activity,
@@ -58,6 +74,19 @@ public class DialogUtils {
      * @param cancelText           传入null则默认显示"取消"
      * @param cancelClickListener  传入null则默认dialog.dismiss
      */
+    public static void showTwoBtnMsgBox(
+            @NonNull FragmentActivity activity, String titleText, String messageText, int confirmColor,
+            String confirmText, OnViewClickListener confirmClickListener,
+            String cancelText, OnViewClickListener cancelClickListener) {
+        createMessageBoxDialogBuilder(
+                activity, MessageBoxBuilder.TYPE_TWO_BTN,
+                titleText,
+                messageText,
+                confirmColor,
+                confirmText, confirmClickListener,
+                cancelText, cancelClickListener).create().show();
+    }
+
     public static void showTwoBtnMsgBox(
             @NonNull FragmentActivity activity, String titleText, String messageText,
             String confirmText, OnViewClickListener confirmClickListener,
@@ -381,11 +410,13 @@ public class DialogUtils {
         }
     }
 
+
     private static class MessageBoxBuilder {
         private String mMsgTx;
         private String mTitleTx;
         private String mConfirmTx = "确定";
         private String mCancelTx = "取消";
+        private int mConfirmColor = R.color.txt_red;
         private OnViewClickListener mConfirmClickListener;
         private OnViewClickListener mCancelClickListener;
 
@@ -410,6 +441,11 @@ public class DialogUtils {
             return this;
         }
 
+        public MessageBoxBuilder setConfirmButtonColor(int resId){
+            this.mConfirmColor = resId;
+            return this;
+        }
+
         public MessageBoxBuilder setClickListener(OnViewClickListener confirmClickListener,
                                                   OnViewClickListener cancelClickListener) {
             this.mConfirmClickListener = confirmClickListener;
@@ -431,6 +467,9 @@ public class DialogUtils {
                             } else {
                                 viewHolder.getView(R.id.tv_dialog_title).setVisibility(View.GONE);
                             }
+
+                            ((TextView)viewHolder.getView(R.id.tv_dialog_confirm)).setTextColor(
+                                    mActivity.getResources().getColor(mConfirmColor));
 
                             if (mConfirmTx == null) {
                                 mConfirmTx = "确定";

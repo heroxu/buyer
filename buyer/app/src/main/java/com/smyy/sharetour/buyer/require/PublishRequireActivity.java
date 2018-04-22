@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.publish;
+package com.smyy.sharetour.buyer.require;
 
 import android.Manifest;
 import android.content.Intent;

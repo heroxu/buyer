@@ -15,7 +15,7 @@ import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.module.my.adapter.CommentItemAdapter;
 import com.smyy.sharetour.buyer.module.order.OrderCommentActivity;
-import com.smyy.sharetour.buyer.publish.RecyclerViewDivider;
+import com.smyy.sharetour.buyer.require.RecyclerViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;

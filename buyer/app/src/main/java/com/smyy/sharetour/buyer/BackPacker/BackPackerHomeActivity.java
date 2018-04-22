@@ -1,62 +1,60 @@
-package com.smyy.sharetour.buyer.fragment;
+package com.smyy.sharetour.buyer.BackPacker;
 
-import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatImageView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
+import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.HomeTitlesOpenOrCloseView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import me.weyye.hipermission.HiPermission;
-import me.weyye.hipermission.PermissionCallback;
-import me.weyye.hipermission.PermissionItem;
 
 /**
- * Created by hasee on 2018/3/15.
- */
+* @author Liliping
+* @org www.smyy.com
+* @email lilp@stjf.com
+* @package com.smyy.sharetour.buyer.BackPacker
+* @fileName BackPackerHomeActivity
+* @date on 2018/4/22 0022 14:37
+* @describe 背包客首页
+*/
 
-public class HomeFragment extends BaseMvpFragment {
+public class BackPackerHomeActivity extends BaseMvpActivity {
 
-    public static final String TAG = "HomeFragment";
-
-    public static final int REQUEST_CODE_SCAN = 3301;
     @BindView(R.id.tl_7)
     SlidingTabLayout tabLayout_7;
-    @BindView(R.id.vp)
-    ViewPager vp;
     @BindView(R.id.home_iv_title_arrow)
     AppCompatImageView home_iv_title_arrow;
     @BindView(R.id.hv_home_title)
     HomeTitlesOpenOrCloseView hv_home_title;
-
     @BindView(R.id.ll_home_search)
     LinearLayout ll_home_search;
+    @BindView(R.id.vp)
+    ViewPager vp;
 
     private boolean mArrowIsUp = true;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
-            "全部", "日本", "法国"
-            , "马来西亚", "新加坡", "巴西", "阿富汗",
-            "美国", "澳大利亚", "墨西哥"
-            , "阿根廷", "南非", "俄罗斯", "英国"
+            "精选", "美容美肤", "潮流时尚"
+            , "母婴健康", "文化玩乐", "美容美肤"
     };
+    private ArrayList<Fragment> mFragments = new ArrayList<>();
     private MyPagerAdapter mAdapter;
 
     @Override
@@ -66,30 +64,33 @@ public class HomeFragment extends BaseMvpFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.layout_fragment_home;
+        return R.layout.activity_backpacker_home;
     }
 
     @Override
-    protected void initData(Bundle bundle) {
-        initListener();
-        initPermissions();
-        for (String title : mTitles) {
-            mFragments.add(IndexSubclassFragment.getInstance(title));
-        }
-        mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
-        vp.setAdapter(mAdapter);
-        tabLayout_7.setViewPager(vp, mTitles);
+    protected void configToolBar(Toolbar toolbar, TextView title) {
 
-//        vp.setCurrentItem(4);
-        loadData();
     }
 
+    @Override
+    protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        hideToolBarLayout(true);
+        initListener();
+        loadData();
+
+        for (String title : mTitles) {
+            mFragments.add(BackPackerHomeFragment.getInstance(title));
+        }
+        mAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        vp.setAdapter(mAdapter);
+        tabLayout_7.setViewPager(vp, mTitles);
+    }
+
+
     private void initListener() {
-//        hv_home_title.setRvLayoutManager(new LinearLayoutManager(getContext()));
         hv_home_title.setIStatusChange(new HomeTitlesOpenOrCloseView.IStatusChange() {
             @Override
             public void selectPosition(int position) {
-                Log.e(TAG, "selectPosition: "+"position = "+position, null);
                 if(position>=0){
                     vp.setCurrentItem(position);
                 }
@@ -106,17 +107,18 @@ public class HomeFragment extends BaseMvpFragment {
                 }
                 ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation", mArrowIsUp ? 0 : 180, mArrowIsUp ? 180 : 360).setDuration(250).start();
                 if(mArrowIsUp){
-                   hv_home_title.animateOpen();
+                    hv_home_title.animateOpen();
                 }else {
                     hv_home_title.animateClose();
                 }
                 mArrowIsUp=!mArrowIsUp;
             }
         });
+
         ll_home_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityLauncher.viewHomeSearch(getContext());
+                ActivityLauncher.viewHomeSearch(BackPackerHomeActivity.this);
             }
         });
 
@@ -128,39 +130,14 @@ public class HomeFragment extends BaseMvpFragment {
     }
 
 
-    private void initPermissions() {
-        List<PermissionItem> permissonItems = new ArrayList<PermissionItem>();
-        permissonItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_camera));
-        permissonItems.add(new PermissionItem(Manifest.permission.READ_EXTERNAL_STORAGE, "读取外部存储", R.drawable.permission_ic_storage));
-        HiPermission.create(getActivity()).permissions(permissonItems).checkMutiPermission(new PermissionCallback() {
-            @Override
-            public void onClose() {
-
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-
-            @Override
-            public void onDeny(String permission, int position) {
-
-            }
-
-            @Override
-            public void onGuarantee(String permission, int position) {
-
-            }
-        });
-    }
-
-    @OnClick(R.id.iv_home_switch)
-    public void onViewClicked(View v) {
-        switch (v.getId()){
+    @OnClick({R.id.iv_home_switch, R.id.tt_fount_message})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
             case R.id.iv_home_switch:
-                ActivityLauncher.viewBackpackerHomeActivity(getActivity());
-                getActivity().finish();
+                ActivityLauncher.viewBuyerHomeActivity(BackPackerHomeActivity.this);
+                finish();
+                break;
+            case R.id.tt_fount_message:
                 break;
         }
     }

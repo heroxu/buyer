@@ -3,6 +3,7 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.BackPacker.BackPackerHomeActivity;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.ReportActivity;
 import com.smyy.sharetour.buyer.SkinListActivity;
@@ -12,10 +13,11 @@ import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.search.activity.HomeSearchActivity;
 import com.smyy.sharetour.buyer.home.search.activity.SearchDetailActivity;
 import com.smyy.sharetour.buyer.module.my.CommentListActivity;
-import com.smyy.sharetour.buyer.publish.PublishRequireActivity;
-import com.smyy.sharetour.buyer.publish.RequireListActivity;
+import com.smyy.sharetour.buyer.require.PublishRequireActivity;
+import com.smyy.sharetour.buyer.require.RequireListActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
 import com.smyy.sharetour.buyer.ui.LoginActivity;
+import com.smyy.sharetour.buyer.ui.MainActivity;
 import com.smyy.sharetour.buyer.ui.MoreReplyActivity;
 import com.smyy.sharetour.buyer.ui.MyCollectionActivity;
 import com.smyy.sharetour.buyer.ui.NoteDetailsActivity;
@@ -221,6 +223,22 @@ public class ActivityLauncher {
      */
     public static void viewMyCommentActivity(Context context) {
         Intent intent = new Intent(context, CommentListActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到背包客首页
+     */
+    public static void viewBackpackerHomeActivity(Context context) {
+        Intent intent = new Intent(context, BackPackerHomeActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到买家首页
+     */
+    public static void viewBuyerHomeActivity(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
     }
 }

@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.publish;
+package com.smyy.sharetour.buyer.require;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

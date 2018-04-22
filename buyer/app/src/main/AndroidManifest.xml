@@ -49,8 +49,8 @@
         <activity android:name=".ui.NoteDetailsActivity" />
         <activity android:name=".ui.VideoDetailsActivity" />
         <activity android:name=".ui.MoreReplyActivity" />
-        <activity android:name=".publish.SimpleSelectActivity" />
-        <activity android:name=".publish.PublishRequireActivity" />
+        <activity android:name=".require.SimpleSelectActivity" />
+        <activity android:name=".require.PublishRequireActivity" />
         <activity android:name=".home.detail.HomeDetailActivity" />
         <activity android:name=".home.search.activity.HomeSearchActivity" />
         <activity android:name=".home.search.activity.SearchDetailActivity" />
@@ -70,14 +70,15 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".SkinPeelerActivity" />
         <activity android:name=".SkinListActivity"/>
-        <activity android:name=".publish.RequireDetailsActivity" />
-        <activity android:name=".publish.RequireCancelActivity" />
-        <activity android:name=".publish.RequireCancelSuccessActivity" />
-        <activity android:name=".publish.RequireListActivity"/>
+        <activity android:name=".require.RequireDetailsActivity" />
+        <activity android:name=".require.RequireCancelActivity" />
+        <activity android:name=".require.RequireCancelSuccessActivity" />
+        <activity android:name=".require.RequireListActivity"/>
         <activity android:name=".ReportActivity"/>
-        <activity android:name=".publish.RequireOutListActivity"/>
-        <activity android:name=".publish.RequireSellerListActivity"/>
+        <activity android:name=".require.RequireOutListActivity"/>
+        <activity android:name=".require.RequireSellerListActivity"/>
         <activity android:name=".module.my.CommentListActivity"/>
+        <activity android:name=".BackPacker.BackPackerHomeActivity" />
     </application>
 
 </manifest>

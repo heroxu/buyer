@@ -1,0 +1,42 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:id="@+id/notice"
+        android:drawableLeft="@mipmap/ic_home_switch"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/ic_pop_ups_off"
+        android:background="@drawable/shape_glogin_register"
+        android:text="完善个人资料，提升您的个人形象。"
+        android:textSize="@dimen/txt_size_13"
+        android:textColor="@color/txt_gray_dark"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/home_all_srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/require_list"
+            android:scrollbars="vertical"
+            android:scrollbarFadeDuration="1"
+            android:fadeScrollbars="true"
+            />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

@@ -74,8 +74,8 @@
                     smile_rating:image_width="30dp"
                     smile_rating:star="5"
                     smile_rating:star_count="5"
-                    smile_rating:star_img="@mipmap/star"
-                    smile_rating:unstar_img="@mipmap/unstar"
+                    smile_rating:star_img="@mipmap/ic_expression_ele"
+                    smile_rating:unstar_img="@mipmap/ic_expression_nor"
                     />
            </LinearLayout>
 
@@ -101,8 +101,8 @@
                     smile_rating:image_width="30dp"
                     smile_rating:star="5"
                     smile_rating:star_count="5"
-                    smile_rating:star_img="@mipmap/star"
-                    smile_rating:unstar_img="@mipmap/unstar"
+                    smile_rating:star_img="@mipmap/ic_expression_ele"
+                    smile_rating:unstar_img="@mipmap/ic_expression_nor"
                     />
             </LinearLayout>
         </LinearLayout>
