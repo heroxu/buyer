@@ -73,6 +73,7 @@
         <activity android:name=".publish.RequireCancelActivity" />
         <activity android:name=".publish.RequireCancelSuccessActivity" />
         <activity android:name=".publish.RequireListActivity"/>
+        <activity android:name=".ReportActivity"/>
         <activity android:name=".publish.RequireOutListActivity"/>
         <activity android:name=".publish.RequireSellerListActivity"/>
     </application>

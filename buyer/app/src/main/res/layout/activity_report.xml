@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tag_bg"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/r_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/r_btn_advertising"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:button="@null"
+                    android:drawableRight="@drawable/btn_radio_selector_report"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="30dp"
+                    android:text="广告内容"
+                    android:textColor="@color/txt_main"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_divider" />
+
+                <RadioButton
+                    android:id="@+id/r_btn_bad"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:button="@null"
+                    android:drawableRight="@drawable/btn_radio_selector_report"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="30dp"
+                    android:text="不友善内容"
+                    android:textColor="@color/txt_main"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_divider" />
+
+                <RadioButton
+                    android:id="@+id/r_btn_garbage"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:button="@null"
+                    android:drawableRight="@drawable/btn_radio_selector_report"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="30dp"
+                    android:text="垃圾内容"
+                    android:textColor="@color/txt_main"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_divider" />
+
+                <RadioButton
+                    android:id="@+id/r_btn_violations"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:button="@null"
+                    android:drawableRight="@drawable/btn_radio_selector_report"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="30dp"
+                    android:text="违法违规内容"
+                    android:textColor="@color/txt_main"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_divider" />
+
+                <RadioButton
+                    android:id="@+id/r_btn_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:button="@null"
+                    android:drawableRight="@drawable/btn_radio_selector_report"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="30dp"
+                    android:text="其他"
+                    android:textColor="@color/txt_main"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/line_divider" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/ll_report_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/et_report_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="top"
+                    android:hint="请输入你的举报原因，最多输入200字"
+                    android:maxLength="200"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/txt_gray_light"
+                    android:textSize="@dimen/txt_size_15" />
+
+                <TextView
+                    android:id="@+id/tv_report_other200"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="right"
+                    android:text="0/200"
+                    android:textColor="@color/txt_gray_light"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp">
+
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="12dp"
+                        android:layout_marginRight="6dp"
+                        android:background="@drawable/shape_fount_note_type" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="添加图片证据"
+                        android:textColor="@color/txt_main"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <com.smyy.sharetour.buyer.view.NoScrollGridView
+                    android:id="@+id/gridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:horizontalSpacing="@dimen/space_size"
+                    android:listSelector="@android:color/transparent"
+                    android:numColumns="4"
+                    android:verticalSpacing="@dimen/space_size" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <Button
+        style="@style/CommonButton.Bottom"
+        android:enabled="false"
+        android:text="举报" />
+</LinearLayout>

@@ -3,6 +3,7 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.ReportActivity;
 import com.smyy.sharetour.buyer.SkinListActivity;
 import com.smyy.sharetour.buyer.SkinPeelerActivity;
 import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
@@ -189,6 +190,13 @@ public class ActivityLauncher {
      */
     public static void viewSkinPeelerActivity(Context context) {
         Intent intent = new Intent(context, SkinPeelerActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到举报界面
+     */
+    public static void viewReportActivity(Context context) {
+        Intent intent = new Intent(context, ReportActivity.class);
         context.startActivity(intent);
     }
 
