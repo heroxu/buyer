@@ -55,6 +55,7 @@
         <activity android:name=".home.search.activity.HomeSearchActivity" />
         <activity android:name=".home.search.activity.SearchDetailActivity" />
         <activity android:name=".module.order.OrderListActivity" />
+        <activity android:name=".module.order.OrderDetailActivity" />
         <activity android:name=".module.order.OrderCommentActivity" />
         <activity android:name=".ui.PersonalTagActivity" />
         <activity android:name=".ui.MyCollectionActivity" />

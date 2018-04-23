@@ -182,6 +182,8 @@ public class Consts {
 
     public static final String[] REQUIRE_STATE_STRINGS = {"待接单", "待指定", "备货中", "已发货", "已完成", "已取消", "已失效"};
 
+
+    public static final String ORDER_ID = "order_id";
     //订单类型
     public static final String ORDER_TYPE = "order_type";
     public static final int ORDER_TYPE_ALL = 0;

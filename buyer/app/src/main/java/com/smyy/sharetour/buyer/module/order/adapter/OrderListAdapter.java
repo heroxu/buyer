@@ -47,10 +47,10 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
             int goodsCountTotal = data.getGoodsCountTotal();
             if (goodsCountTotal > 0) {
-                holder.tvGoodsCount.setVisibility(View.GONE);
+                holder.tvGoodsCount.setVisibility(View.VISIBLE);
                 holder.tvGoodsCount.setText("共" + goodsCountTotal + "件商品");
             } else {
-                holder.tvGoodsCount.setVisibility(View.VISIBLE);
+                holder.tvGoodsCount.setVisibility(View.GONE);
             }
 
             holder.tvPriceTotal.setText(new Spanny().append("总额：")
@@ -64,8 +64,8 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             } else {
                 holder.tvStatus.setText("");
             }
-            switch (orderStatus) {
 
+            switch (orderStatus) {
                 case Consts.ORDER_STATUS_AWAIT_PAY:
                     holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.txt_price));
                     holder.tvVerifyVideo.setVisibility(View.GONE);
@@ -139,6 +139,25 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                 default:
                     break;
             }
+
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onItemClick(holder.itemView, position, data);
+                    }
+                }
+            });
+
+            holder.rvGoodsList.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemViewClickListener != null) {
+                        onItemViewClickListener.onItemViewClick(holder.rvGoodsList, position, data);
+                    }
+                }
+            });
 
             holder.tvVerifyVideo.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -231,7 +250,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     private OnItemClickListener onItemClickListener;
 
     public interface OnItemClickListener {
-        void onItemClick(View view, int position, ShippingAddressBean data);
+        void onItemClick(View view, int position, OrderBean data);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -287,22 +306,22 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         public ViewHolder(View itemView) {
             super(itemView);
             ivSellerAvatar = (ImageView) itemView.findViewById(R.id.iv_order_seller_avatar);
-            tvSellerName = (TextView) itemView.findViewById(R.id.iv_order_seller_name);
-            tvStatus = (TextView) itemView.findViewById(R.id.iv_order_status);
+            tvSellerName = (TextView) itemView.findViewById(R.id.tv_order_seller_name);
+            tvStatus = (TextView) itemView.findViewById(R.id.tv_order_status);
             rvGoodsList = (RecyclerView) itemView.findViewById(R.id.rv_order_goods_list);
-            tvGoodsCount = (TextView) itemView.findViewById(R.id.iv_order_goods_count);
-            tvPriceTotal = (TextView) itemView.findViewById(R.id.iv_order_price_total);
-            tvShippingFee = (TextView) itemView.findViewById(R.id.iv_order_shipping_fee);
-            tvVerifyVideo = (TextView) itemView.findViewById(R.id.iv_order_verify_video);
-            tvContactSeller = (TextView) itemView.findViewById(R.id.iv_order_contact_seller);
-            tvContactService = (TextView) itemView.findViewById(R.id.iv_order_contact_service);
-            tvRemindShipping = (TextView) itemView.findViewById(R.id.iv_order_remind_shipping);
-            tvDelete = (TextView) itemView.findViewById(R.id.iv_order_delete);
-            tvViewShipping = (TextView) itemView.findViewById(R.id.iv_order_view_shipping);
-            tvCancel = (TextView) itemView.findViewById(R.id.iv_order_cancel);
-            tvPay = (TextView) itemView.findViewById(R.id.iv_order_pay);
-            tvConifrm = (TextView) itemView.findViewById(R.id.iv_order_confirm);
-            tvReview = (TextView) itemView.findViewById(R.id.iv_order_review);
+            tvGoodsCount = (TextView) itemView.findViewById(R.id.tv_order_goods_count);
+            tvPriceTotal = (TextView) itemView.findViewById(R.id.tv_order_price_total);
+            tvShippingFee = (TextView) itemView.findViewById(R.id.tv_order_shipping_fee);
+            tvVerifyVideo = (TextView) itemView.findViewById(R.id.tv_order_verify_video);
+            tvContactSeller = (TextView) itemView.findViewById(R.id.tv_order_contact_seller);
+            tvContactService = (TextView) itemView.findViewById(R.id.tv_order_contact_service);
+            tvRemindShipping = (TextView) itemView.findViewById(R.id.tv_order_remind_shipping);
+            tvDelete = (TextView) itemView.findViewById(R.id.tv_order_delete);
+            tvViewShipping = (TextView) itemView.findViewById(R.id.tv_order_view_shipping);
+            tvCancel = (TextView) itemView.findViewById(R.id.tv_order_cancel);
+            tvPay = (TextView) itemView.findViewById(R.id.tv_order_pay);
+            tvConifrm = (TextView) itemView.findViewById(R.id.tv_order_confirm);
+            tvReview = (TextView) itemView.findViewById(R.id.tv_order_review);
         }
     }
 }

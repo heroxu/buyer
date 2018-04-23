@@ -61,39 +61,6 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
 
             holder.tvPrice.setText(StringUtil.connect("价格：", data.getGoodsPrice()));
             holder.tvCount.setText("× ️" + data.getGoodsCount());
-
-            holder.tvName.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onItemViewClickListener != null) {
-                        onItemViewClickListener.onItemViewClick(holder.tvName, position, data);
-                    }
-                }
-            });
-            holder.tvSpec.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onItemViewClickListener != null) {
-                        onItemViewClickListener.onItemViewClick(holder.tvSpec, position, data);
-                    }
-                }
-            });
-            holder.tvPrice.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onItemViewClickListener != null) {
-                        onItemViewClickListener.onItemViewClick(holder.tvPrice, position, data);
-                    }
-                }
-            });
-            holder.tvCount.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onItemViewClickListener != null) {
-                        onItemViewClickListener.onItemViewClick(holder.tvCount, position, data);
-                    }
-                }
-            });
         }
     }
 
@@ -110,17 +77,6 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
-    }
-
-    // 事件回调监听
-    private OnItemViewClickListener onItemViewClickListener;
-
-    public interface OnItemViewClickListener {
-        void onItemViewClick(View view, int position, OrderGoodsInfo data);
-    }
-
-    public void setOnItemViewClickListener(OnItemViewClickListener listener) {
-        this.onItemViewClickListener = listener;
     }
 
     @Override
@@ -154,7 +110,7 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
             tvSpec = (TextView) itemView.findViewById(R.id.iv_order_goods_spec);
             tvDeadline = (TextView) itemView.findViewById(R.id.iv_order_receive_deadline);
             tvPrice = (TextView) itemView.findViewById(R.id.iv_order_goods_price);
-            tvCount = (TextView) itemView.findViewById(R.id.iv_order_goods_count);
+            tvCount = (TextView) itemView.findViewById(R.id.tv_order_goods_count);
         }
     }
 }

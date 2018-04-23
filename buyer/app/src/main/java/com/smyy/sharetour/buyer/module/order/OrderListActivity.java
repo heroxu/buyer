@@ -60,7 +60,6 @@ public class OrderListActivity extends MyBaseMvpActivity {
             int orderType = bundle.getInt(Consts.ORDER_TYPE);
             if (orderType >= 0 && orderType < mTitles.length) {
                 stlOrderList.setCurrentTab(orderType);
-//                vpOrderList.setCurrentItem(orderType);
             }
         }
     }

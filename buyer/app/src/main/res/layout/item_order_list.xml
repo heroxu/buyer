@@ -27,14 +27,14 @@
             tools:src="@mipmap/fake_seller_avatar" />
 
         <TextView
-            android:id="@+id/iv_order_seller_name"
+            android:id="@+id/tv_order_seller_name"
             style="@style/WideItemMiddleRight.Text.Ellipsize"
             android:gravity="left"
             android:textSize="@dimen/txt_size_13"
             tools:text="我是小桂子的桂子" />
 
         <TextView
-            android:id="@+id/iv_order_status"
+            android:id="@+id/tv_order_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/txt_price"
@@ -71,15 +71,16 @@
             app:justifyContent="flex_end">
 
             <TextView
-                android:id="@+id/iv_order_goods_count"
+                android:id="@+id/tv_order_goods_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:textColor="@color/txt_main"
                 android:textSize="@dimen/txt_size_13"
                 tools:text="共1件商品" />
 
             <TextView
-                android:id="@+id/iv_order_price_total"
+                android:id="@+id/tv_order_price_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/txt_main"
@@ -87,7 +88,7 @@
                 tools:text="总额：478638" />
 
             <TextView
-                android:id="@+id/iv_order_shipping_fee"
+                android:id="@+id/tv_order_shipping_fee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/txt_gray_dark"
@@ -113,7 +114,7 @@
         app:justifyContent="flex_end">
 
         <TextView
-            android:id="@+id/iv_order_verify_video"
+            android:id="@+id/tv_order_verify_video"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -128,7 +129,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/iv_order_contact_seller"
+            android:id="@+id/tv_order_contact_seller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -143,7 +144,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/iv_order_contact_service"
+            android:id="@+id/tv_order_contact_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -158,7 +159,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/iv_order_remind_shipping"
+            android:id="@+id/tv_order_remind_shipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -173,7 +174,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/iv_order_delete"
+            android:id="@+id/tv_order_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -188,7 +189,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/iv_order_view_shipping"
+            android:id="@+id/tv_order_view_shipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -203,7 +204,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/iv_order_cancel"
+            android:id="@+id/tv_order_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -218,7 +219,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/iv_order_pay"
+            android:id="@+id/tv_order_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -233,7 +234,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/iv_order_confirm"
+            android:id="@+id/tv_order_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -248,7 +249,7 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/iv_order_review"
+            android:id="@+id/tv_order_review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

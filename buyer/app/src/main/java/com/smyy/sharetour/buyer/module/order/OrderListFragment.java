@@ -10,6 +10,7 @@ import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderListAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
@@ -65,48 +66,66 @@ public class OrderListFragment extends BaseMvpFragment {
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
+        mAdapter.setOnItemClickListener(new OrderListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, OrderBean data) {
+                Bundle bundle = new Bundle();
+                bundle.putString(Consts.ORDER_ID, data.getOrderId());
+                bundle.putSerializable(OrderDetailActivity.FAKE_DATA, data);
+                startActivity(OrderDetailActivity.class, bundle);
+            }
+        });
+
         mAdapter.setOnItemViewClickListener(new OrderListAdapter.OnItemViewClickListener() {
             @Override
             public void onItemViewClick(View view, int position, OrderBean data) {
+                Bundle bundle = new Bundle();
                 switch (view.getId()) {
-                    case R.id.iv_order_verify_video:
+                    case R.id.rv_order_goods_list:
+                        bundle.putString(Consts.ORDER_ID, data.getOrderId());
+                        bundle.putSerializable(OrderDetailActivity.FAKE_DATA, data);
+                        startActivity(OrderDetailActivity.class, bundle);
+                        break;
+
+                    case R.id.tv_order_verify_video:
 
                         break;
 
-                    case R.id.iv_order_contact_seller:
+                    case R.id.tv_order_contact_seller:
 
                         break;
 
-                    case R.id.iv_order_contact_service:
+                    case R.id.tv_order_contact_service:
 
                         break;
 
-                    case R.id.iv_order_remind_shipping:
+                    case R.id.tv_order_remind_shipping:
 
                         break;
 
-                    case R.id.iv_order_delete:
+                    case R.id.tv_order_delete:
 
                         break;
 
-                    case R.id.iv_order_view_shipping:
+                    case R.id.tv_order_view_shipping:
 
                         break;
 
-                    case R.id.iv_order_cancel:
+                    case R.id.tv_order_cancel:
 
                         break;
 
-                    case R.id.iv_order_pay:
+                    case R.id.tv_order_pay:
 
                         break;
 
-                    case R.id.iv_order_confirm:
+                    case R.id.tv_order_confirm:
 
                         break;
 
-                    case R.id.iv_order_review:
-                        startActivity(OrderCommentActivity.class);
+                    case R.id.tv_order_review:
+                        bundle.putString(Consts.ORDER_ID, data.getOrderId());
+                        startActivity(OrderCommentActivity.class, bundle);
                         break;
 
                     default:
