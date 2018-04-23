@@ -21,8 +21,6 @@
             android:id="@+id/iv_order_seller_avatar"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/lay_my_username"
             android:layout_marginRight="5dp"
             tools:src="@mipmap/fake_seller_avatar" />
 
