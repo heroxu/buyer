@@ -81,11 +81,6 @@ public class OrderListFragment extends BaseMvpFragment {
             public void onItemViewClick(View view, int position, OrderBean data) {
                 Bundle bundle = new Bundle();
                 switch (view.getId()) {
-                    case R.id.rv_order_goods_list:
-                        bundle.putString(Consts.ORDER_ID, data.getOrderId());
-                        bundle.putSerializable(OrderDetailActivity.FAKE_DATA, data);
-                        startActivity(OrderDetailActivity.class, bundle);
-                        break;
 
                     case R.id.tv_order_verify_video:
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--全局通用按钮-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:color="@color/txt_gray" android:state_enabled="false" />
-    <item android:color="@color/txt_main" android:state_checked="true" />
+    <item android:color="#334455" android:state_checked="true" />
     <item android:color="@color/black" />
 </selector>

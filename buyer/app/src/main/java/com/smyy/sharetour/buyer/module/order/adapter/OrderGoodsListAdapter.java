@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
 import com.smyy.sharetour.buyer.util.StringUtil;
 
@@ -61,6 +60,16 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
 
             holder.tvPrice.setText(StringUtil.connect("价格：", data.getGoodsPrice()));
             holder.tvCount.setText("× ️" + data.getGoodsCount());
+
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onItemClick(holder.itemView, position, data);
+                    }
+                }
+            });
         }
     }
 
@@ -72,7 +81,7 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
     private OnItemClickListener onItemClickListener;
 
     public interface OnItemClickListener {
-        void onItemClick(View view, int position, ShippingAddressBean data);
+        void onItemClick(View view, int position, OrderGoodsInfo data);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

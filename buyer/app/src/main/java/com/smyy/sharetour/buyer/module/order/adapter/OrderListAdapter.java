@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
+import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
 
@@ -24,6 +26,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
     private Context mContext;
     private List<OrderBean> mDatas;
+    private OrderGoodsListAdapter mGoodsListAdapter;
 
     public OrderListAdapter(Context context) {
         this.mContext = context;
@@ -41,9 +44,19 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             holder.ivSellerAvatar.setImageResource(R.mipmap.fake_seller_avatar);
 //            Glide.with(mContext).load(data.getSellerAvatar()).into(holder.ivSellerAvatar);//TODO RTRT
             holder.tvSellerName.setText(data.getSellerName());
+
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
             holder.rvGoodsList.setLayoutManager(linearLayoutManager);
-            holder.rvGoodsList.setAdapter(new OrderGoodsListAdapter(mContext, data.getGoodsList()));
+            OrderGoodsListAdapter adapter = new OrderGoodsListAdapter(mContext, data.getGoodsList());
+            holder.rvGoodsList.setAdapter(adapter);
+            adapter.setOnItemClickListener(new OrderGoodsListAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position, OrderGoodsInfo goodsInfo) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onItemClick(holder.itemView, position, data);
+                    }
+                }
+            });
 
             int goodsCountTotal = data.getGoodsCountTotal();
             if (goodsCountTotal > 0) {
@@ -146,15 +159,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                 public void onClick(View v) {
                     if (onItemClickListener != null) {
                         onItemClickListener.onItemClick(holder.itemView, position, data);
-                    }
-                }
-            });
-
-            holder.rvGoodsList.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onItemViewClickListener != null) {
-                        onItemViewClickListener.onItemViewClick(holder.rvGoodsList, position, data);
                     }
                 }
             });
