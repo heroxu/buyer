@@ -6,22 +6,17 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.adapter.InterestSellerAdapter;
-import com.smyy.sharetour.buyer.module.my.adapter.ShippingAddressAdapter;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 import com.smyy.sharetour.buyer.module.my.bean.InterestSellerBean;
-import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
-import com.smyy.sharetour.buyer.module.my.contract.IShippingAddressContract;
-import com.smyy.sharetour.buyer.module.my.model.ShippingAddressModel;
-import com.smyy.sharetour.buyer.module.my.presenter.ShippingAddressPresenter;
 import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,7 +27,7 @@ public class InterestSellerListActivity extends MyBaseMvpActivity {
     RecyclerView mRecyclerView;
 
     private InterestSellerAdapter mAdapter;
-    private List<ShippingAddressBean> mDatas;
+    private List<InterestSellerBean> mDatas = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -47,6 +42,14 @@ public class InterestSellerListActivity extends MyBaseMvpActivity {
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         initView();
+        getFakeData();
+    }
+
+    private void getFakeData() {
+        mDatas.add(new InterestSellerBean());
+        mDatas.add(new InterestSellerBean());
+        mDatas.add(new InterestSellerBean());
+        mAdapter.setData(mDatas);
     }
 
     private void initView() {
