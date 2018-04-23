@@ -1,15 +1,16 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.ui.SmallBackpack;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.smyy.sharetour.buyer.bean.CollectionBean;
+import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.view.SwipeItemLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,26 +29,33 @@ public class SmallBackpackAdapter extends BaseMultiItemQuickAdapter<SmallBackpac
         switch (helper.getItemViewType()) {
             case SmallBackpackBean.GOODS_TYPE:
                 RecyclerView mRecyclerViewGoods = helper.getView(R.id.recycler_view);
+                mRecyclerViewGoods.setFocusable(false);
                 mRecyclerViewGoods.setLayoutManager(new LinearLayoutManager(mContext));
-                List<SmallBackpackBean.GoodsBean> data1 = new ArrayList<>();
-                data1.add(new SmallBackpackBean.GoodsBean());
-                data1.add(new SmallBackpackBean.GoodsBean());
-                data1.add(new SmallBackpackBean.GoodsBean());
-                mRecyclerViewGoods.setAdapter(new GoodsAdapter(data1));
+                final List<SmallBackpackBean.GoodsBean> data = item.getmGoodsBeans();
+                mRecyclerViewGoods.addOnItemTouchListener(new SwipeItemLayout.OnSwipeItemTouchListener(mContext));
+                final GoodsAdapter mGoodsAdapter = new GoodsAdapter(data);
+                mRecyclerViewGoods.setAdapter(mGoodsAdapter);
+                ((CheckBox) helper.getView(R.id.cb_goods_all)).setChecked(item.isSelect());
+                //给CheckBox设置事件监听
+                ((CheckBox) helper.getView(R.id.cb_goods_all)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        for (int i = 0; i < data.size(); i++) {
+                            data.get(i).setSelect(isChecked);
+                        }
+                        mGoodsAdapter.notifyDataSetChanged();
+                    }
+                });
                 break;
             case SmallBackpackBean.GOODS_FAILURE_TYPE:
                 RecyclerView mRecyclerViewGoodsFailure = helper.getView(R.id.recycler_view);
+                mRecyclerViewGoodsFailure.setFocusable(false);
                 mRecyclerViewGoodsFailure.setLayoutManager(new LinearLayoutManager(mContext));
-                List<SmallBackpackBean.GoodsFailureBean> data2 = new ArrayList<>();
-                data2.add(new SmallBackpackBean.GoodsFailureBean());
-                data2.add(new SmallBackpackBean.GoodsFailureBean());
-                data2.add(new SmallBackpackBean.GoodsFailureBean());
-                data2.add(new SmallBackpackBean.GoodsFailureBean());
-                data2.add(new SmallBackpackBean.GoodsFailureBean());
-                mRecyclerViewGoodsFailure.setAdapter(new GoodsFailureAdapter(data2));
+                mRecyclerViewGoodsFailure.setAdapter(new GoodsFailureAdapter(item.getmGoodsFailureBeans()));
                 break;
         }
     }
+
     public class GoodsAdapter extends BaseQuickAdapter<SmallBackpackBean.GoodsBean, BaseViewHolder> {
 
         /**
@@ -57,14 +65,16 @@ public class SmallBackpackAdapter extends BaseMultiItemQuickAdapter<SmallBackpac
          * @param data A new list is created out of this one to avoid mutable list
          */
         public GoodsAdapter(List<SmallBackpackBean.GoodsBean> data) {
-            super(R.layout.item_small_backpack_goods_child,data);
+            super(R.layout.item_small_backpack_goods_child, data);
         }
 
         @Override
         protected void convert(BaseViewHolder helper, SmallBackpackBean.GoodsBean item) {
-
+            CheckBox mCheckBox = helper.getView(R.id.cb_goods);
+            mCheckBox.setChecked(item.isSelect());
         }
     }
+
     public class GoodsFailureAdapter extends BaseQuickAdapter<SmallBackpackBean.GoodsFailureBean, BaseViewHolder> {
 
         /**
@@ -74,7 +84,7 @@ public class SmallBackpackAdapter extends BaseMultiItemQuickAdapter<SmallBackpac
          * @param data A new list is created out of this one to avoid mutable list
          */
         public GoodsFailureAdapter(List<SmallBackpackBean.GoodsFailureBean> data) {
-            super(R.layout.item_small_backpack_goods_failure_child,data);
+            super(R.layout.item_small_backpack_goods_failure_child, data);
         }
 
         @Override

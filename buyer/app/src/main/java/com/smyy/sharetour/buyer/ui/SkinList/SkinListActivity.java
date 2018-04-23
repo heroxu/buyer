@@ -1,8 +1,7 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.ui.SkinList;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.smyy.sharetour.buyer.adapter.BuyVideoAdapter;
-import com.smyy.sharetour.buyer.adapter.SkinListAdapter;
+import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;

@@ -16,8 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/XqcTheme.NoActionBar">
-        <activity android:name=".ui.MainActivity"
-            android:launchMode="singleInstance">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,32 +63,34 @@
         <activity
             android:name=".ui.buyCommodity.RecommendBuyActivity"
             android:label="@string/title_activity_recommend_buy" />
-        <activity android:name=".ui.buyCommodity.BuyHomePageActivity"></activity>
-
+        <activity android:name=".ui.buyCommodity.BuyHomePageActivity" />
         <activity
             android:name=".tim.ChatActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".SkinPeelerActivity" />
-        <activity android:name=".SkinListActivity"/>
+        <activity android:name=".ui.SkinList.SkinPeelerActivity" />
+        <activity android:name=".ui.SkinList.SkinListActivity" />
         <activity android:name=".require.RequireDetailsActivity" />
         <activity android:name=".require.RequireCancelActivity" />
         <activity android:name=".require.RequireCancelSuccessActivity" />
-        <activity android:name=".require.RequireListActivity"/>
-        <activity android:name=".ReportActivity"/>
-        <activity android:name=".require.RequireOutListActivity"/>
-        <activity android:name=".require.RequireSellerListActivity"/>
-        <activity android:name=".module.my.CommentListActivity"/>
-        <activity android:name=".BackPacker.BackPackerHomeActivity"
-            android:launchMode="singleInstance"/>
+        <activity android:name=".require.RequireListActivity" />
+        <activity android:name=".ui.ReportActivity" />
+        <activity android:name=".require.RequireOutListActivity" />
+        <activity android:name=".require.RequireSellerListActivity" />
+        <activity android:name=".module.my.CommentListActivity" />
+        <activity
+            android:name=".BackPacker.BackPackerHomeActivity"
+            android:launchMode="singleInstance" />
         <activity android:name=".BackPacker.Require.BackpackerTakeRequireActivity" />
-        <activity android:name=".SmallBackpackActivity" />
+        <activity android:name=".ui.SmallBackpack.SmallBackpackActivity" />
+        <activity android:name=".ui.ConfirmOrderActivity" />
         <activity android:name=".BackPacker.Require.BackPackerRequireListActivity" />
         <activity android:name=".BackPacker.Require.BackPackerRequireDetailsActivity" />
         <activity android:name=".BackPacker.Require.BackpackerTakeRequireSuccessActivity" />
         <activity android:name=".BackPacker.Require.BackPackerRequireCancelActivity" />
         <activity android:name=".BackPacker.Require.BackPackerRequireCancelSuccessActivity" />
+        <activity android:name=".ui.PayFinishActivity"></activity>
     </application>
 
 </manifest>

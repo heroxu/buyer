@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.smyy.sharetour.buyer.BackPacker.BackPackerHomeActivity;
+import com.smyy.sharetour.buyer.ui.ConfirmOrderActivity;
 import com.smyy.sharetour.buyer.MyApplication;
-import com.smyy.sharetour.buyer.ReportActivity;
-import com.smyy.sharetour.buyer.SkinListActivity;
-import com.smyy.sharetour.buyer.SkinPeelerActivity;
-import com.smyy.sharetour.buyer.SmallBackpackActivity;
+import com.smyy.sharetour.buyer.ui.PayFinishActivity;
+import com.smyy.sharetour.buyer.ui.ReportActivity;
+import com.smyy.sharetour.buyer.ui.SkinList.SkinListActivity;
+import com.smyy.sharetour.buyer.ui.SkinList.SkinPeelerActivity;
+import com.smyy.sharetour.buyer.ui.SmallBackpack.SmallBackpackActivity;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.search.activity.HomeSearchActivity;
@@ -56,6 +58,7 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, GuideLoginActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到登录
      */
@@ -71,6 +74,7 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, RegisterActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到设置密码
      */
@@ -94,6 +98,7 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, VerifyPhoneActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到选择区号
      */
@@ -101,32 +106,36 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, SelectAreaCodeActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到笔记详情
      */
     public static void viewNoteDetailsActivity(Context context) {
-        if (isLogin(context)){
+        if (isLogin(context)) {
             Intent intent = new Intent(context, NoteDetailsActivity.class);
             context.startActivity(intent);
         }
     }
+
     /**
      * 跳转到视频详情
      */
     public static void viewVideoDetailsActivity(Context context) {
-        if (isLogin(context)){
+        if (isLogin(context)) {
             Intent intent = new Intent(context, VideoDetailsActivity.class);
             context.startActivity(intent);
         }
     }
+
     /**
      * 跳转到更多回复
      */
     public static void viewMoreReplyActivityty(Context context, CommentsBean.MainList data) {
         Intent intent = new Intent(context, MoreReplyActivity.class);
-        intent.putExtra(MoreReplyActivity.BUNDLE_REPLY_DATA,data);
+        intent.putExtra(MoreReplyActivity.BUNDLE_REPLY_DATA, data);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到收藏列表
      */
@@ -134,18 +143,20 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, MyCollectionActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到推荐买手
      */
     public static void viewRecommendBuyActivity(Context context) {
-        Intent intent = new Intent(context,RecommendBuyActivity.class);
+        Intent intent = new Intent(context, RecommendBuyActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到买手主页
      */
     public static void viewBuyHomePageActivity(Context context) {
-        Intent intent = new Intent(context,BuyHomePageActivity.class);
+        Intent intent = new Intent(context, BuyHomePageActivity.class);
         context.startActivity(intent);
     }
 
@@ -195,6 +206,7 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, SkinPeelerActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到举报界面
      */
@@ -203,8 +215,8 @@ public class ActivityLauncher {
         context.startActivity(intent);
     }
 
-    private static boolean isLogin(Context context){
-        if (MyApplication.getApplication().isLogin()){
+    private static boolean isLogin(Context context) {
+        if (MyApplication.getApplication().isLogin()) {
             return true;
         }
         viewGuideLoginActivity(context);
@@ -226,6 +238,7 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, CommentListActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到小背包
      */
@@ -247,6 +260,22 @@ public class ActivityLauncher {
      */
     public static void viewBuyerHomeActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到确认订单
+     */
+    public static void viewConfirmOrderActivity(Context context) {
+        Intent intent = new Intent(context, ConfirmOrderActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到支付完成
+     */
+    public static void viewPayFinishActivity(Context context) {
+        Intent intent = new Intent(context, PayFinishActivity.class);
         context.startActivity(intent);
     }
 }

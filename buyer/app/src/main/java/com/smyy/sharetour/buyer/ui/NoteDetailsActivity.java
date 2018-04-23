@@ -19,6 +19,7 @@ import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.dialog.DetailsEditorDialog;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.ObservableScrollView;
 
 import butterknife.BindView;

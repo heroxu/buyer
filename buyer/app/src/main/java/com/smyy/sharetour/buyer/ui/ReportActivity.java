@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.ui;
 
 import android.Manifest;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.adapter.GridAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
@@ -28,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;

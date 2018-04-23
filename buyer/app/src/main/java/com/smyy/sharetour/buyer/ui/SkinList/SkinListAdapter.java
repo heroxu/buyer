@@ -1,12 +1,11 @@
-package com.smyy.sharetour.buyer.adapter;
+package com.smyy.sharetour.buyer.ui.SkinList;
 
 import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.SkinListBean;
-import com.smyy.sharetour.buyer.bean.BuyVideoBean;
+import com.smyy.sharetour.buyer.ui.SkinList.SkinListBean;
 
 import java.util.List;
 

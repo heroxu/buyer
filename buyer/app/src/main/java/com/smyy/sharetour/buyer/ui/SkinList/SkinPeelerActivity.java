@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer;
+package com.smyy.sharetour.buyer.ui.SkinList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SkinPeelerActivity extends BaseMvpActivity {
