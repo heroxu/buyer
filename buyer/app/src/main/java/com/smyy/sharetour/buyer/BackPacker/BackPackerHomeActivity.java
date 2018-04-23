@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
+import com.smyy.sharetour.buyer.BackPacker.Travel.GoodTagActivity;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
@@ -130,7 +131,7 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
     }
 
 
-    @OnClick({R.id.iv_home_switch, R.id.tt_fount_message})
+    @OnClick({R.id.iv_home_switch, R.id.tt_fount_message, R.id.send_travel})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_home_switch:
@@ -138,6 +139,10 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
                 finish();
                 break;
             case R.id.tt_fount_message:
+                break;
+
+            case R.id.send_travel:
+                startActivity(new Intent(BackPackerHomeActivity.this, GoodTagActivity.class));
                 break;
         }
     }

@@ -152,8 +152,10 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
                     public void accept(Boolean aBoolean) throws Exception {
                         if(aBoolean) {
                             publish.setEnabled(true);
+                            publish.setTextColor(getResources().getColor(R.color.txt_main));
                         } else {
                             publish.setEnabled(false);
+                            publish.setTextColor(getResources().getColor(R.color.white));
                         }
                     }
         });

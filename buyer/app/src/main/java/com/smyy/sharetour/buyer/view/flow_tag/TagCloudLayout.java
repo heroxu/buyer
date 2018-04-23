@@ -182,4 +182,13 @@ public class TagCloudLayout extends ViewGroup {
         }
     }
 
+    public void setNotCheckItemEnable(boolean enable){
+        for (int i = 0; i < getChildCount(); i++) {
+            final View childView = getChildAt(i);
+            if(!childView.isSelected()){
+                childView.setEnabled(enable);
+            }
+        }
+    }
+
 }

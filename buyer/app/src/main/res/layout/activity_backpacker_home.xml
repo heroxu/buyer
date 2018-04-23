@@ -59,6 +59,7 @@
     </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/send_travel"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="bottom"

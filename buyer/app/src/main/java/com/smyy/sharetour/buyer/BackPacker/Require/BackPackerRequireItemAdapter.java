@@ -23,8 +23,6 @@ public class BackPackerRequireItemAdapter extends RecyclerView.Adapter {
     private List<RequireBean> list = new ArrayList<RequireBean>();
     private OnRecyclerViewOnClickListener mListener;
 
-    private static final int TYPE_NORMAL = 0;
-
     public BackPackerRequireItemAdapter(Context context, List<RequireBean> list){
         this.context = context;
         this.list = list;
