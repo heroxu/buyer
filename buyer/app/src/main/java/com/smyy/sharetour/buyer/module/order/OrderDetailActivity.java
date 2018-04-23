@@ -8,10 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.Consts;
@@ -23,6 +26,10 @@ import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderDetailBean;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
+import com.xmyy.view.dialoglib.CommonDialog;
+import com.xmyy.view.dialoglib.base.BindViewHolder;
+import com.xmyy.view.dialoglib.listener.OnBindViewListener;
+import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -107,6 +114,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
 
     public static final String FAKE_DATA = "fake_data";
     private String mOrderNum;
+    private int mCheckedId;
 
     @Override
     protected int getLayoutId() {
@@ -312,7 +320,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             R.id.tv_order_contact_service, R.id.tv_order_remind_shipping, R.id.tv_order_delete,
             R.id.tv_order_view_shipping, R.id.tv_order_cancel,
             R.id.tv_order_pay, R.id.tv_order_confirm, R.id.tv_order_review})
-    public void onClick(View view) {
+    public void onClick(final View view) {
         switch (view.getId()) {
             case R.id.tv_order_copy_num:
 
@@ -343,7 +351,48 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                 break;
 
             case R.id.tv_order_cancel:
+                new CommonDialog.Builder(this.getSupportFragmentManager())
+                        .setLayoutRes(R.layout.dialog_cancel_order)
+                        .setGravity(Gravity.BOTTOM)
+                        .setAnimRes(R.style.BottomDialogAnim)
+                        .setDimAmount(0.5f)
+                        .setScreenWidthAspect(OrderDetailActivity.this, 1)
+                        .setOnBindViewListener(new OnBindViewListener() {
+                            @Override
+                            public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
+                                viewHolder.setOnViewClickListener(R.id.select_reward_close, new OnViewClickListener() {
+                                    @Override
+                                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                        commonDialog.dismiss();
+                                    }
+                                });
 
+                                final Button btnCancel = viewHolder.getView(R.id.btn_order_cancel);
+                                final RadioGroup radioGroup = viewHolder.getView(R.id.rg_order_cancel_reason);
+                                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+                                    @Override
+                                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                                        radioGroup.getCheckedRadioButtonId();
+                                        mCheckedId = checkedId;
+                                        if (checkedId != -1) {
+                                            btnCancel.setEnabled(true);
+                                        } else {
+                                            btnCancel.setEnabled(false);
+                                        }
+                                    }
+                                });
+
+                                viewHolder.setOnViewClickListener(R.id.btn_order_cancel, new OnViewClickListener() {
+                                    @Override
+                                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                        commonDialog.dismiss();
+                                        OrderDetailActivity.this.finish();
+                                    }
+                                });
+                            }
+                        })
+                        .create().show();
                 break;
 
             case R.id.tv_order_pay:
