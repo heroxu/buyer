@@ -86,14 +86,14 @@ public class RequireSellerListActivity extends BaseMvpActivity {
             @Override
             public void OnItemPointClick(View v, int position) {
                 DialogUtils.showTwoBtnMsgBox(RequireSellerListActivity.this,
-                        "请确认您指定的买手",
-                        "确认后将形成求购订单，为了保证买卖双方的利益，求购订单将无法取消哦",
-                        "确定",
+                        getString(R.string.confirm_seller_title),
+                        getString(R.string.confirm_seller_msg),
+                        getString(R.string.confirm),
                         new OnViewClickListener() {
                             @Override
                             public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
                                 commonDialog.dismiss();
-                                RequireSellerListActivity.this.showResultDialog(true,"指定买手成功");
+                                RequireSellerListActivity.this.showResultDialog(true,getString(R.string.point_seller_success));
                                 requireSellerList.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
@@ -102,7 +102,7 @@ public class RequireSellerListActivity extends BaseMvpActivity {
                                 }, 1000);
                             }
                         },
-                        "取消",
+                        getString(R.string.cancel),
                         new OnViewClickListener() {
                             @Override
                             public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {

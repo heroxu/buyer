@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/XqcTheme.NoActionBar">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -79,8 +80,15 @@
         <activity android:name=".require.RequireOutListActivity"/>
         <activity android:name=".require.RequireSellerListActivity"/>
         <activity android:name=".module.my.CommentListActivity"/>
-        <activity android:name=".BackPacker.BackPackerHomeActivity" />
+        <activity android:name=".BackPacker.BackPackerHomeActivity"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".BackPacker.Require.BackpackerTakeRequireActivity" />
         <activity android:name=".SmallBackpackActivity" />
+        <activity android:name=".BackPacker.Require.BackPackerRequireListActivity" />
+        <activity android:name=".BackPacker.Require.BackPackerRequireDetailsActivity" />
+        <activity android:name=".BackPacker.Require.BackpackerTakeRequireSuccessActivity" />
+        <activity android:name=".BackPacker.Require.BackPackerRequireCancelActivity" />
+        <activity android:name=".BackPacker.Require.BackPackerRequireCancelSuccessActivity" />
     </application>
 
 </manifest>

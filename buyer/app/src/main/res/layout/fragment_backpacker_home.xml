@@ -16,7 +16,7 @@
         android:drawablePadding="8dp"
         android:drawableRight="@mipmap/ic_pop_ups_off"
         android:background="@drawable/shape_glogin_register"
-        android:text="完善个人资料，提升您的个人形象。"
+        android:text="@string/complete_info_tip"
         android:textSize="@dimen/txt_size_13"
         android:textColor="@color/txt_gray_dark"
         android:layout_marginTop="15dp"

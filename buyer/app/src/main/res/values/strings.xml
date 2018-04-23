@@ -107,6 +107,18 @@
     <string name="edit_retry">编辑重发</string>
     <string name="my_require">我的需求</string>
     <string name="out_stock_require">下架需求</string>
+    <string name="delete">删除</string>
+    <string name="contact_seller">联系买手</string>
+    <string name="order_detail">订单详情</string>
+    <string name="confirm_seller_title">请确认您指定的买手</string>
+    <string name="confirm_seller_msg">确认后将形成求购订单，为了保证买卖双方的利益，求购订单将无法取消哦</string>
+    <string name="point_seller_success">指定买手成功</string>
+    <string name="add_require">+添加新需求</string>
+    <string name="order_receiving">正在接单</string>
+    <string name="contact_buyer">联系买家</string>
+    <string name="point_ta">指定TA</string>
+    <string name="take_require">接需求</string>
+    <string name="require">需求</string>
 
     <!--限定能输入的具体字符串-->
     <string name="digits_phone_num">0123456789</string>
@@ -118,6 +130,11 @@
     <string name="seller_service">买手服务</string>
     <string name="comment_disc">说说该商品的优点和美中不足的地方吧～</string>
     <string name="publish">发表</string>
+    <string name="thank_comment">感谢评价</string>
+    <string name="comment">评论</string>
+    <string name="view_my_comments">查看我的评价</string>
+    <string name="append_comment">写追评</string>
+
 
     <!--标签相关-->
     <string name="select_interest_tag">选择您感兴趣的商品类型</string>
@@ -190,6 +207,15 @@
     <string name="summary_voice">[语音]</string>
     <string name="summary_video">[小视频]</string>
     <string name="summary_file">[文件]</string>
-    <string name="delete">删除</string>
+
+
+    <string name="search_require">搜索需求</string>
+    <string name="travel">行程</string>
+    <string name="complete_info_tip">完善个人资料，提升您的个人形象。</string>
+    <string name="send_trip">发行程</string>
+    <string name="send_trip_tip">接需求前需要先发行程哦～</string>
+    <string name="confirm_take_require">确定接需求</string>
+    <string name="submit_application_success">提交申请成功</string>
+
 
 </resources>

@@ -114,7 +114,7 @@
         android:layout_width="74dp"
         android:layout_height="30dp"
         android:background="@drawable/shape_fount_note_type"
-        android:text="写追评"
+        android:text="@string/append_comment"
         android:gravity="center"
         android:textSize="@dimen/txt_size_13"
         android:textColor="@color/txt_gray_dark"

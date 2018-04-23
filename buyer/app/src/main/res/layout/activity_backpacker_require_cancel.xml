@@ -11,23 +11,6 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:paddingBottom="50dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:background="@color/btn_bg_normal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/require_cancel_warning"
-                android:textColor="@color/txt_main"
-                android:textSize="@dimen/txt_size_13"
-                android:layout_marginLeft="20dp"/>
-
-        </LinearLayout>
-
 
         <ImageView
             android:layout_width="wrap_content"
@@ -40,7 +23,7 @@
         <TextView
             android:layout_width="314dp"
             android:layout_height="wrap_content"
-            android:text="@string/require_cancel_tip"
+            android:text="请勿频繁取消接单，否则可能影响您在本平台 的信用分哦～"
             android:textSize="@dimen/txt_size_13"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"

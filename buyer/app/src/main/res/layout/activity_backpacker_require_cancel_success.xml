@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:background="@color/window_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请告诉我们取消原因，我们将加以改善"
+            android:textColor="@color/txt_gray"
+            android:textSize="@dimen/txt_size_15"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+
+    <RadioGroup
+        android:id="@+id/pay_group"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <RadioButton
+            android:id="@+id/pay_zhifubao"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/require_cancel_reason1"
+            android:drawableRight="@drawable/btn_radio_selector"
+            android:button="@null"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:drawablePadding="8dp"
+            android:checked="true"
+            android:background="@color/transparent"
+            />
+        <View style="@style/WideItemDivider"/>
+
+        <RadioButton
+            android:id="@+id/pay_weixin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="行程有变"
+            android:drawableRight="@drawable/btn_radio_selector"
+            android:button="@null"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:drawablePadding="8dp"
+            android:background="@color/transparent"
+            />
+
+        <View style="@style/WideItemDivider"/>
+        <RadioButton
+            android:id="@+id/pay_bank"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="商品涨价了"
+            android:drawableRight="@drawable/btn_radio_selector"
+            android:button="@null"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:drawablePadding="8dp"
+            android:background="@color/transparent"
+            />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/pay_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/CommonButton"
+        android:text="@string/submit"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:enabled="true"
+        />
+</LinearLayout>

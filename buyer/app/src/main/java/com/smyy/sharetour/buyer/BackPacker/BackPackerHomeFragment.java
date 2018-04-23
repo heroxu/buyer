@@ -7,13 +7,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.smyy.sharetour.buyer.BackPacker.Require.BackPackerRequireDetailsActivity;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;
 import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.require.RecyclerViewDivider;
-import com.smyy.sharetour.buyer.require.RequireDetailsActivity;
 import com.xmyy.view.dialoglib.CommonDialog;
 import com.xmyy.view.dialoglib.base.BindViewHolder;
 import com.xmyy.view.dialoglib.listener.OnViewClickListener;
@@ -92,10 +92,10 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
         mAdapter.setItemClickListener(new BackpackerHomeItemAdapter.OnBackpackerHomeItemOnClickListener() {
             @Override
             public void OnItemClick(View v, int position) {
-                Intent intent = new Intent(getActivity(), RequireDetailsActivity.class);
+                Intent intent = new Intent(getActivity(), BackPackerRequireDetailsActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(RequireDetailsActivity.REQUIRE_KEY, requires.get(position));
-                bundle.putBoolean(RequireDetailsActivity.REQUIRE_SUCCESS_KEY, false);
+                bundle.putSerializable(BackPackerRequireDetailsActivity.REQUIRE_KEY, requires.get(position));
+                bundle.putBoolean(BackPackerRequireDetailsActivity.REQUIRE_TAKE_KEY, true);
                 intent.putExtra("bundle", bundle);
                 startActivity(intent);
             }
@@ -108,16 +108,16 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
             @Override
             public void OnItemTakeClick(View v, int position) {
                 DialogUtils.showTwoBtnMsgBox(getActivity(),
-                        "接需求前需要先发行程哦～",
+                        getString(R.string.send_trip_tip),
                         null,
                         R.color.txt_hint,
-                        "发行程",
+                        getString(R.string.send_trip),
                         new OnViewClickListener() {
                             @Override
                             public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
                             }
                         },
-                        "取消",
+                        getString(R.string.cancel),
                         new OnViewClickListener() {
                             @Override
                             public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {

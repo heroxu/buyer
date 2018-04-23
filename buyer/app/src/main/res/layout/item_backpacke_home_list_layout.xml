@@ -94,7 +94,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:paddingRight="20dp"
             android:paddingBottom="15dp"
             >
             <View style="@style/WideItemDivider"
@@ -124,7 +123,8 @@
                 android:textSize="@dimen/txt_size_13"
                 android:textColor="@color/txt_gray_dark"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"/>
 
         </RelativeLayout>
     </LinearLayout>

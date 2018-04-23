@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
+
+    <View style="@style/WideItemDivider"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="51dp"
+        android:background="@color/white">
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="51dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="您的接需求申请已经提交给买家，我们会尽快通知买家受理，请耐心等待~"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="48dp"
+        android:paddingBottom="30dp"
+        android:gravity="center">
+        
+        <TextView
+            android:id="@+id/view_require"
+            android:layout_width="120dp"
+            android:layout_height="44dp"
+            android:text="查看需求"
+            android:textSize="15dp"
+            android:textColor="@color/txt_main"
+            android:layout_marginRight="45dp"
+            android:background="@color/btn_bg_normal"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/return_backpacker_home"
+            android:layout_width="120dp"
+            android:layout_height="44dp"
+            android:text="返回首页"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:background="@color/tab_txt_selected"
+            android:gravity="center"
+            />
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="25dp">
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/ic_home_location"
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_buyer_name"
+                style="@style/CommonText"
+                android:textSize="@dimen/txt_size_17"
+                android:text="阳鸿" />
+
+            <TextView
+                android:id="@+id/tv_buyer_phone"
+                style="@style/CommonText"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/tv_buyer_name"
+                android:textSize="@dimen/txt_size_17"
+                android:text="18612345678" />
+
+            <TextView
+                android:id="@+id/tv_buyer_shipping_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_buyer_phone"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/txt_gray_dark"
+                android:textSize="@dimen/txt_size_13"
+                android:text="广东省广州市天河区冼村街道 珠江新城华夏路8号合景国际金融广场 32楼3205" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

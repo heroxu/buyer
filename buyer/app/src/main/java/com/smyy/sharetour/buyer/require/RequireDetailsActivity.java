@@ -228,13 +228,13 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         d.setBounds(0, 0, d.getMinimumWidth(), d.getMinimumHeight());
         reward_text.setCompoundDrawables(d, null, null, null);
         reward_text.setCompoundDrawablePadding(3);
-        reward_text.setText("联系买手");
+        reward_text.setText(R.string.contact_seller);
         rewardFrame.setVisibility(View.VISIBLE);
         d = getResources().getDrawable(R.mipmap.ic_details_news);
         d.setBounds(0, 0, d.getMinimumWidth(), d.getMinimumHeight());
         undoRequire.setCompoundDrawables(d, null, null, null);
         undoRequire.setCompoundDrawablePadding(3);
-        undoRequire.setText("订单详情");
+        undoRequire.setText(R.string.order_detail);
     }
 
 
@@ -262,17 +262,17 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         dialog = builder.create().show();
     }
 
-    @OnClick({R.id.reward, R.id.undo_require})
+    @OnClick({R.id.reward_frame, R.id.undo_frame})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.reward:
+            case R.id.reward_frame:
                 if(requireBean.getState()==Consts.REQUIRE_STATE_WAIT_SELLER||requireBean.getState()==Consts.REQUIRE_STATE_WAIT_POINT) {
                     showRewardDialog();
                 } else if(requireBean.getState()==Consts.REQUIRE_STATE_INVALID ||requireBean.getState()==Consts.REQUIRE_STATE_CANCEL) {
                     finish();
                 }
                 break;
-            case R.id.undo_require:
+            case R.id.undo_frame:
                 if(requireBean.getState()==Consts.REQUIRE_STATE_WAIT_SELLER||requireBean.getState()==Consts.REQUIRE_STATE_WAIT_POINT) {
                     startActivityForResult(new Intent(RequireDetailsActivity.this, RequireCancelActivity.class), REQUIRE_REQUEST_CANCEL);
                 } else if(requireBean.getState()==Consts.REQUIRE_STATE_INVALID ||requireBean.getState()==Consts.REQUIRE_STATE_CANCEL) {
@@ -434,14 +434,15 @@ public class RequireDetailsActivity extends BaseMvpActivity {
                         price.append(spanText1);
                     }
                 })
-                .addOnClickListener(R.id.pay_confirm)
+                .addOnClickListener(R.id.pay_confirm, R.id.pay_close)
                 .setOnViewClickListener(new OnViewClickListener() {
                     @Override
                     public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
                         switch (view.getId()) {
                             case R.id.pay_confirm:
-                                commonDialog.dismiss();
                                 rewardPaySuccess();
+                            case R.id.pay_close:
+                                commonDialog.dismiss();
                                 break;
                         }
                     }
