@@ -98,7 +98,13 @@
         <activity android:name=".BackPacker.Travel.GoodTagActivity" />
         <activity android:name=".BackPacker.Travel.BackPackerSendTravelActivity" />
         <activity android:name=".BackPacker.certification.ALiCertificationActivity" />
-        <activity android:name=".BackPacker.certification.ALiCertificationFinishActivity"></activity>
+        <activity android:name=".BackPacker.certification.ALiCertificationFinishActivity" />
+        <activity android:name=".BackPacker.BackpackSettingActivity" />
+        <activity android:name=".BackPacker.BackpackValidationPhoneActivity" />
+        <activity android:name=".BackPacker.SetPayPwdActivity" />
+        <activity android:name=".BackPacker.BackpackAllEvaluationActivity" />
+        <activity android:name=".BackPacker.BackpackEditorActivity" />
+        <activity android:name=".BackPacker.BackpackHomePageActivity"></activity>
     </application>
 
 </manifest>
