@@ -186,7 +186,7 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
 
     private void setViewRequireButton() {
         cancelFrame.setVisibility(View.GONE);
-        Drawable d = getResources().getDrawable(R.mipmap.ic_details_news);
+        Drawable d = getResources().getDrawable(R.mipmap.ic_jiexuqiu);
         d.setBounds(0, 0, d.getMinimumWidth(), d.getMinimumHeight());
         orderDetail.setCompoundDrawables(d, null, null, null);
         orderDetail.setCompoundDrawablePadding(3);

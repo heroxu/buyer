@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="22dp"
+        android:background="@drawable/shape_dot_line_gray"
+        android:id="@+id/travel_state_line"
+        android:layout_marginLeft="5dp"
+        android:layerType="software"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="22dp"
+        android:layout_marginTop="8dp"
+        >
+
+        <ImageView
+            android:id="@+id/travel_state_img"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:src="@drawable/shape_gray_dot"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:id="@+id/travel_country_time"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="03月07日"
+            android:textSize="@dimen/txt_size_15"
+            android:textColor="@color/txt_main"
+            android:gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="抵达"
+            android:layout_marginRight="26dp"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_13"/>
+
+        <ImageView
+            android:id="@+id/travel_country_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:src="@mipmap/ic_city_korea"/>
+
+        <TextView
+            android:id="@+id/travel_country_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新加坡"
+            android:drawablePadding="2dp"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_13"/>
+
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -170,8 +170,8 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String imgs = (String) parent.getItemAtPosition(position);
                 if ("paizhao".equals(imgs) ){
-                   if( ContextCompat.checkSelfPermission(PublishRequireActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
-                            || ContextCompat.checkSelfPermission(PublishRequireActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                   if( ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                            || ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
                            //未获得权限
                        initPermissions();
                    }else{

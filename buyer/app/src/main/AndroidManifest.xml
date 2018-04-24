@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/XqcTheme.NoActionBar">
-        <activity android:name=".ui.MainActivity" android:launchMode="singleInstance">
+        <activity android:name=".ui.MainActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -106,6 +107,8 @@
         <activity android:name=".BackPacker.BackpackEditorActivity" />
         <activity android:name=".BackPacker.BackpackHomePageActivity"></activity>
         <activity android:name=".BackPacker.order.UploadShippingInfoActivity" />
+        <activity android:name=".BackPacker.Travel.BackPackerTravelListActivity" />
+        <activity android:name=".BackPacker.Travel.BackPackerTravelDetailActivity" />
     </application>
 
 </manifest>

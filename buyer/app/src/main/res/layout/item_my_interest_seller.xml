@@ -44,7 +44,7 @@
             android:layout_alignLeft="@+id/tv_my_seller_name"
             android:layout_alignRight="@+id/tv_my_seller_name"
             android:layout_below="@+id/tv_my_seller_name"
-            android:drawableLeft="@mipmap/ic_home_location"
+            android:drawableLeft="@mipmap/ic_release_positioning"
             android:text="美国 纽约"
             android:textColor="@color/txt_gray"
             android:textSize="@dimen/txt_size_13"

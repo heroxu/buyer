@@ -13,7 +13,7 @@
         android:textSize="@dimen/txt_size_15"
         android:textColor="@color/txt_main"
         android:gravity="center"
-        android:drawableLeft="@mipmap/ic_news_add_to"
+        android:drawableLeft="@mipmap/ic_xingcheng_add_yellow"
         android:drawablePadding="@dimen/dp_10"/>
 
 </LinearLayout>

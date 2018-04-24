@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <View style="@style/WideItemDivider"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="最新行程"
+        android:textColor="@color/txt_main"
+        android:textSize="@dimen/txt_size_15"
+        android:layout_marginTop="27dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="28dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/travel_list"
+        android:scrollbars="vertical"
+        android:scrollbarFadeDuration="1"
+        android:fadeScrollbars="true"
+        android:layout_above="@+id/next_frame"
+        />
+
+
+
+</LinearLayout>

@@ -12,9 +12,9 @@
         android:paddingTop="@dimen/dp_10"
         android:paddingBottom="@dimen/dp_10"
         android:id="@+id/notice"
-        android:drawableLeft="@mipmap/ic_home_switch"
+        android:drawableLeft="@mipmap/ic_home_inform"
         android:drawablePadding="8dp"
-        android:drawableRight="@mipmap/ic_pop_ups_off"
+        android:drawableRight="@mipmap/ic_inform_off"
         android:background="@drawable/shape_glogin_register"
         android:text="@string/complete_info_tip"
         android:textSize="@dimen/txt_size_13"
@@ -22,7 +22,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:gravity="center_vertical"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/home_all_srl"
