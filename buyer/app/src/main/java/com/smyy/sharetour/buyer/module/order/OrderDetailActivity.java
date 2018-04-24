@@ -8,10 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -56,7 +59,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     @BindView(R.id.tv_order_await_confirm)
     CheckedTextView tvAwaitConfirm;
     @BindView(R.id.lay_order_status)
-    View layStatus;
+    ViewGroup layStatus;
     @BindView(R.id.iv_order_status)
     ImageView ivStatus;
     @BindView(R.id.tv_order_status)
@@ -100,10 +103,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
 
     public static final String FAKE_DATA = "fake_data";
     private String mOrderNum;
-    private int mCheckedId;
-    private PopupWindow mPopupWindow;
-    private int mPopHeight;
-    private int mPopWidth;
+    private int mUserType;
+    private Bundle mBundle;
 
     @Override
     protected int getLayoutId() {
@@ -117,6 +118,10 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        mBundle = getBundle();
+        if (mBundle != null) {
+            mUserType = mBundle.getInt(Consts.USER_TYPE);
+        }
         initView();
         getFakeData();
     }
@@ -125,32 +130,48 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
         linePaid.setEnabled(false);
         lineShipped.setEnabled(false);
         lineAwaitConfirm.setEnabled(false);
+
+        switch (mUserType) {
+            case Consts.USER_TYPE_BACK_PACKER:
+            case Consts.USER_TYPE_SELLER:
+                layStatus.removeAllViews();
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                View view = LayoutInflater.from(this).inflate(R.layout.layout_order_status_buyer, null);
+                view.setLayoutParams(lp);
+                layStatus.addView(view);
+                break;
+
+            default:
+                break;
+        }
     }
 
     private void getFakeData() {
-        Bundle bundle = getBundle();
-        OrderBean orderBean = (OrderBean) bundle.getSerializable(FAKE_DATA);
-        OrderDetailBean orderDetailBean = new OrderDetailBean();
+        if (mBundle != null) {
+            OrderBean orderBean = (OrderBean) mBundle.getSerializable(FAKE_DATA);
+            OrderDetailBean orderDetailBean = new OrderDetailBean();
 
-        int orderStatus = orderBean.getOrderStatus();
-        if (orderStatus == Consts.ORDER_STATUS_AWAIT_PAY) {
-            orderDetailBean.setRemainTime("12:59:30");
+            int orderStatus = orderBean.getOrderStatus();
+            if (orderStatus == Consts.ORDER_STATUS_AWAIT_PAY) {
+                orderDetailBean.setRemainTime("12:59:30");
+            }
+            orderDetailBean.setOrderStatus(orderStatus);
+
+            orderDetailBean.setShippingName("阳鸿");
+            orderDetailBean.setShippingPhone("13760685049");
+            orderDetailBean.setShippingAddress("广东省广州市天河区冼村街道合景国际金融大厦32 楼3205室");
+
+            orderDetailBean.setSellerName(orderBean.getSellerName());
+            orderDetailBean.setGoodsList(orderBean.getGoodsList());
+            orderDetailBean.setGoodsCountTotal(orderBean.getGoodsCountTotal());
+            orderDetailBean.setPriceTotal(orderBean.getPriceTotal());
+            orderDetailBean.setShippingFee(orderBean.getShippingFee());
+            orderDetailBean.setOrderNum("201803071438023384");
+            orderDetailBean.setOrderTime("2018-03-08 14:39:07");
+
+            showOrderDetail(orderDetailBean);
         }
-        orderDetailBean.setOrderStatus(orderStatus);
-
-        orderDetailBean.setShippingName("阳鸿");
-        orderDetailBean.setShippingPhone("13760685049");
-        orderDetailBean.setShippingAddress("广东省广州市天河区冼村街道合景国际金融大厦32 楼3205室");
-
-        orderDetailBean.setSellerName(orderBean.getSellerName());
-        orderDetailBean.setGoodsList(orderBean.getGoodsList());
-        orderDetailBean.setGoodsCountTotal(orderBean.getGoodsCountTotal());
-        orderDetailBean.setPriceTotal(orderBean.getPriceTotal());
-        orderDetailBean.setShippingFee(orderBean.getShippingFee());
-        orderDetailBean.setOrderNum("201803071438023384");
-        orderDetailBean.setOrderTime("2018-03-08 14:39:07");
-
-        showOrderDetail(orderDetailBean);
     }
 
     private void showOrderDetail(OrderDetailBean data) {
@@ -203,21 +224,16 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
 
 
             int orderStatus = data.getOrderStatus();
+
+            OrderHelper.switchBottomBtns(this, mUserType, orderStatus,
+                    tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore);
+
             switch (orderStatus) {
 
                 case Consts.ORDER_STATUS_AWAIT_PAY:
                     layProgress.setVisibility(View.VISIBLE);
                     dotAwaitPay.setEnabled(true);
                     tvAwaitPay.setEnabled(true);
-
-                    OrderHelper.switchBottomBtns(this, true,
-                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore,
-                            "付款", Consts.ORDER_OPERATE_PAY,
-                            "取消订单", Consts.ORDER_OPERATE_CANCEL,
-                            "联系买手", Consts.ORDER_OPERATE_CONTACT_BUYER,
-                            null, -1,
-                            null, -1,
-                            null, -1);
                     break;
 
                 case Consts.ORDER_STATUS_AWAIT_SHIPPING:
@@ -231,75 +247,48 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                     linePaid.setEnabled(true);
                     dotPaid.setEnabled(true);
                     tvPaid.setEnabled(true);
-
-                    OrderHelper.switchBottomBtns(this, false,
-                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore,
-                            "提醒发货", Consts.ORDER_OPERATE_REMIND_SHIPPING,
-                            "联系客服", Consts.ORDER_OPERATE_CONTACT_SERVICE,
-                            "联系买手", Consts.ORDER_OPERATE_CONTACT_BUYER,
-                            null, -1,
-                            null, -1,
-                            null, -1);
-
                     break;
 
                 case Consts.ORDER_STATUS_AWAIT_CONFIRM:
-                    layProgress.setVisibility(View.VISIBLE);
+                    switch (mUserType) {
+                        case Consts.USER_TYPE_BACK_PACKER:
+                        case Consts.USER_TYPE_SELLER:
+                            layStatus.setVisibility(View.VISIBLE);
+                            ivStatus.setImageResource(R.mipmap.ic_successfu_transaction);
+                            tvStatus.setText("交易成功");
+                            break;
 
-                    dotAwaitPay.setEnabled(true);
-                    tvAwaitPay.setEnabled(true);
-                    dotAwaitPay.setChecked(true);
-                    tvAwaitPay.setChecked(true);
+                        default:
+                            layProgress.setVisibility(View.VISIBLE);
 
-                    linePaid.setEnabled(true);
-                    dotPaid.setEnabled(true);
-                    tvPaid.setEnabled(true);
-                    dotPaid.setChecked(true);
-                    tvPaid.setChecked(true);
+                            dotAwaitPay.setEnabled(true);
+                            tvAwaitPay.setEnabled(true);
+                            dotAwaitPay.setChecked(true);
+                            tvAwaitPay.setChecked(true);
 
-                    lineShipped.setEnabled(true);
-                    dotShipped.setEnabled(true);
-                    tvShipped.setEnabled(true);
+                            linePaid.setEnabled(true);
+                            dotPaid.setEnabled(true);
+                            tvPaid.setEnabled(true);
+                            dotPaid.setChecked(true);
+                            tvPaid.setChecked(true);
 
-                    OrderHelper.switchBottomBtns(this, true,
-                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore,
-                            "确认收货", Consts.ORDER_OPERATE_CONFIRM,
-                            "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
-                            "联系买手", Consts.ORDER_OPERATE_CONTACT_BUYER,
-                            null, -1,
-                            null, -1,
-                            null, -1);
-
+                            lineShipped.setEnabled(true);
+                            dotShipped.setEnabled(true);
+                            tvShipped.setEnabled(true);
+                            break;
+                    }
                     break;
 
-                case Consts.ORDER_STATUS_AWAIT_REVIEW:
+                case Consts.ORDER_STATUS_CONFIRMED:
                     layStatus.setVisibility(View.VISIBLE);
                     ivStatus.setImageResource(R.mipmap.ic_successfu_transaction);
                     tvStatus.setText("交易成功");
-
-                    OrderHelper.switchBottomBtns(this, true,
-                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore, "评价", Consts.ORDER_OPERATE_REVIEW,
-                            "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
-                            "删除订单", Consts.ORDER_OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1);
-
                     break;
 
                 case Consts.ORDER_STATUS_OTHER:
                     layStatus.setVisibility(View.VISIBLE);
                     ivStatus.setImageResource(R.mipmap.ic_successfu_failure);
                     tvStatus.setText("交易关闭");
-
-                    OrderHelper.switchBottomBtns(this, false,
-                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore, "删除订单", Consts.ORDER_OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
-
                     break;
 
                 default:

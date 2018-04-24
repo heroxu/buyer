@@ -1,5 +1,7 @@
 package com.smyy.sharetour.buyer;
 
+import com.smyy.sharetour.buyer.util.StringUtil;
+
 /**
  * Created by 伍振飞 on 2018/4/8 14:28
  * E-Mail Address：wuzf2012@sina.com
@@ -196,16 +198,25 @@ public class Consts {
     public static final int ORDER_TYPE_AWAIT_CONFIRM = 3;//待收货
     public static final int ORDER_TYPE_AWAIT_REVIEW = 4;//待评价
 
-    public static final String[] ORDER_TYPE_STRINGS = {"全部", "待付款", "待发货", "待收货", "待评价"};
-
     //订单状态
     public static final int ORDER_STATUS_AWAIT_PAY = 1;
     public static final int ORDER_STATUS_AWAIT_SHIPPING = 2;//买家已付款 待发货
     public static final int ORDER_STATUS_AWAIT_CONFIRM = 3;//买手已发货 待收货
-    public static final int ORDER_STATUS_AWAIT_REVIEW = 4;//交易成功 待评价
+    public static final int ORDER_STATUS_CONFIRMED = 4;//交易成功
     public static final int ORDER_STATUS_OTHER = 5;
 
-    public static final String[] ORDER_STATUS_STRINGS = {"", "等待买家付款", "买家已付款", "买手已发货", "交易成功", "交易关闭"};
+    public static final String[] ORDER_STATUS_STRINGS_BUYER = {"", "等待买家付款", "买家已付款",
+            "买手已发货", "交易成功", "交易关闭"};
+
+    //******** 背包客模式 ********
+//订单状态对应文本
+    public static final String[] ORDER_STATUS_STRINGS_PACKER = {"", "等待买家付款", "待发货",
+            "已发货", "交易成功", "需求已取消"};
+
+    //******** 买手 ********
+//订单状态对应文本
+    public static final String[] ORDER_STATUS_STRINGS_SELLER = {"", "等待买家付款", "待发货",
+            "已发货", "交易成功", "交易关闭"};
 
     //订单操作
     public static final int ORDER_OPERATE_VERIFY_VIDEO = 1;
@@ -220,22 +231,18 @@ public class Consts {
     public static final int ORDER_OPERATE_REVIEW = 10;
     public static final int ORDER_OPERATE_VIEW_REVIEWS = 11;
     public static final int ORDER_OPERATE_CONTACT_SERVICE = 12;
+    public static final int ORDER_OPERATE_TO_SHIPPING = 13;//发货
     public static final int ORDER_OPERATE_ = 0;
+
+    //用户类型
+    public static final String USER_TYPE = "user_type";
+    public static final int USER_TYPE_BUYER = 1;
+    public static final int USER_TYPE_BACK_PACKER = 2;
+    public static final int USER_TYPE_SELLER = 3;
 
 
     /**
      * 客服电话
      */
     public static final String SERVICE_TEL = "020-1234567";
-
-    //******** 背包客模式 ********
-    //订单类型
-    public static final int SELLER_ORDER_TYPE_ALL = 0;
-    public static final int SELLER_ORDER_TYPE_AWAIT_SHIPPING = 1;//待发货
-    public static final int SELLER_ORDER_TYPE_SHIPPED = 2;//已收货
-
-    public static final String[] SELLER_ORDER_TYPE_STRINGS = {"全部", "待发货", "已收货"};
-
-    //订单状态与买家通用
-    public static final String[] SELLER_ORDER_STATUS_STRINGS = {"", "等待买家付款", "待发货", "已发货", "交易成功", "需求已取消"};
 }

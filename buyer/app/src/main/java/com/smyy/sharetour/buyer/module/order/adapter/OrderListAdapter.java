@@ -23,11 +23,27 @@ import java.util.List;
 
 public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.ViewHolder> {
 
+    private final int mUserType;
     private BaseActivity mActivity;
     private List<OrderBean> mDatas;
+    private String[] mOrderStatusStrings;
 
-    public OrderListAdapter(BaseActivity context) {
+    public OrderListAdapter(BaseActivity context, int userType) {
         this.mActivity = context;
+        this.mUserType = userType;
+        switch (mUserType) {
+            case Consts.USER_TYPE_BUYER:
+                mOrderStatusStrings = Consts.ORDER_STATUS_STRINGS_BUYER;
+                break;
+            case Consts.USER_TYPE_BACK_PACKER:
+                mOrderStatusStrings = Consts.ORDER_STATUS_STRINGS_PACKER;
+                break;
+            case Consts.USER_TYPE_SELLER:
+                mOrderStatusStrings = Consts.ORDER_STATUS_STRINGS_SELLER;
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -80,86 +96,35 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             }
 
             int orderStatus = data.getOrderStatus();
-            if (orderStatus >= 0 && orderStatus < Consts.ORDER_STATUS_STRINGS.length) {
-                holder.tvStatus.setText(Consts.ORDER_STATUS_STRINGS[orderStatus]);
+            if (mOrderStatusStrings != null && orderStatus >= 0 && orderStatus < mOrderStatusStrings.length) {
+                holder.tvStatus.setText(mOrderStatusStrings[orderStatus]);
             } else {
                 holder.tvStatus.setText("");
             }
 
+            OrderHelper.switchBottomBtns(mActivity, mUserType, orderStatus,
+                    holder.tvBottomBtn1, holder.tvBottomBtn2,
+                    holder.tvBottomBtn3, holder.tvBottomBtnMore);
             switch (orderStatus) {
 
                 case Consts.ORDER_STATUS_AWAIT_PAY:
                     holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_price));
-
-                    OrderHelper.switchBottomBtns(mActivity, true,
-                            holder.tvBottomBtn1, holder.tvBottomBtn2,
-                            holder.tvBottomBtn3, holder.tvBottomBtnMore,
-                            "付款", Consts.ORDER_OPERATE_PAY,
-                            "取消订单", Consts.ORDER_OPERATE_CANCEL,
-                            "联系买手", Consts.ORDER_OPERATE_CONTACT_BUYER,
-                            null, -1,
-                            null, -1,
-                            null, -1);
                     break;
 
                 case Consts.ORDER_STATUS_AWAIT_SHIPPING:
                     holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_gray));
-
-                    OrderHelper.switchBottomBtns(mActivity, false,
-                            holder.tvBottomBtn1, holder.tvBottomBtn2,
-                            holder.tvBottomBtn3, holder.tvBottomBtnMore,
-                            "提醒发货", Consts.ORDER_OPERATE_REMIND_SHIPPING,
-                            "联系客服", Consts.ORDER_OPERATE_CONTACT_SERVICE,
-                            "联系买手", Consts.ORDER_OPERATE_CONTACT_BUYER,
-                            null, -1,
-                            null, -1,
-                            null, -1);
-
                     break;
 
                 case Consts.ORDER_STATUS_AWAIT_CONFIRM:
                     holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_gray));
-
-                    OrderHelper.switchBottomBtns(mActivity, true,
-                            holder.tvBottomBtn1, holder.tvBottomBtn2,
-                            holder.tvBottomBtn3, holder.tvBottomBtnMore,
-                            "确认收货", Consts.ORDER_OPERATE_CONFIRM,
-                            "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
-                            "联系买手", Consts.ORDER_OPERATE_CONTACT_BUYER,
-                            null, -1,
-                            null, -1,
-                            null, -1);
-
                     break;
 
-                case Consts.ORDER_STATUS_AWAIT_REVIEW:
+                case Consts.ORDER_STATUS_CONFIRMED:
                     holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_gray));
-
-                    OrderHelper.switchBottomBtns(mActivity, true,
-                            holder.tvBottomBtn1, holder.tvBottomBtn2,
-                            holder.tvBottomBtn3, holder.tvBottomBtnMore,
-                            "评价", Consts.ORDER_OPERATE_REVIEW,
-                            "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
-                            "删除订单", Consts.ORDER_OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1);
-
                     break;
 
                 case Consts.ORDER_STATUS_OTHER:
                     holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_gray));
-
-                    OrderHelper.switchBottomBtns(mActivity, false,
-                            holder.tvBottomBtn1, holder.tvBottomBtn2,
-                            holder.tvBottomBtn3, holder.tvBottomBtnMore,
-                            "删除订单", Consts.ORDER_OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
-
                     break;
 
                 default:

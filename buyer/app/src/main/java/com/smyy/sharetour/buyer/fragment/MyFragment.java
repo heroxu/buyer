@@ -111,8 +111,9 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
             R.id.tv_my_cart, R.id.tv_my_demands, R.id.tv_my_reviews, R.id.tv_my_favorites, R.id.tv_my_interests, R.id.tv_help_and_feedback})
     public void onClick(View view) {
         Bundle bundle = new Bundle();
-        switch (view.getId()) {
+        bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BUYER);
 
+        switch (view.getId()) {
             case R.id.iv_my_setting:
                 startActivity(SettingsActivity.class);
                 break;
@@ -130,7 +131,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.tv_my_view_all_orders:
-                startActivity(OrderListActivity.class);
+                startActivity(OrderListActivity.class, bundle);
                 break;
 
             case R.id.lay_my_awaiting_payment:

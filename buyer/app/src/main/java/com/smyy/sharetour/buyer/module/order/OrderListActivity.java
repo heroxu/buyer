@@ -17,6 +17,8 @@ import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -26,7 +28,8 @@ public class OrderListActivity extends MyBaseMvpActivity {
     @BindView(R.id.vp_order_list)
     ViewPager vpOrderList;
 
-    private final String[] mTitles = Consts.ORDER_TYPE_STRINGS;
+    private String[] mTitles;
+    private HashMap<Integer, Integer> mOrderTypeMap = new HashMap<>();
     private FragmentAdapter mAdapter;
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -44,22 +47,62 @@ public class OrderListActivity extends MyBaseMvpActivity {
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_ALL));
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_AWAIT_PAY));
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_AWAIT_SHIPPING));
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_AWAIT_CONFIRM));
-        mFragments.add(OrderListFragment.getInstance(Consts.ORDER_TYPE_AWAIT_REVIEW));
-
-        mAdapter = new FragmentAdapter(this.getSupportFragmentManager());
-        vpOrderList.setAdapter(mAdapter);
-        stlOrderList.setViewPager(vpOrderList, mTitles);
-
         Bundle bundle = getBundle();
+
         if (bundle != null) {
-            int orderType = bundle.getInt(Consts.ORDER_TYPE);
-            if (orderType >= 0 && orderType < mTitles.length) {
-                stlOrderList.setCurrentTab(orderType);
+            int userType = bundle.getInt(Consts.USER_TYPE);
+            switch (userType) {
+                case Consts.USER_TYPE_BUYER:
+                    mTitles = new String[]{"全部", "待付款", "待发货", "待收货", "待评价"};
+                    mOrderTypeMap.clear();
+                    mFragments.clear();
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_ALL, 0);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_ALL));
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_AWAIT_PAY, 1);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_PAY));
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_AWAIT_SHIPPING, 2);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_SHIPPING));
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_AWAIT_CONFIRM, 3);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_CONFIRM));
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_AWAIT_REVIEW, 4);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_REVIEW));
+                    break;
+                case Consts.USER_TYPE_BACK_PACKER:
+                    mTitles = new String[]{"全部", "待发货", "已收货"};
+                    mOrderTypeMap.clear();
+                    mFragments.clear();
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_ALL, 0);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_ALL));
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_AWAIT_SHIPPING, 1);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_SHIPPING));
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_AWAIT_REVIEW, 2);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_REVIEW));
+                    break;
+                case Consts.USER_TYPE_SELLER:
+                    mTitles = new String[]{"全部", "待付款", "待发货", "已发货"};
+                    mOrderTypeMap.clear();
+                    mFragments.clear();
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_ALL, 0);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_ALL));
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_AWAIT_PAY, 1);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_PAY));
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_AWAIT_SHIPPING, 2);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_SHIPPING));
+                    mOrderTypeMap.put(Consts.ORDER_TYPE_AWAIT_CONFIRM, 3);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_CONFIRM));
+                    break;
+                default:
+                    break;
+            }
+
+            mAdapter = new FragmentAdapter(this.getSupportFragmentManager());
+            vpOrderList.setAdapter(mAdapter);
+            stlOrderList.setViewPager(vpOrderList, mTitles);
+
+
+            int orderTypeIndex = mOrderTypeMap.get(bundle.getInt(Consts.ORDER_TYPE));
+            if (orderTypeIndex >= 0 && orderTypeIndex < mTitles.length) {
+                stlOrderList.setCurrentTab(orderTypeIndex);
             }
         }
     }

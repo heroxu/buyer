@@ -233,4 +233,153 @@ public class OrderHelper {
                 break;
         }
     }
+
+    public static void switchBottomBtns(BaseActivity activity, int userType, int orderStatus,
+                                        TextView tvBottomBtn1, TextView tvBottomBtn2,
+                                        TextView tvBottomBtn3, TextView tvBottomBtnMore) {
+        switch (userType) {
+            case Consts.USER_TYPE_BUYER:
+                switch (orderStatus) {
+
+                    case Consts.ORDER_STATUS_AWAIT_PAY:
+                        OrderHelper.switchBottomBtns(activity, true,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "付款", Consts.ORDER_OPERATE_PAY,
+                                "取消订单", Consts.ORDER_OPERATE_CANCEL,
+                                "联系买手", Consts.ORDER_OPERATE_CONTACT_SELLER,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+                        break;
+
+                    case Consts.ORDER_STATUS_AWAIT_SHIPPING:
+                        OrderHelper.switchBottomBtns(activity, false,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "提醒发货", Consts.ORDER_OPERATE_REMIND_SHIPPING,
+                                "联系客服", Consts.ORDER_OPERATE_CONTACT_SERVICE,
+                                "联系买手", Consts.ORDER_OPERATE_CONTACT_SELLER,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+
+                        break;
+
+                    case Consts.ORDER_STATUS_AWAIT_CONFIRM:
+                        OrderHelper.switchBottomBtns(activity, true,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "确认收货", Consts.ORDER_OPERATE_CONFIRM,
+                                "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
+                                "联系买手", Consts.ORDER_OPERATE_CONTACT_SELLER,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+
+                        break;
+
+                    case Consts.ORDER_STATUS_CONFIRMED:
+                        OrderHelper.switchBottomBtns(activity, true,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "评价", Consts.ORDER_OPERATE_REVIEW,
+                                "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
+                                "删除订单", Consts.ORDER_OPERATE_DELETE,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+
+                        break;
+
+                    case Consts.ORDER_STATUS_OTHER:
+                        OrderHelper.switchBottomBtns(activity, false,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "删除订单", Consts.ORDER_OPERATE_DELETE,
+                                null, -1,
+                                null, -1,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+            case Consts.USER_TYPE_BACK_PACKER:
+            case Consts.USER_TYPE_SELLER:
+                switch (orderStatus) {
+
+                    case Consts.ORDER_STATUS_AWAIT_PAY:
+                        OrderHelper.switchBottomBtns(activity, false,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "取消订单", Consts.ORDER_OPERATE_CANCEL,
+                                "联系买家", Consts.ORDER_OPERATE_CONTACT_BUYER,
+                                null, -1,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+                        break;
+
+                    case Consts.ORDER_STATUS_AWAIT_SHIPPING:
+                        OrderHelper.switchBottomBtns(activity, true,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "发货", Consts.ORDER_OPERATE_TO_SHIPPING,
+                                "取消订单", Consts.ORDER_OPERATE_CANCEL,
+                                "联系买家", Consts.ORDER_OPERATE_CONTACT_BUYER,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+                        break;
+
+                    case Consts.ORDER_STATUS_AWAIT_CONFIRM:
+                        OrderHelper.switchBottomBtns(activity, false,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
+                                "联系买家", Consts.ORDER_OPERATE_CONTACT_BUYER,
+                                null, -1,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+                        break;
+
+                    case Consts.ORDER_STATUS_CONFIRMED:
+                        OrderHelper.switchBottomBtns(activity, false,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
+                                "查看评价", Consts.ORDER_OPERATE_VIEW_REVIEWS,
+                                null, -1,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+                        break;
+
+                    case Consts.ORDER_STATUS_OTHER:
+                        OrderHelper.switchBottomBtns(activity, false,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                "删除订单", Consts.ORDER_OPERATE_DELETE,
+                                null, -1,
+                                null, -1,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+
+    }
 }

@@ -10,7 +10,6 @@ import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderListAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
@@ -29,11 +28,14 @@ public class OrderListFragment extends BaseMvpFragment {
     private int mOrderType;
     private ArrayList<OrderGoodsInfo> fakdeGoodsList1;
     private ArrayList<OrderGoodsInfo> fakeGoodsList2;
+    private int mUserType;
+    private Bundle mBundle;
 
 
-    public static OrderListFragment getInstance(int orderType) {
+    public static OrderListFragment getInstance(int userType, int orderType) {
         OrderListFragment fragment = new OrderListFragment();
         Bundle bundle = new Bundle();
+        bundle.putInt(Consts.USER_TYPE, userType);
         bundle.putInt(Consts.ORDER_TYPE, orderType);
         fragment.setArguments(bundle);
         return fragment;
@@ -42,9 +44,10 @@ public class OrderListFragment extends BaseMvpFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle arguments = getArguments();
-        if (arguments != null) {
-            mOrderType = arguments.getInt(Consts.ORDER_TYPE);
+        mBundle = getArguments();
+        if (mBundle != null) {
+            mUserType = mBundle.getInt(Consts.USER_TYPE);
+            mOrderType = mBundle.getInt(Consts.ORDER_TYPE);
         }
     }
 
@@ -61,7 +64,7 @@ public class OrderListFragment extends BaseMvpFragment {
     @Override
     protected void initData(Bundle bundle) {
         if (mAdapter == null) {
-            mAdapter = new OrderListAdapter((BaseActivity) getActivity());
+            mAdapter = new OrderListAdapter((BaseActivity) getActivity(), mUserType);
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -70,10 +73,12 @@ public class OrderListFragment extends BaseMvpFragment {
         mAdapter.setOnItemClickListener(new OrderListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, OrderBean data) {
-                Bundle bundle = new Bundle();
-                bundle.putString(Consts.ORDER_ID, data.getOrderId());
-                bundle.putSerializable(OrderDetailActivity.FAKE_DATA, data);
-                startActivity(OrderDetailActivity.class, bundle);
+                if (mBundle == null) {
+                    mBundle = new Bundle();
+                }
+                mBundle.putString(Consts.ORDER_ID, data.getOrderId());
+                mBundle.putSerializable(OrderDetailActivity.FAKE_DATA, data);
+                startActivity(OrderDetailActivity.class, mBundle);
             }
         });
 
@@ -119,7 +124,7 @@ public class OrderListFragment extends BaseMvpFragment {
             case Consts.ORDER_TYPE_ALL:
                 fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
                 fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_REVIEW));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
                 fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_OTHER));
                 fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_SHIPPING));
                 fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
@@ -139,10 +144,10 @@ public class OrderListFragment extends BaseMvpFragment {
                 fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_CONFIRM));
                 break;
             case Consts.ORDER_TYPE_AWAIT_REVIEW:
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_REVIEW));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_REVIEW));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
+                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
                 fakeData.add(new OrderBean("1",
-                        Consts.ORDER_STATUS_AWAIT_REVIEW,
+                        Consts.ORDER_STATUS_CONFIRMED,
                         "",
                         "我是小桂子的桂子",
                         "",
