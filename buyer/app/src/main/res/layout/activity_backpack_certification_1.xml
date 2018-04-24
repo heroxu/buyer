@@ -22,19 +22,79 @@
             android:paddingBottom="25dp"
             android:paddingTop="25dp">
 
-            <ImageView
+            <FrameLayout
+                android:id="@+id/f_btn_positive"
                 android:layout_width="268dp"
-                android:layout_height="164dp"
-                android:background="@color/green" />
+                android:layout_height="164dp">
+
+                <ImageView
+                    android:id="@+id/iv_positive"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/img_renzheng_face" />
+
+                <LinearLayout
+                    android:id="@+id/ll_positive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@mipmap/ic_renzheng_upload" />
+
+                    <TextView
+                        android:id="@+id/tv_positive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="身份证正面"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </FrameLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="30dp" />
 
-            <ImageView
+            <FrameLayout
+                android:id="@+id/f_btn_reverse"
                 android:layout_width="268dp"
-                android:layout_height="164dp"
-                android:background="@color/green" />
+                android:layout_height="164dp">
+
+                <ImageView
+                    android:id="@+id/iv_reverse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/img_renzheng_behind" />
+
+                <LinearLayout
+                    android:id="@+id/ll_reverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@mipmap/ic_renzheng_upload" />
+
+                    <TextView
+                        android:id="@+id/tv_reverse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="身份证反面"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -70,6 +130,7 @@
                     android:textSize="15sp" />
 
                 <EditText
+                    android:id="@+id/et_bc_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -104,6 +165,7 @@
                     android:textSize="15sp" />
 
                 <EditText
+                    android:id="@+id/et_bc_num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"

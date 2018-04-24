@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.BackPacker;
+package com.smyy.sharetour.buyer.BackPacker.certification;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,18 +11,38 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CheckedTextView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 public class BackpackCertificationActivity3 extends BaseMvpActivity {
-
+    @BindView(R.id.line_1)
+    ImageView line1;
+    @BindView(R.id.line_2)
+    ImageView line2;
+    @BindView(R.id.c_btn_1)
+    CheckBox cBtn1;
+    @BindView(R.id.c_btn_2)
+    CheckBox cBtn2;
+    @BindView(R.id.c_btn_3)
+    CheckBox cBtn3;
+    @BindView(R.id.tv_certification_1)
+    CheckedTextView tvCertification1;
+    @BindView(R.id.tv_certification_2)
+    CheckedTextView tvCertification2;
+    @BindView(R.id.tv_certification_3)
+    CheckedTextView tvCertification3;
     @BindView(R.id.tv_agreement)
     TextView tvAgreement;
 
@@ -39,6 +59,7 @@ public class BackpackCertificationActivity3 extends BaseMvpActivity {
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         hideToolBarDividerLine(true);
+        initView();
         SpannableString spannableString = new SpannableString("同意《芝麻信用协议及授权条款》以及《背包客认证协议及条款》");
         ALiClickableSpan colorSpan1 = new ALiClickableSpan();
         BackpackClickableSpan colorSpan2 = new BackpackClickableSpan();
@@ -48,7 +69,12 @@ public class BackpackCertificationActivity3 extends BaseMvpActivity {
         tvAgreement.setMovementMethod(LinkMovementMethod.getInstance());//不设置 没有点击事件
         tvAgreement.setHighlightColor(Color.TRANSPARENT); //设置点击后的颜色为透明
     }
-
+    private void initView() {
+        cBtn1.setEnabled(true);
+        cBtn2.setEnabled(true);
+        cBtn3.setEnabled(true);
+        tvCertification3.setEnabled(true);
+    }
     @Override
     protected IBasePresenter createPresenter() {
         return null;
@@ -80,5 +106,9 @@ public class BackpackCertificationActivity3 extends BaseMvpActivity {
         public void onClick(View widget) {
             ToastUtils.showToast("背包被点击了");
         }
+    }
+    @OnClick(R.id.btn_next)
+    public void onViewClicked() {
+        ActivityLauncher.viewALiCertificationActivity(this);
     }
 }

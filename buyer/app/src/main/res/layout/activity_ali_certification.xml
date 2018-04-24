@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_marginTop="80dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@mipmap/ic_zhimaxinyong"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:text="芝麻信用"
+        android:textColor="@color/txt_main"
+        android:textSize="17sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="80dp"
+        android:text="芝麻信用必须在600分以上"
+        android:textColor="@color/txt_gray_dark"
+        android:textSize="17sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/btn_bg_selector"
+        android:text="去授权"
+        android:textColor="@color/btn_txt_selector"
+        android:textSize="15dp" />
+
+</LinearLayout>

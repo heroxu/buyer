@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_marginTop="127dp"
+        android:layout_width="87dp"
+        android:layout_height="87dp"
+        android:src="@mipmap/ic_succes"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:text="提交成功"
+        android:textColor="@color/txt_main"
+        android:textSize="23sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="37dp"
+        android:lineSpacingMultiplier="1.5"
+        android:text="您的认证信息已提交成功，审核\n需要1-2个工作日"
+        android:textColor="@color/txt_gray_dark"
+        android:textSize="17sp" />
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_bg_selector"
+        android:text="去授权"
+        android:textColor="@color/btn_txt_selector"
+        android:textSize="15dp" />
+
+</LinearLayout>

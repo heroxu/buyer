@@ -91,10 +91,14 @@
         <activity android:name=".BackPacker.Require.BackPackerRequireCancelActivity" />
         <activity android:name=".BackPacker.Require.BackPackerRequireCancelSuccessActivity" />
         <activity android:name=".ui.PayFinishActivity" />
-        <activity android:name=".BackPacker.BackpackCertificationActivity1" />
-        <activity android:name=".BackPacker.BackpackerModeActivity"></activity>
+        <activity android:name=".BackPacker.certification.BackpackCertificationActivity1" />
+        <activity android:name=".BackPacker.certification.BackpackCertificationActivity2" />
+        <activity android:name=".BackPacker.certification.BackpackCertificationActivity3" />
+        <activity android:name=".BackPacker.certification.BackpackerModeActivity" />
         <activity android:name=".BackPacker.Travel.GoodTagActivity" />
         <activity android:name=".BackPacker.Travel.BackPackerSendTravelActivity" />
+        <activity android:name=".BackPacker.certification.ALiCertificationActivity" />
+        <activity android:name=".BackPacker.certification.ALiCertificationFinishActivity"></activity>
     </application>
 
 </manifest>

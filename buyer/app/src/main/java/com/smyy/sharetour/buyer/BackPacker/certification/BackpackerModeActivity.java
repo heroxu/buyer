@@ -1,15 +1,17 @@
-package com.smyy.sharetour.buyer.BackPacker;
+package com.smyy.sharetour.buyer.BackPacker.certification;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
+
+import butterknife.OnClick;
 
 public class BackpackerModeActivity extends BaseMvpActivity {
 
@@ -31,5 +33,10 @@ public class BackpackerModeActivity extends BaseMvpActivity {
     @Override
     protected IBasePresenter createPresenter() {
         return null;
+    }
+
+    @OnClick(R.id.btn_next)
+    public void onViewClicked() {
+        ActivityLauncher.viewBackpackCertificationActivity1(this);
     }
 }

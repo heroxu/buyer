@@ -156,8 +156,7 @@ public class ReportActivity extends BaseMvpActivity {
     }
 
     private void getPicture() {
-        ImageSelectorActivity.start(this, 10 - imagePaths.size(),
-                ImageSelectorActivity.MODE_MULTIPLE, true, true, false, 0);
+        ImageSelectorActivity.start(this, 10 - imagePaths.size(), ImageSelectorActivity.MODE_MULTIPLE, true, true, false, 0);
     }
 
     @Override

@@ -33,8 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:button="@drawable/shape_order_status_selector"
-        android:clickable="true"
-        android:enabled="true" />
+        android:clickable="false"
+        android:enabled="false"/>
 
     <CheckBox
         android:id="@+id/c_btn_2"
@@ -53,7 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="-10dp"
         android:layout_toRightOf="@+id/line_2"
-        android:button="@drawable/shape_order_status_selector" />
+        android:button="@drawable/shape_order_status_selector"
+        android:clickable="false"
+        android:enabled="false"/>
 
     <CheckedTextView
         android:id="@+id/tv_certification_1"

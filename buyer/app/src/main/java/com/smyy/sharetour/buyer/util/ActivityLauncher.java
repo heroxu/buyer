@@ -3,16 +3,14 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.BackPacker.certification.ALiCertificationActivity;
+import com.smyy.sharetour.buyer.BackPacker.certification.ALiCertificationFinishActivity;
 import com.smyy.sharetour.buyer.BackPacker.BackPackerHomeActivity;
-import com.smyy.sharetour.buyer.BackPacker.BackpackCertificationActivity1;
-import com.smyy.sharetour.buyer.BackPacker.BackpackerModeActivity;
-import com.smyy.sharetour.buyer.ui.ConfirmOrderActivity;
+import com.smyy.sharetour.buyer.BackPacker.certification.BackpackCertificationActivity1;
+import com.smyy.sharetour.buyer.BackPacker.certification.BackpackCertificationActivity2;
+import com.smyy.sharetour.buyer.BackPacker.certification.BackpackCertificationActivity3;
+import com.smyy.sharetour.buyer.BackPacker.certification.BackpackerModeActivity;
 import com.smyy.sharetour.buyer.MyApplication;
-import com.smyy.sharetour.buyer.ui.PayFinishActivity;
-import com.smyy.sharetour.buyer.ui.ReportActivity;
-import com.smyy.sharetour.buyer.ui.SkinList.SkinListActivity;
-import com.smyy.sharetour.buyer.ui.SkinList.SkinPeelerActivity;
-import com.smyy.sharetour.buyer.ui.SmallBackpack.SmallBackpackActivity;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.search.activity.HomeSearchActivity;
@@ -20,17 +18,23 @@ import com.smyy.sharetour.buyer.home.search.activity.SearchDetailActivity;
 import com.smyy.sharetour.buyer.module.my.CommentListActivity;
 import com.smyy.sharetour.buyer.require.PublishRequireActivity;
 import com.smyy.sharetour.buyer.require.RequireListActivity;
+import com.smyy.sharetour.buyer.ui.ConfirmOrderActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
 import com.smyy.sharetour.buyer.ui.LoginActivity;
 import com.smyy.sharetour.buyer.ui.MainActivity;
 import com.smyy.sharetour.buyer.ui.MoreReplyActivity;
 import com.smyy.sharetour.buyer.ui.MyCollectionActivity;
 import com.smyy.sharetour.buyer.ui.NoteDetailsActivity;
+import com.smyy.sharetour.buyer.ui.PayFinishActivity;
 import com.smyy.sharetour.buyer.ui.PersonalTagActivity;
 import com.smyy.sharetour.buyer.ui.PwdLoginActivity;
 import com.smyy.sharetour.buyer.ui.RegisterActivity;
+import com.smyy.sharetour.buyer.ui.ReportActivity;
 import com.smyy.sharetour.buyer.ui.SelectAreaCodeActivity;
 import com.smyy.sharetour.buyer.ui.SetPwdActivity;
+import com.smyy.sharetour.buyer.ui.SkinList.SkinListActivity;
+import com.smyy.sharetour.buyer.ui.SkinList.SkinPeelerActivity;
+import com.smyy.sharetour.buyer.ui.SmallBackpack.SmallBackpackActivity;
 import com.smyy.sharetour.buyer.ui.Test1Activity;
 import com.smyy.sharetour.buyer.ui.VerifyPhoneActivity;
 import com.smyy.sharetour.buyer.ui.VideoDetailsActivity;
@@ -280,6 +284,7 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, PayFinishActivity.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到背包客认证
      */
@@ -287,11 +292,52 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, BackpackCertificationActivity1.class);
         context.startActivity(intent);
     }
+
     /**
      * 跳转到背包客模式
      */
     public static void viewBackpackerModeActivity(Context context) {
         Intent intent = new Intent(context, BackpackerModeActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到芝麻信用认证界面
+     */
+    public static void viewALiCertificationActivity(Context context) {
+        Intent intent = new Intent(context, ALiCertificationActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到芝麻信用认证完成界面
+     */
+    public static void viewALiCertificationFinishActivity(Context context) {
+        Intent intent = new Intent(context, ALiCertificationFinishActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到背包客认证步骤1
+     */
+    public static void viewBackpackCertificationActivity1(Context context) {
+        Intent intent = new Intent(context, BackpackCertificationActivity1.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到背包客认证步骤2
+     */
+    public static void viewBackpackCertificationActivity2(Context context) {
+        Intent intent = new Intent(context, BackpackCertificationActivity2.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到背包客认证步骤3
+     */
+    public static void viewBackpackCertificationActivity3(Context context) {
+        Intent intent = new Intent(context, BackpackCertificationActivity3.class);
         context.startActivity(intent);
     }
 }
