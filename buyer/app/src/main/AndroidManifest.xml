@@ -16,8 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/XqcTheme.NoActionBar">
-        <activity android:name=".ui.MainActivity"
-            android:launchMode="singleInstance">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -91,7 +90,9 @@
         <activity android:name=".BackPacker.Require.BackpackerTakeRequireSuccessActivity" />
         <activity android:name=".BackPacker.Require.BackPackerRequireCancelActivity" />
         <activity android:name=".BackPacker.Require.BackPackerRequireCancelSuccessActivity" />
-        <activity android:name=".ui.PayFinishActivity"></activity>
+        <activity android:name=".ui.PayFinishActivity" />
+        <activity android:name=".BackPacker.BackpackCertificationActivity1" />
+        <activity android:name=".BackPacker.BackpackerModeActivity"></activity>
         <activity android:name=".BackPacker.Travel.GoodTagActivity" />
         <activity android:name=".BackPacker.Travel.BackPackerSendTravelActivity" />
     </application>

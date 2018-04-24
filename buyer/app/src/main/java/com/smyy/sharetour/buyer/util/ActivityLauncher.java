@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.smyy.sharetour.buyer.BackPacker.BackPackerHomeActivity;
+import com.smyy.sharetour.buyer.BackPacker.BackpackCertificationActivity1;
+import com.smyy.sharetour.buyer.BackPacker.BackpackerModeActivity;
 import com.smyy.sharetour.buyer.ui.ConfirmOrderActivity;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.ui.PayFinishActivity;
@@ -276,6 +278,20 @@ public class ActivityLauncher {
      */
     public static void viewPayFinishActivity(Context context) {
         Intent intent = new Intent(context, PayFinishActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到背包客认证
+     */
+    public static void viewBackpackCertificationActivity(Context context) {
+        Intent intent = new Intent(context, BackpackCertificationActivity1.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到背包客模式
+     */
+    public static void viewBackpackerModeActivity(Context context) {
+        Intent intent = new Intent(context, BackpackerModeActivity.class);
         context.startActivity(intent);
     }
 }

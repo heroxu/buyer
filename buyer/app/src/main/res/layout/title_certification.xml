@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="@color/white"
+    android:paddingBottom="15dp">
+
+    <ImageView
+        android:id="@+id/line_1"
+        android:layout_width="120dp"
+        android:layout_height="3dp"
+        android:layout_alignBottom="@+id/c_btn_1"
+        android:layout_alignTop="@+id/c_btn_1"
+        android:layout_marginLeft="-10dp"
+        android:layout_toRightOf="@+id/c_btn_1"
+        android:src="@drawable/line_order_status_selector" />
+
+    <ImageView
+        android:id="@+id/line_2"
+        android:layout_width="120dp"
+        android:layout_height="3dp"
+        android:layout_alignBottom="@+id/c_btn_2"
+        android:layout_alignTop="@+id/c_btn_2"
+        android:layout_marginLeft="-10dp"
+        android:layout_toRightOf="@+id/c_btn_2"
+        android:src="@drawable/line_order_status_selector" />
+
+
+    <CheckBox
+        android:id="@+id/c_btn_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:button="@drawable/shape_order_status_selector"
+        android:clickable="true"
+        android:enabled="true" />
+
+    <CheckBox
+        android:id="@+id/c_btn_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-10dp"
+        android:layout_toRightOf="@+id/line_1"
+        android:button="@drawable/shape_order_status_selector"
+        android:clickable="false"
+        android:enabled="false" />
+
+
+    <CheckBox
+        android:id="@+id/c_btn_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-10dp"
+        android:layout_toRightOf="@+id/line_2"
+        android:button="@drawable/shape_order_status_selector" />
+
+    <CheckedTextView
+        android:id="@+id/tv_certification_1"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/c_btn_1"
+        android:checkMark="@null"
+        android:clickable="false"
+        android:enabled="false"
+        android:text="身份证认证"
+        android:textAlignment="center"
+        android:textColor="@color/order_status_txt_selector"
+        android:textSize="@dimen/txt_size_13" />
+
+    <CheckedTextView
+        android:id="@+id/tv_certification_2"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/c_btn_2"
+        android:layout_alignTop="@+id/tv_certification_1"
+        android:layout_marginLeft="-20dp"
+        android:checkMark="@null"
+        android:clickable="false"
+        android:enabled="false"
+        android:text="护照认证"
+        android:textAlignment="center"
+        android:textColor="@color/order_status_txt_selector"
+        android:textSize="@dimen/txt_size_13" />
+
+    <CheckedTextView
+        android:id="@+id/tv_certification_3"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/c_btn_3"
+        android:layout_alignTop="@+id/tv_certification_1"
+        android:layout_marginLeft="-20dp"
+        android:checkMark="@null"
+        android:clickable="false"
+        android:enabled="false"
+        android:text="芝麻认证"
+        android:textAlignment="center"
+        android:textColor="@color/order_status_txt_selector"
+        android:textSize="@dimen/txt_size_13" />
+
+</RelativeLayout>
