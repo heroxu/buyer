@@ -119,12 +119,9 @@
         <item name="android:src">@drawable/arrow_right_selector</item>
     </style>
 
-    <style name="WideItemDivider">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
+    <style name="WideItemDivider" parent="LineDivider.Horizon">
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginRight">20dp</item>
-        <item name="android:background">@color/line_divider</item>
     </style>
 
     <!--提示性文本-->
@@ -140,6 +137,19 @@
     </style>
 
 
+    <style name="LineDivider">
+        <item name="android:background">@color/line_divider</item>
+    </style>
+
+    <style name="LineDivider.Vertical">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="LineDivider.Horizon">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
     <!-- 水平平分 -->
     <style name="DividItemHorizon">
         <item name="android:layout_width">0dp</item>

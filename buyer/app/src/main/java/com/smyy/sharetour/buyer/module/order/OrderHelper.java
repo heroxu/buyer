@@ -13,6 +13,7 @@ import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.BackPacker.order.UploadShippingInfoActivity;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.adapter.InterestSellerAdapter;
@@ -202,6 +203,10 @@ public class OrderHelper {
 
             case Consts.ORDER_OPERATE_REMIND_SHIPPING:
 
+                break;
+
+            case Consts.ORDER_OPERATE_TO_SHIPPING:
+                activity.startActivity(UploadShippingInfoActivity.class);
                 break;
 
             case Consts.ORDER_OPERATE_VIEW_SHIPPING:

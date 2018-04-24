@@ -105,6 +105,7 @@
         <activity android:name=".BackPacker.BackpackAllEvaluationActivity" />
         <activity android:name=".BackPacker.BackpackEditorActivity" />
         <activity android:name=".BackPacker.BackpackHomePageActivity"></activity>
+        <activity android:name=".BackPacker.order.UploadShippingInfoActivity" />
     </application>
 
 </manifest>
