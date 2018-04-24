@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="25dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_order_buyer_avatar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/fake_seller_avatar"
+            tools:src="@mipmap/fake_seller_avatar" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@+id/cb_order_like"
+            android:layout_toRightOf="@+id/iv_order_buyer_avatar"
+            android:text="我是小桂子的桂子"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_15"
+            tools:text="我是小桂子的桂子" />
+
+        <CheckBox
+            android:id="@+id/cb_order_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:button="@null"
+            android:drawableLeft="@drawable/ic_like_selector"
+            android:drawablePadding="5dp"
+            android:text="799"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_13" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="上脚很好看！很棒的体验，希望nike能够越做越好！轻便、 方便运动，适合的朋友可以尝试这双鞋子哟！"
+        android:textColor="@color/txt_gray_dark"
+        android:textSize="@dimen/txt_size_13" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="2017-11-23"
+        android:textColor="@color/txt_gray"
+        android:textSize="@dimen/txt_size_11" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <com.smyy.sharetour.buyer.view.AutoScaleHeightImageView
+            android:id="@+id/iv_my_seller_goods1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/fake_goods_pic"
+            tools:src="@mipmap/fake_goods_pic" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <com.smyy.sharetour.buyer.view.AutoScaleHeightImageView
+            android:id="@+id/iv_my_seller_goods2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/fake_goods_pic"
+            tools:src="@mipmap/fake_goods_pic" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <com.smyy.sharetour.buyer.view.AutoScaleHeightImageView
+            android:id="@+id/iv_my_seller_goods3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/fake_goods_pic"
+            tools:src="@mipmap/fake_goods_pic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_input_gray"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/txt_main"
+            android:padding="4dp"
+            android:text="8天后追评"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_size_11" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="上脚很好看！很棒的体验，希望nike能够越做越好！轻便、 方便运动，适合的朋友可以尝试这双鞋子哟！"
+            android:textColor="@color/txt_gray"
+            android:textSize="@dimen/txt_size_13" />
+
+    </LinearLayout>
+</LinearLayout>

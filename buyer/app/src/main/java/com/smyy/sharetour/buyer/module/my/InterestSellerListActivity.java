@@ -23,7 +23,7 @@ import butterknife.BindView;
 
 public class InterestSellerListActivity extends MyBaseMvpActivity {
 
-    @BindView(R.id.rv_my_shipping_address)
+    @BindView(R.id.rv_my_interest_seller)
     RecyclerView mRecyclerView;
 
     private InterestSellerAdapter mAdapter;

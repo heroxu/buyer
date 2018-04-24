@@ -6,7 +6,7 @@
     android:background="@color/window_background">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_my_shipping_address"
+        android:id="@+id/rv_my_interest_seller"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

@@ -13,7 +13,7 @@
 
     <!-- 四个角的弧度 -->
     <corners
-        android:topLeftRadius="4dp"
-        android:topRightRadius="4dp" />
+        android:radius="1dp" />
+
 
 </shape>

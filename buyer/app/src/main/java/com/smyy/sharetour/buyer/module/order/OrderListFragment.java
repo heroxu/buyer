@@ -170,6 +170,7 @@ public class OrderListFragment extends BaseMvpFragment {
             case Consts.USER_TYPE_BACK_PACKER:
                 switch (mOrderType) {
                     case Consts.ORDER_TYPE_ALL:
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_CONFIRMED));
                         fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_PAY));
                         fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_CONFIRM));
                         fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_CONFIRMED));
@@ -199,6 +200,7 @@ public class OrderListFragment extends BaseMvpFragment {
             case Consts.USER_TYPE_SELLER:
                 switch (mOrderType) {
                     case Consts.ORDER_TYPE_ALL:
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
                         fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
                         fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
                         fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));

@@ -3,6 +3,8 @@ package com.smyy.sharetour.buyer.module.order;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +15,17 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.module.my.adapter.InterestSellerAdapter;
+import com.smyy.sharetour.buyer.module.order.adapter.OrderReviewsAdapter;
+import com.smyy.sharetour.buyer.module.order.bean.OrderReviewsBean;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 import com.xmyy.view.dialoglib.CommonDialog;
 import com.xmyy.view.dialoglib.base.BindViewHolder;
 import com.xmyy.view.dialoglib.listener.OnBindViewListener;
 import com.xmyy.view.dialoglib.listener.OnViewClickListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderHelper {
 
@@ -159,7 +167,37 @@ public class OrderHelper {
                 break;
 
             case Consts.ORDER_OPERATE_VIEW_REVIEWS:
+                new CommonDialog.Builder(activity.getSupportFragmentManager())
+                        .setLayoutRes(R.layout.dialog_order_reviews)
+                        .setGravity(Gravity.BOTTOM)
+                        .setAnimRes(R.style.BottomDialogAnim)
+                        .setDimAmount(0.5f)
+                        .setScreenWidthAspect(activity, 1)
+                        .setOnBindViewListener(new OnBindViewListener() {
+                            @Override
+                            public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
+                                viewHolder.setOnViewClickListener(R.id.icon_close, new OnViewClickListener() {
+                                    @Override
+                                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                        commonDialog.dismiss();
+                                    }
+                                });
+                                RecyclerView rvReviews = viewHolder.getView(R.id.rv_order_reviews);
 
+                                OrderReviewsAdapter adapter = new OrderReviewsAdapter(activity);
+                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
+                                rvReviews.setLayoutManager(linearLayoutManager);
+                                rvReviews.setAdapter(adapter);
+
+                                List<OrderReviewsBean> datas = new ArrayList<>();
+                                datas.add(new OrderReviewsBean());
+                                datas.add(new OrderReviewsBean());
+                                datas.add(new OrderReviewsBean());
+                                datas.add(new OrderReviewsBean());
+                                adapter.setData(datas);
+                            }
+                        })
+                        .create().show();
                 break;
 
             case Consts.ORDER_OPERATE_REMIND_SHIPPING:
@@ -196,7 +234,7 @@ public class OrderHelper {
                         .setOnBindViewListener(new OnBindViewListener() {
                             @Override
                             public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
-                                viewHolder.setOnViewClickListener(R.id.select_reward_close, new OnViewClickListener() {
+                                viewHolder.setOnViewClickListener(R.id.icon_close, new OnViewClickListener() {
                                     @Override
                                     public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
                                         commonDialog.dismiss();
@@ -354,7 +392,7 @@ public class OrderHelper {
                                 tvBottomBtn1, tvBottomBtn2,
                                 tvBottomBtn3, tvBottomBtnMore,
                                 "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
-                                "查看评价", Consts.ORDER_OPERATE_VIEW_REVIEWS,
+                                "查看评论", Consts.ORDER_OPERATE_VIEW_REVIEWS,
                                 null, -1,
                                 null, -1,
                                 null, -1,
