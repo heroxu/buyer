@@ -3,13 +3,19 @@ package com.smyy.sharetour.buyer.home.detail;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,14 +24,15 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-import com.smyy.sharetour.buyer.home.search.activity.SearchDetailActivity;
-import com.smyy.sharetour.buyer.home.search.fragment.SearchBuyerFragment;
-import com.smyy.sharetour.buyer.home.search.fragment.SearchProductFragment;
+import com.smyy.sharetour.buyer.db.HomeSearch;
+import com.smyy.sharetour.buyer.home.adapter.SearchHistoryAdapter;
+import com.smyy.sharetour.buyer.home.adapter.SearchResultAdapter;
 import com.smyy.sharetour.buyer.tim.ChatActivity;
 import com.smyy.sharetour.buyer.view.RedImageView;
 import com.tencent.imsdk.TIMConversationType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +40,7 @@ import butterknife.ButterKnife;
 /**
  * create by xuxiarong on $DATA$
  */
-public class HomeDetailActivity extends BaseMvpActivity implements View.OnClickListener{
+public class HomeDetailActivity extends BaseMvpActivity implements View.OnClickListener {
     @BindView(R.id.iv_product_detail_back)
     ImageView ivProductDetailBack;
     @BindView(R.id.tv_product_detail_title)
@@ -44,8 +51,6 @@ public class HomeDetailActivity extends BaseMvpActivity implements View.OnClickL
     ImageView ivSearchDetailShare;
     @BindView(R.id.iv_product_detail_collect)
     ImageView ivProductDetailCollect;
-    @BindView(R.id.rv_product_detail_parent)
-    RecyclerView rvProductDetailParent;
     @BindView(R.id.stl_product_detail)
     SlidingTabLayout stlProductDetail;
     @BindView(R.id.ll_product_detail_tab_top)
@@ -70,12 +75,21 @@ public class HomeDetailActivity extends BaseMvpActivity implements View.OnClickL
     LinearLayout llProductDetailBagParent;
     @BindView(R.id.vp_product_detail)
     ViewPager vpProductDetail;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.collapsingToolbar)
+    CollapsingToolbarLayout collapsingToolbar;
+    @BindView(R.id.appbar)
+    AppBarLayout appbar;
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private final String[] mTitles = {"详情", "评价","服务"};
+    private final String[] mTitles = {"详情", "评价", "服务"};
     private HomeDetailFragmentAdapter mAdapter;
     private boolean isCollected;
     private int productNum;
+
+
+    private List<String> mHotDatas = new ArrayList<>();
 
     @Override
     protected IBasePresenter createPresenter() {
@@ -116,22 +130,23 @@ public class HomeDetailActivity extends BaseMvpActivity implements View.OnClickL
         tvProductDetailCloseBag.setOnClickListener(this);
         ivProductDetailBag.setOnClickListener(this);
         ivProductDetailComment.setOnClickListener(this);
-        ivProductDetailBag.setRedPointVisible(productNum>0?View.VISIBLE:View.GONE);
+        ivProductDetailBag.setRedPointVisible(productNum > 0 ? View.VISIBLE : View.GONE);
+
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.iv_product_detail_back:
                 finish();
                 break;
             case R.id.iv_product_detail_collect:
-                ivProductDetailCollect.setImageResource(isCollected?R.mipmap.ic_collection_ele:
+                ivProductDetailCollect.setImageResource(isCollected ? R.mipmap.ic_collection_ele :
                         R.mipmap.ic_comment_collection);
-                isCollected=!isCollected;
+                isCollected = !isCollected;
                 break;
             case R.id.iv_search_detail_share:
-                    //TODO share to other
+                //TODO share to other
                 break;
             case R.id.tv_product_detail_expand_bag:
                 tvProductDetailExpandBag.setVisibility(View.GONE);
@@ -142,11 +157,11 @@ public class HomeDetailActivity extends BaseMvpActivity implements View.OnClickL
                 llProductDetailCloseBag.setVisibility(View.GONE);
                 break;
             case R.id.iv_product_detail_bag:
-                ivProductDetailBag.setText((productNum++)+"");
+                ivProductDetailBag.setText((productNum++) + "");
 
                 break;
             case R.id.iv_product_detail_comment:
-                ChatActivity.navToChat(this,"XMYY_XXR", TIMConversationType.C2C);
+                ChatActivity.navToChat(this, "XMYY_XXR", TIMConversationType.C2C);
                 break;
         }
     }
