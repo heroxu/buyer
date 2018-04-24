@@ -68,15 +68,15 @@ public class OrderListActivity extends MyBaseMvpActivity {
                     mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_REVIEW));
                     break;
                 case Consts.USER_TYPE_BACK_PACKER:
-                    mTitles = new String[]{"全部", "待发货", "已收货"};
+                    mTitles = new String[]{"全部", "待发货", "已发货"};
                     mOrderTypeList.clear();
                     mFragments.clear();
                     mOrderTypeList.add(Consts.ORDER_TYPE_ALL);
                     mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_ALL));
                     mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_SHIPPING);
                     mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_SHIPPING));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_REVIEW);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_REVIEW));
+                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_CONFIRM);
+                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_CONFIRM));
                     break;
                 case Consts.USER_TYPE_SELLER:
                     mTitles = new String[]{"全部", "待付款", "待发货", "已发货"};

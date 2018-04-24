@@ -146,10 +146,10 @@ public class MainActivity extends BaseActivity {
                 tagFragment = liveFragment;
                 break;
             case TAB_ME:
-//                if (!MyApplication.getApplication().isLogin()) {
-//                    ActivityLauncher.viewLoginActivity(this);
-//                    return;
-//                }
+                if (!MyApplication.getApplication().isLogin()) {
+                    ActivityLauncher.viewLoginActivity(this);
+                    return;
+                }
                 if (myFragment == null) {
                     myFragment = new MyFragment();
                 }

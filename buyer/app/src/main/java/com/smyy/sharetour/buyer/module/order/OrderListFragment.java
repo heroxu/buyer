@@ -28,6 +28,7 @@ public class OrderListFragment extends BaseMvpFragment {
     private int mOrderType;
     private ArrayList<OrderGoodsInfo> fakdeGoodsList1;
     private ArrayList<OrderGoodsInfo> fakeGoodsList2;
+    private ArrayList<OrderGoodsInfo> fakdeGoodsListDL;
     private int mUserType;
     private Bundle mBundle;
 
@@ -115,51 +116,117 @@ public class OrderListFragment extends BaseMvpFragment {
         fakeGoodsList2 = new ArrayList<>();
         fakeGoodsList2.add(goodsInfo1);
         fakeGoodsList2.add(goodsInfo2);
-        List<OrderGoodsInfo> fakdeGoodsListDL = new ArrayList<>();
+        fakdeGoodsListDL = new ArrayList<>();
         fakdeGoodsListDL.add(goodsInfoDL);
 
 
         List<OrderBean> fakeData = new ArrayList<>();
-        switch (mOrderType) {
-            case Consts.ORDER_TYPE_ALL:
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
-                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_OTHER));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_SHIPPING));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
-                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_SHIPPING));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_OTHER));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
-                break;
+        switch (mUserType) {
+            case Consts.USER_TYPE_BUYER:
+                switch (mOrderType) {
+                    case Consts.ORDER_TYPE_ALL:
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
+                        fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_OTHER));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
+                        fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_OTHER));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        break;
 
-            case Consts.ORDER_TYPE_AWAIT_PAY:
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
-                break;
-            case Consts.ORDER_TYPE_AWAIT_SHIPPING:
-                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_SHIPPING));
-                break;
-            case Consts.ORDER_TYPE_AWAIT_CONFIRM:
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
-                fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_CONFIRM));
-                break;
-            case Consts.ORDER_TYPE_AWAIT_REVIEW:
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
-                fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
-                fakeData.add(new OrderBean("1",
-                        Consts.ORDER_STATUS_CONFIRMED,
-                        "",
-                        "我是小桂子的桂子",
-                        "",
-                        "",
-                        1,
-                        "￥9,948.00",
-                        "￥30.00",
-                        "",
-                        Consts.GOODS_TYPE_DEMAND,
-                        fakdeGoodsListDL));
-                break;
+                    case Consts.ORDER_TYPE_AWAIT_PAY:
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
+                        break;
+                    case Consts.ORDER_TYPE_AWAIT_SHIPPING:
+                        fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        break;
+                    case Consts.ORDER_TYPE_AWAIT_CONFIRM:
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        break;
+                    case Consts.ORDER_TYPE_AWAIT_REVIEW:
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
+                        fakeData.add(new OrderBean("1",
+                                Consts.ORDER_STATUS_CONFIRMED,
+                                "",
+                                "我是小桂子的桂子",
+                                "",
+                                "",
+                                1,
+                                "￥9,948.00",
+                                "￥30.00",
+                                "",
+                                Consts.GOODS_TYPE_DEMAND,
+                                fakdeGoodsListDL));
+                        break;
 
+                    default:
+                        break;
+                }
+                break;
+            case Consts.USER_TYPE_BACK_PACKER:
+                switch (mOrderType) {
+                    case Consts.ORDER_TYPE_ALL:
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_PAY));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_CONFIRMED));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_OTHER));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_PAY));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_OTHER));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        break;
+
+                    case Consts.ORDER_TYPE_AWAIT_SHIPPING:
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        break;
+
+                    case Consts.ORDER_TYPE_AWAIT_CONFIRM:
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        fakeData.add(getFakeOrderBeanDL(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+            case Consts.USER_TYPE_SELLER:
+                switch (mOrderType) {
+                    case Consts.ORDER_TYPE_ALL:
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_CONFIRMED));
+                        fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_OTHER));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
+                        fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_OTHER));
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        break;
+
+                    case Consts.ORDER_TYPE_AWAIT_PAY:
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_PAY));
+                        break;
+
+                    case Consts.ORDER_TYPE_AWAIT_SHIPPING:
+                        fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_SHIPPING));
+                        break;
+
+                    case Consts.ORDER_TYPE_AWAIT_CONFIRM:
+                        fakeData.add(getFakeOrderBean1(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        fakeData.add(getFakeOrderBean2(Consts.ORDER_STATUS_AWAIT_CONFIRM));
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
             default:
                 break;
         }
@@ -197,5 +264,21 @@ public class OrderListFragment extends BaseMvpFragment {
                 Consts.GOODS_TYPE_STOCK,
                 fakeGoodsList2);
         return orderBean2;
+    }
+
+    private OrderBean getFakeOrderBeanDL(int orderStatus) {
+        OrderBean orderBeanDL = new OrderBean("1",
+                orderStatus,
+                "",
+                "我是小桂子的桂子",
+                "",
+                "",
+                1,
+                "￥9,948.00",
+                "￥30.00",
+                "",
+                Consts.GOODS_TYPE_DEMAND,
+                fakdeGoodsListDL);
+        return orderBeanDL;
     }
 }
