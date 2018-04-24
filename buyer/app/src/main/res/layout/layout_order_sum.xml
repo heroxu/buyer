@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:id="@+id/lay_order_sum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/btn_bg_normal" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            app:alignItems="baseline"
+            app:flexWrap="wrap"
+            app:justifyContent="flex_end">
+
+            <TextView
+                android:id="@+id/tv_order_goods_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13"
+                tools:text="共1件商品" />
+
+            <TextView
+                android:id="@+id/tv_order_price_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13"
+                tools:text="总额：478638" />
+
+            <TextView
+                android:id="@+id/tv_order_shipping_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/txt_gray_dark"
+                android:textSize="@dimen/txt_size_11"
+                tools:text="（含运费）" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+    </LinearLayout>
+
+</merge>

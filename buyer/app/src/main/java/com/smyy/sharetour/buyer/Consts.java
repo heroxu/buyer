@@ -182,6 +182,10 @@ public class Consts {
 
     public static final String[] REQUIRE_STATE_STRINGS = {"待接单", "待指定", "备货中", "已发货", "已完成", "已取消", "已失效"};
 
+    //商品类型
+    public static final int GOODS_TYPE_DEMAND = 1;//需求型商品
+    public static final int GOODS_TYPE_PRESELL = 2;//预售型商品
+    public static final int GOODS_TYPE_STOCK = 3;//现货型商品
 
     public static final String ORDER_ID = "order_id";
     //订单类型
@@ -203,9 +207,35 @@ public class Consts {
 
     public static final String[] ORDER_STATUS_STRINGS = {"", "等待买家付款", "买家已付款", "买手已发货", "交易成功", "交易关闭"};
 
+    //订单操作
+    public static final int ORDER_OPERATE_VERIFY_VIDEO = 1;
+    public static final int ORDER_OPERATE_CONTACT_SELLER = 2;
+    public static final int ORDER_OPERATE_CONTACT_BUYER = 3;
+    public static final int ORDER_OPERATE_REMIND_SHIPPING = 4;
+    public static final int ORDER_OPERATE_VIEW_SHIPPING = 5;
+    public static final int ORDER_OPERATE_DELETE = 6;
+    public static final int ORDER_OPERATE_CANCEL = 7;
+    public static final int ORDER_OPERATE_PAY = 8;
+    public static final int ORDER_OPERATE_CONFIRM = 9;
+    public static final int ORDER_OPERATE_REVIEW = 10;
+    public static final int ORDER_OPERATE_VIEW_REVIEWS = 11;
+    public static final int ORDER_OPERATE_CONTACT_SERVICE = 12;
+    public static final int ORDER_OPERATE_ = 0;
+
 
     /**
      * 客服电话
      */
     public static final String SERVICE_TEL = "020-1234567";
+
+    //******** 背包客模式 ********
+    //订单类型
+    public static final int SELLER_ORDER_TYPE_ALL = 0;
+    public static final int SELLER_ORDER_TYPE_AWAIT_SHIPPING = 1;//待发货
+    public static final int SELLER_ORDER_TYPE_SHIPPED = 2;//已收货
+
+    public static final String[] SELLER_ORDER_TYPE_STRINGS = {"全部", "待发货", "已收货"};
+
+    //订单状态与买家通用
+    public static final String[] SELLER_ORDER_STATUS_STRINGS = {"", "等待买家付款", "待发货", "已发货", "交易成功", "需求已取消"};
 }

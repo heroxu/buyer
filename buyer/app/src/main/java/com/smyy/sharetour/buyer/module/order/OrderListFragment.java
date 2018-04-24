@@ -14,6 +14,7 @@ import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderListAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
+import com.smyy.sharetour.uiframelib.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class OrderListFragment extends BaseMvpFragment {
     @Override
     protected void initData(Bundle bundle) {
         if (mAdapter == null) {
-            mAdapter = new OrderListAdapter(getContext());
+            mAdapter = new OrderListAdapter((BaseActivity) getActivity());
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -76,58 +77,6 @@ public class OrderListFragment extends BaseMvpFragment {
             }
         });
 
-        mAdapter.setOnItemViewClickListener(new OrderListAdapter.OnItemViewClickListener() {
-            @Override
-            public void onItemViewClick(View view, int position, OrderBean data) {
-                Bundle bundle = new Bundle();
-                switch (view.getId()) {
-
-                    case R.id.tv_order_verify_video:
-
-                        break;
-
-                    case R.id.tv_order_contact_seller:
-
-                        break;
-
-                    case R.id.tv_order_contact_service:
-
-                        break;
-
-                    case R.id.tv_order_remind_shipping:
-
-                        break;
-
-                    case R.id.tv_order_delete:
-
-                        break;
-
-                    case R.id.tv_order_view_shipping:
-
-                        break;
-
-                    case R.id.tv_order_cancel:
-
-                        break;
-
-                    case R.id.tv_order_pay:
-
-                        break;
-
-                    case R.id.tv_order_confirm:
-
-                        break;
-
-                    case R.id.tv_order_review:
-                        bundle.putString(Consts.ORDER_ID, data.getOrderId());
-                        startActivity(OrderCommentActivity.class, bundle);
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-        });
         mDatas = getFakeData();
         mAdapter.setData(mDatas);
     }
@@ -201,6 +150,8 @@ public class OrderListFragment extends BaseMvpFragment {
                         1,
                         "￥9,948.00",
                         "￥30.00",
+                        "",
+                        Consts.GOODS_TYPE_DEMAND,
                         fakdeGoodsListDL));
                 break;
 
@@ -221,6 +172,8 @@ public class OrderListFragment extends BaseMvpFragment {
                 1,
                 "￥9,948.00",
                 "￥30.00",
+                "",
+                Consts.GOODS_TYPE_STOCK,
                 fakdeGoodsList1);
         return orderBean1;
     }
@@ -235,6 +188,8 @@ public class OrderListFragment extends BaseMvpFragment {
                 2,
                 "￥18,866.00",
                 "￥30.00",
+                "",
+                Consts.GOODS_TYPE_STOCK,
                 fakeGoodsList2);
         return orderBean2;
     }

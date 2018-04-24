@@ -8,13 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.Consts;
@@ -26,10 +24,6 @@ import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderDetailBean;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
-import com.xmyy.view.dialoglib.CommonDialog;
-import com.xmyy.view.dialoglib.base.BindViewHolder;
-import com.xmyy.view.dialoglib.listener.OnBindViewListener;
-import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -81,6 +75,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     TextView tvContactSeller;
     @BindView(R.id.rv_order_goods_list)
     RecyclerView rvGoodsList;
+    @BindView(R.id.lay_order_sum)
+    View laySum;
     @BindView(R.id.tv_order_goods_count)
     TextView tvGoodsCount;
     @BindView(R.id.tv_order_price_total)
@@ -93,28 +89,21 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     TextView tvCopyOrderNum;
     @BindView(R.id.tv_order_time)
     TextView tvOrderTime;
-    @BindView(R.id.tv_order_verify_video)
-    TextView tvVerifyVideo;
-    @BindView(R.id.tv_order_contact_service)
-    TextView tvContactService;
-    @BindView(R.id.tv_order_remind_shipping)
-    TextView tvRemindShipping;
-    @BindView(R.id.tv_order_delete)
-    TextView tvDelete;
-    @BindView(R.id.tv_order_view_shipping)
-    TextView tvViewShipping;
-    @BindView(R.id.tv_order_cancel)
-    TextView tvCancel;
-    @BindView(R.id.tv_order_pay)
-    TextView tvPay;
-    @BindView(R.id.tv_order_confirm)
-    TextView tvConifrm;
-    @BindView(R.id.tv_order_review)
-    TextView tvReview;
+    @BindView(R.id.tv_order_bottom_btn1)
+    TextView tvBottomBtn1;
+    @BindView(R.id.tv_order_bottom_btn2)
+    TextView tvBottomBtn2;
+    @BindView(R.id.tv_order_bottom_btn3)
+    TextView tvBottomBtn3;
+    @BindView(R.id.tv_order_bottom_more)
+    TextView tvBottomBtnMore;
 
     public static final String FAKE_DATA = "fake_data";
     private String mOrderNum;
     private int mCheckedId;
+    private PopupWindow mPopupWindow;
+    private int mPopHeight;
+    private int mPopWidth;
 
     @Override
     protected int getLayoutId() {
@@ -189,18 +178,29 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             rvGoodsList.setLayoutManager(linearLayoutManager);
             rvGoodsList.setAdapter(new OrderGoodsListAdapter(OrderDetailActivity.this, data.getGoodsList()));
 
-            int goodsCountTotal = data.getGoodsCountTotal();
-            if (goodsCountTotal > 0) {
-                tvGoodsCount.setVisibility(View.GONE);
-                tvGoodsCount.setText("共" + goodsCountTotal + "件商品");
-            } else {
-                tvGoodsCount.setVisibility(View.VISIBLE);
+            int goodsType = data.getGoodsType();
+            switch (goodsType) {
+                case Consts.GOODS_TYPE_DEMAND:
+                    laySum.setVisibility(View.GONE);
+                    break;
+
+                default:
+                    laySum.setVisibility(View.VISIBLE);
+                    int goodsCountTotal = data.getGoodsCountTotal();
+                    if (goodsCountTotal > 0) {
+                        tvGoodsCount.setVisibility(View.VISIBLE);
+                        tvGoodsCount.setText("共" + goodsCountTotal + "件商品");
+                    } else {
+                        tvGoodsCount.setVisibility(View.GONE);
+                    }
+
+                    tvPriceTotal.setText(new Spanny().append("总额：")
+                            .append(data.getPriceTotal(),
+                                    new ForegroundColorSpan(getResources().getColor(R.color.txt_price))));
+                    tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
+                    break;
             }
 
-            tvPriceTotal.setText(new Spanny().append("总额：")
-                    .append(data.getPriceTotal(),
-                            new ForegroundColorSpan(OrderDetailActivity.this.getResources().getColor(R.color.txt_price))));
-            tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
 
             int orderStatus = data.getOrderStatus();
             switch (orderStatus) {
@@ -210,16 +210,14 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                     dotAwaitPay.setEnabled(true);
                     tvAwaitPay.setEnabled(true);
 
-                    tvVerifyVideo.setVisibility(View.GONE);
-                    tvContactSeller.setVisibility(View.VISIBLE);
-                    tvContactService.setVisibility(View.GONE);
-                    tvRemindShipping.setVisibility(View.GONE);
-                    tvDelete.setVisibility(View.GONE);
-                    tvViewShipping.setVisibility(View.GONE);
-                    tvCancel.setVisibility(View.VISIBLE);
-                    tvPay.setVisibility(View.VISIBLE);
-                    tvConifrm.setVisibility(View.GONE);
-                    tvReview.setVisibility(View.GONE);
+                    OrderHelper.switchBottomBtns(this, true,
+                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore,
+                            "付款", Consts.ORDER_OPERATE_PAY,
+                            "取消订单", Consts.ORDER_OPERATE_CANCEL,
+                            "联系买手", Consts.ORDER_OPERATE_CONTACT_BUYER,
+                            null, -1,
+                            null, -1,
+                            null, -1);
                     break;
 
                 case Consts.ORDER_STATUS_AWAIT_SHIPPING:
@@ -234,16 +232,15 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                     dotPaid.setEnabled(true);
                     tvPaid.setEnabled(true);
 
-                    tvVerifyVideo.setVisibility(View.GONE);
-                    tvContactSeller.setVisibility(View.VISIBLE);
-                    tvContactService.setVisibility(View.VISIBLE);
-                    tvRemindShipping.setVisibility(View.VISIBLE);
-                    tvDelete.setVisibility(View.GONE);
-                    tvViewShipping.setVisibility(View.GONE);
-                    tvCancel.setVisibility(View.GONE);
-                    tvPay.setVisibility(View.GONE);
-                    tvConifrm.setVisibility(View.GONE);
-                    tvReview.setVisibility(View.GONE);
+                    OrderHelper.switchBottomBtns(this, false,
+                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore,
+                            "提醒发货", Consts.ORDER_OPERATE_REMIND_SHIPPING,
+                            "联系客服", Consts.ORDER_OPERATE_CONTACT_SERVICE,
+                            "联系买手", Consts.ORDER_OPERATE_CONTACT_BUYER,
+                            null, -1,
+                            null, -1,
+                            null, -1);
+
                     break;
 
                 case Consts.ORDER_STATUS_AWAIT_CONFIRM:
@@ -264,16 +261,15 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                     dotShipped.setEnabled(true);
                     tvShipped.setEnabled(true);
 
-                    tvVerifyVideo.setVisibility(View.GONE);
-                    tvContactSeller.setVisibility(View.VISIBLE);
-                    tvContactService.setVisibility(View.GONE);
-                    tvRemindShipping.setVisibility(View.GONE);
-                    tvDelete.setVisibility(View.GONE);
-                    tvViewShipping.setVisibility(View.VISIBLE);
-                    tvCancel.setVisibility(View.GONE);
-                    tvPay.setVisibility(View.GONE);
-                    tvConifrm.setVisibility(View.VISIBLE);
-                    tvReview.setVisibility(View.GONE);
+                    OrderHelper.switchBottomBtns(this, true,
+                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore,
+                            "确认收货", Consts.ORDER_OPERATE_CONFIRM,
+                            "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
+                            "联系买手", Consts.ORDER_OPERATE_CONTACT_BUYER,
+                            null, -1,
+                            null, -1,
+                            null, -1);
+
                     break;
 
                 case Consts.ORDER_STATUS_AWAIT_REVIEW:
@@ -281,16 +277,14 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                     ivStatus.setImageResource(R.mipmap.ic_successfu_transaction);
                     tvStatus.setText("交易成功");
 
-                    tvVerifyVideo.setVisibility(View.GONE);
-                    tvContactSeller.setVisibility(View.GONE);
-                    tvContactService.setVisibility(View.GONE);
-                    tvRemindShipping.setVisibility(View.GONE);
-                    tvDelete.setVisibility(View.VISIBLE);
-                    tvViewShipping.setVisibility(View.VISIBLE);
-                    tvCancel.setVisibility(View.GONE);
-                    tvPay.setVisibility(View.GONE);
-                    tvConifrm.setVisibility(View.GONE);
-                    tvReview.setVisibility(View.VISIBLE);
+                    OrderHelper.switchBottomBtns(this, true,
+                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore, "评价", Consts.ORDER_OPERATE_REVIEW,
+                            "查看物流", Consts.ORDER_OPERATE_VIEW_SHIPPING,
+                            "删除订单", Consts.ORDER_OPERATE_DELETE,
+                            null, -1,
+                            null, -1,
+                            null, -1);
+
                     break;
 
                 case Consts.ORDER_STATUS_OTHER:
@@ -298,16 +292,14 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                     ivStatus.setImageResource(R.mipmap.ic_successfu_failure);
                     tvStatus.setText("交易关闭");
 
-                    tvVerifyVideo.setVisibility(View.GONE);
-                    tvContactSeller.setVisibility(View.GONE);
-                    tvContactService.setVisibility(View.GONE);
-                    tvRemindShipping.setVisibility(View.GONE);
-                    tvDelete.setVisibility(View.VISIBLE);
-                    tvViewShipping.setVisibility(View.GONE);
-                    tvCancel.setVisibility(View.GONE);
-                    tvPay.setVisibility(View.GONE);
-                    tvConifrm.setVisibility(View.GONE);
-                    tvReview.setVisibility(View.GONE);
+                    OrderHelper.switchBottomBtns(this, false,
+                            tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore, "删除订单", Consts.ORDER_OPERATE_DELETE,
+                            null, -1,
+                            null, -1,
+                            null, -1,
+                            null, -1,
+                            null, -1);
+
                     break;
 
                 default:
@@ -316,101 +308,18 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
         }
     }
 
-    @OnClick({R.id.tv_order_copy_num, R.id.tv_order_verify_video, R.id.tv_order_contact_seller,
-            R.id.tv_order_contact_service, R.id.tv_order_remind_shipping, R.id.tv_order_delete,
-            R.id.tv_order_view_shipping, R.id.tv_order_cancel,
-            R.id.tv_order_pay, R.id.tv_order_confirm, R.id.tv_order_review})
+    @OnClick({R.id.tv_order_copy_num, R.id.tv_order_bottom_more})
     public void onClick(final View view) {
         switch (view.getId()) {
             case R.id.tv_order_copy_num:
 
                 break;
 
-            case R.id.tv_order_verify_video:
-
-                break;
-
-            case R.id.tv_order_contact_seller:
-
-                break;
-
-            case R.id.tv_order_contact_service:
-
-                break;
-
-            case R.id.tv_order_remind_shipping:
-
-                break;
-
-            case R.id.tv_order_delete:
-
-                break;
-
-            case R.id.tv_order_view_shipping:
-
-                break;
-
-            case R.id.tv_order_cancel:
-                new CommonDialog.Builder(this.getSupportFragmentManager())
-                        .setLayoutRes(R.layout.dialog_cancel_order)
-                        .setGravity(Gravity.BOTTOM)
-                        .setAnimRes(R.style.BottomDialogAnim)
-                        .setDimAmount(0.5f)
-                        .setScreenWidthAspect(OrderDetailActivity.this, 1)
-                        .setOnBindViewListener(new OnBindViewListener() {
-                            @Override
-                            public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
-                                viewHolder.setOnViewClickListener(R.id.select_reward_close, new OnViewClickListener() {
-                                    @Override
-                                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                        commonDialog.dismiss();
-                                    }
-                                });
-
-                                final Button btnCancel = viewHolder.getView(R.id.btn_order_cancel);
-                                final RadioGroup radioGroup = viewHolder.getView(R.id.rg_order_cancel_reason);
-                                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-                                    @Override
-                                    public void onCheckedChanged(RadioGroup group, int checkedId) {
-                                        radioGroup.getCheckedRadioButtonId();
-                                        mCheckedId = checkedId;
-                                        if (checkedId != -1) {
-                                            btnCancel.setEnabled(true);
-                                        } else {
-                                            btnCancel.setEnabled(false);
-                                        }
-                                    }
-                                });
-
-                                viewHolder.setOnViewClickListener(R.id.btn_order_cancel, new OnViewClickListener() {
-                                    @Override
-                                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                        commonDialog.dismiss();
-                                        OrderDetailActivity.this.finish();
-                                    }
-                                });
-                            }
-                        })
-                        .create().show();
-                break;
-
-            case R.id.tv_order_pay:
-
-                break;
-
-            case R.id.tv_order_confirm:
-
-                break;
-
-            case R.id.tv_order_review:
-                startActivity(OrderCommentActivity.class);
-                break;
-
             default:
                 break;
         }
     }
+
 
     @Override
     protected MyBasePresenter createPresenter() {

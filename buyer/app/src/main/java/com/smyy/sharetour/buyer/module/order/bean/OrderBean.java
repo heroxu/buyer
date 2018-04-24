@@ -15,10 +15,11 @@ public class OrderBean implements Serializable {
     private int goodsCountTotal;
     private String priceTotal;
     private String shippingFee;//运费
+    private String verifyVideo;//鉴定视频
+    private int goodsType;//商品类型
     private List<OrderGoodsInfo> goodsList;
 
-
-    public OrderBean(String orderId, int orderStatus, String sellerId, String sellerName, String sellerAvatar, String buyerId, int goodsCountTotal, String priceTotal, String shippingFee, List<OrderGoodsInfo> goodsList) {
+    public OrderBean(String orderId, int orderStatus, String sellerId, String sellerName, String sellerAvatar, String buyerId, int goodsCountTotal, String priceTotal, String shippingFee, String verifyVideo, int goodsType, List<OrderGoodsInfo> goodsList) {
         this.orderId = orderId;
         this.orderStatus = orderStatus;
         this.sellerId = sellerId;
@@ -28,6 +29,8 @@ public class OrderBean implements Serializable {
         this.goodsCountTotal = goodsCountTotal;
         this.priceTotal = priceTotal;
         this.shippingFee = shippingFee;
+        this.verifyVideo = verifyVideo;
+        this.goodsType = goodsType;
         this.goodsList = goodsList;
     }
 
@@ -103,27 +106,27 @@ public class OrderBean implements Serializable {
         this.shippingFee = shippingFee;
     }
 
+    public String getVerifyVideo() {
+        return verifyVideo;
+    }
+
+    public void setVerifyVideo(String verifyVideo) {
+        this.verifyVideo = verifyVideo;
+    }
+
+    public int getGoodsType() {
+        return goodsType;
+    }
+
+    public void setGoodsType(int goodsType) {
+        this.goodsType = goodsType;
+    }
+
     public List<OrderGoodsInfo> getGoodsList() {
         return goodsList;
     }
 
     public void setGoodsList(List<OrderGoodsInfo> goodsList) {
         this.goodsList = goodsList;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderBean{" +
-                "orderId='" + orderId + '\'' +
-                ", orderStatus='" + orderStatus + '\'' +
-                ", sellerId='" + sellerId + '\'' +
-                ", sellerName='" + sellerName + '\'' +
-                ", sellerAvatar='" + sellerAvatar + '\'' +
-                ", buyerId='" + buyerId + '\'' +
-                ", goodsCountTotal=" + goodsCountTotal +
-                ", priceTotal=" + priceTotal +
-                ", shippingFee=" + shippingFee +
-                ", goodsList=" + goodsList +
-                '}';
     }
 }

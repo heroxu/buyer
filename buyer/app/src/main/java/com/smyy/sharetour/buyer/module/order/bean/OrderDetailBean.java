@@ -20,7 +20,33 @@ public class OrderDetailBean implements Serializable {
     private String shippingFee;//运费
     private String orderNum;
     private String orderTime;
+    private String verifyVideo;//鉴定视频
+    private int goodsType;//商品类型
     private List<OrderGoodsInfo> goodsList;
+
+    public OrderDetailBean() {
+    }
+
+    public OrderDetailBean(String orderId, String remainTime, int orderStatus, String shippingName, String shippingPhone, String shippingAddress, String sellerId, String sellerName, String sellerAvatar, String buyerId, int goodsCountTotal, String priceTotal, String shippingFee, String orderNum, String orderTime, String verifyVideo, int goodsType, List<OrderGoodsInfo> goodsList) {
+        this.orderId = orderId;
+        this.remainTime = remainTime;
+        this.orderStatus = orderStatus;
+        this.shippingName = shippingName;
+        this.shippingPhone = shippingPhone;
+        this.shippingAddress = shippingAddress;
+        this.sellerId = sellerId;
+        this.sellerName = sellerName;
+        this.sellerAvatar = sellerAvatar;
+        this.buyerId = buyerId;
+        this.goodsCountTotal = goodsCountTotal;
+        this.priceTotal = priceTotal;
+        this.shippingFee = shippingFee;
+        this.orderNum = orderNum;
+        this.orderTime = orderTime;
+        this.verifyVideo = verifyVideo;
+        this.goodsType = goodsType;
+        this.goodsList = goodsList;
+    }
 
     public String getOrderId() {
         return orderId;
@@ -142,55 +168,27 @@ public class OrderDetailBean implements Serializable {
         this.orderTime = orderTime;
     }
 
+    public String getVerifyVideo() {
+        return verifyVideo;
+    }
+
+    public void setVerifyVideo(String verifyVideo) {
+        this.verifyVideo = verifyVideo;
+    }
+
+    public int getGoodsType() {
+        return goodsType;
+    }
+
+    public void setGoodsType(int goodsType) {
+        this.goodsType = goodsType;
+    }
+
     public List<OrderGoodsInfo> getGoodsList() {
         return goodsList;
     }
 
     public void setGoodsList(List<OrderGoodsInfo> goodsList) {
         this.goodsList = goodsList;
-    }
-
-    public OrderDetailBean() {
-    }
-
-    public OrderDetailBean(String orderId, String remainTime, int orderStatus, String shippingName, String shippingPhone, String shippingAddress, String sellerId, String sellerName, String sellerAvatar, String buyerId, int goodsCountTotal, String priceTotal, String shippingFee, String orderNum, String orderTime, List<OrderGoodsInfo> goodsList) {
-        this.orderId = orderId;
-        this.remainTime = remainTime;
-        this.orderStatus = orderStatus;
-        this.shippingName = shippingName;
-        this.shippingPhone = shippingPhone;
-        this.shippingAddress = shippingAddress;
-        this.sellerId = sellerId;
-        this.sellerName = sellerName;
-        this.sellerAvatar = sellerAvatar;
-        this.buyerId = buyerId;
-        this.goodsCountTotal = goodsCountTotal;
-        this.priceTotal = priceTotal;
-        this.shippingFee = shippingFee;
-        this.orderNum = orderNum;
-        this.orderTime = orderTime;
-        this.goodsList = goodsList;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetailBean{" +
-                "orderId='" + orderId + '\'' +
-                ", remainTime='" + remainTime + '\'' +
-                ", orderStatus=" + orderStatus +
-                ", shippingName='" + shippingName + '\'' +
-                ", shippingPhone='" + shippingPhone + '\'' +
-                ", shippingAddress='" + shippingAddress + '\'' +
-                ", sellerId='" + sellerId + '\'' +
-                ", sellerName='" + sellerName + '\'' +
-                ", sellerAvatar='" + sellerAvatar + '\'' +
-                ", buyerId='" + buyerId + '\'' +
-                ", goodsCountTotal=" + goodsCountTotal +
-                ", priceTotal='" + priceTotal + '\'' +
-                ", shippingFee='" + shippingFee + '\'' +
-                ", orderNum='" + orderNum + '\'' +
-                ", orderTime='" + orderTime + '\'' +
-                ", goodsList=" + goodsList +
-                '}';
     }
 }
