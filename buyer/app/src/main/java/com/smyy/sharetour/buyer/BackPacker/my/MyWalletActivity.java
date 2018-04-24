@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer.BackPacker.my;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -52,5 +53,10 @@ public class MyWalletActivity extends BaseMvpActivity {
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void initStatusBar() {
+        setStatusBar(Color.BLACK);
     }
 }
