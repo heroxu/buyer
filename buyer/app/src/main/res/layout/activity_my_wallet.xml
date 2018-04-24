@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/lay_my_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/img_bg_moneybag">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:contentInsetStart="0dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_close"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_return_w" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="我的钱包"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_size_17" />
+
+                <TextView
+                    android:id="@+id/iv_my_ques"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="常见问题"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_size_13" />
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/tv_my_money_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:text="余额（元）"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_size_15" />
+
+        <TextView
+            android:id="@+id/tv_my_money_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_my_money_title"
+            android:layout_below="@+id/tv_my_money_title"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/tv_my_withdraw"
+            android:text="200,000.00"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_my_withdraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/tv_my_money_num"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_rounded_rectangle_ffcd1f"
+            android:gravity="center"
+            android:minWidth="80dp"
+            android:padding="10dp"
+            android:text="提现"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_13" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lay_my_top">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="交易明细"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_15" />
+
+            <com.smyy.sharetour.buyer.view.AutoScaleHeightImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:src="@mipmap/fake_wallet_statement" />
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/lay_my_remind"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_home_location" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="为了您的资金安全，请先设置支付密码。"
+                android:textColor="@color/txt_gray_dark"
+                android:textSize="@dimen/txt_size_11" />
+
+            <ImageView
+                android:id="@+id/iv_my_close_remind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@mipmap/ic_pop_ups_off" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
