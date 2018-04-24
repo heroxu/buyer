@@ -285,7 +285,7 @@
                 android:text="编辑"
                 android:layout_gravity="center"
                 android:textSize="@dimen/txt_size_13"
-                android:drawableTop="@mipmap/ic_edit_b"
+                android:drawableTop="@mipmap/ic_edit_g"
                 android:textColor="@color/txt_main"
                 android:drawablePadding="5dp"/>
         </FrameLayout>
