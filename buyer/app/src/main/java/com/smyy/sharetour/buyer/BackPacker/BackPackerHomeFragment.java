@@ -24,14 +24,14 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
-* @author Liliping
-* @org www.smyy.com
-* @email lilp@stjf.com
-* @package com.smyy.sharetour.buyer.BackPacker
-* @fileName BackPackerHomeFragment
-* @date on 2018/4/22 0022 14:36
-* @describe 背包客需求列表
-*/
+ * @author Liliping
+ * @org www.smyy.com
+ * @email lilp@stjf.com
+ * @package com.smyy.sharetour.buyer.BackPacker
+ * @fileName BackPackerHomeFragment
+ * @date on 2018/4/22 0022 14:36
+ * @describe 背包客需求列表
+ */
 public class BackPackerHomeFragment extends BaseMvpFragment {
 
     @BindView(R.id.home_all_srl)
@@ -53,12 +53,12 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
         return R.layout.fragment_backpacker_home;
     }
 
-    private void initListener(){
+    private void initListener() {
 
         home_all_srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(mAdapter!=null){
+                if (mAdapter != null) {
 //                    mAdapter.setData();
                     mAdapter.notifyDataSetChanged();
                 }
@@ -108,8 +108,8 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
             @Override
             public void OnItemTakeClick(View v, int position) {
                 DialogUtils.showTwoBtnMsgBox(getActivity(),
-                        getString(R.string.send_trip_tip),
                         null,
+                        getString(R.string.send_trip_tip),
                         R.color.txt_hint,
                         getString(R.string.send_trip),
                         new OnViewClickListener() {

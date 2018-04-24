@@ -75,28 +75,37 @@ public class DialogUtils {
      * @param cancelClickListener  传入null则默认dialog.dismiss
      */
     public static void showTwoBtnMsgBox(
-            @NonNull FragmentActivity activity, String titleText, String messageText, int confirmColor,
+            @NonNull FragmentActivity activity, String titleText, String messageText, int confirmColorRes,
             String confirmText, OnViewClickListener confirmClickListener,
             String cancelText, OnViewClickListener cancelClickListener) {
-        createMessageBoxDialogBuilder(
-                activity, MessageBoxBuilder.TYPE_TWO_BTN,
-                titleText,
-                messageText,
-                confirmColor,
-                confirmText, confirmClickListener,
-                cancelText, cancelClickListener).create().show();
+
+        if (titleText == null) {
+            createMessageBoxDialogBuilder(
+                    activity, MessageBoxBuilder.TYPE_TWO_BTN,
+                    titleText,
+                    messageText,
+                    confirmColorRes,
+                    confirmText, confirmClickListener,
+                    cancelText, cancelClickListener).setLayoutRes(R.layout.dialog_message_box_no_title).create().show();
+        } else {
+            createMessageBoxDialogBuilder(
+                    activity, MessageBoxBuilder.TYPE_TWO_BTN,
+                    titleText,
+                    messageText,
+                    confirmColorRes,
+                    confirmText, confirmClickListener,
+                    cancelText, cancelClickListener).create().show();
+
+        }
     }
 
     public static void showTwoBtnMsgBox(
             @NonNull FragmentActivity activity, String titleText, String messageText,
             String confirmText, OnViewClickListener confirmClickListener,
             String cancelText, OnViewClickListener cancelClickListener) {
-        createMessageBoxDialogBuilder(
-                activity, MessageBoxBuilder.TYPE_TWO_BTN,
-                titleText,
-                messageText,
+        showTwoBtnMsgBox(activity, titleText, messageText, R.color.txt_hint,
                 confirmText, confirmClickListener,
-                cancelText, cancelClickListener).create().show();
+                cancelText, cancelClickListener);
     }
 
     public static void showTwoBtnMsgBox(
@@ -441,7 +450,7 @@ public class DialogUtils {
             return this;
         }
 
-        public MessageBoxBuilder setConfirmButtonColor(int resId){
+        public MessageBoxBuilder setConfirmButtonColor(int resId) {
             this.mConfirmColor = resId;
             return this;
         }
@@ -462,13 +471,13 @@ public class DialogUtils {
                         @Override
                         public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
                             viewHolder.setText(R.id.tv_dialog_msg, mMsgTx);
-                            if(mTitleTx!=null) {
+                            if (mTitleTx != null) {
                                 viewHolder.setText(R.id.tv_dialog_title, mTitleTx);
                             } else {
                                 viewHolder.getView(R.id.tv_dialog_title).setVisibility(View.GONE);
                             }
 
-                            ((TextView)viewHolder.getView(R.id.tv_dialog_confirm)).setTextColor(
+                            ((TextView) viewHolder.getView(R.id.tv_dialog_confirm)).setTextColor(
                                     mActivity.getResources().getColor(mConfirmColor));
 
                             if (mConfirmTx == null) {
