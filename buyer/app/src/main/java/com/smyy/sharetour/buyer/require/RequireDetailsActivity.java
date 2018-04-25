@@ -262,7 +262,7 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         dialog = builder.create().show();
     }
 
-    @OnClick({R.id.reward_frame, R.id.undo_frame})
+    @OnClick({R.id.reward_frame, R.id.undo_frame, R.id.back_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.reward_frame:
@@ -278,6 +278,10 @@ public class RequireDetailsActivity extends BaseMvpActivity {
                 } else if(requireBean.getState()==Consts.REQUIRE_STATE_INVALID ||requireBean.getState()==Consts.REQUIRE_STATE_CANCEL) {
                     //finish();
                 }
+                break;
+
+            case R.id.back_btn:
+                finish();
                 break;
         }
     }

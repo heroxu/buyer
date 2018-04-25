@@ -86,12 +86,15 @@ public class BackPackerTravelDetailActivity extends BaseMvpActivity {
     }
 
 
-    @OnClick({R.id.delete_frame, R.id.edit_frame})
+    @OnClick({R.id.delete_frame, R.id.edit_frame, R.id.back_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.delete_frame:
                 break;
             case R.id.edit_frame:
+                break;
+            case R.id.back_btn:
+                finish();
                 break;
         }
     }

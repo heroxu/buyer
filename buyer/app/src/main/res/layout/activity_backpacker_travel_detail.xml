@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_return"
             android:layout_marginTop="5dp"
-            android:id="@+id/imageView2" />
+            android:id="@+id/back_btn"
+            android:padding="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"

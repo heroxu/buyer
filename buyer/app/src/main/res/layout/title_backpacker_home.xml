@@ -45,15 +45,17 @@
 
     <ImageView
         android:id="@+id/tt_fount_message"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         android:layout_height="16dp"
-        android:layout_marginRight="12dp"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="15dp"
         android:src="@mipmap/ic_news_nor" />
 
     <ImageView
         android:id="@+id/tt_my_info"
-        android:layout_width="25dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
+        android:paddingRight="15dp"
         android:layout_marginRight="20dp"
         android:background="@mipmap/ic_news_portrait" />
 </LinearLayout>

@@ -63,7 +63,6 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
     TextView orderDetail;
 
     private RequireBean requireBean;
-    private boolean isShowSuccessDialog = false;
     private boolean isTakeRequire = false;
     private int reward = 0;
 
@@ -202,7 +201,7 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
 
 
 
-    @OnClick({R.id.contact_frame, R.id.cancel_frame, R.id.order_detail_frame})
+    @OnClick({R.id.contact_frame, R.id.cancel_frame, R.id.order_detail_frame, R.id.back_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contact_frame:
@@ -218,6 +217,9 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                     startActivity(new Intent(BackPackerRequireDetailsActivity.this, BackpackerTakeRequireActivity.class));
                     finish();
                 }
+                break;
+            case R.id.back_btn:
+                finish();
                 break;
         }
     }
