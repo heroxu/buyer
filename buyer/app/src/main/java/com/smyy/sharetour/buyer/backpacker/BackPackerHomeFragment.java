@@ -6,9 +6,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
-import com.smyy.sharetour.buyer.backpacker.require.BackPackerRequireDetailsActivity;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.backpacker.require.BackPackerRequireDetailsActivity;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;

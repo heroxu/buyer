@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.BackPacker.Travel;
+package com.smyy.sharetour.buyer.backpacker.travel;
 
 import android.Manifest;
 import android.content.Intent;

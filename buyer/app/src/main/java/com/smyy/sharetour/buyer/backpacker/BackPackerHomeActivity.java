@@ -18,12 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
+import com.smyy.sharetour.buyer.Consts;
+import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.backpacker.my.MyWalletActivity;
 import com.smyy.sharetour.buyer.backpacker.require.BackPackerRequireListActivity;
 import com.smyy.sharetour.buyer.backpacker.travel.BackPackerTravelListActivity;
 import com.smyy.sharetour.buyer.backpacker.travel.GoodTagActivity;
-import com.smyy.sharetour.buyer.backpacker.my.MyWalletActivity;
-import com.smyy.sharetour.buyer.Consts;
-import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.module.order.OrderListActivity;
