@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tv_product_detail_look_comment"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_rounded_rectangle_solid_333333"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textSize="@dimen/txt_size_13"
+        android:textColor="@color/txt_gray"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:paddingEnd="@dimen/margin_10"
+        android:paddingStart="@dimen/margin_10"
+        android:text="@string/product_detail_look_comment"/>
+

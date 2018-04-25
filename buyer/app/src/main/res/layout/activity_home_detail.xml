@@ -70,16 +70,21 @@
                 android:fitsSystemWindows="true"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:background="@mipmap/bg_video"
+                <com.youth.banner.Banner
+                    android:id="@+id/banner_product_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="150dp"
+                    app:indicator_drawable_selected="@drawable/selected_radius"
+                    app:indicator_drawable_unselected="@drawable/unselected_radius"
+                    app:indicator_margin="2dp" />
                 <TextView
+                    android:layout_margin="@dimen/margin_10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#000000"
-                    android:text="asdadsafsaf"/>
+                    android:lineSpacingExtra="8dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/txt_main"
+                    android:text="Nike Air Huarache 在前两年席卷国内街头，超高的性价比和百搭的外形成为它的特点，在推出全新的拉链设计版本后，带有绑带的 Nike Air Huarache Drift Premium 也将在明年登场。 鞋款在经典的 Air Huarache 鞋型基础上，增加了绑带的设计，而帮带上印有的 “NIKE” 字样极为醒目，配色以黑、蓝、橙、白四色组合搭配，亮点在于可拆卸的绑带增加了鞋款的穿搭灵活性，再加上 3M 反光细节的鞋带，彰显活力氛围。"/>
 
             </LinearLayout>
 
@@ -124,7 +129,8 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_product_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 

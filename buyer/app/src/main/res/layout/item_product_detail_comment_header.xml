@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tv_product_detail_comment_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/txt_size_17"
+        android:textColor="@color/txt_main"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:text="@string/product_detail_comment_num"/>
+
+

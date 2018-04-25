@@ -218,4 +218,13 @@
     <string name="submit_application_success">提交申请成功</string>
 
 
+    <!--商品详情页-->
+    <string name="product_detail_comment_num">商品评价 (%d)</string>
+    <string name="product_detail_no_comment">暂无评论哟～</string>
+    <string name="product_detail_look_comment">查看全部评价</string>
+    <string name="product_detail_service">服务</string>
+    <string name="product_detail_money_desc">运费说明</string>
+    <string name="product_detail_send_product">承若购买后30天发货</string>
+
+
 </resources>
