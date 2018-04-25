@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.module.my.QuestionActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,7 +32,7 @@ public class MyWalletActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-
+        hideToolBarLayout(true);
     }
 
     @Override
@@ -39,9 +40,17 @@ public class MyWalletActivity extends BaseMvpActivity {
 
     }
 
-    @OnClick({R.id.iv_my_close_remind, R.id.tv_my_withdraw})
+    @OnClick({R.id.iv_close, R.id.iv_my_ques, R.id.iv_my_close_remind, R.id.tv_my_withdraw})
     public void onClick(View view) {
         switch (view.getId()) {
+
+            case R.id.iv_close:
+                finish();
+                break;
+
+            case R.id.iv_my_ques:
+                startActivity(QuestionActivity.class);
+                break;
 
             case R.id.iv_my_close_remind:
                 layRemind.setVisibility(View.GONE);
