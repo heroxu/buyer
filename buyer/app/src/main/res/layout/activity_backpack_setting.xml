@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.smyy.sharetour.buyer.BackPacker.BackpackSettingActivity">
+    android:background="@color/window_background"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/pay_pwd"
+        style="@style/WideItem.Text.WithArrow"
+        android:background="@color/white"
+        android:text="支付密码" />
+
+    <View style="@style/WideItemDivider" />
+
+    <TextView
+        android:id="@+id/user_management"
+        style="@style/WideItem.Text.WithArrow"
+        android:background="@color/white"
+        android:text="个人管理" />
+</LinearLayout>

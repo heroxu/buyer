@@ -29,14 +29,15 @@
 
                 <ImageView
                     android:id="@+id/ic_close"
-                    android:layout_width="31dp"
-                    android:layout_height="31dp"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:src="@mipmap/ic_return_w" />
 
                 <TextView
+                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"

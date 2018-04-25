@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.smyy.sharetour.buyer.BackPacker.BackpackValidationPhoneActivity">
+    android:orientation="vertical"
+    android:background="@color/window_background">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/validation_phone"
+        android:background="@color/white"
+        style="@style/WideItem.Text.WithArrow"
+        android:text="验证绑定手机" />
+    <TextView
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="你正在设置6位数字密码，请用以上验证方式"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

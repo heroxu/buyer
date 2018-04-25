@@ -3,9 +3,15 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.BackPacker.BackPackerHomeActivity;
+import com.smyy.sharetour.buyer.BackPacker.BackpackAllEvaluationActivity;
+import com.smyy.sharetour.buyer.BackPacker.BackpackHomePage.BackpackCommentsActivity;
+import com.smyy.sharetour.buyer.BackPacker.BackpackHomePage.BackpackHomePageActivity;
+import com.smyy.sharetour.buyer.BackPacker.payPwd.BackpackSetPayPwdActivity;
+import com.smyy.sharetour.buyer.BackPacker.payPwd.BackpackSettingActivity;
+import com.smyy.sharetour.buyer.BackPacker.payPwd.BackpackValidationPhoneActivity;
 import com.smyy.sharetour.buyer.BackPacker.certification.ALiCertificationActivity;
 import com.smyy.sharetour.buyer.BackPacker.certification.ALiCertificationFinishActivity;
-import com.smyy.sharetour.buyer.BackPacker.BackPackerHomeActivity;
 import com.smyy.sharetour.buyer.BackPacker.certification.BackpackCertificationActivity1;
 import com.smyy.sharetour.buyer.BackPacker.certification.BackpackCertificationActivity2;
 import com.smyy.sharetour.buyer.BackPacker.certification.BackpackCertificationActivity3;
@@ -15,6 +21,7 @@ import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.search.activity.HomeSearchActivity;
 import com.smyy.sharetour.buyer.home.search.activity.SearchDetailActivity;
+import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.module.my.CommentListActivity;
 import com.smyy.sharetour.buyer.require.PublishRequireActivity;
 import com.smyy.sharetour.buyer.require.RequireListActivity;
@@ -163,6 +170,13 @@ public class ActivityLauncher {
      */
     public static void viewBuyHomePageActivity(Context context) {
         Intent intent = new Intent(context, BuyHomePageActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到买家个人中心界面
+     */
+    public static void viewAccountSettingsActivity(Context context) {
+        Intent intent = new Intent(context, AccountSettingsActivity.class);
         context.startActivity(intent);
     }
 
@@ -332,12 +346,53 @@ public class ActivityLauncher {
         Intent intent = new Intent(context, BackpackCertificationActivity2.class);
         context.startActivity(intent);
     }
-
     /**
      * 跳转到背包客认证步骤3
      */
     public static void viewBackpackCertificationActivity3(Context context) {
         Intent intent = new Intent(context, BackpackCertificationActivity3.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到背包客个人主页
+     */
+    public static void viewBackpackHomePageActivity(Context context) {
+        Intent intent = new Intent(context, BackpackHomePageActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到背包客全部评价
+     */
+    public static void viewBackpackAllEvaluationActivity(Context context) {
+        Intent intent = new Intent(context, BackpackAllEvaluationActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到背包客设置
+     */
+    public static void viewBackpackSettingActivity(Context context) {
+        Intent intent = new Intent(context, BackpackSettingActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到手机验证
+     */
+    public static void viewBackpackValidationPhoneActivity(Context context) {
+        Intent intent = new Intent(context, BackpackValidationPhoneActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到背包客设置支付密码
+     */
+    public static void viewBackpackSetPayPwdActivity(Context context) {
+        Intent intent = new Intent(context, BackpackSetPayPwdActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     * 跳转到背包客更多评论
+     */
+    public static void viewBackpackCommentsActivity(Context context) {
+        Intent intent = new Intent(context, BackpackCommentsActivity.class);
         context.startActivity(intent);
     }
 }
