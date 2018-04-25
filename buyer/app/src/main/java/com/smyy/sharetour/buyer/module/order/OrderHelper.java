@@ -13,10 +13,9 @@ import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.smyy.sharetour.buyer.BackPacker.order.UploadShippingInfoActivity;
+import com.smyy.sharetour.buyer.backpacker.order.UploadShippingInfoActivity;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.module.my.adapter.InterestSellerAdapter;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderReviewsAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderReviewsBean;
 import com.smyy.sharetour.uiframelib.BaseActivity;
