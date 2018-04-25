@@ -38,17 +38,10 @@ public class HomeMenuFragment1 extends BaseMvpFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.layout_fragment_live;
+        return R.layout.fragment_seller_menu1;
     }
 
     @Override
     protected void initData(Bundle bundle) {
     }
-
-    @Override
-    protected void initStatusBar() {
-        setStatusBar(Color.BLACK);
-    }
-
-
 }

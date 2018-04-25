@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lay_home_my_goods"
+            style="@style/DividItemHorizon"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_my_goods" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的商品"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_home_my_presale"
+            style="@style/DividItemHorizon"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_my_presale" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的预售"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_home_my_travel"
+            style="@style/DividItemHorizon"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_my_travel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的行程"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_home_my_order"
+            style="@style/DividItemHorizon"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_my_order" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的订单"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lay_home_buyer_demand"
+            style="@style/DividItemHorizon"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_buyer_demand" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="买家需求"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_home_my_dynamic"
+            style="@style/DividItemHorizon"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_my_dynamic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的动态"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_home_my_wallet"
+            style="@style/DividItemHorizon"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_my_money" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的钱包"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_home_my_live"
+            style="@style/DividItemHorizon"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_my_live" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的直播"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
