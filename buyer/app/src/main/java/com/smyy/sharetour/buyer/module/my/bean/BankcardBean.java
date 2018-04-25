@@ -4,16 +4,18 @@ import java.io.Serializable;
 
 
 public class BankcardBean implements Serializable {
+    private int bgRes;
     private int logoRes;
     private String name;
     private String type;
     private String num;
 
-    public BankcardBean(int logoRes, String name, String type, String num) {
-        this.logoRes = logoRes;
-        this.name = name;
-        this.type = type;
-        this.num = num;
+    public int getBgRes() {
+        return bgRes;
+    }
+
+    public void setBgRes(int bgRes) {
+        this.bgRes = bgRes;
     }
 
     public int getLogoRes() {
@@ -45,6 +47,14 @@ public class BankcardBean implements Serializable {
     }
 
     public void setNum(String num) {
+        this.num = num;
+    }
+
+    public BankcardBean(int bgRes, int logoRes, String name, String type, String num) {
+        this.bgRes = bgRes;
+        this.logoRes = logoRes;
+        this.name = name;
+        this.type = type;
         this.num = num;
     }
 }

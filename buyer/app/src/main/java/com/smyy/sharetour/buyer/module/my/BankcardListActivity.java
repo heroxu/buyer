@@ -48,9 +48,9 @@ public class BankcardListActivity extends MyBaseMvpActivity {
     }
 
     private void getFakeData() {
-        mDatas.add(new BankcardBean(R.mipmap.ic_bank, "招商银行", "储蓄卡", "**** **** **** 1234"));
-        mDatas.add(new BankcardBean(R.mipmap.ic_bank, "华夏银行", "储蓄卡", "**** **** **** 1234"));
-        mDatas.add(new BankcardBean(R.mipmap.ic_bank, "招商银行", "建设银行", "**** **** **** 1234"));
+        mDatas.add(new BankcardBean(R.drawable.fake_bg1, R.mipmap.fake_logo1, "招商银行", "储蓄卡", "**** **** **** 1234"));
+        mDatas.add(new BankcardBean(R.drawable.fake_bg2, R.mipmap.fake_logo2, "华夏银行", "储蓄卡", "**** **** **** 1234"));
+        mDatas.add(new BankcardBean(R.drawable.fake_bg3, R.mipmap.fake_logo3, "建设银行", "储蓄卡", "**** **** **** 1234"));
 
         mAdapter.setData(mDatas);
     }

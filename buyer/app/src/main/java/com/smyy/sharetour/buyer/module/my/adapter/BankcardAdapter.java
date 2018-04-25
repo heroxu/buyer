@@ -33,6 +33,8 @@ public class BankcardAdapter extends RecyclerView.Adapter<BankcardAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final BankcardBean data = mDatas.get(position);
         if (data != null) {
+            holder.layBg.setBackground(mContext.getResources().getDrawable(data.getBgRes()));
+            holder.ivLogo.setBackground(mContext.getResources().getDrawable(data.getLogoRes()));
             holder.tvName.setText(data.getName());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
