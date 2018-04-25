@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/bg_my_top"
+            android:paddingBottom="10dp">
+
+
+            <ImageView
+                android:id="@+id/iv_home_setting"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/icon_setting" />
+
+            <TextView
+                android:id="@+id/tv_home_income_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_home_setting"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="总收入"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_13" />
+
+            <TextView
+                android:id="@+id/tv_home_income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_home_income_title"
+                android:layout_below="@+id/tv_home_income_title"
+                android:text="¥ 5,600.00"
+                android:textColor="#FFB61F"
+                android:textSize="@dimen/txt_size_25" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_home_avatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignTop="@+id/lay_my_username"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_home_top_arrow"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="3dp"
+                tools:src="@mipmap/user_avatar" />
+
+            <ImageView
+                android:id="@+id/iv_home_top_arrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:src="@mipmap/arrow_right_pressed" />
+
+
+            <TextView
+                android:id="@+id/tv_home_order_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_home_income"
+                android:layout_below="@+id/tv_home_income"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="40dp"
+                android:text="累积订单 12,340"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_size_13" />
+
+            <ImageView
+                android:id="@+id/iv_home_qrcode"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/iv_home_avatar"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:src="@mipmap/ic_home_qr" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingBottom="25dp"
+            android:paddingTop="15dp">
+
+            <LinearLayout
+                android:id="@+id/lay_home_publish_travel"
+                style="@style/DividItemHorizon"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_travel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发行程"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_home_publish_goods"
+                style="@style/DividItemHorizon"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_commodity" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发商品"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_home_publish_note"
+                style="@style/DividItemHorizon"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_note" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发笔记"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_home_publish_live"
+                style="@style/DividItemHorizon"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_live" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开直播"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_13" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_home_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.flyco.tablayout.CommonTabLayout
+                android:id="@+id/tl_home_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                app:tl_indicator_color="@color/txt_main"
+                app:tl_indicator_corner_radius="1.5dp"
+                app:tl_indicator_height="3dp"
+                app:tl_indicator_width="10dp"
+                app:tl_tab_padding="12dp"
+                app:tl_tab_space_equal="true"
+                app:tl_textSelectColor="@color/txt_main"
+                app:tl_textUnselectColor="@color/txt_gray"
+                app:tl_indicator_margin_bottom="10dp"/>
+        </RelativeLayout>
+
+        <com.youth.banner.Banner
+            android:id="@+id/banner_home"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:indicator_drawable_selected="@drawable/selected_radius"
+            app:indicator_drawable_unselected="@drawable/unselected_radius"
+            app:indicator_margin="2dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_today_reminder"
+                android:drawablePadding="10dp"
+                android:text="今日提醒"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_17"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="买家 SAM 的需求已付款，请您尽快处理"
+                    android:textColor="@color/txt_gray_dark"
+                    android:textSize="@dimen/txt_size_15" />
+
+                <ImageView
+                    android:id="@+id/iv_home_remind_arrow"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/arrow_right_pressed" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="40dp"
+            android:text="已经是尽头咯～"
+            android:textColor="@color/txt_gray"
+            android:textSize="@dimen/txt_size_11" />
+
+
+    </LinearLayout>
+</ScrollView>
