@@ -7,12 +7,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.TabEntity;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 public class HomeFragment extends BaseMvpFragment {
@@ -159,6 +162,42 @@ public class HomeFragment extends BaseMvpFragment {
         @Override
         public Fragment getItem(int position) {
             return mMenuFrags.get(position);
+        }
+    }
+
+    @OnClick({R.id.iv_home_setting, R.id.iv_home_top_arrow, R.id.iv_home_qrcode,
+            R.id.lay_home_publish_travel, R.id.lay_home_publish_goods,
+            R.id.lay_home_publish_note, R.id.lay_home_publish_live,
+            R.id.iv_home_remind_arrow})
+    public void onClick(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_SELLER);
+
+        switch (view.getId()) {
+
+            case R.id.iv_home_setting:
+
+                break;
+
+            case R.id.iv_home_top_arrow:
+
+                break;
+
+            case R.id.iv_home_qrcode:
+
+                break;
+
+            case R.id.lay_home_publish_travel:
+
+                break;
+
+            case R.id.iv_home_remind_arrow:
+
+                break;
+
+
+            default:
+                break;
         }
     }
 }
