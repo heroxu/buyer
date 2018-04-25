@@ -12,11 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
-import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
+import com.smyy.sharetour.buyer.dialog.SmsCodeDialog;
 import com.smyy.sharetour.buyer.util.StringUtil;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,6 +33,8 @@ public class AddBankcardActivity extends BaseMvpActivity {
 
     @BindView(R.id.btn_confirm)
     Button btnConfirm;
+
+    SmsCodeDialog mSmsCodeDialog;
 
     private String mName;
     private String mNum;
@@ -120,7 +124,7 @@ public class AddBankcardActivity extends BaseMvpActivity {
         switch (view.getId()) {
 
             case R.id.btn_confirm:
-                finish();
+                showmCodeDialog();
                 break;
 
             default:
@@ -131,5 +135,33 @@ public class AddBankcardActivity extends BaseMvpActivity {
     @Override
     protected IBasePresenter createPresenter() {
         return null;
+    }
+
+    /**
+     * 弹出验证码对话框
+     */
+    private void showmCodeDialog() {
+        if (mSmsCodeDialog == null) {
+            mSmsCodeDialog = new SmsCodeDialog(this);
+        }
+        if (mSmsCodeDialog.isShowing()) {
+            return;
+        }
+        mSmsCodeDialog.setClickCallbackListener(new SmsCodeDialog.SmsCodeCallback() {
+            @Override
+            public void SmsCodeResult(String smsCode) {
+                if (Consts.DEFAULT_SMS_CODE.equals(smsCode) && Consts.isPhoneNum(mPhone)) {
+                    finish();
+                } else {
+                    ToastUtils.showToast(AddBankcardActivity.this, "验证码输入错误");
+                }
+            }
+
+            @Override
+            public void SmsCodeCancel() {
+
+            }
+        });
+        mSmsCodeDialog.show();
     }
 }

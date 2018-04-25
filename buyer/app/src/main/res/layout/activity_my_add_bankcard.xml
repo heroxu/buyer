@@ -63,6 +63,7 @@
                         android:id="@+id/et_my_bankcard_num"
                         style="@style/WideItemMiddleRight.EditText"
                         android:hint="卡号"
+                        android:inputType="number"
                         android:textColor="@color/txt_main"
                         android:textSize="@dimen/txt_size_15" />
                 </LinearLayout>
@@ -84,9 +85,9 @@
                     <TextView
                         android:id="@+id/et_my_bankcard_type"
                         style="@style/WideItemMiddleRight.EditText"
+                        android:text="储蓄卡"
                         android:textColor="@color/txt_main"
                         android:textSize="@dimen/txt_size_15"
-                        android:text="储蓄卡"
                         tools:text="储蓄卡／华夏银行" />
                 </LinearLayout>
 
@@ -107,7 +108,9 @@
                     <EditText
                         android:id="@+id/et_my_bankcard_phone"
                         style="@style/WideItemMiddleRight.EditText"
+                        android:digits="@string/digits_phone_num"
                         android:hint="请输入银行卡预留手机号"
+                        android:inputType="phone"
                         android:textColor="@color/txt_main"
                         android:textSize="@dimen/txt_size_15" />
                 </LinearLayout>
