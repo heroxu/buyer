@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:paddingBottom="30dp"
+    android:paddingTop="25dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/line_submit"
+            android:layout_width="100dp"
+            android:layout_height="3dp"
+            android:layout_alignBottom="@+id/iv_order_await_pay"
+            android:layout_alignTop="@+id/iv_order_await_pay"
+            android:layout_marginLeft="-10dp"
+            android:layout_toRightOf="@+id/iv_order_await_pay"
+            android:src="@drawable/line_order_status_selector" />
+
+        <ImageView
+            android:id="@+id/line_confirm"
+            android:layout_width="100dp"
+            android:layout_height="3dp"
+            android:layout_alignBottom="@+id/iv_order_paid"
+            android:layout_alignTop="@+id/iv_order_paid"
+            android:layout_marginLeft="-10dp"
+            android:layout_toRightOf="@+id/iv_order_paid"
+            android:src="@drawable/line_order_status_selector" />
+
+
+        <CheckBox
+            android:id="@+id/iv_order_await_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:button="@drawable/shape_order_status_selector"
+            android:clickable="false"
+            android:enabled="true"
+            tools:checked="false"
+            tools:enabled="true" />
+
+        <CheckBox
+            android:id="@+id/iv_order_paid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_toRightOf="@+id/line_submit"
+            android:button="@drawable/shape_order_status_selector"
+            android:clickable="false"
+            android:enabled="false" />
+
+
+        <CheckBox
+            android:id="@+id/iv_order_shipped"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_toRightOf="@+id/line_confirm"
+            android:button="@drawable/shape_order_status_selector"
+            android:clickable="false"
+            android:enabled="false" />
+
+
+        <CheckedTextView
+            android:id="@+id/tv_order_await_pay"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_order_await_pay"
+            android:checkMark="@null"
+            android:clickable="false"
+            android:enabled="false"
+            android:text="提交成功"
+            android:textAlignment="center"
+            android:textColor="@color/order_status_txt_selector"
+            android:textSize="@dimen/txt_size_13" />
+
+        <CheckedTextView
+            android:id="@+id/tv_order_paid"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/iv_order_paid"
+            android:layout_alignTop="@+id/tv_order_await_pay"
+            android:layout_marginLeft="-20dp"
+            android:checkMark="@null"
+            android:clickable="false"
+            android:enabled="false"
+            android:text="买家确认"
+            android:textAlignment="center"
+            android:textColor="@color/order_status_txt_selector"
+            android:textSize="@dimen/txt_size_13" />
+
+        <CheckedTextView
+            android:id="@+id/tv_order_shipped"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/iv_order_shipped"
+            android:layout_alignTop="@+id/tv_order_await_pay"
+            android:layout_marginLeft="-20dp"
+            android:checkMark="@null"
+            android:clickable="false"
+            android:enabled="false"
+            android:text="受理成功"
+            android:textAlignment="center"
+            android:textColor="@color/order_status_txt_selector"
+            android:textSize="@dimen/txt_size_13" />
+
+    </RelativeLayout>
+</LinearLayout>

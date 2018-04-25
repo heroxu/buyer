@@ -13,16 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="51dp"
+        android:paddingTop="30dp"
         android:background="@color/white">
 
+        <include layout="@layout/layout_require_take_status"/>
     </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:paddingTop="51dp"
+        android:paddingTop="20dp"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:text="您的接需求申请已经提交给买家，我们会尽快通知买家受理，请耐心等待~"

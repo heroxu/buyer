@@ -148,7 +148,8 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
 
 
 
-    @OnClick({R.id.iv_home_switch, R.id.tt_fount_message, R.id.send_travel, R.id.nav_order, R.id.nav_require, R.id.nav_travel, R.id.nav_wallet})
+    @OnClick({R.id.iv_home_switch, R.id.tt_fount_message, R.id.tt_my_info,
+            R.id.send_travel, R.id.nav_order, R.id.nav_require, R.id.nav_travel, R.id.nav_wallet})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_home_switch:
@@ -156,6 +157,10 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
                 finish();
                 break;
             case R.id.tt_fount_message:
+                break;
+
+            case R.id.tt_my_info:
+                drawerLayout.openDrawer(Gravity.LEFT);
                 break;
 
             case R.id.send_travel:

@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.BackPacker.Require;
+package com.smyy.sharetour.buyer.backpacker.require;
 
 import android.content.Intent;
 import android.os.Bundle;

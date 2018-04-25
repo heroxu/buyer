@@ -209,7 +209,7 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                 break;
             case R.id.cancel_frame:
                 if(requireBean.getState()==Consts.REQUIRE_STATE_WAIT_POINT){
-                    Intent intent = new Intent(BackPackerRequireDetailsActivity.this, com.smyy.sharetour.buyer.BackPacker.Require.BackPackerRequireCancelActivity.class);
+                    Intent intent = new Intent(BackPackerRequireDetailsActivity.this, BackPackerRequireCancelActivity.class);
                     startActivityForResult(intent, REQUIRE_REQUEST_CANCEL);
                 }
                 break;
