@@ -52,10 +52,19 @@ public class SettingsActivity extends MyBaseMvpActivity<SettingsPresenter> imple
         tvVersionCode.setText(MyApplication.getApplication().getAppVersionName());
     }
 
-    @OnClick({R.id.tv_my_account_settings, R.id.tv_my_message_settings, R.id.lay_my_change_theme,
+    @OnClick({R.id.tv_my_interests, R.id.tv_my_bankcard,
+            R.id.tv_my_account_settings, R.id.tv_my_message_settings, R.id.lay_my_change_theme,
             R.id.lay_my_clear_cache, R.id.lay_my_about_us})
     public void onClick(View view) {
         switch (view.getId()) {
+
+            case R.id.tv_my_interests:
+                startActivity(InterestSellerListActivity.class);
+                break;
+
+            case R.id.tv_my_bankcard:
+                startActivity(BankcardListActivity.class);
+                break;
 
             case R.id.tv_my_account_settings:
                 startActivity(AccountSettingsActivity.class);

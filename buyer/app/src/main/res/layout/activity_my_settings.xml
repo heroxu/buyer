@@ -18,9 +18,30 @@
 
 
             <TextView
+                android:id="@+id/tv_my_interests"
+                style="@style/WideItem.Text.WithArrow"
+                android:text="我的兴趣" />
+
+            <View
+                style="@style/LineDivider.Horizon"
+                android:layout_height="10dp"
+                android:background="@color/window_background" />
+
+            <TextView
+                android:id="@+id/tv_my_bankcard"
+                style="@style/WideItem.Text.WithArrow"
+                android:text="我的银行卡" />
+
+
+            <View
+                style="@style/LineDivider.Horizon"
+                android:layout_height="10dp"
+                android:background="@color/window_background" />
+
+            <TextView
                 android:id="@+id/tv_my_account_settings"
                 style="@style/WideItem.Text.WithArrow"
-                android:text="@string/account_settings" />
+                android:text="个人管理" />
 
             <View style="@style/WideItemDivider" />
 
@@ -67,7 +88,10 @@
                     tools:text="120MB" />
             </LinearLayout>
 
-            <View style="@style/WideItemDivider" />
+            <View
+                style="@style/LineDivider.Horizon"
+                android:layout_height="10dp"
+                android:background="@color/window_background" />
 
 
             <LinearLayout
