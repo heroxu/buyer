@@ -41,6 +41,7 @@ public class SettingsActivity extends MyBaseMvpActivity<SettingsPresenter> imple
             @Override
             public void onClick(View v) {
                 MyApplication.getApplication().logout();
+                finish();
             }
         });
     }
