@@ -57,6 +57,7 @@ public class MyWalletActivity extends BaseMvpActivity {
                 break;
 
             case R.id.tv_my_withdraw:
+                startActivity(new Intent(MyWalletActivity.this, BackpackerWithdrawActivity.class));
                 break;
 
             default:

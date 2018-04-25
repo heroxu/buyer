@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/window_background">
+
+    <View style="@style/WideItemDivider"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"/>
+
+    <RelativeLayout
+        android:id="@+id/select_bank"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/bank_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未绑定银行卡"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/txt_main"/>
+            <TextView
+                android:id="@+id/remain_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/txt_gray"
+                android:visibility="gone"
+                android:text="可转出至该卡的金额为423.00元"
+                android:inputType="number"
+                android:textSize="@dimen/txt_size_13"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bind_info"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未绑定"
+            android:textSize="@dimen/txt_size_13"
+            android:textColor="@color/txt_gray"
+            android:drawableRight="@mipmap/arrow_right_normal"
+            android:drawablePadding="6dp"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+    <View style="@style/WideItemDivider"
+        android:layout_marginRight="0dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:src="@mipmap/ic_budget_mon"
+            android:layout_centerVertical="true"
+            />
+
+        <EditText
+            android:layout_marginLeft="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/txt_size_13"
+            android:textColorHint="@color/txt_gray"
+            android:textColor="@color/txt_main"
+            android:id="@+id/input"
+            android:background="@null"
+            android:hint="请输入金额（不少于200.00）"
+            android:layout_centerVertical="true"
+            android:inputType="number"
+            android:enabled="false"
+            />
+
+        <TextView
+            android:id="@+id/all_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部转出"
+            android:textSize="@dimen/txt_size_15"
+            android:textColor="@color/txt_red"
+            android:drawablePadding="6dp"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/CommonButton.Rectangle"
+        android:text="提现"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="@dimen/dp_10"
+        />
+</LinearLayout>

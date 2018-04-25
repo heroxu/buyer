@@ -3,6 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="5dp"
     >
 
     <ImageView
@@ -10,17 +13,14 @@
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_marginStart="15dp"
-        android:layout_gravity="center_vertical"
         android:src="@mipmap/ic_home_switch"/>
 
     <LinearLayout
         android:id="@+id/ll_home_search"
         android:layout_width="0dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="18dp"
-        android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:background="@drawable/shape_fount_search"
         android:gravity="center_vertical"
@@ -43,17 +43,16 @@
 
     <ImageView
         android:id="@+id/tt_fount_scan"
-        android:layout_width="14dp"
-        android:layout_height="14dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="23dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginRight="22dp"
         android:src="@mipmap/ic_scan_it" />
 
     <ImageView
         android:id="@+id/tt_fount_message"
-        android:layout_width="18dp"
-        android:layout_height="14dp"
-        android:layout_gravity="center"
+        android:layout_width="20dp"
+        android:layout_height="16dp"
         android:layout_marginRight="20dp"
-        android:src="@mipmap/ic_news_nor" />
+        android:src="@mipmap/ic_news_nor"
+        />
 </LinearLayout>

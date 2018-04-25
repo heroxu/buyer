@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="375dp"
+    android:background="@drawable/bg_rectangle_top_corner"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/txt_main"
+            android:text="选择转出至"
+            android:textSize="@dimen/txt_size_17"
+             />
+
+        <ImageView
+            android:id="@+id/pay_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/ic_details_off_pag" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/select_bank_ok"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white">
+        
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/bank_logo"
+            android:src="@mipmap/img_bank_huaxia"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            />
+
+        <LinearLayout
+            android:layout_toRightOf="@id/bank_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/bank_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="华夏银行（尾号3848）"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/txt_main"/>
+            <TextView
+                android:id="@+id/remain_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/txt_gray"
+                android:text="可转出至该卡的金额为423.00元"
+                android:textSize="@dimen/txt_size_13"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/bind_info"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_radio_check"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+    <View style="@style/WideItemDivider"/>
+
+    <TextView
+        android:id="@+id/add_new_bank"
+        android:layout_marginLeft="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:textSize="@dimen/txt_size_15"
+        android:textColor="@color/txt_main"
+        android:gravity="center_vertical"
+        android:drawableLeft="@mipmap/ic_bank_addnewcard"
+        android:drawablePadding="31dp"
+        android:text="使用新卡提现"/>
+
+    <View style="@style/WideItemDivider"/>
+</LinearLayout>

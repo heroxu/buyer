@@ -1,5 +1,6 @@
 package com.smyy.sharetour.buyer.BackPacker.Travel;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,9 +16,16 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.yongchun.library.view.ImageSelectorActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
+import me.weyye.hipermission.PermissionItem;
 
 /**
  * @author Liliping
@@ -37,6 +45,8 @@ public class BackPackerUploadTicketActivity extends BaseMvpActivity {
     ImageView mask;
     @BindView(R.id.plane_anim)
     ImageView planeAnim;
+    @BindView(R.id.result_img)
+    ImageView resultImg;
     @BindView(R.id.progress)
     TextView progress_num;
     @BindView(R.id.progress_text)
@@ -66,6 +76,10 @@ public class BackPackerUploadTicketActivity extends BaseMvpActivity {
     private void initUI(Intent intent) {
         rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_anim);
 
+        startUploadTicket();
+    }
+
+    private void startUploadTicket() {
         //模拟图片上传进度
         new Thread(new Runnable() {
             @Override
@@ -93,13 +107,7 @@ public class BackPackerUploadTicketActivity extends BaseMvpActivity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case SUCCESS:
-                    progress_num.setBackground(getResources().getDrawable(R.mipmap.ic_xingcheng_send_success));
-                    progress_num.setText("");
-                    mask.setVisibility(View.GONE);
-                    progressText.setText("已完成");
-                    planeAnim.clearAnimation();
-                    planeAnim.setVisibility(View.GONE);
-                    ok.setEnabled(true);
+                    uploadTicketSuccess();
                     break;
                 case UPDATE:
                     progress_num.setText(progress + "%");
@@ -107,6 +115,30 @@ public class BackPackerUploadTicketActivity extends BaseMvpActivity {
             }
         }
     };
+
+    private void uploadTicketSuccess() {
+        progress_num.setVisibility(View.GONE);
+        mask.setVisibility(View.GONE);
+        progressText.setText("已完成");
+        planeAnim.clearAnimation();
+        planeAnim.setVisibility(View.GONE);
+        resultImg.setVisibility(View.VISIBLE);
+        ok.setEnabled(true);
+    }
+
+    private void retryUploadTicket() {
+        progress = 0;
+        progress_num.setText(progress + "%");
+        progress_num.setVisibility(View.VISIBLE);
+        mask.setVisibility(View.VISIBLE);
+        progressText.setText("上传中");
+        planeAnim.setAnimation(rotate);
+        planeAnim.startAnimation(rotate);
+        planeAnim.setVisibility(View.VISIBLE);
+        resultImg.setVisibility(View.GONE);
+        ok.setEnabled(false);
+        startUploadTicket();
+    }
 
     @Override
     protected void onResume() {
@@ -137,9 +169,58 @@ public class BackPackerUploadTicketActivity extends BaseMvpActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.retry_upload:
+                getPicture();
                 break;
             case R.id.ok:
+                finish();
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                // 选择照片
+                case ImageSelectorActivity.REQUEST_IMAGE:
+                    //ArrayList<String> images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
+                    retryUploadTicket();
+                    break;
+            }
+        }
+    }
+
+    private void getPicture()
+    {
+        ImageSelectorActivity.start(BackPackerUploadTicketActivity.this, 1,
+                ImageSelectorActivity.MODE_SINGLE, true,true,false, 0);
+    }
+
+    private void initPermissions() {
+        List<PermissionItem> permissonItems = new ArrayList<PermissionItem>();
+        permissonItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_camera));
+        permissonItems.add(new PermissionItem(Manifest.permission.READ_EXTERNAL_STORAGE, "读取外部存储", R.drawable.permission_ic_storage));
+        HiPermission.create(BackPackerUploadTicketActivity.this).permissions(permissonItems).checkMutiPermission(new PermissionCallback() {
+            @Override
+            public void onClose() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onDeny(String permission, int position) {
+
+            }
+
+            @Override
+            public void onGuarantee(String permission, int position) {
+
+            }
+        });
     }
 }

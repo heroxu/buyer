@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <View style="@style/WideItemDivider"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="38dp"
+            android:layout_marginTop="63dp"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/temp1"
+                android:orientation="vertical"
+                android:layout_marginRight="9dp"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/shape_circle_ffcd1f"/>
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="64dp"
+                    android:background="@color/btn_bg_normal"/>
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@mipmap/ic_bank_clock"/>
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="64dp"
+                    android:background="@color/btn_tag_stroke_normal"/>
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/shape_gray_light_dot"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/bank_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发起提价申请"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/txt_gray"
+                android:layout_toRightOf="@id/temp1"
+
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/temp1"
+                android:layout_marginTop="76dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/txt_main"
+                    android:text="银行处理中"
+                    android:inputType="number"
+                    android:textSize="@dimen/txt_size_15"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/txt_gray"
+                    android:text="预计3月28日 19:23前到账"
+                    android:textSize="@dimen/txt_size_13"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/bind_info"
+                android:layout_toRightOf="@id/temp1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="到账成功"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/txt_gray"
+                android:layout_alignBottom="@id/temp1"
+                />
+        </RelativeLayout>
+
+        <View style="@style/WideItemDivider"
+            android:layout_marginTop="73dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="30dp"
+            android:layout_marginTop="29dp"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_marginLeft="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提现金额"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/txt_gray_dark"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:id="@+id/all_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥ 423.00"
+                android:textSize="20sp"
+                android:textColor="@color/txt_main"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="30dp"
+            android:layout_marginTop="29dp"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_marginLeft="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="到账银行卡"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/txt_gray_dark"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="华夏银行 尾数3848"
+                android:textSize="@dimen/txt_size_15"
+                android:textColor="@color/txt_main"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/CommonButton"
+        android:text="完成"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

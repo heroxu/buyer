@@ -3,27 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@color/white">
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:paddingTop="8dp"
+    android:paddingBottom="5dp">
 
     <ImageView
         android:id="@+id/iv_home_switch"
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_marginStart="15dp"
-        android:layout_gravity="center_vertical"
         android:src="@mipmap/ic_home_switch"/>
 
     <LinearLayout
         android:id="@+id/ll_home_search"
         android:layout_width="0dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="18dp"
-        android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:background="@drawable/shape_fount_search"
         android:gravity="center_vertical"
+        android:background="@drawable/shape_fount_search"
         android:orientation="horizontal">
 
         <ImageView
@@ -44,17 +44,15 @@
 
     <ImageView
         android:id="@+id/tt_fount_message"
-        android:layout_width="18dp"
-        android:layout_height="14dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="15dp"
+        android:layout_width="20dp"
+        android:layout_height="16dp"
+        android:layout_marginRight="12dp"
         android:src="@mipmap/ic_news_nor" />
 
     <ImageView
         android:id="@+id/tt_my_info"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="20dp"
         android:background="@mipmap/ic_news_portrait" />
 </LinearLayout>

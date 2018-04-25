@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/window_background"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="16dp">
 
     <FrameLayout
         android:layout_width="327dp"
@@ -21,7 +23,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#55000000"/>
-        
+
+        <ImageView
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_gravity="center"
+            android:id="@+id/result_img"
+            android:visibility="gone"
+            android:src="@mipmap/ic_xingcheng_send_success"/>
+
         <ImageView
             android:id="@+id/plane_anim"
             android:layout_width="100dp"

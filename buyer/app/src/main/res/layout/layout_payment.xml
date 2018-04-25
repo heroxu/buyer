@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
+            android:textColor="@color/txt_main"
             android:text="@string/pay_method"
             android:textSize="@dimen/txt_size_17"
             android:textStyle="bold" />

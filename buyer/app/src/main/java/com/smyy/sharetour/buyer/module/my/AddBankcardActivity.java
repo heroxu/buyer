@@ -150,7 +150,8 @@ public class AddBankcardActivity extends BaseMvpActivity {
         mSmsCodeDialog.setClickCallbackListener(new SmsCodeDialog.SmsCodeCallback() {
             @Override
             public void SmsCodeResult(String smsCode) {
-                if (Consts.DEFAULT_SMS_CODE.equals(smsCode) && Consts.isPhoneNum(mPhone)) {
+                if (Consts.DEFAULT_SMS_CODE.equals(smsCode)) {
+                    setResult(RESULT_OK);
                     finish();
                 } else {
                     ToastUtils.showToast(AddBankcardActivity.this, "验证码输入错误");

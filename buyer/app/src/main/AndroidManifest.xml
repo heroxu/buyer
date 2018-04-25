@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/XqcTheme.NoActionBar">
         <activity android:name=".ui.MainActivity"
-            android:launchMode="singleInstance">
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,7 +84,7 @@
         <activity android:name=".module.my.CommentListActivity" />
         <activity
             android:name=".BackPacker.BackPackerHomeActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleTask" />
         <activity android:name=".BackPacker.Require.BackpackerTakeRequireActivity" />
         <activity android:name=".ui.SmallBackpack.SmallBackpackActivity" />
         <activity android:name=".ui.ConfirmOrderActivity" />
@@ -113,6 +113,8 @@
         <activity android:name=".BackPacker.Travel.BackPackerTravelDetailActivity" />
         <activity android:name=".BackPacker.Travel.BackPackerUploadTicketActivity" />
         <activity android:name=".BackPacker.my.MyWalletActivity" />
+        <activity android:name=".BackPacker.my.BackpackerWithdrawActivity" />
+        <activity android:name=".BackPacker.my.adapter.BackpackerWithdrawProgressActivity" />
     </application>
 
 </manifest>

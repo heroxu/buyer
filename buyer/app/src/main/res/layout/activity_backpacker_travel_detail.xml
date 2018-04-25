@@ -220,10 +220,10 @@
                         android:layout_height="40dp"
                         android:background="@drawable/view_reward_bg"
                         android:layout_marginTop="@dimen/dp_10"
+                        android:id="@+id/upload_air_ticket"
                         >
 
                         <TextView
-                            android:id="@+id/upload_air_ticket"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="上传登机牌"

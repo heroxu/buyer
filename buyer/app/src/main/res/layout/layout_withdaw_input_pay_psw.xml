@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:textColor="@color/txt_main"
+            android:text="请输入支付密码"
+            android:textSize="@dimen/txt_size_17"
+             />
+
+        <ImageView
+            android:id="@+id/pay_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/ic_details_off_pag" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提现"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="@dimen/txt_size_13"
+        android:textColor="@color/txt_main"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¥ 423.00"
+        android:textSize="35sp"
+        android:textColor="@color/txt_main"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="额外扣除¥0.40手续费"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/txt_size_13"
+        android:textColor="@color/txt_gray"
+        android:layout_gravity="center_horizontal"/>
+
+    <com.smyy.sharetour.buyer.view.PasswordEditText
+        android:id="@+id/pe_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:ellipsize="start"
+        android:enabled="true"
+        android:singleLine="true"
+        android:textColor="@color/transparent"
+        android:textSize="16sp"
+        app:parting_line_color="@color/pwd_stroke_normal" />
+</LinearLayout>
