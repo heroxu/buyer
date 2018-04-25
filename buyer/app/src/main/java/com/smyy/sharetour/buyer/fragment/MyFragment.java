@@ -154,7 +154,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.tv_my_cart:
-
+                ActivityLauncher.viewSmallBackpackActivity(getActivity());
                 break;
 
             case R.id.tv_my_demands:
