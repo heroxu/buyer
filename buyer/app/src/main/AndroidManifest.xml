@@ -109,6 +109,8 @@
         <activity android:name=".BackPacker.order.UploadShippingInfoActivity" />
         <activity android:name=".BackPacker.Travel.BackPackerTravelListActivity" />
         <activity android:name=".BackPacker.Travel.BackPackerTravelDetailActivity" />
+        <activity android:name=".BackPacker.Travel.BackPackerUploadTicketActivity" />
+        <activity android:name=".BackPacker.my.MyWalletActivity" />
     </application>
 
 </manifest>

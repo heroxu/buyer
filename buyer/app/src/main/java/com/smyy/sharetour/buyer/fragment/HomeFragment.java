@@ -160,6 +160,7 @@ public class HomeFragment extends BaseMvpFragment {
         switch (v.getId()){
             case R.id.iv_home_switch:
                 ActivityLauncher.viewBackpackerHomeActivity(getActivity());
+                getActivity().finish();
                 break;
         }
     }

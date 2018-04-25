@@ -67,6 +67,7 @@ public class BackPackerSendTravelActivity extends BaseMvpActivity {
             "美国", "澳大利亚", "墨西哥"
             , "阿根廷", "南非", "俄罗斯", "英国"};
     private TimePickerDialog mDialogYearMonthDay;
+    private CommonDialog dialog;
 
 
     @Override
@@ -173,6 +174,15 @@ public class BackPackerSendTravelActivity extends BaseMvpActivity {
                     adapter.notifyItemChanged(click_position, 0);
                     checkIsValid();
                     break;
+                // 选择照片
+                case ImageSelectorActivity.REQUEST_IMAGE:
+                    //ArrayList<String> images = (ArrayList<String>) data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT);
+                    startActivity(new Intent(BackPackerSendTravelActivity.this, BackPackerUploadTicketActivity.class));
+                    if(dialog!=null) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                    break;
             }
         }
     }
@@ -221,15 +231,18 @@ public class BackPackerSendTravelActivity extends BaseMvpActivity {
                                     //授予权限
                                     getPicture();
                                 }
+                                break;
                             case R.id.close_publish_success_dialog:
                             case R.id.know:
                                 commonDialog.dismiss();
+                                startActivity(new Intent(BackPackerSendTravelActivity.this, BackPackerTravelDetailActivity.class));
                                 finish();
+                                break;
                         }
                     }
                 });
 
-        builder.create().show();
+        dialog =  builder.create().show();
     }
 
     private void getPicture()
@@ -264,4 +277,5 @@ public class BackPackerSendTravelActivity extends BaseMvpActivity {
             }
         });
     }
+
 }

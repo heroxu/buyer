@@ -8,17 +8,25 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
+import com.smyy.sharetour.buyer.BackPacker.Require.BackPackerRequireListActivity;
+import com.smyy.sharetour.buyer.BackPacker.Travel.BackPackerTravelListActivity;
 import com.smyy.sharetour.buyer.BackPacker.Travel.GoodTagActivity;
+import com.smyy.sharetour.buyer.BackPacker.my.MyWalletActivity;
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.module.order.OrderListActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.HomeTitlesOpenOrCloseView;
 
@@ -28,14 +36,14 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
-* @author Liliping
-* @org www.smyy.com
-* @email lilp@stjf.com
-* @package com.smyy.sharetour.buyer.BackPacker
-* @fileName BackPackerHomeActivity
-* @date on 2018/4/22 0022 14:37
-* @describe 背包客首页
-*/
+ * @author Liliping
+ * @org www.smyy.com
+ * @email lilp@stjf.com
+ * @package com.smyy.sharetour.buyer.BackPacker
+ * @fileName BackPackerHomeActivity
+ * @date on 2018/4/22 0022 14:37
+ * @describe 背包客首页
+ */
 
 public class BackPackerHomeActivity extends BaseMvpActivity {
 
@@ -49,6 +57,14 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
     LinearLayout ll_home_search;
     @BindView(R.id.vp)
     ViewPager vp;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.user_head)
+    ImageView userHead;
+    @BindView(R.id.user_name)
+    TextView userName;
+    @BindView(R.id.banner)
+    ImageView banner;
 
     private boolean mArrowIsUp = true;
     private final String[] mTitles = {
@@ -92,27 +108,27 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
         hv_home_title.setIStatusChange(new HomeTitlesOpenOrCloseView.IStatusChange() {
             @Override
             public void selectPosition(int position) {
-                if(position>=0){
+                if (position >= 0) {
                     vp.setCurrentItem(position);
                 }
-                ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation",  180,360).setDuration(250).start();
+                ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation", 180, 360).setDuration(250).start();
                 mArrowIsUp = true;
             }
-        },mTitles);
+        }, mTitles);
 
         home_iv_title_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(hv_home_title.isAnimating()){
+                if (hv_home_title.isAnimating()) {
                     return;
                 }
                 ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation", mArrowIsUp ? 0 : 180, mArrowIsUp ? 180 : 360).setDuration(250).start();
-                if(mArrowIsUp){
+                if (mArrowIsUp) {
                     hv_home_title.animateOpen();
-                }else {
+                } else {
                     hv_home_title.animateClose();
                 }
-                mArrowIsUp=!mArrowIsUp;
+                mArrowIsUp = !mArrowIsUp;
             }
         });
 
@@ -131,7 +147,8 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
     }
 
 
-    @OnClick({R.id.iv_home_switch, R.id.tt_fount_message, R.id.send_travel})
+
+    @OnClick({R.id.iv_home_switch, R.id.tt_fount_message, R.id.send_travel, R.id.nav_order, R.id.nav_require, R.id.nav_travel, R.id.nav_wallet})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_home_switch:
@@ -144,8 +161,30 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
             case R.id.send_travel:
                 startActivity(new Intent(BackPackerHomeActivity.this, GoodTagActivity.class));
                 break;
+
+            case R.id.nav_order:
+                Bundle bundle=  new Bundle();
+                bundle.putInt(Consts.USER_TYPE,Consts.USER_TYPE_BACK_PACKER);
+                Intent intent = new Intent(BackPackerHomeActivity.this, OrderListActivity.class);
+                intent.putExtra("bundle", bundle);
+                startActivity(intent);
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                break;
+            case R.id.nav_require:
+                startActivity(new Intent(BackPackerHomeActivity.this, BackPackerRequireListActivity.class));
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                break;
+            case R.id.nav_travel:
+                startActivity(new Intent(BackPackerHomeActivity.this, BackPackerTravelListActivity.class));
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                break;
+            case R.id.nav_wallet:
+                startActivity(new Intent(BackPackerHomeActivity.this, MyWalletActivity.class));
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                break;
         }
     }
+
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {

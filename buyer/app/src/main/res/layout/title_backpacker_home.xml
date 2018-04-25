@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/iv_home_switch"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="@dimen/margin_10"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="15dp"
         android:layout_gravity="center_vertical"
         android:src="@mipmap/ic_home_switch"/>
 
@@ -18,7 +18,7 @@
         android:layout_width="0dp"
         android:layout_height="28dp"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="18dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
