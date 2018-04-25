@@ -115,7 +115,7 @@ public class HomeFragment extends BaseMvpFragment {
     private void setBanner() {
         //设置图片加载集合
         List<Integer> imageArray = new ArrayList<>();
-        imageArray.add(R.mipmap.carousel_live_01);
+        imageArray.add(R.mipmap.fake_banner);
 
         //设置banner样式
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
