@@ -16,7 +16,7 @@
             android:background="@color/white"
             android:orientation="vertical">
 
-            <LinearLayout style="@style/WideItem">
+            <LinearLayout style="@style/EditWideItem">
 
                 <TextView
                     style="@style/WideItemLeftText"
@@ -25,7 +25,7 @@
 
                 <EditText
                     android:id="@+id/et_my_shipping_name"
-                    style="@style/WideItemMiddleRight.EditText"
+                    style="@style/EditWideItemMiddleRight"
                     android:hint="姓名"
                     android:textColor="@color/txt_main"
                     android:textSize="@dimen/txt_size_15" />
@@ -37,7 +37,7 @@
                 android:layout_marginLeft="20dp"
                 android:background="@color/line_divider" />
 
-            <LinearLayout style="@style/WideItem">
+            <LinearLayout style="@style/EditWideItem">
 
                 <TextView
                     style="@style/WideItemLeftText"
@@ -46,7 +46,7 @@
 
                 <EditText
                     android:id="@+id/et_my_shipping_phone"
-                    style="@style/WideItemMiddleRight.EditText"
+                    style="@style/EditWideItemMiddleRight"
                     android:digits="@string/digits_phone_num"
                     android:hint="收货人电话"
                     android:inputType="phone"

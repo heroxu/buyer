@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        style="@style/WideItem"
+        style="@style/EditWideItem"
         android:background="@color/white">
 
         <TextView
@@ -21,7 +21,7 @@
 
         <EditText
             android:id="@+id/et_my_phone_number"
-            style="@style/WideItemMiddleRight.EditText"
+            style="@style/EditWideItemMiddleRight"
             android:digits="@string/digits_phone_num"
             android:hint="请输入手机号码"
             android:inputType="phone" />

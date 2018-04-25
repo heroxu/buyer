@@ -30,7 +30,7 @@
                     android:textColor="@color/txt_gray_dark"
                     android:textSize="@dimen/txt_size_13" />
 
-                <LinearLayout style="@style/WideItem">
+                <LinearLayout style="@style/EditWideItem">
 
                     <TextView
                         style="@style/WideItemLeftText"
@@ -39,7 +39,7 @@
 
                     <EditText
                         android:id="@+id/et_my_bankcard_name"
-                        style="@style/WideItemMiddleRight.EditText"
+                        style="@style/EditWideItemMiddleRight"
                         android:hint="姓名"
                         android:textColor="@color/txt_main"
                         android:textSize="@dimen/txt_size_15" />
@@ -52,7 +52,7 @@
                     android:layout_marginLeft="20dp"
                     android:background="@color/line_divider" />
 
-                <LinearLayout style="@style/WideItem">
+                <LinearLayout style="@style/EditWideItem">
 
                     <TextView
                         style="@style/WideItemLeftText"
@@ -61,7 +61,7 @@
 
                     <EditText
                         android:id="@+id/et_my_bankcard_num"
-                        style="@style/WideItemMiddleRight.EditText"
+                        style="@style/EditWideItemMiddleRight"
                         android:hint="卡号"
                         android:inputType="number"
                         android:textColor="@color/txt_main"
@@ -75,7 +75,7 @@
                     android:layout_marginLeft="20dp"
                     android:background="@color/line_divider" />
 
-                <LinearLayout style="@style/WideItem">
+                <LinearLayout style="@style/EditWideItem">
 
                     <TextView
                         style="@style/WideItemLeftText"
@@ -84,7 +84,7 @@
 
                     <TextView
                         android:id="@+id/et_my_bankcard_type"
-                        style="@style/WideItemMiddleRight.EditText"
+                        style="@style/EditWideItemMiddleRight"
                         android:text="储蓄卡"
                         android:textColor="@color/txt_main"
                         android:textSize="@dimen/txt_size_15"
@@ -98,7 +98,7 @@
                     android:layout_marginLeft="20dp"
                     android:background="@color/line_divider" />
 
-                <LinearLayout style="@style/WideItem">
+                <LinearLayout style="@style/EditWideItem">
 
                     <TextView
                         style="@style/WideItemLeftText"
@@ -107,7 +107,7 @@
 
                     <EditText
                         android:id="@+id/et_my_bankcard_phone"
-                        style="@style/WideItemMiddleRight.EditText"
+                        style="@style/EditWideItemMiddleRight"
                         android:digits="@string/digits_phone_num"
                         android:hint="请输入银行卡预留手机号"
                         android:inputType="phone"

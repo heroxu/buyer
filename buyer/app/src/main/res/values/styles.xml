@@ -105,12 +105,6 @@
         <item name="android:gravity">right</item>
     </style>
 
-    <style name="WideItemMiddleRight.EditText" parent="WideItemMiddleRight.Text">
-        <item name="android:background">@null</item>
-        <item name="android:gravity">left|center_vertical</item>
-        <item name="android:padding">0dp</item>
-    </style>
-
     <style name="WideItemRightArrow">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -122,6 +116,32 @@
     <style name="WideItemDivider" parent="LineDivider.Horizon">
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+
+    <!--内含EditText的WideItem-->
+    <style name="EditWideItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:background">?attr/clickItemBackground</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="EditWideItemMiddleRight" parent="WideItemMiddleRight.Text">
+        <item name="android:background">@null</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textSize">@dimen/txt_size_15</item>
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:paddingBottom">18dp</item>
+    </style>
+
+    <style name="EditWideItemRight" parent="WideItemRightArrow">
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:paddingBottom">18dp</item>
     </style>
 
     <!--提示性文本-->

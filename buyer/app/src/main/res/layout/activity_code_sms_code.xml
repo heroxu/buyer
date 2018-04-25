@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        style="@style/WideItem"
+        style="@style/EditWideItem"
         android:background="@color/white">
 
         <TextView
@@ -18,7 +18,7 @@
 
         <EditText
             android:id="@+id/et_code_input_code"
-            style="@style/WideItemMiddleRight.EditText"
+            style="@style/EditWideItemMiddleRight"
             android:digits="@string/digits_sms_code"
             android:hint="请输入验证码"
             android:inputType="number"
@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/tv_code_get_code"
-            style="@style/WideItemRightArrow"
+            style="@style/EditWideItemRight"
             android:text="获取验证码"
             android:textColor="@color/tv_code_sms_txt_selector" />
     </LinearLayout>
