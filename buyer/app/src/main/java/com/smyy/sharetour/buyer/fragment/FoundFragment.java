@@ -79,8 +79,8 @@ public class FoundFragment extends BaseMvpFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ttl_fount_search:
-                ActivityLauncher.viewBackpackHomePageActivity(getActivity());
-//                ActivityLauncher.viewBackpackSettingActivity(getActivity());
+//                ActivityLauncher.viewBackpackHomePageActivity(getActivity());
+                ActivityLauncher.viewBackpackSettingActivity(getActivity());
 //                ActivityLauncher.viewBackpackerModeActivity(getActivity());
 //                ActivityLauncher.viewBackpackCertificationActivity(getActivity());
 //                ActivityLauncher.viewSmallBackpackActivity(getActivity());
