@@ -23,6 +23,7 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.home.detail.commet.ProductDetailCommentFragment;
+import com.smyy.sharetour.buyer.home.detail.dialog.ProductComfirmOrder;
 import com.smyy.sharetour.buyer.home.detail.product.ProductDetailFragment;
 import com.smyy.sharetour.buyer.home.detail.service.ProductDetailServiceFragment;
 import com.smyy.sharetour.buyer.tim.ChatActivity;
@@ -135,6 +136,8 @@ public class HomeDetailActivity extends BaseMvpActivity implements View.OnClickL
         tvProductDetailCloseBag.setOnClickListener(this);
         ivProductDetailBag.setOnClickListener(this);
         ivProductDetailComment.setOnClickListener(this);
+        tvProductDetailAddBag.setOnClickListener(this);
+        tvProductDetailAddCart.setOnClickListener(this);
         ivProductDetailBag.setRedPointVisible(productNum > 0 ? View.VISIBLE : View.GONE);
         int visibility = getToolbar().getVisibility();
         Log.e("sss", "onCreate: vvv" + visibility);
@@ -172,6 +175,13 @@ public class HomeDetailActivity extends BaseMvpActivity implements View.OnClickL
                 break;
             case R.id.iv_product_detail_comment:
                 ChatActivity.navToChat(this, "XMYY_XXR", TIMConversationType.C2C);
+                break;
+            case R.id.tv_product_detail_add_cart:
+                ProductComfirmOrder productComfirmOrder = new ProductComfirmOrder();
+                productComfirmOrder.show(getSupportFragmentManager(), null);
+                break;
+            case R.id.tv_product_detail_add_bag:
+
                 break;
         }
     }
