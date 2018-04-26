@@ -102,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@mipmap/img_upload_touxiang"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:layout_gravity="center_horizontal"/>
 
         <TextView
@@ -125,7 +125,7 @@
             android:drawableLeft="@mipmap/ic_personal_dingdan"
             android:drawablePadding="19dp"
             android:layout_marginLeft="34dp"
-            android:layout_marginTop="67dp"/>
+            android:layout_marginTop="47dp"/>
 
         <TextView
             android:id="@+id/nav_require"
@@ -159,6 +159,18 @@
             android:textColor="@color/txt_main"
             android:text="钱包"
             android:drawableLeft="@mipmap/ic_personal_wallet"
+            android:drawablePadding="19dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="28dp"/>
+
+        <TextView
+            android:id="@+id/nav_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textColor="@color/txt_main"
+            android:text="管理"
+            android:drawableLeft="@mipmap/ic_personal_setting"
             android:drawablePadding="19dp"
             android:layout_marginLeft="34dp"
             android:layout_marginTop="28dp"/>

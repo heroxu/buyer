@@ -21,6 +21,7 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.backpacker.my.MyWalletActivity;
+import com.smyy.sharetour.buyer.backpacker.payPwd.BackpackSettingActivity;
 import com.smyy.sharetour.buyer.backpacker.require.BackPackerRequireListActivity;
 import com.smyy.sharetour.buyer.backpacker.travel.BackPackerTravelListActivity;
 import com.smyy.sharetour.buyer.backpacker.travel.GoodTagActivity;
@@ -149,7 +150,8 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
 
 
     @OnClick({R.id.iv_home_switch, R.id.tt_fount_message, R.id.tt_my_info,
-            R.id.send_travel, R.id.nav_order, R.id.nav_require, R.id.nav_travel, R.id.nav_wallet})
+            R.id.send_travel, R.id.nav_order, R.id.nav_require, R.id.nav_travel,
+            R.id.nav_wallet, R.id.nav_setting})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_home_switch:
@@ -167,25 +169,30 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
                 startActivity(new Intent(BackPackerHomeActivity.this, GoodTagActivity.class));
                 break;
 
+            case R.id.nav_setting:
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                startActivity(new Intent(BackPackerHomeActivity.this, BackpackSettingActivity.class));
+                break;
+
             case R.id.nav_order:
+                drawerLayout.closeDrawer(Gravity.LEFT);
                 Bundle bundle=  new Bundle();
                 bundle.putInt(Consts.USER_TYPE,Consts.USER_TYPE_BACK_PACKER);
                 Intent intent = new Intent(BackPackerHomeActivity.this, OrderListActivity.class);
                 intent.putExtra("bundle", bundle);
                 startActivity(intent);
-                drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
             case R.id.nav_require:
-                startActivity(new Intent(BackPackerHomeActivity.this, BackPackerRequireListActivity.class));
                 drawerLayout.closeDrawer(Gravity.LEFT);
+                startActivity(new Intent(BackPackerHomeActivity.this, BackPackerRequireListActivity.class));
                 break;
             case R.id.nav_travel:
-                startActivity(new Intent(BackPackerHomeActivity.this, BackPackerTravelListActivity.class));
                 drawerLayout.closeDrawer(Gravity.LEFT);
+                startActivity(new Intent(BackPackerHomeActivity.this, BackPackerTravelListActivity.class));
                 break;
             case R.id.nav_wallet:
-                startActivity(new Intent(BackPackerHomeActivity.this, MyWalletActivity.class));
                 drawerLayout.closeDrawer(Gravity.LEFT);
+                startActivity(new Intent(BackPackerHomeActivity.this, MyWalletActivity.class));
                 break;
         }
     }
@@ -205,6 +212,15 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
         @Override
         public Fragment getItem(int position) {
             return mFragments.get(position);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerVisible(Gravity.LEFT)){
+            drawerLayout.closeDrawer(Gravity.LEFT);
+        } else {
+            super.onBackPressed();
         }
     }
 }
