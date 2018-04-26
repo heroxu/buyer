@@ -225,6 +225,8 @@
     <string name="product_detail_service">服务</string>
     <string name="product_detail_money_desc">运费说明</string>
     <string name="product_detail_send_product">承若购买后30天发货</string>
-
+    <string name="product_detail_order_edit">订单编辑</string>
+    <string name="product_detail_order_color">颜色</string>
+    <string name="product_detail_order_size">尺寸</string>
 
 </resources>

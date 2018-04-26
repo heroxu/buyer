@@ -78,6 +78,8 @@ public class MyKeyBoardDialog extends DialogFragment {
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
         dialog.setContentView(initView());
+        Window window = getDialog().getWindow();
+        window.setGravity(Gravity.BOTTOM);
         return dialog;
     }
 
