@@ -23,6 +23,7 @@ import com.smyy.sharetour.buyer.home.detail.dialog.ProductConfirmOrderDialog;
 import com.smyy.sharetour.buyer.home.detail.product.ProductDetailFragment;
 import com.smyy.sharetour.buyer.home.detail.service.ProductDetailServiceFragment;
 import com.smyy.sharetour.buyer.tim.ChatActivity;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.RedImageView;
 import com.tencent.imsdk.TIMConversationType;
 import com.youth.banner.Banner;
@@ -127,7 +128,8 @@ public class HomeDetailActivity extends AppCompatActivity implements View.OnClic
 
                 break;
             case R.id.iv_product_detail_comment:
-                ChatActivity.navToChat(this, "XMYY_XXR", TIMConversationType.C2C);
+//                ChatActivity.navToChat(this, "XMYY_XXR", TIMConversationType.C2C);
+                ActivityLauncher.viewMessageListActivity(this);
                 break;
             case R.id.tv_product_detail_add_cart:
                 ProductConfirmOrderDialog productConfirmOrderDialog = new ProductConfirmOrderDialog();

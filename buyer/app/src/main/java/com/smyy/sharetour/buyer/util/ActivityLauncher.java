@@ -19,6 +19,8 @@ import com.smyy.sharetour.buyer.backpacker.certification.BackpackerModeActivity;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
+import com.smyy.sharetour.buyer.home.message.MessageListActivity;
+import com.smyy.sharetour.buyer.home.message.SystemMessageListActivity;
 import com.smyy.sharetour.buyer.home.search.activity.HomeSearchActivity;
 import com.smyy.sharetour.buyer.home.search.activity.SearchDetailActivity;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
@@ -393,6 +395,20 @@ public class ActivityLauncher {
      */
     public static void viewBackpackCommentsActivity(Context context) {
         Intent intent = new Intent(context, BackpackCommentsActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     *跳转到消息列表
+     */
+    public static void viewMessageListActivity(Context context) {
+        Intent intent = new Intent(context, MessageListActivity.class);
+        context.startActivity(intent);
+    }
+    /**
+     *跳转到系统消息列表
+     */
+    public static void viewSystemMessageListActivity(Context context) {
+        Intent intent = new Intent(context, SystemMessageListActivity.class);
         context.startActivity(intent);
     }
 }

@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/XqcTheme.NoActionBar">
-        <activity android:name=".ui.MainActivity"
+        <activity
+            android:name=".ui.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -107,7 +108,7 @@
         <activity android:name=".backpacker.payPwd.BackpackSetPayPwdActivity" />
         <activity android:name=".backpacker.BackpackAllEvaluationActivity" />
         <activity android:name=".backpacker.bomepage.BackpackHomePageActivity" />
-        <activity android:name=".backpacker.bomepage.BackpackCommentsActivity"/>
+        <activity android:name=".backpacker.bomepage.BackpackCommentsActivity" />
         <activity android:name=".backpacker.order.UploadShippingInfoActivity" />
         <activity android:name=".backpacker.travel.BackPackerTravelListActivity" />
         <activity android:name=".backpacker.travel.BackPackerTravelDetailActivity" />
@@ -115,6 +116,9 @@
         <activity android:name=".backpacker.my.MyWalletActivity" />
         <activity android:name=".backpacker.my.BackpackerWithdrawActivity" />
         <activity android:name=".backpacker.my.adapter.BackpackerWithdrawProgressActivity" />
+        <activity android:name=".home.message.MessageListActivity"/>
+        <activity android:name=".home.message.SystemMessageListActivity"/>
+
     </application>
 
 </manifest>
