@@ -76,7 +76,7 @@
         <ImageView
             android:layout_width="87dp"
             android:layout_height="87dp"
-            android:src="@mipmap/ic_xingcheng_send_success"
+            android:src="@mipmap/ic_succes"
             android:layout_gravity="center"
             />
     </FrameLayout>
