@@ -11,7 +11,7 @@
         android:id="@+id/pay_pwd"
         style="@style/WideItem.Text.WithArrow"
         android:background="@color/white"
-        android:text="支付密码" />
+        android:text="支付管理" />
 
     <View style="@style/WideItemDivider" />
 
@@ -19,5 +19,5 @@
         android:id="@+id/user_management"
         style="@style/WideItem.Text.WithArrow"
         android:background="@color/white"
-        android:text="个人管理" />
+        android:text="认证信息" />
 </LinearLayout>

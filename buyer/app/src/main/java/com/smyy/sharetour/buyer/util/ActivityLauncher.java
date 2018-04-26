@@ -368,7 +368,7 @@ public class ActivityLauncher {
         context.startActivity(intent);
     }
     /**
-     * 跳转到背包客设置
+     * 跳转到背包客管理
      */
     public static void viewBackpackSettingActivity(Context context) {
         Intent intent = new Intent(context, BackpackSettingActivity.class);

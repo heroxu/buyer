@@ -23,7 +23,7 @@ public class BackpackSettingActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        title.setText("设置");
+        title.setText("管理");
     }
 
     @Override
@@ -43,6 +43,7 @@ public class BackpackSettingActivity extends BaseMvpActivity {
                 ActivityLauncher.viewBackpackSetPayPwdActivity(BackpackSettingActivity.this);
                 break;
             case R.id.user_management:
+
                 break;
         }
     }

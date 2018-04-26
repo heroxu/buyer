@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity {
             initCurrentFragment(liveFragment);
         }
         fragment = getSupportFragmentManager().findFragmentByTag(MyFragment.class.getName());
-        if (fragment != null && fragment instanceof LiveFragment) {
+        if (fragment != null && fragment instanceof MyFragment) {
             myFragment = (MyFragment) fragment;
             initCurrentFragment(myFragment);
         }
