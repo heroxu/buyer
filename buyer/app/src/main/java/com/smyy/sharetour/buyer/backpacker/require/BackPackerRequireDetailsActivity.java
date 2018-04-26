@@ -19,6 +19,11 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;
+import com.smyy.sharetour.buyer.module.order.OrderDetailActivity;
+import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
+import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -216,12 +221,53 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                 if(isTakeRequire){
                     startActivity(new Intent(BackPackerRequireDetailsActivity.this, BackpackerTakeRequireActivity.class));
                     finish();
+                } else {
+                    Intent intent = new Intent(BackPackerRequireDetailsActivity.this, OrderDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Consts.ORDER_ID, getFakeData().getOrderId());
+                    bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BACK_PACKER);
+                    bundle.putSerializable(OrderDetailActivity.FAKE_DATA, getFakeData());
+                    intent.putExtra("bundle", bundle);
+                    startActivity(intent);
                 }
                 break;
             case R.id.back_btn:
                 finish();
                 break;
         }
+    }
+
+    private OrderBean getFakeData() {
+        OrderGoodsInfo goodsInfo1 = new OrderGoodsInfo("1",
+                "NIKE HUARACHE DRIFT (PSE) LALALALALA",
+                "黑白/36.5",
+                "",
+                "￥9,918.00",
+                1, "");
+        OrderGoodsInfo goodsInfo2 = new OrderGoodsInfo("2",
+                "NIKE HUARACHE DRIFT (PSE) LALALALALA",
+                "黑白/34",
+                "",
+                "￥8,918.00",
+                1, "");
+        ArrayList<OrderGoodsInfo> fakeGoodsList2 = new ArrayList<>();
+        fakeGoodsList2.add(goodsInfo1);
+        fakeGoodsList2.add(goodsInfo2);
+
+        OrderBean orderBean = new OrderBean("1",
+                Consts.ORDER_STATUS_AWAIT_SHIPPING,
+                "",
+                "我是小桂子的桂子",
+                "",
+                "",
+                2,
+                "￥18,866.00",
+                "￥30.00",
+                "",
+                Consts.GOODS_TYPE_STOCK,
+                fakeGoodsList2);
+
+        return orderBean;
     }
 
 }
