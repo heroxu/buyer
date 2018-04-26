@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_height"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <ImageView
@@ -19,17 +18,23 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
         <TextView
+            android:layout_marginTop="6dp"
             android:id="@+id/tv_product_detail_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:textColor="@color/txt_main"
             android:textSize="@dimen/txt_size_15"
             android:text="NIKE XIEZI"
             />
         <TextView
+            android:layout_marginBottom="6dp"
             android:id="@+id/tv_product_detail_price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:textColor="@color/txt_main"
             android:textSize="@dimen/txt_size_13"
             android:text="¥2,399"

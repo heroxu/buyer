@@ -8,7 +8,7 @@
         android:id="@+id/iv_product_detail"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@mipmap/bg_video"
+        android:src="@mipmap/home_new_sell"
         />
     <TextView
         android:id="@+id/tv_product_detail"
@@ -22,6 +22,6 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@mipmap/bg_video"
+        android:src="@mipmap/home_new_sell"
         />
 </LinearLayout>

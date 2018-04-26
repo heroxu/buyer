@@ -18,7 +18,7 @@
             android:text="@string/product_detail_order_edit"
             />
         <TextView
-            android:id="@+id/tv_product_detail_order_cancel"
+            android:id="@+id/tv_confirm_order_cancel"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/margin_10"
             android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/iv_new_sell_product_pic"
+                    android:id="@+id/iv_confirm_order_product_pic"
                     android:layout_marginTop="10dp"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -60,7 +60,7 @@
                     android:layout_marginStart="10dp"
                     android:orientation="vertical">
                     <TextView
-                        android:id="@+id/tv_new_sell_product_name"
+                        android:id="@+id/tv_confirm_order_product_title"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:lines="1"
@@ -73,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
-                            android:id="@+id/tv_new_sell_product_price"
+                            android:id="@+id/tv_confirm_order_product_argument"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:ellipsize="end"
@@ -82,6 +82,7 @@
                             android:text="规格：黑白/36.5"
                             />
                         <TextView
+                            android:id="@+id/tv_confirm_order_product_num"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="@dimen/margin_10"
                             android:layout_width="wrap_content"
@@ -98,12 +99,13 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
                         <ImageView
+                            android:id="@+id/iv_confirm_order_product_nation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@mipmap/ic_city_korea"/>
                         <TextView
+                            android:id="@+id/tv_confirm_order_product_price"
                             android:layout_marginStart="@dimen/margin_10"
-                            android:id="@+id/tv_new_sell_product_address"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
@@ -113,6 +115,7 @@
                             android:text="¥456.9"
                             />
                         <TextView
+                            android:id="@+id/tv_confirm_order_product_price_rmb"
                             android:layout_marginStart="@dimen/margin_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -140,9 +143,9 @@
                     android:text="@string/product_detail_order_color"
                     />
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_order_confirm_color"
+                    android:id="@+id/rv_confirm_order_color"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp">
+                    android:layout_height="wrap_content">
 
                 </android.support.v7.widget.RecyclerView>
                 <TextView
@@ -154,21 +157,51 @@
                     android:text="@string/product_detail_order_size"
                     />
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_order_confirm_size"
+                    android:id="@+id/rv_confirm_order_size"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp">
+                    android:layout_height="wrap_content">
 
                 </android.support.v7.widget.RecyclerView>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_margin="@dimen/margin_10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/txt_main"
+                        android:textSize="@dimen/txt_size_17"
+                        android:text="@string/product_detail_sell_num"
+                        />
+                    <TextView
+                        android:id="@+id/tv_confirm_order_sell_num"
+                        android:layout_margin="@dimen/margin_10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/txt_gray"
+                        android:textSize="@dimen/txt_size_11"
+                        android:text="仅剩2件"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+
             <LinearLayout
                 android:layout_marginBottom="@dimen/margin_10"
                 android:layout_width="122dp"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:background="@drawable/bg_rectangle_stroke_gray"
+                android:background="@drawable/bg_confirm_order_product_number"
                 android:layout_margin="@dimen/margin_10"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/tv_confirm_order_sub"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:gravity="center"
@@ -176,16 +209,19 @@
                     android:textSize="@dimen/txt_size_15"
                     android:textColor="@color/txt_gray_dark"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/et_confirm_order_num"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="8"
-                    android:background="@drawable/bg_rectangle_stroke_gray"
+                    android:inputType="number"
+                    android:background="@drawable/bg_confirm_order_no_rounded"
                     android:textSize="@dimen/txt_size_15"
                     android:textColor="@color/txt_gray_dark"/>
 
                 <TextView
+                    android:id="@+id/tv_confirm_order_add"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:gravity="center"
@@ -201,12 +237,12 @@
         <LinearLayout
             android:layout_gravity="bottom"
             android:layout_marginBottom="10dp"
-            android:id="@+id/ll_product_detail_bottom_buy"
+            android:id="@+id/ll_product_confirm_order_bottom"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/tv_product_detail_add_bag"
+                android:id="@+id/tv_confirm_order_add_bag"
                 android:gravity="center"
                 android:layout_margin="10dp"
                 android:layout_width="0dp"
@@ -214,11 +250,11 @@
                 android:layout_height="50dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/txt_size_15"
-                android:text="加入小背包"
+                android:text="@string/add_bag"
                 android:background="@drawable/bg_rectangle_fill_black"/>
 
             <TextView
-                android:id="@+id/tv_product_detail_add_cart"
+                android:id="@+id/tv_confirm_order_ok"
                 android:textColor="@color/txt_main"
                 android:gravity="center"
                 android:layout_margin="10dp"
@@ -226,7 +262,7 @@
                 android:layout_weight="1"
                 android:layout_height="50dp"
                 android:textSize="@dimen/txt_size_15"
-                android:text="立即购买"
+                android:text="@string/product_order_confirm_ok"
                 android:background="@drawable/bg_rectangle_fill_yellow"/>
         </LinearLayout>
 </LinearLayout>

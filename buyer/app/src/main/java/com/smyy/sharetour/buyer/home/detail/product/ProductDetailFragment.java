@@ -43,6 +43,10 @@ public class ProductDetailFragment extends BaseMvpFragment {
 
     }
 
+    @Override
+    protected boolean isImmersionBarEnabled() {
+        return false;
+    }
 
     @Override
     protected int getLayoutId() {

@@ -6,47 +6,7 @@
 
     <!--<include layout="@layout/title_product_detail"/>-->
 
-    <!--<FrameLayout-->
-    <!--android:layout_marginTop="45dp"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
 
-    <!--<android.support.v7.widget.RecyclerView-->
-    <!--android:id="@+id/rv_product_detail_parent"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_margin="@dimen/margin_10"-->
-    <!--android:layout_height="match_parent">-->
-
-    <!--</android.support.v7.widget.RecyclerView>-->
-    <!--<LinearLayout-->
-    <!--android:id="@+id/ll_product_detail_tab_top"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="vertical">-->
-    <!--<com.flyco.tablayout.SlidingTabLayout-->
-    <!--android:id="@+id/stl_product_detail"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="40dp"-->
-    <!--app:tl_tab_space_equal="true"-->
-    <!--app:tl_indicator_color="@color/txt_main"-->
-    <!--app:tl_indicator_corner_radius="1.5dp"-->
-    <!--app:tl_indicator_height="3dp"-->
-    <!--app:tl_indicator_width="10dp"-->
-    <!--app:tl_tab_padding="12dp"-->
-    <!--app:tl_textSelectColor="@color/txt_main"-->
-    <!--app:tl_textUnselectColor="@color/txt_gray" />-->
-    <!--<android.support.v4.view.ViewPager-->
-    <!--android:id="@+id/vp_product_detail"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="1dp">-->
-    <!--</android.support.v4.view.ViewPager>-->
-    <!--<View-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="1dp"-->
-    <!--android:background="@color/divider_color"/>-->
-    <!--</LinearLayout>-->
-
-    <!--</FrameLayout>-->
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -62,7 +22,10 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+
+
             <LinearLayout
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerInside"
@@ -73,7 +36,7 @@
                 <com.youth.banner.Banner
                     android:id="@+id/banner_product_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="250dp"
                     app:indicator_drawable_selected="@drawable/selected_radius"
                     app:indicator_drawable_unselected="@drawable/unselected_radius"
                     app:indicator_margin="2dp" />
@@ -90,14 +53,16 @@
 
 
             <android.support.v7.widget.Toolbar
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="48dp"
                 android:background="@color/colorPrimary"
                 app:layout_collapseMode="pin">
                 <include layout="@layout/title_product_detail"/>
             </android.support.v7.widget.Toolbar>
+
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
 
@@ -118,10 +83,10 @@
                 app:tl_tab_padding="12dp"
                 app:tl_textSelectColor="@color/txt_main"
                 app:tl_textUnselectColor="@color/txt_gray" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/divider_color"/>
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/divider_color"/>-->
         </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
