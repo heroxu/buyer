@@ -96,24 +96,30 @@
         android:background="@color/white"
         android:clickable="true"
         android:id="@+id/nav_view">
-
-        <ImageView
-            android:id="@+id/user_head"
+        <LinearLayout
+            android:id="@+id/ll_btn_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/img_upload_touxiang"
-            android:layout_marginTop="50dp"
-            android:layout_gravity="center_horizontal"/>
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/user_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_upload_touxiang"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal"/>
 
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="两梳大香蕉"
-            android:layout_gravity="center_horizontal"
-            android:textSize="@dimen/txt_size_17"
-            android:textColor="@color/txt_main"/>
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="两梳大香蕉"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/txt_size_17"
+                android:textColor="@color/txt_main"/>
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/nav_order"

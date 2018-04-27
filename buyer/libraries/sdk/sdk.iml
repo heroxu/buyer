@@ -133,6 +133,5 @@
     <orderEntry type="library" name="__local_aars__:E.\Android\buyer\libraries\sdk\libs\open_sdk.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="__local_aars__:E.\Android\buyer\libraries\sdk\libs\qalsdk.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="__local_aars__:E.\Android\buyer\libraries\sdk\libs\imsdk.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="android-android-25" level="project" />
   </component>
 </module>

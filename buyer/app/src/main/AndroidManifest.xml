@@ -122,6 +122,9 @@
         <activity
             android:name=".home.comment.ui.MyReciveCommentActivity"
             android:label="@string/title_activity_my_receive_comment"></activity>
+        <activity android:name=".backpacker.BackPackerCertificationListActivity" />
+        <activity android:name=".backpacker.BackPackerCertificationActivity" />
+        <activity android:name=".backpacker.ALIPointsActivity"></activity>
     </application>
 
 </manifest>

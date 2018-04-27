@@ -94,6 +94,7 @@ public class BackpackCertificationActivity2 extends BaseMvpActivity {
         etBcNum.setHint("请输入护照号");
         tvPositive.setText("护照签发页");
         tvReverse.setText("手持护照签发页");
+        Glide.with(this).load(R.mipmap.card_passport_e).crossFade().into(ivPositive);
         Glide.with(this).load(R.mipmap.img_renzheng_passport_all).crossFade().into(ivReverse);
     }
 

@@ -1,4 +1,4 @@
-package com.smyy.sharetour.buyer.backpacker.payPwd;
+package com.smyy.sharetour.buyer.backpacker;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +14,11 @@ import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import butterknife.OnClick;
 
-public class BackpackSettingActivity extends BaseMvpActivity {
+public class BackPackerCertificationListActivity extends BaseMvpActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_backpack_setting;
+        return R.layout.activity_back_packer_certification_list;
     }
 
     @Override
@@ -36,14 +36,18 @@ public class BackpackSettingActivity extends BaseMvpActivity {
         return null;
     }
 
-    @OnClick({R.id.pay_pwd, R.id.user_management})
+
+    @OnClick({R.id.r_btn_name, R.id.r_btn_ali, R.id.r_btn_passport})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.pay_pwd:
-                ActivityLauncher.viewBackpackValidationPhoneActivity(BackpackSettingActivity.this);
+            case R.id.r_btn_name:
+                ActivityLauncher.viewBackPackerCertificationActivity(BackPackerCertificationListActivity.this,BackPackerCertificationActivity.BUNDLE_NAME_TYPE);
                 break;
-            case R.id.user_management:
-                ActivityLauncher.viewBackPackerCertificationListActivity(BackpackSettingActivity.this);
+            case R.id.r_btn_ali:
+                ActivityLauncher.viewALIPointsActivity(BackPackerCertificationListActivity.this);
+                break;
+            case R.id.r_btn_passport:
+                ActivityLauncher.viewBackPackerCertificationActivity(BackPackerCertificationListActivity.this,BackPackerCertificationActivity.BUNDLE_PASSPORT_TYPE);
                 break;
         }
     }
