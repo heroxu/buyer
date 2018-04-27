@@ -20,11 +20,12 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_my_comment" />
+                android:src="@mipmap/ic_message_system_message" />
             <TextView
+                android:layout_marginTop="@dimen/margin_10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/txt_size_17"
+                android:textSize="@dimen/txt_size_15"
                 android:textColor="@color/txt_main"
                 android:text="@string/message_system_message"/>
         </LinearLayout>
@@ -39,11 +40,12 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_my_comment" />
+                android:src="@mipmap/ic_message_my_comment" />
             <TextView
+                android:layout_marginTop="@dimen/margin_10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/txt_size_17"
+                android:textSize="@dimen/txt_size_15"
                 android:textColor="@color/txt_main"
                 android:text="@string/message_my_comment"/>
         </LinearLayout>
@@ -57,11 +59,12 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_my_comment" />
+                android:src="@mipmap/ic_message_my_like" />
             <TextView
+                android:layout_marginTop="@dimen/margin_10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/txt_size_17"
+                android:textSize="@dimen/txt_size_15"
                 android:textColor="@color/txt_main"
                 android:text="@string/message_my_like"/>
         </LinearLayout>

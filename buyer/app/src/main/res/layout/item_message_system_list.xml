@@ -2,83 +2,97 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/margin_10"
         android:textSize="@dimen/txt_size_13"
         android:textColor="@color/txt_gray_dark"
         android:text="2018-04-26 21:00"/>
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/colorPrimary"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp">
-        <TextView
-            android:id="@+id/iv_message_list_avatar_name"
-            android:layout_marginTop="3dp"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_10"
-            android:layout_marginStart="@dimen/margin_10"
-            android:textColor="@color/txt_main"
-            android:textSize="@dimen/txt_size_17"
-            android:text="平台福利来了！！！本月推荐进店的均可获得平台返回福利。"/>
-
-        <ImageView
-            android:layout_margin="@dimen/margin_10"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/home_new_sell"/>
-
-        <TextView
-            android:layout_marginTop="3dp"
-            android:layout_alignTop="@+id/iv_message_list_avatar_name"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/margin_10"
-            android:id="@+id/iv_message_list_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/margin_10"
-            android:textColor="@color/txt_gray_dark"
-            android:textSize="@dimen/txt_size_13"
-            android:text="参加买手的爸爸们可以过来看看!!"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/margin_10"
-            android:background="@color/line_divider"/>
-
         <LinearLayout
-            android:layout_margin="@dimen/margin_10"
-            android:id="@+id/ll_system_message_read_all"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_10"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/iv_message_list_avatar_name"
+                android:layout_marginTop="3dp"
+                android:lineSpacingExtra="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_10"
+                android:layout_marginStart="@dimen/margin_10"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_17"
+                android:text="平台福利来了！！！本月推荐进店的均可获得平台返回福利。"/>
+
+            <ImageView
+                android:layout_margin="@dimen/margin_10"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@mipmap/home_new_sell"/>
+
             <TextView
                 android:layout_marginTop="3dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_alignTop="@+id/iv_message_list_avatar_name"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_10"
+                android:id="@+id/iv_message_list_time"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/txt_main"
-                android:textSize="@dimen/txt_size_15"
-                android:text="平台福利来了！！！本月推荐进店的均可获得平台返回福利。"/>
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_right"/>
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_10"
+                android:textColor="@color/txt_gray_dark"
+                android:textSize="@dimen/txt_size_13"
+                android:text="参加买手的爸爸们可以过来看看!!"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@color/line_divider"/>
+
+            <LinearLayout
+                android:layout_margin="@dimen/margin_10"
+                android:id="@+id/ll_system_message_read_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_15"
+                    android:text="@string/message_system_message_read_all"/>
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/ic_right"/>
+
+            </LinearLayout>
         </LinearLayout>
 
-    </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 
 

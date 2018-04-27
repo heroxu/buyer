@@ -236,6 +236,6 @@
     <string name="message_system_message">系统消息</string>
     <string name="message_my_comment">我的评论</string>
     <string name="message_my_like">我的赞</string>
-    <string name="title_activity_shhs">SHHS</string>
+    <string name="message_system_message_read_all">阅读全文</string>
 
 </resources>
