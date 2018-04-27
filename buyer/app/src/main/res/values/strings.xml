@@ -233,6 +233,7 @@
     <string name="add_bag">加入小背包</string>
 
     <!--消息模块-->
+    <string name="message_activity_title">消息</string>
     <string name="message_system_message">系统消息</string>
     <string name="message_my_comment">我的评论</string>
     <string name="message_my_like">我的赞</string>

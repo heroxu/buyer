@@ -46,7 +46,16 @@ public class MessageListActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        title.setText("系统消息");
+        title.setText("消息");
+        getToolbarRightTv().setVisibility(View.VISIBLE);
+        getToolbarRightTv().setText(R.string.settings);
+        getToolbarRightTv().setTextColor(R.color.txt_main);
+        getToolbarRightTv().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityLauncher.viewAccountSettingsActivity(MessageListActivity.this);
+            }
+        });
     }
 
     @Override
