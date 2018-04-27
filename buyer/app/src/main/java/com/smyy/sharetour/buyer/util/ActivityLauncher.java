@@ -449,11 +449,15 @@ public class ActivityLauncher {
      */
     public static void viewALIPointsActivity(Context context) {
         Intent intent = new Intent(context, ALIPointsActivity.class);
+        context.startActivity(intent);
+
     }
 
 
     public static void viewMyReciveCommentActivity(Context context) {
         Intent intent = new Intent(context, MyReciveCommentActivity.class);
+        context.startActivity(intent);
+
 
     }
 }
