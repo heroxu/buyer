@@ -237,7 +237,7 @@ public class EditUsualDestActivity extends MyBaseMvpActivity<UserPresenter> impl
     public void showUserInfo(UserInfoBean userInfo) {
         mUsualDestList = userInfo.getUsualDestList();
 
-        if (mUsualDestList != null && mUsualDestList.size() == 0) {
+        if (mUsualDestList != null && mUsualDestList.size() != 0) {
             List<DragTagBean> dragTagBeans1 = new ArrayList<>();
             for (String name :
                     mUsualDestList) {
