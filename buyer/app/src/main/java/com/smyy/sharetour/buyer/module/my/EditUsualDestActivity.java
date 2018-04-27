@@ -198,9 +198,11 @@ public class EditUsualDestActivity extends MyBaseMvpActivity<UserPresenter> impl
     private void saveUsualDest() {
         DragFlowLayout.DragItemManager ususalDestItemManager = dflUsualDest.getDragItemManager();
         List<DragTagBean> items = ususalDestItemManager.getItems();
-        DragTagBean lastTagBean = items.get(items.size() - 1);
-        if (lastTagBean == null || TextUtils.isEmpty(lastTagBean.name)) {
-            items.remove(items.size() - 1);
+        if (items != null && items.size() > 0) {
+            DragTagBean lastTagBean = items.get(items.size() - 1);
+            if (lastTagBean == null || TextUtils.isEmpty(lastTagBean.name)) {
+                items.remove(items.size() - 1);
+            }
         }
         mUsualDes = items;
     }
@@ -243,8 +245,11 @@ public class EditUsualDestActivity extends MyBaseMvpActivity<UserPresenter> impl
                     mUsualDestList) {
                 dragTagBeans1.add(new DragTagBean(name));
             }
-            dragTagBeans1.add(new DragTagBean(null, false));
+            if (mUsualDestList.size() < MAX_USUAL_DEST) {
+                dragTagBeans1.add(new DragTagBean(null, false));
+            }
             dflUsualDest.getDragItemManager().addItems(dragTagBeans1);
+            saveUsualDest();
         }
 
         getFakeData();
