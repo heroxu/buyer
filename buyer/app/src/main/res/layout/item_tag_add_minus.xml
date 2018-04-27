@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp">
+
+    <LinearLayout
+        android:id="@+id/lay_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_tag_little_yellow"
+            android:minWidth="55dp"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_13"
+            tools:text="美国" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_add_minus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:padding="5dp"
+        android:layout_alignRight="@+id/lay_name"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_add" />
+</RelativeLayout>

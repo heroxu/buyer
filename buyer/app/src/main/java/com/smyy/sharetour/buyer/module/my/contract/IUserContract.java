@@ -4,6 +4,8 @@ import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 import com.smyy.sharetour.buyer.module.my.base.MyIBaseView;
 import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 
+import java.util.List;
+
 public interface IUserContract {
     interface View extends MyIBaseView {
         void showUserInfo(UserInfoBean userInfo);
@@ -35,6 +37,8 @@ public interface IUserContract {
         public abstract void setUserIntro(String userIntro);
 
         public abstract void setAvatar(String avatar);
+
+        public abstract void setUsualDest(List<String> usualDestList);
     }
 
     interface Model {
@@ -60,5 +64,7 @@ public interface IUserContract {
         boolean setLinkedPhone(String linkedPhoneNum);
 
         boolean setUserAvatar(String avatar);
+
+        boolean setUsualDest(List<String> usualDestList);
     }
 }

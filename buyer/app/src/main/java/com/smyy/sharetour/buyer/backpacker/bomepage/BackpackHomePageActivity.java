@@ -10,9 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import java.util.ArrayList;
@@ -61,7 +63,9 @@ public class BackpackHomePageActivity extends BaseMvpActivity {
                 finish();
                 break;
             case R.id.tv_editor:
-                ActivityLauncher.viewAccountSettingsActivity(this);
+                Bundle bundle = new Bundle();
+                bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BACK_PACKER);
+                startActivity(AccountSettingsActivity.class, bundle);
                 break;
             case R.id.tv_more_comments:
                 ActivityLauncher.viewBackpackCommentsActivity(this);

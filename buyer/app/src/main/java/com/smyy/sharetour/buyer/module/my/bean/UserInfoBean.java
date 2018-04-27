@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer.module.my.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 public class UserInfoBean implements Serializable {
@@ -12,9 +13,11 @@ public class UserInfoBean implements Serializable {
     private int awaitingShipmentOrderCount;
     private int awaitingConfirmationOrderCount;
     private int disputeOrderCount;
+    private Residence residence;
+    private List<String> usualDestList;
 
-    public UserInfoBean(String phone, String username, String userIntro, String avatar, int awaitingPaymentOrderCount, int awaitingShipmentOrderCount, int awaitingConfirmationOrderCount, int disputeOrderCount) {
-        this.linkedPhoneNum = phone;
+    public UserInfoBean(String linkedPhoneNum, String username, String userIntro, String avatar, int awaitingPaymentOrderCount, int awaitingShipmentOrderCount, int awaitingConfirmationOrderCount, int disputeOrderCount, Residence residence, List<String> usualDestList) {
+        this.linkedPhoneNum = linkedPhoneNum;
         this.username = username;
         this.userIntro = userIntro;
         this.avatar = avatar;
@@ -22,6 +25,52 @@ public class UserInfoBean implements Serializable {
         this.awaitingShipmentOrderCount = awaitingShipmentOrderCount;
         this.awaitingConfirmationOrderCount = awaitingConfirmationOrderCount;
         this.disputeOrderCount = disputeOrderCount;
+        this.residence = residence;
+        this.usualDestList = usualDestList;
+    }
+
+    public static class Residence {
+        private String country;
+        private String province;
+        private String city;
+
+        public Residence(String country, String province, String city) {
+            this.country = country;
+            this.province = province;
+            this.city = city;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
+
+        public String getProvince() {
+            return province;
+        }
+
+        public void setProvince(String province) {
+            this.province = province;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+    }
+
+    public String getLinkedPhoneNum() {
+        return linkedPhoneNum;
+    }
+
+    public void setLinkedPhoneNum(String linkedPhoneNum) {
+        this.linkedPhoneNum = linkedPhoneNum;
     }
 
     public String getUsername() {
@@ -46,14 +95,6 @@ public class UserInfoBean implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public String getLinkedPhoneNum() {
-        return linkedPhoneNum;
-    }
-
-    public void setLinkedPhoneNum(String linkedPhoneNum) {
-        this.linkedPhoneNum = linkedPhoneNum;
     }
 
     public int getAwaitingPaymentOrderCount() {
@@ -88,17 +129,35 @@ public class UserInfoBean implements Serializable {
         this.disputeOrderCount = disputeOrderCount;
     }
 
+    public Residence getResidence() {
+        return residence;
+    }
+
+    public void setResidence(Residence residence) {
+        this.residence = residence;
+    }
+
+    public List<String> getUsualDestList() {
+        return usualDestList;
+    }
+
+    public void setUsualDestList(List<String> usualDestList) {
+        this.usualDestList = usualDestList;
+    }
+
     @Override
     public String toString() {
         return "UserInfoBean{" +
-                "username='" + username + '\'' +
+                "linkedPhoneNum='" + linkedPhoneNum + '\'' +
+                ", username='" + username + '\'' +
                 ", userIntro='" + userIntro + '\'' +
                 ", avatar='" + avatar + '\'' +
-                ", linkedPhoneNum='" + linkedPhoneNum + '\'' +
                 ", awaitingPaymentOrderCount=" + awaitingPaymentOrderCount +
                 ", awaitingShipmentOrderCount=" + awaitingShipmentOrderCount +
                 ", awaitingConfirmationOrderCount=" + awaitingConfirmationOrderCount +
                 ", disputeOrderCount=" + disputeOrderCount +
+                ", residence=" + residence +
+                ", usualDestList=" + usualDestList +
                 '}';
     }
 }

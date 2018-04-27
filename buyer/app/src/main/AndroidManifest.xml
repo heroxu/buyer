@@ -41,6 +41,7 @@
         <activity android:name=".module.my.InterestSellerListActivity" />
         <activity android:name=".module.my.BankcardListActivity" />
         <activity android:name=".module.my.AddBankcardActivity" />
+        <activity android:name=".module.my.EditUsualDestActivity" />
         <activity android:name=".module.common.code.SmsCodeActivity" />
         <activity android:name=".ui.Test1Activity" />
         <activity android:name=".ui.test2.Test2Activity" />

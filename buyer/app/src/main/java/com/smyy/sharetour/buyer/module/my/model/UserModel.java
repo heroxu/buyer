@@ -6,11 +6,14 @@ import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.util.SharePreferenceUtil;
 
+import java.util.List;
+
 public class UserModel implements IUserContract.Model {
     @Override
     public UserInfoBean getUserInfoFromNet() {
         UserInfoBean userInfo = new UserInfoBean("", "悠闲的伪牧师", "一只大榴莲，两梳大香蕉。", "",
-                1, 2, 3, 0);
+                1, 2, 3, 0,
+                new UserInfoBean.Residence("中国", "广东", "广州"), null);
         saveUserInfo(userInfo);
         return userInfo;
     }
@@ -78,6 +81,17 @@ public class UserModel implements IUserContract.Model {
         if (application == null) return false;
         UserInfoBean userInfo = getUserInfo();
         userInfo.setAvatar(avatar);
+        application.setUserInfo(userInfo);
+        return new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
+                .writeBeanValue(SPConfig.KEY_USER_INFO, userInfo);
+    }
+
+    @Override
+    public boolean setUsualDest(List<String> usualDestList) {
+        MyApplication application = MyApplication.getApplication();
+        if (application == null) return false;
+        UserInfoBean userInfo = getUserInfo();
+        userInfo.setUsualDestList(usualDestList);
         application.setUserInfo(userInfo);
         return new SharePreferenceUtil(application, SPConfig.NAME_USER_CACHE)
                 .writeBeanValue(SPConfig.KEY_USER_INFO, userInfo);

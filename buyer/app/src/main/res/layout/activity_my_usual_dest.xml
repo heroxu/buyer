@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的常出行"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_19" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="按住拖动调整排序"
+                android:textColor="@color/txt_gray"
+                android:textSize="@dimen/txt_size_11" />
+        </LinearLayout>
+
+        <com.heaven7.android.dragflowlayout.DragFlowLayout
+            android:id="@+id/dfl_my_usual_dest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击添加国家"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_19" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="最多可添加六个"
+                android:textColor="@color/txt_gray"
+                android:textSize="@dimen/txt_size_11" />
+        </LinearLayout>
+
+        <com.heaven7.android.dragflowlayout.DragFlowLayout
+            android:id="@+id/dfl_my_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

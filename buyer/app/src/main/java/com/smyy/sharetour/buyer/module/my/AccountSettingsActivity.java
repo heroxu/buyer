@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
@@ -43,6 +44,12 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
     TextView tvNickname;
     @BindView(R.id.tv_my_user_intro)
     TextView tvUserIntro;
+    @BindView(R.id.lay_my_account_settings_buyer)
+    View layBuyer;
+    @BindView(R.id.lay_my_account_settings_packer)
+    View layPacker;
+
+    private int mUserType = Consts.USER_TYPE_BUYER;
 
     public static final int REQ_EDIT_USER_INFO = 1;
 
@@ -58,6 +65,21 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        Bundle bundle = getBundle();
+        if (bundle != null) {
+            mUserType = bundle.getInt(Consts.USER_TYPE, Consts.USER_TYPE_BUYER);
+        }
+
+        switch (mUserType) {
+            case Consts.USER_TYPE_BACK_PACKER:
+                layBuyer.setVisibility(View.GONE);
+                layPacker.setVisibility(View.VISIBLE);
+                break;
+            default:
+                layBuyer.setVisibility(View.VISIBLE);
+                layPacker.setVisibility(View.GONE);
+                break;
+        }
         initUserInfo();
     }
 
@@ -72,7 +94,8 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
     }
 
     @OnClick({R.id.lay_my_avatar_item, R.id.lay_my_nickname, R.id.lay_my_user_intro,
-            R.id.tv_my_shipping_address, R.id.tv_my_security_center})
+            R.id.tv_my_shipping_address, R.id.tv_my_security_center,
+            R.id.lay_my_residence, R.id.lay_my_usual_dest})
     public void onClick(View view) {
         switch (view.getId()) {
 
@@ -102,6 +125,14 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
 
             case R.id.tv_my_security_center:
                 startActivity(SecurityCenterActivity.class);
+                break;
+
+            case R.id.lay_my_residence:
+
+                break;
+
+            case R.id.lay_my_usual_dest:
+                startActivityForResult(EditUsualDestActivity.class, REQ_EDIT_USER_INFO);
                 break;
 
             default:

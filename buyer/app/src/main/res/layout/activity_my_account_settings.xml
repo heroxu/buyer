@@ -84,18 +84,69 @@
                 android:layout_height="10dp"
                 android:background="@color/window_background" />
 
-            <TextView
-                android:id="@+id/tv_my_shipping_address"
-                style="@style/WideItem.Text.WithArrow"
-                android:text="@string/my_shipping_address" />
+            <LinearLayout
+                android:id="@+id/lay_my_account_settings_buyer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <View style="@style/WideItemDivider" />
+                <TextView
+                    android:id="@+id/tv_my_shipping_address"
+                    style="@style/WideItem.Text.WithArrow"
+                    android:text="@string/my_shipping_address" />
 
-            <TextView
-                android:id="@+id/tv_my_security_center"
-                style="@style/WideItem.Text.WithArrow"
-                android:text="@string/security_center" />
+                <View style="@style/WideItemDivider" />
 
+                <TextView
+                    android:id="@+id/tv_my_security_center"
+                    style="@style/WideItem.Text.WithArrow"
+                    android:text="@string/security_center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_my_account_settings_packer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/lay_my_residence"
+                    style="@style/WideItem">
+
+                    <TextView
+                        style="@style/WideItemLeftText"
+                        android:text="定居地" />
+
+                    <TextView
+                        android:id="@+id/tv_my_residence"
+                        style="@style/WideItemMiddleRight.Text.Ellipsize"
+                        android:text="中国 广东 广州" />
+
+                    <ImageView style="@style/WideItemRightArrow" />
+                </LinearLayout>
+
+                <View style="@style/WideItemDivider" />
+
+
+                <LinearLayout
+                    android:id="@+id/lay_my_usual_dest"
+                    style="@style/WideItem">
+
+                    <TextView
+                        style="@style/WideItemLeftText"
+                        android:layout_width="wrap_content"
+                        android:text="常出行" />
+
+                    <TextView
+                        android:id="@+id/tv_my_usual_dest"
+                        style="@style/WideItemMiddleRight.Text.Ellipsize"
+                        android:text="美国、法国" />
+
+                    <ImageView style="@style/WideItemRightArrow" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </FrameLayout>

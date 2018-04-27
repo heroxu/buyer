@@ -1,0 +1,18 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!-- 填充的颜色 -->
+    <solid android:color="@color/btn_bg_normal" />
+
+    <!-- 四个角的弧度 -->
+    <corners android:radius="2dp" />
+
+    <!-- padding：TextView里面的文字与TextView边界的间隔 -->
+    <padding
+        android:bottom="5dp"
+        android:left="15dp"
+        android:right="15dp"
+        android:top="5dp" />
+
+
+</shape>
