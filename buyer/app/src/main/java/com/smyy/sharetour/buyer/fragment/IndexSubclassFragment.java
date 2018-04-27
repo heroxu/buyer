@@ -9,6 +9,8 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.home.adapter.HomeFragmentRecyclerViewAdapter;
+import com.smyy.sharetour.buyer.home.model.HomeBuyerNeed;
+import com.smyy.sharetour.buyer.home.model.HomeBuyerNeedItem;
 import com.smyy.sharetour.buyer.home.model.HomeHotProduct;
 import com.smyy.sharetour.buyer.home.model.HomeHotProductItem;
 import com.smyy.sharetour.buyer.home.model.HomeNewSell;
@@ -71,6 +73,9 @@ public class IndexSubclassFragment extends BaseMvpFragment {
     private HomeRoute homeRoute;
     private List<HomeRouteItem> homeRouteItems;
 
+    private HomeBuyerNeed homeBuyerNeed;
+    private List<HomeBuyerNeedItem> homeBuyerNeedItems;
+
     private HomeNewSell homeNewSell;
     private List<HomeNewSellItem> homeNewSellItems;
 
@@ -97,7 +102,15 @@ public class IndexSubclassFragment extends BaseMvpFragment {
         homeRoute.routes = homeRouteItems;
         homeRecyclerBaseBeans.add(homeRoute);
 
-
+        homeBuyerNeed = new HomeBuyerNeed();
+        homeBuyerNeedItems = new ArrayList<>();
+        homeBuyerNeed.viewType = HomeFragmentRecyclerViewAdapter.ITEM_BUYER_NEED;
+        homeBuyerNeedItems.add(new HomeBuyerNeedItem("1月29 出发","日本出行","222"));
+        homeBuyerNeedItems.add(new HomeBuyerNeedItem("1月29 出发","1月31 返程","2332"));
+        homeBuyerNeedItems.add(new HomeBuyerNeedItem("1月29 出发","1月31 返程","222"));
+        homeBuyerNeedItems.add(new HomeBuyerNeedItem("1月29 出发","1月31 返程","2332"));
+        homeBuyerNeed.buyerNeeds = homeBuyerNeedItems;
+        homeRecyclerBaseBeans.add(homeBuyerNeed);
 
         homeRecyclerBaseBeans.add(new HomeTitleBean("最新预售", "全球抢购", HomeFragmentRecyclerViewAdapter.ITEM_TITLE,false, false));
         homeNewSell = new HomeNewSell();

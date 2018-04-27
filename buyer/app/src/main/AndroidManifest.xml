@@ -116,9 +116,11 @@
         <activity android:name=".backpacker.my.MyWalletActivity" />
         <activity android:name=".backpacker.my.BackpackerWithdrawActivity" />
         <activity android:name=".backpacker.my.adapter.BackpackerWithdrawProgressActivity" />
-        <activity android:name=".home.message.MessageListActivity"/>
-        <activity android:name=".home.message.SystemMessageListActivity"/>
-
+        <activity android:name=".home.message.MessageListActivity" />
+        <activity android:name=".home.message.SystemMessageListActivity" />
+        <activity
+            android:name=".home.comment.ui.MyReciveCommentActivity"
+            android:label="@string/title_activity_my_receive_comment"></activity>
     </application>
 
 </manifest>

@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.home.model.HomeBuyerNeed;
+import com.smyy.sharetour.buyer.home.model.HomeBuyerNeedItem;
 import com.smyy.sharetour.buyer.home.model.HomeHotProduct;
 import com.smyy.sharetour.buyer.home.model.HomeHotProductItem;
 import com.smyy.sharetour.buyer.home.model.HomeNewSell;
@@ -48,6 +50,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     public static final int ITEM_CHILD_HOT_PRODUCT = 0x40;
     public static final int ITEM_CHILD_RECOMMEND = 0x50;
     public static final int ITEM_NOTES = 0x60;
+    public static final int ITEM_BUYER_NEED = 0x70;
 
     public static final int NOTE_TYPE_VEDIO = 0x11;
     public static final int NOTE_TYPE_SINGLE = 0x21;
@@ -91,6 +94,9 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             case ITEM_NOTES:
                 View notes = LayoutInflater.from(mContext).inflate(R.layout.item_home_child_notes_rv, parent, false);
                 return new HomeNotesHolder(notes);
+            case ITEM_BUYER_NEED:
+                View buyer_need = LayoutInflater.from(mContext).inflate(R.layout.item_home_child_buyer_need_rv, parent, false);
+                return new HomeBuyerNeedHolder(buyer_need);
             default:
               return  null;
         }
@@ -161,6 +167,13 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
             homeNotesHolder.rv_child_notes.setLayoutManager(linearLayoutManager);
             homeNotesHolder.rv_child_notes.setAdapter(new HomeNotesAdapter(homeRecommend.homeNoteItems));
+        }else if (ITEM_BUYER_NEED == mDatas.get(position).viewType) {
+            HomeBuyerNeedHolder homeBuyerNeddHolder = (HomeBuyerNeedHolder) holder;
+            HomeBuyerNeed homeBuyerNeed = (HomeBuyerNeed) mDatas.get(position);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+            linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            homeBuyerNeddHolder.rv_child_buyer_need.setLayoutManager(linearLayoutManager);
+            homeBuyerNeddHolder.rv_child_buyer_need.setAdapter(new HomeChildBuyerNeedAdapter(homeBuyerNeed.buyerNeeds));
         }
     }
 
@@ -265,6 +278,56 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             }
         }
     }
+
+    public static class HomeBuyerNeedHolder extends RecyclerView.ViewHolder{
+        private RecyclerView rv_child_buyer_need;
+        public HomeBuyerNeedHolder(View itemView) {
+            super(itemView);
+            rv_child_buyer_need = (RecyclerView) itemView.findViewById(R.id.rv_child_buyer_need);
+        }
+    }
+
+    public class HomeChildBuyerNeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+
+        private List<HomeBuyerNeedItem> mBuyerNeedDatas;
+        public HomeChildBuyerNeedAdapter(List<HomeBuyerNeedItem> datas) {
+            this.mBuyerNeedDatas = datas;
+        }
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new HomeBuyerNeedItemHolder(LayoutInflater.from(mContext).inflate(R.layout.item_home_child_buyer_need, parent, false));
+
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            HomeBuyerNeedItemHolder viewHolder = (HomeBuyerNeedItemHolder) holder;
+            final HomeBuyerNeedItem homeBuyerNeed = mBuyerNeedDatas.get(position);
+//            viewHolder.tv_buyer_need_sub_title.setText(homeBuyerNeed.title);
+//            viewHolder.tv_buyer_need_sub_title.setText(homeBuyerNeed.subTitle);
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return mBuyerNeedDatas.isEmpty()?0: mBuyerNeedDatas.size();
+        }
+
+        public  class HomeBuyerNeedItemHolder extends RecyclerView.ViewHolder{
+            ImageView iv_buyer_need;
+            TextView tv_buyer_need_title;
+            TextView tv_buyer_need_sub_title;
+
+            public HomeBuyerNeedItemHolder(View itemView) {
+                super(itemView);
+                iv_buyer_need = (ImageView) itemView.findViewById(R.id.iv_buyer_need);
+                tv_buyer_need_title = (TextView)itemView.findViewById(R.id.tv_buyer_need_title);
+                tv_buyer_need_sub_title = (TextView)itemView.findViewById(R.id.tv_buyer_need_sub_title);
+            }
+        }
+    }
+
 
     public static class HomeNewSellHolder extends RecyclerView.ViewHolder{
         private RecyclerView rv_child_new_sell;

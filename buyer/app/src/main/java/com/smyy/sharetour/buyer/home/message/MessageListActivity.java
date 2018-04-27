@@ -46,7 +46,7 @@ public class MessageListActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        title.setText("消息");
+        title.setText(R.string.message_activity_title);
         getToolbarRightTv().setVisibility(View.VISIBLE);
         getToolbarRightTv().setText(R.string.settings);
         getToolbarRightTv().setTextColor(R.color.txt_main);
