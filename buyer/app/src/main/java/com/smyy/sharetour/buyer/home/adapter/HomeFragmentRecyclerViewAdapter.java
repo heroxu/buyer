@@ -2,6 +2,7 @@ package com.smyy.sharetour.buyer.home.adapter;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -482,6 +483,12 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
                 }
             });
+            hotProductItemHolder.cv_home_recommend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ActivityLauncher.viewBuyHomePageActivity(mContext);
+                }
+            });
 //            hotProductItemHolder.iv_hot_product_seller_avatar.setImageResource();
 //            hotProductItemHolder.tv_hot_product_seller_name.setText(homeRecommendItem.hotProductSellerName);
         }
@@ -492,6 +499,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         }
 
         public  class HomeRecommendItemHolder extends RecyclerView.ViewHolder{
+            CardView cv_home_recommend;
             TextView tv_home_recommend_location;
             TextView tv_home_recommend_avatar_name;
             CircleImageView iv_home_recommend_avatar;
@@ -502,6 +510,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
             public HomeRecommendItemHolder(View itemView) {
                 super(itemView);
+                cv_home_recommend = (CardView) itemView.findViewById(R.id.cv_home_recommend);
                 tv_home_recommend_location = (TextView) itemView.findViewById(R.id.tv_home_recommend_location);
                 tv_home_recommend_avatar_name = (TextView) itemView.findViewById(R.id.tv_home_recommend_avatar_name);
                 iv_home_recommend_avatar = (CircleImageView) itemView.findViewById(R.id.iv_home_recommend_avatar);

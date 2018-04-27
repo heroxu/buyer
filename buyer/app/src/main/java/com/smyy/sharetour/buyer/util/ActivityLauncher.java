@@ -21,6 +21,7 @@ import com.smyy.sharetour.buyer.backpacker.payPwd.BackpackSetPayPwdActivity;
 import com.smyy.sharetour.buyer.backpacker.payPwd.BackpackSettingActivity;
 import com.smyy.sharetour.buyer.backpacker.payPwd.BackpackValidationPhoneActivity;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
+import com.smyy.sharetour.buyer.home.comment.ui.MyReciveCommentActivity;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.message.MessageListActivity;
 import com.smyy.sharetour.buyer.home.message.SystemMessageListActivity;
@@ -426,6 +427,7 @@ public class ActivityLauncher {
     }
 
     /**
+<<<<<<< HEAD
      * 跳转到认证列表
      */
     public static void viewBackPackerCertificationListActivity(Context context) {
@@ -447,7 +449,12 @@ public class ActivityLauncher {
      */
     public static void viewALIPointsActivity(Context context) {
         Intent intent = new Intent(context, ALIPointsActivity.class);
-        context.startActivity(intent);
+    }
+
+
+    public static void viewMyReciveCommentActivity(Context context) {
+        Intent intent = new Intent(context, MyReciveCommentActivity.class);
+
     }
 }
 

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_10"
+    android:layout_marginBottom="@dimen/margin_10"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_my_receive_comment_avatar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/user_avatar" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_my_receive_comment_avatar_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_15"
+                android:text="刘德华"/>
+            <TextView
+                android:layout_marginStart="@dimen/margin_10"
+                android:id="@+id/iv_my_receive_comment_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/txt_gray"
+                android:textSize="@dimen/txt_size_11"
+                android:text="2018-04-28 19:32"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginStart="15dp"
+        android:id="@+id/iv_my_receive_comment_content"
+        android:gravity="bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="@dimen/margin_10"
+        android:lines="2"
+        android:lineSpacingExtra="2dp"
+        android:ellipsize="end"
+        android:textColor="@color/txt_gray_dark"
+        android:textSize="@dimen/txt_size_13"
+        android:text="你能帮我代购几个NIKE的包包吗帮我代购几个NIKE的包包吗帮我代购几个NIKE的包包吗帮我代购几个NIKE的包包吗？"/>
+    <LinearLayout
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/iv_my_receive_comment_video"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/home_new_sell"/>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/iv_my_receive_comment_note"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:lines="5"
+            android:lineSpacingExtra="3dp"
+            android:ellipsize="end"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_13"
+            android:text="测评刀具第 五次的完整 测评工具， 从2015年…"/>
+        <LinearLayout
+            android:layout_marginStart="@dimen/margin_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:lineSpacingExtra="3dp"
+                android:ellipsize="end"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_13"
+                android:text="#论模型比例的重要性，到底是三七还 是四六，比例的区别能让..."/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:lineSpacingExtra="3dp"
+                android:ellipsize="end"
+                android:textColor="@color/txt_gray"
+                android:textSize="@dimen/txt_size_11"
+                android:text="测评刀具第 五次的完整 测评工具， 从2015年…"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+    <View
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/line_divider"/>
+</LinearLayout>
