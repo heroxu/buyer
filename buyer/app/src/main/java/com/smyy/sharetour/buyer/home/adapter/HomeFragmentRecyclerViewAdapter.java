@@ -361,6 +361,12 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             viewHolder.tv_new_sell_product_name.setText(homeNewSellItem.productName);
             viewHolder.tv_new_sell_product_price.setText(homeNewSellItem.productPrice);
             viewHolder.tv_new_sell_product_address.setText(homeNewSellItem.productAddress);
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ActivityLauncher.viewHomeDetail(mContext);
+                }
+            });
         }
 
         @Override
