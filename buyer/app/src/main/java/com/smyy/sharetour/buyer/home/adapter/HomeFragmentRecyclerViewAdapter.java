@@ -430,6 +430,12 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             hotProductItemHolder.tv_hot_product_price_before.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG); //中划线
 //            hotProductItemHolder.iv_hot_product_seller_avatar.setImageResource();
             hotProductItemHolder.tv_hot_product_seller_name.setText(hotProductItem.hotProductSellerName);
+            hotProductItemHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ActivityLauncher.viewHomeDetail(mContext);
+                }
+            });
         }
 
         @Override

@@ -2,28 +2,38 @@ package com.smyy.sharetour.buyer.fragment;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.dtr.zxing.activity.CaptureActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.HomeTitlesOpenOrCloseView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;
@@ -37,17 +47,24 @@ public class HomeFragment extends BaseMvpFragment {
     public static final String TAG = "HomeFragment";
 
     public static final int REQUEST_CODE_SCAN = 3301;
+    @BindView(R.id.iv_home_switch)
+    ImageView ivHomeSwitch;
+    @BindView(R.id.ll_home_search)
+    LinearLayout llHomeSearch;
+    @BindView(R.id.tt_fount_scan)
+    ImageView ttFountScan;
+    @BindView(R.id.tt_fount_message)
+    ImageView ttFountMessage;
     @BindView(R.id.tl_7)
-    SlidingTabLayout tabLayout_7;
+    SlidingTabLayout tl7;
+    @BindView(R.id.home_iv_title_arrow)
+    AppCompatImageView homeIvTitleArrow;
     @BindView(R.id.vp)
     ViewPager vp;
-    @BindView(R.id.home_iv_title_arrow)
-    AppCompatImageView home_iv_title_arrow;
     @BindView(R.id.hv_home_title)
-    HomeTitlesOpenOrCloseView hv_home_title;
+    HomeTitlesOpenOrCloseView hvHomeTitle;
+    Unbinder unbinder;
 
-    @BindView(R.id.ll_home_search)
-    LinearLayout ll_home_search;
 
     private boolean mArrowIsUp = true;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -78,7 +95,7 @@ public class HomeFragment extends BaseMvpFragment {
         }
         mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
         vp.setAdapter(mAdapter);
-        tabLayout_7.setViewPager(vp, mTitles);
+        tl7.setViewPager(vp, mTitles);
 
 //        vp.setCurrentItem(4);
         loadData();
@@ -86,34 +103,34 @@ public class HomeFragment extends BaseMvpFragment {
 
     private void initListener() {
 //        hv_home_title.setRvLayoutManager(new LinearLayoutManager(getContext()));
-        hv_home_title.setIStatusChange(new HomeTitlesOpenOrCloseView.IStatusChange() {
+        hvHomeTitle.setIStatusChange(new HomeTitlesOpenOrCloseView.IStatusChange() {
             @Override
             public void selectPosition(int position) {
-                Log.e(TAG, "selectPosition: "+"position = "+position, null);
-                if(position>=0){
+                Log.e(TAG, "selectPosition: " + "position = " + position, null);
+                if (position >= 0) {
                     vp.setCurrentItem(position);
                 }
-                ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation",  180,360).setDuration(250).start();
+                ObjectAnimator.ofFloat(homeIvTitleArrow, "rotation", 180, 360).setDuration(250).start();
                 mArrowIsUp = true;
             }
-        },mTitles);
+        }, mTitles);
 
-        home_iv_title_arrow.setOnClickListener(new View.OnClickListener() {
+        homeIvTitleArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(hv_home_title.isAnimating()){
+                if (hvHomeTitle.isAnimating()) {
                     return;
                 }
-                ObjectAnimator.ofFloat(home_iv_title_arrow, "rotation", mArrowIsUp ? 0 : 180, mArrowIsUp ? 180 : 360).setDuration(250).start();
-                if(mArrowIsUp){
-                   hv_home_title.animateOpen();
-                }else {
-                    hv_home_title.animateClose();
+                ObjectAnimator.ofFloat(homeIvTitleArrow, "rotation", mArrowIsUp ? 0 : 180, mArrowIsUp ? 180 : 360).setDuration(250).start();
+                if (mArrowIsUp) {
+                    hvHomeTitle.animateOpen();
+                } else {
+                    hvHomeTitle.animateClose();
                 }
-                mArrowIsUp=!mArrowIsUp;
+                mArrowIsUp = !mArrowIsUp;
             }
         });
-        ll_home_search.setOnClickListener(new View.OnClickListener() {
+        llHomeSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ActivityLauncher.viewHomeSearch(getContext());
@@ -155,14 +172,29 @@ public class HomeFragment extends BaseMvpFragment {
         });
     }
 
-    @OnClick(R.id.iv_home_switch)
+    @OnClick({R.id.iv_home_switch,R.id.tt_fount_scan})
     public void onViewClicked(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_home_switch:
                 ActivityLauncher.viewBackpackerHomeActivity(getActivity());
                 getActivity().finish();
                 break;
+            case R.id.tt_fount_scan:
+                startActivityForResult(new Intent(getActivity(), CaptureActivity.class),REQUEST_CODE_SCAN);
+                break;
         }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(this.getActivity());
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
@@ -179,6 +211,20 @@ public class HomeFragment extends BaseMvpFragment {
         @Override
         public Fragment getItem(int position) {
             return mFragments.get(position);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == REQUEST_CODE_SCAN) {
+            if (resultCode == Activity.RESULT_OK) {
+                String result = intent.getStringExtra(CaptureActivity.BUNDLE_RESULT);
+                ToastUtils.showToast(result);
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                ToastUtils.showToast("扫码取消");
+            } else {
+                ToastUtils.showToast("扫码错误");
+            }
         }
     }
 }
