@@ -125,6 +125,8 @@
         <activity android:name=".backpacker.BackPackerCertificationListActivity" />
         <activity android:name=".backpacker.BackPackerCertificationActivity" />
         <activity android:name=".backpacker.ALIPointsActivity"></activity>
+        <activity android:name=".travel.SellerTravelListActivity" />
+        <activity android:name=".travel.SellerTravelDetailActivity" />
     </application>
 
 </manifest>

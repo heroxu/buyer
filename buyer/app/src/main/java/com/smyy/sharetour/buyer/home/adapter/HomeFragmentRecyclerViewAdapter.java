@@ -105,7 +105,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if(mDatas.isEmpty()){
             return;
         }
@@ -118,7 +118,11 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             homeChildTitleHolder.ll_more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ActivityLauncher.viewRecommendBuyActivity(mContext);
+                    if(position==0) {
+                        ActivityLauncher.viewTravelListActivity(mContext);
+                    } else {
+                        ActivityLauncher.viewRecommendBuyActivity(mContext);
+                    }
                 }
             });
             homeChildTitleHolder.tv_change.setVisibility(homeTitleBean.hasChange ? View.VISIBLE : View.GONE);
@@ -235,7 +239,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             viewHolder.iv_buyer_route.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ActivityLauncher.viewHomeDetail(mContext);
+                    ActivityLauncher.viewTravelDetailActivity(mContext);
 //                            ChatActivity.navToChat(mContext,"86-18680445592", TIMConversationType.C2C);
 
                 }

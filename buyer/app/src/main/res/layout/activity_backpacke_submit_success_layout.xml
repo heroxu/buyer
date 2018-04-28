@@ -13,18 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="30dp"
-        android:background="@color/white">
+        android:paddingTop="51dp"
+        android:background="@color/white"
+        android:gravity="center_horizontal">
 
-        <include layout="@layout/layout_require_take_status"/>
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@mipmap/ic_successfu_transaction"
+            />
+
     </LinearLayout>
-
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:paddingTop="20dp"
+        android:paddingTop="5dp"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:text="您的接需求申请已经提交给买家，我们会尽快通知买家受理，请耐心等待~"
@@ -35,10 +40,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="48dp"
+        android:paddingTop="20dp"
         android:paddingBottom="30dp"
         android:gravity="center">
-        
+
         <TextView
             android:id="@+id/view_require"
             android:layout_width="120dp"
@@ -60,7 +65,7 @@
             android:background="@color/tab_txt_selected"
             android:gravity="center"
             />
-        
+
     </LinearLayout>
 
     <LinearLayout

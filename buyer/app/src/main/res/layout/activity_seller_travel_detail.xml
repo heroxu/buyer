@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <RelativeLayout
+        android:id="@+id/travel_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="21dp"
+        android:paddingRight="21dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_return"
+            android:layout_marginTop="5dp"
+            android:id="@+id/back_btn"
+            android:padding="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="行程详情"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/txt_size_17"
+            android:textColor="@color/txt_main"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/ic_share_b" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_below="@id/travel_detail_title"
+        android:id="@+id/sc_node_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_nd_bottom">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="21dp"
+                android:paddingTop="10dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/require_item_head"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/fake_seller_avatar"
+                        android:layout_marginRight="10dp"/>
+                    <TextView
+                        android:id="@+id/require_seller_item_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/txt_main"
+                        android:textSize="@dimen/txt_size_15"
+                        android:text="小桂子的桂子"
+                        android:layout_toRightOf="@id/require_item_head"/>
+                    <TextView
+                        android:id="@+id/require_seller_item_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/txt_gray"
+                        android:textSize="@dimen/txt_size_11"
+                        android:text="常去：美国、英国、澳大利亚"
+                        android:layout_marginTop="8dp"
+                        android:layout_below="@id/require_seller_item_name"
+                        android:layout_toRightOf="@id/require_item_head"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/arrow_right_normal"
+                        />
+                </RelativeLayout>
+
+                <View style="@style/WideItemDivider"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="25dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_size_13"
+                        android:textColor="@color/txt_main"
+                        android:text="实名认证"
+                        android:drawableLeft="@mipmap/ic_verified"
+                        android:drawablePadding="8dp"
+                        android:gravity="center_vertical"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/txt_gray"
+                        android:textSize="@dimen/txt_size_11"
+                        android:text="已认证"
+                        android:layout_marginLeft="7dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_size_13"
+                        android:textColor="@color/txt_main"
+                        android:text="芝麻信用"
+                        android:drawableLeft="@mipmap/ic_sesame_credit"
+                        android:drawablePadding="8dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="35dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/txt_gray"
+                        android:textSize="@dimen/txt_size_11"
+                        android:text="信用极好"
+                        android:layout_marginLeft="7dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/WideItemDivider"
+                android:layout_height="10dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="本次行程可代购"
+                android:textSize="@dimen/txt_size_19"
+                android:textColor="@color/txt_main"
+                android:drawableRight="@mipmap/arrow_right_normal"
+                android:padding="20dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/good_list"
+                />
+
+            <View style="@style/WideItemDivider"
+                android:layout_height="10dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="行程规划"
+                android:textSize="@dimen/txt_size_19"
+                android:textColor="@color/txt_main"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16dp">
+
+                <LinearLayout
+                    android:layout_width="41dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="39dp"
+                        android:layout_height="39dp"
+                        android:src="@mipmap/ic_travel_start"
+                        android:layout_marginTop="25dp"
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="45dp"
+                        android:background="@color/btn_bg_normal"
+                        android:layout_gravity="center_horizontal"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="14dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="行程已认证"
+                        android:textSize="@dimen/txt_size_17"
+                        android:textColor="@color/txt_main"
+                        android:layout_marginTop="36dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="该行程已通过平台审核认证。"
+                        android:textColor="@color/txt_gray"
+                        android:textSize="@dimen/txt_size_13"
+                        android:layout_marginTop="10dp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.smyy.sharetour.buyer.view.InnerRecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="40dp"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

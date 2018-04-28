@@ -31,6 +31,8 @@ import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.module.my.CommentListActivity;
 import com.smyy.sharetour.buyer.require.PublishRequireActivity;
 import com.smyy.sharetour.buyer.require.RequireListActivity;
+import com.smyy.sharetour.buyer.travel.SellerTravelDetailActivity;
+import com.smyy.sharetour.buyer.travel.SellerTravelListActivity;
 import com.smyy.sharetour.buyer.ui.ConfirmOrderActivity;
 import com.smyy.sharetour.buyer.ui.GuideLoginActivity;
 import com.smyy.sharetour.buyer.ui.LoginActivity;
@@ -457,7 +459,23 @@ public class ActivityLauncher {
     public static void viewMyReciveCommentActivity(Context context) {
         Intent intent = new Intent(context, MyReciveCommentActivity.class);
         context.startActivity(intent);
+    }
 
+    /**
+     * 跳转推荐的行程列表
+     */
+    public static void viewTravelListActivity(Context context) {
+        Intent intent = new Intent(context, SellerTravelListActivity.class);
+        context.startActivity(intent);
+
+    }
+
+    /**
+     * 跳转行程详情
+     */
+    public static void viewTravelDetailActivity(Context context) {
+        Intent intent = new Intent(context, SellerTravelDetailActivity.class);
+        context.startActivity(intent);
 
     }
 }

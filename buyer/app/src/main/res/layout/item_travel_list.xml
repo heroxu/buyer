@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:focusable="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="1dp"
+    app:cardPreventCornerOverlap="true"
+    android:layout_marginBottom="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:id="@+id/card_view">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/country_img"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@mipmap/img_ill_china"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:padding="5dp"
+                        android:id="@+id/span"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_size_11"
+                        android:textColor="@color/white"
+                        android:text="时间 1月20日 - 1月28日"
+                        android:layout_marginLeft="20dp"
+                        />
+
+
+                    <TextView
+                        android:background="@drawable/bg_rectangle_translucence"
+                        android:id="@+id/check_route"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="@dimen/txt_size_11"
+                        android:textColor="@color/white"
+                        android:text="已认证"
+                        android:drawableLeft="@mipmap/ic_home_certified"
+                        android:drawablePadding="3dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/start_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_size_17"
+                        android:text="尼泊尔"
+                        android:textColor="@color/white"
+                        />
+                    
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/white"
+                        />
+
+                    <TextView
+                        android:id="@+id/middle_country_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_size_10"
+                        android:text="途经4个国家"
+                        android:textColor="@color/white"
+                        />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/white"
+                        />
+
+                    <TextView
+                        android:id="@+id/end_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_size_17"
+                        android:text="澳大利亚"
+                        android:textColor="@color/white"
+                        />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/travel_state"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="@dimen/txt_size_11"
+                    android:text="当前 柬埔寨"
+                    android:textColor="@color/txt_main"
+                    android:background="@drawable/bg_inputbox"
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:drawableLeft="@mipmap/ic_home_positioning"
+                    android:drawablePadding="3dp"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/ll_route_classify"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_route_classify_one"
+                        android:background="@drawable/bg_title_rectangle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/txt_size_9"
+                        android:text="护肤美容"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        />
+
+                    <TextView
+                        android:background="@drawable/bg_title_rectangle"
+                        android:id="@+id/tv_route_classify_two"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_size_9"
+                        android:textColor="@color/white"
+                        android:text="母婴用品"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        />
+
+                    <TextView
+                        android:background="@drawable/bg_title_rectangle"
+                        android:id="@+id/tv_route_classify_three"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_size_9"
+                        android:textColor="@color/white"
+                        android:text="数码产品"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+        <RelativeLayout
+            android:layout_marginTop="13dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_home_note_avatar"
+                android:layout_marginLeft="15dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/user_avatar" />
+
+            <TextView
+                android:id="@+id/tv_home_note_avatar_name"
+                android:layout_toRightOf="@+id/iv_home_note_avatar"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:gravity="center_vertical"
+                android:ellipsize="end"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_15"
+                android:text="羊咩咩咩咩咩"
+                />
+
+
+            <LinearLayout
+                android:id="@+id/ll_route_live"
+                android:background="@drawable/bg_rounded_rectangle_solid_333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical"
+                android:layout_toLeftOf="@+id/tv_route_communicate"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_live_broadcast"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_size_11"
+                    android:layout_marginLeft="4dp"
+                    android:text="直播中"
+                    />
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/tv_route_communicate"
+                android:background="@drawable/bg_rounded_rectangle_ffcd1f"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_11"
+                android:text="立即沟通"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

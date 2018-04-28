@@ -8,6 +8,7 @@ public class TravelBean implements Serializable {
 
     private int travel_id;
     private String create_date;
+    private int currentPlace = 0;
     List<RouteBean> routeBeans = new ArrayList<>();
 
     public TravelBean() {
@@ -41,6 +42,14 @@ public class TravelBean implements Serializable {
 
     public void setRouteBeans(List<RouteBean> routeBeans) {
         this.routeBeans = routeBeans;
+    }
+
+    public int getCurrentPlace() {
+        return currentPlace;
+    }
+
+    public void setCurrentPlace(int currentPlace) {
+        this.currentPlace = currentPlace;
     }
 
     @Override
