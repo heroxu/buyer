@@ -429,7 +429,6 @@ public class ActivityLauncher {
     }
 
     /**
-<<<<<<< HEAD
      * 跳转到认证列表
      */
     public static void viewBackPackerCertificationListActivity(Context context) {

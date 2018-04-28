@@ -190,11 +190,9 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
 
     private void setViewRequireButton() {
         cancelFrame.setVisibility(View.GONE);
-        Drawable d = getResources().getDrawable(R.mipmap.ic_jiexuqiu);
-        d.setBounds(0, 0, d.getMinimumWidth(), d.getMinimumHeight());
-        orderDetail.setCompoundDrawables(d, null, null, null);
-        orderDetail.setCompoundDrawablePadding(3);
-        orderDetail.setText(R.string.take_require);
+        orderDetailFrame.setBackgroundColor(getResources().getColor(R.color.btn_bg_normal));
+        orderDetail.setText("去受理");
+        orderDetail.setCompoundDrawables(null,null,null,null);
     }
 
 

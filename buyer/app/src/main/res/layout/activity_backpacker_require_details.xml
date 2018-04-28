@@ -179,6 +179,7 @@
                 android:text="@string/contact_buyer"
                 android:layout_gravity="center"
                 android:textSize="@dimen/txt_size_13"
+                android:drawablePadding="6dp"
                 android:drawableLeft="@mipmap/ic_details_news"/>
         </FrameLayout>
         <FrameLayout
@@ -195,6 +196,7 @@
                 android:text="@string/delete"
                 android:layout_gravity="center"
                 android:textSize="@dimen/txt_size_13"
+                android:drawablePadding="6dp"
                 android:drawableLeft="@mipmap/ic_trash_can"/>
         </FrameLayout>
         <FrameLayout
@@ -211,6 +213,7 @@
                 android:text="@string/order_detail"
                 android:layout_gravity="center"
                 android:textSize="@dimen/txt_size_13"
+                android:drawablePadding="6dp"
                 android:drawableLeft="@mipmap/ic_undo_require"/>
         </FrameLayout>
     </LinearLayout>

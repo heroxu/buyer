@@ -159,6 +159,7 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
                 finish();
                 break;
             case R.id.tt_fount_message:
+                ActivityLauncher.viewMessageListActivity(BackPackerHomeActivity.this);
                 break;
 
             case R.id.tt_my_info:
