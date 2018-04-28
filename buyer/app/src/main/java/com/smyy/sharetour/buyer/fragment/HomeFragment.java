@@ -172,7 +172,7 @@ public class HomeFragment extends BaseMvpFragment {
         });
     }
 
-    @OnClick({R.id.iv_home_switch,R.id.tt_fount_scan})
+    @OnClick({R.id.iv_home_switch,R.id.tt_fount_scan,R.id.tt_fount_message})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.iv_home_switch:
@@ -181,6 +181,9 @@ public class HomeFragment extends BaseMvpFragment {
                 break;
             case R.id.tt_fount_scan:
                 startActivityForResult(new Intent(getActivity(), CaptureActivity.class),REQUEST_CODE_SCAN);
+                break;
+            case R.id.tt_fount_message:
+               ActivityLauncher.viewMessageListActivity(getActivity());
                 break;
         }
     }

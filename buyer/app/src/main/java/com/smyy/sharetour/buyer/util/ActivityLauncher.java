@@ -22,6 +22,7 @@ import com.smyy.sharetour.buyer.backpacker.payPwd.BackpackSettingActivity;
 import com.smyy.sharetour.buyer.backpacker.payPwd.BackpackValidationPhoneActivity;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.home.comment.ui.MyReciveCommentActivity;
+import com.smyy.sharetour.buyer.home.comment.ui.MyReciveLikeActivity;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.message.MessageListActivity;
 import com.smyy.sharetour.buyer.home.message.SystemMessageListActivity;
@@ -457,6 +458,11 @@ public class ActivityLauncher {
 
     public static void viewMyReciveCommentActivity(Context context) {
         Intent intent = new Intent(context, MyReciveCommentActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void viewMyReciveLikeActivity(Context context) {
+        Intent intent = new Intent(context, MyReciveLikeActivity.class);
         context.startActivity(intent);
     }
 

@@ -238,7 +238,6 @@
     <string name="message_my_comment">我的评论</string>
     <string name="message_my_like">我的赞</string>
     <string name="message_system_message_read_all">阅读全文</string>
-    <string name="title_activity_my_receive_comment">MyReciveCommentActivity</string>
     <string name="message_my_comment_reply">回复了你</string>
     <string name="message_my_comment_comment">评论了你</string>
 

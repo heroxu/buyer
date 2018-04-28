@@ -120,8 +120,9 @@
         <activity android:name=".home.message.MessageListActivity" />
         <activity android:name=".home.message.SystemMessageListActivity" />
         <activity
-            android:name=".home.comment.ui.MyReciveCommentActivity"
-            android:label="@string/title_activity_my_receive_comment"></activity>
+            android:name=".home.comment.ui.MyReciveCommentActivity"/>
+        <activity
+            android:name=".home.comment.ui.MyReciveLikeActivity"/>
         <activity android:name=".backpacker.BackPackerCertificationListActivity" />
         <activity android:name=".backpacker.BackPackerCertificationActivity" />
         <activity android:name=".backpacker.ALIPointsActivity"></activity>

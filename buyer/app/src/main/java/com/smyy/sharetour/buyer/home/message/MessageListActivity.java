@@ -94,7 +94,7 @@ public class MessageListActivity extends BaseMvpActivity {
                 ActivityLauncher.viewMyReciveCommentActivity(MessageListActivity.this);
                 break;
             case R.id.ll_message_my_like:
-                ToastUtils.showToast("ll_message_my_like").show();
+                ActivityLauncher.viewMyReciveLikeActivity(MessageListActivity.this);
                 break;
         }
     }
