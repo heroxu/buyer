@@ -65,7 +65,7 @@ public class BackpackHomePageActivity extends BaseMvpActivity {
                 break;
             case R.id.tv_editor:
                 Bundle bundle = new Bundle();
-                bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_BACK_PACKER);
+                bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BACK_PACKER);
                 startActivity(AccountSettingsActivity.class, bundle);
                 break;
             case R.id.tv_more_comments:

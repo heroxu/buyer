@@ -248,7 +248,7 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                     Intent intent = new Intent(BackPackerRequireDetailsActivity.this, OrderDetailActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString(OrderHelper.ORDER_ID, getFakeData().getOrderId());
-                    bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_BACK_PACKER);
+                    bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BACK_PACKER);
                     bundle.putSerializable(OrderDetailActivity.FAKE_DATA, getFakeData());
                     intent.putExtra("bundle", bundle);
                     startActivity(intent);

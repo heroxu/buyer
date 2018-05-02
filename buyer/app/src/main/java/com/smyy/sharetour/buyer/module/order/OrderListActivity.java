@@ -50,9 +50,9 @@ public class OrderListActivity extends MyBaseMvpActivity {
         Bundle bundle = getBundle();
 
         if (bundle != null) {
-            int userType = bundle.getInt(OrderHelper.USER_TYPE);
+            int userType = bundle.getInt(Consts.USER_TYPE);
             switch (userType) {
-                case OrderHelper.USER_TYPE_BUYER:
+                case Consts.USER_TYPE_BUYER:
                     mTitles = new String[]{"全部", "待付款", "待发货", "待收货", "待评价"};
                     mOrderTypeList.clear();
                     mFragments.clear();
@@ -67,7 +67,7 @@ public class OrderListActivity extends MyBaseMvpActivity {
                     mOrderTypeList.add(OrderHelper.TYPE_AWAIT_REVIEW);
                     mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_REVIEW));
                     break;
-                case OrderHelper.USER_TYPE_BACK_PACKER:
+                case Consts.USER_TYPE_BACK_PACKER:
                     mTitles = new String[]{"全部", "待发货", "已发货"};
                     mOrderTypeList.clear();
                     mFragments.clear();
@@ -78,7 +78,7 @@ public class OrderListActivity extends MyBaseMvpActivity {
                     mOrderTypeList.add(OrderHelper.TYPE_AWAIT_CONFIRM);
                     mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_CONFIRM));
                     break;
-                case OrderHelper.USER_TYPE_SELLER:
+                case Consts.USER_TYPE_SELLER:
                     mTitles = new String[]{"全部", "待付款", "待发货", "已发货"};
                     mOrderTypeList.clear();
                     mFragments.clear();

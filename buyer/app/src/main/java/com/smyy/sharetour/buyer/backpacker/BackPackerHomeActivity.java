@@ -179,7 +179,7 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
             case R.id.nav_order:
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 Bundle bundle=  new Bundle();
-                bundle.putInt(OrderHelper.USER_TYPE,OrderHelper.USER_TYPE_BACK_PACKER);
+                bundle.putInt(Consts.USER_TYPE,Consts.USER_TYPE_BACK_PACKER);
                 Intent intent = new Intent(BackPackerHomeActivity.this, OrderListActivity.class);
                 intent.putExtra("bundle", bundle);
                 startActivity(intent);

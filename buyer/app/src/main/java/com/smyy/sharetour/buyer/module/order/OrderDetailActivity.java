@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
@@ -91,7 +92,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         mBundle = getBundle();
         if (mBundle != null) {
-            mUserType = mBundle.getInt(OrderHelper.USER_TYPE);
+            mUserType = mBundle.getInt(Consts.USER_TYPE);
         }
         initView();
         getFakeData();
@@ -100,8 +101,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     private void initView() {
 
         switch (mUserType) {
-            case OrderHelper.USER_TYPE_BACK_PACKER:
-            case OrderHelper.USER_TYPE_SELLER:
+            case Consts.USER_TYPE_BACK_PACKER:
+            case Consts.USER_TYPE_SELLER:
                 layStatus.removeAllViews();
                 break;
 
@@ -155,7 +156,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             tvOrderNum.setText(mOrderNum);
             tvOrderTime.setText(data.getOrderTime());
 
-            if (mUserType == OrderHelper.USER_TYPE_BUYER) {
+            if (mUserType == Consts.USER_TYPE_BUYER) {
                 ivOppositeAvatar.setImageResource(R.mipmap.fake_seller_avatar);
 //            Glide.with(mContext).load(data.getSellerAvatar()).into(ivOppositeAvatar);//TODO RTRT
                 tvOppositeName.setText(data.getSellerName());

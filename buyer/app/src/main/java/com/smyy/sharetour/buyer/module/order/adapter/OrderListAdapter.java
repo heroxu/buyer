@@ -34,11 +34,11 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         this.mActivity = context;
         this.mUserType = userType;
         switch (mUserType) {
-            case OrderHelper.USER_TYPE_BUYER:
+            case Consts.USER_TYPE_BUYER:
                 mOrderStatusStrings = OrderHelper.STATUS_STRINGS_BUYER;
                 break;
-            case OrderHelper.USER_TYPE_BACK_PACKER:
-            case OrderHelper.USER_TYPE_SELLER:
+            case Consts.USER_TYPE_BACK_PACKER:
+            case Consts.USER_TYPE_SELLER:
                 mOrderStatusStrings = OrderHelper.STATUS_STRINGS_SELLER;
                 break;
             default:
@@ -55,9 +55,9 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final OrderBean data = mDatas.get(position);
         if (data != null) {
-            holder.laySellerInfo.setVisibility(mUserType == OrderHelper.USER_TYPE_BUYER ?
+            holder.laySellerInfo.setVisibility(mUserType == Consts.USER_TYPE_BUYER ?
                     View.VISIBLE : View.GONE);
-            if (mUserType == OrderHelper.USER_TYPE_BUYER) {
+            if (mUserType == Consts.USER_TYPE_BUYER) {
                 holder.laySellerInfo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

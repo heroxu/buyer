@@ -25,6 +25,7 @@ import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;
 import com.smyy.sharetour.buyer.module.order.OrderDetailActivity;
+import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
 import com.smyy.sharetour.buyer.tim.ChatActivity;
@@ -306,7 +307,7 @@ public class RequireDetailsActivity extends BaseMvpActivity {
                 } else {
                     Intent intent = new Intent(RequireDetailsActivity.this, OrderDetailActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString(Consts.ORDER_ID, getFakeData().getOrderId());
+                    bundle.putString(OrderHelper.ORDER_ID, getFakeData().getOrderId());
                     bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BACK_PACKER);
                     bundle.putSerializable(OrderDetailActivity.FAKE_DATA, getFakeData());
                     intent.putExtra("bundle", bundle);
@@ -342,7 +343,7 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         fakeGoodsList2.add(goodsInfo2);
 
         OrderBean orderBean = new OrderBean("1",
-                Consts.ORDER_STATUS_AWAIT_SHIPPING,
+                OrderHelper.STATUS_BUYER_AWAIT_SHIPPING,
                 "",
                 "我是小桂子的桂子",
                 "",
@@ -351,7 +352,7 @@ public class RequireDetailsActivity extends BaseMvpActivity {
                 "￥18,866.00",
                 "￥30.00",
                 "",
-                Consts.GOODS_TYPE_STOCK,
+                OrderHelper.GOODS_TYPE_STOCK,
                 fakeGoodsList2);
 
         return orderBean;

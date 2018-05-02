@@ -182,6 +182,11 @@ public class Consts {
     public static final String[] REQUIRE_SELLER_STATE_STRINGS = {"待受理", "等待买家指定", "待发货", "已发货", "已完成", "已失效"};
     public static final String[] REQUIRE_STATE_STRINGS = {"等待买手受理", "待指定", "买手已受理", "买手已发货", "已完成", "已失效"};
 
+    //用户类型
+    public static final String USER_TYPE = "user_type";
+    public static final int USER_TYPE_BUYER = 1;
+    public static final int USER_TYPE_BACK_PACKER = 2;
+    public static final int USER_TYPE_SELLER = 3;
 
     /**
      * 客服电话

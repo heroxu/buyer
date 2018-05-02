@@ -172,7 +172,7 @@ public class HomeFragment extends BaseMvpFragment {
             R.id.iv_home_remind_arrow})
     public void onClick(View view) {
         Bundle bundle = new Bundle();
-        bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_SELLER);
+        bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_SELLER);
 
         switch (view.getId()) {
 

@@ -31,7 +31,7 @@ public class HomeMenuFragment2 extends BaseMvpFragment {
     @OnClick({R.id.lay_home_my_favorite, R.id.lay_home_my_comment})
     public void onClick(View view) {
         Bundle bundle = new Bundle();
-        bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_SELLER);
+        bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_SELLER);
 
         switch (view.getId()) {
 

@@ -19,6 +19,7 @@ import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.backpacker.order.UploadShippingInfoActivity;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderReviewsAdapter;
@@ -37,11 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderHelper {
-    //用户类型
-    public static final String USER_TYPE = "user_type";
-    public static final int USER_TYPE_BUYER = 1;
-    public static final int USER_TYPE_BACK_PACKER = 2;
-    public static final int USER_TYPE_SELLER = 3;
 
     //商品类型
     public static final int GOODS_TYPE_DEMAND = 1;//需求型商品
@@ -354,7 +350,7 @@ public class OrderHelper {
                                             TextView tvBottomBtn3, TextView tvBottomBtnMore) {
         int orderStatus = orderBean.getOrderStatus();
         int goodsType = orderBean.getGoodsType();
-        if (userType == USER_TYPE_BUYER) {
+        if (userType == Consts.USER_TYPE_BUYER) {
             switch (orderStatus) {
                 case STATUS_BUYER_AWAIT_PAY:
                     layBottomBtns.setVisibility(View.VISIBLE);
@@ -479,8 +475,8 @@ public class OrderHelper {
                     break;
             }
 
-        } else if (userType == USER_TYPE_BACK_PACKER
-                || userType == USER_TYPE_SELLER) {
+        } else if (userType == Consts.USER_TYPE_BACK_PACKER
+                || userType == Consts.USER_TYPE_SELLER) {
             switch (orderStatus) {
 
                 case STATUS_SELLER_AWAIT_PAY:
@@ -590,7 +586,7 @@ public class OrderHelper {
                                                TextView tvBottomBtn3, TextView tvBottomBtnMore) {
         int orderStatus = orderDetailBean.getOrderStatus();
         int goodsType = orderDetailBean.getGoodsType();
-        if (userType == USER_TYPE_BUYER) {
+        if (userType == Consts.USER_TYPE_BUYER) {
             switch (orderStatus) {
                 case STATUS_BUYER_AWAIT_PAY:
                     switchStatus(activity, userType, layStatus, 1);
@@ -710,12 +706,12 @@ public class OrderHelper {
                     break;
             }
 
-        } else if (userType == USER_TYPE_BACK_PACKER
-                || userType == USER_TYPE_SELLER) {
+        } else if (userType == Consts.USER_TYPE_BACK_PACKER
+                || userType == Consts.USER_TYPE_SELLER) {
             switch (orderStatus) {
 
                 case STATUS_SELLER_AWAIT_PAY:
-                    if (userType == USER_TYPE_BACK_PACKER) {
+                    if (userType == Consts.USER_TYPE_BACK_PACKER) {
                         switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "待付款");
                     } else {
                         switchStatus(activity, userType, layStatus, 1);
@@ -724,7 +720,7 @@ public class OrderHelper {
                     break;
 
                 case STATUS_SELLER_AWAIT_SHIPPING:
-                    if (userType == USER_TYPE_BACK_PACKER) {
+                    if (userType == Consts.USER_TYPE_BACK_PACKER) {
                         switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "待发货");
                     } else {
                         switchStatus(activity, userType, layStatus, 2);
@@ -742,7 +738,7 @@ public class OrderHelper {
                     break;
 
                 case STATUS_SELLER_SHIPPED:
-                    if (userType == USER_TYPE_BACK_PACKER) {
+                    if (userType == Consts.USER_TYPE_BACK_PACKER) {
                         switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "已发货");
                     } else {
                         switchStatus(activity, userType, layStatus, 3);
@@ -856,8 +852,8 @@ public class OrderHelper {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         View view;
-        if (userType == USER_TYPE_SELLER ||
-                userType == USER_TYPE_BACK_PACKER) {
+        if (userType == Consts.USER_TYPE_SELLER ||
+                userType == Consts.USER_TYPE_BACK_PACKER) {
             view = LayoutInflater.from(activity).inflate(R.layout.layout_order_status_seller, null);
         } else {
             view = LayoutInflater.from(activity).inflate(R.layout.layout_order_status_buyer, null);

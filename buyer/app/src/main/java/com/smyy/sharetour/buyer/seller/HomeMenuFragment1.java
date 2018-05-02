@@ -33,7 +33,7 @@ public class HomeMenuFragment1 extends BaseMvpFragment {
             R.id.lay_home_buyer_demand, R.id.lay_home_my_dynamic, R.id.lay_home_my_wallet, R.id.lay_home_my_live})
     public void onClick(View view) {
         Bundle bundle = new Bundle();
-        bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_SELLER);
+        bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_SELLER);
 
         switch (view.getId()) {
 

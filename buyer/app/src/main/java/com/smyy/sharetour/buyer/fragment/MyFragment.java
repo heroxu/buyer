@@ -112,7 +112,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
             R.id.tv_my_cart, R.id.tv_my_demands, R.id.tv_my_reviews, R.id.tv_my_favorites, R.id.tv_my_interests, R.id.tv_help_and_feedback})
     public void onClick(View view) {
         Bundle bundle = new Bundle();
-        bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_BUYER);
+        bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BUYER);
 
         switch (view.getId()) {
             case R.id.iv_my_setting:

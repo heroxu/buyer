@@ -36,7 +36,7 @@ public class OrderListFragment extends BaseMvpFragment {
     public static OrderListFragment getInstance(int userType, int orderType) {
         OrderListFragment fragment = new OrderListFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(OrderHelper.USER_TYPE, userType);
+        bundle.putInt(Consts.USER_TYPE, userType);
         bundle.putInt(OrderHelper.ORDER_TYPE, orderType);
         fragment.setArguments(bundle);
         return fragment;
@@ -47,7 +47,7 @@ public class OrderListFragment extends BaseMvpFragment {
         super.onCreate(savedInstanceState);
         mBundle = getArguments();
         if (mBundle != null) {
-            mUserType = mBundle.getInt(OrderHelper.USER_TYPE);
+            mUserType = mBundle.getInt(Consts.USER_TYPE);
             mOrderType = mBundle.getInt(OrderHelper.ORDER_TYPE);
         }
     }
@@ -122,7 +122,7 @@ public class OrderListFragment extends BaseMvpFragment {
 
         List<OrderBean> fakeData = new ArrayList<>();
         switch (mUserType) {
-            case OrderHelper.USER_TYPE_BUYER:
+            case Consts.USER_TYPE_BUYER:
                 switch (mOrderType) {
                     case OrderHelper.TYPE_ALL:
                         fakeData.add(getFakeOrderBean1(OrderHelper.STATUS_BUYER_AWAIT_PAY));
@@ -168,7 +168,7 @@ public class OrderListFragment extends BaseMvpFragment {
                         break;
                 }
                 break;
-            case OrderHelper.USER_TYPE_BACK_PACKER:
+            case Consts.USER_TYPE_BACK_PACKER:
                 switch (mOrderType) {
                     case OrderHelper.TYPE_ALL:
                         fakeData.add(getFakeOrderBeanDL(OrderHelper.STATUS_SELLER_SHIPPED));
@@ -198,7 +198,7 @@ public class OrderListFragment extends BaseMvpFragment {
                         break;
                 }
                 break;
-            case OrderHelper.USER_TYPE_SELLER:
+            case Consts.USER_TYPE_SELLER:
                 switch (mOrderType) {
                     case OrderHelper.TYPE_ALL:
                         fakeData.add(getFakeOrderBean1(OrderHelper.STATUS_SELLER_SHIPPED));
