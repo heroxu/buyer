@@ -27,6 +27,7 @@ import com.smyy.sharetour.buyer.backpacker.travel.BackPackerTravelListActivity;
 import com.smyy.sharetour.buyer.backpacker.travel.GoodTagActivity;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.module.order.OrderListActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.HomeTitlesOpenOrCloseView;
@@ -178,7 +179,7 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
             case R.id.nav_order:
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 Bundle bundle=  new Bundle();
-                bundle.putInt(Consts.USER_TYPE,Consts.USER_TYPE_BACK_PACKER);
+                bundle.putInt(OrderHelper.USER_TYPE,OrderHelper.USER_TYPE_BACK_PACKER);
                 Intent intent = new Intent(BackPackerHomeActivity.this, OrderListActivity.class);
                 intent.putExtra("bundle", bundle);
                 startActivity(intent);

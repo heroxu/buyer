@@ -19,6 +19,7 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.TabEntity;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -171,7 +172,7 @@ public class HomeFragment extends BaseMvpFragment {
             R.id.iv_home_remind_arrow})
     public void onClick(View view) {
         Bundle bundle = new Bundle();
-        bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_SELLER);
+        bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_SELLER);
 
         switch (view.getId()) {
 

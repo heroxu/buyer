@@ -14,38 +14,38 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/line_order_paid"
+            android:id="@+id/iv_status_line2"
             android:layout_width="80dp"
             android:layout_height="3dp"
-            android:layout_alignBottom="@+id/iv_order_await_pay"
-            android:layout_alignTop="@+id/iv_order_await_pay"
+            android:layout_alignBottom="@+id/iv_status_dot1"
+            android:layout_alignTop="@+id/iv_status_dot1"
             android:layout_marginLeft="-10dp"
-            android:layout_toRightOf="@+id/iv_order_await_pay"
+            android:layout_toRightOf="@+id/iv_status_dot1"
             android:src="@drawable/line_order_status_selector" />
 
         <ImageView
-            android:id="@+id/line_order_shipped"
+            android:id="@+id/iv_status_line3"
             android:layout_width="80dp"
             android:layout_height="3dp"
-            android:layout_alignBottom="@+id/iv_order_paid"
-            android:layout_alignTop="@+id/iv_order_paid"
+            android:layout_alignBottom="@+id/iv_status_dot2"
+            android:layout_alignTop="@+id/iv_status_dot2"
             android:layout_marginLeft="-10dp"
-            android:layout_toRightOf="@+id/iv_order_paid"
+            android:layout_toRightOf="@+id/iv_status_dot2"
             android:src="@drawable/line_order_status_selector" />
 
         <ImageView
-            android:id="@+id/line_order_await_confirm"
+            android:id="@+id/iv_status_line4"
             android:layout_width="80dp"
             android:layout_height="3dp"
-            android:layout_alignBottom="@+id/iv_order_shipped"
-            android:layout_alignTop="@+id/iv_order_shipped"
+            android:layout_alignBottom="@+id/iv_status_dot3"
+            android:layout_alignTop="@+id/iv_status_dot3"
             android:layout_marginLeft="-10dp"
-            android:layout_toRightOf="@+id/iv_order_shipped"
+            android:layout_toRightOf="@+id/iv_status_dot3"
             android:src="@drawable/line_order_status_selector"
             android:visibility="visible" />
 
         <CheckBox
-            android:id="@+id/iv_order_await_pay"
+            android:id="@+id/iv_status_dot1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -56,11 +56,11 @@
             tools:enabled="true" />
 
         <CheckBox
-            android:id="@+id/iv_order_paid"
+            android:id="@+id/iv_status_dot2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-10dp"
-            android:layout_toRightOf="@+id/line_order_paid"
+            android:layout_toRightOf="@+id/iv_status_line2"
             android:button="@drawable/shape_order_status_selector"
             android:clickable="false"
             android:enabled="false"
@@ -69,32 +69,32 @@
 
 
         <CheckBox
-            android:id="@+id/iv_order_shipped"
+            android:id="@+id/iv_status_dot3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-10dp"
-            android:layout_toRightOf="@+id/line_order_shipped"
+            android:layout_toRightOf="@+id/iv_status_line3"
             android:button="@drawable/shape_order_status_selector"
             android:clickable="false"
             android:enabled="false" />
 
         <CheckBox
-            android:id="@+id/iv_order_await_confirm"
+            android:id="@+id/iv_status_dot4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-10dp"
             android:layout_marginRight="20dp"
-            android:layout_toRightOf="@+id/line_order_await_confirm"
+            android:layout_toRightOf="@+id/iv_status_line4"
             android:button="@drawable/shape_order_status_selector"
             android:clickable="false"
             android:enabled="false"
             android:visibility="visible" />
 
         <CheckedTextView
-            android:id="@+id/tv_order_await_pay"
+            android:id="@+id/tv_status_txt1"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/iv_order_await_pay"
+            android:layout_below="@+id/iv_status_dot1"
             android:checkMark="@null"
             android:clickable="false"
             android:enabled="false"
@@ -104,46 +104,46 @@
             android:textSize="@dimen/txt_size_13" />
 
         <CheckedTextView
-            android:id="@+id/tv_order_paid"
+            android:id="@+id/tv_status_txt2"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/iv_order_paid"
-            android:layout_alignTop="@+id/tv_order_await_pay"
+            android:layout_alignLeft="@+id/iv_status_dot2"
+            android:layout_alignTop="@+id/tv_status_txt1"
             android:layout_marginLeft="-20dp"
             android:checkMark="@null"
             android:clickable="false"
             android:enabled="false"
-            android:text="已付款"
+            android:text="待发货"
             android:textAlignment="center"
             android:textColor="@color/order_status_txt_selector"
             android:textSize="@dimen/txt_size_13" />
 
         <CheckedTextView
-            android:id="@+id/tv_order_shipped"
+            android:id="@+id/tv_status_txt3"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/iv_order_shipped"
-            android:layout_alignTop="@+id/tv_order_await_pay"
-            android:layout_marginLeft="-20dp"
-            android:checkMark="@null"
-            android:clickable="false"
-            android:enabled="false"
-            android:text="已发货"
-            android:textAlignment="center"
-            android:textColor="@color/order_status_txt_selector"
-            android:textSize="@dimen/txt_size_13" />
-
-        <CheckedTextView
-            android:id="@+id/tv_order_await_confirm"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/iv_order_await_confirm"
-            android:layout_alignTop="@+id/tv_order_await_pay"
+            android:layout_alignLeft="@+id/iv_status_dot3"
+            android:layout_alignTop="@+id/tv_status_txt1"
             android:layout_marginLeft="-20dp"
             android:checkMark="@null"
             android:clickable="false"
             android:enabled="false"
             android:text="待收货"
+            android:textAlignment="center"
+            android:textColor="@color/order_status_txt_selector"
+            android:textSize="@dimen/txt_size_13" />
+
+        <CheckedTextView
+            android:id="@+id/tv_status_txt4"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/iv_status_dot4"
+            android:layout_alignTop="@+id/tv_status_txt1"
+            android:layout_marginLeft="-20dp"
+            android:checkMark="@null"
+            android:clickable="false"
+            android:enabled="false"
+            android:text="交易成功"
             android:textAlignment="center"
             android:textColor="@color/order_status_txt_selector"
             android:textSize="@dimen/txt_size_13"

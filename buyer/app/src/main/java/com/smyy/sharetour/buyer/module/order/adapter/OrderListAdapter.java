@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
+import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
 import com.smyy.sharetour.uiframelib.BaseActivity;
@@ -32,14 +34,12 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         this.mActivity = context;
         this.mUserType = userType;
         switch (mUserType) {
-            case Consts.USER_TYPE_BUYER:
-                mOrderStatusStrings = Consts.ORDER_STATUS_STRINGS_BUYER;
+            case OrderHelper.USER_TYPE_BUYER:
+                mOrderStatusStrings = OrderHelper.STATUS_STRINGS_BUYER;
                 break;
-            case Consts.USER_TYPE_BACK_PACKER:
-                mOrderStatusStrings = Consts.ORDER_STATUS_STRINGS_PACKER;
-                break;
-            case Consts.USER_TYPE_SELLER:
-                mOrderStatusStrings = Consts.ORDER_STATUS_STRINGS_SELLER;
+            case OrderHelper.USER_TYPE_BACK_PACKER:
+            case OrderHelper.USER_TYPE_SELLER:
+                mOrderStatusStrings = OrderHelper.STATUS_STRINGS_SELLER;
                 break;
             default:
                 break;
@@ -55,6 +55,17 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final OrderBean data = mDatas.get(position);
         if (data != null) {
+            holder.laySellerInfo.setVisibility(mUserType == OrderHelper.USER_TYPE_BUYER ?
+                    View.VISIBLE : View.GONE);
+            if (mUserType == OrderHelper.USER_TYPE_BUYER) {
+                holder.laySellerInfo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mActivity.startActivity(BuyHomePageActivity.class);
+                    }
+                });
+            }
+
             holder.ivSellerAvatar.setImageResource(R.mipmap.fake_seller_avatar);
 //            Glide.with(mActivity).load(data.getSellerAvatar()).into(holder.ivSellerAvatar);//TODO RTRT
             holder.tvSellerName.setText(data.getSellerName());
@@ -72,9 +83,18 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                 }
             });
 
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onItemClick(holder.itemView, position, data);
+                    }
+                }
+            });
+
             int goodsType = data.getGoodsType();
             switch (goodsType) {
-                case Consts.GOODS_TYPE_DEMAND:
+                case OrderHelper.GOODS_TYPE_DEMAND:
                     holder.laySum.setVisibility(View.GONE);
                     break;
 
@@ -88,9 +108,11 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                         holder.tvGoodsCount.setVisibility(View.GONE);
                     }
 
-                    holder.tvPriceTotal.setText(new Spanny().append("总额：")
-                            .append(data.getPriceTotal(),
-                                    new ForegroundColorSpan(mActivity.getResources().getColor(R.color.txt_price))));
+//                    holder.tvPriceTotal.setText(new Spanny().append("总额：")
+//                            .append(data.getPriceTotal(),
+//                                    new ForegroundColorSpan(mActivity.getResources().getColor(R.color.txt_price))));
+
+                    holder.tvPriceTotal.setText(StringUtil.connect("总额：", data.getPriceTotal()));
                     holder.tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
                     break;
             }
@@ -102,34 +124,12 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                 holder.tvStatus.setText("");
             }
 
-            OrderHelper.switchBottomBtns(mActivity, mUserType, orderStatus,
+            OrderHelper.switchListBottomBtns(mActivity,
+                    mUserType, data,
+                    holder.layBottomBtns,
                     holder.tvBottomBtn1, holder.tvBottomBtn2,
                     holder.tvBottomBtn3, holder.tvBottomBtnMore);
-            switch (orderStatus) {
 
-                case Consts.ORDER_STATUS_AWAIT_PAY:
-                    holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_price));
-                    break;
-
-                case Consts.ORDER_STATUS_AWAIT_SHIPPING:
-                    holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_gray));
-                    break;
-
-                case Consts.ORDER_STATUS_AWAIT_CONFIRM:
-                    holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_gray));
-                    break;
-
-                case Consts.ORDER_STATUS_CONFIRMED:
-                    holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_gray));
-                    break;
-
-                case Consts.ORDER_STATUS_OTHER:
-                    holder.tvStatus.setTextColor(mActivity.getResources().getColor(R.color.txt_gray));
-                    break;
-
-                default:
-                    break;
-            }
         }
     }
 
@@ -176,6 +176,8 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        private View laySellerInfo;
+        private View layBottomBtns;
         private ImageView ivSellerAvatar;
         private TextView tvSellerName;
         private TextView tvStatus;
@@ -191,6 +193,8 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
+            laySellerInfo = itemView.findViewById(R.id.lay_order_seller_info);
+            layBottomBtns = itemView.findViewById(R.id.lay_order_bottom_btns);
             ivSellerAvatar = (ImageView) itemView.findViewById(R.id.iv_order_seller_avatar);
             tvSellerName = (TextView) itemView.findViewById(R.id.tv_order_seller_name);
             tvStatus = (TextView) itemView.findViewById(R.id.tv_order_status);

@@ -50,46 +50,46 @@ public class OrderListActivity extends MyBaseMvpActivity {
         Bundle bundle = getBundle();
 
         if (bundle != null) {
-            int userType = bundle.getInt(Consts.USER_TYPE);
+            int userType = bundle.getInt(OrderHelper.USER_TYPE);
             switch (userType) {
-                case Consts.USER_TYPE_BUYER:
+                case OrderHelper.USER_TYPE_BUYER:
                     mTitles = new String[]{"全部", "待付款", "待发货", "待收货", "待评价"};
                     mOrderTypeList.clear();
                     mFragments.clear();
-                    mOrderTypeList.add(Consts.ORDER_TYPE_ALL);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_ALL));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_PAY);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_PAY));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_SHIPPING);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_SHIPPING));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_CONFIRM);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_CONFIRM));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_REVIEW);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_REVIEW));
+                    mOrderTypeList.add(OrderHelper.TYPE_ALL);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_ALL));
+                    mOrderTypeList.add(OrderHelper.TYPE_AWAIT_PAY);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_PAY));
+                    mOrderTypeList.add(OrderHelper.TYPE_AWAIT_SHIPPING);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_SHIPPING));
+                    mOrderTypeList.add(OrderHelper.TYPE_AWAIT_CONFIRM);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_CONFIRM));
+                    mOrderTypeList.add(OrderHelper.TYPE_AWAIT_REVIEW);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_REVIEW));
                     break;
-                case Consts.USER_TYPE_BACK_PACKER:
+                case OrderHelper.USER_TYPE_BACK_PACKER:
                     mTitles = new String[]{"全部", "待发货", "已发货"};
                     mOrderTypeList.clear();
                     mFragments.clear();
-                    mOrderTypeList.add(Consts.ORDER_TYPE_ALL);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_ALL));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_SHIPPING);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_SHIPPING));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_CONFIRM);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_CONFIRM));
+                    mOrderTypeList.add(OrderHelper.TYPE_ALL);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_ALL));
+                    mOrderTypeList.add(OrderHelper.TYPE_AWAIT_SHIPPING);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_SHIPPING));
+                    mOrderTypeList.add(OrderHelper.TYPE_AWAIT_CONFIRM);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_CONFIRM));
                     break;
-                case Consts.USER_TYPE_SELLER:
+                case OrderHelper.USER_TYPE_SELLER:
                     mTitles = new String[]{"全部", "待付款", "待发货", "已发货"};
                     mOrderTypeList.clear();
                     mFragments.clear();
-                    mOrderTypeList.add(Consts.ORDER_TYPE_ALL);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_ALL));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_PAY);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_PAY));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_SHIPPING);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_SHIPPING));
-                    mOrderTypeList.add(Consts.ORDER_TYPE_AWAIT_CONFIRM);
-                    mFragments.add(OrderListFragment.getInstance(userType, Consts.ORDER_TYPE_AWAIT_CONFIRM));
+                    mOrderTypeList.add(OrderHelper.TYPE_ALL);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_ALL));
+                    mOrderTypeList.add(OrderHelper.TYPE_AWAIT_PAY);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_PAY));
+                    mOrderTypeList.add(OrderHelper.TYPE_AWAIT_SHIPPING);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_SHIPPING));
+                    mOrderTypeList.add(OrderHelper.TYPE_AWAIT_CONFIRM);
+                    mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_CONFIRM));
                     break;
                 default:
                     break;
@@ -99,7 +99,7 @@ public class OrderListActivity extends MyBaseMvpActivity {
             vpOrderList.setAdapter(mAdapter);
             stlOrderList.setViewPager(vpOrderList, mTitles);
 
-            int orderTypeIndex = mOrderTypeList.indexOf(bundle.getInt(Consts.ORDER_TYPE));
+            int orderTypeIndex = mOrderTypeList.indexOf(bundle.getInt(OrderHelper.ORDER_TYPE));
             if (orderTypeIndex >= 0 && orderTypeIndex < mTitles.length) {
                 stlOrderList.setCurrentTab(orderTypeIndex);
             }

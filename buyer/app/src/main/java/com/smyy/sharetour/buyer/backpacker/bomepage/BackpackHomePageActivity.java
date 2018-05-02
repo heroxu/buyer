@@ -15,6 +15,7 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
+import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class BackpackHomePageActivity extends BaseMvpActivity {
                 break;
             case R.id.tv_editor:
                 Bundle bundle = new Bundle();
-                bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BACK_PACKER);
+                bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_BACK_PACKER);
                 startActivity(AccountSettingsActivity.class, bundle);
                 break;
             case R.id.tv_more_comments:

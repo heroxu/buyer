@@ -25,6 +25,7 @@ import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.module.order.OrderListActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.RedImageView;
@@ -111,7 +112,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
             R.id.tv_my_cart, R.id.tv_my_demands, R.id.tv_my_reviews, R.id.tv_my_favorites, R.id.tv_my_interests, R.id.tv_help_and_feedback})
     public void onClick(View view) {
         Bundle bundle = new Bundle();
-        bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BUYER);
+        bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_BUYER);
 
         switch (view.getId()) {
             case R.id.iv_my_setting:
@@ -135,17 +136,17 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.lay_my_awaiting_payment:
-                bundle.putInt(Consts.ORDER_TYPE, Consts.ORDER_TYPE_AWAIT_PAY);
+                bundle.putInt(OrderHelper.ORDER_TYPE, OrderHelper.TYPE_AWAIT_PAY);
                 startActivity(OrderListActivity.class, bundle);
                 break;
 
             case R.id.lay_my_awaiting_shipment:
-                bundle.putInt(Consts.ORDER_TYPE, Consts.ORDER_TYPE_AWAIT_SHIPPING);
+                bundle.putInt(OrderHelper.ORDER_TYPE, OrderHelper.TYPE_AWAIT_SHIPPING);
                 startActivity(OrderListActivity.class, bundle);
                 break;
 
             case R.id.lay_my_awaiting_confirmation:
-                bundle.putInt(Consts.ORDER_TYPE, Consts.ORDER_TYPE_AWAIT_CONFIRM);
+                bundle.putInt(OrderHelper.ORDER_TYPE, OrderHelper.TYPE_AWAIT_CONFIRM);
                 startActivity(OrderListActivity.class, bundle);
                 break;
 

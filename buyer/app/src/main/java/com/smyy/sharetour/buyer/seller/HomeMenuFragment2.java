@@ -7,6 +7,7 @@ import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.module.order.OrderHelper;
 
 import butterknife.OnClick;
 
@@ -30,7 +31,7 @@ public class HomeMenuFragment2 extends BaseMvpFragment {
     @OnClick({R.id.lay_home_my_favorite, R.id.lay_home_my_comment})
     public void onClick(View view) {
         Bundle bundle = new Bundle();
-        bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_SELLER);
+        bundle.putInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_SELLER);
 
         switch (view.getId()) {
 

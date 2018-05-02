@@ -15,6 +15,8 @@ public class OrderDetailBean implements Serializable {
     private String sellerName;
     private String sellerAvatar;
     private String buyerId;
+    private String buyerName;
+    private String buyerAvatar;
     private int goodsCountTotal;
     private String priceTotal;
     private String shippingFee;//运费
@@ -22,12 +24,13 @@ public class OrderDetailBean implements Serializable {
     private String orderTime;
     private String verifyVideo;//鉴定视频
     private int goodsType;//商品类型
+    private String reason;
     private List<OrderGoodsInfo> goodsList;
 
     public OrderDetailBean() {
     }
 
-    public OrderDetailBean(String orderId, String remainTime, int orderStatus, String shippingName, String shippingPhone, String shippingAddress, String sellerId, String sellerName, String sellerAvatar, String buyerId, int goodsCountTotal, String priceTotal, String shippingFee, String orderNum, String orderTime, String verifyVideo, int goodsType, List<OrderGoodsInfo> goodsList) {
+    public OrderDetailBean(String orderId, String remainTime, int orderStatus, String shippingName, String shippingPhone, String shippingAddress, String sellerId, String sellerName, String sellerAvatar, String buyerId, String buyerName, String buyerAvatar, int goodsCountTotal, String priceTotal, String shippingFee, String orderNum, String orderTime, String verifyVideo, int goodsType, String reason, List<OrderGoodsInfo> goodsList) {
         this.orderId = orderId;
         this.remainTime = remainTime;
         this.orderStatus = orderStatus;
@@ -38,6 +41,8 @@ public class OrderDetailBean implements Serializable {
         this.sellerName = sellerName;
         this.sellerAvatar = sellerAvatar;
         this.buyerId = buyerId;
+        this.buyerName = buyerName;
+        this.buyerAvatar = buyerAvatar;
         this.goodsCountTotal = goodsCountTotal;
         this.priceTotal = priceTotal;
         this.shippingFee = shippingFee;
@@ -45,6 +50,7 @@ public class OrderDetailBean implements Serializable {
         this.orderTime = orderTime;
         this.verifyVideo = verifyVideo;
         this.goodsType = goodsType;
+        this.reason = reason;
         this.goodsList = goodsList;
     }
 
@@ -128,6 +134,22 @@ public class OrderDetailBean implements Serializable {
         this.buyerId = buyerId;
     }
 
+    public String getBuyerName() {
+        return buyerName;
+    }
+
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
+    }
+
+    public String getBuyerAvatar() {
+        return buyerAvatar;
+    }
+
+    public void setBuyerAvatar(String buyerAvatar) {
+        this.buyerAvatar = buyerAvatar;
+    }
+
     public int getGoodsCountTotal() {
         return goodsCountTotal;
     }
@@ -182,6 +204,14 @@ public class OrderDetailBean implements Serializable {
 
     public void setGoodsType(int goodsType) {
         this.goodsType = goodsType;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public List<OrderGoodsInfo> getGoodsList() {

@@ -23,8 +23,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -39,42 +38,11 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/lay_order_progress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:visibility="gone"
-                    tools:visibility="visible">
-
-                    <include layout="@layout/layout_order_status_buyer" />
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/lay_order_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:paddingBottom="40dp"
-                    android:paddingTop="40dp"
-                    android:visibility="gone"
-                    tools:visibility="visible">
+                    android:orientation="vertical" />
 
-                    <ImageView
-                        android:id="@+id/iv_order_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:src="@mipmap/ic_successfu_transaction" />
-
-                    <TextView
-                        android:id="@+id/tv_order_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:textColor="@color/txt_gray_dark"
-                        android:textSize="@dimen/txt_size_13"
-                        tools:text="交易成功" />
-                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -138,37 +106,52 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="15dp">
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/iv_order_seller_avatar"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignTop="@+id/lay_my_username"
-                        android:layout_marginRight="5dp"
-                        tools:src="@mipmap/fake_seller_avatar" />
+                    <LinearLayout
+                        android:id="@+id/lay_order_opposite_info"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/iv_order_opposite_avatar"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="5dp"
+                            tools:src="@mipmap/fake_seller_avatar" />
+
+                        <TextView
+                            android:id="@+id/tv_order_opposite_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:drawableRight="@mipmap/arrow_right_normal"
+                            android:ellipsize="end"
+                            android:gravity="left"
+                            android:singleLine="true"
+                            android:textColor="@color/txt_gray_dark"
+                            android:textSize="@dimen/txt_size_13"
+                            tools:text="我是小桂子的桂子我是小桂子的桂子我是小桂子的桂子我是小桂子的桂子" />
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/tv_order_seller_name"
-                        style="@style/WideItemMiddleRight.Text.Ellipsize"
-                        android:gravity="left"
-                        android:textSize="@dimen/txt_size_13"
-                        tools:text="我是小桂子的桂子" />
-
-                    <TextView
-                        android:id="@+id/tv_order_contact_seller"
+                        android:id="@+id/tv_order_contact_opposite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@mipmap/ic_details_news"
                         android:drawablePadding="5dp"
-                        android:text="联系买手"
+                        android:padding="10dp"
                         android:textColor="@color/txt_gray_dark"
-                        android:textSize="@dimen/txt_size_13" />
+                        android:textSize="@dimen/txt_size_13"
+                        android:visibility="visible" />
                 </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
@@ -231,20 +214,28 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:background="@color/window_background" />
             </LinearLayout>
         </ScrollView>
 
-
-        <ImageView
+        <LinearLayout
+            android:id="@+id/lay_order_detail_bottom_btns"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/main_content"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/ilyoh_jybe" />
-    </RelativeLayout>
+            android:orientation="vertical">
 
-    <include layout="@layout/layout_order_bottom_btns" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/main_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ilyoh_jybe" />
+
+            <include layout="@layout/layout_order_bottom_btns" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

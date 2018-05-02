@@ -182,62 +182,6 @@ public class Consts {
     public static final String[] REQUIRE_SELLER_STATE_STRINGS = {"待受理", "等待买家指定", "待发货", "已发货", "已完成", "已失效"};
     public static final String[] REQUIRE_STATE_STRINGS = {"等待买手受理", "待指定", "买手已受理", "买手已发货", "已完成", "已失效"};
 
-    //商品类型
-    public static final int GOODS_TYPE_DEMAND = 1;//需求型商品
-    public static final int GOODS_TYPE_PRESELL = 2;//预售型商品
-    public static final int GOODS_TYPE_STOCK = 3;//现货型商品
-
-    public static final String ORDER_ID = "order_id";
-    //订单类型
-    public static final String ORDER_TYPE = "order_type";
-    public static final int ORDER_TYPE_ALL = 0;
-    public static final int ORDER_TYPE_AWAIT_PAY = 1;
-    public static final int ORDER_TYPE_AWAIT_SHIPPING = 2;//待发货
-    public static final int ORDER_TYPE_AWAIT_CONFIRM = 3;//待收货
-    public static final int ORDER_TYPE_AWAIT_REVIEW = 4;//待评价
-
-    //订单状态
-    public static final int ORDER_STATUS_AWAIT_PAY = 1;
-    public static final int ORDER_STATUS_AWAIT_SHIPPING = 2;//买家已付款 待发货
-    public static final int ORDER_STATUS_AWAIT_CONFIRM = 3;//买手已发货 待收货
-    public static final int ORDER_STATUS_CONFIRMED = 4;//交易成功
-    public static final int ORDER_STATUS_OTHER = 5;
-
-    public static final String[] ORDER_STATUS_STRINGS_BUYER = {"", "等待买家付款", "买家已付款",
-            "买手已发货", "交易成功", "交易关闭"};
-
-    //******** 背包客模式 ********
-//订单状态对应文本
-    public static final String[] ORDER_STATUS_STRINGS_PACKER = {"", "等待买家付款", "待发货",
-            "已发货", "交易成功", "需求已取消"};
-
-    //******** 买手 ********
-//订单状态对应文本
-    public static final String[] ORDER_STATUS_STRINGS_SELLER = {"", "等待买家付款", "待发货",
-            "已发货", "交易成功", "交易关闭"};
-
-    //订单操作
-    public static final int ORDER_OPERATE_VERIFY_VIDEO = 1;
-    public static final int ORDER_OPERATE_CONTACT_SELLER = 2;
-    public static final int ORDER_OPERATE_CONTACT_BUYER = 3;
-    public static final int ORDER_OPERATE_REMIND_SHIPPING = 4;
-    public static final int ORDER_OPERATE_VIEW_SHIPPING = 5;
-    public static final int ORDER_OPERATE_DELETE = 6;
-    public static final int ORDER_OPERATE_CANCEL = 7;
-    public static final int ORDER_OPERATE_PAY = 8;
-    public static final int ORDER_OPERATE_CONFIRM = 9;
-    public static final int ORDER_OPERATE_REVIEW = 10;
-    public static final int ORDER_OPERATE_VIEW_REVIEWS = 11;
-    public static final int ORDER_OPERATE_CONTACT_SERVICE = 12;
-    public static final int ORDER_OPERATE_TO_SHIPPING = 13;//发货
-    public static final int ORDER_OPERATE_ = 0;
-
-    //用户类型
-    public static final String USER_TYPE = "user_type";
-    public static final int USER_TYPE_BUYER = 1;
-    public static final int USER_TYPE_BACK_PACKER = 2;
-    public static final int USER_TYPE_SELLER = 3;
-
 
     /**
      * 客服电话

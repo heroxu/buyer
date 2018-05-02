@@ -8,23 +8,18 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderGoodsListAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderDetailBean;
+import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
 
@@ -34,48 +29,22 @@ import butterknife.OnClick;
 public class OrderDetailActivity extends MyBaseMvpActivity {
     @BindView(R.id.tv_order_remain_time)
     TextView tvRemainTime;
-    @BindView(R.id.lay_order_progress)
-    View layProgress;
-    @BindView(R.id.line_order_paid)
-    ImageView linePaid;
-    @BindView(R.id.line_order_shipped)
-    ImageView lineShipped;
-    @BindView(R.id.line_order_await_confirm)
-    ImageView lineAwaitConfirm;
-    @BindView(R.id.iv_order_await_pay)
-    CheckBox dotAwaitPay;
-    @BindView(R.id.iv_order_paid)
-    CheckBox dotPaid;
-    @BindView(R.id.iv_order_shipped)
-    CheckBox dotShipped;
-    @BindView(R.id.iv_order_await_confirm)
-    CheckBox dotAwaitConfirm;
-    @BindView(R.id.tv_order_await_pay)
-    CheckedTextView tvAwaitPay;
-    @BindView(R.id.tv_order_paid)
-    CheckedTextView tvPaid;
-    @BindView(R.id.tv_order_shipped)
-    CheckedTextView tvShipped;
-    @BindView(R.id.tv_order_await_confirm)
-    CheckedTextView tvAwaitConfirm;
     @BindView(R.id.lay_order_status)
-    ViewGroup layStatus;
-    @BindView(R.id.iv_order_status)
-    ImageView ivStatus;
-    @BindView(R.id.tv_order_status)
-    TextView tvStatus;
+    LinearLayout layStatus;
     @BindView(R.id.tv_order_shipping_name)
     TextView tvShippingName;
     @BindView(R.id.tv_order_shipping_phone)
     TextView tvShippingPhone;
     @BindView(R.id.tv_order_shipping_address)
     TextView tvShippingAddress;
-    @BindView(R.id.iv_order_seller_avatar)
-    ImageView ivSellerAvatar;
-    @BindView(R.id.tv_order_seller_name)
-    TextView tvSellerName;
-    @BindView(R.id.tv_order_contact_seller)
-    TextView tvContactSeller;
+    @BindView(R.id.lay_order_opposite_info)
+    View layOppositeInfo;
+    @BindView(R.id.iv_order_opposite_avatar)
+    ImageView ivOppositeAvatar;
+    @BindView(R.id.tv_order_opposite_name)
+    TextView tvOppositeName;
+    @BindView(R.id.tv_order_contact_opposite)
+    TextView tvContactOpposite;
     @BindView(R.id.rv_order_goods_list)
     RecyclerView rvGoodsList;
     @BindView(R.id.lay_order_sum)
@@ -92,6 +61,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     TextView tvCopyOrderNum;
     @BindView(R.id.tv_order_time)
     TextView tvOrderTime;
+    @BindView(R.id.lay_order_detail_bottom_btns)
+    View layBottomBtns;
     @BindView(R.id.tv_order_bottom_btn1)
     TextView tvBottomBtn1;
     @BindView(R.id.tv_order_bottom_btn2)
@@ -120,26 +91,18 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         mBundle = getBundle();
         if (mBundle != null) {
-            mUserType = mBundle.getInt(Consts.USER_TYPE);
+            mUserType = mBundle.getInt(OrderHelper.USER_TYPE);
         }
         initView();
         getFakeData();
     }
 
     private void initView() {
-        linePaid.setEnabled(false);
-        lineShipped.setEnabled(false);
-        lineAwaitConfirm.setEnabled(false);
 
         switch (mUserType) {
-            case Consts.USER_TYPE_BACK_PACKER:
-            case Consts.USER_TYPE_SELLER:
+            case OrderHelper.USER_TYPE_BACK_PACKER:
+            case OrderHelper.USER_TYPE_SELLER:
                 layStatus.removeAllViews();
-                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                View view = LayoutInflater.from(this).inflate(R.layout.layout_order_status_buyer, null);
-                view.setLayoutParams(lp);
-                layStatus.addView(view);
                 break;
 
             default:
@@ -153,7 +116,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             OrderDetailBean orderDetailBean = new OrderDetailBean();
 
             int orderStatus = orderBean.getOrderStatus();
-            if (orderStatus == Consts.ORDER_STATUS_AWAIT_PAY) {
+            if (orderStatus == OrderHelper.STATUS_BUYER_AWAIT_PAY ||
+                    orderStatus == OrderHelper.STATUS_SELLER_AWAIT_PAY) {
                 orderDetailBean.setRemainTime("12:59:30");
             }
             orderDetailBean.setOrderStatus(orderStatus);
@@ -191,17 +155,46 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             tvOrderNum.setText(mOrderNum);
             tvOrderTime.setText(data.getOrderTime());
 
+            if (mUserType == OrderHelper.USER_TYPE_BUYER) {
+                ivOppositeAvatar.setImageResource(R.mipmap.fake_seller_avatar);
+//            Glide.with(mContext).load(data.getSellerAvatar()).into(ivOppositeAvatar);//TODO RTRT
+                tvOppositeName.setText(data.getSellerName());
+                layOppositeInfo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(BuyHomePageActivity.class);
+                    }
+                });
 
-            ivSellerAvatar.setImageResource(R.mipmap.fake_seller_avatar);
-//            Glide.with(mContext).load(data.getSellerAvatar()).into(ivSellerAvatar);//TODO RTRT
-            tvSellerName.setText(data.getSellerName());
+                tvContactOpposite.setText("联系买手");
+                tvContactOpposite.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        OrderHelper.switchOperate(OrderDetailActivity.this, OrderHelper.OPERATE_CONTACT_SELLER);
+                    }
+                });
+
+            } else {
+                ivOppositeAvatar.setImageResource(R.mipmap.fake_seller_avatar);
+//            Glide.with(mContext).load(data.getBuyerAvatar()).into(ivOppositeAvatar);//TODO RTRT
+                tvOppositeName.setText(data.getBuyerName());
+                tvOppositeName.setCompoundDrawables(null, null, null, null);
+
+                tvContactOpposite.setText("联系买家");
+                tvContactOpposite.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        OrderHelper.switchOperate(OrderDetailActivity.this, OrderHelper.OPERATE_CONTACT_BUYER);
+                    }
+                });
+            }
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OrderDetailActivity.this);
             rvGoodsList.setLayoutManager(linearLayoutManager);
             rvGoodsList.setAdapter(new OrderGoodsListAdapter(OrderDetailActivity.this, data.getGoodsList()));
 
             int goodsType = data.getGoodsType();
             switch (goodsType) {
-                case Consts.GOODS_TYPE_DEMAND:
+                case OrderHelper.GOODS_TYPE_DEMAND:
                     laySum.setVisibility(View.GONE);
                     break;
 
@@ -222,78 +215,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                     break;
             }
 
-
-            int orderStatus = data.getOrderStatus();
-
-            OrderHelper.switchBottomBtns(this, mUserType, orderStatus,
-                    tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore);
-
-            switch (orderStatus) {
-
-                case Consts.ORDER_STATUS_AWAIT_PAY:
-                    layProgress.setVisibility(View.VISIBLE);
-                    dotAwaitPay.setEnabled(true);
-                    tvAwaitPay.setEnabled(true);
-                    break;
-
-                case Consts.ORDER_STATUS_AWAIT_SHIPPING:
-                    layProgress.setVisibility(View.VISIBLE);
-
-                    dotAwaitPay.setEnabled(true);
-                    dotAwaitPay.setChecked(true);
-                    tvAwaitPay.setEnabled(true);
-                    tvAwaitPay.setChecked(true);
-
-                    linePaid.setEnabled(true);
-                    dotPaid.setEnabled(true);
-                    tvPaid.setEnabled(true);
-                    break;
-
-                case Consts.ORDER_STATUS_AWAIT_CONFIRM:
-                    switch (mUserType) {
-                        case Consts.USER_TYPE_BACK_PACKER:
-                        case Consts.USER_TYPE_SELLER:
-                            layStatus.setVisibility(View.VISIBLE);
-                            ivStatus.setImageResource(R.mipmap.ic_successfu_transaction);
-                            tvStatus.setText("交易成功");
-                            break;
-
-                        default:
-                            layProgress.setVisibility(View.VISIBLE);
-
-                            dotAwaitPay.setEnabled(true);
-                            tvAwaitPay.setEnabled(true);
-                            dotAwaitPay.setChecked(true);
-                            tvAwaitPay.setChecked(true);
-
-                            linePaid.setEnabled(true);
-                            dotPaid.setEnabled(true);
-                            tvPaid.setEnabled(true);
-                            dotPaid.setChecked(true);
-                            tvPaid.setChecked(true);
-
-                            lineShipped.setEnabled(true);
-                            dotShipped.setEnabled(true);
-                            tvShipped.setEnabled(true);
-                            break;
-                    }
-                    break;
-
-                case Consts.ORDER_STATUS_CONFIRMED:
-                    layStatus.setVisibility(View.VISIBLE);
-                    ivStatus.setImageResource(R.mipmap.ic_successfu_transaction);
-                    tvStatus.setText("交易成功");
-                    break;
-
-                case Consts.ORDER_STATUS_OTHER:
-                    layStatus.setVisibility(View.VISIBLE);
-                    ivStatus.setImageResource(R.mipmap.ic_successfu_failure);
-                    tvStatus.setText("交易关闭");
-                    break;
-
-                default:
-                    break;
-            }
+            OrderHelper.switchDetailStatusNBtns(this, mUserType, data, layStatus,
+                    layBottomBtns, tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore);
         }
     }
 

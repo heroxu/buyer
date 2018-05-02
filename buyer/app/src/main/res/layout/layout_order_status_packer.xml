@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:paddingTop="40dp">
+
+    <ImageView
+        android:id="@+id/iv_status_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@mipmap/ic_successfu_transaction" />
+
+    <TextView
+        android:id="@+id/tv_status_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/txt_gray_dark"
+        android:textSize="@dimen/txt_size_15"
+        tools:text="交易成功" />
+
+    <TextView
+        android:id="@+id/tv_status_reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/txt_gray"
+        android:textSize="@dimen/txt_size_13"
+        android:visibility="gone"
+        tools:text="我不想买了" />
+</LinearLayout>

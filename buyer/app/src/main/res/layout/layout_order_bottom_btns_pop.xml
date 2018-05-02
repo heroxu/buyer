@@ -9,9 +9,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_pop_btn_more"
         android:gravity="center_horizontal"
-        android:paddingBottom="50dp"
         android:orientation="vertical"
-        android:paddingTop="5dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <LinearLayout
             android:id="@+id/lay_order_bottom_btn6"

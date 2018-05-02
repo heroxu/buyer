@@ -22,6 +22,7 @@ import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.module.order.OrderCommentActivity;
+import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.yongchun.library.view.ImageSelectorActivity;
 
@@ -49,7 +50,7 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
     @BindView(R.id.lay_my_account_settings_packer)
     View layPacker;
 
-    private int mUserType = Consts.USER_TYPE_BUYER;
+    private int mUserType = OrderHelper.USER_TYPE_BUYER;
 
     public static final int REQ_EDIT_USER_INFO = 1;
 
@@ -67,11 +68,11 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         Bundle bundle = getBundle();
         if (bundle != null) {
-            mUserType = bundle.getInt(Consts.USER_TYPE, Consts.USER_TYPE_BUYER);
+            mUserType = bundle.getInt(OrderHelper.USER_TYPE, OrderHelper.USER_TYPE_BUYER);
         }
 
         switch (mUserType) {
-            case Consts.USER_TYPE_BACK_PACKER:
+            case OrderHelper.USER_TYPE_BACK_PACKER:
                 layBuyer.setVisibility(View.GONE);
                 layPacker.setVisibility(View.VISIBLE);
                 break;

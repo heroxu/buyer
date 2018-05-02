@@ -33,8 +33,7 @@ public class StringUtil {
     }
 
 
-    public static String connect(String... str) {
-        String[] strs = str;
+    public static String connect(String... strs) {
         StringBuilder sb = new StringBuilder();
         for (String string :
                 strs) {
