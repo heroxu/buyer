@@ -51,6 +51,8 @@ public class WheelTime {
     private int textColorOut;
     private int textColorCenter;
     private int dividerColor;
+    //分割线中间背景的颜色
+    private int centerBgColor;
 
     private float lineSpacingMultiplier;
     private WheelView.DividerType dividerType;
@@ -621,6 +623,15 @@ public class WheelTime {
         wv_seconds.setDividerColor(dividerColor);
     }
 
+    private void setCenterBgColor() {
+        wv_day.setCenterBgColor(centerBgColor);
+        wv_month.setCenterBgColor(centerBgColor);
+        wv_year.setCenterBgColor(centerBgColor);
+        wv_hours.setCenterBgColor(centerBgColor);
+        wv_minutes.setCenterBgColor(centerBgColor);
+        wv_seconds.setCenterBgColor(centerBgColor);
+    }
+
     private void setDividerType() {
 
         wv_day.setDividerType(dividerType);
@@ -905,6 +916,16 @@ public class WheelTime {
     public void setTextColorOut(int textColorOut) {
         this.textColorOut = textColorOut;
         setTextColorOut();
+    }
+
+    /**
+     * 设置分割线内背景的颜色
+     *
+     * @param centerBgColor
+     */
+    public void setCenterBgColor(int centerBgColor) {
+        this.centerBgColor = centerBgColor;
+        setCenterBgColor();
     }
 
     /**

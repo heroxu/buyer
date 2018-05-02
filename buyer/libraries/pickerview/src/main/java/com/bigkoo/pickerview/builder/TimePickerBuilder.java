@@ -200,6 +200,16 @@ public class TimePickerBuilder {
     }
 
     /**
+     * 设置分割线中间背景的颜色
+     *
+     * @param centerBgColor
+     */
+    public TimePickerBuilder setCenterBgColor(int centerBgColor) {
+        mPickerOptions.centerBgColor = centerBgColor;
+        return this;
+    }
+
+    /**
      * 设置分割线以外文字的颜色
      *
      * @param textColorOut

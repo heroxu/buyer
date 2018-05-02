@@ -61,6 +61,7 @@ public class WheelView extends View {
     private Paint paintOuterText;
     private Paint paintCenterText;
     private Paint paintIndicator;
+    private Paint paintCenterBg;
 
     private WheelAdapter adapter;
 
@@ -72,10 +73,11 @@ public class WheelView extends View {
     private float itemHeight;//每行高度
 
 
-    private Typeface typeface = Typeface.MONOSPACE;//字体样式，默认是等宽字体
+    private Typeface typeface = Typeface.DEFAULT;//字体样式，默认是等宽字体
     private int textColorOut;
     private int textColorCenter;
     private int dividerColor;
+    private int centerBgColor;
 
     // 条目间距倍数
     private float lineSpacingMultiplier = 1.6F;
@@ -204,6 +206,10 @@ public class WheelView extends View {
         paintIndicator = new Paint();
         paintIndicator.setColor(dividerColor);
         paintIndicator.setAntiAlias(true);
+
+        paintCenterBg = new Paint();
+        paintCenterBg.setColor(centerBgColor);
+        paintCenterBg.setAntiAlias(true);
 
         setLayerType(LAYER_TYPE_SOFTWARE, null);
     }
@@ -427,6 +433,10 @@ public class WheelView extends View {
         } else {
             canvas.drawLine(0.0F, firstLineY, measuredWidth, firstLineY, paintIndicator);
             canvas.drawLine(0.0F, secondLineY, measuredWidth, secondLineY, paintIndicator);
+        }
+
+        if(centerBgColor != 0) {
+            canvas.drawRect(0, firstLineY, measuredWidth, secondLineY, paintCenterBg);
         }
 
         //只显示选中项Label文字的模式，并且Label文字不为空，则进行绘制
@@ -773,6 +783,13 @@ public class WheelView extends View {
         if (dividerColor != 0) {
             this.dividerColor = dividerColor;
             paintIndicator.setColor(this.dividerColor);
+        }
+    }
+
+    public void setCenterBgColor(int centerBgColor) {
+        if(centerBgColor != 0) {
+            this.centerBgColor = centerBgColor;
+            paintCenterBg.setColor(this.centerBgColor);
         }
     }
 

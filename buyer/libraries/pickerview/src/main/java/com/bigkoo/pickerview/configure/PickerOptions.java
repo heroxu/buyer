@@ -102,6 +102,7 @@ public class PickerOptions {
     public int textColorCenter = 0xFF2a2a2a; //分割线之间的文字颜色
     public int dividerColor = 0xFFd5d5d5; //分割线的颜色
     public int backgroundId = -1; //显示时的外部背景色颜色,默认是灰色
+    public int centerBgColor = 0; //分割线中间背景的颜色
 
     public float lineSpacingMultiplier = 1.6f; // 条目间距倍数 默认1.6
     public boolean isDialog;//是否是对话框模式

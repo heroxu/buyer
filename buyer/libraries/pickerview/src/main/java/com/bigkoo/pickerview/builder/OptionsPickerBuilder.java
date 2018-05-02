@@ -172,6 +172,16 @@ public class OptionsPickerBuilder {
     }
 
     /**
+     * Set item divider line center background color.
+     *
+     * @param centerBgColor color resId.
+     */
+    public OptionsPickerBuilder setCenterBgColor(int centerBgColor) {
+        mPickerOptions.centerBgColor = centerBgColor;
+        return this;
+    }
+
+    /**
      * Set the textColor of outside item.
      *
      * @param textColorOut color resId.
