@@ -16,7 +16,7 @@ import java.util.List;
 public class MyReceiveLikeAdapter extends BaseQuickAdapter<MyReceiveComment, BaseViewHolder>{
 
     public MyReceiveLikeAdapter(@Nullable List<MyReceiveComment> data) {
-        super(R.layout.item_my_receive_comment,data);
+        super(R.layout.item_my_receive_like,data);
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.home.comment.ui.adapter.MyReceiveCommentAdapter;
+import com.smyy.sharetour.buyer.home.comment.ui.adapter.MyReceiveLikeAdapter;
 import com.smyy.sharetour.buyer.home.model.MyReceiveComment;
 
 import java.util.ArrayList;
@@ -25,10 +26,10 @@ import butterknife.ButterKnife;
 public class MyReceiveLikeFragment extends BaseMvpFragment {
 
 
-    @BindView(R.id.rv_my_receive_comment)
-    RecyclerView rvMyReceiveComment;
+    @BindView(R.id.rv_my_receive_like)
+    RecyclerView rvMyReceiveLike;
 
-    private MyReceiveCommentAdapter mAdapter;
+    private MyReceiveLikeAdapter mAdapter;
     public static MyReceiveLikeFragment getInstance(String title) {
         MyReceiveLikeFragment sf = new MyReceiveLikeFragment();
         return sf;
@@ -41,18 +42,18 @@ public class MyReceiveLikeFragment extends BaseMvpFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_my_recieve_comment;
+        return R.layout.fragment_my_recieve_like;
     }
 
     @Override
     protected void initData(Bundle bundle) {
-        rvMyReceiveComment.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvMyReceiveLike.setLayoutManager(new LinearLayoutManager(getContext()));
         final List<MyReceiveComment> data = new ArrayList<>();
         data.add(new MyReceiveComment());
         data.add(new MyReceiveComment());
         data.add(new MyReceiveComment());
-        mAdapter = new MyReceiveCommentAdapter(data);
-        rvMyReceiveComment.setAdapter(mAdapter);
+        mAdapter = new MyReceiveLikeAdapter(data);
+        rvMyReceiveLike.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

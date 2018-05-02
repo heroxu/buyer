@@ -44,19 +44,23 @@
                     android:textSize="@dimen/txt_size_15"
                     android:text="@string/message_my_comment_reply"/>
             </LinearLayout>
-            <TextView
+            <ImageView
                 android:id="@+id/iv_my_receive_comment_content"
-                android:gravity="bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:layout_marginEnd="25dp"
-                android:lines="2"
-                android:lineSpacingExtra="2dp"
-                android:ellipsize="end"
+                android:layout_marginTop="5dp"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
                 android:layout_marginStart="@dimen/margin_10"
-                android:textColor="@color/txt_gray_dark"
-                android:textSize="@dimen/txt_size_13"
-                android:text="你能帮我代购几个NIKE的包包吗帮我代购几个NIKE的包包吗帮我代购几个NIKE的包包吗帮我代购几个NIKE的包包吗？"/>
+                android:src="@mipmap/ic_like_ele" />
+            <TextView
+                android:id="@+id/iv_my_receive_comment_time"
+                android:layout_marginEnd="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:gravity="bottom"
+                android:textColor="@color/txt_gray"
+                android:textSize="@dimen/txt_size_11"
+                android:text="2018-04-28 19:32"/>
 
         </LinearLayout>
 
@@ -80,16 +84,7 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/iv_my_receive_comment_time"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:textColor="@color/txt_gray"
-        android:textSize="@dimen/txt_size_11"
-        android:text="2018-04-28 19:32"/>
+
 
     <View
         android:layout_marginTop="15dp"
