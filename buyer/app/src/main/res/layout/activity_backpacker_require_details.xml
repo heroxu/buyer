@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="146dp"
         android:background="@color/btn_bg_normal"
-        android:paddingTop="10dp"
+        android:paddingTop="15dp"
         android:paddingLeft="21dp"
         android:paddingRight="21dp">
 
@@ -17,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_return"
-            android:layout_marginTop="5dp"
             android:id="@+id/back_btn"
             android:padding="5dp"/>
 
@@ -33,7 +32,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/imageView2"
             android:src="@mipmap/ic_share_b" />
     </RelativeLayout>
 
@@ -55,8 +53,22 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="wrap_content"
                 >
+
+                <TextView
+                    android:id="@+id/require_detail_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:drawableLeft="@mipmap/ic_budget_time"
+                    android:layout_marginLeft="35dp"
+                    android:text="期望购买地"
+                    android:textColor="@color/txt_main"
+                    android:gravity="center_vertical"
+                    android:textSize="13sp"
+                    android:drawablePadding="5dp"
+                    android:layout_marginTop="30dp"
+                    />
 
                 <TextView
                     android:id="@+id/require_detail_time"
@@ -69,43 +81,50 @@
                     android:gravity="center_vertical"
                     android:textSize="13sp"
                     android:drawablePadding="5dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@id/require_detail_country"
                     />
 
                 <TextView
                     android:id="@+id/require_detail_budget"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:drawableLeft="@mipmap/ic_budget_mon"
                     android:layout_marginLeft="35dp"
                     android:text="@string/budget_amount"
                     android:textColor="@color/txt_main"
-                    android:gravity="center_vertical"
                     android:textSize="13sp"
                     android:drawablePadding="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_below="@id/require_detail_time"
+                    android:paddingBottom="30dp"
                     />
-
-                <ImageView
-                    android:id="@+id/require_state_img"
-                    android:layout_width="66dp"
-                    android:layout_height="66dp"
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/user_avatar"
-                    android:layout_marginRight="30dp"/>
+                    android:layout_marginRight="30dp">
 
-                <TextView
-                    android:id="@+id/require_state"
-                    android:layout_width="66dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:textSize="@dimen/txt_size_15"
-                    android:textColor="@color/txt_main"
-                    android:text="待接单"
-                    android:layout_alignBottom="@id/require_state_img"
-                    android:layout_alignLeft="@id/require_state_img"/>
+                    <ImageView
+                        android:id="@+id/require_state_img"
+                        android:layout_width="66dp"
+                        android:layout_height="66dp"
+                        android:src="@mipmap/user_avatar"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+                    <TextView
+                        android:id="@+id/require_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:textSize="@dimen/txt_size_15"
+                        android:textColor="@color/txt_main"
+                        android:text="待接单"
+                        android:layout_marginTop="66dp"
+                        />
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -116,9 +135,11 @@
                     android:textSize="@dimen/txt_size_11"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:layout_below="@id/require_detail_budget"
+                    android:layout_alignTop="@id/require_detail_budget"
                     android:visibility="gone"
                     android:id="@+id/require_reward"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="7dp"
                     />
 
             </RelativeLayout>

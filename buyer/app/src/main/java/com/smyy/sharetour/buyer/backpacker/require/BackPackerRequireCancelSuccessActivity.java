@@ -36,7 +36,7 @@ public class BackPackerRequireCancelSuccessActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        title.setText(R.string.cancel_success);
+        title.setText("取消需求成功");
     }
 
     @Override

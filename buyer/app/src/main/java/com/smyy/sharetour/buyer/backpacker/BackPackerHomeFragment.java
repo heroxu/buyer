@@ -6,6 +6,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RelativeLayout;
+
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.backpacker.require.BackPackerRequireDetailsActivity;
 import com.smyy.sharetour.buyer.backpacker.travel.BackPackerSendTravelActivity;
@@ -13,7 +15,8 @@ import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;
 import com.smyy.sharetour.buyer.dialog.DialogUtils;
-import com.smyy.sharetour.buyer.require.RecyclerViewDivider;
+import com.smyy.sharetour.buyer.tim.ChatActivity;
+import com.tencent.imsdk.TIMConversationType;
 import com.xmyy.view.dialoglib.CommonDialog;
 import com.xmyy.view.dialoglib.base.BindViewHolder;
 import com.xmyy.view.dialoglib.listener.OnViewClickListener;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @author Liliping
@@ -38,6 +42,9 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
     SwipeRefreshLayout home_all_srl;
     @BindView(R.id.require_list)
     RecyclerView requireList;
+    @BindView(R.id.notice)
+    RelativeLayout noticeRl;
+
 
     private List<RequireBean> requires = new ArrayList<>();
 
@@ -75,6 +82,7 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
             bean.setRequire_disc("NIKE JORDAN 8 乔丹8系列 黑白牛皮运动鞋");
             bean.setRequire_time("2018-03-08");
             bean.setRequire_budget("9918.00");
+            bean.setRequire_buy_place("日本");
             bean.setState(0);
             requires.add(bean);
         }
@@ -85,8 +93,7 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
         initListener();
         requireList.setHasFixedSize(true);
         requireList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        requireList.addItemDecoration(new RecyclerViewDivider(getActivity(),
-                LinearLayoutManager.VERTICAL, 30, R.color.window_background));
+
         demo();
         mAdapter = new BackpackerHomeItemAdapter(getActivity(), requires);
         mAdapter.setItemClickListener(new BackpackerHomeItemAdapter.OnBackpackerHomeItemOnClickListener() {
@@ -102,7 +109,7 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
 
             @Override
             public void OnItemContactClick(View v, int position) {
-
+                ChatActivity.navToChat(getContext(), "我是小桂子", TIMConversationType.C2C);
             }
 
             @Override
@@ -136,4 +143,9 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
         return null;
     }
 
+
+    @OnClick(R.id.notice_close)
+    public void onViewClicked() {
+        noticeRl.setVisibility(View.GONE);
+    }
 }

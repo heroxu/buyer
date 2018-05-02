@@ -73,6 +73,7 @@ public class BackPackerRequireListActivity extends BaseMvpActivity {
             bean.setRequire_disc("NIKE HUARACHE DRIFT (PSE)…");
             bean.setRequire_time("2018-03-08");
             bean.setRequire_budget("9918.00");
+            bean.setRequire_buy_place("日本");
             bean.setState(i+1);
             requires.add(bean);
         }

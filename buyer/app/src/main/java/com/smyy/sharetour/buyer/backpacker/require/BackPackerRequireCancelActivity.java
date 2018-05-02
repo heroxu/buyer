@@ -32,7 +32,7 @@ public class BackPackerRequireCancelActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        title.setText(R.string.undo_require);
+        title.setText("取消需求");
     }
 
     @Override

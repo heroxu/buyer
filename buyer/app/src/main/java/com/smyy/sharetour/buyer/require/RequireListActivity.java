@@ -63,8 +63,14 @@ public class RequireListActivity extends BaseMvpActivity {
         requireList.addItemDecoration(new RecyclerViewDivider(RequireListActivity.this,
                 LinearLayoutManager.VERTICAL, 30, R.color.window_background));
         demo();
-        RequireItemAdapter adapter = new RequireItemAdapter(RequireListActivity.this, requires);
-        adapter.setItemClickListener(new OnRecyclerViewOnClickListener() {
+        final RequireItemAdapter adapter = new RequireItemAdapter(RequireListActivity.this, requires);
+        adapter.setItemClickListener(new RequireItemAdapter.OnItemRequireClickListener() {
+            @Override
+            public void OnItemDeleteClick(View v, int position) {
+                requires.remove(position);
+                adapter.notifyItemRemoved(position);
+            }
+
             @Override
             public void OnItemClick(View v, int position) {
                 Intent intent = new Intent(RequireListActivity.this, RequireDetailsActivity.class);
@@ -84,6 +90,7 @@ public class RequireListActivity extends BaseMvpActivity {
             bean.setRequire_disc("NIKE HUARACHE DRIFT (PSE)…");
             bean.setRequire_time("2018-03-08");
             bean.setRequire_budget("9918.00");
+            bean.setRequire_buy_place("日本");
             bean.setState(i);
             requires.add(bean);
         }

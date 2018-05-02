@@ -78,23 +78,24 @@
     <string name="wechat">微信</string>
     <string name="alipay">支付宝</string>
     <string name="bank_pay">银行卡支付</string>
-    <string name="expect_time">预期时间</string>
+    <string name="expect_time">收货时间</string>
     <string name="reward">辛苦费</string>
-    <string name="undo_require">撤销需求</string>
-    <string name="space">&#160;&#160;&#160;&#160;</string>
+    <string name="undo_require">取消需求</string>
+    <string name="four_space">&#160;&#160;&#160;&#160;</string>
+    <string name="two_space">&#160;&#160;</string>
     <string name="require_detail">需求详情</string>
     <string name="share_friend">快分享给朋友们吧</string>
     <string name="wechat_found">微信朋友圈</string>
     <string name="wechat_friend">微信好友</string>
     <string name="qqfriend">QQ好友</string>
     <string name="submit">提交</string>
-    <string name="cancel_success">取消成功</string>
-    <string name="require_cancel_rule">撤销规则</string>
-    <string name="cancel_confirm">确定撤销</string>
-    <string name="cancel_no">暂不撤消</string>
-    <string name="require_cancel_tip">撤销需求后费用将在7个工作日内原路返回您的账户，撤销后可在个人中心-下架需求内找到该需求</string>
-    <string name="require_cancel_warning">请勿频繁撤销，否则可能导致买手无法找到您的需求！</string>
-    <string name="require_cancel_reason">请告诉我们撤销原因，我们将加以改善</string>
+    <string name="cancel_success">取消需求成功</string>
+    <string name="require_cancel_rule">取消规则</string>
+    <string name="cancel_confirm">确定取消</string>
+    <string name="cancel_no">暂不取消</string>
+    <string name="require_cancel_tip">取消需求后费用将在7个工作日内原路返回您的账户，取消后可在个人中心-下架需求内找到该需求</string>
+    <string name="require_cancel_warning">请勿频繁取消，否则可能导致买手无法找到您的需求！</string>
+    <string name="require_cancel_reason">请告诉我们取消原因，我们将加以改善</string>
     <string name="require_cancel_reason1">赶时间，不想等了</string>
     <string name="require_cancel_reason2">找不到满意的买手</string>
     <string name="require_cancel_reason3">通过其他方式买到了</string>
@@ -113,7 +114,7 @@
     <string name="confirm_seller_title">请确认您指定的买手</string>
     <string name="confirm_seller_msg">确认后将形成求购订单，为了保证买卖双方的利益，求购订单将无法取消哦</string>
     <string name="point_seller_success">指定买手成功</string>
-    <string name="add_require">+添加新需求</string>
+    <string name="add_require">+发布新需求</string>
     <string name="order_receiving">正在接单</string>
     <string name="contact_buyer">联系买家</string>
     <string name="point_ta">指定TA</string>
@@ -214,7 +215,7 @@
     <string name="complete_info_tip">完善个人资料，提升您的个人形象。</string>
     <string name="send_trip">发行程</string>
     <string name="send_trip_tip">接需求前需要先发行程哦～</string>
-    <string name="confirm_take_require">确定接需求</string>
+    <string name="confirm_take_require">确定受理</string>
     <string name="submit_application_success">提交申请成功</string>
 
 

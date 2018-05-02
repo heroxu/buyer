@@ -58,7 +58,7 @@
                 android:textSize="@dimen/txt_size_11"
                 android:layout_alignParentRight="true"
                 android:id="@+id/require_item_state"
-                android:drawableLeft="@mipmap/icon_radio_check"
+                android:drawableLeft="@mipmap/ic_trust"
                 android:drawablePadding="6dp"
                 android:text="信任值90分"/>
         </RelativeLayout>

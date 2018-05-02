@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
@@ -13,7 +12,6 @@ import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -27,17 +25,6 @@ import butterknife.OnClick;
  */
 public class BackpackerTakeRequireSuccessActivity extends BaseMvpActivity {
 
-    @BindView(R.id.tv_buyer_name)
-    TextView tvBuyerName;
-    @BindView(R.id.tv_buyer_phone)
-    TextView tvBuyerPhone;
-    @BindView(R.id.tv_buyer_shipping_address)
-    TextView tvBuyerShippingAddress;
-    @BindView(R.id.line_submit)
-    ImageView lineSubmit;
-    @BindView(R.id.line_confirm)
-    ImageView lineConfirm;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_backpacke_submit_success_layout;
@@ -50,8 +37,6 @@ public class BackpackerTakeRequireSuccessActivity extends BaseMvpActivity {
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
-        lineConfirm.setEnabled(false);
-        lineSubmit.setEnabled(false);
     }
 
 

@@ -1,7 +1,5 @@
 package com.smyy.sharetour.buyer;
 
-import com.smyy.sharetour.buyer.util.StringUtil;
-
 /**
  * Created by 伍振飞 on 2018/4/8 14:28
  * E-Mail Address：wuzf2012@sina.com
@@ -179,10 +177,10 @@ public class Consts {
     public static final int REQUIRE_STATE_WAIT_SEND_GOOD = 2;
     public static final int REQUIRE_STATE_WAIT_RECEIVE_GOOD = 3;
     public static final int REQUIRE_STATE_REQUIRE_DONE = 4;
-    public static final int REQUIRE_STATE_CANCEL = 5;
-    public static final int REQUIRE_STATE_INVALID = 6;
+    public static final int REQUIRE_STATE_INVALID = 5;
 
-    public static final String[] REQUIRE_STATE_STRINGS = {"待接单", "待指定", "备货中", "已发货", "已完成", "已取消", "已失效"};
+    public static final String[] REQUIRE_SELLER_STATE_STRINGS = {"待受理", "等待买家指定", "待发货", "已发货", "已完成", "已失效"};
+    public static final String[] REQUIRE_STATE_STRINGS = {"等待买手受理", "待指定", "买手已受理", "买手已发货", "已完成", "已失效"};
 
     //商品类型
     public static final int GOODS_TYPE_DEMAND = 1;//需求型商品

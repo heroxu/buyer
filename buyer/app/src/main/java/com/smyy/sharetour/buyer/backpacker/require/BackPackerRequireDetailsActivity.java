@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -22,6 +23,8 @@ import com.smyy.sharetour.buyer.bean.RequireBean;
 import com.smyy.sharetour.buyer.module.order.OrderDetailActivity;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
+import com.smyy.sharetour.buyer.tim.ChatActivity;
+import com.tencent.imsdk.TIMConversationType;
 
 import java.util.ArrayList;
 
@@ -46,6 +49,8 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
     public static final int REQUIRE_REQUEST_CANCEL = 100;
     @BindView(R.id.require_detail_time)
     TextView requireDetailTime;
+    @BindView(R.id.require_detail_country)
+    TextView requireDetailCountry;
     @BindView(R.id.require_detail_budget)
     TextView requireDetailBudget;
     @BindView(R.id.require_state_img)
@@ -88,40 +93,56 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
         isTakeRequire = bundle.getBoolean(REQUIRE_TAKE_KEY);
         hideToolBarLayout(true);
 
-        SpannableString spanText = new SpannableString(getString(R.string.pay_price) + getString(R.string.space));
+        SpannableString spanText = new SpannableString(getString(R.string.pay_price) + getString(R.string.four_space));
 
         SpannableString spanText1 = new SpannableString(requireBean.getRequire_budget());
 
-        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_gray_dark)),
+        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_main)),
                 0, spanText.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         spanText1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_price)),
                 0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-
+        spanText1.setSpan(new AbsoluteSizeSpan(17, true),
+                0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         requireDetailBudget.setText(spanText);
         requireDetailBudget.append(spanText1);
 
-        spanText = new SpannableString(getString(R.string.expect_time) + getString(R.string.space));
+        spanText = new SpannableString(getString(R.string.expect_time) + getString(R.string.four_space));
 
         spanText1 = new SpannableString(requireBean.getRequire_time());
 
-        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_gray_dark)),
+        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_main)),
                 0, spanText.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         spanText1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_price)),
+                0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        spanText1.setSpan(new AbsoluteSizeSpan(15, true),
                 0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 
         requireDetailTime.setText(spanText);
         requireDetailTime.append(spanText1);
+
+        spanText = new SpannableString("期望购买地" + getString(R.string.two_space));
+
+        spanText1 = new SpannableString(requireBean.getRequire_buy_place());
+
+        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_main)),
+                0, spanText.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        spanText1.setSpan(new AbsoluteSizeSpan(15, true),
+                0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        spanText1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_main)),
+                0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        requireDetailCountry.setText(spanText);
+        requireDetailCountry.append(spanText1);
+
         if (requireBean.getReward() != null) {
             reward = Integer.parseInt(requireBean.getReward());
             if (reward != 0) {
                 requireReward.setText(getString(R.string.extra_reward) +
-                        getString(R.string.space) + getString(R.string.money_unit) + reward);
+                        getString(R.string.four_space) + getString(R.string.money_unit) + reward);
                 requireReward.setVisibility(View.VISIBLE);
             }
         }
 
         if (requireBean.getState() == Consts.REQUIRE_STATE_WAIT_SEND_GOOD || requireBean.getState() == Consts.REQUIRE_STATE_WAIT_RECEIVE_GOOD) {
-            readyGoodLl.setVisibility(View.VISIBLE);
             cancelFrame.setVisibility(View.GONE);
             switch (requireBean.getState()) {
                 case Consts.REQUIRE_STATE_WAIT_SEND_GOOD:
@@ -131,14 +152,14 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                     break;
             }
 
-        } else if (requireBean.getState() == Consts.REQUIRE_STATE_CANCEL ) {
-            orderDetailFrame.setVisibility(View.GONE);
         } else if(requireBean.getState() == Consts.REQUIRE_STATE_WAIT_POINT) {
             readyGoodLl.setVisibility(View.VISIBLE);
             setWaitPointButton();
+        } else if(requireBean.getState() == Consts.REQUIRE_STATE_INVALID){
+            setCancelButton();
         }
 
-        requireState.setText(Consts.REQUIRE_STATE_STRINGS[requireBean.getState()]);
+        requireState.setText(Consts.REQUIRE_SELLER_STATE_STRINGS[requireBean.getState()]);
 
         if (isTakeRequire) {
             setViewRequireButton();
@@ -157,7 +178,7 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
             switch (requestCode) {
                 case REQUIRE_REQUEST_CANCEL:
                     requireState.setText(R.string.cancel_over);
-                    requireBean.setState(Consts.REQUIRE_STATE_CANCEL);
+                    requireBean.setState(Consts.REQUIRE_STATE_INVALID);
                     setCancelButton();
                     startActivity(new Intent(BackPackerRequireDetailsActivity.this, BackPackerRequireCancelSuccessActivity.class));
                     break;
@@ -175,7 +196,7 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
         d.setBounds(0, 0, d.getMinimumWidth(), d.getMinimumHeight());
         cancelTakeRequire.setCompoundDrawables(d, null, null, null);
         cancelTakeRequire.setCompoundDrawablePadding(3);
-        cancelTakeRequire.setText(R.string.cancel);
+        cancelTakeRequire.setText("取消需求");
     }
 
     private void setCancelButton() {
@@ -208,11 +229,14 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contact_frame:
+                ChatActivity.navToChat(BackPackerRequireDetailsActivity.this, "我是小桂子", TIMConversationType.C2C);
                 break;
             case R.id.cancel_frame:
                 if(requireBean.getState()==Consts.REQUIRE_STATE_WAIT_POINT){
                     Intent intent = new Intent(BackPackerRequireDetailsActivity.this, BackPackerRequireCancelActivity.class);
                     startActivityForResult(intent, REQUIRE_REQUEST_CANCEL);
+                } else {
+                    finish();
                 }
                 break;
             case R.id.order_detail_frame:

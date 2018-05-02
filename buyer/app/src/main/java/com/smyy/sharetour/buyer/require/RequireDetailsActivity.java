@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -23,12 +24,19 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;
+import com.smyy.sharetour.buyer.module.order.OrderDetailActivity;
+import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
+import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
+import com.smyy.sharetour.buyer.tim.ChatActivity;
 import com.smyy.sharetour.buyer.view.keyboard.KeyboardUtil;
+import com.tencent.imsdk.TIMConversationType;
 import com.xmyy.view.dialoglib.CommonDialog;
 import com.xmyy.view.dialoglib.base.BindViewHolder;
 import com.xmyy.view.dialoglib.listener.OnBindViewListener;
 import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 import com.yongchun.library.utils.ScreenUtils;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,16 +78,16 @@ public class RequireDetailsActivity extends BaseMvpActivity {
     ImageView waitSeller4;
     @BindView(R.id.wait_point_ll)
     LinearLayout waitPointLl;
-    @BindView(R.id.point_seller_head)
-    ImageView pointSellerHead;
-    @BindView(R.id.point_seller_name)
-    TextView pointSellerName;
     @BindView(R.id.point_seller_info)
     TextView pointSellerInfo;
     @BindView(R.id.ready_good_ll)
     LinearLayout readyGoodLl;
     @BindView(R.id.reward_frame)
     FrameLayout rewardFrame;
+    @BindView(R.id.delete_frame)
+    FrameLayout deleteFrame;
+    @BindView(R.id.require_detail_country)
+    TextView requireDetailCountry;
 
     public static final String REQUIRE_KEY = "require";
     public static final String REQUIRE_SUCCESS_KEY = "show_success";
@@ -107,29 +115,46 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         isShowSuccessDialog = bundle.getBoolean(REQUIRE_SUCCESS_KEY);
         hideToolBarLayout(true);
 
-        SpannableString spanText = new SpannableString(getString(R.string.pay_price) + getString(R.string.space));
+        SpannableString spanText = new SpannableString(getString(R.string.pay_price) + getString(R.string.four_space));
 
         SpannableString spanText1 = new SpannableString(requireBean.getRequire_budget());
 
-        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_gray_dark)),
+        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_main)),
                 0, spanText.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         spanText1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_price)),
                 0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-
+        spanText1.setSpan(new AbsoluteSizeSpan(17, true),
+                0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         requireDetailBudget.setText(spanText);
         requireDetailBudget.append(spanText1);
 
-        spanText = new SpannableString(getString(R.string.expect_time) + getString(R.string.space));
+        spanText = new SpannableString(getString(R.string.expect_time) + getString(R.string.four_space));
 
         spanText1 = new SpannableString(requireBean.getRequire_time());
 
-        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_gray_dark)),
+        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_main)),
                 0, spanText.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         spanText1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_price)),
+                0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        spanText1.setSpan(new AbsoluteSizeSpan(15, true),
                 0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 
         requireDetailTime.setText(spanText);
         requireDetailTime.append(spanText1);
+
+        spanText = new SpannableString("期望购买地" + getString(R.string.two_space));
+
+        spanText1 = new SpannableString(requireBean.getRequire_buy_place());
+
+        spanText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_main)),
+                0, spanText.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        spanText1.setSpan(new AbsoluteSizeSpan(15, true),
+                0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        spanText1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.txt_main)),
+                0, spanText1.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        requireDetailCountry.setText(spanText);
+        requireDetailCountry.append(spanText1);
+
         if(requireBean.getReward()!=null) {
             reward = Integer.parseInt(requireBean.getReward());
             if (reward != 0) {
@@ -159,24 +184,23 @@ public class RequireDetailsActivity extends BaseMvpActivity {
             waitSellText.setText(spanText);
             waitSellText.append(spanText1);
             waitSellText.append(spanText2);
-        } else if(requireBean.getState()== Consts.REQUIRE_STATE_WAIT_SEND_GOOD||requireBean.getState()== Consts.REQUIRE_STATE_WAIT_RECEIVE_GOOD
-                ||requireBean.getState()== Consts.REQUIRE_STATE_REQUIRE_DONE) {
+        } else if(requireBean.getState()== Consts.REQUIRE_STATE_WAIT_SEND_GOOD||requireBean.getState()== Consts.REQUIRE_STATE_WAIT_RECEIVE_GOOD) {
             readyGoodLl.setVisibility(View.VISIBLE);
             setRequireToOrderButton();
             switch (requireBean.getState()){
                 case Consts.REQUIRE_STATE_WAIT_SEND_GOOD:
-                    pointSellerInfo.setText("正全力为您备货中…");
+                    pointSellerInfo.setText("买手正全力为您备货中…");
                     break;
                 case Consts.REQUIRE_STATE_WAIT_RECEIVE_GOOD:
-                    pointSellerInfo.setText("已发货，请到订单详情确认收货");
-                    break;
-                case Consts.REQUIRE_STATE_REQUIRE_DONE:
-                    pointSellerInfo.setText("已完成您的需求");
+                    pointSellerInfo.setText("买手已发货，请到订单详情确认收货");
                     break;
             }
 
-        } else if(requireBean.getState()== Consts.REQUIRE_STATE_CANCEL||requireBean.getState()== Consts.REQUIRE_STATE_INVALID){
+        } else if(requireBean.getState()== Consts.REQUIRE_STATE_INVALID){
             setInvalidRequireButton();
+        } else if(requireBean.getState()== Consts.REQUIRE_STATE_REQUIRE_DONE) {
+            setRequireToOrderButton();
+            deleteFrame.setVisibility(View.VISIBLE);
         }
 
         requireState.setText(Consts.REQUIRE_STATE_STRINGS[requireBean.getState()]);
@@ -197,8 +221,8 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case REQUIRE_REQUEST_CANCEL:
-                    requireState.setText(R.string.cancel_over);
-                    requireBean.setState(Consts.REQUIRE_STATE_CANCEL);
+                    requireState.setText("已失效");
+                    requireBean.setState(Consts.REQUIRE_STATE_INVALID);
                     startActivity(new Intent(RequireDetailsActivity.this, RequireCancelSuccessActivity.class));
                     setInvalidRequireButton();
                     break;
@@ -214,7 +238,7 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         d.setBounds(0, 0, d.getMinimumWidth(), d.getMinimumHeight());
         reward_text.setCompoundDrawables(d, null, null, null);
         reward_text.setCompoundDrawablePadding(3);
-        reward_text.setText(R.string.delete_require);
+        reward_text.setText(R.string.delete);
         rewardFrame.setVisibility(View.VISIBLE);
         d = getResources().getDrawable(R.mipmap.ic_edit_g);
         d.setBounds(0, 0, d.getMinimumWidth(), d.getMinimumHeight());
@@ -262,28 +286,75 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         dialog = builder.create().show();
     }
 
-    @OnClick({R.id.reward_frame, R.id.undo_frame, R.id.back_btn})
+    @OnClick({R.id.reward_frame, R.id.undo_frame, R.id.back_btn, R.id.delete_frame})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.reward_frame:
                 if(requireBean.getState()==Consts.REQUIRE_STATE_WAIT_SELLER||requireBean.getState()==Consts.REQUIRE_STATE_WAIT_POINT) {
                     showRewardDialog();
-                } else if(requireBean.getState()==Consts.REQUIRE_STATE_INVALID ||requireBean.getState()==Consts.REQUIRE_STATE_CANCEL) {
+                } else if(requireBean.getState()==Consts.REQUIRE_STATE_INVALID) {
                     finish();
+                } else {
+                    ChatActivity.navToChat(RequireDetailsActivity.this, "我是小桂子", TIMConversationType.C2C);
                 }
                 break;
             case R.id.undo_frame:
                 if(requireBean.getState()==Consts.REQUIRE_STATE_WAIT_SELLER||requireBean.getState()==Consts.REQUIRE_STATE_WAIT_POINT) {
                     startActivityForResult(new Intent(RequireDetailsActivity.this, RequireCancelActivity.class), REQUIRE_REQUEST_CANCEL);
-                } else if(requireBean.getState()==Consts.REQUIRE_STATE_INVALID ||requireBean.getState()==Consts.REQUIRE_STATE_CANCEL) {
-                    //finish();
+                } else if(requireBean.getState()==Consts.REQUIRE_STATE_INVALID) {
+                    startActivity(PublishRequireActivity.class);
+                } else {
+                    Intent intent = new Intent(RequireDetailsActivity.this, OrderDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Consts.ORDER_ID, getFakeData().getOrderId());
+                    bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BACK_PACKER);
+                    bundle.putSerializable(OrderDetailActivity.FAKE_DATA, getFakeData());
+                    intent.putExtra("bundle", bundle);
+                    startActivity(intent);
                 }
                 break;
 
             case R.id.back_btn:
                 finish();
                 break;
+
+            case R.id.delete_frame:
+                finish();
+                break;
         }
+    }
+
+    private OrderBean getFakeData() {
+        OrderGoodsInfo goodsInfo1 = new OrderGoodsInfo("1",
+                "NIKE HUARACHE DRIFT (PSE) LALALALALA",
+                "黑白/36.5",
+                "",
+                "￥9,918.00",
+                1, "");
+        OrderGoodsInfo goodsInfo2 = new OrderGoodsInfo("2",
+                "NIKE HUARACHE DRIFT (PSE) LALALALALA",
+                "黑白/34",
+                "",
+                "￥8,918.00",
+                1, "");
+        ArrayList<OrderGoodsInfo> fakeGoodsList2 = new ArrayList<>();
+        fakeGoodsList2.add(goodsInfo1);
+        fakeGoodsList2.add(goodsInfo2);
+
+        OrderBean orderBean = new OrderBean("1",
+                Consts.ORDER_STATUS_AWAIT_SHIPPING,
+                "",
+                "我是小桂子的桂子",
+                "",
+                "",
+                2,
+                "￥18,866.00",
+                "￥30.00",
+                "",
+                Consts.GOODS_TYPE_STOCK,
+                fakeGoodsList2);
+
+        return orderBean;
     }
 
     private void showRewardDialog() {
@@ -461,7 +532,7 @@ public class RequireDetailsActivity extends BaseMvpActivity {
         }
         rewardFrame.setVisibility(View.GONE);
         requireReward.setText(getString(R.string.extra_reward) +
-                getString(R.string.space) + getString(R.string.money_unit) + reward);
+                getString(R.string.four_space) + getString(R.string.money_unit) + reward);
         requireReward.setVisibility(View.VISIBLE);
     }
 }

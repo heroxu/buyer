@@ -41,8 +41,8 @@ public class BackPackerRequireItemAdapter extends RecyclerView.Adapter {
         ((NormalViewHolder)holder).disc.setText(item.getRequire_disc());
         ((NormalViewHolder)holder).price.setText(context.getString(R.string.money_unit)+item.getRequire_budget());
         ((NormalViewHolder)holder).time.setText(item.getRequire_time()+context.getString(R.string.before_receive));
-        ((NormalViewHolder)holder).state.setText(Consts.REQUIRE_STATE_STRINGS[item.getState()]);
-        if(item.getState()==Consts.REQUIRE_STATE_WAIT_SEND_GOOD){
+        ((NormalViewHolder)holder).state.setText(Consts.REQUIRE_SELLER_STATE_STRINGS[item.getState()]);
+        if(item.getState()!=Consts.REQUIRE_STATE_INVALID){
             ((NormalViewHolder)holder).state.setTextColor(context.getResources().getColor(R.color.txt_price));
         }
         /*if (item.getImages().get(0) == null){
@@ -72,10 +72,8 @@ public class BackPackerRequireItemAdapter extends RecyclerView.Adapter {
 
     public class NormalViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        protected ImageView head;
         protected ImageView image;
         protected TextView disc;
-        protected TextView name;
         protected TextView time;
         protected TextView state;
         protected TextView price;
@@ -83,8 +81,6 @@ public class BackPackerRequireItemAdapter extends RecyclerView.Adapter {
 
         public NormalViewHolder(View itemView, OnRecyclerViewOnClickListener listener) {
             super(itemView);
-            head = (ImageView) itemView.findViewById(R.id.require_item_head);
-            name = (TextView) itemView.findViewById(R.id.require_item_name);
             state = (TextView) itemView.findViewById(R.id.require_item_state);
             image = (ImageView) itemView.findViewById(R.id.require_item_image);
             disc = (TextView) itemView.findViewById(R.id.require_item_disc);

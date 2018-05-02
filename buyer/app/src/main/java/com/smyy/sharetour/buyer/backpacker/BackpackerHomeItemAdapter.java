@@ -1,14 +1,17 @@
 package com.smyy.sharetour.buyer.backpacker;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.bean.RequireBean;
+import com.yongchun.library.utils.ScreenUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +42,14 @@ public class BackpackerHomeItemAdapter extends RecyclerView.Adapter {
         ((NormalViewHolder)holder).disc.setText(item.getRequire_disc());
         ((NormalViewHolder)holder).price.setText(context.getString(R.string.money_unit)+item.getRequire_budget());
         ((NormalViewHolder)holder).time.setText(item.getRequire_time()+context.getString(R.string.before_receive));
+
+        if(position==0) {
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(ScreenUtils.dip2px(context, 20),ScreenUtils.dip2px(context, 20),
+                    ScreenUtils.dip2px(context, 20), ScreenUtils.dip2px(context, 20));
+            ((NormalViewHolder)holder).cardView.setLayoutParams(lp);
+        }
+
         /*if (item.getImages().get(0) == null){
             ((NormalViewHolder)holder).itemImg.setImageResource(R.mipmap.placeholder);
         } else {
@@ -69,6 +80,7 @@ public class BackpackerHomeItemAdapter extends RecyclerView.Adapter {
         protected TextView disc;
         protected TextView time;
         protected TextView price;
+        protected CardView cardView;
         protected OnBackpackerHomeItemOnClickListener listener;
 
         public NormalViewHolder(View itemView, final OnBackpackerHomeItemOnClickListener listener) {
@@ -76,6 +88,7 @@ public class BackpackerHomeItemAdapter extends RecyclerView.Adapter {
             disc = (TextView) itemView.findViewById(R.id.backpacker_item_disc);
             price = (TextView) itemView.findViewById(R.id.backpacker_item_price);
             time = (TextView) itemView.findViewById(R.id.backpacker_item_time);
+            cardView = (CardView) itemView.findViewById(R.id.card_view);
             this.listener = listener;
             itemView.setOnClickListener(this);
             TextView contact = (TextView) itemView.findViewById(R.id.backpacker_item_contact);
