@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">蜜罐</string>
+    <string name="app_name">买家端</string>
     <string name="ok">确认</string>
     <string name="cancel">取消</string>
     <!-- 异常信息 -->

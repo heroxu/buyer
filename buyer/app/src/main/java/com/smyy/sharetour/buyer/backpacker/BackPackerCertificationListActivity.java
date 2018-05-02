@@ -23,7 +23,7 @@ public class BackPackerCertificationListActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-        title.setText("管理");
+        title.setText("认证信息");
     }
 
     @Override

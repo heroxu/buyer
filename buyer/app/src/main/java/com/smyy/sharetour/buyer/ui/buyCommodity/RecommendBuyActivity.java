@@ -11,7 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.smyy.sharetour.buyer.dialog.BuyTypePop;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.dialog.RegionPop;
 import com.smyy.sharetour.buyer.adapter.RecommendBuyAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
@@ -21,6 +23,7 @@ import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class RecommendBuyActivity extends BaseMvpActivity {
 
@@ -68,4 +71,18 @@ public class RecommendBuyActivity extends BaseMvpActivity {
         return null;
     }
 
+
+    @OnClick({R.id.ll_recommend_buy, R.id.ll_recommend_buy_sort_smart})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_recommend_buy:
+                RegionPop mRegionPop = new RegionPop(RecommendBuyActivity.this);
+                mRegionPop.showPop(llRecommendBuy);
+                break;
+            case R.id.ll_recommend_buy_sort_smart:
+                BuyTypePop mBuyTypePop = new BuyTypePop(RecommendBuyActivity.this);
+                mBuyTypePop.showPop(llRecommendBuySortSmart);
+                break;
+        }
+    }
 }
