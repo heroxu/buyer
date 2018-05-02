@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             style="@style/CommonButton.Rectangle"
-            android:text="@string/next"
+            android:text="确定发布"
             android:textColor="@color/white"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"

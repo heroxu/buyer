@@ -59,7 +59,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:gravity="center"
-                android:drawableTop="@mipmap/ic_wechat"
+                android:drawableTop="@mipmap/ic_share_qq"
                 android:drawablePadding="5dp"/>
 
             <TextView
@@ -69,7 +69,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:gravity="center"
-                android:drawableTop="@mipmap/ic_wechat"
+                android:drawableTop="@mipmap/ic_share_wewhat"
                 android:drawablePadding="5dp"/>
 
             <TextView
@@ -79,7 +79,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:gravity="center"
-                android:drawableTop="@mipmap/ic_wechat"
+                android:drawableTop="@mipmap/ic_share_friend"
                 android:drawablePadding="5dp"/>
         </LinearLayout>
 

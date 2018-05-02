@@ -10,10 +10,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
@@ -21,9 +25,6 @@ import com.smyy.sharetour.buyer.bean.TravelBean;
 import com.smyy.sharetour.buyer.require.OnRecyclerViewOnClickListener;
 import com.smyy.sharetour.buyer.require.RecyclerViewDivider;
 import com.smyy.sharetour.buyer.require.SimpleSelectActivity;
-import com.smyy.sharetour.buyer.view.pickerview.TimePickerDialog;
-import com.smyy.sharetour.buyer.view.pickerview.data.Type;
-import com.smyy.sharetour.buyer.view.pickerview.listener.OnDateSetListener;
 import com.xmyy.view.dialoglib.CommonDialog;
 import com.xmyy.view.dialoglib.base.BindViewHolder;
 import com.xmyy.view.dialoglib.listener.OnViewClickListener;
@@ -61,12 +62,10 @@ public class BackPackerSendTravelActivity extends BaseMvpActivity {
     private static final int REQUEST_GET_PLACE = 10;
     private int click_position;
     private BackPackerSendTravelItemAdapter adapter;
-    SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
     private final String[] placeArray = {"日本", "法国"
             , "马来西亚", "新加坡", "巴西", "阿富汗",
             "美国", "澳大利亚", "墨西哥"
             , "阿根廷", "南非", "俄罗斯", "英国"};
-    private TimePickerDialog mDialogYearMonthDay;
     private CommonDialog dialog;
 
 
@@ -107,35 +106,12 @@ public class BackPackerSendTravelActivity extends BaseMvpActivity {
             @Override
             public void onTimeClick(int position) {
                 click_position = position;
-                mDialogYearMonthDay.show(getSupportFragmentManager(), "year_month_day");
+                pickTime();
             }
         });
         travelList.setAdapter(adapter);
 
-        mDialogYearMonthDay = new TimePickerDialog.Builder()
-                .setThemeColor(Color.WHITE)
-                .setBackgroundColor(R.color.txt_gray_transparent)
-                .setWheelItemTextSelectorColor(Color.BLACK)
-                .setType(Type.YEAR_MONTH_DAY)
-                .setCallBack(new OnDateSetListener() {
-                    @Override
-                    public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                        String text = getDateToString(millseconds);
-                        routes.get(click_position).setRouteTime(text);
-                        if (click_position == routes.size() - 1) {
-                            adapter.notifyItemChanged(click_position + 1, 0);
-                        } else {
-                            adapter.notifyItemChanged(click_position, 0);
-                        }
-                        checkIsValid();
-                    }
-                })
-                .build();
-    }
 
-    public String getDateToString(long time) {
-        Date d = new Date(time);
-        return sf.format(d);
     }
 
     private void selectCountry() {
@@ -276,6 +252,47 @@ public class BackPackerSendTravelActivity extends BaseMvpActivity {
 
             }
         });
+    }
+
+    private void pickTime(){
+        //时间选择器
+        TimePickerView pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {//选中事件回调
+                    routes.get(click_position).setRouteTime(getTime(date));
+                    if (click_position == routes.size() - 1) {
+                        adapter.notifyItemChanged(click_position + 1, 0);
+                    } else {
+                        adapter.notifyItemChanged(click_position, 0);
+                    }
+                    checkIsValid();
+                }
+            })
+            .setType(new boolean[]{true, true, true, false, false, false})// 默认全部显示
+            .setCancelText(getResources().getString(R.string.cancel))//取消按钮文字
+            .setSubmitText(getResources().getString(R.string.confirm))//确认按钮文字
+            .setContentTextSize(17)//滚轮文字大小
+            .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
+            .isCyclic(true)//是否循环滚动
+            .setTextColorCenter(getResources().getColor(R.color.txt_main))
+            .setTextColorOut(getResources().getColor(R.color.txt_gray))
+            .setCenterBgColor(Color.WHITE)
+            .setSubmitColor(getResources().getColor(R.color.txt_price))//确定按钮文字颜色
+            .setSubCalSize(15)
+            .setCancelColor(getResources().getColor(R.color.txt_gray_dark))//取消按钮文字颜色
+            .setTitleBgColor(Color.WHITE)//标题背景颜色 Night mode
+            .setBgColor(getResources().getColor(R.color.tag_bg))//滚轮背景颜色 Night mode
+            .setLabel("年","月","日","时","分","秒")//默认设置为年月日时分秒
+            .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
+            .isDialog(false)//是否显示为对话框样式
+            .build();
+        pvTime.show();
+    }
+
+    private String getTime(Date date) {//可根据需要自行截取数据显示
+        Log.d("getTime()", "choice date millis: " + date.getTime());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
     }
 
 }

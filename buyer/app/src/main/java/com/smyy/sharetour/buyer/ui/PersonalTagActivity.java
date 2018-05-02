@@ -73,7 +73,7 @@ public class PersonalTagActivity extends BaseMvpActivity {
         mList.add("文化玩乐");
         mList.add("生活饮食");
         mList.add("运动户外");
-        TagBaseAdapter mAdapter = new TagBaseAdapter(this,mList);
+        TagBaseAdapter mAdapter = new TagBaseAdapter(this, mList, R.layout.view_item_personal_tag);
 
         tagContainer.setAdapter(mAdapter);
         tagContainer.setItemClickListener(new TagCloudLayout.TagItemClickListener() {

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.backpacker.require.BackPackerRequireDetailsActivity;
+import com.smyy.sharetour.buyer.backpacker.travel.BackPackerSendTravelActivity;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;
@@ -114,6 +115,8 @@ public class BackPackerHomeFragment extends BaseMvpFragment {
                         new OnViewClickListener() {
                             @Override
                             public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                startActivity(BackPackerSendTravelActivity.class);
+                                commonDialog.dismiss();
                             }
                         },
                         getString(R.string.cancel),

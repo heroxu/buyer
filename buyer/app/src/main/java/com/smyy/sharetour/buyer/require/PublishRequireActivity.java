@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer.require;
 
 import android.Manifest;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -17,6 +19,9 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
@@ -28,9 +33,6 @@ import com.smyy.sharetour.buyer.module.my.ShippingAddressListActivity;
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
 import com.smyy.sharetour.buyer.util.StringUtil;
 import com.smyy.sharetour.buyer.view.keyboard.MyKeyBoardDialog;
-import com.smyy.sharetour.buyer.view.pickerview.TimePickerDialog;
-import com.smyy.sharetour.buyer.view.pickerview.data.Type;
-import com.smyy.sharetour.buyer.view.pickerview.listener.OnDateSetListener;
 import com.yongchun.library.view.ImagePreviewActivity;
 import com.yongchun.library.view.ImageSelectorActivity;
 
@@ -57,7 +59,7 @@ import me.weyye.hipermission.PermissionItem;
  * @date on 2018/4/10 0010 16:09
  * @describe 发布需求页面
  */
-public class PublishRequireActivity extends BaseMvpActivity implements OnDateSetListener {
+public class PublishRequireActivity extends BaseMvpActivity{
 
     @BindView(R.id.disc_context)
     EditText disc_context;
@@ -84,8 +86,6 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
     private List<String> imagePaths = new ArrayList<>();
     private GridAdapter gridAdapter;
     private TimePickerDialog mDialogYearMonthDay;
-    private MyKeyBoardDialog mkeyBoardDialog;
-    SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
     private final String[] typeArray = {"美妆彩妆", "美容护理", "服装鞋包", "数码科技", "精美饰品","母婴用品", "文化娱乐", "生活饮食", "运动户外", "其他商品"};
     private final String[] placeArray = {"日本", "法国"
             , "马来西亚", "新加坡", "巴西", "阿富汗",
@@ -193,14 +193,6 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
         imagePaths.add("paizhao");
         gridAdapter = new GridAdapter(imagePaths, getApplicationContext(),null);
         gridView.setAdapter(gridAdapter);
-
-        mDialogYearMonthDay = new TimePickerDialog.Builder()
-                .setThemeColor(Color.WHITE)
-                .setBackgroundColor(R.color.txt_gray_transparent)
-                .setWheelItemTextSelectorColor(Color.BLACK)
-                .setType(Type.YEAR_MONTH_DAY)
-                .setCallBack(this)
-                .build();
     }
 
     @Override
@@ -281,7 +273,7 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
                 dialog.show(getSupportFragmentManager(), null);
                 break;
             case R.id.require_finish_time:
-                mDialogYearMonthDay.show(getSupportFragmentManager(), "year_month_day");
+                pickTime();
                 break;
             case R.id.require_type:
                 intent = new Intent(PublishRequireActivity.this, SimpleSelectActivity.class);
@@ -342,16 +334,6 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
         requireBean.setState(Consts.REQUIRE_STATE_WAIT_SELLER);
     }
 
-    public String getDateToString(long time) {
-        Date d = new Date(time);
-        return sf.format(d);
-    }
-
-    @Override
-    public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        String text = getDateToString(millseconds);
-        requireFinishTime.setText(text);
-    }
 
     private boolean isValidate(){
         //判断描述有效性，字符不得少于10个
@@ -397,5 +379,40 @@ public class PublishRequireActivity extends BaseMvpActivity implements OnDateSet
 
             }
         });
+    }
+
+    private void pickTime(){
+        //时间选择器
+        TimePickerView pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {//选中事件回调
+                requireFinishTime.setText(getTime(date));
+                }
+            })
+            .setType(new boolean[]{true, true, true, false, false, false})// 默认全部显示
+            .setCancelText(getResources().getString(R.string.cancel))//取消按钮文字
+            .setSubmitText(getResources().getString(R.string.confirm))//确认按钮文字
+            .setContentTextSize(17)//滚轮文字大小
+            .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
+            .isCyclic(true)//是否循环滚动
+            .setTextColorCenter(getResources().getColor(R.color.txt_main))
+            .setTextColorOut(getResources().getColor(R.color.txt_gray))
+            .setCenterBgColor(Color.WHITE)
+            .setSubmitColor(getResources().getColor(R.color.txt_price))//确定按钮文字颜色
+            .setSubCalSize(15)
+            .setCancelColor(getResources().getColor(R.color.txt_gray_dark))//取消按钮文字颜色
+            .setTitleBgColor(Color.WHITE)//标题背景颜色 Night mode
+            .setBgColor(getResources().getColor(R.color.tag_bg))//滚轮背景颜色 Night mode
+            .setLabel("年","月","日","时","分","秒")//默认设置为年月日时分秒
+            .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
+            .isDialog(false)//是否显示为对话框样式
+            .build();
+        pvTime.show();
+    }
+
+    private String getTime(Date date) {//可根据需要自行截取数据显示
+        Log.d("getTime()", "choice date millis: " + date.getTime());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
     }
 }

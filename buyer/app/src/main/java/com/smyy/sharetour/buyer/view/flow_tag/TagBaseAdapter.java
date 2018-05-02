@@ -24,10 +24,12 @@ public class TagBaseAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<String> mList;
+    private int layout_ID;
 
-    public TagBaseAdapter(Context context, List<String> list) {
+    public TagBaseAdapter(Context context, List<String> list, int layoutID) {
         mContext = context;
         mList = list;
+        this.layout_ID = layoutID;
     }
 
     @Override
@@ -49,7 +51,7 @@ public class TagBaseAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.view_item_tag, null);
+            convertView = LayoutInflater.from(mContext).inflate(layout_ID, null);
             holder = new ViewHolder();
             holder.tagBtn = (TextView) convertView.findViewById(R.id.tag_btn);
             convertView.setTag(holder);

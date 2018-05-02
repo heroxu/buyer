@@ -62,17 +62,19 @@ public class GoodTagActivity extends BaseMvpActivity {
         mList.add("母婴用品");
         mList.add("服饰配件");
         mList.add("数码产品");
+        mList.add("珠宝首饰");
         mList.add("钟表眼镜");
         mList.add("古董收藏");
         mList.add("游戏设备");
         mList.add("玩具乐器");
         mList.add("居家日用");
+        mList.add("家用电器");
         mList.add("保健护理");
         mList.add("童装");
         mList.add("箱包");
         mList.add("动漫/周边");
         mList.add("宠物/用品");
-        TagBaseAdapter mAdapter = new TagBaseAdapter(this,mList);
+        TagBaseAdapter mAdapter = new TagBaseAdapter(this, mList ,R.layout.view_item_tag);
 
         tagContainer.setAdapter(mAdapter);
         tagContainer.setItemClickListener(new TagCloudLayout.TagItemClickListener() {

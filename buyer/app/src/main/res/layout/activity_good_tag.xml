@@ -11,9 +11,9 @@
         android:layout_marginTop="20dp"
         android:id="@+id/tag_container"
         android:layout_below="@id/personal_bg"
-        app:tagSpacing="15dp"
+        app:tagSpacing="13dp"
         app:lineSpacing="20dp"
-        android:paddingLeft="20dp"
+        android:paddingLeft="10dp"
         />
 
 
