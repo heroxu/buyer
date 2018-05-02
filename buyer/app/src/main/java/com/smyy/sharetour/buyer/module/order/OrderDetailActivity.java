@@ -123,6 +123,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             }
             orderDetailBean.setOrderStatus(orderStatus);
 
+            orderDetailBean.setBuyerName("我是小桂子的桂子");
+
             orderDetailBean.setShippingName("阳鸿");
             orderDetailBean.setShippingPhone("13760685049");
             orderDetailBean.setShippingAddress("广东省广州市天河区冼村街道合景国际金融大厦32 楼3205室");
