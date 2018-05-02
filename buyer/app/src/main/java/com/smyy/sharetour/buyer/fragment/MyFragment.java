@@ -120,7 +120,7 @@ public class MyFragment extends MyBaseMvpFragment<UserPresenter> implements IUse
                 break;
 
             case R.id.iv_my_msg:
-
+                ActivityLauncher.viewMessageListActivity(mActivity);
                 break;
 
             case R.id.iv_my_edit_username:
