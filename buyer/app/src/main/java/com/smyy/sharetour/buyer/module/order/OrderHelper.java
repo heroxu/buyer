@@ -114,7 +114,7 @@ public class OrderHelper {
                 break;
 
             case OPERATE_VIEW_DETAIL:
-                activity.startActivity(OrderDetailActivity.class);
+//                activity.startActivity(OrderDetailActivity.class);
                 break;
 
             case OPERATE_ADD_REVIEW:
