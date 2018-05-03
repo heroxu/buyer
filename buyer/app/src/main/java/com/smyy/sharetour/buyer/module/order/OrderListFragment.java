@@ -128,7 +128,7 @@ public class OrderListFragment extends BaseMvpFragment {
                         fakeData.add(getFakeOrderBean1(OrderHelper.STATUS_BUYER_AWAIT_PAY));
                         fakeData.add(getFakeOrderBean1(OrderHelper.STATUS_BUYER_AWAIT_CONFIRM));
                         fakeData.add(getFakeOrderBean1(OrderHelper.STATUS_BUYER_AWAIT_REVIEW));
-                        fakeData.add(getFakeOrderBean2(OrderHelper.STATUS_BUYER_DONE));
+                        fakeData.add(getFakeOrderBean2(OrderHelper.STATUS_BUYER_ADD_REVIEW));
                         fakeData.add(getFakeOrderBean2(OrderHelper.STATUS_BUYER_AWAIT_SHIPPING));
                         fakeData.add(getFakeOrderBean1(OrderHelper.STATUS_BUYER_AWAIT_PAY));
                         fakeData.add(getFakeOrderBean2(OrderHelper.STATUS_BUYER_DISPUTE_SUCCESS));

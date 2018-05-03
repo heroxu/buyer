@@ -196,25 +196,20 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             rvGoodsList.setAdapter(new OrderGoodsListAdapter(OrderDetailActivity.this, data.getGoodsList()));
 
             int goodsType = data.getGoodsType();
-            switch (goodsType) {
-                case OrderHelper.GOODS_TYPE_DEMAND:
-                    laySum.setVisibility(View.GONE);
-                    break;
-
-                default:
-                    laySum.setVisibility(View.VISIBLE);
-                    int goodsCountTotal = data.getGoodsCountTotal();
-                    if (goodsCountTotal > 0) {
-                        tvGoodsCount.setVisibility(View.VISIBLE);
-                        tvGoodsCount.setText("共" + goodsCountTotal + "件商品");
-                    } else {
-                        tvGoodsCount.setVisibility(View.GONE);
-                    }
-
-                    tvPriceTotal.setText(StringUtil.connect("总额：", data.getPriceTotal()));
-                    tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
-                    break;
+            if (goodsType == OrderHelper.GOODS_TYPE_DEMAND) {
+                tvGoodsCount.setVisibility(View.GONE);
+            } else {
+                int goodsCountTotal = data.getGoodsCountTotal();
+                if (goodsCountTotal > 0) {
+                    tvGoodsCount.setVisibility(View.VISIBLE);
+                    tvGoodsCount.setText("共" + goodsCountTotal + "件商品");
+                } else {
+                    tvGoodsCount.setVisibility(View.GONE);
+                }
             }
+
+            tvPriceTotal.setText(StringUtil.connect("总额：", data.getPriceTotal()));
+            tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
 
             OrderHelper.switchDetailStatusNBtns(this, mUserType, data, layStatus,
                     layBottomBtns, tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore);

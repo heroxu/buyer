@@ -58,13 +58,14 @@ public class OrderHelper {
     public static final int STATUS_BUYER_AWAIT_SHIPPING = 2;//待发货
     public static final int STATUS_BUYER_AWAIT_CONFIRM = 3;//待收货
     public static final int STATUS_BUYER_AWAIT_REVIEW = 4;//交易成功(待评价)
-    public static final int STATUS_BUYER_DONE = 5;//交易成功(待追评)
-    public static final int STATUS_BUYER_DUR_DISPUTE = 6;//售后处理中
-    public static final int STATUS_BUYER_DISPUTE_SUCCESS = 7;//退款成功
-    public static final int STATUS_BUYER_CLOSED = 8;
+    public static final int STATUS_BUYER_ADD_REVIEW = 5;//交易成功(待追评)
+    public static final int STATUS_BUYER_DONE = 6;//交易成功(无其他操作)
+    public static final int STATUS_BUYER_DUR_DISPUTE = 7;//售后处理中
+    public static final int STATUS_BUYER_DISPUTE_SUCCESS = 8;//退款成功
+    public static final int STATUS_BUYER_CLOSED = 9;
     //订单状态对应文本
     public static final String[] STATUS_STRINGS_BUYER = {"", "待付款", "待发货",
-            "待收货", "交易成功", "交易成功", "售后处理中", "退款成功", "交易关闭"};
+            "待收货", "交易成功", "交易成功", "交易成功", "售后处理中", "退款成功", "交易关闭"};
 
 
     //卖家订单状态
@@ -413,12 +414,27 @@ public class OrderHelper {
 
                     break;
 
-                case STATUS_BUYER_DONE:
+                case STATUS_BUYER_ADD_REVIEW:
                     layBottomBtns.setVisibility(View.VISIBLE);
                     switchBottomBtns(activity, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
                             "追加评价", OPERATE_ADD_REVIEW,
+                            TextUtils.isEmpty(orderBean.getVerifyVideo()) ? null : "鉴定视频",
+                            OPERATE_VERIFY_VIDEO,
+                            null, -1,
+                            null, -1,
+                            null, -1,
+                            null, -1);
+
+                    break;
+
+                case STATUS_BUYER_DONE:
+                    layBottomBtns.setVisibility(View.VISIBLE);
+                    switchBottomBtns(activity, false,
+                            tvBottomBtn1, tvBottomBtn2,
+                            tvBottomBtn3, tvBottomBtnMore,
+                            "删除订单", OPERATE_DELETE,
                             TextUtils.isEmpty(orderBean.getVerifyVideo()) ? null : "鉴定视频",
                             OPERATE_VERIFY_VIDEO,
                             null, -1,
@@ -640,7 +656,7 @@ public class OrderHelper {
 
                     break;
 
-                case STATUS_BUYER_DONE:
+                case STATUS_BUYER_ADD_REVIEW:
                     switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "交易成功");
                     layBottomBtns.setVisibility(View.VISIBLE);
                     switchBottomBtns(activity, true,
@@ -650,6 +666,22 @@ public class OrderHelper {
                             TextUtils.isEmpty(orderDetailBean.getVerifyVideo()) ? null : "鉴定视频",
                             OPERATE_VERIFY_VIDEO,
                             "删除订单", OPERATE_DELETE,
+                            null, -1,
+                            null, -1,
+                            null, -1);
+
+                    break;
+
+                case STATUS_BUYER_DONE:
+                    switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "交易成功");
+                    layBottomBtns.setVisibility(View.VISIBLE);
+                    switchBottomBtns(activity, false,
+                            tvBottomBtn1, tvBottomBtn2,
+                            tvBottomBtn3, tvBottomBtnMore,
+                            TextUtils.isEmpty(orderDetailBean.getVerifyVideo()) ? null : "鉴定视频",
+                            OPERATE_VERIFY_VIDEO,
+                            "删除订单", OPERATE_DELETE,
+                            null, -1,
                             null, -1,
                             null, -1,
                             null, -1);
