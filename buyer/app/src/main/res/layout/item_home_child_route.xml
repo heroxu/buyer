@@ -1,199 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="360dp"
     android:layout_height="wrap_content"
     android:layout_marginEnd="10dp"
     android:layout_marginStart="10dp"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
+
     <FrameLayout
         android:layout_width="360dp"
-        android:layout_height="240dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_buyer_route"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
 
 
         <RelativeLayout
+            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/ll_route"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:layout_height="50dp">
-                <ImageView
-                    android:background="#000000"
-                    android:alpha="0.5"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/ic_home_certified"/>
+                android:orientation="horizontal">
 
                 <TextView
-                    android:background="#000000"
-                    android:alpha="0.5"
-                    android:id="@+id/check_route"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:text="时间 1月20日 - 1月28日"
                     android:textColor="@color/white"
-                    android:text="已验证的行程"
-                    />
+                    android:textSize="11sp" />
 
-                <TextView
-                    android:background="@color/white"
-                    android:layout_marginStart="@dimen/margin_10"
-                    android:layout_marginEnd="@dimen/margin_10"
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
                     android:padding="5dp"
-                    android:id="@+id/tv_buyer_go"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/txt_main"
-                    android:text="1月20  出发"
-                    />
+                    android:alpha="0.5"
+                    android:background="#000000"
+                    android:gravity="center">
 
-                <TextView
-                    android:background="@color/white"
-                    android:layout_marginStart="@dimen/margin_10"
-                    android:layout_marginEnd="@dimen/margin_10"
-                    android:padding="5dp"
-                    android:id="@+id/tv_buyer_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/txt_main"
-                    android:text="1月28  返程"
-                    />
+                    <ImageView
+                        android:layout_width="9dp"
+                        android:layout_height="9dp"
+                        android:src="@mipmap/ic_home_certified" />
+
+                    <TextView
+                        android:id="@+id/check_route"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已认证"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+                </LinearLayout>
             </LinearLayout>
 
-
-            <TextView
-                android:id="@+id/tv_route_country"
-                android:layout_below="@+id/ll_route"
-                android:layout_marginTop="10dp"
+            <LinearLayout
+                android:id="@+id/ll_route_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:textSize="25sp"
-                android:text="日本 - 韩国 - 马来西亚"
-                android:textColor="@color/white"
-                />
+                android:layout_below="@+id/ll_route"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="尼泊尔"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" - 途经4个国家 - "
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="澳大利亚"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_can_buy"
-                android:layout_below="@+id/tv_route_country"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:textSize="18sp"
-                android:text="本次行程可代购"
-                android:textColor="@color/white"
-                />
+                android:layout_below="@+id/ll_route_country"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="准备出发"
+                android:textColor="@color/txt_main"
+                android:textSize="11sp" />
 
             <LinearLayout
                 android:id="@+id/ll_route_classify"
-                android:layout_below="@id/tv_can_buy"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_can_buy"
+                android:layout_marginTop="30dp"
                 android:gravity="center_vertical"
-                android:layout_height="50dp">
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/tv_route_classify_one"
-                    android:background="@drawable/bg_title_rectangle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
+                    android:background="@drawable/bg_title_rectangle"
                     android:text="护肤美容"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
 
                 <TextView
-                    android:background="@drawable/bg_title_rectangle"
                     android:id="@+id/tv_route_classify_two"
-                    android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_title_rectangle"
                     android:text="母婴用品"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
 
                 <TextView
-                    android:background="@drawable/bg_title_rectangle"
                     android:id="@+id/tv_route_classify_three"
-                    android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_title_rectangle"
                     android:text="数码产品"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
 
 
             </LinearLayout>
 
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/layout_iv_more"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="5dp"
-                android:layout_below="@+id/ll_route_classify"
-                app:srcCompat="@mipmap/ic_home_arrow_more" />
         </RelativeLayout>
     </FrameLayout>
+
     <RelativeLayout
-        android:layout_marginTop="@dimen/margin_10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_home_note_avatar"
-            android:layout_marginStart="5dp"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginStart="5dp"
             android:src="@mipmap/user_avatar" />
 
         <TextView
             android:id="@+id/tv_home_note_avatar_name"
-            android:layout_toRightOf="@+id/iv_home_note_avatar"
-            android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
-            android:gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@+id/iv_home_note_avatar"
             android:ellipsize="end"
-            android:textColor="@color/txt_gray"
-            android:textSize="14sp"
-            android:text="刘德华"
-            />
+            android:gravity="center_vertical"
+            android:text="羊咩咩咩咩咩"
+            android:textColor="@color/txt_main"
+            android:textSize="13sp" />
 
 
         <LinearLayout
             android:id="@+id/ll_route_live"
-            android:background="@drawable/bg_rounded_rectangle_solid_333333"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin_10"
-            android:gravity="center_vertical"
             android:layout_toLeftOf="@+id/tv_route_communicate"
+            android:background="@drawable/bg_rounded_rectangle_solid_333333"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <com.smyy.sharetour.buyer.view.OnLineLinearLayout
@@ -207,31 +200,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:textColor="@color/white"
-                android:textSize="14sp"
                 android:text="直播中"
-                />
+                android:textColor="@color/white"
+                android:textSize="11sp" />
         </LinearLayout>
-
 
 
         <TextView
             android:id="@+id/tv_route_communicate"
-            android:background="@drawable/bg_rounded_rectangle_ffcd1f"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_main"
-            android:textSize="14sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_rounded_rectangle_ffcd1f"
             android:text="立即沟通"
-            />
+            android:textColor="@color/txt_main"
+            android:textSize="11sp" />
 
     </RelativeLayout>
 
     <View
-        android:layout_marginTop="@dimen/margin_10"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/txt_gray"/>
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@color/txt_gray" />
 </LinearLayout>

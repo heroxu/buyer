@@ -23,13 +23,12 @@ public class BuyTypePop implements View.OnTouchListener{
     private Context mContext;
     private BasePopupWindow mPopupWindow;
     AreaRightAdapter mAdapter;
-
     public BuyTypePop(Context mContext) {
         this.mContext = mContext;
     }
 
     /**初始化控件 , 实现控件点击事件*/
-    private void init(View v) {
+    private void init(View v, final IStatusChange mIStatusChange) {
         View convertView = LayoutInflater.from(mContext).inflate(R.layout.pop_buy_type, null);
         RecyclerView recyclerView = (RecyclerView) convertView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
@@ -44,6 +43,7 @@ public class BuyTypePop implements View.OnTouchListener{
                 mAdapter.setCheckItem();
                 ((AreaBean.Region) adapter.getItem(position)).setCheck(true);
                 adapter.notifyDataSetChanged();
+                mIStatusChange.selectPosition(position);
             }
         });
         mPopupWindow = new BasePopupWindow(convertView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
@@ -62,11 +62,11 @@ public class BuyTypePop implements View.OnTouchListener{
         return false;
     }
 
-    public BuyTypePop showPop(View v) {
+    public BuyTypePop showPop(View v,IStatusChange mIStatusChange) {
         if (null != mPopupWindow) {
             mPopupWindow.dismiss();
         } else {
-            init(v);
+            init(v,mIStatusChange);
         }
         return this;
     }
@@ -78,6 +78,10 @@ public class BuyTypePop implements View.OnTouchListener{
             mPopupWindow.dismiss();
         }
         return isshowing;
+    }
+
+    public interface IStatusChange{
+        void selectPosition(int position);
     }
 
 }

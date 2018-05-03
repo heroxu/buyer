@@ -93,4 +93,15 @@ public class NetworkUtils {
         ToastUtils.showToast(context, R.string.no_network_message);
         return false;
     }
+
+    private static long lastClickTime;
+    //防连点
+    public synchronized static boolean isFastClick() {
+        long time = System.currentTimeMillis();
+        if ( time - lastClickTime < 500) {
+            return true;
+        }
+        lastClickTime = time;
+        return false;
+    }
 }

@@ -80,8 +80,13 @@ public class RecommendBuyActivity extends BaseMvpActivity {
                 mRegionPop.showPop(llRecommendBuy);
                 break;
             case R.id.ll_recommend_buy_sort_smart:
-                BuyTypePop mBuyTypePop = new BuyTypePop(RecommendBuyActivity.this);
-                mBuyTypePop.showPop(llRecommendBuySortSmart);
+                final BuyTypePop mBuyTypePop = new BuyTypePop(RecommendBuyActivity.this);
+                mBuyTypePop.showPop(llRecommendBuySortSmart, new BuyTypePop.IStatusChange() {
+                    @Override
+                    public void selectPosition(int position) {
+                        mBuyTypePop.disMissPop();
+                    }
+                });
                 break;
         }
     }

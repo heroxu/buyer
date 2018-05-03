@@ -133,20 +133,16 @@ public class ActivityLauncher {
      * 跳转到笔记详情
      */
     public static void viewNoteDetailsActivity(Context context) {
-        if (isLogin(context)) {
-            Intent intent = new Intent(context, NoteDetailsActivity.class);
-            context.startActivity(intent);
-        }
+        Intent intent = new Intent(context, NoteDetailsActivity.class);
+        context.startActivity(intent);
     }
 
     /**
      * 跳转到视频详情
      */
     public static void viewVideoDetailsActivity(Context context) {
-        if (isLogin(context)) {
-            Intent intent = new Intent(context, VideoDetailsActivity.class);
-            context.startActivity(intent);
-        }
+        Intent intent = new Intent(context, VideoDetailsActivity.class);
+        context.startActivity(intent);
     }
 
     /**

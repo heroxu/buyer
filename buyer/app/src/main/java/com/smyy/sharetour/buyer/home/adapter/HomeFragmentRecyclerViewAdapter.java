@@ -221,7 +221,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     public class HomeChildRouteDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         private List<HomeRouteItem> mRouteDatas;
-        private int [] drawableArr = {R.mipmap.random_icon_one,R.mipmap.random_icon_two,R.mipmap.random_icon_three,R.mipmap.random_icon_four};
+        private int [] drawableArr = {R.mipmap.img_ill_china,R.mipmap.img_ill_russia,R.mipmap.img_ill_taiwan,R.mipmap.img_ill_kenya};
         public HomeChildRouteDetailAdapter(List<HomeRouteItem> datas) {
             this.mRouteDatas = datas;
         }
@@ -244,8 +244,6 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
                 }
             });
-            viewHolder.tv_buyer_go.setText(homeRouteItem.goTime);
-            viewHolder.tv_buyer_back.setText(homeRouteItem.backTime);
             viewHolder.iv_buyer_route.setImageResource(drawableArr[position]);
             viewHolder.tv_route_communicate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -263,8 +261,6 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
         public  class HomeRouteItemHolder extends RecyclerView.ViewHolder{
             ImageView iv_buyer_route;
-            TextView tv_buyer_go;
-            TextView tv_buyer_back;
             TextView tv_route_classify_one;
             TextView tv_route_classify_two;
             TextView tv_route_classify_three;
@@ -273,8 +269,6 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             public HomeRouteItemHolder(View itemView) {
                 super(itemView);
                 iv_buyer_route = (ImageView) itemView.findViewById(R.id.iv_buyer_route);
-                tv_buyer_go = (TextView)itemView.findViewById(R.id.tv_buyer_go);
-                tv_buyer_back = (TextView)itemView.findViewById(R.id.tv_buyer_back);
                 tv_route_classify_one = (TextView)itemView.findViewById(R.id.tv_route_classify_one);
                 tv_route_classify_two = (TextView)itemView.findViewById(R.id.tv_route_classify_two);
                 tv_route_classify_three = (TextView)itemView.findViewById(R.id.tv_route_classify_three);
