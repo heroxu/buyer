@@ -4,12 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:gravity="right"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp">
 
         <ImageView
             android:id="@+id/iv_order_goods_pic"
@@ -87,14 +91,28 @@
             android:layout_marginLeft="15dp"
             android:textColor="@color/txt_gray_dark"
             android:textSize="@dimen/txt_size_11"
-            tools:text="x1" />
-
-
+            android:visibility="gone"
+            tools:text="x1"
+            tools:visibility="visible" />
     </RelativeLayout>
 
+
+    <TextView
+        android:id="@+id/tv_order_goods_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_rounded_rectangle_stroke_gray"
+        android:gravity="center"
+        android:textColor="@color/txt_gray_dark"
+        android:textSize="@dimen/txt_size_11"
+        android:visibility="gone"
+        tools:text="申请售后"
+        tools:visibility="visible" />
+
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/window_background" />
+        style="@style/LineDivider.Horizon"
+        android:layout_marginTop="15dp" />
 
 </LinearLayout>

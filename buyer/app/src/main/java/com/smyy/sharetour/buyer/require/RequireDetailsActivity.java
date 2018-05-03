@@ -331,13 +331,13 @@ public class RequireDetailsActivity extends BaseMvpActivity {
                 "黑白/36.5",
                 "",
                 "￥9,918.00",
-                1, "");
+                1, "",OrderHelper.GOODS_TYPE_DEMAND,null);
         OrderGoodsInfo goodsInfo2 = new OrderGoodsInfo("2",
                 "NIKE HUARACHE DRIFT (PSE) LALALALALA",
                 "黑白/34",
                 "",
                 "￥8,918.00",
-                1, "");
+                1, "",OrderHelper.GOODS_TYPE_DEMAND,null);
         ArrayList<OrderGoodsInfo> fakeGoodsList2 = new ArrayList<>();
         fakeGoodsList2.add(goodsInfo1);
         fakeGoodsList2.add(goodsInfo2);
@@ -347,6 +347,8 @@ public class RequireDetailsActivity extends BaseMvpActivity {
                 "",
                 "我是小桂子的桂子",
                 "",
+                "",
+                "我是小桂子",
                 "",
                 2,
                 "￥18,866.00",

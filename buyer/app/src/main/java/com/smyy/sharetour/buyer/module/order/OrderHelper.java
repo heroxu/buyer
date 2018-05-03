@@ -98,10 +98,20 @@ public class OrderHelper {
     public static final int OPERATE_CONTACT_SERVICE = 13;//联系客服
     public static final int OPERATE_TO_SHIPPING = 14;//发货
     public static final int OPERATE_VIEW_DETAIL = 15;//查看详情
+    public static final int OPERATE_DISPUTE_DETAIL = 16;//售后详情
+    public static final int OPERATE_DISPUTE = 17;//申请售后
 
 
     public static void switchOperate(final BaseActivity activity, int orderOperateType) {
         switch (orderOperateType) {
+            case OPERATE_DISPUTE:
+
+                break;
+
+            case OPERATE_DISPUTE_DETAIL:
+
+                break;
+
             case OPERATE_VIEW_DETAIL:
                 activity.startActivity(OrderDetailActivity.class);
                 break;

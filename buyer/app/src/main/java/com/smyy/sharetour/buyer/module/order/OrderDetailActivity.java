@@ -128,13 +128,12 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             }
             orderDetailBean.setOrderStatus(orderStatus);
 
-            orderDetailBean.setBuyerName("我是小桂子的桂子");
-
             orderDetailBean.setShippingName("阳鸿");
             orderDetailBean.setShippingPhone("13760685049");
             orderDetailBean.setShippingAddress("广东省广州市天河区冼村街道合景国际金融大厦32 楼3205室");
 
             orderDetailBean.setSellerName(orderBean.getSellerName());
+            orderDetailBean.setBuyerName(orderBean.getBuyerName());
             orderDetailBean.setGoodsList(orderBean.getGoodsList());
             orderDetailBean.setGoodsCountTotal(orderBean.getGoodsCountTotal());
             orderDetailBean.setPriceTotal(orderBean.getPriceTotal());
@@ -171,7 +170,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                 ivOppositeAvatar.setImageResource(R.mipmap.fake_seller_avatar);
 //            Glide.with(mContext).load(data.getSellerAvatar()).into(ivOppositeAvatar);//TODO RTRT
                 tvOppositeName.setText(data.getSellerName());
-                layOppositeInfo.setOnClickListener(new View.OnClickListener() {
+                tvOppositeName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         startActivity(BuyHomePageActivity.class);
@@ -202,7 +201,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             }
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OrderDetailActivity.this);
             rvGoodsList.setLayoutManager(linearLayoutManager);
-            rvGoodsList.setAdapter(new OrderGoodsListAdapter(OrderDetailActivity.this, data.getGoodsList()));
+            rvGoodsList.setAdapter(new OrderGoodsListAdapter(OrderDetailActivity.this, true,
+                    mUserType, data.getOrderStatus(), data.getGoodsList()));
 
             int goodsType = data.getGoodsType();
             if (goodsType == OrderHelper.GOODS_TYPE_DEMAND) {

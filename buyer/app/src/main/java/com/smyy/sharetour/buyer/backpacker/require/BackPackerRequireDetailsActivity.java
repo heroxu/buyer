@@ -153,10 +153,10 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                     break;
             }
 
-        } else if(requireBean.getState() == Consts.REQUIRE_STATE_WAIT_POINT) {
+        } else if (requireBean.getState() == Consts.REQUIRE_STATE_WAIT_POINT) {
             readyGoodLl.setVisibility(View.VISIBLE);
             setWaitPointButton();
-        } else if(requireBean.getState() == Consts.REQUIRE_STATE_INVALID){
+        } else if (requireBean.getState() == Consts.REQUIRE_STATE_INVALID) {
             setCancelButton();
         }
 
@@ -214,16 +214,14 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
         cancelFrame.setVisibility(View.GONE);
         orderDetailFrame.setBackgroundColor(getResources().getColor(R.color.btn_bg_normal));
         orderDetail.setText("去受理");
-        orderDetail.setCompoundDrawables(null,null,null,null);
+        orderDetail.setCompoundDrawables(null, null, null, null);
     }
-
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
-
 
 
     @OnClick({R.id.contact_frame, R.id.cancel_frame, R.id.order_detail_frame, R.id.back_btn})
@@ -233,7 +231,7 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                 ChatActivity.navToChat(BackPackerRequireDetailsActivity.this, "我是小桂子", TIMConversationType.C2C);
                 break;
             case R.id.cancel_frame:
-                if(requireBean.getState()==Consts.REQUIRE_STATE_WAIT_POINT){
+                if (requireBean.getState() == Consts.REQUIRE_STATE_WAIT_POINT) {
                     Intent intent = new Intent(BackPackerRequireDetailsActivity.this, BackPackerRequireCancelActivity.class);
                     startActivityForResult(intent, REQUIRE_REQUEST_CANCEL);
                 } else {
@@ -241,7 +239,7 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                 }
                 break;
             case R.id.order_detail_frame:
-                if(isTakeRequire){
+                if (isTakeRequire) {
                     startActivity(new Intent(BackPackerRequireDetailsActivity.this, BackpackerTakeRequireActivity.class));
                     finish();
                 } else {
@@ -266,13 +264,13 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                 "黑白/36.5",
                 "",
                 "￥9,918.00",
-                1, "");
+                1, "", OrderHelper.GOODS_TYPE_DEMAND, null);
         OrderGoodsInfo goodsInfo2 = new OrderGoodsInfo("2",
                 "NIKE HUARACHE DRIFT (PSE) LALALALALA",
                 "黑白/34",
                 "",
                 "￥8,918.00",
-                1, "");
+                1, "", OrderHelper.GOODS_TYPE_DEMAND, null);
         ArrayList<OrderGoodsInfo> fakeGoodsList2 = new ArrayList<>();
         fakeGoodsList2.add(goodsInfo1);
         fakeGoodsList2.add(goodsInfo2);
@@ -282,6 +280,8 @@ public class BackPackerRequireDetailsActivity extends BaseMvpActivity {
                 "",
                 "我是小桂子的桂子",
                 "",
+                "",
+                "我是小桂子",
                 "",
                 2,
                 "￥18,866.00",

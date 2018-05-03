@@ -12,6 +12,8 @@ public class OrderBean implements Serializable {
     private String sellerName;
     private String sellerAvatar;
     private String buyerId;
+    private String buyerName;
+    private String buyerAvatar;
     private int goodsCountTotal;
     private String priceTotal;
     private String shippingFee;//运费
@@ -19,13 +21,15 @@ public class OrderBean implements Serializable {
     private int goodsType;//商品类型
     private List<OrderGoodsInfo> goodsList;
 
-    public OrderBean(String orderId, int orderStatus, String sellerId, String sellerName, String sellerAvatar, String buyerId, int goodsCountTotal, String priceTotal, String shippingFee, String verifyVideo, int goodsType, List<OrderGoodsInfo> goodsList) {
+    public OrderBean(String orderId, int orderStatus, String sellerId, String sellerName, String sellerAvatar, String buyerId, String buyerName, String buyerAvatar, int goodsCountTotal, String priceTotal, String shippingFee, String verifyVideo, int goodsType, List<OrderGoodsInfo> goodsList) {
         this.orderId = orderId;
         this.orderStatus = orderStatus;
         this.sellerId = sellerId;
         this.sellerName = sellerName;
         this.sellerAvatar = sellerAvatar;
         this.buyerId = buyerId;
+        this.buyerName = buyerName;
+        this.buyerAvatar = buyerAvatar;
         this.goodsCountTotal = goodsCountTotal;
         this.priceTotal = priceTotal;
         this.shippingFee = shippingFee;
@@ -80,6 +84,22 @@ public class OrderBean implements Serializable {
 
     public void setBuyerId(String buyerId) {
         this.buyerId = buyerId;
+    }
+
+    public String getBuyerName() {
+        return buyerName;
+    }
+
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
+    }
+
+    public String getBuyerAvatar() {
+        return buyerAvatar;
+    }
+
+    public void setBuyerAvatar(String buyerAvatar) {
+        this.buyerAvatar = buyerAvatar;
     }
 
     public int getGoodsCountTotal() {

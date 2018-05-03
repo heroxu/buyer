@@ -2,9 +2,7 @@ package com.smyy.sharetour.buyer.module.order.adapter;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,11 +10,11 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.module.order.OrderDetailActivity;
 import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
 import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
-import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 
@@ -55,10 +53,10 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final OrderBean data = mDatas.get(position);
         if (data != null) {
-            holder.laySellerInfo.setVisibility(mUserType == Consts.USER_TYPE_BUYER ?
+            holder.layOppositeInfo.setVisibility(mUserType == Consts.USER_TYPE_BUYER ?
                     View.VISIBLE : View.GONE);
             if (mUserType == Consts.USER_TYPE_BUYER) {
-                holder.laySellerInfo.setOnClickListener(new View.OnClickListener() {
+                holder.tvOppositeName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mActivity.startActivity(BuyHomePageActivity.class);
@@ -66,13 +64,33 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                 });
             }
 
-            holder.ivSellerAvatar.setImageResource(R.mipmap.fake_seller_avatar);
-//            Glide.with(mActivity).load(data.getSellerAvatar()).into(holder.ivSellerAvatar);//TODO RTRT
-            holder.tvSellerName.setText(data.getSellerName());
+            holder.ivOppositeAvatar.setImageResource(R.mipmap.fake_seller_avatar);
+//            Glide.with(mActivity).load(data.getSellerAvatar()).into(holder.ivOppositeAvatar);//TODO RTRT
+            holder.tvOppositeName.setText(data.getSellerName());
+
+            if (mUserType == Consts.USER_TYPE_BUYER) {
+                holder.ivOppositeAvatar.setImageResource(R.mipmap.fake_seller_avatar);
+//            Glide.with(mContext).load(data.getSellerAvatar()).into(ivOppositeAvatar);//TODO RTRT
+                holder.tvOppositeName.setText(data.getSellerName());
+                holder.tvOppositeName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mActivity.startActivity(BuyHomePageActivity.class);
+                    }
+                });
+
+            } else {
+                holder.ivOppositeAvatar.setImageResource(R.mipmap.fake_seller_avatar);
+//            Glide.with(mContext).load(data.getBuyerAvatar()).into(ivOppositeAvatar);//TODO RTRT
+                holder.tvOppositeName.setText(data.getBuyerName());
+                holder.tvOppositeName.setCompoundDrawables(null, null, null, null);
+            }
+
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
             holder.rvGoodsList.setLayoutManager(linearLayoutManager);
-            OrderGoodsListAdapter adapter = new OrderGoodsListAdapter(mActivity, data.getGoodsList());
+            OrderGoodsListAdapter adapter = new OrderGoodsListAdapter(mActivity, false,
+                    mUserType, data.getOrderStatus(), data.getGoodsList());
             holder.rvGoodsList.setAdapter(adapter);
             adapter.setOnItemClickListener(new OrderGoodsListAdapter.OnItemClickListener() {
                 @Override
@@ -176,10 +194,10 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private View laySellerInfo;
+        private View layOppositeInfo;
         private View layBottomBtns;
-        private ImageView ivSellerAvatar;
-        private TextView tvSellerName;
+        private ImageView ivOppositeAvatar;
+        private TextView tvOppositeName;
         private TextView tvStatus;
         private RecyclerView rvGoodsList;
         private View laySum;
@@ -193,10 +211,10 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-            laySellerInfo = itemView.findViewById(R.id.lay_order_seller_info);
             layBottomBtns = itemView.findViewById(R.id.lay_order_bottom_btns);
-            ivSellerAvatar = (ImageView) itemView.findViewById(R.id.iv_order_seller_avatar);
-            tvSellerName = (TextView) itemView.findViewById(R.id.tv_order_seller_name);
+            layOppositeInfo = itemView.findViewById(R.id.lay_order_opposite_info);
+            ivOppositeAvatar = (ImageView) itemView.findViewById(R.id.iv_order_opposite_avatar);
+            tvOppositeName = (TextView) itemView.findViewById(R.id.tv_order_opposite_name);
             tvStatus = (TextView) itemView.findViewById(R.id.tv_order_status);
             rvGoodsList = (RecyclerView) itemView.findViewById(R.id.rv_order_goods_list);
             laySum = itemView.findViewById(R.id.lay_order_sum);

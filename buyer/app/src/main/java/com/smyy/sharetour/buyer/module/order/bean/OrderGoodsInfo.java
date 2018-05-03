@@ -10,18 +10,19 @@ public class OrderGoodsInfo implements Serializable {
     private String goodsPrice;
     private int goodsCount;
     private String goodsPic;
+    private int goodsType;
+    private String disputeOrderId;//对应售后订单ID
 
-    @Override
-    public String toString() {
-        return "OrderGoodsInfo{" +
-                "goodsId='" + goodsId + '\'' +
-                ", goodsName='" + goodsName + '\'' +
-                ", goodsSpec='" + goodsSpec + '\'' +
-                ", receiveDeadline='" + receiveDeadline + '\'' +
-                ", goodsPrice='" + goodsPrice + '\'' +
-                ", goodsCount=" + goodsCount +
-                ", goodsPic='" + goodsPic + '\'' +
-                '}';
+    public OrderGoodsInfo(String goodsId, String goodsName, String goodsSpec, String receiveDeadline, String goodsPrice, int goodsCount, String goodsPic, int goodsType, String disputeOrderId) {
+        this.goodsId = goodsId;
+        this.goodsName = goodsName;
+        this.goodsSpec = goodsSpec;
+        this.receiveDeadline = receiveDeadline;
+        this.goodsPrice = goodsPrice;
+        this.goodsCount = goodsCount;
+        this.goodsPic = goodsPic;
+        this.goodsType = goodsType;
+        this.disputeOrderId = disputeOrderId;
     }
 
     public String getGoodsId() {
@@ -30,6 +31,14 @@ public class OrderGoodsInfo implements Serializable {
 
     public void setGoodsId(String goodsId) {
         this.goodsId = goodsId;
+    }
+
+    public int getGoodsType() {
+        return goodsType;
+    }
+
+    public void setGoodsType(int goodsType) {
+        this.goodsType = goodsType;
     }
 
     public String getGoodsName() {
@@ -80,13 +89,11 @@ public class OrderGoodsInfo implements Serializable {
         this.goodsPic = goodsPic;
     }
 
-    public OrderGoodsInfo(String goodsId, String goodsName, String goodsSpec, String receiveDeadline, String goodsPrice, int goodsCount, String goodsPic) {
-        this.goodsId = goodsId;
-        this.goodsName = goodsName;
-        this.goodsSpec = goodsSpec;
-        this.receiveDeadline = receiveDeadline;
-        this.goodsPrice = goodsPrice;
-        this.goodsCount = goodsCount;
-        this.goodsPic = goodsPic;
+    public String getDisputeOrderId() {
+        return disputeOrderId;
+    }
+
+    public void setDisputeOrderId(String disputeOrderId) {
+        this.disputeOrderId = disputeOrderId;
     }
 }

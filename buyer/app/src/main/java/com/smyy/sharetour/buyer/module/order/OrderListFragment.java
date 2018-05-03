@@ -98,19 +98,19 @@ public class OrderListFragment extends BaseMvpFragment {
                 "黑白/36.5",
                 "",
                 "￥9,918.00",
-                1, "");
+                1, "",OrderHelper.GOODS_TYPE_STOCK,null);
         OrderGoodsInfo goodsInfo2 = new OrderGoodsInfo("2",
                 "NIKE HUARACHE DRIFT (PSE) LALALALALA",
                 "黑白/34",
                 "",
                 "￥8,918.00",
-                1, "");
+                1, "",OrderHelper.GOODS_TYPE_PRESELL,null);
         OrderGoodsInfo goodsInfoDL = new OrderGoodsInfo("2",
                 "NIKE HUARACHE DRIFT (PSE) LALALALALA",
                 "",
                 "2018-05-01",
                 "￥9,918.00",
-                1, "");
+                1, "",OrderHelper.GOODS_TYPE_DEMAND,null);
         fakdeGoodsList1 = new ArrayList<>();
         fakdeGoodsList1.add(goodsInfo1);
         fakeGoodsList2 = new ArrayList<>();
@@ -155,6 +155,8 @@ public class OrderListFragment extends BaseMvpFragment {
                                 "",
                                 "我是小桂子的桂子",
                                 "",
+                                "",
+                                "我是小桂子",
                                 "",
                                 1,
                                 "￥9,948.00",
@@ -244,6 +246,8 @@ public class OrderListFragment extends BaseMvpFragment {
                 "我是小桂子的桂子",
                 "",
                 "",
+                "我是小桂子",
+                "",
                 1,
                 "￥9,948.00",
                 "￥30.00",
@@ -260,6 +264,8 @@ public class OrderListFragment extends BaseMvpFragment {
                 "我是小桂子的桂子",
                 "",
                 "",
+                "我是小桂子",
+                "",
                 2,
                 "￥18,866.00",
                 "￥30.00",
@@ -275,6 +281,8 @@ public class OrderListFragment extends BaseMvpFragment {
                 "",
                 "我是小桂子的桂子",
                 "",
+                "",
+                "我是小桂子",
                 "",
                 1,
                 "￥9,948.00",

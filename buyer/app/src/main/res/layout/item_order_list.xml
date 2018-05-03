@@ -12,36 +12,34 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="5dp"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="5dp">
+        android:paddingRight="20dp">
 
         <LinearLayout
-            android:id="@+id/lay_order_seller_info"
+            android:id="@+id/lay_order_opposite_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp">
+            android:paddingRight="10dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_order_seller_avatar"
+                android:id="@+id/iv_order_opposite_avatar"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginRight="5dp"
                 tools:src="@mipmap/fake_seller_avatar" />
 
             <TextView
-                android:id="@+id/tv_order_seller_name"
+                android:id="@+id/tv_order_opposite_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
                 android:drawableRight="@mipmap/arrow_right_normal"
                 android:ellipsize="end"
                 android:gravity="left"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
                 android:singleLine="true"
                 android:textColor="@color/txt_gray_dark"
                 android:textSize="@dimen/txt_size_13"
@@ -52,8 +50,8 @@
             android:id="@+id/tv_order_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
             android:textColor="@color/txt_price"
             android:textSize="@dimen/txt_size_13"
             tools:text="等待买家付款" />
@@ -71,15 +69,7 @@
 
     <include layout="@layout/layout_order_sum" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/window_background" />
-
-
-    <include
-
-        layout="@layout/layout_order_bottom_btns" />
+    <include layout="@layout/layout_order_bottom_btns" />
 
     <View
         android:layout_width="match_parent"
