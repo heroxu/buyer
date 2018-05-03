@@ -712,7 +712,7 @@ public class OrderHelper {
                     break;
 
                 case STATUS_BUYER_DUR_DISPUTE:
-                    switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "售后处理中");
+                    switchStatus(activity, layStatus, R.mipmap.ic_in_stock, "售后处理中");
                     layBottomBtns.setVisibility(View.VISIBLE);
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
@@ -727,7 +727,7 @@ public class OrderHelper {
                     break;
 
                 case STATUS_BUYER_DISPUTE_SUCCESS:
-                    switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "退款成功");
+                    switchStatus(activity, layStatus, R.mipmap.ic_shipped, "退款成功");
                     layBottomBtns.setVisibility(View.VISIBLE);
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
@@ -767,7 +767,7 @@ public class OrderHelper {
 
                 case STATUS_SELLER_AWAIT_PAY:
                     if (userType == Consts.USER_TYPE_BACK_PACKER) {
-                        switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "待付款");
+                        switchStatus(activity, layStatus, R.mipmap.ic_in_stock, "待付款");
                     } else {
                         switchStatus(activity, userType, layStatus, 1);
                     }
@@ -776,7 +776,7 @@ public class OrderHelper {
 
                 case STATUS_SELLER_AWAIT_SHIPPING:
                     if (userType == Consts.USER_TYPE_BACK_PACKER) {
-                        switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "待发货");
+                        switchStatus(activity, layStatus, R.mipmap.ic_in_stock, "待发货");
                     } else {
                         switchStatus(activity, userType, layStatus, 2);
                     }
@@ -794,7 +794,7 @@ public class OrderHelper {
 
                 case STATUS_SELLER_SHIPPED:
                     if (userType == Consts.USER_TYPE_BACK_PACKER) {
-                        switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "已发货");
+                        switchStatus(activity, layStatus, R.mipmap.ic_shipped, "已发货");
                     } else {
                         switchStatus(activity, userType, layStatus, 3);
                     }
@@ -825,7 +825,7 @@ public class OrderHelper {
                     break;
 
                 case STATUS_SELLER_DUR_DISPUTE:
-                    switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "售后处理中");
+                    switchStatus(activity, layStatus, R.mipmap.ic_in_stock, "售后处理中");
                     layBottomBtns.setVisibility(View.VISIBLE);
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
@@ -839,7 +839,7 @@ public class OrderHelper {
                     break;
 
                 case STATUS_SELLER_DISPUTE_SUCCESS:
-                    switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "退款成功");
+                    switchStatus(activity, layStatus, R.mipmap.ic_shipped, "退款成功");
                     layBottomBtns.setVisibility(View.VISIBLE);
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
