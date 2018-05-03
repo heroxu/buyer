@@ -27,6 +27,7 @@ import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderDetailBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderReviewsBean;
 import com.smyy.sharetour.buyer.tim.ChatActivity;
+import com.smyy.sharetour.buyer.util.StringUtil;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 import com.tencent.imsdk.TIMConversationType;
 import com.xmyy.view.dialoglib.CommonDialog;
@@ -96,11 +97,18 @@ public class OrderHelper {
     public static final int OPERATE_VIEW_REVIEWS = 12;//查看评价
     public static final int OPERATE_CONTACT_SERVICE = 13;//联系客服
     public static final int OPERATE_TO_SHIPPING = 14;//发货
-    public static final int OPERATE_DISPUTE_DETAIL = 15;//售后详情
+    public static final int OPERATE_VIEW_DETAIL = 15;//查看详情
 
 
     public static void switchOperate(final BaseActivity activity, int orderOperateType) {
         switch (orderOperateType) {
+            case OPERATE_VIEW_DETAIL:
+                activity.startActivity(OrderDetailActivity.class);
+                break;
+
+            case OPERATE_ADD_REVIEW:
+                break;
+
             case OPERATE_VERIFY_VIDEO:
 
                 break;
@@ -430,17 +438,22 @@ public class OrderHelper {
                     break;
 
                 case STATUS_BUYER_DONE:
-                    layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, false,
-                            tvBottomBtn1, tvBottomBtn2,
-                            tvBottomBtn3, tvBottomBtnMore,
-                            "删除订单", OPERATE_DELETE,
-                            TextUtils.isEmpty(orderBean.getVerifyVideo()) ? null : "鉴定视频",
-                            OPERATE_VERIFY_VIDEO,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                    String verifyVideo = orderBean.getVerifyVideo();
+                    if (StringUtil.isEmpty(verifyVideo)) {
+                        layBottomBtns.setVisibility(View.GONE);
+                    } else {
+                        layBottomBtns.setVisibility(View.VISIBLE);
+                        switchBottomBtns(activity, false,
+                                tvBottomBtn1, tvBottomBtn2,
+                                tvBottomBtn3, tvBottomBtnMore,
+                                TextUtils.isEmpty(verifyVideo) ? null : "鉴定视频",
+                                OPERATE_VERIFY_VIDEO,
+                                null, -1,
+                                null, -1,
+                                null, -1,
+                                null, -1,
+                                null, -1);
+                    }
 
                     break;
 
@@ -449,7 +462,7 @@ public class OrderHelper {
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", OPERATE_DISPUTE_DETAIL,
+                            "查看详情", OPERATE_VIEW_DETAIL,
                             null, -1,
                             null, -1,
                             null, -1,
@@ -463,7 +476,7 @@ public class OrderHelper {
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", OPERATE_DISPUTE_DETAIL,
+                            "查看详情", OPERATE_VIEW_DETAIL,
                             null, -1,
                             null, -1,
                             null, -1,
@@ -552,7 +565,7 @@ public class OrderHelper {
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", OPERATE_DISPUTE_DETAIL,
+                            "查看详情", OPERATE_VIEW_DETAIL,
                             null, -1,
                             null, -1,
                             null, -1,
@@ -565,7 +578,7 @@ public class OrderHelper {
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", OPERATE_DISPUTE_DETAIL,
+                            "查看详情", OPERATE_VIEW_DETAIL,
                             null, -1,
                             null, -1,
                             null, -1,
