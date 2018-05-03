@@ -64,10 +64,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                 });
             }
 
-            holder.ivOppositeAvatar.setImageResource(R.mipmap.fake_seller_avatar);
-//            Glide.with(mActivity).load(data.getSellerAvatar()).into(holder.ivOppositeAvatar);//TODO RTRT
-            holder.tvOppositeName.setText(data.getSellerName());
-
             if (mUserType == Consts.USER_TYPE_BUYER) {
                 holder.ivOppositeAvatar.setImageResource(R.mipmap.fake_seller_avatar);
 //            Glide.with(mContext).load(data.getSellerAvatar()).into(ivOppositeAvatar);//TODO RTRT
