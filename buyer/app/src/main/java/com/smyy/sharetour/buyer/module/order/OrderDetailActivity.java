@@ -211,9 +211,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                         tvGoodsCount.setVisibility(View.GONE);
                     }
 
-                    tvPriceTotal.setText(new Spanny().append("总额：")
-                            .append(data.getPriceTotal(),
-                                    new ForegroundColorSpan(getResources().getColor(R.color.txt_price))));
+                    tvPriceTotal.setText(StringUtil.connect("总额：", data.getPriceTotal()));
                     tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
                     break;
             }
