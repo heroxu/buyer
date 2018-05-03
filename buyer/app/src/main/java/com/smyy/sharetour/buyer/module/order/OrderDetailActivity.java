@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
@@ -56,6 +57,10 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     TextView tvPriceTotal;
     @BindView(R.id.tv_order_shipping_fee)
     TextView tvShippingFee;
+    @BindView(R.id.lay_order_reward)
+    View layReward;
+    @BindView(R.id.tv_order_reward)
+    TextView tvReward;
     @BindView(R.id.tv_order_num)
     TextView tvOrderNum;
     @BindView(R.id.tv_order_copy_num)
@@ -134,6 +139,10 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
             orderDetailBean.setGoodsCountTotal(orderBean.getGoodsCountTotal());
             orderDetailBean.setPriceTotal(orderBean.getPriceTotal());
             orderDetailBean.setShippingFee(orderBean.getShippingFee());
+            orderDetailBean.setGoodsType(orderBean.getGoodsType());
+            if (orderBean.getGoodsType() == OrderHelper.GOODS_TYPE_DEMAND) {
+                orderDetailBean.setReward("¥ 300.00");
+            }
             orderDetailBean.setOrderNum("201803071438023384");
             orderDetailBean.setOrderTime("2018-03-08 14:39:07");
 
@@ -210,6 +219,14 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
 
             tvPriceTotal.setText(StringUtil.connect("总额：", data.getPriceTotal()));
             tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
+
+            String reward = data.getReward();
+            if (StringUtil.isEmpty(reward)) {
+                layReward.setVisibility(View.GONE);
+            } else {
+                layReward.setVisibility(View.VISIBLE);
+                tvReward.setText(reward);
+            }
 
             OrderHelper.switchDetailStatusNBtns(this, mUserType, data, layStatus,
                     layBottomBtns, tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore);

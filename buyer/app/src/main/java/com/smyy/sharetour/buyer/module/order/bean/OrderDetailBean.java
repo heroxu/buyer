@@ -20,6 +20,7 @@ public class OrderDetailBean implements Serializable {
     private int goodsCountTotal;
     private String priceTotal;
     private String shippingFee;//运费
+    private String reward;//辛苦费
     private String orderNum;
     private String orderTime;
     private String verifyVideo;//鉴定视频
@@ -30,7 +31,7 @@ public class OrderDetailBean implements Serializable {
     public OrderDetailBean() {
     }
 
-    public OrderDetailBean(String orderId, String remainTime, int orderStatus, String shippingName, String shippingPhone, String shippingAddress, String sellerId, String sellerName, String sellerAvatar, String buyerId, String buyerName, String buyerAvatar, int goodsCountTotal, String priceTotal, String shippingFee, String orderNum, String orderTime, String verifyVideo, int goodsType, String reason, List<OrderGoodsInfo> goodsList) {
+    public OrderDetailBean(String orderId, String remainTime, int orderStatus, String shippingName, String shippingPhone, String shippingAddress, String sellerId, String sellerName, String sellerAvatar, String buyerId, String buyerName, String buyerAvatar, int goodsCountTotal, String priceTotal, String shippingFee, String reward, String orderNum, String orderTime, String verifyVideo, int goodsType, String reason, List<OrderGoodsInfo> goodsList) {
         this.orderId = orderId;
         this.remainTime = remainTime;
         this.orderStatus = orderStatus;
@@ -46,6 +47,7 @@ public class OrderDetailBean implements Serializable {
         this.goodsCountTotal = goodsCountTotal;
         this.priceTotal = priceTotal;
         this.shippingFee = shippingFee;
+        this.reward = reward;
         this.orderNum = orderNum;
         this.orderTime = orderTime;
         this.verifyVideo = verifyVideo;
@@ -172,6 +174,14 @@ public class OrderDetailBean implements Serializable {
 
     public void setShippingFee(String shippingFee) {
         this.shippingFee = shippingFee;
+    }
+
+    public String getReward() {
+        return reward;
+    }
+
+    public void setReward(String reward) {
+        this.reward = reward;
     }
 
     public String getOrderNum() {

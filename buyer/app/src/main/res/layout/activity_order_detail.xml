@@ -32,7 +32,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:orientation="vertical">
@@ -41,17 +40,14 @@
                     android:id="@+id/lay_order_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="vertical" />
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/window_background" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
                     android:paddingBottom="15dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="15dp"
@@ -96,14 +92,11 @@
                         tools:text="广东省广州市天河区冼村街道合景国际金融大厦32 楼3205室" />
                 </RelativeLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/window_background" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingBottom="5dp"
@@ -152,27 +145,51 @@
                         android:visibility="visible" />
                 </LinearLayout>
 
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/window_background" />
-
                 <com.smyy.sharetour.buyer.view.InnerRecyclerView
                     android:id="@+id/rv_order_goods_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white" />
 
                 <include layout="@layout/layout_order_sum" />
 
-                <View
+                <LinearLayout
+                    android:id="@+id/lay_order_reward"
                     android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/window_background" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/CommonText"
+                        android:layout_marginLeft="5dp"
+                        android:drawableLeft="@mipmap/ic_hardship_fee"
+                        android:drawablePadding="15dp"
+                        android:text="辛苦费" />
+
+                    <TextView
+                        android:id="@+id/tv_order_reward"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:textColor="@color/txt_gray_dark"
+                        android:textSize="@dimen/txt_size_15"
+                        tools:text="¥ 300.00" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="100dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
                     android:orientation="vertical"
                     android:paddingBottom="25dp"
                     android:paddingLeft="20dp">
@@ -210,12 +227,6 @@
                         android:textSize="@dimen/txt_size_13"
                         tools:text="下单时间：2018-03-08 14:39:07" />
                 </LinearLayout>
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="@color/window_background" />
             </LinearLayout>
         </ScrollView>
 
