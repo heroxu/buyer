@@ -53,6 +53,7 @@ public class OrderHelper {
     public static final int TYPE_AWAIT_SHIPPING = 2;//待发货
     public static final int TYPE_AWAIT_CONFIRM = 3;//待收货 已发货
     public static final int TYPE_AWAIT_REVIEW = 4;//待评价
+    public static final int TYPE_DISPUTE = 5;//售后
 
     //买家订单状态
     public static final int STATUS_BUYER_AWAIT_PAY = 1;
@@ -563,7 +564,7 @@ public class OrderHelper {
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
                             "查看物流", OPERATE_VIEW_SHIPPING,
-                            "查看评论", OPERATE_VIEW_REVIEWS,
+                            "查看评价", OPERATE_VIEW_REVIEWS,
                             null, -1,
                             null, -1,
                             null, -1,
@@ -817,7 +818,7 @@ public class OrderHelper {
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
                             "查看物流", OPERATE_VIEW_SHIPPING,
-                            "查看评论", OPERATE_VIEW_REVIEWS,
+                            "查看评价", OPERATE_VIEW_REVIEWS,
                             "删除订单", OPERATE_DELETE,
                             null, -1,
                             null, -1,

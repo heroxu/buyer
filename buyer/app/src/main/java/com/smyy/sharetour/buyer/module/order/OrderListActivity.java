@@ -68,7 +68,7 @@ public class OrderListActivity extends MyBaseMvpActivity {
                     mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_REVIEW));
                     break;
                 case Consts.USER_TYPE_BACK_PACKER:
-                    mTitles = new String[]{"全部", "待发货", "已发货"};
+                    mTitles = new String[]{"全部", "待发货", "已发货", "退款/售后"};
                     mOrderTypeList.clear();
                     mFragments.clear();
                     mOrderTypeList.add(OrderHelper.TYPE_ALL);
@@ -77,9 +77,12 @@ public class OrderListActivity extends MyBaseMvpActivity {
                     mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_SHIPPING));
                     mOrderTypeList.add(OrderHelper.TYPE_AWAIT_CONFIRM);
                     mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_CONFIRM));
+                    mOrderTypeList.add(OrderHelper.TYPE_DISPUTE);
+                    mFragments.add(DisputeOrderListFragment.getInstance(userType));
+
                     break;
                 case Consts.USER_TYPE_SELLER:
-                    mTitles = new String[]{"全部", "待付款", "待发货", "已发货"};
+                    mTitles = new String[]{"全部", "待付款", "待发货", "已发货", "退款/售后"};
                     mOrderTypeList.clear();
                     mFragments.clear();
                     mOrderTypeList.add(OrderHelper.TYPE_ALL);
@@ -90,6 +93,8 @@ public class OrderListActivity extends MyBaseMvpActivity {
                     mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_SHIPPING));
                     mOrderTypeList.add(OrderHelper.TYPE_AWAIT_CONFIRM);
                     mFragments.add(OrderListFragment.getInstance(userType, OrderHelper.TYPE_AWAIT_CONFIRM));
+                    mOrderTypeList.add(OrderHelper.TYPE_DISPUTE);
+                    mFragments.add(DisputeOrderListFragment.getInstance(userType));
                     break;
                 default:
                     break;
