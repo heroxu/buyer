@@ -1,12 +1,14 @@
 package com.smyy.sharetour.buyer.adapter;
 
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.bean.BuyCommodityBean;
 import com.smyy.sharetour.buyer.bean.BuyVideoBean;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import java.util.List;
 
@@ -21,6 +23,11 @@ public class BuyVideoAdapter extends BaseQuickAdapter<BuyVideoBean,BaseViewHolde
 
     @Override
     protected void convert(BaseViewHolder helper, BuyVideoBean item) {
-
+        helper.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityLauncher.viewLiveActivity(mContext);
+            }
+        });
     }
 }

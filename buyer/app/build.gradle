@@ -27,6 +27,11 @@ android {
         vectorDrawables.useSupportLibrary = true
         //添加这一行
         multiDexEnabled true
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+            // 如果您使用的是商业版，只能使用 armeabi 架构，即：
+            // abiFilters "armeabi",
+        }
     }
     buildTypes {
         release {
@@ -40,12 +45,21 @@ android {
             debuggable true
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 
     buildToolsVersion '27.0.3'
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    // 导入腾讯云直播 SDK aar
+    compile(name: 'LiteAVSDK_Professional_4.5.4021', ext: 'aar')
+    compile fileTree(dir: 'src/main/jniLibs', includes: ['*.jar'])
+
     compile "com.android.support:support-v4:${project.ANDROID_SUPPORT_VERSION}"
     compile "com.android.support:support-v13:${project.ANDROID_SUPPORT_VERSION}"
     compile "com.android.support:design:${project.ANDROID_SUPPORT_VERSION}"

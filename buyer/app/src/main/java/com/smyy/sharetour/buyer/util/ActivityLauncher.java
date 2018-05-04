@@ -3,6 +3,7 @@ package com.smyy.sharetour.buyer.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.smyy.sharetour.buyer.LiveActivity;
 import com.smyy.sharetour.buyer.MyApplication;
 import com.smyy.sharetour.buyer.backpacker.ALIPointsActivity;
 import com.smyy.sharetour.buyer.backpacker.BackPackerCertificationActivity;
@@ -476,6 +477,12 @@ public class ActivityLauncher {
      */
     public static void viewTravelDetailActivity(Context context) {
         Intent intent = new Intent(context, SellerTravelDetailActivity.class);
+        context.startActivity(intent);
+
+    }
+
+    public static void viewLiveActivity(Context context) {
+        Intent intent = new Intent(context, LiveActivity.class);
         context.startActivity(intent);
 
     }

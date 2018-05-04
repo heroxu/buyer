@@ -124,3 +124,6 @@ public static java.lang.String TABLENAME;
 
 -dontwarnjava.lang.invoke.**
 
+#--------腾讯直播--------------
+-keep class com.tencent.** { *; }
+

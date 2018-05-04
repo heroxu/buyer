@@ -241,5 +241,6 @@
     <string name="message_system_message_read_all">阅读全文</string>
     <string name="message_my_comment_reply">回复了你</string>
     <string name="message_my_comment_comment">评论了你</string>
+    <string name="title_activity_live">LiveActivity</string>
 
 </resources>

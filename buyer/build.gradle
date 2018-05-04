@@ -23,6 +23,9 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
+        flatDir {
+            dirs 'libs'
+        }
     }
     ext {
         version_name = getVersionName()

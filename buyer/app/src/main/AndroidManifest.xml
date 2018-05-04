@@ -8,6 +8,20 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <!-- 直播SDK所需权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.Camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -119,15 +133,21 @@
         <activity android:name=".backpacker.my.adapter.BackpackerWithdrawProgressActivity" />
         <activity android:name=".home.message.MessageListActivity" />
         <activity android:name=".home.message.SystemMessageListActivity" />
-        <activity
-            android:name=".home.comment.ui.MyReciveCommentActivity"/>
-        <activity
-            android:name=".home.comment.ui.MyReciveLikeActivity"/>
+        <activity android:name=".home.comment.ui.MyReciveCommentActivity" />
+        <activity android:name=".home.comment.ui.MyReciveLikeActivity" />
         <activity android:name=".backpacker.BackPackerCertificationListActivity" />
         <activity android:name=".backpacker.BackPackerCertificationActivity" />
-        <activity android:name=".backpacker.ALIPointsActivity"></activity>
+        <activity android:name=".backpacker.ALIPointsActivity" />
         <activity android:name=".travel.SellerTravelListActivity" />
         <activity android:name=".travel.SellerTravelDetailActivity" />
+        <activity
+            android:name=".LiveActivity"
+            android:label="@string/title_activity_live"></activity>
+        <activity
+            android:name="com.tencent.rtmp.video.TXScreenCapture$TXScreenCaptureAssistantActivity"
+            android:theme="@android:style/Theme.Translucent"/>
+
     </application>
+
 
 </manifest>

@@ -56,5 +56,6 @@ public class LiveSubclassFragment  extends BaseMvpFragment {
         mAdapter =new BuyVideoAdapter(data);
         recyclerView.setAdapter(mAdapter);
 
+
     }
 }
