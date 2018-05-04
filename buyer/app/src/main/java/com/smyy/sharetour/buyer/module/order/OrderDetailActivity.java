@@ -217,7 +217,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                 tvReward.setText(reward);
             }
 
-            OrderHelper.switchDetailStatusNBtns(this, mUserType, data, layStatus,
+            OrderHelper.switchDetailStatusNBtns(this, mUserType, null, data, layStatus,
                     layBottomBtns, tvBottomBtn1, tvBottomBtn2, tvBottomBtn3, tvBottomBtnMore);
         }
     }

@@ -15,15 +15,19 @@ import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
+import com.smyy.sharetour.buyer.module.my.contract.IOrderContract;
+import com.smyy.sharetour.buyer.module.my.model.OrderModel;
+import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.order.bean.DisputeOrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.DisputeOrderDetailBean;
+import com.smyy.sharetour.buyer.module.order.presenter.OrderPresenter;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class DisputeOrderDetailActivity extends MyBaseMvpActivity {
+public class DisputeOrderDetailActivity extends MyBaseMvpActivity implements IOrderContract.View {
 
     @BindView(R.id.lay_order_status)
     LinearLayout layStatus;
@@ -58,6 +62,7 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity {
     private String mOrderNum;
     private int mUserType;
     private Bundle mBundle;
+    private DisputeOrderDetailBean mOrderDetailBean;
 
     @Override
     protected int getLayoutId() {
@@ -104,6 +109,7 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity {
 
     private void showOrderDetail(DisputeOrderDetailBean data) {
         if (data != null) {
+            mOrderDetailBean = data;
             if (mUserType == Consts.USER_TYPE_BUYER) {
                 tvContactOpposite.setText("联系买手");
             } else {
@@ -196,7 +202,7 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity {
 
     @Override
     protected MyBasePresenter createPresenter() {
-        return null;
+        return new OrderPresenter(this, new OrderModel());
     }
 
 
