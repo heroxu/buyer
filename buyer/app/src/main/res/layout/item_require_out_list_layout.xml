@@ -88,7 +88,7 @@
                 android:id="@+id/require_item_time_img"
                 android:layout_width="14dp"
                 android:layout_height="14dp"
-                android:src="@mipmap/ic_home_new_sell"
+                android:src="@mipmap/ic_budget_time_g"
                 android:layout_marginRight="8dp"
                 />
             <TextView

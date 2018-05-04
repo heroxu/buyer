@@ -196,4 +196,6 @@ public class Consts {
      * 客服电话
      */
     public static final String SERVICE_TEL = "400 - 385385 -363";
+
+    public static final int  COMMENT_SELECT_PICTURE_NUM = 6;
 }

@@ -240,6 +240,7 @@
             </LinearLayout>
 
             <com.smyy.sharetour.buyer.view.InnerRecyclerView
+                android:nestedScrollingEnabled="false"
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

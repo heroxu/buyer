@@ -136,6 +136,9 @@ public class OrderHelper {
                 break;
 
             case OPERATE_ADD_REVIEW:
+                Intent intent = new Intent(activity, OrderListCommentActivity.class);
+                intent.putExtra(OrderListCommentActivity.COMMENT_IS_APPEND, true);
+                activity.startActivity(intent);
                 break;
 
             case OPERATE_VERIFY_VIDEO:
@@ -151,8 +154,10 @@ public class OrderHelper {
                 break;
 
             case OPERATE_REVIEW:
-                activity.startActivity(OrderCommentActivity.class);
+                activity.startActivity(OrderListCommentActivity.class);
                 break;
+
+
 
             case OPERATE_VIEW_REVIEWS:
                 new CommonDialog.Builder(activity.getSupportFragmentManager())

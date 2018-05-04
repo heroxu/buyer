@@ -88,6 +88,7 @@ public class OrderCommentActivity extends BaseMvpActivity {
     private void initUI(Intent intent) {
         //判断是否为追加评价
         if (is_append) {
+            gridView.setVisibility(View.GONE);
             goodQuality.setVisibility(View.GONE);
             sellerService.setVisibility(View.GONE);
         }

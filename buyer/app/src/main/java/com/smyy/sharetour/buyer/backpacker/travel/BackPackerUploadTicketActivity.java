@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -75,7 +76,7 @@ public class BackPackerUploadTicketActivity extends BaseMvpActivity {
 
     private void initUI(Intent intent) {
         rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_anim);
-
+        rotate.setInterpolator(new LinearInterpolator());
         startUploadTicket();
     }
 

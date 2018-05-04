@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <ImageView
+            android:id="@+id/iv_order_goods_pic"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/fake_goods_pic" />
+
+        <TextView
+            android:id="@+id/iv_order_goods_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/iv_order_goods_pic"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_15"
+            android:text="NIKE HUARACHE DRIFT (PSE) 幼童运动限量版大童鞋" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/iv_order_goods_name"
+            android:layout_below="@+id/iv_order_goods_name"
+            android:layout_toLeftOf="@+id/tv_order_goods_count"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/iv_order_goods_spec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/iv_order_goods_name"
+                android:layout_below="@+id/iv_order_goods_name"
+                android:layout_marginTop="20dp"
+                android:layout_toLeftOf="@+id/tv_order_goods_count"
+                android:textColor="@color/txt_gray_dark"
+                android:textSize="@dimen/txt_size_13"
+                android:text="规格：黑白/36.5" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_order_goods_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_11"
+            android:text="x1"
+            android:layout_alignBottom="@id/iv_order_goods_pic"
+            />
+    </RelativeLayout>
+
+    <View style="@style/WideItemDivider"/>
+
+    <EditText
+        android:id="@+id/disc_context"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        android:hint="@string/comment_disc"
+        android:textColorHint="@color/txt_gray_light"
+        android:gravity="top"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="@dimen/txt_size_15"
+        android:layout_marginTop="20dp"
+        android:maxLength="40"
+        />
+    <com.smyy.sharetour.buyer.view.InnerRecyclerView
+        android:id="@+id/comment_pic_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"/>
+
+</LinearLayout>
