@@ -243,4 +243,8 @@
     <string name="message_my_comment_comment">评论了你</string>
     <string name="title_activity_live">LiveActivity</string>
 
+    <!--直播-->
+    <string name="live_focus">关注</string>
+    <string name="live_you_want_say">你想说什么</string>
+
 </resources>
