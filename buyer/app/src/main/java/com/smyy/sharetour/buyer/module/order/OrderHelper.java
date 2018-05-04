@@ -1,8 +1,10 @@
 package com.smyy.sharetour.buyer.module.order;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +25,7 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.backpacker.order.UploadShippingInfoActivity;
+import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderReviewsAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderDetailBean;
@@ -192,7 +195,7 @@ public class OrderHelper {
                 break;
 
             case OPERATE_VIEW_SHIPPING:
-
+                activity.startActivity(ShippingInfoActivity.class);
                 break;
 
             case OPERATE_DELETE:
@@ -208,7 +211,15 @@ public class OrderHelper {
                 break;
 
             case OPERATE_CONTACT_SERVICE:
-
+                DialogUtils.showTwoBtnMsgBox(activity, null, Consts.SERVICE_TEL, new OnViewClickListener() {
+                    @Override
+                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                        commonDialog.dismiss();
+                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri
+                                .parse("tel:" + Consts.SERVICE_TEL));
+                        activity.startActivity(intent);
+                    }
+                });
                 break;
 
             case OPERATE_CANCEL:

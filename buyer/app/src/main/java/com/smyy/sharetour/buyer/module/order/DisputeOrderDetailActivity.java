@@ -173,7 +173,7 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity {
     public void onClick(final View view) {
         switch (view.getId()) {
             case R.id.tv_order_contact_service:
-
+                OrderHelper.switchOperate(this, OrderHelper.OPERATE_CONTACT_SERVICE);
                 break;
 
             case R.id.tv_order_contact_opposite:
