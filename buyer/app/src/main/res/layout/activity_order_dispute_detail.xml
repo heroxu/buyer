@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/lay_order_dispute_bottom_btns"
+        android:fadingEdge="none"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lay_order_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" />
+
+            <TextView
+                style="@style/CommonText"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:text="退款信息" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_order_goods_pic"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/fake_goods_pic" />
+
+                <TextView
+                    android:id="@+id/iv_order_goods_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/iv_order_goods_pic"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/txt_main"
+                    android:textSize="@dimen/txt_size_15"
+                    tools:text="NIKE HUARACHE DRIFT (PSEhgoiheoriohirheiuhieri" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/iv_order_goods_name"
+                    android:layout_below="@+id/iv_order_goods_name"
+                    android:layout_toLeftOf="@+id/tv_order_goods_count"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/iv_order_goods_spec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/iv_order_goods_name"
+                        android:layout_below="@+id/iv_order_goods_name"
+                        android:layout_marginTop="20dp"
+                        android:layout_toLeftOf="@+id/tv_order_goods_count"
+                        android:textColor="@color/txt_gray_dark"
+                        android:textSize="@dimen/txt_size_13"
+                        android:visibility="gone"
+                        tools:text="规格：黑白/36.5" />
+
+                    <TextView
+                        android:id="@+id/iv_order_goods_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/iv_order_goods_name"
+                        android:layout_below="@+id/iv_order_goods_spec"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/txt_gray_dark"
+                        android:textSize="@dimen/txt_size_13"
+                        tools:text="价格：￥98778" />
+
+                    <TextView
+                        android:id="@+id/iv_order_receive_deadline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/iv_order_goods_name"
+                        android:layout_below="@+id/iv_order_goods_spec"
+                        android:layout_marginTop="20dp"
+                        android:drawableLeft="@mipmap/ic_home_new_sell"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/txt_price"
+                        android:textSize="@dimen/txt_size_13"
+                        android:visibility="gone"
+                        tools:text="2018-03-08 前收到" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_order_goods_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/txt_gray_dark"
+                    android:textSize="@dimen/txt_size_11"
+                    android:visibility="gone"
+                    tools:text="x1"
+                    tools:visibility="visible" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="15dp"
+                android:paddingTop="25dp">
+
+
+                <TextView
+                    android:id="@+id/tv_order_dispute_reason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/txt_gray_dark"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:text="退款理由：一直未收到货" />
+
+
+                <TextView
+                    android:id="@+id/tv_order_dispute_refund_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/txt_gray_dark"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:text="退款金额：¥ 9,948.00" />
+
+
+                <TextView
+                    android:id="@+id/tv_order_dispute_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/txt_gray_dark"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:text="申请时间：2018-03-08 14:39:07" />
+
+
+                <TextView
+                    android:id="@+id/tv_order_dispute_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/txt_gray_dark"
+                    android:textSize="@dimen/txt_size_13"
+                    tools:text="退款编号：2018-03-08 14:39:07" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lay_order_dispute_bottom_btns"
+        android:background="@drawable/ilyoh_jybe" />
+
+    <LinearLayout
+        android:id="@+id/lay_order_dispute_bottom_btns"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <android.support.v4.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_order_contact_service"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@mipmap/ic_service_call"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="联系客服"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_13" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_order_contact_opposite"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@mipmap/ic_details_news"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_13"
+            tools:text="联系买家" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_order_confirm_refund"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:background="@color/btn_bg_normal"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="确认退款"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_13"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+</RelativeLayout>

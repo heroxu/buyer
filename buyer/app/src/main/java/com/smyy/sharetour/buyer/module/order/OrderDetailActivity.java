@@ -6,8 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.ImageView;
@@ -51,8 +49,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     RecyclerView rvGoodsList;
     @BindView(R.id.lay_order_sum)
     View laySum;
-    @BindView(R.id.tv_order_goods_count)
-    TextView tvGoodsCount;
+    @BindView(R.id.tv_order_goods_count_total)
+    TextView tvGoodsCountTotal;
     @BindView(R.id.tv_order_price_total)
     TextView tvPriceTotal;
     @BindView(R.id.tv_order_shipping_fee)
@@ -99,21 +97,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
         if (mBundle != null) {
             mUserType = mBundle.getInt(Consts.USER_TYPE);
         }
-        initView();
         getFakeData();
-    }
-
-    private void initView() {
-
-        switch (mUserType) {
-            case Consts.USER_TYPE_BACK_PACKER:
-            case Consts.USER_TYPE_SELLER:
-                layStatus.removeAllViews();
-                break;
-
-            default:
-                break;
-        }
     }
 
     private void getFakeData() {
@@ -199,21 +183,26 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                     }
                 });
             }
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OrderDetailActivity.this);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OrderDetailActivity.this, LinearLayoutManager.VERTICAL, false) {
+                @Override
+                public boolean canScrollVertically() {
+                    return false;
+                }
+            };
             rvGoodsList.setLayoutManager(linearLayoutManager);
             rvGoodsList.setAdapter(new OrderGoodsListAdapter(OrderDetailActivity.this, true,
                     mUserType, data.getOrderStatus(), data.getGoodsList()));
 
             int goodsType = data.getGoodsType();
             if (goodsType == OrderHelper.GOODS_TYPE_DEMAND) {
-                tvGoodsCount.setVisibility(View.GONE);
+                tvGoodsCountTotal.setVisibility(View.GONE);
             } else {
                 int goodsCountTotal = data.getGoodsCountTotal();
                 if (goodsCountTotal > 0) {
-                    tvGoodsCount.setVisibility(View.VISIBLE);
-                    tvGoodsCount.setText("共" + goodsCountTotal + "件商品");
+                    tvGoodsCountTotal.setVisibility(View.VISIBLE);
+                    tvGoodsCountTotal.setText("共" + goodsCountTotal + "件商品");
                 } else {
-                    tvGoodsCount.setVisibility(View.GONE);
+                    tvGoodsCountTotal.setVisibility(View.GONE);
                 }
             }
 

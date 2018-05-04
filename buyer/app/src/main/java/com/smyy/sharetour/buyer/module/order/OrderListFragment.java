@@ -98,19 +98,19 @@ public class OrderListFragment extends BaseMvpFragment {
                 "黑白/36.5",
                 "",
                 "￥9,918.00",
-                1, "",OrderHelper.GOODS_TYPE_STOCK,null);
+                1, "", OrderHelper.GOODS_TYPE_STOCK, null);
         OrderGoodsInfo goodsInfo2 = new OrderGoodsInfo("2",
                 "NIKE HUARACHE DRIFT (PSE) LALALALALA",
                 "黑白/34",
                 "",
                 "￥8,918.00",
-                1, "",OrderHelper.GOODS_TYPE_PRESELL,null);
+                1, "", OrderHelper.GOODS_TYPE_PRESELL, null);
         OrderGoodsInfo goodsInfoDL = new OrderGoodsInfo("2",
                 "NIKE HUARACHE DRIFT (PSE) LALALALALA",
                 "",
                 "2018-05-01",
                 "￥9,918.00",
-                1, "",OrderHelper.GOODS_TYPE_DEMAND,null);
+                1, "", OrderHelper.GOODS_TYPE_DEMAND, null);
         fakdeGoodsList1 = new ArrayList<>();
         fakdeGoodsList1.add(goodsInfo1);
         fakeGoodsList2 = new ArrayList<>();
@@ -240,6 +240,23 @@ public class OrderListFragment extends BaseMvpFragment {
     }
 
     private OrderBean getFakeOrderBean1(int orderStatus) {
+        switch (orderStatus) {
+            case OrderHelper.STATUS_BUYER_DUR_DISPUTE:
+            case OrderHelper.STATUS_BUYER_DISPUTE_SUCCESS:
+            case OrderHelper.STATUS_SELLER_DUR_DISPUTE:
+            case OrderHelper.STATUS_SELLER_DISPUTE_SUCCESS:
+                for (OrderGoodsInfo goodsInfo :
+                        fakdeGoodsList1) {
+                    goodsInfo.setDisputeOrderId("201803071438023384");
+                }
+                break;
+            default:
+                for (OrderGoodsInfo goodsInfo :
+                        fakdeGoodsList1) {
+                    goodsInfo.setDisputeOrderId("");
+                }
+                break;
+        }
         OrderBean orderBean1 = new OrderBean("1",
                 orderStatus,
                 "",
@@ -258,6 +275,23 @@ public class OrderListFragment extends BaseMvpFragment {
     }
 
     private OrderBean getFakeOrderBean2(int orderStatus) {
+        switch (orderStatus) {
+            case OrderHelper.STATUS_BUYER_DUR_DISPUTE:
+            case OrderHelper.STATUS_BUYER_DISPUTE_SUCCESS:
+            case OrderHelper.STATUS_SELLER_DUR_DISPUTE:
+            case OrderHelper.STATUS_SELLER_DISPUTE_SUCCESS:
+                for (OrderGoodsInfo goodsInfo :
+                        fakeGoodsList2) {
+                    goodsInfo.setDisputeOrderId("201803071438023384");
+                }
+                break;
+            default:
+                for (OrderGoodsInfo goodsInfo :
+                        fakeGoodsList2) {
+                    goodsInfo.setDisputeOrderId("");
+                }
+                break;
+        }
         OrderBean orderBean2 = new OrderBean("1",
                 orderStatus,
                 "",
@@ -276,6 +310,23 @@ public class OrderListFragment extends BaseMvpFragment {
     }
 
     private OrderBean getFakeOrderBeanDL(int orderStatus) {
+        switch (orderStatus) {
+            case OrderHelper.STATUS_BUYER_DUR_DISPUTE:
+            case OrderHelper.STATUS_BUYER_DISPUTE_SUCCESS:
+            case OrderHelper.STATUS_SELLER_DUR_DISPUTE:
+            case OrderHelper.STATUS_SELLER_DISPUTE_SUCCESS:
+                for (OrderGoodsInfo goodsInfo :
+                        fakdeGoodsListDL) {
+                    goodsInfo.setDisputeOrderId("201803071438023384");
+                }
+                break;
+            default:
+                for (OrderGoodsInfo goodsInfo :
+                        fakdeGoodsListDL) {
+                    goodsInfo.setDisputeOrderId("");
+                }
+                break;
+        }
         OrderBean orderBeanDL = new OrderBean("1",
                 orderStatus,
                 "",

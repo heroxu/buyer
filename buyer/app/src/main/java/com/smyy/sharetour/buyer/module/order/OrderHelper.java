@@ -98,9 +98,8 @@ public class OrderHelper {
     public static final int OPERATE_VIEW_REVIEWS = 12;//查看评价
     public static final int OPERATE_CONTACT_SERVICE = 13;//联系客服
     public static final int OPERATE_TO_SHIPPING = 14;//发货
-    public static final int OPERATE_VIEW_DETAIL = 15;//查看详情
-    public static final int OPERATE_DISPUTE_DETAIL = 16;//售后详情
-    public static final int OPERATE_DISPUTE = 17;//申请售后
+    public static final int OPERATE_DISPUTE_DETAIL = 15;//售后详情
+    public static final int OPERATE_DISPUTE = 16;//申请售后
 
 
     public static void switchOperate(final BaseActivity activity, int orderOperateType) {
@@ -111,10 +110,6 @@ public class OrderHelper {
 
             case OPERATE_DISPUTE_DETAIL:
 
-                break;
-
-            case OPERATE_VIEW_DETAIL:
-//                activity.startActivity(OrderDetailActivity.class);
                 break;
 
             case OPERATE_ADD_REVIEW:
@@ -266,24 +261,34 @@ public class OrderHelper {
         }
 
         tvBottomBtn1.setText(btnTxt1);
-        tvBottomBtn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchOperate(activity, orderOperateType1);
-            }
-        });
+        if (orderOperateType1 == -1) {
+            tvBottomBtn1.setClickable(false);
+        } else {
+            tvBottomBtn1.setClickable(true);
+            tvBottomBtn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switchOperate(activity, orderOperateType1);
+                }
+            });
+        }
 
         if (btnTxt2 == null) {
             tvBottomBtn2.setVisibility(View.GONE);
         } else {
             tvBottomBtn2.setVisibility(View.VISIBLE);
             tvBottomBtn2.setText(btnTxt2);
-            tvBottomBtn2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    switchOperate(activity, orderOperateType2);
-                }
-            });
+            if (orderOperateType2 == -1) {
+                tvBottomBtn2.setClickable(false);
+            } else {
+                tvBottomBtn2.setClickable(true);
+                tvBottomBtn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        switchOperate(activity, orderOperateType2);
+                    }
+                });
+            }
         }
 
         if (btnTxt3 == null) {
@@ -291,12 +296,17 @@ public class OrderHelper {
         } else {
             tvBottomBtn3.setVisibility(View.VISIBLE);
             tvBottomBtn3.setText(btnTxt3);
-            tvBottomBtn3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    switchOperate(activity, orderOperateType3);
-                }
-            });
+            if (orderOperateType3 == -1) {
+                tvBottomBtn3.setClickable(false);
+            } else {
+                tvBottomBtn3.setClickable(true);
+                tvBottomBtn3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        switchOperate(activity, orderOperateType3);
+                    }
+                });
+            }
         }
 
         if (btnTxt4 == null) {
@@ -318,25 +328,36 @@ public class OrderHelper {
             View layBottomBtn6 = popupView.findViewById(R.id.lay_order_bottom_btn6);
 
             tvBottomBtn4.setText(btnTxt4);
-            tvBottomBtn4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    switchOperate(activity, orderOperateType4);
-                }
-            });
+            if (orderOperateType4 == -1) {
+                tvBottomBtn4.setClickable(false);
+            } else {
+                tvBottomBtn4.setClickable(true);
+                tvBottomBtn4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mPopupWindow.dismiss();
+                        switchOperate(activity, orderOperateType4);
+                    }
+                });
+            }
 
             if (btnTxt5 == null) {
                 layBottomBtn5.setVisibility(View.GONE);
             } else {
                 layBottomBtn5.setVisibility(View.VISIBLE);
-                tvBottomBtn5.setText(btnTxt2);
-                tvBottomBtn5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mPopupWindow.dismiss();
-                        switchOperate(activity, orderOperateType5);
-                    }
-                });
+                tvBottomBtn5.setText(btnTxt5);
+                if (orderOperateType5 == -1) {
+                    tvBottomBtn5.setClickable(false);
+                } else {
+                    tvBottomBtn5.setClickable(true);
+                    tvBottomBtn5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mPopupWindow.dismiss();
+                            switchOperate(activity, orderOperateType5);
+                        }
+                    });
+                }
             }
 
             if (btnTxt6 == null) {
@@ -344,13 +365,18 @@ public class OrderHelper {
             } else {
                 layBottomBtn6.setVisibility(View.VISIBLE);
                 tvBottomBtn6.setText(btnTxt6);
-                tvBottomBtn6.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mPopupWindow.dismiss();
-                        switchOperate(activity, orderOperateType6);
-                    }
-                });
+                if (orderOperateType6 == -1) {
+                    tvBottomBtn6.setClickable(false);
+                } else {
+                    tvBottomBtn6.setClickable(true);
+                    tvBottomBtn6.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mPopupWindow.dismiss();
+                            switchOperate(activity, orderOperateType6);
+                        }
+                    });
+                }
             }
 
             tvBottomBtnMore.setOnClickListener(new View.OnClickListener() {
@@ -473,7 +499,7 @@ public class OrderHelper {
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", OPERATE_VIEW_DETAIL,
+                            "查看详情", -1,
                             null, -1,
                             null, -1,
                             null, -1,
@@ -487,7 +513,7 @@ public class OrderHelper {
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", OPERATE_VIEW_DETAIL,
+                            "查看详情", -1,
                             null, -1,
                             null, -1,
                             null, -1,
@@ -576,7 +602,7 @@ public class OrderHelper {
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", OPERATE_VIEW_DETAIL,
+                            "查看详情", -1,
                             null, -1,
                             null, -1,
                             null, -1,
@@ -589,7 +615,7 @@ public class OrderHelper {
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", OPERATE_VIEW_DETAIL,
+                            "查看详情", -1,
                             null, -1,
                             null, -1,
                             null, -1,
@@ -743,7 +769,7 @@ public class OrderHelper {
                     break;
 
                 case STATUS_BUYER_CLOSED:
-                    switchStatus(activity, layStatus, R.mipmap.ic_successfu_failure, "交易关闭", orderDetailBean.getReason());
+                    switchStatus(activity, layStatus, R.mipmap.ic_successfu_failure, "交易关闭", orderDetailBean.getCloseReason());
                     layBottomBtns.setVisibility(View.VISIBLE);
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
@@ -854,7 +880,7 @@ public class OrderHelper {
                     break;
 
                 case STATUS_SELLER_CLOSED:
-                    switchStatus(activity, layStatus, R.mipmap.ic_successfu_failure, "交易关闭", orderDetailBean.getReason());
+                    switchStatus(activity, layStatus, R.mipmap.ic_successfu_failure, "交易关闭", orderDetailBean.getCloseReason());
                     layBottomBtns.setVisibility(View.VISIBLE);
                     switchBottomBtns(activity, false,
                             tvBottomBtn1, tvBottomBtn2,
@@ -876,13 +902,13 @@ public class OrderHelper {
         }
     }
 
-    private static void switchStatus(BaseActivity activity, LinearLayout layStatus,
-                                     int iconRes, String text) {
+    public static void switchStatus(BaseActivity activity, LinearLayout layStatus,
+                                    int iconRes, String text) {
         switchStatus(activity, layStatus, iconRes, text, null);
     }
 
-    private static void switchStatus(BaseActivity activity, LinearLayout layStatus,
-                                     int iconRes, String text, String reason) {
+    public static void switchStatus(BaseActivity activity, LinearLayout layStatus,
+                                    int iconRes, String text, String reason) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         View view = LayoutInflater.from(activity).inflate(R.layout.layout_order_status_packer, null);

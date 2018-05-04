@@ -78,6 +78,7 @@
         <activity android:name=".module.order.OrderDetailActivity" />
         <activity android:name=".module.order.OrderCommentActivity" />
         <activity android:name=".module.order.DisputeOrderListActivity" />
+        <activity android:name=".module.order.DisputeOrderDetailActivity" />
         <activity android:name=".ui.PersonalTagActivity" />
         <activity android:name=".ui.MyCollectionActivity" />
         <activity

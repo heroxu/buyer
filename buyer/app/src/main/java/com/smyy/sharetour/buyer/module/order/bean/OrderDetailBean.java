@@ -25,13 +25,13 @@ public class OrderDetailBean implements Serializable {
     private String orderTime;
     private String verifyVideo;//鉴定视频
     private int goodsType;//商品类型
-    private String reason;
+    private String closeReason;
     private List<OrderGoodsInfo> goodsList;
 
     public OrderDetailBean() {
     }
 
-    public OrderDetailBean(String orderId, String remainTime, int orderStatus, String shippingName, String shippingPhone, String shippingAddress, String sellerId, String sellerName, String sellerAvatar, String buyerId, String buyerName, String buyerAvatar, int goodsCountTotal, String priceTotal, String shippingFee, String reward, String orderNum, String orderTime, String verifyVideo, int goodsType, String reason, List<OrderGoodsInfo> goodsList) {
+    public OrderDetailBean(String orderId, String remainTime, int orderStatus, String shippingName, String shippingPhone, String shippingAddress, String sellerId, String sellerName, String sellerAvatar, String buyerId, String buyerName, String buyerAvatar, int goodsCountTotal, String priceTotal, String shippingFee, String reward, String orderNum, String orderTime, String verifyVideo, int goodsType, String closeReason, List<OrderGoodsInfo> goodsList) {
         this.orderId = orderId;
         this.remainTime = remainTime;
         this.orderStatus = orderStatus;
@@ -52,7 +52,7 @@ public class OrderDetailBean implements Serializable {
         this.orderTime = orderTime;
         this.verifyVideo = verifyVideo;
         this.goodsType = goodsType;
-        this.reason = reason;
+        this.closeReason = closeReason;
         this.goodsList = goodsList;
     }
 
@@ -216,12 +216,12 @@ public class OrderDetailBean implements Serializable {
         this.goodsType = goodsType;
     }
 
-    public String getReason() {
-        return reason;
+    public String getCloseReason() {
+        return closeReason;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setCloseReason(String closeReason) {
+        this.closeReason = closeReason;
     }
 
     public List<OrderGoodsInfo> getGoodsList() {

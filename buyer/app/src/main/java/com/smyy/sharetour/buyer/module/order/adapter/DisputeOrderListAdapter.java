@@ -103,13 +103,6 @@ public class DisputeOrderListAdapter extends RecyclerView.Adapter<DisputeOrderLi
                     break;
             }
 
-            holder.tvBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    OrderHelper.switchOperate(mActivity, OrderHelper.OPERATE_DISPUTE_DETAIL);
-                }
-            });
-
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

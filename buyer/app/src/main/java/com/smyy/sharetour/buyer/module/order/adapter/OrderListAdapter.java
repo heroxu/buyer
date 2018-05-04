@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.module.order.OrderDetailActivity;
 import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
@@ -116,10 +115,10 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                     holder.laySum.setVisibility(View.VISIBLE);
                     int goodsCountTotal = data.getGoodsCountTotal();
                     if (goodsCountTotal > 0) {
-                        holder.tvGoodsCount.setVisibility(View.VISIBLE);
-                        holder.tvGoodsCount.setText("共" + goodsCountTotal + "件商品");
+                        holder.tvGoodsCountTotal.setVisibility(View.VISIBLE);
+                        holder.tvGoodsCountTotal.setText("共" + goodsCountTotal + "件商品");
                     } else {
-                        holder.tvGoodsCount.setVisibility(View.GONE);
+                        holder.tvGoodsCountTotal.setVisibility(View.GONE);
                     }
 
 //                    holder.tvPriceTotal.setText(new Spanny().append("总额：")
@@ -197,7 +196,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         private TextView tvStatus;
         private RecyclerView rvGoodsList;
         private View laySum;
-        private TextView tvGoodsCount;
+        private TextView tvGoodsCountTotal;
         private TextView tvPriceTotal;
         private TextView tvShippingFee;
         private TextView tvBottomBtn1;
@@ -214,7 +213,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             tvStatus = (TextView) itemView.findViewById(R.id.tv_order_status);
             rvGoodsList = (RecyclerView) itemView.findViewById(R.id.rv_order_goods_list);
             laySum = itemView.findViewById(R.id.lay_order_sum);
-            tvGoodsCount = (TextView) itemView.findViewById(R.id.tv_order_goods_count);
+            tvGoodsCountTotal = (TextView) itemView.findViewById(R.id.tv_order_goods_count_total);
             tvPriceTotal = (TextView) itemView.findViewById(R.id.tv_order_price_total);
             tvShippingFee = (TextView) itemView.findViewById(R.id.tv_order_shipping_fee);
             tvBottomBtn1 = (TextView) itemView.findViewById(R.id.tv_order_bottom_btn1);

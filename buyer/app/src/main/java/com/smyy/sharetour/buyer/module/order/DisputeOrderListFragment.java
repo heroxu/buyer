@@ -67,12 +67,12 @@ public class DisputeOrderListFragment extends BaseMvpFragment {
         mAdapter.setOnItemClickListener(new DisputeOrderListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, DisputeOrderBean data) {
-//                if (mBundle == null) {
-//                    mBundle = new Bundle();
-//                }
-//                mBundle.putString(OrderHelper.ORDER_ID, data.getOrderId());
-//                mBundle.putSerializable(OrderDetailActivity.FAKE_DATA, data);
-//                startActivity(OrderDetailActivity.class, mBundle);
+                if (mBundle == null) {
+                    mBundle = new Bundle();
+                }
+                mBundle.putString(OrderHelper.ORDER_ID, data.getOrderId());
+                mBundle.putSerializable(DisputeOrderDetailActivity.FAKE_DATA, data);
+                startActivity(DisputeOrderDetailActivity.class, mBundle);
             }
         });
 
