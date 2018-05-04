@@ -210,8 +210,8 @@ public class OrderHelper {
                                     }
                                 });
 
-                                final Button btnCancel = viewHolder.getView(R.id.btn_order_cancel);
-                                final RadioGroup radioGroup = viewHolder.getView(R.id.rg_order_cancel_reason);
+                                final Button btnCancel = viewHolder.getView(R.id.btn_dialog_confirm);
+                                final RadioGroup radioGroup = viewHolder.getView(R.id.rg_dialog);
                                 radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
                                     @Override
@@ -225,7 +225,7 @@ public class OrderHelper {
                                     }
                                 });
 
-                                viewHolder.setOnViewClickListener(R.id.btn_order_cancel, new OnViewClickListener() {
+                                viewHolder.setOnViewClickListener(R.id.btn_dialog_confirm, new OnViewClickListener() {
                                     @Override
                                     public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
                                         commonDialog.dismiss();

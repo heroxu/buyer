@@ -44,78 +44,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="请选择取消订单的原因（必选）"
-            android:textColor="@color/txt_main"
+            android:textColor="@color/txt_gray_dark"
             android:textSize="@dimen/txt_size_15" />
 
         <RadioGroup
-            android:id="@+id/rg_order_cancel_reason"
+            android:id="@+id/rg_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RadioButton
                 android:id="@+id/rb_order_cancel_wrong_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/WideRadioButton.Dialog"
                 android:layout_marginTop="20dp"
-                android:button="@null"
-                android:drawableLeft="@drawable/btn_radio_selector"
-                android:drawablePadding="10dp"
-                android:text="操作有误（地址、商品等选错）"
-                android:textColor="@color/txt_gray_dark"
-                android:textSize="@dimen/txt_size_13" />
+                android:text="操作有误（地址、商品等选错）" />
 
             <RadioButton
                 android:id="@+id/rb_order_cancel_reorder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:button="@null"
-                android:drawableLeft="@drawable/btn_radio_selector"
-                android:drawablePadding="10dp"
-                android:text="重新下单，误操作"
-                android:textColor="@color/txt_gray_dark"
-                android:textSize="@dimen/txt_size_13" />
+                style="@style/WideRadioButton.Dialog"
+                android:text="重新下单，误操作" />
 
             <RadioButton
                 android:id="@+id/rb_order_cancel_dont_want"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:button="@null"
-                android:drawableLeft="@drawable/btn_radio_selector"
-                android:drawablePadding="10dp"
-                android:text="不想买了"
-                android:textColor="@color/txt_gray_dark"
-                android:textSize="@dimen/txt_size_13" />
+                style="@style/WideRadioButton.Dialog"
+                android:text="不想买了" />
 
             <RadioButton
                 android:id="@+id/rb_order_cancel_other"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:button="@null"
-                android:drawableLeft="@drawable/btn_radio_selector"
-                android:drawablePadding="10dp"
-                android:text="其它"
-                android:textColor="@color/txt_gray_dark"
-                android:textSize="@dimen/txt_size_13" />
+                style="@style/WideRadioButton.Dialog"
+                android:text="其它" />
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/et_order_cancel_reason"
-            android:layout_width="match_parent"
-            android:layout_height="98dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_input_gray"
-            android:gravity="top"
-            android:hint="说说您取消的其他原因～"
-            android:padding="10dp"
-            android:textColor="@color/txt_main"
-            android:textColorHint="@color/txt_gray"
-            android:textSize="@dimen/txt_size_13" />
-
         <Button
-            android:id="@+id/btn_order_cancel"
+            android:id="@+id/btn_dialog_confirm"
             style="@style/CommonButton"
             android:layout_marginBottom="0dp"
             android:layout_marginLeft="0dp"
@@ -123,7 +83,6 @@
             android:layout_marginTop="20dp"
             android:enabled="false"
             android:text="@string/confirm" />
-
 
     </LinearLayout>
 </LinearLayout>
