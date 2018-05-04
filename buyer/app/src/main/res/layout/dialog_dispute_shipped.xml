@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_rectangle_top_corner"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="售后原因"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_17"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/icon_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:src="@mipmap/ic_details_off_pag" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择申请售后的原因（必选）"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="@dimen/txt_size_15" />
+
+        <RadioGroup
+            android:id="@+id/rg_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rb_order_dispute_unshipped"
+                style="@style/WideRadioButton.Dialog"
+                android:layout_marginTop="20dp"
+                android:text="一直未收到货" />
+
+            <RadioButton
+                android:id="@+id/rb_order_dispute_goods_broken"
+                style="@style/WideRadioButton.Dialog"
+                android:text="物品破损" />
+
+            <RadioButton
+                android:id="@+id/rb_order_dispute_ship_wrong"
+                style="@style/WideRadioButton.Dialog"
+                android:text="物品错发/漏发" />
+
+            <RadioButton
+                android:id="@+id/rb_order_dispute_describe_discrepancy"
+                style="@style/WideRadioButton.Dialog"
+                android:text="与描述不符" />
+
+            <RadioButton
+                android:id="@+id/rb_order_dispute_quality"
+                style="@style/WideRadioButton.Dialog"
+                android:text="质量问题" />
+
+            <RadioButton
+                android:id="@+id/rb_order_dispute_other"
+                style="@style/WideRadioButton.Dialog"
+                android:text="其它" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_dialog_confirm"
+            style="@style/CommonButton"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="20dp"
+            android:enabled="false"
+            android:text="@string/confirm" />
+
+    </LinearLayout>
+</LinearLayout>

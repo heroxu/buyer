@@ -23,7 +23,6 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.backpacker.order.UploadShippingInfoActivity;
-import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderReviewsAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderDetailBean;
@@ -101,12 +100,29 @@ public class OrderHelper {
     public static final int OPERATE_CONTACT_SERVICE = 13;//联系客服
     public static final int OPERATE_TO_SHIPPING = 14;//发货
     public static final int OPERATE_DISPUTE_DETAIL = 15;//售后详情
-    public static final int OPERATE_DISPUTE = 16;//申请售后
+    public static final int OPERATE_DISPUTE_UNSHIPPED = 16;//申请售后（待发货）
+    public static final int OPERATE_DISPUTE_SHIPPED = 17;//申请售后（待收货）
 
 
     public static void switchOperate(final BaseActivity activity, int orderOperateType) {
         switch (orderOperateType) {
-            case OPERATE_DISPUTE:
+            case OPERATE_DISPUTE_SHIPPED:
+                showBtmOptionDialog(activity, R.layout.dialog_dispute_shipped, new OnOptionConfirmListener() {
+                    @Override
+                    public void onConfirm(RadioGroup radioGroup) {
+
+                    }
+                });
+
+                break;
+
+            case OPERATE_DISPUTE_UNSHIPPED:
+                showBtmOptionDialog(activity, R.layout.dialog_dispute_unshipped, new OnOptionConfirmListener() {
+                    @Override
+                    public void onConfirm(RadioGroup radioGroup) {
+
+                    }
+                });
 
                 break;
 
@@ -211,15 +227,15 @@ public class OrderHelper {
     /**
      * 设置底部按钮文本及相应操作（按钮从右往左排列）
      */
-    public static void switchBottomBtns(final BaseActivity activity, boolean isSolid,
-                                        TextView tvBottomBtn1, TextView tvBottomBtn2,
-                                        TextView tvBottomBtn3, final TextView tvBottomBtnMore,
-                                        String btnTxt1, final int orderOperateType1,
-                                        String btnTxt2, final int orderOperateType2,
-                                        String btnTxt3, final int orderOperateType3,
-                                        String btnTxt4, final int orderOperateType4,
-                                        String btnTxt5, final int orderOperateType5,
-                                        String btnTxt6, final int orderOperateType6) {
+    private static void switchBottomBtns(final BaseActivity activity, boolean isSolid,
+                                         TextView tvBottomBtn1, TextView tvBottomBtn2,
+                                         TextView tvBottomBtn3, final TextView tvBottomBtnMore,
+                                         String btnTxt1, final int orderOperateType1,
+                                         String btnTxt2, final int orderOperateType2,
+                                         String btnTxt3, final int orderOperateType3,
+                                         String btnTxt4, final int orderOperateType4,
+                                         String btnTxt5, final int orderOperateType5,
+                                         String btnTxt6, final int orderOperateType6) {
         if (isSolid) {
             tvBottomBtn1.setBackgroundResource(R.drawable.bg_rounded_rectangle_ffcd1f);
             tvBottomBtn1.setTextColor(activity.getResources().getColor(R.color.txt_main));
@@ -619,7 +635,6 @@ public class OrderHelper {
                                                View layBottomBtns, TextView tvBottomBtn1, TextView tvBottomBtn2,
                                                TextView tvBottomBtn3, TextView tvBottomBtnMore) {
         int orderStatus = orderDetailBean.getOrderStatus();
-        int goodsType = orderDetailBean.getGoodsType();
         if (userType == Consts.USER_TYPE_BUYER) {
             switch (orderStatus) {
                 case STATUS_BUYER_AWAIT_PAY:

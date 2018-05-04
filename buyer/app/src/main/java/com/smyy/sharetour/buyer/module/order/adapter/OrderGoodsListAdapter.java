@@ -93,7 +93,10 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
                     holder.tvBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            OrderHelper.switchOperate(mActivity, OrderHelper.OPERATE_DISPUTE);
+                            OrderHelper.switchOperate(mActivity,
+                                    mStatus == OrderHelper.STATUS_BUYER_AWAIT_SHIPPING ?
+                                            OrderHelper.OPERATE_DISPUTE_UNSHIPPED :
+                                            OrderHelper.OPERATE_DISPUTE_SHIPPED);
                         }
                     });
                 } else {
