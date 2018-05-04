@@ -11,6 +11,7 @@ public class OrderGoodsInfo implements Serializable {
     private int goodsCount;
     private String goodsPic;
     private int goodsType;
+    private String orderGoodsId;//该商品在订单中的订单ID
     private String disputeOrderId;//对应售后订单ID
 
     public OrderGoodsInfo(String goodsId, String goodsName, String goodsSpec, String receiveDeadline, String goodsPrice, int goodsCount, String goodsPic, int goodsType, String disputeOrderId) {
@@ -95,5 +96,13 @@ public class OrderGoodsInfo implements Serializable {
 
     public void setDisputeOrderId(String disputeOrderId) {
         this.disputeOrderId = disputeOrderId;
+    }
+
+    public String getOrderGoodsId() {
+        return orderGoodsId;
+    }
+
+    public void setOrderGoodsId(String orderGoodsId) {
+        this.orderGoodsId = orderGoodsId;
     }
 }
