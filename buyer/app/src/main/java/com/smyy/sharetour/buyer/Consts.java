@@ -188,6 +188,10 @@ public class Consts {
     public static final int USER_TYPE_BACK_PACKER = 2;
     public static final int USER_TYPE_SELLER = 3;
 
+    //交易明细类型
+    public static final int STATEMENT_TYPE_IN = 1;//进账
+    public static final int STATEMENT_TYPE_OUT = 2;//出账
+
     /**
      * 客服电话
      */

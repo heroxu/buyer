@@ -149,10 +149,9 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
     }
 
 
-
     @OnClick({R.id.iv_home_switch, R.id.tt_fount_message, R.id.tt_my_info,
             R.id.send_travel, R.id.nav_order, R.id.nav_require, R.id.nav_travel,
-            R.id.nav_wallet, R.id.nav_setting,R.id.ll_btn_user})
+            R.id.nav_wallet, R.id.nav_setting, R.id.ll_btn_user})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_home_switch:
@@ -178,8 +177,8 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
 
             case R.id.nav_order:
                 drawerLayout.closeDrawer(Gravity.LEFT);
-                Bundle bundle=  new Bundle();
-                bundle.putInt(Consts.USER_TYPE,Consts.USER_TYPE_BACK_PACKER);
+                Bundle bundle = new Bundle();
+                bundle.putInt(Consts.USER_TYPE, Consts.USER_TYPE_BACK_PACKER);
                 Intent intent = new Intent(BackPackerHomeActivity.this, OrderListActivity.class);
                 intent.putExtra("bundle", bundle);
                 startActivity(intent);
@@ -195,6 +194,7 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
             case R.id.nav_wallet:
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 startActivity(new Intent(BackPackerHomeActivity.this, MyWalletActivity.class));
+                break;
             case R.id.ll_btn_user:
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 ActivityLauncher.viewBackpackHomePageActivity(BackPackerHomeActivity.this);
@@ -222,7 +222,7 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerVisible(Gravity.LEFT)){
+        if (drawerLayout.isDrawerVisible(Gravity.LEFT)) {
             drawerLayout.closeDrawer(Gravity.LEFT);
         } else {
             super.onBackPressed();
