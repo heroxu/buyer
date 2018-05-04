@@ -3,6 +3,7 @@ package com.smyy.sharetour.buyer.module.order;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.backpacker.order.UploadShippingInfoActivity;
+import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderReviewsAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderDetailBean;
@@ -194,46 +196,12 @@ public class OrderHelper {
                 break;
 
             case OPERATE_CANCEL:
-                new CommonDialog.Builder(activity.getSupportFragmentManager())
-                        .setLayoutRes(R.layout.dialog_cancel_order)
-                        .setGravity(Gravity.BOTTOM)
-                        .setAnimRes(R.style.BottomDialogAnim)
-                        .setDimAmount(0.5f)
-                        .setScreenWidthAspect(activity, 1)
-                        .setOnBindViewListener(new OnBindViewListener() {
-                            @Override
-                            public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
-                                viewHolder.setOnViewClickListener(R.id.icon_close, new OnViewClickListener() {
-                                    @Override
-                                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                        commonDialog.dismiss();
-                                    }
-                                });
+                showBtmOptionDialog(activity, R.layout.dialog_cancel_order, new OnOptionConfirmListener() {
+                    @Override
+                    public void onConfirm(RadioGroup radioGroup) {
 
-                                final Button btnCancel = viewHolder.getView(R.id.btn_dialog_confirm);
-                                final RadioGroup radioGroup = viewHolder.getView(R.id.rg_dialog);
-                                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-                                    @Override
-                                    public void onCheckedChanged(RadioGroup group, int checkedId) {
-                                        radioGroup.getCheckedRadioButtonId();
-                                        if (checkedId != -1) {
-                                            btnCancel.setEnabled(true);
-                                        } else {
-                                            btnCancel.setEnabled(false);
-                                        }
-                                    }
-                                });
-
-                                viewHolder.setOnViewClickListener(R.id.btn_dialog_confirm, new OnViewClickListener() {
-                                    @Override
-                                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                        commonDialog.dismiss();
-                                    }
-                                });
-                            }
-                        })
-                        .create().show();
+                    }
+                });
                 break;
             default:
                 break;
@@ -979,5 +947,62 @@ public class OrderHelper {
             dot3.setEnabled(true);
             txt3.setEnabled(true);
         }
+    }
+
+
+    /**
+     * @param activity
+     * @param dialogRes               参考dialog_cancel_order，必须包含R.id.icon_close、R.id.btn_dialog_confirm、R.id.rg_dialog
+     * @param onOptionConfirmListener
+     */
+    public static void showBtmOptionDialog(FragmentActivity activity, int dialogRes, final OnOptionConfirmListener onOptionConfirmListener) {
+        new CommonDialog.Builder(activity.getSupportFragmentManager())
+                .setLayoutRes(dialogRes)
+                .setGravity(Gravity.BOTTOM)
+                .setAnimRes(R.style.BottomDialogAnim)
+                .setDimAmount(0.5f)
+                .setScreenWidthAspect(activity, 1)
+                .setOnBindViewListener(new OnBindViewListener() {
+                    @Override
+                    public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
+                        viewHolder.setOnViewClickListener(R.id.icon_close, new OnViewClickListener() {
+                            @Override
+                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                commonDialog.dismiss();
+                            }
+                        });
+
+                        final Button btnCancel = viewHolder.getView(R.id.btn_dialog_confirm);
+                        final RadioGroup radioGroup = viewHolder.getView(R.id.rg_dialog);
+                        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+                            @Override
+                            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                                radioGroup.getCheckedRadioButtonId();
+                                if (checkedId != -1) {
+                                    btnCancel.setEnabled(true);
+                                } else {
+                                    btnCancel.setEnabled(false);
+                                }
+                            }
+                        });
+
+
+                        viewHolder.setOnViewClickListener(R.id.btn_dialog_confirm, new OnViewClickListener() {
+                            @Override
+                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                commonDialog.dismiss();
+                                if (onOptionConfirmListener != null) {
+                                    onOptionConfirmListener.onConfirm(radioGroup);
+                                }
+                            }
+                        });
+                    }
+                })
+                .create().show();
+    }
+
+    public interface OnOptionConfirmListener {
+        void onConfirm(RadioGroup radioGroup);
     }
 }
