@@ -24,6 +24,7 @@ import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
 import com.smyy.sharetour.buyer.module.order.OrderCommentActivity;
 import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.StringUtil;
 import com.yongchun.library.view.ImageSelectorActivity;
 
 import java.io.File;
@@ -49,6 +50,10 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
     View layBuyer;
     @BindView(R.id.lay_my_account_settings_packer)
     View layPacker;
+    @BindView(R.id.tv_my_residence)
+    TextView tvResidence;
+    @BindView(R.id.tv_my_usual_dest)
+    TextView tvUsualDest;
 
     private int mUserType = Consts.USER_TYPE_BUYER;
 
@@ -166,6 +171,11 @@ public class AccountSettingsActivity extends MyBaseMvpActivity<UserPresenter> im
             File file = new File(filePath);
             Glide.with(getContext()).load(file).into(ivAvatar);
         }
+
+        UserInfoBean.Residence residence = userInfo.getResidence();
+        tvResidence.setText(StringUtil.connect(residence.getCountry(), " ",
+                residence.getProvince(), " ", residence.getCity()));
+        tvUsualDest.setText(StringUtil.connect(userInfo.getUsualDestList(), "、"));
     }
 
     @Override
