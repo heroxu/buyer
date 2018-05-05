@@ -7,12 +7,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="16dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:paddingTop="16dp"
-        android:gravity="center_vertical">
+        android:paddingTop="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,11 +20,26 @@
             android:text="失效商品 3 件"
             android:textColor="@color/txt_main"
             android:textSize="15sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+        <TextView
+            android:id="@+id/tv_clean_goods"
+            android:background="@drawable/bg_rounded_rectangle_stroke_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清空失效商品"
+            android:textColor="@color/txt_gray_dark"
+            android:textSize="11sp" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line_divider"/>
+        android:background="@color/line_divider" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"

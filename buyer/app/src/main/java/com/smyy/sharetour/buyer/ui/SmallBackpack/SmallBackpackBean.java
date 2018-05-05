@@ -13,9 +13,26 @@ public class SmallBackpackBean implements MultiItemEntity {
     public static final int GOODS_TYPE = 0; //商品
     public static final int GOODS_FAILURE_TYPE = 1;//失效商品
     private int type;
-    private boolean isSelect;
     private List<GoodsBean> mGoodsBeans = new ArrayList<>();
     private List<GoodsFailureBean> mGoodsFailureBeans = new ArrayList<>();
+    private String name;
+    private int isSelect;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public  int getIsSelect() {
+        return isSelect;
+    }
+
+    public void setIsSelect(int isSelect) {
+        this.isSelect = isSelect;
+    }
 
     public List<GoodsBean> getmGoodsBeans() {
         return mGoodsBeans;
@@ -45,37 +62,29 @@ public class SmallBackpackBean implements MultiItemEntity {
         mGoodsFailureBeans.add(new GoodsFailureBean());
     }
 
-    public boolean isSelect() {
-        return isSelect;
-    }
+    public class GoodsBean{
+        private String name;
+        private int isSelect;
 
-    public void setSelect(boolean select) {
-        isSelect = select;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public class GoodsBean implements MultiItemEntity {
-        private boolean isSelect;
+        public void setName(String name) {
+            this.name = name;
+        }
 
-        public boolean isSelect() {
+        public int getIsSelect() {
             return isSelect;
         }
 
-        public void setSelect(boolean select) {
-            isSelect = select;
-        }
-
-        @Override
-        public int getItemType() {
-            return 0;
+        public void setIsSelect(int isSelect) {
+            this.isSelect = isSelect;
         }
     }
 
-    public class GoodsFailureBean implements MultiItemEntity {
+    public class GoodsFailureBean{
 
-        @Override
-        public int getItemType() {
-            return 0;
-        }
     }
 
     public int getType() {

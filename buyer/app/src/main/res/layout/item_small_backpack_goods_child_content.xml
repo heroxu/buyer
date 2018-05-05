@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_btn_itbgc"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -19,6 +20,7 @@
             android:layout_height="18dp"
             android:layout_gravity="center_vertical"
             android:button="@null"
+            android:clickable="false"
             android:drawableLeft="@drawable/btn_radio_selector"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
@@ -81,8 +83,7 @@
                 <ImageView
                     android:layout_width="26dp"
                     android:layout_height="26dp"
-                    android:src="@mipmap/ic_city_singapore"
-                     />
+                    android:src="@mipmap/ic_city_singapore" />
 
                 <TextView
                     android:id="@+id/tv_search_product_price"
@@ -107,6 +108,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_edit_itbgc"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:gravity="center_horizontal">

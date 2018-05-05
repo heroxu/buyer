@@ -7,23 +7,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="16dp"
         android:paddingLeft="10dp"
         android:paddingRight="20dp"
-        android:paddingTop="16dp"
-        android:gravity="center_vertical">
+        android:paddingTop="16dp">
 
         <CheckBox
             android:id="@+id/cb_goods_all"
-            android:layout_gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:drawablePadding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="18dp"
-            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
             android:button="@null"
-            android:drawableLeft="@drawable/btn_radio_selector" />
+            android:clickable="false"
+            android:drawableLeft="@drawable/btn_radio_selector"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="20dp"
@@ -38,10 +40,12 @@
             android:textColor="@color/txt_gray_dark"
             android:textSize="13sp" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line_divider"/>
+        android:background="@color/line_divider" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
