@@ -8,11 +8,13 @@ import android.view.View;
 
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
-import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpFragment;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderListAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
+import com.smyy.sharetour.buyer.module.order.contract.IOrderContract;
+import com.smyy.sharetour.buyer.module.order.model.OrderModel;
+import com.smyy.sharetour.buyer.module.order.presenter.OrderPresenter;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class OrderListFragment extends BaseMvpFragment {
+public class OrderListFragment extends MyBaseMvpFragment<OrderPresenter> implements IOrderContract.View {
     @BindView(R.id.rv_order_list)
     RecyclerView mRecyclerView;
     private OrderListAdapter mAdapter;
@@ -53,11 +55,6 @@ public class OrderListFragment extends BaseMvpFragment {
     }
 
     @Override
-    protected IBasePresenter createPresenter() {
-        return null;
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_order_list;
     }
@@ -65,7 +62,7 @@ public class OrderListFragment extends BaseMvpFragment {
     @Override
     protected void initData(Bundle bundle) {
         if (mAdapter == null) {
-            mAdapter = new OrderListAdapter((BaseActivity) getActivity(), mUserType);
+            mAdapter = new OrderListAdapter((BaseActivity) getActivity(), mUserType, mPresenter);
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -342,5 +339,15 @@ public class OrderListFragment extends BaseMvpFragment {
                 OrderHelper.GOODS_TYPE_DEMAND,
                 fakdeGoodsListDL);
         return orderBeanDL;
+    }
+
+    @Override
+    protected OrderPresenter createPresenter() {
+        return new OrderPresenter(this, new OrderModel());
+    }
+
+    @Override
+    public void finish() {
+        mActivity.finish();
     }
 }

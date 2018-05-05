@@ -15,18 +15,24 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
-import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 import com.smyy.sharetour.buyer.module.order.adapter.OrderGoodsListAdapter;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderDetailBean;
+import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
+import com.smyy.sharetour.buyer.module.order.contract.IOrderContract;
+import com.smyy.sharetour.buyer.module.order.model.OrderModel;
+import com.smyy.sharetour.buyer.module.order.presenter.OrderPresenter;
 import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class OrderDetailActivity extends MyBaseMvpActivity {
+public class OrderDetailActivity extends MyBaseMvpActivity<OrderPresenter> implements IOrderContract.View {
     @BindView(R.id.tv_order_remain_time)
     TextView tvRemainTime;
     @BindView(R.id.lay_order_status)
@@ -101,39 +107,84 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
     }
 
     private void getFakeData() {
-        if (mBundle != null) {
-            OrderBean orderBean = (OrderBean) mBundle.getSerializable(FAKE_DATA);
-            OrderDetailBean orderDetailBean = new OrderDetailBean();
+        OrderDetailBean orderDetailBean = new OrderDetailBean();
+        setFakedata(orderDetailBean);
 
-            int orderStatus = orderBean.getOrderStatus();
-            if (orderStatus == OrderHelper.STATUS_BUYER_AWAIT_PAY ||
-                    orderStatus == OrderHelper.STATUS_SELLER_AWAIT_PAY) {
+        int orderStatus = orderDetailBean.getOrderStatus();
+        switch (orderStatus) {
+            case OrderHelper.STATUS_BUYER_AWAIT_PAY:
+//            case OrderHelper.STATUS_SELLER_AWAIT_PAY:
                 orderDetailBean.setRemainTime("12:59:30");
-            }
-            orderDetailBean.setOrderStatus(orderStatus);
+                break;
 
-            orderDetailBean.setShippingName("阳鸿");
-            orderDetailBean.setShippingPhone("13760685049");
-            orderDetailBean.setShippingAddress("广东省广州市天河区冼村街道合景国际金融大厦32 楼3205室");
+            case OrderHelper.STATUS_BUYER_CLOSED:
+            case OrderHelper.STATUS_SELLER_CLOSED:
+                orderDetailBean.setCloseReason("我不想买了");
+                break;
 
-            orderDetailBean.setSellerName(orderBean.getSellerName());
-            orderDetailBean.setBuyerName(orderBean.getBuyerName());
-            orderDetailBean.setGoodsList(orderBean.getGoodsList());
-            orderDetailBean.setGoodsCountTotal(orderBean.getGoodsCountTotal());
-            orderDetailBean.setPriceTotal(orderBean.getPriceTotal());
-            orderDetailBean.setShippingFee(orderBean.getShippingFee());
-            orderDetailBean.setGoodsType(orderBean.getGoodsType());
-            if (orderBean.getGoodsType() == OrderHelper.GOODS_TYPE_DEMAND) {
-                orderDetailBean.setReward("¥ 300.00");
-            }
-            orderDetailBean.setOrderNum("201803071438023384");
-            orderDetailBean.setOrderTime("2018-03-08 14:39:07");
+            default:
+                break;
 
-            showOrderDetail(orderDetailBean);
         }
+
+        if (orderDetailBean.getGoodsType() == OrderHelper.GOODS_TYPE_DEMAND) {
+            orderDetailBean.setReward("¥ 300.00");
+        }
+
+        orderDetailBean.setShippingName("阳鸿");
+        orderDetailBean.setShippingPhone("13760685049");
+        orderDetailBean.setShippingAddress("广东省广州市天河区冼村街道合景国际金融大厦32 楼3205室");
+        orderDetailBean.setOrderNum("201803071438023384");
+        orderDetailBean.setOrderTime("2018-03-08 14:39:07");
+
+        showOrderDetail(orderDetailBean);
     }
 
-    private void showOrderDetail(OrderDetailBean data) {
+    private void setFakedata(OrderDetailBean orderDetailBean) {
+        if (mBundle != null) {
+            Serializable mBundleSerializable = mBundle.getSerializable(FAKE_DATA);
+            if (mBundleSerializable != null && mBundleSerializable instanceof OrderBean) {
+                OrderBean orderBean = (OrderBean) mBundleSerializable;
+
+                orderDetailBean.setOrderId(orderBean.getOrderId());
+                orderDetailBean.setOrderStatus(orderBean.getOrderStatus());
+                orderDetailBean.setSellerName(orderBean.getSellerName());
+                orderDetailBean.setSellerAvatar(orderBean.getSellerAvatar());
+                orderDetailBean.setBuyerName(orderBean.getBuyerName());
+                orderDetailBean.setBuyerAvatar(orderBean.getBuyerAvatar());
+                orderDetailBean.setGoodsCountTotal(orderBean.getGoodsCountTotal());
+                orderDetailBean.setPriceTotal(orderBean.getPriceTotal());
+                orderDetailBean.setShippingFee(orderBean.getShippingFee());
+                orderDetailBean.setVerifyVideo(orderBean.getVerifyVideo());
+                orderDetailBean.setGoodsType(orderBean.getGoodsType());
+                orderDetailBean.setGoodsList(orderBean.getGoodsList());
+                return;
+            }
+        }
+
+        orderDetailBean.setOrderId("");
+        orderDetailBean.setOrderStatus(OrderHelper.STATUS_BUYER_AWAIT_SHIPPING);
+        orderDetailBean.setSellerName("我是小桂子呀");
+        orderDetailBean.setSellerAvatar("");
+        orderDetailBean.setBuyerName("我是小桂子");
+        orderDetailBean.setBuyerAvatar("");
+        orderDetailBean.setGoodsCountTotal(1);
+        orderDetailBean.setPriceTotal("￥9,948.00");
+        orderDetailBean.setShippingFee("￥30.00");
+        orderDetailBean.setVerifyVideo("");
+        orderDetailBean.setGoodsType(OrderHelper.GOODS_TYPE_DEMAND);
+        ArrayList<OrderGoodsInfo> fakdeGoodsList1 = new ArrayList<>();
+        OrderGoodsInfo goodsInfo1 = new OrderGoodsInfo("1",
+                "NIKE HUARACHE DRIFT (PSE) LALALALALA",
+                "黑白/36.5",
+                "",
+                "￥9,918.00",
+                1, "", OrderHelper.GOODS_TYPE_DEMAND, null);
+        fakdeGoodsList1.add(goodsInfo1);
+        orderDetailBean.setGoodsList(fakdeGoodsList1);
+    }
+
+    private void showOrderDetail(final OrderDetailBean data) {
         if (data != null) {
             String remainTime = data.getRemainTime();
             if (!StringUtil.isEmpty(remainTime)) {
@@ -165,7 +216,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                 tvContactOpposite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        OrderHelper.switchOperate(OrderDetailActivity.this, OrderHelper.OPERATE_CONTACT_SELLER);
+                        OrderHelper.switchOperate(OrderDetailActivity.this,
+                                mUserType, data.getSellerName(), OrderHelper.OPERATE_CONTACT_SELLER);
                     }
                 });
 
@@ -179,7 +231,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                 tvContactOpposite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        OrderHelper.switchOperate(OrderDetailActivity.this, OrderHelper.OPERATE_CONTACT_BUYER);
+                        OrderHelper.switchOperate(OrderDetailActivity.this,
+                                mUserType, data.getBuyerName(), OrderHelper.OPERATE_CONTACT_BUYER);
                     }
                 });
             }
@@ -190,8 +243,9 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
                 }
             };
             rvGoodsList.setLayoutManager(linearLayoutManager);
-            rvGoodsList.setAdapter(new OrderGoodsListAdapter(OrderDetailActivity.this, true,
-                    mUserType, data.getOrderStatus(), data.getGoodsList()));
+            rvGoodsList.setAdapter(new OrderGoodsListAdapter(OrderDetailActivity.this, mUserType,
+                    mPresenter, true,
+                    data.getOrderStatus(), data.getGoodsList()));
 
             int goodsType = data.getGoodsType();
             if (goodsType == OrderHelper.GOODS_TYPE_DEMAND) {
@@ -236,9 +290,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity {
 
 
     @Override
-    protected MyBasePresenter createPresenter() {
-        return null;
+    protected OrderPresenter createPresenter() {
+        return new OrderPresenter(this, new OrderModel());
     }
-
-
 }

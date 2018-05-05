@@ -13,6 +13,7 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.module.order.bean.OrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
+import com.smyy.sharetour.buyer.module.order.presenter.OrderPresenter;
 import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
 import com.smyy.sharetour.buyer.util.StringUtil;
 import com.smyy.sharetour.uiframelib.BaseActivity;
@@ -22,14 +23,17 @@ import java.util.List;
 
 public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.ViewHolder> {
 
-    private final int mUserType;
     private BaseActivity mActivity;
+    private final int mUserType;
+    private OrderPresenter mPresenter;
     private List<OrderBean> mDatas;
     private String[] mOrderStatusStrings;
 
-    public OrderListAdapter(BaseActivity context, int userType) {
+    public OrderListAdapter(BaseActivity context, int userType,
+                            OrderPresenter presenter) {
         this.mActivity = context;
         this.mUserType = userType;
+        this.mPresenter = presenter;
         switch (mUserType) {
             case Consts.USER_TYPE_BUYER:
                 mOrderStatusStrings = OrderHelper.STATUS_STRINGS_BUYER;
@@ -84,8 +88,9 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
             holder.rvGoodsList.setLayoutManager(linearLayoutManager);
-            OrderGoodsListAdapter adapter = new OrderGoodsListAdapter(mActivity, false,
-                    mUserType, data.getOrderStatus(), data.getGoodsList());
+            OrderGoodsListAdapter adapter = new OrderGoodsListAdapter(mActivity, mUserType,
+                    mPresenter, false,
+                    data.getOrderStatus(), data.getGoodsList());
             holder.rvGoodsList.setAdapter(adapter);
             adapter.setOnItemClickListener(new OrderGoodsListAdapter.OnItemClickListener() {
                 @Override
@@ -138,7 +143,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             }
 
             OrderHelper.switchListBottomBtns(mActivity,
-                    mUserType, null, data,
+                    mUserType, mPresenter, data,
                     holder.layBottomBtns,
                     holder.tvBottomBtn1, holder.tvBottomBtn2,
                     holder.tvBottomBtn3, holder.tvBottomBtnMore);

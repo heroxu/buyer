@@ -15,13 +15,15 @@ import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
-import com.smyy.sharetour.buyer.module.order.contract.IOrderContract;
-import com.smyy.sharetour.buyer.module.order.model.OrderModel;
 import com.smyy.sharetour.buyer.module.order.bean.DisputeOrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.DisputeOrderDetailBean;
+import com.smyy.sharetour.buyer.module.order.contract.IOrderContract;
+import com.smyy.sharetour.buyer.module.order.model.OrderModel;
 import com.smyy.sharetour.buyer.module.order.presenter.OrderPresenter;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
+
+import java.io.Serializable;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -83,27 +85,55 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity implements IOr
     }
 
     private void getFakeData() {
+        DisputeOrderDetailBean orderDetailBean = new DisputeOrderDetailBean();
+        setFakedata(orderDetailBean);
+
+        orderDetailBean.setRefundReason("一直未收到货");
+        orderDetailBean.setRefundNum("¥ 9,918.00");
+        orderDetailBean.setOrderNum("201803071438023384");
+        orderDetailBean.setOrderTime("2018-03-08 14:39:07");
+
+        showOrderDetail(orderDetailBean);
+    }
+
+    private void setFakedata(DisputeOrderDetailBean orderDetailBean) {
         if (mBundle != null) {
-            DisputeOrderBean orderBean = (DisputeOrderBean) mBundle.getSerializable(FAKE_DATA);
-            DisputeOrderDetailBean orderDetailBean = new DisputeOrderDetailBean();
+            Serializable mBundleSerializable = mBundle.getSerializable(FAKE_DATA);
+            if (mBundleSerializable != null && mBundleSerializable instanceof DisputeOrderBean) {
+                DisputeOrderBean orderBean = (DisputeOrderBean) mBundleSerializable;
 
-            orderDetailBean.setOrderStatus(orderBean.getOrderStatus());
-            orderDetailBean.setSellerName(orderBean.getSellerName());
-            orderDetailBean.setBuyerName(orderBean.getBuyerName());
-            orderDetailBean.setGoodsType(orderBean.getGoodsType());
-            orderDetailBean.setGoodsId(orderBean.getGoodsId());
-            orderDetailBean.setGoodsName(orderBean.getGoodsName());
-            orderDetailBean.setGoodsSpec(orderBean.getGoodsSpec());
-            orderDetailBean.setReceiveDeadline(orderBean.getReceiveDeadline());
-            orderDetailBean.setGoodsPrice(orderBean.getGoodsPrice());
-            orderDetailBean.setGoodsCount(orderBean.getGoodsCount());
-            orderDetailBean.setRefundReason("一直未收到货");
-            orderDetailBean.setRefundNum("¥ 9,918.00");
-            orderDetailBean.setOrderNum("201803071438023384");
-            orderDetailBean.setOrderTime("2018-03-08 14:39:07");
+                orderDetailBean.setOrderId(orderBean.getOrderId());
+                orderDetailBean.setOrderStatus(orderBean.getOrderStatus());
+                orderDetailBean.setSellerName(orderBean.getSellerName());
+                orderDetailBean.setSellerAvatar(orderBean.getSellerAvatar());
+                orderDetailBean.setBuyerName(orderBean.getBuyerName());
+                orderDetailBean.setBuyerAvatar(orderBean.getBuyerAvatar());
+                orderDetailBean.setGoodsType(orderBean.getGoodsType());
 
-            showOrderDetail(orderDetailBean);
+                orderDetailBean.setGoodsId(orderBean.getGoodsId());
+                orderDetailBean.setGoodsName(orderBean.getGoodsName());
+                orderDetailBean.setGoodsSpec(orderBean.getGoodsSpec());
+                orderDetailBean.setReceiveDeadline(orderBean.getReceiveDeadline());
+                orderDetailBean.setGoodsPrice(orderBean.getGoodsPrice());
+                orderDetailBean.setGoodsCount(orderBean.getGoodsCount());
+                return;
+            }
         }
+
+        orderDetailBean.setOrderId("");
+        orderDetailBean.setOrderStatus(OrderHelper.STATUS_BUYER_AWAIT_SHIPPING);
+        orderDetailBean.setSellerName("我是小桂子呀");
+        orderDetailBean.setSellerAvatar("");
+        orderDetailBean.setBuyerName("我是小桂子");
+        orderDetailBean.setBuyerAvatar("");
+        orderDetailBean.setGoodsType(OrderHelper.GOODS_TYPE_DEMAND);
+
+        orderDetailBean.setGoodsId("");
+        orderDetailBean.setGoodsName("NIKE HUARACHE DRIFT (PSE) LALALALALA");
+        orderDetailBean.setGoodsSpec("");
+        orderDetailBean.setReceiveDeadline("2018-05-01");
+        orderDetailBean.setGoodsPrice("￥9,918.00");
+        orderDetailBean.setGoodsCount(1);
     }
 
     private void showOrderDetail(DisputeOrderDetailBean data) {
@@ -178,14 +208,16 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity implements IOr
     public void onClick(final View view) {
         switch (view.getId()) {
             case R.id.tv_order_contact_service:
-                OrderHelper.switchOperate(this, OrderHelper.OPERATE_CONTACT_SERVICE);
+                OrderHelper.switchOperate(this,OrderHelper.OPERATE_CONTACT_SERVICE);
                 break;
 
             case R.id.tv_order_contact_opposite:
                 if (mUserType == Consts.USER_TYPE_BUYER) {
-                    OrderHelper.switchOperate(this, OrderHelper.OPERATE_CONTACT_SELLER);
+                    OrderHelper.switchOperate(this, mUserType,
+                            mOrderDetailBean.getSellerName(), OrderHelper.OPERATE_CONTACT_SELLER);
                 } else {
-                    OrderHelper.switchOperate(this, OrderHelper.OPERATE_CONTACT_BUYER);
+                    OrderHelper.switchOperate(this, mUserType,
+                            mOrderDetailBean.getBuyerName(), OrderHelper.OPERATE_CONTACT_BUYER);
                 }
                 break;
 

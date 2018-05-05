@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -107,9 +108,16 @@ public class OrderHelper {
     public static final int OPERATE_DISPUTE_SHIPPED = 17;//申请售后（待收货）
 
 
-    private static void switchOperate(final BaseActivity activity, OrderPresenter presenter,
-                                      String orderId, OrderBean orderBean, OrderDetailBean orderDetailBean,
-                                      int orderOperateType) {
+    /**
+     * 根据传入的参数进行相应操作
+     *
+     * @param id 可以是orderId、disputeOrderId、鉴定视频地址、用户聊天id
+     */
+    public static void switchOperate(final BaseActivity activity, int userType,
+                                     OrderPresenter presenter, String id,
+                                     int orderOperateType) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(Consts.USER_TYPE, userType);
         switch (orderOperateType) {
             case OPERATE_DISPUTE_SHIPPED:
                 showBtmOptionDialog(activity, R.layout.dialog_dispute_shipped, new OnOptionConfirmListener() {
@@ -132,13 +140,7 @@ public class OrderHelper {
                 break;
 
             case OPERATE_DISPUTE_DETAIL:
-
-                break;
-
-            case OPERATE_ADD_REVIEW:
-                Intent intent = new Intent(activity, OrderListCommentActivity.class);
-                intent.putExtra(OrderListCommentActivity.COMMENT_IS_APPEND, true);
-                activity.startActivity(intent);
+                activity.startActivity(DisputeOrderDetailActivity.class, bundle);
                 break;
 
             case OPERATE_VERIFY_VIDEO:
@@ -146,17 +148,22 @@ public class OrderHelper {
                 break;
 
             case OPERATE_CONTACT_BUYER:
-                ChatActivity.navToChat(activity, "我是小桂子", TIMConversationType.C2C);
+                ChatActivity.navToChat(activity, id, TIMConversationType.C2C);
                 break;
 
             case OPERATE_CONTACT_SELLER:
-                ChatActivity.navToChat(activity, "我是小桂子呀", TIMConversationType.C2C);
+                ChatActivity.navToChat(activity, id, TIMConversationType.C2C);
                 break;
 
             case OPERATE_REVIEW:
                 activity.startActivity(OrderListCommentActivity.class);
                 break;
 
+            case OPERATE_ADD_REVIEW:
+                Intent intent = new Intent(activity, OrderListCommentActivity.class);
+                intent.putExtra(OrderListCommentActivity.COMMENT_IS_APPEND, true);
+                activity.startActivity(intent);
+                break;
 
 
             case OPERATE_VIEW_REVIEWS:
@@ -243,39 +250,32 @@ public class OrderHelper {
         }
     }
 
-    public static void switchOperate(final BaseActivity activity, OrderPresenter presenter,
-                                     OrderBean orderBean,
-                                     int orderOperateType) {
-        switchOperate(activity, presenter, null, orderBean, null, orderOperateType);
+    public static void switchOperate(final BaseActivity activity, int userType, String id, int orderOperateType) {
+        switchOperate(activity, userType, null, id, orderOperateType);
     }
 
-    public static void switchOperate(final BaseActivity activity, OrderPresenter presenter,
-                                     OrderDetailBean orderDetailBean,
-                                     int orderOperateType) {
-        switchOperate(activity, presenter, null, null, orderDetailBean, orderOperateType);
+    public static void switchOperate(final BaseActivity activity, int userType, int orderOperateType) {
+        switchOperate(activity, userType, null, null, orderOperateType);
     }
 
     public static void switchOperate(final BaseActivity activity, int orderOperateType) {
-        switchOperate(activity, null, null, null, null, orderOperateType);
-    }
-
-    public static void switchOperate(final BaseActivity activity, String orderId, int orderOperateType) {
-        switchOperate(activity, null, orderId, null, null, orderOperateType);
+        switchOperate(activity, -1, null, null, orderOperateType);
     }
 
     /**
      * 设置底部按钮文本及相应操作（按钮从右往左排列）
      */
-    private static void switchBottomBtns(final BaseActivity activity, final OrderPresenter presenter, final OrderBean orderBean, final OrderDetailBean orderDetailBean,
+    private static void switchBottomBtns(final BaseActivity activity,
+                                         final int userType, final OrderPresenter presenter,
                                          boolean isSolid,
                                          TextView tvBottomBtn1, TextView tvBottomBtn2,
                                          TextView tvBottomBtn3, final TextView tvBottomBtnMore,
-                                         String btnTxt1, final int orderOperateType1,
-                                         String btnTxt2, final int orderOperateType2,
-                                         String btnTxt3, final int orderOperateType3,
-                                         String btnTxt4, final int orderOperateType4,
-                                         String btnTxt5, final int orderOperateType5,
-                                         String btnTxt6, final int orderOperateType6) {
+                                         String btnTxt1, final int orderOperateType1, final String id1,
+                                         String btnTxt2, final int orderOperateType2, final String id2,
+                                         String btnTxt3, final int orderOperateType3, final String id3,
+                                         String btnTxt4, final int orderOperateType4, final String id4,
+                                         String btnTxt5, final int orderOperateType5, final String id5,
+                                         String btnTxt6, final int orderOperateType6, final String id6) {
         if (isSolid) {
             tvBottomBtn1.setBackgroundResource(R.drawable.bg_rounded_rectangle_ffcd1f);
             tvBottomBtn1.setTextColor(activity.getResources().getColor(R.color.txt_main));
@@ -292,7 +292,7 @@ public class OrderHelper {
             tvBottomBtn1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    switchOperate(activity, presenter, null, orderBean, orderDetailBean, orderOperateType1);
+                    switchOperate(activity, userType, presenter, id1, orderOperateType1);
                 }
             });
         }
@@ -309,7 +309,7 @@ public class OrderHelper {
                 tvBottomBtn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        switchOperate(activity, presenter, null, orderBean, orderDetailBean, orderOperateType2);
+                        switchOperate(activity, userType, presenter, id2, orderOperateType2);
                     }
                 });
             }
@@ -327,7 +327,7 @@ public class OrderHelper {
                 tvBottomBtn3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        switchOperate(activity, presenter, null, orderBean, orderDetailBean, orderOperateType3);
+                        switchOperate(activity, userType, presenter, id3, orderOperateType3);
                     }
                 });
             }
@@ -360,7 +360,7 @@ public class OrderHelper {
                     @Override
                     public void onClick(View v) {
                         mPopupWindow.dismiss();
-                        switchOperate(activity, presenter, null, orderBean, orderDetailBean, orderOperateType4);
+                        switchOperate(activity, userType, presenter, id4, orderOperateType4);
                     }
                 });
             }
@@ -378,7 +378,7 @@ public class OrderHelper {
                         @Override
                         public void onClick(View v) {
                             mPopupWindow.dismiss();
-                            switchOperate(activity, presenter, null, orderBean, orderDetailBean, orderOperateType5);
+                            switchOperate(activity, userType, presenter, id5, orderOperateType5);
                         }
                     });
                 }
@@ -397,7 +397,7 @@ public class OrderHelper {
                         @Override
                         public void onClick(View v) {
                             mPopupWindow.dismiss();
-                            switchOperate(activity, presenter, null, orderBean, orderDetailBean, orderOperateType6);
+                            switchOperate(activity, userType, presenter, id6, orderOperateType6);
                         }
                     });
                 }
@@ -419,82 +419,82 @@ public class OrderHelper {
                                             View layBottomBtns, TextView tvBottomBtn1, TextView tvBottomBtn2,
                                             TextView tvBottomBtn3, TextView tvBottomBtnMore) {
         int orderStatus = orderBean.getOrderStatus();
-        int goodsType = orderBean.getGoodsType();
+        String orderId = orderBean.getOrderId();
         if (userType == Consts.USER_TYPE_BUYER) {
             switch (orderStatus) {
                 case STATUS_BUYER_AWAIT_PAY:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "支付", OPERATE_PAY,
-                            "取消订单", OPERATE_CANCEL,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "支付", OPERATE_PAY, orderId,
+                            "取消订单", OPERATE_CANCEL, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_BUYER_AWAIT_SHIPPING:
-                    if (goodsType == GOODS_TYPE_DEMAND) {
+                    if (orderBean.getGoodsType() == GOODS_TYPE_DEMAND) {
                         layBottomBtns.setVisibility(View.GONE);
                     } else {
                         layBottomBtns.setVisibility(View.VISIBLE);
-                        switchBottomBtns(activity, presenter, orderBean, null, false,
+                        switchBottomBtns(activity, userType, presenter, false,
                                 tvBottomBtn1, tvBottomBtn2,
                                 tvBottomBtn3, tvBottomBtnMore,
-                                "取消订单", OPERATE_CANCEL,
-                                null, -1,
-                                null, -1,
-                                null, -1,
-                                null, -1,
-                                null, -1);
+                                "取消订单", OPERATE_CANCEL, orderId,
+                                null, -1, null,
+                                null, -1, null,
+                                null, -1, null,
+                                null, -1, null,
+                                null, -1, null);
                     }
 
                     break;
 
                 case STATUS_BUYER_AWAIT_CONFIRM:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "确认收货", OPERATE_CONFIRM,
-                            "查看物流", OPERATE_VIEW_SHIPPING,
+                            "确认收货", OPERATE_CONFIRM, orderId,
+                            "查看物流", OPERATE_VIEW_SHIPPING, orderId,
                             TextUtils.isEmpty(orderBean.getVerifyVideo()) ? null : "鉴定视频",
-                            OPERATE_VERIFY_VIDEO,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            OPERATE_VERIFY_VIDEO, orderBean.getVerifyVideo(),
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_AWAIT_REVIEW:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "评价", OPERATE_REVIEW,
-                            "查看物流", OPERATE_VIEW_SHIPPING,
+                            "评价", OPERATE_REVIEW, orderId,
+                            "查看物流", OPERATE_VIEW_SHIPPING, orderId,
                             TextUtils.isEmpty(orderBean.getVerifyVideo()) ? null : "鉴定视频",
-                            OPERATE_VERIFY_VIDEO,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            OPERATE_VERIFY_VIDEO, orderBean.getVerifyVideo(),
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_ADD_REVIEW:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "追加评价", OPERATE_ADD_REVIEW,
+                            "追加评价", OPERATE_ADD_REVIEW, orderId,
                             TextUtils.isEmpty(orderBean.getVerifyVideo()) ? null : "鉴定视频",
-                            OPERATE_VERIFY_VIDEO,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            OPERATE_VERIFY_VIDEO, orderBean.getVerifyVideo(),
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
@@ -504,59 +504,58 @@ public class OrderHelper {
                         layBottomBtns.setVisibility(View.GONE);
                     } else {
                         layBottomBtns.setVisibility(View.VISIBLE);
-                        switchBottomBtns(activity, presenter, orderBean, null, false,
+                        switchBottomBtns(activity, userType, presenter, false,
                                 tvBottomBtn1, tvBottomBtn2,
                                 tvBottomBtn3, tvBottomBtnMore,
-                                TextUtils.isEmpty(verifyVideo) ? null : "鉴定视频",
-                                OPERATE_VERIFY_VIDEO,
-                                null, -1,
-                                null, -1,
-                                null, -1,
-                                null, -1,
-                                null, -1);
+                                "鉴定视频", OPERATE_VERIFY_VIDEO, verifyVideo,
+                                null, -1, null,
+                                null, -1, null,
+                                null, -1, null,
+                                null, -1, null,
+                                null, -1, null);
                     }
 
                     break;
 
                 case STATUS_BUYER_DUR_DISPUTE:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "查看详情", -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_DISPUTE_SUCCESS:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "查看详情", -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_CLOSED:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
@@ -571,93 +570,81 @@ public class OrderHelper {
 
                 case STATUS_SELLER_AWAIT_PAY:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "联系买家", OPERATE_CONTACT_BUYER,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "联系买家", OPERATE_CONTACT_BUYER, orderBean.getBuyerName(),
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_AWAIT_SHIPPING:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "发货", OPERATE_TO_SHIPPING,
-                            "联系买家", OPERATE_CONTACT_BUYER,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "发货", OPERATE_TO_SHIPPING, orderId,
+                            "联系买家", OPERATE_CONTACT_BUYER, orderBean.getBuyerName(),
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_SHIPPED:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看物流", OPERATE_VIEW_SHIPPING,
-                            "联系买家", OPERATE_CONTACT_BUYER,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "查看物流", OPERATE_VIEW_SHIPPING, orderId,
+                            "联系买家", OPERATE_CONTACT_BUYER, orderBean.getBuyerName(),
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_DONE:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看物流", OPERATE_VIEW_SHIPPING,
-                            "查看评价", OPERATE_VIEW_REVIEWS,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "查看物流", OPERATE_VIEW_SHIPPING, orderId,
+                            "查看评价", OPERATE_VIEW_REVIEWS, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_DUR_DISPUTE:
-                    layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, false,
-                            tvBottomBtn1, tvBottomBtn2,
-                            tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
-                    break;
-
                 case STATUS_SELLER_DISPUTE_SUCCESS:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看详情", -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "查看详情", -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_CLOSED:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, orderBean, null, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 default:
@@ -675,22 +662,21 @@ public class OrderHelper {
                                                View layBottomBtns, TextView tvBottomBtn1, TextView tvBottomBtn2,
                                                TextView tvBottomBtn3, TextView tvBottomBtnMore) {
         int orderStatus = orderDetailBean.getOrderStatus();
+        String orderId = orderDetailBean.getOrderId();
         if (userType == Consts.USER_TYPE_BUYER) {
             switch (orderStatus) {
                 case STATUS_BUYER_AWAIT_PAY:
                     switchStatus(activity, userType, layStatus, 1);
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter,
-                            null, orderDetailBean,
-                            true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "支付", OPERATE_PAY,
-                            "取消订单", OPERATE_CANCEL,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "支付", OPERATE_PAY, orderId,
+                            "取消订单", OPERATE_CANCEL, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_BUYER_AWAIT_SHIPPING:
@@ -702,109 +688,109 @@ public class OrderHelper {
                 case STATUS_BUYER_AWAIT_CONFIRM:
                     switchStatus(activity, userType, layStatus, 3);
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "确认收货", OPERATE_CONFIRM,
-                            "查看物流", OPERATE_VIEW_SHIPPING,
+                            "确认收货", OPERATE_CONFIRM, orderId,
+                            "查看物流", OPERATE_VIEW_SHIPPING, orderId,
                             TextUtils.isEmpty(orderDetailBean.getVerifyVideo()) ? null : "鉴定视频",
-                            OPERATE_VERIFY_VIDEO,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            OPERATE_VERIFY_VIDEO, orderDetailBean.getVerifyVideo(),
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_AWAIT_REVIEW:
                     switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "交易成功");
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "评价", OPERATE_REVIEW,
-                            "查看物流", OPERATE_VIEW_SHIPPING,
+                            "评价", OPERATE_REVIEW, orderId,
+                            "查看物流", OPERATE_VIEW_SHIPPING, orderId,
                             TextUtils.isEmpty(orderDetailBean.getVerifyVideo()) ? null : "鉴定视频",
-                            OPERATE_VERIFY_VIDEO,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            OPERATE_VERIFY_VIDEO, orderDetailBean.getVerifyVideo(),
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_ADD_REVIEW:
                     switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "交易成功");
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "追加评价", OPERATE_ADD_REVIEW,
+                            "追加评价", OPERATE_ADD_REVIEW, orderId,
                             TextUtils.isEmpty(orderDetailBean.getVerifyVideo()) ? null : "鉴定视频",
-                            OPERATE_VERIFY_VIDEO,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            OPERATE_VERIFY_VIDEO, orderDetailBean.getVerifyVideo(),
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_DONE:
                     switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "交易成功");
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
                             TextUtils.isEmpty(orderDetailBean.getVerifyVideo()) ? null : "鉴定视频",
-                            OPERATE_VERIFY_VIDEO,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            OPERATE_VERIFY_VIDEO, orderDetailBean.getVerifyVideo(),
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_DUR_DISPUTE:
                     switchStatus(activity, layStatus, R.mipmap.ic_in_stock, "售后处理中");
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "联系客服", OPERATE_CONTACT_SERVICE,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "联系客服", OPERATE_CONTACT_SERVICE, null,
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_DISPUTE_SUCCESS:
                     switchStatus(activity, layStatus, R.mipmap.ic_shipped, "退款成功");
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "联系客服", OPERATE_CONTACT_SERVICE,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "联系客服", OPERATE_CONTACT_SERVICE, null,
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
                 case STATUS_BUYER_CLOSED:
                     switchStatus(activity, layStatus, R.mipmap.ic_successfu_failure, "交易关闭", orderDetailBean.getCloseReason());
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
 
                     break;
 
@@ -833,15 +819,15 @@ public class OrderHelper {
                         switchStatus(activity, userType, layStatus, 2);
                     }
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "发货", OPERATE_TO_SHIPPING,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "发货", OPERATE_TO_SHIPPING, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_SHIPPED:
@@ -851,71 +837,71 @@ public class OrderHelper {
                         switchStatus(activity, userType, layStatus, 3);
                     }
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, true,
+                    switchBottomBtns(activity, userType, presenter, true,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看物流", OPERATE_VIEW_SHIPPING,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "查看物流", OPERATE_VIEW_SHIPPING, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_DONE:
                     switchStatus(activity, layStatus, R.mipmap.ic_successfu_transaction, "交易成功");
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "查看物流", OPERATE_VIEW_SHIPPING,
-                            "查看评价", OPERATE_VIEW_REVIEWS,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "查看物流", OPERATE_VIEW_SHIPPING, orderId,
+                            "查看评价", OPERATE_VIEW_REVIEWS, orderId,
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_DUR_DISPUTE:
                     switchStatus(activity, layStatus, R.mipmap.ic_in_stock, "售后处理中");
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "联系客服", OPERATE_CONTACT_SERVICE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "联系客服", OPERATE_CONTACT_SERVICE, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_DISPUTE_SUCCESS:
                     switchStatus(activity, layStatus, R.mipmap.ic_shipped, "退款成功");
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "联系客服", OPERATE_CONTACT_SERVICE,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "联系客服", OPERATE_CONTACT_SERVICE, null,
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 case STATUS_SELLER_CLOSED:
                     switchStatus(activity, layStatus, R.mipmap.ic_successfu_failure, "交易关闭", orderDetailBean.getCloseReason());
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, presenter, null, orderDetailBean, false,
+                    switchBottomBtns(activity, userType, presenter, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
-                            "删除订单", OPERATE_DELETE,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1,
-                            null, -1);
+                            "删除订单", OPERATE_DELETE, orderId,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null,
+                            null, -1, null);
                     break;
 
                 default:
