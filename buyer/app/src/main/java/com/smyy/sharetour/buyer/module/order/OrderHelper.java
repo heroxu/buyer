@@ -146,11 +146,11 @@ public class OrderHelper {
                 break;
 
             case OPERATE_CONTACT_BUYER:
-                ChatActivity.navToChat(activity, "", TIMConversationType.C2C);
+                ChatActivity.navToChat(activity, "我是小桂子", TIMConversationType.C2C);
                 break;
 
             case OPERATE_CONTACT_SELLER:
-                ChatActivity.navToChat(activity, "", TIMConversationType.C2C);
+                ChatActivity.navToChat(activity, "我是小桂子呀", TIMConversationType.C2C);
                 break;
 
             case OPERATE_REVIEW:
@@ -218,15 +218,16 @@ public class OrderHelper {
                 break;
 
             case OPERATE_CONTACT_SERVICE:
-                DialogUtils.showTwoBtnMsgBox(activity, null, Consts.SERVICE_TEL, new OnViewClickListener() {
-                    @Override
-                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                        commonDialog.dismiss();
-                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri
-                                .parse("tel:" + Consts.SERVICE_TEL));
-                        activity.startActivity(intent);
-                    }
-                });
+                DialogUtils.showTwoBtnMsgBox(activity, null, Consts.SERVICE_TEL, "呼叫",
+                        new OnViewClickListener() {
+                            @Override
+                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                commonDialog.dismiss();
+                                Intent intent = new Intent(Intent.ACTION_DIAL, Uri
+                                        .parse("tel:" + Consts.SERVICE_TEL));
+                                activity.startActivity(intent);
+                            }
+                        });
                 break;
 
             case OPERATE_CANCEL:

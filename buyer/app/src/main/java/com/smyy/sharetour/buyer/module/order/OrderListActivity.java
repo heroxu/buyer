@@ -82,7 +82,7 @@ public class OrderListActivity extends MyBaseMvpActivity {
 
                     break;
                 case Consts.USER_TYPE_SELLER:
-                    mTitles = new String[]{"全部", "待付款", "待发货", "已发货", "退款/售后"};
+                    mTitles = new String[]{"全部", "待付款", "待发货", "已发货", "退款售后"};
                     mOrderTypeList.clear();
                     mFragments.clear();
                     mOrderTypeList.add(OrderHelper.TYPE_ALL);

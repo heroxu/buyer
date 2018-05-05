@@ -1,10 +1,7 @@
-package com.smyy.sharetour.buyer.module.my.contract;
+package com.smyy.sharetour.buyer.module.order.contract;
 
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 import com.smyy.sharetour.buyer.module.my.base.MyIBaseView;
-import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
-
-import java.util.List;
 
 public interface IOrderContract {
     interface View extends MyIBaseView {
