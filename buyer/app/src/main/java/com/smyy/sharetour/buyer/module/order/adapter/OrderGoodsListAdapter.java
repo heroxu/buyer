@@ -11,6 +11,7 @@ import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.module.order.bean.OrderGoodsInfo;
+import com.smyy.sharetour.buyer.module.order.presenter.OrderPresenter;
 import com.smyy.sharetour.buyer.util.StringUtil;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 
@@ -21,15 +22,19 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
 
     private BaseActivity mActivity;
     private int mUserType;
+    private OrderPresenter mPresenter;
     private int mStatus;
     private boolean mDoShowBtn;//是否显示按钮
     private List<OrderGoodsInfo> mDatas;
 
-    public OrderGoodsListAdapter(BaseActivity context, boolean doShowBtn, int userType, int status,
+    public OrderGoodsListAdapter(BaseActivity activity, int userType,
+                                 OrderPresenter presenter,
+                                 boolean doShowBtn, int status,
                                  List<OrderGoodsInfo> goodsList) {
-        this.mActivity = context;
-        this.mDoShowBtn = doShowBtn;
+        this.mActivity = activity;
         this.mUserType = userType;
+        this.mPresenter = presenter;
+        this.mDoShowBtn = doShowBtn;
         this.mStatus = status;
         this.mDatas = goodsList;
     }
@@ -82,7 +87,8 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
                     holder.tvBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            OrderHelper.switchOperate(mActivity, OrderHelper.OPERATE_DISPUTE_DETAIL);
+                            OrderHelper.switchOperate(mActivity, mUserType, data.getDisputeOrderId(),
+                                    OrderHelper.OPERATE_DISPUTE_DETAIL);
                         }
                     });
                 } else if (mUserType == Consts.USER_TYPE_BUYER &&
@@ -93,7 +99,7 @@ public class OrderGoodsListAdapter extends RecyclerView.Adapter<OrderGoodsListAd
                     holder.tvBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            OrderHelper.switchOperate(mActivity,
+                            OrderHelper.switchOperate(mActivity, mUserType, mPresenter, data.getOrderGoodsId(),
                                     mStatus == OrderHelper.STATUS_BUYER_AWAIT_SHIPPING ?
                                             OrderHelper.OPERATE_DISPUTE_UNSHIPPED :
                                             OrderHelper.OPERATE_DISPUTE_SHIPPED);

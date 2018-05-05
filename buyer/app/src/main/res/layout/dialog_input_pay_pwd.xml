@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_rectangle_top_corner"
+    android:gravity="right"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="请输入支付密码"
+            android:textColor="@color/txt_main"
+            android:textSize="@dimen/txt_size_17"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/icon_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:src="@mipmap/ic_details_off_pag" />
+    </RelativeLayout>
+
+
+    <com.smyy.sharetour.buyer.view.PasswordEditText
+        android:id="@+id/pe_password"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="15dp"
+        android:digits="@string/digits_num"
+        android:ellipsize="start"
+        android:enabled="true"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColor="@color/transparent"
+        android:textSize="16sp"
+        app:parting_line_color="@color/pwd_stroke_normal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:text="忘记密码？"
+        android:textColor="@color/txt_hint"
+        android:textSize="@dimen/txt_size_13" />
+</LinearLayout>

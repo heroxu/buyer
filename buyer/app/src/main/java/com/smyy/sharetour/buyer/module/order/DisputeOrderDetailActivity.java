@@ -1,27 +1,46 @@
 package com.smyy.sharetour.buyer.module.order;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.style.StyleSpan;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.backpacker.my.BackpackerWithdrawActivity;
+import com.smyy.sharetour.buyer.backpacker.my.adapter.BackpackerWithdrawProgressActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
-import com.smyy.sharetour.buyer.module.order.contract.IOrderContract;
-import com.smyy.sharetour.buyer.module.order.model.OrderModel;
 import com.smyy.sharetour.buyer.module.order.bean.DisputeOrderBean;
 import com.smyy.sharetour.buyer.module.order.bean.DisputeOrderDetailBean;
+import com.smyy.sharetour.buyer.module.order.contract.IOrderContract;
+import com.smyy.sharetour.buyer.module.order.model.OrderModel;
 import com.smyy.sharetour.buyer.module.order.presenter.OrderPresenter;
+import com.smyy.sharetour.buyer.util.KeyBoardUtils;
 import com.smyy.sharetour.buyer.util.Spanny;
 import com.smyy.sharetour.buyer.util.StringUtil;
+import com.smyy.sharetour.buyer.view.PasswordEditText;
+import com.xmyy.view.dialoglib.CommonDialog;
+import com.xmyy.view.dialoglib.base.BindViewHolder;
+import com.xmyy.view.dialoglib.listener.OnBindViewListener;
+import com.xmyy.view.dialoglib.listener.OnViewClickListener;
+
+import java.io.Serializable;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -75,6 +94,8 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity implements IOr
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING |
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         mBundle = getBundle();
         if (mBundle != null) {
             mUserType = mBundle.getInt(Consts.USER_TYPE);
@@ -83,27 +104,55 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity implements IOr
     }
 
     private void getFakeData() {
+        DisputeOrderDetailBean orderDetailBean = new DisputeOrderDetailBean();
+        setFakedata(orderDetailBean);
+
+        orderDetailBean.setRefundReason("一直未收到货");
+        orderDetailBean.setRefundNum("¥ 9,918.00");
+        orderDetailBean.setOrderNum("201803071438023384");
+        orderDetailBean.setOrderTime("2018-03-08 14:39:07");
+
+        showOrderDetail(orderDetailBean);
+    }
+
+    private void setFakedata(DisputeOrderDetailBean orderDetailBean) {
         if (mBundle != null) {
-            DisputeOrderBean orderBean = (DisputeOrderBean) mBundle.getSerializable(FAKE_DATA);
-            DisputeOrderDetailBean orderDetailBean = new DisputeOrderDetailBean();
+            Serializable mBundleSerializable = mBundle.getSerializable(FAKE_DATA);
+            if (mBundleSerializable != null && mBundleSerializable instanceof DisputeOrderBean) {
+                DisputeOrderBean orderBean = (DisputeOrderBean) mBundleSerializable;
 
-            orderDetailBean.setOrderStatus(orderBean.getOrderStatus());
-            orderDetailBean.setSellerName(orderBean.getSellerName());
-            orderDetailBean.setBuyerName(orderBean.getBuyerName());
-            orderDetailBean.setGoodsType(orderBean.getGoodsType());
-            orderDetailBean.setGoodsId(orderBean.getGoodsId());
-            orderDetailBean.setGoodsName(orderBean.getGoodsName());
-            orderDetailBean.setGoodsSpec(orderBean.getGoodsSpec());
-            orderDetailBean.setReceiveDeadline(orderBean.getReceiveDeadline());
-            orderDetailBean.setGoodsPrice(orderBean.getGoodsPrice());
-            orderDetailBean.setGoodsCount(orderBean.getGoodsCount());
-            orderDetailBean.setRefundReason("一直未收到货");
-            orderDetailBean.setRefundNum("¥ 9,918.00");
-            orderDetailBean.setOrderNum("201803071438023384");
-            orderDetailBean.setOrderTime("2018-03-08 14:39:07");
+                orderDetailBean.setOrderId(orderBean.getOrderId());
+                orderDetailBean.setOrderStatus(orderBean.getOrderStatus());
+                orderDetailBean.setSellerName(orderBean.getSellerName());
+                orderDetailBean.setSellerAvatar(orderBean.getSellerAvatar());
+                orderDetailBean.setBuyerName(orderBean.getBuyerName());
+                orderDetailBean.setBuyerAvatar(orderBean.getBuyerAvatar());
+                orderDetailBean.setGoodsType(orderBean.getGoodsType());
 
-            showOrderDetail(orderDetailBean);
+                orderDetailBean.setGoodsId(orderBean.getGoodsId());
+                orderDetailBean.setGoodsName(orderBean.getGoodsName());
+                orderDetailBean.setGoodsSpec(orderBean.getGoodsSpec());
+                orderDetailBean.setReceiveDeadline(orderBean.getReceiveDeadline());
+                orderDetailBean.setGoodsPrice(orderBean.getGoodsPrice());
+                orderDetailBean.setGoodsCount(orderBean.getGoodsCount());
+                return;
+            }
         }
+
+        orderDetailBean.setOrderId("");
+        orderDetailBean.setOrderStatus(OrderHelper.STATUS_BUYER_AWAIT_SHIPPING);
+        orderDetailBean.setSellerName("我是小桂子呀");
+        orderDetailBean.setSellerAvatar("");
+        orderDetailBean.setBuyerName("我是小桂子");
+        orderDetailBean.setBuyerAvatar("");
+        orderDetailBean.setGoodsType(OrderHelper.GOODS_TYPE_DEMAND);
+
+        orderDetailBean.setGoodsId("");
+        orderDetailBean.setGoodsName("NIKE HUARACHE DRIFT (PSE) LALALALALA");
+        orderDetailBean.setGoodsSpec("");
+        orderDetailBean.setReceiveDeadline("2018-05-01");
+        orderDetailBean.setGoodsPrice("￥9,918.00");
+        orderDetailBean.setGoodsCount(1);
     }
 
     private void showOrderDetail(DisputeOrderDetailBean data) {
@@ -183,14 +232,61 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity implements IOr
 
             case R.id.tv_order_contact_opposite:
                 if (mUserType == Consts.USER_TYPE_BUYER) {
-                    OrderHelper.switchOperate(this, OrderHelper.OPERATE_CONTACT_SELLER);
+                    OrderHelper.switchOperate(this, mUserType,
+                            mOrderDetailBean.getSellerName(), OrderHelper.OPERATE_CONTACT_SELLER);
                 } else {
-                    OrderHelper.switchOperate(this, OrderHelper.OPERATE_CONTACT_BUYER);
+                    OrderHelper.switchOperate(this, mUserType,
+                            mOrderDetailBean.getBuyerName(), OrderHelper.OPERATE_CONTACT_BUYER);
                 }
                 break;
 
             case R.id.tv_order_confirm_refund:
 
+                new CommonDialog.Builder(getSupportFragmentManager())
+                        .setLayoutRes(R.layout.dialog_input_pay_pwd)
+                        .setScreenWidthAspect(this, 1.0f)
+                        .setGravity(Gravity.BOTTOM)
+                        .addOnClickListener(R.id.icon_close)
+                        .setOnBindViewListener(new OnBindViewListener() {
+                            @Override
+                            public void bindView(BindViewHolder viewHolder, final CommonDialog dialog) {
+                                final PasswordEditText editText = viewHolder.getView(R.id.pe_password);
+                                editText.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        InputMethodManager imm = (InputMethodManager) DisputeOrderDetailActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                        imm.showSoftInput(editText, 0);
+                                    }
+                                });
+
+                                editText.addTextChangedListener(new TextWatcher() {
+                                    @Override
+                                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                                    }
+
+                                    @Override
+                                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                                    }
+
+                                    @Override
+                                    public void afterTextChanged(Editable s) {
+                                        if (s.toString().trim().length() == 6) {
+                                            dialog.dismiss();
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                        .setOnViewClickListener(new OnViewClickListener() {
+                            @Override
+                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog dialog) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .create()
+                        .show();
                 break;
 
             default:

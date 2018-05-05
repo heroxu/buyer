@@ -122,8 +122,10 @@
     <string name="require">需求</string>
 
     <!--限定能输入的具体字符串-->
-    <string name="digits_phone_num">0123456789</string>
-    <string name="digits_sms_code">0123456789</string>
+    <string name="digits_phone_num">@string/digits_num</string>
+    <string name="digits_sms_code">@string/digits_num</string>
+    <!--纯数字-->
+    <string name="digits_num">0123456789</string>
 
     <!--订单相关-->
     <string name="publish_comment">发布评论</string>

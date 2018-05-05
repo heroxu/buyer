@@ -49,12 +49,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/iv_order_goods_name"
                 android:layout_below="@+id/iv_order_goods_name"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_toLeftOf="@+id/tv_order_goods_count"
                 android:textColor="@color/txt_gray_dark"
                 android:textSize="@dimen/txt_size_13"
                 android:visibility="gone"
-                tools:text="规格：黑白/36.5" />
+                tools:text="规格：黑白/36.5"
+                tools:visibility="gone" />
 
             <TextView
                 android:id="@+id/iv_order_goods_price"
@@ -62,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/iv_order_goods_name"
                 android:layout_below="@+id/iv_order_goods_spec"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:textColor="@color/txt_gray_dark"
                 android:textSize="@dimen/txt_size_13"
                 tools:text="价格：￥98778" />
@@ -73,13 +74,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/iv_order_goods_name"
                 android:layout_below="@+id/iv_order_goods_spec"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:drawableLeft="@mipmap/ic_home_new_sell"
                 android:drawablePadding="8dp"
                 android:textColor="@color/txt_price"
                 android:textSize="@dimen/txt_size_13"
                 android:visibility="gone"
-                tools:text="2018-03-08 前收到" />
+                tools:text="2018-03-08 前收到"
+                tools:visibility="visible" />
         </LinearLayout>
 
         <TextView
@@ -109,7 +111,7 @@
         android:textSize="@dimen/txt_size_11"
         android:visibility="gone"
         tools:text="申请售后"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     <View
         style="@style/LineDivider.Horizon"
