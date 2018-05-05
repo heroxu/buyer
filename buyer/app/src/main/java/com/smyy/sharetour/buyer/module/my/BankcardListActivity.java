@@ -11,17 +11,15 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.adapter.BankcardAdapter;
-import com.smyy.sharetour.buyer.module.my.adapter.InterestSellerAdapter;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 import com.smyy.sharetour.buyer.module.my.bean.BankcardBean;
-import com.smyy.sharetour.buyer.module.my.bean.BankcardBean;
-import com.smyy.sharetour.buyer.ui.buyCommodity.BuyHomePageActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class BankcardListActivity extends MyBaseMvpActivity {
 
@@ -69,6 +67,19 @@ public class BankcardListActivity extends MyBaseMvpActivity {
 
             }
         });
+    }
+
+    @OnClick({R.id.lay_my_add_bankcard})
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.lay_my_add_bankcard:
+                startActivity(AddBankcardActivity.class);
+                break;
+
+            default:
+                break;
+        }
     }
 
     @Override
