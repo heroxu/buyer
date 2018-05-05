@@ -30,7 +30,7 @@ public class RegionPop implements View.OnTouchListener{
     }
 
     /**初始化控件 , 实现控件点击事件*/
-    private void init(View v) {
+    private void init(View v, final IStatusChange mIStatusChange) {
         View convertView = LayoutInflater.from(mContext).inflate(R.layout.pop_linkage, null);
         RecyclerView recyclerViewLeft = (RecyclerView) convertView.findViewById(R.id.recycler_view_left);
         RecyclerView recyclerViewRight = (RecyclerView) convertView.findViewById(R.id.recycler_view_right);
@@ -67,6 +67,7 @@ public class RegionPop implements View.OnTouchListener{
                 mAreaRightAdapter.setCheckItem();
                 ((AreaBean.Region) adapter.getItem(position)).setCheck(true);
                 adapter.notifyDataSetChanged();
+                mIStatusChange.selectPosition(position);
             }
         });
         mPopupWindow = new BasePopupWindow(convertView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, true);
@@ -85,11 +86,11 @@ public class RegionPop implements View.OnTouchListener{
         return false;
     }
 
-    public RegionPop showPop(View v) {
+    public RegionPop showPop(View v,IStatusChange mIStatusChange) {
         if (null != mPopupWindow) {
             mPopupWindow.dismiss();
         } else {
-            init(v);
+            init(v,mIStatusChange);
         }
         return this;
     }
@@ -102,5 +103,7 @@ public class RegionPop implements View.OnTouchListener{
         }
         return isshowing;
     }
-
+    public interface IStatusChange{
+        void selectPosition(int position);
+    }
 }

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_if_video"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
     <RelativeLayout
         android:id="@+id/rl_general_video_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="25dp">
 
         <ImageView
@@ -57,8 +56,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
@@ -83,28 +80,42 @@
             android:textSize="13sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="335dp"
-        android:layout_height="190dp"
-        android:layout_gravity="center"
-        android:background="@mipmap/bg_video"
-        android:gravity="center">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="335dp"
+            android:layout_height="190dp"
+            android:src="@mipmap/bg_video" />
 
         <ImageView
             android:layout_width="62dp"
             android:layout_height="62dp"
+            android:layout_gravity="center"
             android:src="@mipmap/ic_playing" />
-
-    </LinearLayout>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="14dp"
-        android:gravity="right">
+        android:layout_marginTop="14dp">
+
+        <TextView
+            android:id="@+id/tv_video_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50分钟前"
+            android:textColor="@color/txt_gray"
+            android:textSize="11dp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="wrap_content"

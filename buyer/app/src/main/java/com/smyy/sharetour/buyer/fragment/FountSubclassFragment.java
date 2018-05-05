@@ -51,9 +51,9 @@ public class FountSubclassFragment extends BaseMvpFragment {
 
     @Override
     protected void initData(Bundle bundle) {
-        LogUtil.e("WZF",mTitle);
+        LogUtil.e("WZF", mTitle);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        List<FountBean> data = new ArrayList<>();
+        final List<FountBean> data = new ArrayList<>();
         List<FImage> iData1 = new ArrayList<>();
         iData1.add(new FImage(R.mipmap.img_n_01));
         iData1.add(new FImage(R.mipmap.img_n_02));
@@ -80,12 +80,12 @@ public class FountSubclassFragment extends BaseMvpFragment {
         mFountAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                switch (view.getId()) {
-                    case R.id.ll_if_notes:
-                        ActivityLauncher.viewNoteDetailsActivity(getActivity());
-                        break;
-                    case R.id.ll_if_video:
+                switch (data.get(position).getType()) {
+                    case 1:
                         ActivityLauncher.viewVideoDetailsActivity(getActivity());
+                        break;
+                    case 2:
+                        ActivityLauncher.viewNoteDetailsActivity(getActivity());
                         break;
                 }
             }

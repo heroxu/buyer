@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".home.search.activity.HomeSearchActivity">
+    tools:context=".home.search.activity.SearchActivity">
     <RelativeLayout
         android:layout_marginTop="@dimen/margin_10"
         android:layout_width="match_parent"
@@ -60,12 +60,6 @@
         app:tl_textSelectColor="@color/txt_main"
         app:tl_textUnselectColor="@color/txt_gray" />
 
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_10"
-        android:background="@color/bg_search"
-        />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_search_detail"

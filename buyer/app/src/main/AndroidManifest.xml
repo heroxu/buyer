@@ -72,7 +72,7 @@
         <activity android:name=".require.SimpleSelectActivity" />
         <activity android:name=".require.PublishRequireActivity" />
         <activity android:name=".home.detail.HomeDetailActivity" />
-        <activity android:name=".home.search.activity.HomeSearchActivity" />
+        <activity android:name=".home.search.activity.SearchActivity" />
         <activity android:name=".home.search.activity.SearchDetailActivity" />
         <activity android:name=".module.order.OrderListActivity" />
         <activity android:name=".module.order.OrderDetailActivity" />

@@ -1,30 +1,38 @@
 package com.smyy.sharetour.buyer.fragment;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.AppCompatImageView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.dtr.zxing.activity.CaptureActivity;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.view.SingleFragmentPageAdapter;
 import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.home.search.activity.SearchActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.util.ToastUtils;
+import com.smyy.sharetour.buyer.view.HomeTitlesOpenOrCloseView;
+import com.smyy.sharetour.buyer.view.SingleFragmentPageAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * Created by hasee on 2018/3/15.
@@ -38,12 +46,17 @@ public class FoundFragment extends BaseMvpFragment {
     ImageView ttFountScan;
     @BindView(R.id.tt_fount_message)
     ImageView ttFountMessage;
+    @BindView(R.id.hv_fount_title)
+    HomeTitlesOpenOrCloseView hvFountTitle;
+    @BindView(R.id.fount_iv_title_arrow)
+    AppCompatImageView fountIvTitleArrow;
     private List<BaseFragment> mFragments = new ArrayList<>();
     @BindView(R.id.stl_fount)
     SlidingTabLayout stlFount;
     @BindView(R.id.vp_fount)
     ViewPager vpFount;
     private MyPagerAdapter mAdapter;
+    private boolean mArrowIsUp = true;
     private final String[] mTitles = {
             "精选", "美容美肤", "潮流时尚"
             , "母婴健康", "文化玩乐", "美容美肤"
@@ -68,6 +81,17 @@ public class FoundFragment extends BaseMvpFragment {
         mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
         vpFount.setAdapter(mAdapter);
         stlFount.setViewPager(vpFount, mTitles);
+        //头部筛选对话框
+        hvFountTitle.setIStatusChange(new HomeTitlesOpenOrCloseView.IStatusChange() {
+            @Override
+            public void selectPosition(int position) {
+                if (position >= 0) {
+                    vpFount.setCurrentItem(position);
+                }
+                ObjectAnimator.ofFloat(fountIvTitleArrow, "rotation", 180, 360).setDuration(250).start();
+                mArrowIsUp = true;
+            }
+        }, mTitles);
     }
 
     private void changeTitleBarColor() {
@@ -75,29 +99,36 @@ public class FoundFragment extends BaseMvpFragment {
     }
 
 
-    @OnClick({R.id.ttl_fount_search, R.id.tt_fount_scan, R.id.tt_fount_message})
+    @OnClick({R.id.ttl_fount_search, R.id.tt_fount_scan, R.id.tt_fount_message, R.id.fount_iv_title_arrow})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ttl_fount_search:
-//                ActivityLauncher.viewBackpackHomePageActivity(getActivity());
-//                ActivityLauncher.viewBackpackSettingActivity(getActivity());
-//                ActivityLauncher.viewBackpackerModeActivity(getActivity());
-//                ActivityLauncher.viewBackpackCertificationActivity(getActivity());
-//                ActivityLauncher.viewSmallBackpackActivity(getActivity());
-//                ActivityLauncher.viewReportActivity(getActivity());
+                ActivityLauncher.viewSearchActivity(getContext(), SearchActivity.BUNDLE_FOUNT);
                 break;
             case R.id.tt_fount_scan:
-                startActivityForResult(new Intent(getActivity(), CaptureActivity.class),REQUEST_CODE_SCAN);
+                startActivityForResult(new Intent(getActivity(), CaptureActivity.class), REQUEST_CODE_SCAN);
                 break;
             case R.id.tt_fount_message:
-                ActivityLauncher.viewGuideLoginActivity(getActivity());
+                ActivityLauncher.viewMessageListActivity(getActivity());
+                break;
+            case R.id.fount_iv_title_arrow:
+                if (hvFountTitle.isAnimating()) {
+                    return;
+                }
+                ObjectAnimator.ofFloat(fountIvTitleArrow, "rotation", mArrowIsUp ? 0 : 180, mArrowIsUp ? 180 : 360).setDuration(250).start();
+                if (mArrowIsUp) {
+                    hvFountTitle.animateOpen();
+                } else {
+                    hvFountTitle.animateClose();
+                }
+                mArrowIsUp = !mArrowIsUp;
                 break;
         }
     }
 
     private class MyPagerAdapter extends SingleFragmentPageAdapter {
         public MyPagerAdapter(FragmentManager fm) {
-            super(fm,mFragments);
+            super(fm, mFragments);
         }
 
         @Override

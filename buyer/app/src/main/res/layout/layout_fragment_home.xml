@@ -25,12 +25,11 @@
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/home_iv_title_arrow"
-            android:layout_width="13dp"
-            android:layout_height="13dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             app:srcCompat="@mipmap/ic_home_arrow_down"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/margin_10"
-            android:layout_marginRight="@dimen/margin_10"
+            android:padding="10dp"
             />
     </LinearLayout>
     <FrameLayout

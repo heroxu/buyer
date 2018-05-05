@@ -46,7 +46,6 @@ public class MySendLikeAdapter extends BaseMultiItemQuickAdapter<FountBean,BaseV
                 ((RecyclerView) helper.getView(R.id.rv_if_images)).setLayoutManager(new GridLayoutManager(mContext, 3));
                 ((RecyclerView) helper.getView(R.id.rv_if_images)).setAdapter(new FountImageAdapter(item.getFountIamges()));
                 helper.setImageResource(R.id.iv_ifn_like, R.mipmap.ic_like_ele);
-
                 break;
         }
     }

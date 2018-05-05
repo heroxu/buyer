@@ -26,9 +26,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class HomeSearchActivity extends BaseMvpActivity implements View.OnClickListener{
+public class SearchActivity extends BaseMvpActivity implements View.OnClickListener{
+    public static final String TYPE = "SearchActivity.TYPE";
+    public static final String BUNDLE_HOME = "SearchActivity.BUNDLE_HOME";
+    public static final String BUNDLE_FOUNT = "SearchActivity.BUNDLE_FOUNT";
+    public static final String BUNDLE_BACK_PACKER = "SearchActivity.BUNDLE_BACK_PACKER";
     @BindView(R.id.iv_home_search_back)
     ImageView ivHomeSearchBack;
     @BindView(R.id.tv_home_search_cancel)
@@ -45,7 +48,7 @@ public class HomeSearchActivity extends BaseMvpActivity implements View.OnClickL
     RecyclerView rvSearchHot;
     @BindView(R.id.ll_search_history)
     LinearLayout llSearchHistory;
-
+    private String searchType;//判断是搜索什么类型的东西
     private SearchHistoryAdapter mSearchHistoryAdapter;
     private SearchResultAdapter mSearchResultAdapter;
 
@@ -59,6 +62,9 @@ public class HomeSearchActivity extends BaseMvpActivity implements View.OnClickL
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
+        if(getIntent()!=null){
+            searchType = getIntent().getStringExtra(TYPE);
+        }
         hideToolBarLayout(true);
     }
 
@@ -66,7 +72,7 @@ public class HomeSearchActivity extends BaseMvpActivity implements View.OnClickL
     protected void initData(@Nullable Bundle savedInstanceState, Intent intent) {
         initListener();
         if(mSearchResultAdapter == null){
-            mSearchResultAdapter = new SearchResultAdapter(this,mSearchDatas);
+            mSearchResultAdapter = new SearchResultAdapter(this,mSearchDatas,searchType);
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rvSearchResult.setLayoutManager(linearLayoutManager);
@@ -81,12 +87,12 @@ public class HomeSearchActivity extends BaseMvpActivity implements View.OnClickL
         mHotDatas.add("电动车");
         mHotDatas.add("NIKE 运动鞋");
         mHotDatas.add("香奈儿");
-        rvSearchHot.setAdapter(new SearchResultAdapter(this,mHotDatas));
+        rvSearchHot.setAdapter(new SearchResultAdapter(this,mHotDatas, searchType));
 
         rvSearchHistory.setLayoutManager(new GridLayoutManager(this,3));
         mHistoryDatas = HomeSearchDaoOpe.queryAll(this);
         if(mSearchHistoryAdapter == null){
-            mSearchHistoryAdapter = new SearchHistoryAdapter(this, mHistoryDatas);
+            mSearchHistoryAdapter = new SearchHistoryAdapter(this, mHistoryDatas,searchType);
         }
         rvSearchHistory.setAdapter(mSearchHistoryAdapter);
     }
@@ -131,15 +137,6 @@ public class HomeSearchActivity extends BaseMvpActivity implements View.OnClickL
         return null;
     }
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
-
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -147,7 +144,7 @@ public class HomeSearchActivity extends BaseMvpActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.iv_search_clear:
-                HomeSearchDaoOpe.deleteAllData(HomeSearchActivity.this);
+                HomeSearchDaoOpe.deleteAllData(SearchActivity.this);
                 mHistoryDatas.clear();
                 mSearchHistoryAdapter.notifyDataSetChanged();
                 break;

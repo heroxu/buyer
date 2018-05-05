@@ -2,18 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/pop_rv"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
-    </android.support.v7.widget.RecyclerView>
+        android:background="@color/white" />
+
     <View
         android:id="@+id/pop_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#88888888"/>
+        android:background="#88888888" />
 
 </LinearLayout>

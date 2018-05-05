@@ -76,8 +76,13 @@ public class RecommendBuyActivity extends BaseMvpActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_recommend_buy:
-                RegionPop mRegionPop = new RegionPop(RecommendBuyActivity.this);
-                mRegionPop.showPop(llRecommendBuy);
+                final RegionPop mRegionPop = new RegionPop(RecommendBuyActivity.this);
+                mRegionPop.showPop(llRecommendBuy, new RegionPop.IStatusChange() {
+                    @Override
+                    public void selectPosition(int position) {
+                        mRegionPop.disMissPop();
+                    }
+                });
                 break;
             case R.id.ll_recommend_buy_sort_smart:
                 final BuyTypePop mBuyTypePop = new BuyTypePop(RecommendBuyActivity.this);

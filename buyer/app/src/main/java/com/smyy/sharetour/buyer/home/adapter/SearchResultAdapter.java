@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.db.HomeSearch;
 import com.smyy.sharetour.buyer.db.operate.HomeSearchDaoOpe;
+import com.smyy.sharetour.buyer.home.search.activity.SearchActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 
 import java.util.List;
@@ -21,10 +22,11 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
     private List<String> mDatas;
-
-    public SearchResultAdapter(Context context, List<String> datas) {
+    private String mSearchType;//判断是搜索什么类型的东西
+    public SearchResultAdapter(Context context, List<String> datas, String searchType) {
         this.mContext = context;
         this.mDatas = datas;
+        this.mSearchType = searchType;
     }
 
     @Override
@@ -42,7 +44,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
                 HomeSearch homeSearch = new HomeSearch();
                 homeSearch.setSearchContent(mDatas.get(position));
                 HomeSearchDaoOpe.insertData(mContext,homeSearch);
-                ActivityLauncher.viewSearchDetail(mContext);
+                ActivityLauncher.viewSearchDetail(mContext, mSearchType);
 
             }
         });

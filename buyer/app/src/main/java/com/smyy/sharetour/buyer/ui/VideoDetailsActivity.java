@@ -13,15 +13,17 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.smyy.sharetour.buyer.Consts;
-import com.smyy.sharetour.buyer.view.ExpandTextView;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.adapter.CommentsAdapter;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
+import com.smyy.sharetour.buyer.view.ExpandTextView;
 import com.smyy.sharetour.buyer.view.ObservableScrollView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class VideoDetailsActivity extends BaseMvpActivity implements ObservableScrollView.OnObservableScrollViewScrollChanged {
     @BindView(R.id.etv_video_content)
@@ -106,5 +108,11 @@ public class VideoDetailsActivity extends BaseMvpActivity implements ObservableS
                 llComments.addView(llLlComments);
             }
         }
+    }
+
+
+    @OnClick(R.id.iv_close)
+    public void onViewClicked() {
+        finish();
     }
 }

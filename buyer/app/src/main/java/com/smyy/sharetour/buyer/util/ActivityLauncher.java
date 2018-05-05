@@ -27,7 +27,7 @@ import com.smyy.sharetour.buyer.home.comment.ui.MyReciveLikeActivity;
 import com.smyy.sharetour.buyer.home.detail.HomeDetailActivity;
 import com.smyy.sharetour.buyer.home.message.MessageListActivity;
 import com.smyy.sharetour.buyer.home.message.SystemMessageListActivity;
-import com.smyy.sharetour.buyer.home.search.activity.HomeSearchActivity;
+import com.smyy.sharetour.buyer.home.search.activity.SearchActivity;
 import com.smyy.sharetour.buyer.home.search.activity.SearchDetailActivity;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.module.my.CommentListActivity;
@@ -192,13 +192,15 @@ public class ActivityLauncher {
         context.startActivity(intent);
     }
 
-    public static void viewHomeSearch(Context context) {
-        Intent intent = new Intent(context, HomeSearchActivity.class);
+    public static void viewSearchActivity(Context context,String type) {
+        Intent intent = new Intent(context, SearchActivity.class);
+        intent.putExtra(SearchActivity.TYPE,type);
         context.startActivity(intent);
     }
 
-    public static void viewSearchDetail(Context context) {
+    public static void viewSearchDetail(Context context, String type) {
         Intent intent = new Intent(context, SearchDetailActivity.class);
+        intent.putExtra(SearchActivity.TYPE,type);
         context.startActivity(intent);
     }
 

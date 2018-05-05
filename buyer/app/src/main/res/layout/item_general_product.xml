@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -10,8 +12,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="25dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:paddingTop="25dp">
 
         <ImageView
@@ -93,7 +93,5 @@
        android:id="@+id/line_search_product"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:background="@color/divider_color" />
 </LinearLayout>

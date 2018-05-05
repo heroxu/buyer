@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * create by xuxiarong on 2018/4/10
  */
-public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnClickListener{
+public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnClickListener {
 
 
     private static final String TAG = "HomeTitlesView";
@@ -36,11 +36,12 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
     private float mDensity;
     private int mFoldedViewMeasureHeight;
     private IStatusChange mIStatusChange;
-    private  String[] mTitles;
+    private String[] mTitles;
     private List<String> mTitleList = new ArrayList<>();
 
     /**
      * 设置监听回调
+     *
      * @param iStatusChange
      * @param titles
      */
@@ -53,7 +54,7 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
     /**
      * 设置Rv的朝向和展示方式
      */
-    public void setRvLayoutManager(RecyclerView.LayoutManager layoutManager){
+    public void setRvLayoutManager(RecyclerView.LayoutManager layoutManager) {
         this.mLayoutManager = layoutManager;
     }
 
@@ -62,18 +63,18 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
     }
 
     private void initData() {
-        //默认的4行GridView
-        rv.setLayoutManager(mLayoutManager != null? mLayoutManager:new GridLayoutManager(mContext,4));
+        //默认的3行GridView
+        rv.setLayoutManager(mLayoutManager != null ? mLayoutManager : new GridLayoutManager(mContext, 3));
         mTitleList.addAll(Arrays.asList(mTitles));
         rv.setAdapter(new HomeSelectTitleAdapter(mTitleList));
     }
 
     public HomeTitlesOpenOrCloseView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public HomeTitlesOpenOrCloseView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
         mContext = context;
     }
 
@@ -118,7 +119,7 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
 
     public void animateClose() {
         int origHeight = this.getHeight();
-        Log.e(TAG, "animateClose: "+"isAnimating = "+isAnimating, null);
+        Log.e(TAG, "animateClose: " + "isAnimating = " + isAnimating, null);
 
         ValueAnimator animator = createDropAnimator(this, origHeight, 0);
         animator.addListener(new AnimatorListenerAdapter() {
@@ -126,7 +127,7 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
             public void onAnimationEnd(Animator animation) {
                 HomeTitlesOpenOrCloseView.this.setVisibility(View.GONE);
                 isAnimating = false;
-                Log.e(TAG, "onAnimationEnd: "+"isAnimating = "+isAnimating, null);
+                Log.e(TAG, "onAnimationEnd: " + "isAnimating = " + isAnimating, null);
 
             }
         });
@@ -150,7 +151,7 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.pop_bg:
                 this.animateClose();
                 mIStatusChange.selectPosition(-1);
@@ -161,31 +162,35 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
         }
     }
 
-    public interface IStatusChange{
+    public interface IStatusChange {
         void selectPosition(int position);
     }
 
-    public class HomeSelectTitleAdapter extends RecyclerView.Adapter{
+    public class HomeSelectTitleAdapter extends RecyclerView.Adapter {
 
         private List<String> mDatas;
+
         public HomeSelectTitleAdapter(List<String> datas) {
             this.mDatas = datas;
         }
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new HomeSelectedViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_home_title_select,parent,false));
+            return new HomeSelectedViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_home_title_select, parent, false));
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
             HomeSelectedViewHolder viewHolder = (HomeSelectedViewHolder) holder;
             viewHolder.tv_title.setText(mDatas.get(position));
+            if (position == 0) {
+                viewHolder.tv_title.setSelected(true);
+            }
             viewHolder.tv_title.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     mIStatusChange.selectPosition(position);
-                    Log.e(TAG, "item onClick: "+"position = "+position, null);
+                    Log.e(TAG, "item onClick: " + "position = " + position, null);
                     HomeTitlesOpenOrCloseView.this.animateClose();
                 }
             });
@@ -193,12 +198,13 @@ public class HomeTitlesOpenOrCloseView extends LinearLayout implements View.OnCl
 
         @Override
         public int getItemCount() {
-            return mDatas.isEmpty()?0:mDatas.size();
+            return mDatas.isEmpty() ? 0 : mDatas.size();
         }
     }
 
-    public class HomeSelectedViewHolder extends RecyclerView.ViewHolder{
+    public class HomeSelectedViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_title;
+
         public HomeSelectedViewHolder(View itemView) {
             super(itemView);
             tv_title = (TextView) itemView.findViewById(R.id.tv_home_title_select);

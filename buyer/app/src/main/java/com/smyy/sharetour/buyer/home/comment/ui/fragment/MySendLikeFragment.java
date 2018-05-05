@@ -56,7 +56,7 @@ public class MySendLikeFragment extends BaseMvpFragment {
     protected void initData(Bundle bundle) {
 
         rvMySendLike.setLayoutManager(new LinearLayoutManager(getActivity()));
-        List<FountBean> data = new ArrayList<>();
+        final List<FountBean> data = new ArrayList<>();
         List<FImage> iData1 = new ArrayList<>();
         iData1.add(new FImage(R.mipmap.img_n_01));
         iData1.add(new FImage(R.mipmap.img_n_02));
@@ -80,12 +80,12 @@ public class MySendLikeFragment extends BaseMvpFragment {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                switch (view.getId()) {
-                    case R.id.ll_if_notes:
-                        ActivityLauncher.viewNoteDetailsActivity(getActivity());
-                        break;
-                    case R.id.ll_if_video:
+                switch (data.get(position).getType()) {
+                    case 1:
                         ActivityLauncher.viewVideoDetailsActivity(getActivity());
+                        break;
+                    case 2:
+                        ActivityLauncher.viewNoteDetailsActivity(getActivity());
                         break;
                 }
             }

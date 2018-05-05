@@ -23,6 +23,7 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.home.search.activity.SearchActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.HomeTitlesOpenOrCloseView;
@@ -133,7 +134,7 @@ public class HomeFragment extends BaseMvpFragment {
         llHomeSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityLauncher.viewHomeSearch(getContext());
+                ActivityLauncher.viewSearchActivity(getContext(), SearchActivity.BUNDLE_HOME);
             }
         });
 

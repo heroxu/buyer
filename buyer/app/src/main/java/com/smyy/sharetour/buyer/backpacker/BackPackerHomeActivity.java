@@ -27,6 +27,7 @@ import com.smyy.sharetour.buyer.backpacker.travel.BackPackerTravelListActivity;
 import com.smyy.sharetour.buyer.backpacker.travel.GoodTagActivity;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.home.search.activity.SearchActivity;
 import com.smyy.sharetour.buyer.module.order.OrderHelper;
 import com.smyy.sharetour.buyer.module.order.OrderListActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
@@ -137,7 +138,7 @@ public class BackPackerHomeActivity extends BaseMvpActivity {
         ll_home_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityLauncher.viewHomeSearch(BackPackerHomeActivity.this);
+                ActivityLauncher.viewSearchActivity(BackPackerHomeActivity.this, SearchActivity.BUNDLE_BACK_PACKER);
             }
         });
 

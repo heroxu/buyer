@@ -112,7 +112,6 @@
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="__local_aars__:E.\Android\buyer\libraries\sdk\libs\imsdk_ugc_ext.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="__local_aars__:E.\Android\buyer\libraries\sdk\libs\txrtmpsdk.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="__local_aars__:E.\Android\buyer\libraries\sdk\libs\wup-1.0.0-SNAPSHOT.jar:unspecified@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.hamcrest:hamcrest-core:1.3@jar" level="project" />
     <orderEntry type="library" name="__local_aars__:E.\Android\buyer\libraries\sdk\libs\libammsdk.jar:unspecified@jar" level="project" />
