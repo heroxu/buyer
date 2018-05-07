@@ -311,7 +311,7 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity implements IOr
     }
 
     @Override
-    public void viewOrderDetail(String id) {
+    public void updateOrderDetail(String id) {
         getFakeData();
     }
 }

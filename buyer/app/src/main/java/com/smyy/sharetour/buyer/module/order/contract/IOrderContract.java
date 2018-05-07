@@ -7,7 +7,7 @@ public interface IOrderContract {
     interface View extends MyIBaseView {
         void deleteOrder(int position);
 
-        void viewOrderDetail(String id);
+        void updateOrderDetail(String id);
     }
 
     abstract class Presenter extends MyBasePresenter<View, Model> {
@@ -18,11 +18,15 @@ public interface IOrderContract {
         public abstract void deleteOrder(int position, String id);
 
         public abstract void pay(String id);
+
+        public abstract void confirm(String id);
     }
 
     interface Model {
         boolean deleteOrder(String id);
 
         boolean pay(String id);
+
+        boolean confirm(String id);
     }
 }

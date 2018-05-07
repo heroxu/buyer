@@ -357,7 +357,7 @@ public class OrderListFragment extends MyBaseMvpFragment<OrderPresenter> impleme
     }
 
     @Override
-    public void viewOrderDetail(String id) {
+    public void updateOrderDetail(String id) {
         Bundle bundle = new Bundle();
         bundle.putString(OrderHelper.ORDER_ID, id);
         startActivity(OrderDetailActivity.class, bundle);

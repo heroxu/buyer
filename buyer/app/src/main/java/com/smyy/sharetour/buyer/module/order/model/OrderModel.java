@@ -13,4 +13,9 @@ public class OrderModel implements IOrderContract.Model {
     public boolean pay(String id) {
         return true;
     }
+
+    @Override
+    public boolean confirm(String id) {
+        return true;
+    }
 }

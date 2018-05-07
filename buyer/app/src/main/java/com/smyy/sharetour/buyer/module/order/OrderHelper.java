@@ -282,7 +282,60 @@ public class OrderHelper {
                 break;
 
             case OPERATE_CONFIRM:
+                if (!StringUtil.isEmpty(id)) {
+                    new CommonDialog.Builder(activity.getSupportFragmentManager())
+                            .setLayoutRes(R.layout.dialog_input_pay_pwd)
+                            .setScreenWidthAspect(activity, 1.0f)
+                            .setGravity(Gravity.BOTTOM)
+                            .addOnClickListener(R.id.icon_close)
+                            .setOnBindViewListener(new OnBindViewListener() {
+                                @Override
+                                public void bindView(BindViewHolder viewHolder, final CommonDialog dialog) {
+                                    final PasswordEditText editText = viewHolder.getView(R.id.pe_password);
+                                    editText.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                            imm.showSoftInput(editText, 0);
+                                        }
+                                    });
 
+                                    editText.addTextChangedListener(new TextWatcher() {
+                                        @Override
+                                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                                        }
+
+                                        @Override
+                                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                                        }
+
+                                        @Override
+                                        public void afterTextChanged(Editable s) {
+                                            if (s.toString().trim().length() == 6) {
+                                                dialog.dismiss();
+                                                presenter.confirm(id);
+                                            }
+                                        }
+                                    });
+                                }
+                            })
+                            .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                @Override
+                                public void onDismiss(DialogInterface dialog) {
+                                    activity.closeKeyboard();
+                                }
+                            })
+                            .setOnViewClickListener(new OnViewClickListener() {
+                                @Override
+                                public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog dialog) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create()
+                            .show();
+                }
                 break;
 
             case OPERATE_CONTACT_SERVICE:
