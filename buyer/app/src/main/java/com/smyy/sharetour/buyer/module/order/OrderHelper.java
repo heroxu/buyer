@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer.module.order;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -9,11 +10,14 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
@@ -34,6 +38,7 @@ import com.smyy.sharetour.buyer.module.order.bean.OrderReviewsBean;
 import com.smyy.sharetour.buyer.module.order.presenter.OrderPresenter;
 import com.smyy.sharetour.buyer.tim.ChatActivity;
 import com.smyy.sharetour.buyer.util.StringUtil;
+import com.smyy.sharetour.buyer.view.PasswordEditText;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 import com.tencent.imsdk.TIMConversationType;
 import com.xmyy.view.dialoglib.CommonDialog;
@@ -114,7 +119,7 @@ public class OrderHelper {
      * @param id 可以是orderId、disputeOrderId、鉴定视频地址、用户聊天id
      */
     public static void switchOperate(final BaseActivity activity, int userType,
-                                     OrderPresenter presenter, int position, String id,
+                                     final OrderPresenter presenter, int position, final String id,
                                      int orderOperateType) {
         Bundle bundle = new Bundle();
         bundle.putInt(Consts.USER_TYPE, userType);
@@ -219,7 +224,54 @@ public class OrderHelper {
                 break;
 
             case OPERATE_PAY:
+                if (!StringUtil.isEmpty(id)) {
+                    new CommonDialog.Builder(activity.getSupportFragmentManager())
+                            .setLayoutRes(R.layout.dialog_input_pay_pwd)
+                            .setScreenWidthAspect(activity, 1.0f)
+                            .setGravity(Gravity.BOTTOM)
+                            .addOnClickListener(R.id.icon_close)
+                            .setOnBindViewListener(new OnBindViewListener() {
+                                @Override
+                                public void bindView(BindViewHolder viewHolder, final CommonDialog dialog) {
+                                    final PasswordEditText editText = viewHolder.getView(R.id.pe_password);
+                                    editText.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                            imm.showSoftInput(editText, 0);
+                                        }
+                                    });
 
+                                    editText.addTextChangedListener(new TextWatcher() {
+                                        @Override
+                                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                                        }
+
+                                        @Override
+                                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                                        }
+
+                                        @Override
+                                        public void afterTextChanged(Editable s) {
+                                            if (s.toString().trim().length() == 6) {
+                                                dialog.dismiss();
+                                                presenter.pay(id);
+                                            }
+                                        }
+                                    });
+                                }
+                            })
+                            .setOnViewClickListener(new OnViewClickListener() {
+                                @Override
+                                public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog dialog) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create()
+                            .show();
+                }
                 break;
 
             case OPERATE_CONFIRM:

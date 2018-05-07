@@ -8,4 +8,9 @@ public class OrderModel implements IOrderContract.Model {
     public boolean deleteOrder(String id) {
         return true;
     }
+
+    @Override
+    public boolean pay(String id) {
+        return true;
+    }
 }

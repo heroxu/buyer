@@ -250,7 +250,7 @@ public class OrderListFragment extends MyBaseMvpFragment<OrderPresenter> impleme
             default:
                 for (OrderGoodsInfo goodsInfo :
                         fakdeGoodsList1) {
-                    goodsInfo.setDisputeOrderId("");
+                    goodsInfo.setDisputeOrderId(null);
                 }
                 break;
         }
@@ -354,5 +354,12 @@ public class OrderListFragment extends MyBaseMvpFragment<OrderPresenter> impleme
     @Override
     public void deleteOrder(int position) {
         mAdapter.remove(position);
+    }
+
+    @Override
+    public void viewOrderDetail(String id) {
+        Bundle bundle = new Bundle();
+        bundle.putString(OrderHelper.ORDER_ID, id);
+        startActivity(OrderDetailActivity.class, bundle);
     }
 }
