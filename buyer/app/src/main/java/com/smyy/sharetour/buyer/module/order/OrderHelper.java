@@ -2,6 +2,7 @@ package com.smyy.sharetour.buyer.module.order;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -261,6 +262,12 @@ public class OrderHelper {
                                             }
                                         }
                                     });
+                                }
+                            })
+                            .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                @Override
+                                public void onDismiss(DialogInterface dialog) {
+                                    activity.closeKeyboard();
                                 }
                             })
                             .setOnViewClickListener(new OnViewClickListener() {
