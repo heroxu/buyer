@@ -293,4 +293,9 @@ public class OrderDetailActivity extends MyBaseMvpActivity<OrderPresenter> imple
     protected OrderPresenter createPresenter() {
         return new OrderPresenter(this, new OrderModel());
     }
+
+    @Override
+    public void deleteOrder(int position) {
+
+    }
 }

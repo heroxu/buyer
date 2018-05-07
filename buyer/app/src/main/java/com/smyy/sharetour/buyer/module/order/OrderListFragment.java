@@ -350,4 +350,9 @@ public class OrderListFragment extends MyBaseMvpFragment<OrderPresenter> impleme
     public void finish() {
         mActivity.finish();
     }
+
+    @Override
+    public void deleteOrder(int position) {
+        mAdapter.remove(position);
+    }
 }

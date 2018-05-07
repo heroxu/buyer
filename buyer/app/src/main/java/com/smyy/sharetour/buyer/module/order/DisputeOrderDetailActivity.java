@@ -301,4 +301,8 @@ public class DisputeOrderDetailActivity extends MyBaseMvpActivity implements IOr
     }
 
 
+    @Override
+    public void deleteOrder(int position) {
+
+    }
 }
