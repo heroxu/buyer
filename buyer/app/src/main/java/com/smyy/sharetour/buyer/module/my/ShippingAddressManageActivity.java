@@ -11,14 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
-import com.smyy.sharetour.buyer.module.my.adapter.ManageShippingAddressAdapter;
+import com.smyy.sharetour.buyer.module.my.adapter.ShippingAddressManageAdapter;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
-import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 import com.smyy.sharetour.buyer.module.my.bean.ShippingAddressBean;
 import com.smyy.sharetour.buyer.module.my.contract.IShippingAddressContract;
 import com.smyy.sharetour.buyer.module.my.model.ShippingAddressModel;
 import com.smyy.sharetour.buyer.module.my.presenter.ShippingAddressPresenter;
-import com.smyy.sharetour.buyer.util.ToastUtils;
 
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class ShippingAddressManageActivity extends MyBaseMvpActivity<ShippingAdd
     @BindView(R.id.btn_my_add_address)
     Button btnAddAddress;
 
-    private ManageShippingAddressAdapter mAdapter;
+    private ShippingAddressManageAdapter mAdapter;
 
     public static final int REQ_EDIT = 1;
 
@@ -54,19 +52,19 @@ public class ShippingAddressManageActivity extends MyBaseMvpActivity<ShippingAdd
 
     private void initView() {
         if (mAdapter == null) {
-            mAdapter = new ManageShippingAddressAdapter(this);
+            mAdapter = new ShippingAddressManageAdapter(this);
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-        mAdapter.setOnItemViewClickListener(new ManageShippingAddressAdapter.OnItemViewClickListener() {
+        mAdapter.setOnItemViewClickListener(new ShippingAddressManageAdapter.OnItemViewClickListener() {
             @Override
             public void onItemViewClick(View view, int position, ShippingAddressBean data) {
                 switch (view.getId()) {
                     case R.id.rb_my_shipping_default:
                         if (!data.isDefault()) {
-                            mPresenter.setDefault(position);
+                            mPresenter.setDefault(data.getId());
 
                             List<ShippingAddressBean> list = mAdapter.getList();
                             for (int i = 0; i < list.size(); i++) {
@@ -80,12 +78,11 @@ public class ShippingAddressManageActivity extends MyBaseMvpActivity<ShippingAdd
                     case R.id.tv_my_shipping_edit:
                         Bundle bundle = new Bundle();
                         bundle.putString(ShippingAddressEditActivity.PURPOSE, ShippingAddressEditActivity.EDIT_ADDRESS);
-                        bundle.putInt(ShippingAddressEditActivity.ADDRESS_ID, position);
+                        bundle.putInt(ShippingAddressEditActivity.ADDRESS_ID, data.getId());
                         startActivityForResult(ShippingAddressEditActivity.class, bundle, REQ_EDIT);
                         break;
                     case R.id.tv_my_shipping_delete:
-                        mPresenter.deleteShippingAddress(position);
-
+                        mPresenter.deleteShippingAddress(data.getId());
                         mAdapter.remove(position);
                         break;
                     default:
