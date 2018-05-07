@@ -15,6 +15,7 @@ import com.smyy.sharetour.buyer.module.my.bean.UserInfoBean;
 import com.smyy.sharetour.buyer.module.my.contract.IUserContract;
 import com.smyy.sharetour.buyer.module.my.model.UserModel;
 import com.smyy.sharetour.buyer.module.my.presenter.UserPresenter;
+import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.util.StringUtil;
 
 import butterknife.BindView;
@@ -61,6 +62,7 @@ public class SecurityCenterActivity extends MyBaseMvpActivity<UserPresenter> imp
                 break;
 
             case R.id.tv_my_pay_password:
+                ActivityLauncher.viewBackpackSetPayPwdActivity(SecurityCenterActivity.this);
                 break;
 
             default:
