@@ -385,7 +385,11 @@ public class RequireDetailsActivity extends BaseMvpActivity {
 
                     @Override
                     public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                        if (focus_text != null) focus_text.setSelected(false);
+                        if (focus_text != null) {
+                            focus_text.setSelected(false);
+                        } else if (reward != 0) {
+                            viewHolder.getView(R.id.reward_other_fl).setSelected(false);
+                        }
                         switch (view.getId()) {
                             case R.id.select_reward_close:
                                 commonDialog.dismiss();
@@ -479,6 +483,7 @@ public class RequireDetailsActivity extends BaseMvpActivity {
                                 break;
 
                             case R.id.input_reward_close:
+                                reward = 0;
                                 commonDialog.dismiss();
                                 showRewardDialog();
                                 break;

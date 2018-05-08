@@ -1,6 +1,7 @@
 package com.smyy.sharetour.buyer.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.backpacker.require.BackPackerRequireSearchListActivity;
 import com.smyy.sharetour.buyer.db.HomeSearch;
 import com.smyy.sharetour.buyer.home.search.activity.SearchActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.uiframelib.BaseActivity;
 
 import java.util.List;
 
@@ -41,7 +44,14 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter {
         viewHolder.tv_home_history_content.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityLauncher.viewSearchDetail(mContext, mSearchType);
+                if(mSearchType.equals(SearchActivity.BUNDLE_REQUIRE)) {
+                    Intent intent = new Intent(mContext, BackPackerRequireSearchListActivity.class);
+                    intent.putExtra(SearchActivity.BUNDLE_SEARCH_STRING, mDatas.get(position).getSearchContent());
+                    mContext.startActivity(intent);
+                    ((BaseActivity)mContext).finish();
+                } else {
+                    ActivityLauncher.viewSearchDetail(mContext, mSearchType);
+                }
             }
         });
     }
