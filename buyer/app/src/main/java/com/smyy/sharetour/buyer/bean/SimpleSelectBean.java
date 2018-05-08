@@ -1,11 +1,7 @@
-package com.smyy.sharetour.buyer.dialog;
+package com.smyy.sharetour.buyer.bean;
 
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-
-/**
- * Created by hasee on 2018/5/2.
- */
 
 public class SimpleSelectBean implements MultiItemEntity {
     private boolean isCheck;

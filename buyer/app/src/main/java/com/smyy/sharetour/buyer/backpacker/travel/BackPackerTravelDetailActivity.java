@@ -69,7 +69,7 @@ public class BackPackerTravelDetailActivity extends BaseMvpActivity {
     private void demo() {
         String[] countrys = {"中国", "澳大利亚", "印度尼西亚", "美国", "中国"};
         String[] times = {"04/04", "04/05", "04/06", "04/08", "04/12"};
-        int[] imgs = {R.mipmap.img_ill_china, R.mipmap.img_ill_australia, R.mipmap.img_ill_indonesia, R.mipmap.img_ill_america, R.mipmap.img_ill_china};
+        int[] imgs = {R.mipmap.img_ill_china_fly, R.mipmap.img_ill_australia_fly, R.mipmap.img_ill_indonesia_fly, R.mipmap.img_ill_america_fly, R.mipmap.img_ill_china_fly};
         for (int i = 0; i < 5; i++) {
             TravelBean.RouteBean routeBean = new TravelBean.RouteBean();
             routeBean.setRouteCountry(countrys[i]);
@@ -86,12 +86,10 @@ public class BackPackerTravelDetailActivity extends BaseMvpActivity {
     }
 
 
-    @OnClick({R.id.delete_frame, R.id.edit_frame, R.id.back_btn})
+    @OnClick({R.id.delete_frame, R.id.back_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.delete_frame:
-                break;
-            case R.id.edit_frame:
                 break;
             case R.id.back_btn:
                 finish();

@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.bean.SimpleSelectBean;
 import com.smyy.sharetour.buyer.require.OnRecyclerViewOnClickListener;
 
 import java.util.ArrayList;

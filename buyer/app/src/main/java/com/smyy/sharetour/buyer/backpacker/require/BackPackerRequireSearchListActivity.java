@@ -14,21 +14,16 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.backpacker.BackpackerHomeItemAdapter;
-import com.smyy.sharetour.buyer.backpacker.travel.BackPackerSendTravelActivity;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.RequireBean;
 import com.smyy.sharetour.buyer.dialog.BasePopupWindow;
-import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.dialog.GridSelectSortPop;
-import com.smyy.sharetour.buyer.dialog.SimpleSelectBean;
 import com.smyy.sharetour.buyer.dialog.ListSelectSortPop;
+import com.smyy.sharetour.buyer.bean.SimpleSelectBean;
 import com.smyy.sharetour.buyer.home.search.activity.SearchActivity;
 import com.smyy.sharetour.buyer.tim.ChatActivity;
 import com.tencent.imsdk.TIMConversationType;
-import com.xmyy.view.dialoglib.CommonDialog;
-import com.xmyy.view.dialoglib.base.BindViewHolder;
-import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,25 +106,7 @@ public class BackPackerRequireSearchListActivity extends BaseMvpActivity {
 
             @Override
             public void OnItemTakeClick(View v, int position) {
-                DialogUtils.showTwoBtnMsgBox(BackPackerRequireSearchListActivity.this,
-                        null,
-                        getString(R.string.send_trip_tip),
-                        R.color.txt_hint,
-                        getString(R.string.send_trip),
-                        new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                startActivity(BackPackerSendTravelActivity.class);
-                                commonDialog.dismiss();
-                            }
-                        },
-                        getString(R.string.cancel),
-                        new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                commonDialog.dismiss();
-                            }
-                        });
+                startActivity(new Intent(BackPackerRequireSearchListActivity.this, BackpackerTakeRequireActivity.class));
             }
         });
         requireSearchList.setAdapter(mAdapter);

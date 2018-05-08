@@ -49,7 +49,6 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
                     intent.putExtra(SearchActivity.BUNDLE_SEARCH_STRING, mDatas.get(position));
                     mContext.startActivity(intent);
                     ((BaseActivity)mContext).finish();
-                    ((BaseActivity)mContext).finish();
                 } else {
                     HomeSearch homeSearch = new HomeSearch();
                     homeSearch.setSearchContent(mDatas.get(position));
