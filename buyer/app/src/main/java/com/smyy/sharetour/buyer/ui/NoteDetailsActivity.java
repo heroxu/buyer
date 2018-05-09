@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.Gson;
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
@@ -20,6 +21,7 @@ import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.dialog.DetailsEditorDialog;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.ObservableScrollView;
 
 import butterknife.BindView;
@@ -74,6 +76,16 @@ public class NoteDetailsActivity extends BaseMvpActivity implements ObservableSc
         CommentsBean bean = gson.fromJson(Consts.noteDetailsData, CommentsBean.class);
         mCommentsAdapter = new CommentsAdapter(bean.getMainList());
         rvNoteComments.setAdapter(mCommentsAdapter);
+        mCommentsAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                switch (view.getId()) {
+                    case R.id.tv_reply_comments:
+                        ToastUtils.showToast("回复被点击了");
+                        break;
+                }
+            }
+        });
 
     }
 

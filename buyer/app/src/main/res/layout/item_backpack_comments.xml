@@ -50,19 +50,20 @@
             android:textColor="@color/txt_main"
             android:textSize="13sp" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:lineSpacingMultiplier="1.5"
             android:text="2017-11-23 11:23:45"
             android:textColor="@color/txt_gray"
             android:textSize="13sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
+
     </LinearLayout>
 </LinearLayout>

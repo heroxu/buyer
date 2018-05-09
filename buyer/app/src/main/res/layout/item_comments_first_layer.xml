@@ -60,11 +60,12 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tv_reply_comments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="13sp"
                     android:layout_toLeftOf="@+id/ll_comments_second_praise"
+                    android:paddingRight="13dp"
                     android:text="回复"
                     android:textColor="@color/txt_main"
                     android:textSize="13sp" />
@@ -82,9 +83,9 @@
                         android:src="@mipmap/ic_like_nor" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:text="12"
                         android:textColor="@color/txt_main"
                         android:textSize="13sp" />

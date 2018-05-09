@@ -48,7 +48,6 @@ public class VerifyPhoneActivity extends BaseMvpActivity {
 
     @Override
     protected void configToolBar(Toolbar toolbar, TextView title) {
-
     }
 
     @Override

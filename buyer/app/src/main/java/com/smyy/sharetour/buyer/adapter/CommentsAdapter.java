@@ -28,7 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by 伍振飞 on 2018/4/11 11:11
  * E-Mail Address：wuzf2012@sina.com
  */
-public class CommentsAdapter extends BaseQuickAdapter<CommentsBean.MainList,BaseViewHolder> {
+public class CommentsAdapter extends BaseQuickAdapter<CommentsBean.MainList, BaseViewHolder> {
 
     public CommentsAdapter(List<CommentsBean.MainList> data) {
         super(R.layout.item_comments_first_layer, data);
@@ -37,6 +37,7 @@ public class CommentsAdapter extends BaseQuickAdapter<CommentsBean.MainList,Base
     @Override
     protected void convert(BaseViewHolder baseViewHolder, CommentsBean.MainList mainList) {
         //创建一个临时数据下一个界面用
+        baseViewHolder.addOnClickListener(R.id.tv_reply_comments);
         final CommentsBean.MainList nextData = mainList;
         baseViewHolder.setText(R.id.tv_comments_first_name, mainList.getName())
                 .setText(R.id.tv_comments_first_content, mainList.getContent());

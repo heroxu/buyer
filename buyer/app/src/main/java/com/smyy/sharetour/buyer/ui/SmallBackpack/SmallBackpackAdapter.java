@@ -1,8 +1,10 @@
 package com.smyy.sharetour.buyer.ui.SmallBackpack;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -14,6 +16,10 @@ import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.util.LogUtil;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.SwipeItemLayout;
+import com.xmyy.view.dialoglib.CommonDialog;
+import com.xmyy.view.dialoglib.base.BindViewHolder;
+import com.xmyy.view.dialoglib.listener.OnBindViewListener;
+import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 import java.util.List;
 
@@ -39,7 +45,6 @@ public class SmallBackpackAdapter extends BaseMultiItemQuickAdapter<SmallBackpac
                 RecyclerView mRecyclerViewGoods = helper.getView(R.id.recycler_view);
                 mRecyclerViewGoods.setLayoutManager(new LinearLayoutManager(mContext));
                 final List<SmallBackpackBean.GoodsBean> data = item.getmGoodsBeans();
-//                mRecyclerViewGoods.addOnItemTouchListener(new SwipeItemLayout.OnSwipeItemTouchListener(mContext));
                 final GoodsAdapter mGoodsAdapter = new GoodsAdapter(data);
                 mRecyclerViewGoods.setAdapter(mGoodsAdapter);
                 final CheckBox cbSelect = helper.getView(R.id.cb_goods_all);
@@ -56,6 +61,27 @@ public class SmallBackpackAdapter extends BaseMultiItemQuickAdapter<SmallBackpac
                                 ToastUtils.showToast("编辑状态");
                                 break;
                         }
+                    }
+                });
+                mGoodsAdapter.setOnItemChildLongClickListener(new OnItemChildLongClickListener() {
+                    @Override
+                    public boolean onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+                        switch (view.getId()) {
+                            case R.id.ll_btn_itbgc:
+                                showCollectionDialog(mActivity, R.layout.item_s_backpack_long, new OnOptionConfirmListener() {
+                                    @Override
+                                    public void onDelete() {
+
+                                    }
+
+                                    @Override
+                                    public void onCollection() {
+
+                                    }
+                                });
+                                break;
+                        }
+                        return true;
                     }
                 });
                 break;
@@ -83,12 +109,13 @@ public class SmallBackpackAdapter extends BaseMultiItemQuickAdapter<SmallBackpac
          * @param data A new list is created out of this one to avoid mutable list
          */
         public GoodsAdapter(List<SmallBackpackBean.GoodsBean> data) {
-            super(R.layout.item_small_backpack_goods_child, data);
+            super(R.layout.item_small_backpack_goods_child_content, data);
         }
 
         @Override
         protected void convert(BaseViewHolder helper, SmallBackpackBean.GoodsBean item) {
             helper.addOnClickListener(R.id.ll_btn_itbgc).addOnClickListener(R.id.ll_edit_itbgc);
+            helper.addOnLongClickListener(R.id.ll_btn_itbgc);
             CheckBox mCheckBox = helper.getView(R.id.cb_goods);
             mCheckBox.setChecked(item.getIsSelect() == SmallBackpackActivity.SELECT_TRUE ? true : false);
         }
@@ -110,5 +137,42 @@ public class SmallBackpackAdapter extends BaseMultiItemQuickAdapter<SmallBackpac
         protected void convert(BaseViewHolder helper, SmallBackpackBean.GoodsFailureBean item) {
 
         }
+    }
+
+
+    public static void showCollectionDialog(FragmentActivity activity, int dialogRes, final OnOptionConfirmListener onOptionConfirmListener) {
+        new CommonDialog.Builder(activity.getSupportFragmentManager())
+                .setLayoutRes(dialogRes)
+                .setGravity(Gravity.CENTER)
+                .setDimAmount(0.5f)
+                .setScreenWidthAspect(activity, 1)
+                .setOnBindViewListener(new OnBindViewListener() {
+                    @Override
+                    public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
+                        viewHolder.setOnViewClickListener(R.id.tv_long_collection, new OnViewClickListener() {
+                            @Override
+                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                commonDialog.dismiss();
+                                if (onOptionConfirmListener != null) {
+                                }
+                            }
+                        });
+                        viewHolder.setOnViewClickListener(R.id.tv_long_delete, new OnViewClickListener() {
+                            @Override
+                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                commonDialog.dismiss();
+                                if (onOptionConfirmListener != null) {
+                                }
+                            }
+                        });
+                    }
+                })
+                .create().show();
+    }
+
+    public interface OnOptionConfirmListener {
+        void onDelete();
+
+        void onCollection();
     }
 }

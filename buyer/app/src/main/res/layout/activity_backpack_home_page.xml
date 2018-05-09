@@ -70,6 +70,7 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/rl_btn_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -306,6 +307,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/ic_home_arrow_more"
+                    android:gravity="center"
                     android:text="已认证"
                     android:textColor="@color/txt_gray"
                     android:textSize="13sp" />
@@ -480,6 +482,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/ic_home_arrow_more"
+                    android:gravity="center"
                     android:text="全部评论"
                     android:textColor="@color/txt_gray"
                     android:textSize="13sp" />

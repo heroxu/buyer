@@ -1,20 +1,22 @@
 package com.smyy.sharetour.buyer.ui.buyCommodity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.backpacker.bomepage.BackpackHomePageActivity;
 import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.view.SingleFragmentPageAdapter;
 
 import java.util.ArrayList;
@@ -61,10 +63,23 @@ public class BuyHomePageActivity extends BaseMvpActivity {
         return null;
     }
 
-    @OnClick(R.id.ic_close)
-    public void onViewClicked() {
-        finish();
+    @OnClick({R.id.ic_close, R.id.iv_my_avatar})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ic_close:
+                finish();
+                break;
+            case R.id.iv_my_avatar:
+                DialogUtils.BuyHomePageBuilder.showCollectionDialog(BuyHomePageActivity.this, new DialogUtils.BuyHomePageBuilder.OnOptionConfirmListener() {
+                    @Override
+                    public void onDelete() {
+
+                    }
+                });
+                break;
+        }
     }
+
 
     private class MyPagerAdapter extends SingleFragmentPageAdapter {
         public MyPagerAdapter(FragmentManager fm) {

@@ -21,6 +21,7 @@ import com.smyy.sharetour.buyer.base.BaseFragment;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpFragment;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.home.search.activity.SearchActivity;
+import com.smyy.sharetour.buyer.ui.Test1Activity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.util.ToastUtils;
 import com.smyy.sharetour.buyer.view.HomeTitlesOpenOrCloseView;
@@ -103,7 +104,9 @@ public class FoundFragment extends BaseMvpFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ttl_fount_search:
-                ActivityLauncher.viewSearchActivity(getContext(), SearchActivity.BUNDLE_FOUNT);
+                ActivityLauncher.viewBackpackCertificationActivity(getActivity());
+//                ActivityLauncher.viewSearchActivity(getContext(), SearchActivity.BUNDLE_FOUNT);
+//                startActivity(Test1Activity.class);
                 break;
             case R.id.tt_fount_scan:
                 startActivityForResult(new Intent(getActivity(), CaptureActivity.class), REQUEST_CODE_SCAN);

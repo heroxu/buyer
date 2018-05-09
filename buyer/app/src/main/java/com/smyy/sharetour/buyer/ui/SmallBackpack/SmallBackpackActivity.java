@@ -3,15 +3,18 @@ package com.smyy.sharetour.buyer.ui.SmallBackpack;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,10 @@ import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.util.ToastUtils;
+import com.xmyy.view.dialoglib.CommonDialog;
+import com.xmyy.view.dialoglib.base.BindViewHolder;
+import com.xmyy.view.dialoglib.listener.OnBindViewListener;
+import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +63,7 @@ public class SmallBackpackActivity extends BaseMvpActivity {
         initParents();
         initChilds();
         initNum();
-        mAdapter = new SmallBackpackAdapter(parentShopings,this);
+        mAdapter = new SmallBackpackAdapter(parentShopings, this);
         recyclerView.setAdapter(mAdapter);
         //添加自定义分割线
         DividerItemDecoration divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);

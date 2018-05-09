@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,9 +16,15 @@ import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
+import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.module.my.AccountSettingsActivity;
 import com.smyy.sharetour.buyer.module.order.OrderHelper;
+import com.smyy.sharetour.buyer.ui.SmallBackpack.SmallBackpackAdapter;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.xmyy.view.dialoglib.CommonDialog;
+import com.xmyy.view.dialoglib.base.BindViewHolder;
+import com.xmyy.view.dialoglib.listener.OnBindViewListener;
+import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +65,7 @@ public class BackpackHomePageActivity extends BaseMvpActivity {
         return null;
     }
 
-    @OnClick({R.id.ic_close, R.id.tv_editor, R.id.tv_more_comments})
+    @OnClick({R.id.ic_close, R.id.tv_editor, R.id.tv_more_comments, R.id.rl_btn_user})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ic_close:
@@ -71,6 +79,13 @@ public class BackpackHomePageActivity extends BaseMvpActivity {
             case R.id.tv_more_comments:
                 ActivityLauncher.viewBackpackCommentsActivity(this);
                 break;
+            case R.id.rl_btn_user:
+                DialogUtils.BuyHomePageBuilder.showCollectionDialog(BackpackHomePageActivity.this, new DialogUtils.BuyHomePageBuilder.OnOptionConfirmListener() {
+                    @Override
+                    public void onDelete() {
+
+                    }
+                });
         }
     }
 
@@ -78,4 +93,6 @@ public class BackpackHomePageActivity extends BaseMvpActivity {
     protected void initStatusBar() {
         setStatusBar(Color.BLACK);
     }
+
+
 }

@@ -251,16 +251,28 @@ public class ImageSelectorActivity extends AppCompatActivity {
      * start to camera、preview、crop
      */
     public void startCamera() {
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-            File cameraFile = FileUtils.createCameraFile(this);
-            cameraPath = cameraFile.getAbsolutePath();
-            ContentValues contentValues = new ContentValues(1);
-            contentValues.put(MediaStore.Images.Media.DATA,cameraPath);
-            Uri uri = mActivity.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,uri);
-            startActivityForResult(cameraIntent, REQUEST_CAMERA);
+        String action = getPackageName() + ".ui.camera";
+        Intent cameraIntent = new Intent(action);
+        boolean isCustomCamera = false;
+        if (cameraIntent.resolveActivity(getPackageManager()) != null) {//调用自定义相机
+            isCustomCamera = true;
+        } else {
+            cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (cameraIntent.resolveActivity(getPackageManager()) == null) {
+                return;
+            }
         }
+        File cameraFile = FileUtils.createCameraFile(this);
+        cameraPath = cameraFile.getAbsolutePath();
+        if (isCustomCamera) {
+            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(cameraFile));
+        } else {
+            ContentValues contentValues = new ContentValues(1);
+            contentValues.put(MediaStore.Images.Media.DATA, cameraPath);
+            Uri uri = mActivity.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        }
+        startActivityForResult(cameraIntent, REQUEST_CAMERA);
     }
 
     public void startPreview(List<LocalMedia> previewImages, int position) {

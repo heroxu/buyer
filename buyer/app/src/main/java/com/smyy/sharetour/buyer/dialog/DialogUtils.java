@@ -532,4 +532,32 @@ public class DialogUtils {
         }
     }
 
+    public static class BuyHomePageBuilder {
+        public interface OnOptionConfirmListener {
+            void onDelete();
+        }
+
+        public static void showCollectionDialog(FragmentActivity activity, final OnOptionConfirmListener onOptionConfirmListener) {
+            new CommonDialog.Builder(activity.getSupportFragmentManager())
+                    .setLayoutRes(R.layout.item_buy_message)
+                    .setGravity(Gravity.CENTER)
+                    .setDimAmount(0.5f)
+                    .setScreenWidthAspect(activity, 1)
+                    .setOnBindViewListener(new OnBindViewListener() {
+                        @Override
+                        public void bindView(BindViewHolder viewHolder, CommonDialog dialog) {
+                            viewHolder.setOnViewClickListener(R.id.iv_close, new OnViewClickListener() {
+                                @Override
+                                public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                                    commonDialog.dismiss();
+                                    if (onOptionConfirmListener != null) {
+                                    }
+                                }
+                            });
+                        }
+                    })
+                    .create().show();
+        }
+    }
+
 }
