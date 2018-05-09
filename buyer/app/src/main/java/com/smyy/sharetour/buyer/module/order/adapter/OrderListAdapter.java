@@ -143,7 +143,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             }
 
             OrderHelper.switchListBottomBtns(mActivity,
-                    mUserType, mPresenter, data,
+                    mUserType, mPresenter, position, data,
                     holder.layBottomBtns,
                     holder.tvBottomBtn1, holder.tvBottomBtn2,
                     holder.tvBottomBtn3, holder.tvBottomBtnMore);

@@ -232,7 +232,7 @@ public abstract class BaseActivity extends UmengActivity {
         mImmersionBar.fitsSystemWindows(true).statusBarColorInt(statusBarColor).init();
     }
 
-    protected void closeKeyboard() {
+    public void closeKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
             imm.hideSoftInputFromWindow(

@@ -45,6 +45,20 @@
                 tools:text="18612345678" />
 
             <TextView
+                android:id="@+id/tv_my_shipping_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_my_shipping_phone"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_my_shipping_phone"
+                android:background="@drawable/shape_fount_buy"
+                android:padding="3dp"
+                android:text="默认"
+                android:textColor="@color/txt_price"
+                android:textSize="@dimen/txt_size_9" />
+
+            <TextView
                 android:id="@+id/tv_my_shipping_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

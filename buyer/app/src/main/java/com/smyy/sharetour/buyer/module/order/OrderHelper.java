@@ -1,6 +1,8 @@
 package com.smyy.sharetour.buyer.module.order;
 
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -9,11 +11,14 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
@@ -34,6 +39,7 @@ import com.smyy.sharetour.buyer.module.order.bean.OrderReviewsBean;
 import com.smyy.sharetour.buyer.module.order.presenter.OrderPresenter;
 import com.smyy.sharetour.buyer.tim.ChatActivity;
 import com.smyy.sharetour.buyer.util.StringUtil;
+import com.smyy.sharetour.buyer.view.PasswordEditText;
 import com.smyy.sharetour.uiframelib.BaseActivity;
 import com.tencent.imsdk.TIMConversationType;
 import com.xmyy.view.dialoglib.CommonDialog;
@@ -114,7 +120,7 @@ public class OrderHelper {
      * @param id 可以是orderId、disputeOrderId、鉴定视频地址、用户聊天id
      */
     public static void switchOperate(final BaseActivity activity, int userType,
-                                     OrderPresenter presenter, String id,
+                                     final OrderPresenter presenter, int position, final String id,
                                      int orderOperateType) {
         Bundle bundle = new Bundle();
         bundle.putInt(Consts.USER_TYPE, userType);
@@ -213,15 +219,123 @@ public class OrderHelper {
                 break;
 
             case OPERATE_DELETE:
-
+                if (position >= 0 && !StringUtil.isEmpty(id)) {
+                    presenter.deleteOrder(position, id);
+                }
                 break;
 
             case OPERATE_PAY:
+                if (!StringUtil.isEmpty(id)) {
+                    new CommonDialog.Builder(activity.getSupportFragmentManager())
+                            .setLayoutRes(R.layout.dialog_input_pay_pwd)
+                            .setScreenWidthAspect(activity, 1.0f)
+                            .setGravity(Gravity.BOTTOM)
+                            .addOnClickListener(R.id.icon_close)
+                            .setOnBindViewListener(new OnBindViewListener() {
+                                @Override
+                                public void bindView(BindViewHolder viewHolder, final CommonDialog dialog) {
+                                    final PasswordEditText editText = viewHolder.getView(R.id.pe_password);
+                                    editText.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                            imm.showSoftInput(editText, 0);
+                                        }
+                                    });
 
+                                    editText.addTextChangedListener(new TextWatcher() {
+                                        @Override
+                                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                                        }
+
+                                        @Override
+                                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                                        }
+
+                                        @Override
+                                        public void afterTextChanged(Editable s) {
+                                            if (s.toString().trim().length() == 6) {
+                                                dialog.dismiss();
+                                                presenter.pay(id);
+                                            }
+                                        }
+                                    });
+                                }
+                            })
+                            .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                @Override
+                                public void onDismiss(DialogInterface dialog) {
+                                    activity.closeKeyboard();
+                                }
+                            })
+                            .setOnViewClickListener(new OnViewClickListener() {
+                                @Override
+                                public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog dialog) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create()
+                            .show();
+                }
                 break;
 
             case OPERATE_CONFIRM:
+                if (!StringUtil.isEmpty(id)) {
+                    new CommonDialog.Builder(activity.getSupportFragmentManager())
+                            .setLayoutRes(R.layout.dialog_input_pay_pwd)
+                            .setScreenWidthAspect(activity, 1.0f)
+                            .setGravity(Gravity.BOTTOM)
+                            .addOnClickListener(R.id.icon_close)
+                            .setOnBindViewListener(new OnBindViewListener() {
+                                @Override
+                                public void bindView(BindViewHolder viewHolder, final CommonDialog dialog) {
+                                    final PasswordEditText editText = viewHolder.getView(R.id.pe_password);
+                                    editText.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                            imm.showSoftInput(editText, 0);
+                                        }
+                                    });
 
+                                    editText.addTextChangedListener(new TextWatcher() {
+                                        @Override
+                                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                                        }
+
+                                        @Override
+                                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                                        }
+
+                                        @Override
+                                        public void afterTextChanged(Editable s) {
+                                            if (s.toString().trim().length() == 6) {
+                                                dialog.dismiss();
+                                                presenter.confirm(id);
+                                            }
+                                        }
+                                    });
+                                }
+                            })
+                            .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                @Override
+                                public void onDismiss(DialogInterface dialog) {
+                                    activity.closeKeyboard();
+                                }
+                            })
+                            .setOnViewClickListener(new OnViewClickListener() {
+                                @Override
+                                public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog dialog) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create()
+                            .show();
+                }
                 break;
 
             case OPERATE_CONTACT_SERVICE:
@@ -250,16 +364,21 @@ public class OrderHelper {
         }
     }
 
+    public static void switchOperate(final BaseActivity activity, int userType,
+                                     OrderPresenter presenter, String id, int orderOperateType) {
+        switchOperate(activity, userType, null, -1, id, orderOperateType);
+    }
+
     public static void switchOperate(final BaseActivity activity, int userType, String id, int orderOperateType) {
         switchOperate(activity, userType, null, id, orderOperateType);
     }
 
     public static void switchOperate(final BaseActivity activity, int userType, int orderOperateType) {
-        switchOperate(activity, userType, null, null, orderOperateType);
+        switchOperate(activity, userType, null, orderOperateType);
     }
 
     public static void switchOperate(final BaseActivity activity, int orderOperateType) {
-        switchOperate(activity, -1, null, null, orderOperateType);
+        switchOperate(activity, -1, orderOperateType);
     }
 
     /**
@@ -267,7 +386,7 @@ public class OrderHelper {
      */
     private static void switchBottomBtns(final BaseActivity activity,
                                          final int userType, final OrderPresenter presenter,
-                                         boolean isSolid,
+                                         final int position, boolean isSolid,
                                          TextView tvBottomBtn1, TextView tvBottomBtn2,
                                          TextView tvBottomBtn3, final TextView tvBottomBtnMore,
                                          String btnTxt1, final int orderOperateType1, final String id1,
@@ -292,7 +411,7 @@ public class OrderHelper {
             tvBottomBtn1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    switchOperate(activity, userType, presenter, id1, orderOperateType1);
+                    switchOperate(activity, userType, presenter, position, id1, orderOperateType1);
                 }
             });
         }
@@ -309,7 +428,7 @@ public class OrderHelper {
                 tvBottomBtn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        switchOperate(activity, userType, presenter, id2, orderOperateType2);
+                        switchOperate(activity, userType, presenter, position, id2, orderOperateType2);
                     }
                 });
             }
@@ -327,7 +446,7 @@ public class OrderHelper {
                 tvBottomBtn3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        switchOperate(activity, userType, presenter, id3, orderOperateType3);
+                        switchOperate(activity, userType, presenter, position, id3, orderOperateType3);
                     }
                 });
             }
@@ -360,7 +479,7 @@ public class OrderHelper {
                     @Override
                     public void onClick(View v) {
                         mPopupWindow.dismiss();
-                        switchOperate(activity, userType, presenter, id4, orderOperateType4);
+                        switchOperate(activity, userType, presenter, position, id4, orderOperateType4);
                     }
                 });
             }
@@ -378,7 +497,7 @@ public class OrderHelper {
                         @Override
                         public void onClick(View v) {
                             mPopupWindow.dismiss();
-                            switchOperate(activity, userType, presenter, id5, orderOperateType5);
+                            switchOperate(activity, userType, presenter, position, id5, orderOperateType5);
                         }
                     });
                 }
@@ -397,7 +516,7 @@ public class OrderHelper {
                         @Override
                         public void onClick(View v) {
                             mPopupWindow.dismiss();
-                            switchOperate(activity, userType, presenter, id6, orderOperateType6);
+                            switchOperate(activity, userType, presenter, position, id6, orderOperateType6);
                         }
                     });
                 }
@@ -414,8 +533,33 @@ public class OrderHelper {
         }
     }
 
+    private static void switchBottomBtns(final BaseActivity activity,
+                                         final int userType, final OrderPresenter presenter,
+                                         boolean isSolid,
+                                         TextView tvBottomBtn1, TextView tvBottomBtn2,
+                                         TextView tvBottomBtn3, final TextView tvBottomBtnMore,
+                                         String btnTxt1, final int orderOperateType1, final String id1,
+                                         String btnTxt2, final int orderOperateType2, final String id2,
+                                         String btnTxt3, final int orderOperateType3, final String id3,
+                                         String btnTxt4, final int orderOperateType4, final String id4,
+                                         String btnTxt5, final int orderOperateType5, final String id5,
+                                         String btnTxt6, final int orderOperateType6, final String id6) {
+        switchBottomBtns(activity,
+                userType, presenter,
+                -1, isSolid,
+                tvBottomBtn1, tvBottomBtn2,
+                tvBottomBtn3, tvBottomBtnMore,
+                btnTxt1, orderOperateType1, id1,
+                btnTxt2, orderOperateType2, id2,
+                btnTxt3, orderOperateType3, id3,
+                btnTxt4, orderOperateType4, id4,
+                btnTxt5, orderOperateType5, id5,
+                btnTxt6, orderOperateType6, id6);
+    }
+
     public static void switchListBottomBtns(BaseActivity activity, int userType,
-                                            OrderPresenter presenter, OrderBean orderBean,
+                                            OrderPresenter presenter,
+                                            int position, OrderBean orderBean,
                                             View layBottomBtns, TextView tvBottomBtn1, TextView tvBottomBtn2,
                                             TextView tvBottomBtn3, TextView tvBottomBtnMore) {
         int orderStatus = orderBean.getOrderStatus();
@@ -547,7 +691,8 @@ public class OrderHelper {
 
                 case STATUS_BUYER_CLOSED:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, userType, presenter, false,
+                    switchBottomBtns(activity, userType, presenter,
+                            position, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
                             "删除订单", OPERATE_DELETE, orderId,
@@ -636,7 +781,8 @@ public class OrderHelper {
 
                 case STATUS_SELLER_CLOSED:
                     layBottomBtns.setVisibility(View.VISIBLE);
-                    switchBottomBtns(activity, userType, presenter, false,
+                    switchBottomBtns(activity, userType, presenter,
+                            position, false,
                             tvBottomBtn1, tvBottomBtn2,
                             tvBottomBtn3, tvBottomBtnMore,
                             "删除订单", OPERATE_DELETE, orderId,

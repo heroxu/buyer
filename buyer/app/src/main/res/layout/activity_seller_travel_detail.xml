@@ -43,7 +43,7 @@
         android:id="@+id/sc_node_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/ll_nd_bottom">
+        android:layout_above="@+id/contact_seller">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="10dp"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
@@ -119,14 +119,6 @@
                         android:drawablePadding="8dp"
                         android:gravity="center_vertical"
                         />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/txt_gray"
-                        android:textSize="@dimen/txt_size_11"
-                        android:text="已认证"
-                        android:layout_marginLeft="7dp"
-                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -137,15 +129,19 @@
                         android:drawableLeft="@mipmap/ic_sesame_credit"
                         android:drawablePadding="8dp"
                         android:gravity="center_vertical"
-                        android:layout_marginLeft="35dp"
+                        android:layout_marginLeft="44dp"
                         />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/txt_gray"
-                        android:textSize="@dimen/txt_size_11"
-                        android:text="信用极好"
-                        android:layout_marginLeft="7dp"
+                        android:textSize="@dimen/txt_size_13"
+                        android:textColor="@color/txt_main"
+                        android:text="护照认证"
+                        android:drawableLeft="@mipmap/ic_passport"
+                        android:drawablePadding="8dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="44dp"
                         />
                 </LinearLayout>
 
@@ -254,5 +250,14 @@
                 android:paddingBottom="40dp"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-
+    <TextView
+        android:id="@+id/contact_seller"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/btn_bg_normal"
+        android:text="立即沟通"
+        android:textColor="@color/txt_main"
+        android:textSize="@dimen/txt_size_15"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"/>
 </RelativeLayout>

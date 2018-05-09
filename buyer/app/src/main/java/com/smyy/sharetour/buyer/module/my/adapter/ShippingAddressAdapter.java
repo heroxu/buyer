@@ -35,6 +35,7 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
         final ShippingAddressBean data = mDatas.get(position);
         if (data != null) {
             holder.rbDefault.setVisibility(data.isDefault() ? View.VISIBLE : View.GONE);
+            holder.tvDefault.setVisibility(data.isDefault() ? View.VISIBLE : View.GONE);
             holder.tvName.setText(data.getName());
             holder.tvPhone.setText(data.getPhone());
             holder.tvAddress.setText(StringUtil.connect(data.getDistrict(), data.getStreet(), data.getDetailAddress()));
@@ -73,6 +74,7 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private RadioButton rbDefault;
+        private TextView tvDefault;
         private TextView tvName;
         private TextView tvPhone;
         private TextView tvAddress;
@@ -80,6 +82,7 @@ public class ShippingAddressAdapter extends RecyclerView.Adapter<ShippingAddress
         public ViewHolder(View itemView) {
             super(itemView);
             rbDefault = (RadioButton) itemView.findViewById(R.id.rb_my_shipping_default);
+            tvDefault = (TextView) itemView.findViewById(R.id.tv_my_shipping_default);
             tvName = (TextView) itemView.findViewById(R.id.tv_my_shipping_name);
             tvPhone = (TextView) itemView.findViewById(R.id.tv_my_shipping_phone);
             tvAddress = (TextView) itemView.findViewById(R.id.tv_my_shipping_address);

@@ -104,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="10dp"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
@@ -118,14 +118,6 @@
                         android:drawablePadding="8dp"
                         android:gravity="center_vertical"
                         />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/txt_gray"
-                        android:textSize="@dimen/txt_size_11"
-                        android:text="已认证"
-                        android:layout_marginLeft="7dp"
-                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -136,15 +128,19 @@
                         android:drawableLeft="@mipmap/ic_sesame_credit"
                         android:drawablePadding="8dp"
                         android:gravity="center_vertical"
-                        android:layout_marginLeft="35dp"
+                        android:layout_marginLeft="44dp"
                         />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/txt_gray"
-                        android:textSize="@dimen/txt_size_11"
-                        android:text="信用极好"
-                        android:layout_marginLeft="7dp"
+                        android:textSize="@dimen/txt_size_13"
+                        android:textColor="@color/txt_main"
+                        android:text="护照认证"
+                        android:drawableLeft="@mipmap/ic_passport"
+                        android:drawablePadding="8dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="44dp"
                         />
                 </LinearLayout>
 
@@ -259,38 +255,21 @@
         android:background="@color/txt_gray_transparent"
         android:paddingTop="1dp">
         <FrameLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_weight="1"
             android:id="@+id/delete_frame"
             android:background="@color/white">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/delete"
+                android:text="下架行程"
                 android:layout_gravity="center"
-                android:textSize="@dimen/txt_size_13"
-                android:drawableTop="@mipmap/ic_trash_can"
+                android:textSize="@dimen/txt_size_15"
+                android:drawableLeft="@mipmap/ic_trash_can"
                 android:textColor="@color/txt_main"
                 android:drawablePadding="5dp"/>
         </FrameLayout>
 
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:id="@+id/edit_frame"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="编辑"
-                android:layout_gravity="center"
-                android:textSize="@dimen/txt_size_13"
-                android:drawableTop="@mipmap/ic_edit_g"
-                android:textColor="@color/txt_main"
-                android:drawablePadding="5dp"/>
-        </FrameLayout>
     </LinearLayout>
 </RelativeLayout>

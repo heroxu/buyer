@@ -160,9 +160,13 @@ public class OrderDetailActivity extends MyBaseMvpActivity<OrderPresenter> imple
                 orderDetailBean.setGoodsList(orderBean.getGoodsList());
                 return;
             }
+
+            orderDetailBean.setOrderId(mBundle.getString(OrderHelper.ORDER_ID));
         }
 
-        orderDetailBean.setOrderId("");
+        if (StringUtil.isEmpty(orderDetailBean.getOrderId())) {
+            orderDetailBean.setOrderId("1");
+        }
         orderDetailBean.setOrderStatus(OrderHelper.STATUS_BUYER_AWAIT_SHIPPING);
         orderDetailBean.setSellerName("我是小桂子呀");
         orderDetailBean.setSellerAvatar("");
@@ -292,5 +296,15 @@ public class OrderDetailActivity extends MyBaseMvpActivity<OrderPresenter> imple
     @Override
     protected OrderPresenter createPresenter() {
         return new OrderPresenter(this, new OrderModel());
+    }
+
+    @Override
+    public void deleteOrder(int position) {
+
+    }
+
+    @Override
+    public void updateOrderDetail(String id) {
+        getFakeData();
     }
 }

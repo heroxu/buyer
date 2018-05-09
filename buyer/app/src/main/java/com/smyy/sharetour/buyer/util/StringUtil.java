@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,6 +41,23 @@ public class StringUtil {
             sb.append(string == null ? "" : string);
         }
 
+        return sb.toString();
+    }
+
+    public static String connect(List<String> strList, String connector) {
+        if (strList == null || strList.size() ==0) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (String string :
+                strList) {
+            if (!TextUtils.isEmpty(string)) {
+                sb.append(connector);
+                sb.append(string);
+            }
+        }
+        sb.replace(0, connector.length(), "");
         return sb.toString();
     }
 

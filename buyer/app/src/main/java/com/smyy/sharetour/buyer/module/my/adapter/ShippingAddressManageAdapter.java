@@ -15,12 +15,12 @@ import com.smyy.sharetour.buyer.util.StringUtil;
 import java.util.List;
 
 
-public class ManageShippingAddressAdapter extends RecyclerView.Adapter<ManageShippingAddressAdapter.ViewHolder> {
+public class ShippingAddressManageAdapter extends RecyclerView.Adapter<ShippingAddressManageAdapter.ViewHolder> {
 
     private Context mContext;
     private List<ShippingAddressBean> mDatas;
 
-    public ManageShippingAddressAdapter(Context context) {
+    public ShippingAddressManageAdapter(Context context) {
         this.mContext = context;
     }
 

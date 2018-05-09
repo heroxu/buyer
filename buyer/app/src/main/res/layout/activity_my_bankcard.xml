@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_my_interest_seller"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <com.smyy.sharetour.buyer.view.InnerRecyclerView
+            android:id="@+id/rv_my_interest_seller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/lay_my_add_bankcard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/bg_rectangle_stroke_gray"
+            android:gravity="center"
+            android:padding="15dp">
+
+            <TextView
+                style="@style/CommonText"
+                android:drawableLeft="@mipmap/btn_upload_add"
+                android:drawablePadding="5dp"
+                android:text="添加银行卡" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

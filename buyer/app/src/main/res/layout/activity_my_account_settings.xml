@@ -122,7 +122,7 @@
                     <TextView
                         android:id="@+id/tv_my_residence"
                         style="@style/WideItemMiddleRight.Text.Ellipsize"
-                        android:text="中国 广东 广州" />
+                        tools:text="中国 广东 广州" />
 
                     <ImageView style="@style/WideItemRightArrow" />
                 </LinearLayout>
@@ -142,7 +142,7 @@
                     <TextView
                         android:id="@+id/tv_my_usual_dest"
                         style="@style/WideItemMiddleRight.Text.Ellipsize"
-                        android:text="美国、法国" />
+                        tools:text="美国、法国" />
 
                     <ImageView style="@style/WideItemRightArrow" />
                 </LinearLayout>

@@ -15,7 +15,9 @@ import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.TravelBean;
 import com.smyy.sharetour.buyer.require.OnRecyclerViewOnClickListener;
+import com.smyy.sharetour.buyer.tim.ChatActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
+import com.tencent.imsdk.TIMConversationType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +87,7 @@ public class SellerTravelDetailActivity extends BaseMvpActivity {
     private void demo() {
         String[] countrys = {"中国", "澳大利亚", "印度尼西亚", "美国", "中国"};
         String[] times = {"04/04", "04/05", "04/06", "04/08", "04/12"};
-        int[] imgs = {R.mipmap.img_ill_china, R.mipmap.img_ill_australia, R.mipmap.img_ill_indonesia, R.mipmap.img_ill_america, R.mipmap.img_ill_china};
+        int[] imgs = {R.mipmap.img_ill_china_fly, R.mipmap.img_ill_australia_fly, R.mipmap.img_ill_indonesia_fly, R.mipmap.img_ill_america_fly, R.mipmap.img_ill_china_fly};
         for (int i = 0; i < 5; i++) {
             TravelBean.RouteBean routeBean = new TravelBean.RouteBean();
             routeBean.setRouteCountry(countrys[i]);
@@ -104,11 +106,15 @@ public class SellerTravelDetailActivity extends BaseMvpActivity {
     }
 
 
-    @OnClick({R.id.back_btn})
+    @OnClick({R.id.back_btn, R.id.contact_seller})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back_btn:
                 finish();
+                break;
+
+            case R.id.contact_seller:
+                ChatActivity.navToChat(SellerTravelDetailActivity.this, "我是小桂子", TIMConversationType.C2C);
                 break;
         }
     }

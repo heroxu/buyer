@@ -31,7 +31,9 @@ public class SearchActivity extends BaseMvpActivity implements View.OnClickListe
     public static final String TYPE = "SearchActivity.TYPE";
     public static final String BUNDLE_HOME = "SearchActivity.BUNDLE_HOME";
     public static final String BUNDLE_FOUNT = "SearchActivity.BUNDLE_FOUNT";
-    public static final String BUNDLE_BACK_PACKER = "SearchActivity.BUNDLE_BACK_PACKER";
+    public static final String BUNDLE_REQUIRE = "SearchActivity.BUNDLE_REQUIRE";
+    public static final String BUNDLE_SEARCH_STRING = "SearchActivity.BUNDLE_SEARCH_STRING";
+
     @BindView(R.id.iv_home_search_back)
     ImageView ivHomeSearchBack;
     @BindView(R.id.tv_home_search_cancel)
@@ -95,6 +97,10 @@ public class SearchActivity extends BaseMvpActivity implements View.OnClickListe
             mSearchHistoryAdapter = new SearchHistoryAdapter(this, mHistoryDatas,searchType);
         }
         rvSearchHistory.setAdapter(mSearchHistoryAdapter);
+
+        if(intent.getStringExtra(BUNDLE_SEARCH_STRING)!=null) {
+            svHomeSearch.setQuery(getIntent().getStringExtra(BUNDLE_SEARCH_STRING), true);
+        }
     }
 
     private void initListener() {
