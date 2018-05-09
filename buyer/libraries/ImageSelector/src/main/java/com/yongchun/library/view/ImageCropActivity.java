@@ -53,6 +53,16 @@ public class ImageCropActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //TODO 解决一个按home健返回桌面的catch ,我目前不知道具体的原因
+        try {
+            super.onSaveInstanceState(outState);
+        } catch (Exception e) {
+
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_crop);
@@ -85,14 +95,14 @@ public class ImageCropActivity extends AppCompatActivity {
             BitmapFactory.Options option = new BitmapFactory.Options();
             option.inSampleSize = sampleSize;
             Bitmap sizeBitmap = BitmapFactory.decodeStream(is, null, option);
-            if(sizeBitmap==null)return;
+            if (sizeBitmap == null) return;
             Matrix matrix = getRotateMatrix(sizeBitmap, exifRotation % 360);
             Bitmap rotated = Bitmap.createBitmap(sizeBitmap, 0, 0, sizeBitmap.getWidth(), sizeBitmap.getHeight(), matrix, true);
-            if(ViewType.ViewType==0){
+            if (ViewType.ViewType == 0) {
                 cropImageView.setVisibility(View.VISIBLE);
                 cropImageViewFree.setVisibility(View.GONE);
                 cropImageView.setImageBitmap(rotated);
-            }else if(ViewType.ViewType==1){
+            } else if (ViewType.ViewType == 1) {
                 cropImageView.setVisibility(View.GONE);
                 cropImageViewFree.setVisibility(View.VISIBLE);
                 cropImageViewFree.setImageBitmap(rotated);
@@ -120,9 +130,9 @@ public class ImageCropActivity extends AppCompatActivity {
                 ProgressDialog.show(
                         ImageCropActivity.this, null, getString(R.string.save_ing), true, false);
                 saveUri = Uri.fromFile(FileUtils.createCropFile(ImageCropActivity.this));
-                if(ViewType.ViewType==0){
+                if (ViewType.ViewType == 0) {
                     saveOutput(cropImageView.getCroppedBitmap());
-                }else if(ViewType.ViewType==1){
+                } else if (ViewType.ViewType == 1) {
                     saveOutput(cropImageViewFree.getCroppedBitmap());
                 }
             }
@@ -176,7 +186,7 @@ public class ImageCropActivity extends AppCompatActivity {
     }
 
     private void saveOutput(Bitmap croppedImage) {
-        try{
+        try {
             if (saveUri != null) {
                 OutputStream outputStream = null;
                 try {
@@ -198,7 +208,7 @@ public class ImageCropActivity extends AppCompatActivity {
                 }
             });
             finish();
-        }catch (Exception e){
+        } catch (Exception e) {
             finish();
         }
     }

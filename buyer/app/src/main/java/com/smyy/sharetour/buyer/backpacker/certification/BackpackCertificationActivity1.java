@@ -111,7 +111,7 @@ public class BackpackCertificationActivity1 extends BaseMvpActivity {
                 } else {
                     CAMERA = POSITIVE_TYPE;
                     //授予权限
-                    ImageSelectorActivity.start(this, 1, ImageSelectorActivity.MODE_SINGLE, true, true, true, 0);
+                    ImageSelectorActivity.start(this, 1, ImageSelectorActivity.MODE_SINGLE, true, true, true, 1);
                 }
                 break;
             case R.id.f_btn_reverse:
@@ -122,7 +122,7 @@ public class BackpackCertificationActivity1 extends BaseMvpActivity {
                 } else {
                     CAMERA = REVERSE_TYPE;
                     //授予权限
-                    ImageSelectorActivity.start(this, 1, ImageSelectorActivity.MODE_SINGLE, true, true, true, 0);
+                    ImageSelectorActivity.start(this, 1, ImageSelectorActivity.MODE_SINGLE, true, true, true, 1);
                 }
                 break;
             case R.id.btn_next:
