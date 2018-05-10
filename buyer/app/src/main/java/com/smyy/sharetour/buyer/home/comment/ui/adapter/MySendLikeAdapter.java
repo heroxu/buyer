@@ -1,26 +1,14 @@
 package com.smyy.sharetour.buyer.home.comment.ui.adapter;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.adapter.FountImageAdapter;
 import com.smyy.sharetour.buyer.bean.FountBean;
-import com.smyy.sharetour.buyer.home.model.MySendComment;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
-import com.youth.banner.listener.OnBannerListener;
-import com.youth.banner.loader.ImageLoader;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

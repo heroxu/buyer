@@ -1,18 +1,24 @@
 package com.smyy.sharetour.buyer;
 
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.smyy.sharetour.buyer.live.roomutil.dialog.LiveRedBagProductDialog;
+import com.smyy.sharetour.buyer.live.roomutil.model.LiveRedBagProduct;
 import com.tencent.rtmp.TXLiveConstants;
-import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.TXLivePushConfig;
 import com.tencent.rtmp.TXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
-public class LiveActivity extends Activity {
+import java.util.ArrayList;
+
+
+public class LiveActivity extends FragmentActivity {
 
     protected TXLivePusher                  mTXLivePusher;
+    private ImageView iv_live_red_bag;
 //    protected TXLivePushListenerImpl        mTXLivePushListener;
 
     @Override
@@ -22,6 +28,7 @@ public class LiveActivity extends Activity {
 
         //mPlayerView 即 step1 中添加的界面 view
         TXCloudVideoView mView = (TXCloudVideoView) findViewById(R.id.video_view);
+        iv_live_red_bag = (ImageView) findViewById(R.id.iv_live_red_bag);
 //
 ////创建 player 对象
 //        TXLivePlayer mLivePlayer = new TXLivePlayer(this);
@@ -50,6 +57,24 @@ public class LiveActivity extends Activity {
             mView.setVisibility(View.VISIBLE);
             mTXLivePusher.startCameraPreview(mView);
         }
+
+        iv_live_red_bag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LiveRedBagProductDialog liveRedBagProductDialog = new LiveRedBagProductDialog();
+                ArrayList<LiveRedBagProduct> liveRedBagProducts = new ArrayList<>();
+                liveRedBagProducts.add(new LiveRedBagProduct(LiveRedBagProduct.LIVE_NORMAL));
+                liveRedBagProducts.add(new LiveRedBagProduct(LiveRedBagProduct.LIVE_NORMAL));
+                liveRedBagProducts.add(new LiveRedBagProduct(LiveRedBagProduct.LIVE_NORMAL));
+                liveRedBagProducts.add(new LiveRedBagProduct(LiveRedBagProduct.LIVE_NORMAL));
+                liveRedBagProducts.add(new LiveRedBagProduct(LiveRedBagProduct.LIVE_BOTTOM));
+                liveRedBagProductDialog.setData(liveRedBagProducts);
+                Bundle bundle = new Bundle();
+                bundle.putInt(LiveRedBagProductDialog.DATA_SIZE,liveRedBagProducts.size());
+                liveRedBagProductDialog.setArguments(bundle);
+                liveRedBagProductDialog.show(getSupportFragmentManager(), null);
+            }
+        });
 
     }
 

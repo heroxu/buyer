@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_10"
+    android:layout_marginBottom="@dimen/margin_10"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_route_communicate"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/bg_rounded_rectangle_ffcd1f"
+        android:text="@string/live_enter_buyer_main_pager"
+        android:textColor="@color/txt_main"
+        android:textSize="@dimen/txt_size_13" />
+
+</LinearLayout>
+
+
+
+

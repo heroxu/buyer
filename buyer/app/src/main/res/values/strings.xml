@@ -247,5 +247,7 @@
     <!--直播-->
     <string name="live_focus">关注</string>
     <string name="live_you_want_say">你想说什么</string>
+    <string name="live_enter_buyer_main_pager">进入买手主页</string>
+    <string name="live_red_bag_product_num">总共%d件宝贝</string>
 
 </resources>
