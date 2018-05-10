@@ -133,18 +133,15 @@ public class DialogUtils {
 
     public static CommonDialog.Builder createBottomMenuDialogBuilder(
             @NonNull FragmentActivity activity,
-            String messageText, OnViewClickListener messageClickListener,
-            String button1Text, OnViewClickListener button1ClickListener,
-            String button2Text, OnViewClickListener button2ClickListener,
-            String button3Text, OnViewClickListener button3ClickListener,
-            String cancelText, OnViewClickListener cancelClickListener) {
+            String messageText, int messageColorRes, OnViewClickListener messageClickListener,
+            String button1Text, int btn1ColorRes, OnViewClickListener button1ClickListener,
+            String button2Text, int btn2ColorRes, OnViewClickListener button2ClickListener,
+            String button3Text, int btn3ColorRes, OnViewClickListener button3ClickListener,
+            String cancelText, int cancelColorRes, OnViewClickListener cancelClickListener) {
         return new BottomMenuBuilder(activity)
-                .setMessageText(messageText)
-                .setMessageClickListener(messageClickListener)
-                .setButtonText(button1Text, button2Text, button3Text)
-                .setButtonClickListener(button1ClickListener, button2ClickListener, button3ClickListener)
-                .setCancelText(cancelText)
-                .setCancelClickListener(cancelClickListener)
+                .setText(messageText, button1Text, button2Text, button3Text, cancelText)
+                .setTextColor(messageColorRes, btn1ColorRes, btn2ColorRes, btn3ColorRes, cancelColorRes)
+                .setClickListener(messageClickListener, button1ClickListener, button2ClickListener, button3ClickListener, cancelClickListener)
                 .build()
                 .setAnimRes(R.style.BottomDialogAnim)
                 .setCancelableOutside(false)
@@ -254,16 +251,17 @@ public class DialogUtils {
      */
     public static void showBottomMenu(
             @NonNull FragmentActivity activity,
-            String button1Text, OnViewClickListener button1ClickListener,
-            String button2Text, OnViewClickListener button2ClickListener,
-            String button3Text, OnViewClickListener button3ClickListener,
-            String cancelText, OnViewClickListener cancelClickListener) {
+            String button1Text, int btn1ColorRes, OnViewClickListener button1ClickListener,
+            String button2Text, int btn2ColorRes, OnViewClickListener button2ClickListener,
+            String button3Text, int btn3ColorRes, OnViewClickListener button3ClickListener,
+            String cancelText, int cancelColorRes, OnViewClickListener cancelClickListener) {
         createBottomMenuDialogBuilder(activity,
-                null, null,
-                button1Text, button1ClickListener,
-                button2Text, button2ClickListener,
-                button3Text, button3ClickListener,
-                cancelText, cancelClickListener).create().show();
+                null, 0, null,
+                button1Text, btn1ColorRes, button1ClickListener,
+                button2Text, btn2ColorRes, button2ClickListener,
+                button3Text, btn3ColorRes, button3ClickListener,
+                cancelText, cancelColorRes, cancelClickListener)
+                .create().show();
     }
 
     public static void showBottomMenu(
@@ -272,10 +270,10 @@ public class DialogUtils {
             String button2Text, OnViewClickListener button2ClickListener,
             String button3Text, OnViewClickListener button3ClickListener) {
         showBottomMenu(activity,
-                button1Text, button1ClickListener,
-                button2Text, button2ClickListener,
-                button3Text, button3ClickListener,
-                null, null);
+                button1Text, 0, button1ClickListener,
+                button2Text, 0, button2ClickListener,
+                button3Text, 0, button3ClickListener,
+                null, 0, null);
     }
 
     public static void showBottomMenu(
@@ -301,7 +299,6 @@ public class DialogUtils {
      *
      * @param activity
      * @param messageText
-     * @param messageClickListener
      * @param button1Text
      * @param button1ClickListener
      * @param button2Text
@@ -311,16 +308,17 @@ public class DialogUtils {
      */
     public static void showBottomMsgMenu(
             @NonNull FragmentActivity activity,
-            String messageText, OnViewClickListener messageClickListener,
-            String button1Text, OnViewClickListener button1ClickListener,
-            String button2Text, OnViewClickListener button2ClickListener,
-            String button3Text, OnViewClickListener button3ClickListener) {
+            String messageText, int messageColorRes, OnViewClickListener messageClickListener,
+            String button1Text, int btn1ColorRes, OnViewClickListener button1ClickListener,
+            String button2Text, int btn2ColorRes, OnViewClickListener button2ClickListener,
+            String button3Text, int btn3ColorRes, OnViewClickListener button3ClickListener) {
         createBottomMenuDialogBuilder(activity,
-                messageText, messageClickListener,
-                button1Text, button1ClickListener,
-                button2Text, button2ClickListener,
-                button3Text, button3ClickListener,
-                null, null).create().show();
+                messageText, messageColorRes, messageClickListener,
+                button1Text, btn1ColorRes, button1ClickListener,
+                button2Text, btn2ColorRes, button2ClickListener,
+                button3Text, btn3ColorRes, button3ClickListener,
+                null, 0, null)
+                .create().show();
     }
 
     public static void showBottomMsgMenu(
@@ -330,22 +328,10 @@ public class DialogUtils {
             String button2Text, OnViewClickListener button2ClickListener,
             String button3Text, OnViewClickListener button3ClickListener) {
         showBottomMsgMenu(activity,
-                messageText, null,
-                button1Text, button1ClickListener,
-                button2Text, button2ClickListener,
-                button3Text, button3ClickListener);
-    }
-
-    public static void showBottomMsgMenu(
-            @NonNull FragmentActivity activity,
-            String messageText, OnViewClickListener messageClickListener,
-            String button1Text, OnViewClickListener button1ClickListener,
-            String button2Text, OnViewClickListener button2ClickListener) {
-        showBottomMsgMenu(activity,
-                messageText, messageClickListener,
-                button1Text, button1ClickListener,
-                button2Text, button2ClickListener,
-                null, null);
+                messageText, 0, null,
+                button1Text, 0, button1ClickListener,
+                button2Text, 0, button2ClickListener,
+                button3Text, 0, button3ClickListener);
     }
 
     public static void showBottomMsgMenu(
@@ -354,18 +340,9 @@ public class DialogUtils {
             String button1Text, OnViewClickListener button1ClickListener,
             String button2Text, OnViewClickListener button2ClickListener) {
         showBottomMsgMenu(activity,
-                messageText, null,
+                messageText,
                 button1Text, button1ClickListener,
-                button2Text, button2ClickListener);
-    }
-
-    public static void showBottomMsgMenu(
-            @NonNull FragmentActivity activity,
-            String messageText, OnViewClickListener messageClickListener,
-            String button1Text, OnViewClickListener button1ClickListener) {
-        showBottomMsgMenu(activity,
-                messageText, messageClickListener,
-                button1Text, button1ClickListener,
+                button2Text, button2ClickListener,
                 null, null);
     }
 
@@ -374,23 +351,9 @@ public class DialogUtils {
             String messageText,
             String button1Text, OnViewClickListener button1ClickListener) {
         showBottomMsgMenu(activity,
-                messageText, null,
-                button1Text, button1ClickListener);
-    }
-
-    public static void showBottomMsgMenu(
-            @NonNull FragmentActivity activity,
-            String messageText, OnViewClickListener messageClickListener) {
-        showBottomMsgMenu(activity,
-                messageText, messageClickListener,
+                messageText,
+                button1Text, button1ClickListener,
                 null, null);
-    }
-
-    public static void showBottomMsgMenu(
-            @NonNull FragmentActivity activity,
-            String messageText) {
-        showBottomMsgMenu(activity,
-                messageText, null);
     }
 
     private static class BottomMenuBuilder {
@@ -398,7 +361,12 @@ public class DialogUtils {
         private String mBtn1Tx;
         private String mBtn2Tx;
         private String mBtn3Tx;
-        private String mCancelTx = "取消";
+        private String mCancelTx;
+        private int mMsgColorRes;
+        private int mBtn1ColorRes;
+        private int mBtn2ColorRes;
+        private int mBtn3ColorRes;
+        private int mCancelColorRes;
         private OnViewClickListener mMsgClickListener;
         private OnViewClickListener mBtn1ClickListener;
         private OnViewClickListener mBtn2ClickListener;
@@ -413,45 +381,45 @@ public class DialogUtils {
             this.mActivity = activity;
         }
 
-        public BottomMenuBuilder setButtonText(String btn1Text, String btn2Text, String btn3Text) {
+        public BottomMenuBuilder setText(String messageText,
+                                         String btn1Text, String btn2Text, String btn3Text,
+                                         String cancelText) {
+            this.mMsgTx = messageText;
             this.mBtn1Tx = btn1Text;
             this.mBtn2Tx = btn2Text;
             this.mBtn3Tx = btn3Text;
-            return this;
-        }
-
-        public BottomMenuBuilder setCancelText(String cancelText) {
             this.mCancelTx = cancelText;
             return this;
         }
 
-        public BottomMenuBuilder setMessageText(String messageText) {
-            this.mMsgTx = messageText;
+        public BottomMenuBuilder setTextColor(int messageColorRes,
+                                              int btn1ColorRes, int btn2ColorRes, int btn3ColorRes,
+                                              int cancelColorRes) {
+            this.mMsgColorRes = messageColorRes;
+            this.mBtn1ColorRes = btn1ColorRes;
+            this.mBtn2ColorRes = btn2ColorRes;
+            this.mBtn3ColorRes = btn3ColorRes;
+            this.mCancelColorRes = cancelColorRes;
             return this;
         }
 
-        public BottomMenuBuilder setButtonClickListener(OnViewClickListener btn1ClickListener,
-                                                        OnViewClickListener btn2ClickListener,
-                                                        OnViewClickListener btn3ClickListener) {
+        public BottomMenuBuilder setClickListener(OnViewClickListener messageClickListener,
+                                                  OnViewClickListener btn1ClickListener,
+                                                  OnViewClickListener btn2ClickListener,
+                                                  OnViewClickListener btn3ClickListener,
+                                                  OnViewClickListener cancelClickListener) {
+            this.mMsgClickListener = messageClickListener;
             this.mBtn1ClickListener = btn1ClickListener;
             this.mBtn2ClickListener = btn2ClickListener;
             this.mBtn3ClickListener = btn3ClickListener;
-            return this;
-        }
-
-        public BottomMenuBuilder setCancelClickListener(OnViewClickListener cancelClickListener) {
             this.mCancelClickListener = cancelClickListener;
-            return this;
-        }
-
-        public BottomMenuBuilder setMessageClickListener(OnViewClickListener messageClickListener) {
-            this.mMsgClickListener = messageClickListener;
             return this;
         }
 
         public CommonDialog.Builder build() {
             CommonDialog.Builder builder = new CommonDialog.Builder(mActivity.getSupportFragmentManager())
                     .setLayoutRes(R.layout.dialog_bottom_menu)
+                    .setDimAmount(0.5f)
                     .setScreenWidthAspect(mActivity, 1)
                     .setGravity(Gravity.BOTTOM)
                     .setOnBindViewListener(new OnBindViewListener() {
@@ -461,8 +429,13 @@ public class DialogUtils {
                                 viewHolder.setVisibility(R.id.lay_dialog_btm_msg, View.GONE);
                             } else {
                                 viewHolder.setVisibility(R.id.lay_dialog_btm_msg, View.VISIBLE);
-                                viewHolder.setText(R.id.tv_dialog_btm_msg, mMsgTx);
                                 viewHolder.setOnViewClickListener(R.id.tv_dialog_btm_msg, mMsgClickListener);
+
+                                TextView view = viewHolder.getView(R.id.tv_dialog_btm_msg);
+                                view.setText(mMsgTx);
+                                if (mMsgColorRes != 0) {
+                                    view.setTextColor(view.getResources().getColor(mMsgColorRes));
+                                }
                             }
 
                             if (mBtn1Tx == null) {
@@ -471,26 +444,40 @@ public class DialogUtils {
                                 viewHolder.setVisibility(R.id.lay_dialog_btm1, View.VISIBLE);
                                 viewHolder.setText(R.id.tv_dialog_btm1, mBtn1Tx);
                                 viewHolder.setOnViewClickListener(R.id.tv_dialog_btm1, mBtn1ClickListener);
+
+                                TextView view = viewHolder.getView(R.id.tv_dialog_btm1);
+                                view.setText(mBtn1Tx);
+                                if (mBtn1ColorRes != 0) {
+                                    view.setTextColor(view.getResources().getColor(mBtn1ColorRes));
+                                }
                             }
 
                             if (mBtn2Tx == null) {
                                 viewHolder.setVisibility(R.id.lay_dialog_btm2, View.GONE);
                             } else {
                                 viewHolder.setVisibility(R.id.lay_dialog_btm2, View.VISIBLE);
-                                viewHolder.setText(R.id.tv_dialog_btm2, mBtn2Tx);
                                 viewHolder.setOnViewClickListener(R.id.tv_dialog_btm2, mBtn2ClickListener);
+
+                                TextView view = viewHolder.getView(R.id.tv_dialog_btm2);
+                                view.setText(mBtn2Tx);
+                                if (mBtn2ColorRes != 0) {
+                                    view.setTextColor(view.getResources().getColor(mBtn2ColorRes));
+                                }
                             }
 
                             if (mBtn3Tx == null) {
                                 viewHolder.setVisibility(R.id.lay_dialog_btm3, View.GONE);
                             } else {
                                 viewHolder.setVisibility(R.id.lay_dialog_btm3, View.VISIBLE);
-                                viewHolder.setText(R.id.tv_dialog_btm3, mBtn3Tx);
                                 viewHolder.setOnViewClickListener(R.id.tv_dialog_btm3, mBtn3ClickListener);
+
+                                TextView view = viewHolder.getView(R.id.tv_dialog_btm3);
+                                view.setText(mBtn3Tx);
+                                if (mBtn3ColorRes != 0) {
+                                    view.setTextColor(view.getResources().getColor(mBtn3ColorRes));
+                                }
                             }
 
-                            viewHolder.setText(R.id.tv_dialog_btm_cancel,
-                                    mCancelTx == null ? "取消" : mCancelTx);
                             if (mCancelClickListener == null) {
                                 mCancelClickListener = new OnViewClickListener() {
                                     @Override
@@ -500,6 +487,12 @@ public class DialogUtils {
                                 };
                             }
                             viewHolder.setOnViewClickListener(R.id.tv_dialog_btm_cancel, mCancelClickListener);
+
+                            TextView view = viewHolder.getView(R.id.tv_dialog_btm_cancel);
+                            view.setText(mCancelTx == null ? "取消" : mCancelTx);
+                            if (mCancelColorRes != 0) {
+                                view.setTextColor(view.getResources().getColor(mCancelColorRes));
+                            }
                         }
                     });
             return builder;

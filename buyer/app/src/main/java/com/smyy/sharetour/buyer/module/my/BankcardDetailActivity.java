@@ -65,8 +65,8 @@ public class BankcardDetailActivity extends MyBaseMvpActivity {
             @Override
             public void onClick(View v) {
                 DialogUtils.showBottomMsgMenu(BankcardDetailActivity.this,
-                        "解除绑定后银行将不可使用，包括支付",
-                        "确定解除绑定",
+                        "解除绑定后银行将不可使用，包括支付", 0, null,
+                        "确定解除绑定", R.color.txt_hint,
                         new OnViewClickListener() {
                             @Override
                             public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
@@ -78,7 +78,9 @@ public class BankcardDetailActivity extends MyBaseMvpActivity {
                                     }
                                 });
                             }
-                        });
+                        },
+                        null, 0, null,
+                        null, 0, null);
             }
         });
     }
