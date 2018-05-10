@@ -1,133 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/window_background">
 
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:orientation="vertical">
+        <LinearLayout style="@style/EditWideItem">
 
-            <LinearLayout style="@style/EditWideItem">
-
-                <TextView
-                    style="@style/WideItemLeftText"
-                    android:layout_width="100dp"
-                    android:text="收货人" />
-
-                <EditText
-                    android:id="@+id/et_my_shipping_name"
-                    style="@style/EditWideItemMiddleRight"
-                    android:hint="姓名"
-                    android:textColor="@color/txt_main"
-                    android:textSize="@dimen/txt_size_15" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="20dp"
-                android:background="@color/line_divider" />
-
-            <LinearLayout style="@style/EditWideItem">
-
-                <TextView
-                    style="@style/WideItemLeftText"
-                    android:layout_width="100dp"
-                    android:text="联系电话" />
-
-                <EditText
-                    android:id="@+id/et_my_shipping_phone"
-                    style="@style/EditWideItemMiddleRight"
-                    android:digits="@string/digits_phone_num"
-                    android:hint="收货人电话"
-                    android:inputType="phone"
-                    android:textColor="@color/txt_main"
-                    android:textSize="@dimen/txt_size_15" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="20dp"
-                android:background="@color/line_divider" />
-
-            <LinearLayout
-                android:id="@+id/lay_my_shipping_district"
-                style="@style/WideItem">
-
-                <TextView
-                    style="@style/WideItemLeftText"
-                    android:layout_width="100dp"
-                    android:text="所在地区" />
-
-                <TextView
-                    android:id="@+id/tv_my_shipping_district"
-                    style="@style/WideItemMiddleRight.Text"
-                    android:textColor="@color/txt_main"
-                    android:textSize="@dimen/txt_size_15" />
-
-                <ImageView style="@style/WideItemRightArrow" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="20dp"
-                android:background="@color/line_divider" />
-
-            <LinearLayout
-                android:id="@+id/lay_my_shipping_street"
-                style="@style/WideItem">
-
-                <TextView
-                    style="@style/WideItemLeftText"
-                    android:layout_width="100dp"
-                    android:text="街道" />
-
-                <TextView
-                    android:id="@+id/tv_my_shipping_street"
-                    style="@style/WideItemMiddleRight.Text"
-                    android:textColor="@color/txt_main"
-                    android:textSize="@dimen/txt_size_15" />
-
-                <ImageView style="@style/WideItemRightArrow" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="20dp"
-                android:background="@color/line_divider" />
+            <TextView
+                style="@style/WideItemLeftText"
+                android:layout_width="100dp"
+                android:text="收货人" />
 
             <EditText
-                android:id="@+id/et_my_shipping_address_detail"
-                style="@style/WideItem.EditText"
-                android:layout_height="128dp"
-                android:gravity="top"
-                android:hint="请填写详细地址，不少于5个字" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/line_divider" />
-
-            <CheckBox
-                android:id="@+id/cb_my_shipping_default"
-                style="@style/WideItem.Text"
-                android:button="@null"
-                android:drawableRight="@drawable/btn_radio_selector"
-                android:text="设为默认收货地址" />
-
-
+                android:id="@+id/et_my_shipping_name"
+                style="@style/EditWideItemMiddleRight"
+                android:hint="姓名"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_15" />
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-</LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/line_divider" />
+
+        <LinearLayout style="@style/EditWideItem">
+
+            <TextView
+                style="@style/WideItemLeftText"
+                android:layout_width="100dp"
+                android:text="联系电话" />
+
+            <EditText
+                android:id="@+id/et_my_shipping_phone"
+                style="@style/EditWideItemMiddleRight"
+                android:digits="@string/digits_phone_num"
+                android:hint="收货人电话"
+                android:inputType="phone"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_15" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/line_divider" />
+
+        <LinearLayout
+            android:id="@+id/lay_my_shipping_district"
+            style="@style/WideItem">
+
+            <TextView
+                style="@style/WideItemLeftText"
+                android:layout_width="100dp"
+                android:text="所在地区" />
+
+            <TextView
+                android:id="@+id/tv_my_shipping_district"
+                style="@style/WideItemMiddleRight.Text"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_15" />
+
+            <ImageView style="@style/WideItemRightArrow" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/line_divider" />
+
+        <LinearLayout
+            android:id="@+id/lay_my_shipping_street"
+            style="@style/WideItem">
+
+            <TextView
+                style="@style/WideItemLeftText"
+                android:layout_width="100dp"
+                android:text="街道" />
+
+            <TextView
+                android:id="@+id/tv_my_shipping_street"
+                style="@style/WideItemMiddleRight.Text"
+                android:textColor="@color/txt_main"
+                android:textSize="@dimen/txt_size_15" />
+
+            <ImageView style="@style/WideItemRightArrow" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/line_divider" />
+
+        <EditText
+            android:id="@+id/et_my_shipping_address_detail"
+            style="@style/WideItem.EditText"
+            android:layout_height="128dp"
+            android:gravity="top"
+            android:hint="请填写详细地址，不少于5个字" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_divider" />
+
+        <CheckBox
+            android:id="@+id/cb_my_shipping_default"
+            style="@style/WideItem.Text"
+            android:button="@null"
+            android:drawableRight="@drawable/btn_radio_selector"
+            android:text="设为默认收货地址" />
+
+
+    </LinearLayout>
+</ScrollView>
