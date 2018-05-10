@@ -131,7 +131,12 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 //                                    new ForegroundColorSpan(mActivity.getResources().getColor(R.color.txt_price))));
 
                     holder.tvPriceTotal.setText(StringUtil.connect("总额：", data.getPriceTotal()));
-                    holder.tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
+                    String verifyFee = data.getVerifyFee();
+                    if (StringUtil.isEmpty(verifyFee)) {
+                        holder.tvVerifyFee.setText("");
+                    } else {
+                        holder.tvVerifyFee.setText(StringUtil.connect("（含鉴定费", verifyFee, "）"));
+                    }
                     break;
             }
 
@@ -203,7 +208,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         private View laySum;
         private TextView tvGoodsCountTotal;
         private TextView tvPriceTotal;
-        private TextView tvShippingFee;
+        private TextView tvVerifyFee;
         private TextView tvBottomBtn1;
         private TextView tvBottomBtn2;
         private TextView tvBottomBtn3;
@@ -220,7 +225,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             laySum = itemView.findViewById(R.id.lay_order_sum);
             tvGoodsCountTotal = (TextView) itemView.findViewById(R.id.tv_order_goods_count_total);
             tvPriceTotal = (TextView) itemView.findViewById(R.id.tv_order_price_total);
-            tvShippingFee = (TextView) itemView.findViewById(R.id.tv_order_shipping_fee);
+            tvVerifyFee = (TextView) itemView.findViewById(R.id.tv_order_verify_fee);
             tvBottomBtn1 = (TextView) itemView.findViewById(R.id.tv_order_bottom_btn1);
             tvBottomBtn2 = (TextView) itemView.findViewById(R.id.tv_order_bottom_btn2);
             tvBottomBtn3 = (TextView) itemView.findViewById(R.id.tv_order_bottom_btn3);

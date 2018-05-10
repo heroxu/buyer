@@ -47,7 +47,7 @@
                     tools:text="总额：478638" />
 
                 <TextView
-                    android:id="@+id/tv_order_shipping_fee"
+                    android:id="@+id/tv_order_verify_fee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/txt_gray_dark"

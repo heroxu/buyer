@@ -59,8 +59,8 @@ public class OrderDetailActivity extends MyBaseMvpActivity<OrderPresenter> imple
     TextView tvGoodsCountTotal;
     @BindView(R.id.tv_order_price_total)
     TextView tvPriceTotal;
-    @BindView(R.id.tv_order_shipping_fee)
-    TextView tvShippingFee;
+    @BindView(R.id.tv_order_verify_fee)
+    TextView tvVerifyFee;
     @BindView(R.id.lay_order_reward)
     View layReward;
     @BindView(R.id.tv_order_reward)
@@ -154,7 +154,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity<OrderPresenter> imple
                 orderDetailBean.setBuyerAvatar(orderBean.getBuyerAvatar());
                 orderDetailBean.setGoodsCountTotal(orderBean.getGoodsCountTotal());
                 orderDetailBean.setPriceTotal(orderBean.getPriceTotal());
-                orderDetailBean.setShippingFee(orderBean.getShippingFee());
+                orderDetailBean.setVerifyFee(orderBean.getVerifyFee());
                 orderDetailBean.setVerifyVideo(orderBean.getVerifyVideo());
                 orderDetailBean.setGoodsType(orderBean.getGoodsType());
                 orderDetailBean.setGoodsList(orderBean.getGoodsList());
@@ -174,7 +174,7 @@ public class OrderDetailActivity extends MyBaseMvpActivity<OrderPresenter> imple
         orderDetailBean.setBuyerAvatar("");
         orderDetailBean.setGoodsCountTotal(1);
         orderDetailBean.setPriceTotal("￥9,948.00");
-        orderDetailBean.setShippingFee("￥30.00");
+        orderDetailBean.setVerifyFee("￥30.00");
         orderDetailBean.setVerifyVideo("");
         orderDetailBean.setGoodsType(OrderHelper.GOODS_TYPE_DEMAND);
         ArrayList<OrderGoodsInfo> fakdeGoodsList1 = new ArrayList<>();
@@ -265,7 +265,12 @@ public class OrderDetailActivity extends MyBaseMvpActivity<OrderPresenter> imple
             }
 
             tvPriceTotal.setText(StringUtil.connect("总额：", data.getPriceTotal()));
-            tvShippingFee.setText(StringUtil.connect("（含运费", data.getShippingFee(), "）"));
+            String verifyFee = data.getVerifyFee();
+            if (StringUtil.isEmpty(verifyFee)) {
+                tvVerifyFee.setText("");
+            } else {
+                tvVerifyFee.setText(StringUtil.connect("（含鉴定费", verifyFee, "）"));
+            }
 
             String reward = data.getReward();
             if (StringUtil.isEmpty(reward)) {

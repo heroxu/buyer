@@ -1,7 +1,6 @@
 package com.smyy.sharetour.buyer.module.order.bean;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class OrderBean implements Serializable {
@@ -16,12 +15,12 @@ public class OrderBean implements Serializable {
     private String buyerAvatar;
     private int goodsCountTotal;
     private String priceTotal;
-    private String shippingFee;//运费
+    private String verifyFee;//鉴定费
     private String verifyVideo;//鉴定视频
     private int goodsType;//商品类型
     private List<OrderGoodsInfo> goodsList;
 
-    public OrderBean(String orderId, int orderStatus, String sellerId, String sellerName, String sellerAvatar, String buyerId, String buyerName, String buyerAvatar, int goodsCountTotal, String priceTotal, String shippingFee, String verifyVideo, int goodsType, List<OrderGoodsInfo> goodsList) {
+    public OrderBean(String orderId, int orderStatus, String sellerId, String sellerName, String sellerAvatar, String buyerId, String buyerName, String buyerAvatar, int goodsCountTotal, String priceTotal, String verifyFee, String verifyVideo, int goodsType, List<OrderGoodsInfo> goodsList) {
         this.orderId = orderId;
         this.orderStatus = orderStatus;
         this.sellerId = sellerId;
@@ -32,7 +31,7 @@ public class OrderBean implements Serializable {
         this.buyerAvatar = buyerAvatar;
         this.goodsCountTotal = goodsCountTotal;
         this.priceTotal = priceTotal;
-        this.shippingFee = shippingFee;
+        this.verifyFee = verifyFee;
         this.verifyVideo = verifyVideo;
         this.goodsType = goodsType;
         this.goodsList = goodsList;
@@ -118,12 +117,12 @@ public class OrderBean implements Serializable {
         this.priceTotal = priceTotal;
     }
 
-    public String getShippingFee() {
-        return shippingFee;
+    public String getVerifyFee() {
+        return verifyFee;
     }
 
-    public void setShippingFee(String shippingFee) {
-        this.shippingFee = shippingFee;
+    public void setVerifyFee(String verifyFee) {
+        this.verifyFee = verifyFee;
     }
 
     public String getVerifyVideo() {
