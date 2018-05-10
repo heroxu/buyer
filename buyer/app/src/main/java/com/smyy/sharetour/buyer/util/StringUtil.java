@@ -45,7 +45,7 @@ public class StringUtil {
     }
 
     public static String connect(List<String> strList, String connector) {
-        if (strList == null || strList.size() ==0) {
+        if (strList == null || strList.size() == 0) {
             return "";
         }
 
@@ -193,22 +193,39 @@ public class StringUtil {
 
     //手机号码脱敏
     public static String getPhoneNum(String phoneNum) {
-        if (phoneNum != null) {
-            int length = phoneNum.length();
-            if (length >= 11) {
-                return phoneNum.substring(0, 3) + " **** "
-                        + phoneNum.substring(length - 4, length);
-            } else if (length >= 5) {
-                return phoneNum.substring(0, 1) + " **** "
-                        + phoneNum.substring(length - 1, length);
-            } else if (length >= 2) {
-                return phoneNum.substring(0, 1) + " ****";
-            } else {
-                return "****";
-            }
+        if (isEmpty(phoneNum)) {
+            return "";
         }
 
-        return phoneNum;
+        phoneNum = phoneNum.trim();
+        int length = phoneNum.length();
+        if (length >= 11) {
+            return phoneNum.substring(0, 3) + " **** "
+                    + phoneNum.substring(length - 4, length);
+        } else if (length >= 5) {
+            return phoneNum.substring(0, 1) + " **** "
+                    + phoneNum.substring(length - 1, length);
+        } else if (length >= 2) {
+            return phoneNum.substring(0, 1) + " ****";
+        } else {
+            return "****";
+        }
+    }
+
+    //银行卡号脱敏
+    public static String getBankcardNum(String bankcardNum) {
+        if (isEmpty(bankcardNum)) {
+            return "";
+        }
+
+        bankcardNum = bankcardNum.trim();
+        int length = bankcardNum.length();
+        if (length >= 4) {
+            return "**** **** **** "
+                    + bankcardNum.substring(length - 4, length);
+        } else {
+            return "****";
+        }
     }
 
     /**
