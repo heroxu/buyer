@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.Consts;
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.module.my.base.MyBaseMvpActivity;
 import com.smyy.sharetour.buyer.module.my.base.MyBasePresenter;
 import com.smyy.sharetour.buyer.util.StringUtil;
@@ -61,9 +62,7 @@ public class LinkedPhoneActivity extends MyBaseMvpActivity {
         switch (view.getId()) {
 
             case R.id.tv_my_service_tel:
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri
-                        .parse("tel:" + mServiceTel));
-                startActivity(intent);
+                DialogUtils.showCallDialog(this, Consts.SERVICE_TEL);
                 break;
 
             default:

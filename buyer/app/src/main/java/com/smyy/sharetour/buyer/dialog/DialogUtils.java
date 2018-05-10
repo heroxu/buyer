@@ -1,5 +1,7 @@
 package com.smyy.sharetour.buyer.dialog;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
@@ -7,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
+import com.smyy.sharetour.buyer.module.my.BankcardDetailActivity;
+import com.smyy.sharetour.uiframelib.BaseActivity;
 import com.xmyy.view.dialoglib.CommonDialog;
 import com.xmyy.view.dialoglib.base.BindViewHolder;
 import com.xmyy.view.dialoglib.listener.OnBindViewListener;
@@ -14,6 +18,23 @@ import com.xmyy.view.dialoglib.listener.OnViewClickListener;
 
 
 public class DialogUtils {
+    /**
+     * 呼叫对话框
+     */
+    public static void showCallDialog(final BaseActivity activity, final String tel) {
+        DialogUtils.showTwoBtnMsgBox(activity, null, tel, "呼叫",
+                new OnViewClickListener() {
+                    @Override
+                    public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
+                        commonDialog.dismiss();
+                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri
+                                .parse("tel:" + tel));
+                        activity.startActivity(intent);
+                    }
+                });
+    }
+
+
     public static CommonDialog.Builder createMessageBoxDialogBuilder(
             @NonNull FragmentActivity activity, int type,
             String titleText,

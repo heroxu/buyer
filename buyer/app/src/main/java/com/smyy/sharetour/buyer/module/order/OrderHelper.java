@@ -339,16 +339,7 @@ public class OrderHelper {
                 break;
 
             case OPERATE_CONTACT_SERVICE:
-                DialogUtils.showTwoBtnMsgBox(activity, null, Consts.SERVICE_TEL, "呼叫",
-                        new OnViewClickListener() {
-                            @Override
-                            public void onViewClick(BindViewHolder viewHolder, View view, CommonDialog commonDialog) {
-                                commonDialog.dismiss();
-                                Intent intent = new Intent(Intent.ACTION_DIAL, Uri
-                                        .parse("tel:" + Consts.SERVICE_TEL));
-                                activity.startActivity(intent);
-                            }
-                        });
+                DialogUtils.showCallDialog(activity, Consts.SERVICE_TEL);
                 break;
 
             case OPERATE_CANCEL:
