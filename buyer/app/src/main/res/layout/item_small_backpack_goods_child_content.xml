@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_btn_itbgc"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,116 +8,170 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:orientation="horizontal"
-        android:paddingBottom="25dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp"
-        android:paddingTop="25dp">
+        android:paddingLeft="10dp">
 
         <CheckBox
             android:id="@+id/cb_goods"
             android:layout_width="wrap_content"
-            android:layout_height="18dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
+            android:layout_marginBottom="15dp"
+            android:background="@null"
             android:button="@null"
-            android:clickable="false"
             android:drawableLeft="@drawable/btn_radio_selector"
             android:drawablePadding="10dp"
-            android:gravity="center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp" />
+            android:paddingLeft="10dp" />
 
         <ImageView
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="15dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp"
             android:src="@mipmap/home_new_sell"
             android:textSize="25sp" />
 
         <LinearLayout
+            android:id="@+id/ll_goods_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_search_product_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:lines="2"
-                android:text="NIKE HUARACHE DRIFT幼童运动限量版大童鞋 "
-                android:textColor="@color/txt_main"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="规格：黑白/36.5"
-                    android:textColor="@color/txt_gray_dark"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="x1"
-                    android:textColor="@color/txt_gray_dark"
-                    android:textSize="11sp" />
-            </RelativeLayout>
+            android:layout_marginBottom="25dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_weight="1">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_search_product_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:text="NIKE HUARACHE DRIFT幼童运动限量版大童鞋 "
+                    android:textColor="@color/txt_main"
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="规格：黑白/36.5"
+                        android:textColor="@color/txt_gray_dark"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="x1"
+                        android:textColor="@color/txt_gray_dark"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@mipmap/ic_city_singapore" />
+
+                    <TextView
+                        android:id="@+id/tv_search_product_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:ellipsize="end"
+                        android:text="W 456.9万"
+                        android:textColor="@color/txt_price"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_search_product_rmb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:ellipsize="end"
+                        android:text="（约1,468元）"
+                        android:textColor="@color/txt_gray"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_edit_itbgc"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:src="@mipmap/ic_city_singapore" />
-
-                <TextView
-                    android:id="@+id/tv_search_product_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:ellipsize="end"
-                    android:text="W 456.9万"
-                    android:textColor="@color/txt_price"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/tv_search_product_rmb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:ellipsize="end"
-                    android:text="（约1,468元）"
-                    android:textColor="@color/txt_gray"
-                    android:textSize="11sp" />
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@mipmap/ic_edit_b" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_edit_itbgc"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:gravity="center_horizontal">
+            android:id="@+id/ll_goods_edit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone">
 
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@mipmap/ic_edit_b" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.smyy.sharetour.buyer.view.AmountView
+                    android:id="@+id/amount_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/bg_amount_layout"
+                    android:drawableRight="@mipmap/ic_bag_down"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="颜色/黑白 尺码/37.5" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_smb_edit_finish"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@color/btn_bg_normal"
+                android:gravity="center"
+                android:text="完成"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

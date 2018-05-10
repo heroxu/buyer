@@ -1,21 +1,19 @@
 package com.smyy.sharetour.buyer.ui.SmallBackpack;
 
-import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.smyy.sharetour.buyer.view.AmountView;
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.util.LogUtil;
 import com.smyy.sharetour.buyer.util.ToastUtils;
-import com.smyy.sharetour.buyer.view.SwipeItemLayout;
 import com.xmyy.view.dialoglib.CommonDialog;
 import com.xmyy.view.dialoglib.base.BindViewHolder;
 import com.xmyy.view.dialoglib.listener.OnBindViewListener;
@@ -53,13 +51,17 @@ public class SmallBackpackAdapter extends BaseMultiItemQuickAdapter<SmallBackpac
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                         switch (view.getId()) {
-                            case R.id.ll_btn_itbgc:
-                                LogUtil.e("WZF",parentPosition+"-----");
+                            case R.id.cb_goods:
                                 mActivity.changeChildSelectStatus(item.getmGoodsBeans(), mGoodsAdapter, cbSelect, parentPosition, position);
                                 break;
-                            case R.id.ll_edit_itbgc:
-                                ToastUtils.showToast("编辑状态");
-                                break;
+//                            case R.id.ll_edit_itbgc:
+//                                helper.getView(R.id.ll_goods_message).setVisibility(View.GONE);
+//                                helper.getView(R.id.ll_goods_edit).setVisibility(View.VISIBLE);
+//                                break;
+//                            case R.id.tv_smb_edit_finish:
+//                                helper.getView(R.id.ll_goods_edit).setVisibility(View.GONE);
+//                                helper.getView(R.id.ll_goods_message).setVisibility(View.VISIBLE);
+//                                break;
                         }
                     }
                 });
@@ -113,8 +115,30 @@ public class SmallBackpackAdapter extends BaseMultiItemQuickAdapter<SmallBackpac
         }
 
         @Override
-        protected void convert(BaseViewHolder helper, SmallBackpackBean.GoodsBean item) {
-            helper.addOnClickListener(R.id.ll_btn_itbgc).addOnClickListener(R.id.ll_edit_itbgc);
+        protected void convert(final BaseViewHolder helper, SmallBackpackBean.GoodsBean item) {
+            AmountView mAmountView = helper.getView(R.id.amount_view);
+            mAmountView.setGoods_storage(50);
+            mAmountView.setOnAmountChangeListener(new AmountView.OnAmountChangeListener() {
+                @Override
+                public void onAmountChange(View view, int amount) {
+                }
+            });
+            helper.addOnClickListener(R.id.cb_goods).addOnClickListener(R.id.ll_edit_itbgc).addOnClickListener(R.id.tv_smb_edit_finish);
+            helper.getView(R.id.ll_edit_itbgc).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    helper.getView(R.id.ll_goods_message).setVisibility(View.GONE);
+                    helper.getView(R.id.ll_goods_edit).setVisibility(View.VISIBLE);
+                }
+            });
+            helper.getView(R.id.tv_smb_edit_finish).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LogUtil.e("WZF", helper.getView(R.id.tv_smb_edit_finish).getHeight() + "---");
+                    helper.getView(R.id.ll_goods_edit).setVisibility(View.GONE);
+                    helper.getView(R.id.ll_goods_message).setVisibility(View.VISIBLE);
+                }
+            });
             helper.addOnLongClickListener(R.id.ll_btn_itbgc);
             CheckBox mCheckBox = helper.getView(R.id.cb_goods);
             mCheckBox.setChecked(item.getIsSelect() == SmallBackpackActivity.SELECT_TRUE ? true : false);
