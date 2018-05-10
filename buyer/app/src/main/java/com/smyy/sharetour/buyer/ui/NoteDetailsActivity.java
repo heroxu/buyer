@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,11 +21,12 @@ import com.smyy.sharetour.buyer.base.mvp.BaseMvpActivity;
 import com.smyy.sharetour.buyer.base.mvp.IBasePresenter;
 import com.smyy.sharetour.buyer.bean.CommentsBean;
 import com.smyy.sharetour.buyer.dialog.DetailsEditorDialog;
-import com.smyy.sharetour.buyer.util.ActivityLauncher;
-import com.smyy.sharetour.buyer.util.ToastUtils;
+import com.smyy.sharetour.buyer.emotion.EmotionViewUtil;
+import com.smyy.sharetour.buyer.util.KeyBoardUtils;
 import com.smyy.sharetour.buyer.view.ObservableScrollView;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NoteDetailsActivity extends BaseMvpActivity implements ObservableScrollView.OnObservableScrollViewScrollChanged {
@@ -44,9 +46,19 @@ public class NoteDetailsActivity extends BaseMvpActivity implements ObservableSc
     LinearLayout llFixedView;
     @BindView(R.id.ll_ll_comments)
     LinearLayout llLlComments;
+    @BindView(R.id.ll_nd_bottom)
+    LinearLayout llNdBottom;
+    @BindView(R.id.ll_comment_input_frame)
+    LinearLayout commentInputFrame;
+    @BindView(R.id.et_input_comment)
+    EditText inputComment;
+    @BindView(R.id.chat_face_container)
+    LinearLayout chatFaceContainer;
+
     //用来记录内层固定布局到屏幕顶部的距离
     private int mHeight;
     private DetailsEditorDialog mDetailsEditorDialog;
+    private EmotionViewUtil emotionViewUtil;
 
     @Override
     protected int getLayoutId() {
@@ -81,12 +93,14 @@ public class NoteDetailsActivity extends BaseMvpActivity implements ObservableSc
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (view.getId()) {
                     case R.id.tv_reply_comments:
-                        ToastUtils.showToast("回复被点击了");
+                        //ToastUtils.showToast("回复被点击了");
+                        showCommentInputFrame(true);
                         break;
                 }
             }
         });
 
+        emotionViewUtil = new EmotionViewUtil(NoteDetailsActivity.this, inputComment, chatFaceContainer);
     }
 
     @Override
@@ -116,6 +130,7 @@ public class NoteDetailsActivity extends BaseMvpActivity implements ObservableSc
                 llComments.addView(llLlComments);
             }
         }
+        showCommentInputFrame(false);
     }
 
     @Override
@@ -159,5 +174,47 @@ public class NoteDetailsActivity extends BaseMvpActivity implements ObservableSc
             }
         });
         mDetailsEditorDialog.show();
+    }
+
+    private void showCommentInputFrame(boolean isShow) {
+        if (isShow) {
+            commentInputFrame.setVisibility(View.VISIBLE);
+            llNdBottom.setVisibility(View.GONE);
+            inputComment.requestFocus();
+            KeyBoardUtils.openKeybord(inputComment, NoteDetailsActivity.this);
+
+        } else {
+            //关闭软键盘
+            KeyBoardUtils.closeKeybord(inputComment, NoteDetailsActivity.this);
+            commentInputFrame.setVisibility(View.GONE);
+            llNdBottom.setVisibility(View.VISIBLE);
+            chatFaceContainer.setVisibility(View.GONE);
+        }
+    }
+
+
+    @OnClick({R.id.iv_emotion, R.id.btn_publish_comment, R.id.et_input_comment})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_emotion:
+                //关闭软键盘
+                KeyBoardUtils.closeKeybord(inputComment, NoteDetailsActivity.this);
+                if(chatFaceContainer.getVisibility()==View.GONE){
+                    chatFaceContainer.setVisibility(View.VISIBLE);
+                }else{
+                    chatFaceContainer.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.btn_publish_comment:
+                showCommentInputFrame(false);
+                inputComment.setText("");
+                break;
+
+            case R.id.et_input_comment:
+                if(chatFaceContainer.getVisibility()==View.VISIBLE){
+                    chatFaceContainer.setVisibility(View.GONE);
+                }
+                break;
+        }
     }
 }
