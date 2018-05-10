@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/space_my_bankcard_bottom"
             android:layout_alignParentTop="true"
-            android:background="@drawable/fake_bg1" />
+            tools:background="@drawable/fake_bg1" />
 
         <ImageView
             android:id="@+id/iv_my_bankcard_logo"
@@ -31,7 +31,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:scaleType="fitCenter"
-            android:src="@mipmap/fake_logo1" />
+            tools:src="@mipmap/fake_logo1" />
 
         <TextView
             android:id="@+id/tv_my_bankcard_name"
@@ -40,10 +40,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/iv_my_bankcard_logo"
-            android:text="招商银行"
             android:textColor="@color/white"
             android:textSize="@dimen/txt_size_17"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="招商银行" />
 
         <TextView
             android:id="@+id/tv_my_bankcard_type"
@@ -51,9 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/tv_my_bankcard_name"
             android:layout_below="@+id/tv_my_bankcard_name"
-            android:text="储蓄卡"
             android:textColor="@color/white"
-            android:textSize="@dimen/txt_size_11" />
+            android:textSize="@dimen/txt_size_11"
+            tools:text="储蓄卡" />
 
         <TextView
             android:id="@+id/tv_my_bankcard_num"
@@ -61,10 +61,10 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/tv_my_bankcard_name"
             android:layout_below="@+id/tv_my_bankcard_type"
-            android:text="**** **** **** 1234"
             android:textColor="@color/white"
             android:textSize="@dimen/txt_size_23"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="**** **** **** 1234" />
 
 
         <Space

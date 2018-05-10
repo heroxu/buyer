@@ -9,6 +9,16 @@ public class BankcardBean implements Serializable {
     private String name;
     private String type;
     private String num;
+    private String serviceTel;
+
+    public BankcardBean(int bgRes, int logoRes, String name, String type, String num, String serviceTel) {
+        this.bgRes = bgRes;
+        this.logoRes = logoRes;
+        this.name = name;
+        this.type = type;
+        this.num = num;
+        this.serviceTel = serviceTel;
+    }
 
     public int getBgRes() {
         return bgRes;
@@ -50,11 +60,23 @@ public class BankcardBean implements Serializable {
         this.num = num;
     }
 
-    public BankcardBean(int bgRes, int logoRes, String name, String type, String num) {
-        this.bgRes = bgRes;
-        this.logoRes = logoRes;
-        this.name = name;
-        this.type = type;
-        this.num = num;
+    public String getServiceTel() {
+        return serviceTel;
+    }
+
+    public void setServiceTel(String serviceTel) {
+        this.serviceTel = serviceTel;
+    }
+
+    @Override
+    public String toString() {
+        return "BankcardBean{" +
+                "bgRes=" + bgRes +
+                ", logoRes=" + logoRes +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", num='" + num + '\'' +
+                ", serviceTel='" + serviceTel + '\'' +
+                '}';
     }
 }

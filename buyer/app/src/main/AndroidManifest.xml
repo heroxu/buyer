@@ -54,6 +54,7 @@
         <activity android:name=".module.my.FeedbackActivity" />
         <activity android:name=".module.my.InterestSellerListActivity" />
         <activity android:name=".module.my.BankcardListActivity" />
+        <activity android:name=".module.my.BankcardDetailActivity" />
         <activity android:name=".module.my.AddBankcardActivity" />
         <activity android:name=".module.my.EditUsualDestActivity" />
         <activity android:name=".module.common.code.SmsCodeActivity" />

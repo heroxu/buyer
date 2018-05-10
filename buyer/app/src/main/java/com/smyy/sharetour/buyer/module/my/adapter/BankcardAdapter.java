@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.smyy.sharetour.buyer.R;
 import com.smyy.sharetour.buyer.module.my.bean.BankcardBean;
-import com.smyy.sharetour.buyer.module.my.bean.InterestSellerBean;
+import com.smyy.sharetour.buyer.util.StringUtil;
 
 import java.util.List;
 
@@ -36,6 +36,9 @@ public class BankcardAdapter extends RecyclerView.Adapter<BankcardAdapter.ViewHo
             holder.layBg.setBackground(mContext.getResources().getDrawable(data.getBgRes()));
             holder.ivLogo.setBackground(mContext.getResources().getDrawable(data.getLogoRes()));
             holder.tvName.setText(data.getName());
+            holder.tvType.setText(data.getType());
+            holder.tvNum.setText(StringUtil.getBankcardNum(data.getNum()));
+
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
