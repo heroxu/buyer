@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 
 public class BankcardBean implements Serializable {
+    private int id;
     private int bgRes;
     private int logoRes;
     private String name;
@@ -11,13 +12,22 @@ public class BankcardBean implements Serializable {
     private String num;
     private String serviceTel;
 
-    public BankcardBean(int bgRes, int logoRes, String name, String type, String num, String serviceTel) {
+    public BankcardBean(int id, int bgRes, int logoRes, String name, String type, String num, String serviceTel) {
+        this.id = id;
         this.bgRes = bgRes;
         this.logoRes = logoRes;
         this.name = name;
         this.type = type;
         this.num = num;
         this.serviceTel = serviceTel;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getBgRes() {

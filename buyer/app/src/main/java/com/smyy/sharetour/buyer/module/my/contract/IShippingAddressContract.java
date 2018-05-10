@@ -39,8 +39,8 @@ public interface IShippingAddressContract {
     interface Model {
         List<ShippingAddressBean> getShippingAddressList();
 
-        boolean deleteShippingAddress(int position);
-        boolean setDefault(int position);
+        boolean deleteShippingAddress(int id);
+        boolean setDefault(int id);
 
         ShippingAddressBean getShippingAddress(int id);
 
