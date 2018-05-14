@@ -135,10 +135,20 @@ public class LiveRedBagProductDialog extends DialogFragment implements View.OnCl
         protected void convert(BaseViewHolder helper, LiveRedBagProduct item) {
             switch (helper.getItemViewType()) {
                 case LiveRedBagProduct.LIVE_NORMAL:
-
+                    helper.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ActivityLauncher.viewHomeDetail(getContext());
+                        }
+                    });
                     break;
                 case LiveRedBagProduct.LIVE_BOTTOM:
-
+                        helper.itemView.findViewById(R.id.tv_live_buyer_main_pager).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                ActivityLauncher.viewBuyHomePageActivity(getContext());
+                            }
+                        });
                     break;
             }
         }

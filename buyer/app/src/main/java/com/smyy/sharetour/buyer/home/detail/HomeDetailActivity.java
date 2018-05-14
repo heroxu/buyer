@@ -10,10 +10,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.flyco.tablayout.SlidingTabLayout;
@@ -23,6 +26,7 @@ import com.smyy.sharetour.buyer.home.detail.dialog.ProductConfirmOrderDialog;
 import com.smyy.sharetour.buyer.home.detail.product.ProductDetailFragment;
 import com.smyy.sharetour.buyer.home.detail.service.ProductDetailServiceFragment;
 import com.smyy.sharetour.buyer.tim.ChatActivity;
+import com.smyy.sharetour.buyer.ui.MainActivity;
 import com.smyy.sharetour.buyer.util.ActivityLauncher;
 import com.smyy.sharetour.buyer.view.RedImageView;
 import com.tencent.imsdk.TIMConversationType;
@@ -102,6 +106,19 @@ public class HomeDetailActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Log.d("onKeyDown", "onKeyDown: " + "返回键被按下");
+            return true;//return true;拦截事件传递,从而屏蔽back键。
+        }
+        if (KeyEvent.KEYCODE_MENU == keyCode) {
+            Log.d("onKeyDown", "onKeyDown: " + "返回键被按下");
+            return true;//同理
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_product_detail_back:
@@ -137,6 +154,8 @@ public class HomeDetailActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.tv_product_detail_add_bag:
 
+                break;
+            case R.id.home:
                 break;
         }
     }
