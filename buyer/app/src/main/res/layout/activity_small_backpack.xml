@@ -66,12 +66,6 @@
                     android:textSize="17sp" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="含运费 ¥30.00"
-                android:textColor="@color/txt_gray"
-                android:textSize="11sp" />
         </LinearLayout>
 
         <Button

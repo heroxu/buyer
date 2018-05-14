@@ -2,6 +2,7 @@ package com.smyy.sharetour.buyer.dialog;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
     private View iv_close;
     RxCountDown mRxCountDown;
     TextView mTvCodeTime;
+    TextView mTvSmsPhone;
+    private String mPhone;
 
     public SmsCodeDialog(Activity context) {
         super(context);
@@ -41,6 +44,7 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
         iv_close.setOnClickListener(this);
         mSmsCode = (VerificationCodeView) parent.findViewById(R.id.icv_sms);
         mTvCodeTime = (TextView) parent.findViewById(R.id.tv_sms_count_down);
+        mTvSmsPhone = (TextView) parent.findViewById(R.id.tv_sms_phone);
         mTvCodeTime.setOnClickListener(this);
         mSmsCode.setInputCompleteListener(new VerificationCodeView.InputCompleteListener() {
             @Override
@@ -61,6 +65,14 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
 
             }
         });
+        return parent;
+    }
+
+    private void showRxCountDown() {
+        if (mRxCountDown != null) {
+            mRxCountDown.stop();
+            mRxCountDown = null;
+        }
         /**
          * 倒计时
          */
@@ -68,20 +80,25 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
             @Override
             public void accept(Long countDown) throws Exception {
                 if (countDown > 0) {
+                    mTvCodeTime.setTextColor(MyApplication.getApplication().getResources().getColor(R.color.txt_gray));
                     mTvCodeTime.setText(countDown + "秒后可重新发送");
                     mTvCodeTime.setEnabled(false);
                 } else {
+                    mTvCodeTime.setTextColor(MyApplication.getApplication().getResources().getColor(R.color.txt_hint));
                     mTvCodeTime.setEnabled(true);
                     mTvCodeTime.setText("重新发送");
                 }
             }
         }).build();
         mRxCountDown.start();
-        return parent;
     }
 
     @Override
     public void destroy() {
+        if (mRxCountDown != null) {
+            mRxCountDown.stop();
+            mRxCountDown = null;
+        }
         if (mSmsCode != null) {
             mSmsCode = null;
         }
@@ -106,14 +123,21 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
 
     @Override
     public void dismiss() {
-        mRxCountDown.stop();
+//        mRxCountDown.stop();
         super.dismiss();
     }
 
-    @Override
-    public void show() {
+
+    public void showDialog(String phone) {
+        mTvSmsPhone.setText("短信验证码已发送至" + phone);
         mSmsCode.clearInputContent();
-        super.show();
+        if (!TextUtils.isEmpty(phone)) {
+            if (!phone.equals(mPhone)) {
+                mPhone = phone;
+                showRxCountDown();
+            }
+        }
+        this.show();
     }
 
 
@@ -126,7 +150,7 @@ public class SmsCodeDialog extends AnimationDialog implements View.OnClickListen
      */
     public interface SmsCodeCallback {
         void SmsCodeResult(String smsCode);
-        
+
         void SmsCodeCancel();
     }
 }

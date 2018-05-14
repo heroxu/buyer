@@ -224,7 +224,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:gravity="right|center"
             android:orientation="vertical"
@@ -238,13 +238,6 @@
                 android:textColor="@color/txt_price"
                 android:textSize="21sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="含运费 ¥30.00"
-                android:textColor="@color/txt_gray"
-                android:textSize="11sp" />
         </LinearLayout>
 
     </RelativeLayout>

@@ -42,6 +42,7 @@ public class LoginActivity extends BaseMvpActivity {
     @BindView(R.id.btv_password_login)
     TextView btvPasswordLogin;
     SmsCodeDialog mSmsCodeDialog;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
@@ -189,6 +190,6 @@ public class LoginActivity extends BaseMvpActivity {
 
             }
         });
-        mSmsCodeDialog.show();
+        mSmsCodeDialog.showDialog(editPhone.getText().toString().trim());
     }
 }
