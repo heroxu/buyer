@@ -106,19 +106,6 @@ public class HomeDetailActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Log.d("onKeyDown", "onKeyDown: " + "返回键被按下");
-            return true;//return true;拦截事件传递,从而屏蔽back键。
-        }
-        if (KeyEvent.KEYCODE_MENU == keyCode) {
-            Log.d("onKeyDown", "onKeyDown: " + "返回键被按下");
-            return true;//同理
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_product_detail_back:
