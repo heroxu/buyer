@@ -37,7 +37,7 @@
         <!--<include layout="@layout/layout_live_pusher_info"/>-->
 
         <ImageView
-            android:id="@+id/iv_head_icon"
+            android:id="@+id/iv_live_avatar"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center_vertical"
@@ -102,6 +102,25 @@
             android:layout_marginEnd="5dp"
             android:text="美国  纽约"/>
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_above="@+id/ll_live_bottom_message"
+        android:layout_height="150dp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/live_rv_message"
+            android:layout_marginStart="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_marginBottom="20dp"

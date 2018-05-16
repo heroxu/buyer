@@ -147,6 +147,7 @@ public class LiveRedBagProductDialog extends DialogFragment implements View.OnCl
                             @Override
                             public void onClick(View view) {
                                 ActivityLauncher.viewBuyHomePageActivity(getContext());
+                                LiveRedBagProductDialog.this.dismiss();
                             }
                         });
                     break;

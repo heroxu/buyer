@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.smyy.sharetour.buyer.backpacker.bomepage.BackpackHomePageActivity;
+import com.smyy.sharetour.buyer.dialog.DialogUtils;
 import com.smyy.sharetour.buyer.live.roomutil.dialog.LiveRedBagProductDialog;
 import com.smyy.sharetour.buyer.live.roomutil.model.LiveRedBagProduct;
 import com.tencent.rtmp.TXLiveConstants;
@@ -17,8 +19,9 @@ import java.util.ArrayList;
 
 public class LiveActivity extends FragmentActivity {
 
-    protected TXLivePusher                  mTXLivePusher;
+    protected TXLivePusher mTXLivePusher;
     private ImageView iv_live_red_bag;
+    private ImageView iv_live_avatar;
 //    protected TXLivePushListenerImpl        mTXLivePushListener;
 
     @Override
@@ -29,6 +32,8 @@ public class LiveActivity extends FragmentActivity {
         //mPlayerView 即 step1 中添加的界面 view
         TXCloudVideoView mView = (TXCloudVideoView) findViewById(R.id.video_view);
         iv_live_red_bag = (ImageView) findViewById(R.id.iv_live_red_bag);
+        iv_live_avatar = (ImageView) findViewById(R.id.iv_live_avatar);
+
 //
 ////创建 player 对象
 //        TXLivePlayer mLivePlayer = new TXLivePlayer(this);
@@ -73,6 +78,18 @@ public class LiveActivity extends FragmentActivity {
                 bundle.putInt(LiveRedBagProductDialog.DATA_SIZE,liveRedBagProducts.size());
                 liveRedBagProductDialog.setArguments(bundle);
                 liveRedBagProductDialog.show(getSupportFragmentManager(), null);
+            }
+        });
+
+        iv_live_avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogUtils.BuyHomePageBuilder.showCollectionDialog(LiveActivity.this, new DialogUtils.BuyHomePageBuilder.OnOptionConfirmListener() {
+                    @Override
+                    public void onDelete() {
+
+                    }
+                });
             }
         });
 
